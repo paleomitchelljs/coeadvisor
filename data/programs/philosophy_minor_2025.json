@@ -1,0 +1,22 @@
+{
+  "id": "philosophy_minor_2025",
+  "name": "Philosophy",
+  "program_type": "minor",
+  "catalog_year": "2025",
+  "major_code": "PHL",
+  "source": "Fall 2026 Philosophy Major_Minor Requirements Chec.pdf",
+  "sections": [
+    {
+      "id": "courses",
+      "label": "Five Philosophy Courses (two must be 200+, one must be 300+)",
+      "type": "open_n",
+      "n": 5,
+      "description": "Five PHL courses; at least two must be numbered 200 or above, and at least one must be numbered 300 or above.",
+      "constraints": {
+        "prefixes": ["PHL"],
+        "min_level": 200,
+        "min_level_count": 2
+      }
+    }
+  ]
+}

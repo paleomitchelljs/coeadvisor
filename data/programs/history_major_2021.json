@@ -1,0 +1,67 @@
+{
+  "id": "history_major_2021",
+  "name": "History",
+  "program_type": "major",
+  "catalog_year": "2021",
+  "major_code": "HIS",
+  "source": "History Checklist 2021.pdf",
+  "sections": [
+    {
+      "id": "intro_surveys",
+      "label": "Three Introductory Survey Courses (from two-combination requirement)",
+      "type": "choose_n",
+      "n": 3,
+      "note": "Must follow one of two combinations: (A) HIS-115 + HIS-125 + one US survey (HIS-145 or HIS-155) + one additional US history course; OR (B) HIS-145 + HIS-155 + one European survey (HIS-115 or HIS-125) + one additional European history course. The 4th required course (additional US or European) counts in the additional section below.",
+      "items": [
+        {"id": "his115", "title": "The History of Europe to 1500",        "codes": ["HIS-115"]},
+        {"id": "his125", "title": "The History of Europe Since 1500",     "codes": ["HIS-125"]},
+        {"id": "his145", "title": "History of the United States to 1865", "codes": ["HIS-145"]},
+        {"id": "his155", "title": "History of the United States Since 1865","codes": ["HIS-155"]}
+      ]
+    },
+    {
+      "id": "craft",
+      "label": "Required Methods Course",
+      "type": "all",
+      "items": [
+        {"id": "his205", "title": "The Historian's Craft", "codes": ["HIS-205"]}
+      ]
+    },
+    {
+      "id": "east_asian",
+      "label": "One East Asian History Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "his136", "title": "East Asian Civilization",     "codes": ["HIS-136"]},
+        {"id": "his246", "title": "History of Modern China (WE)","codes": ["HIS-246"], "attributes": ["WE"]},
+        {"id": "his256", "title": "History of Modern Japan (WE)","codes": ["HIS-256"], "attributes": ["WE"]}
+      ]
+    },
+    {
+      "id": "seminar",
+      "label": "One Seminar Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "his465", "title": "Seminar in Ancient History",          "codes": ["HIS-465"]},
+        {"id": "his466", "title": "Seminar in Modern East Asian History (WE)", "codes": ["HIS-466"], "attributes": ["WE"]},
+        {"id": "his472", "title": "Seminar in American History I",       "codes": ["HIS-472"]},
+        {"id": "his473", "title": "Seminar in American History II",      "codes": ["HIS-473"]},
+        {"id": "his474", "title": "Seminar in Modern European History",  "codes": ["HIS-474"]}
+      ]
+    },
+    {
+      "id": "additional",
+      "label": "Three Additional History Courses",
+      "type": "open_n",
+      "n": 3,
+      "description": "Three additional HIS courses. Includes the 4th introductory survey or an additional US/European course per the combination chosen.",
+      "constraints": {
+        "prefixes": ["HIS"],
+        "exclude_codes": ["HIS-115", "HIS-125", "HIS-145", "HIS-155",
+                          "HIS-205",
+                          "HIS-136", "HIS-246", "HIS-256",
+                          "HIS-465", "HIS-466", "HIS-472", "HIS-473", "HIS-474"]
+      }
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "id": "biology_minor_2025",
+  "name": "Biology",
+  "program_type": "minor",
+  "catalog_year": "2025",
+  "major_code": "BIO",
+  "source": "Biology Checklist 2025.pdf",
+  "sections": [
+    {
+      "id": "core_bio",
+      "label": "Core Biology Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "bio145",
+          "title": "Cellular and Molecular Biology and Laboratory",
+          "codes": ["BIO-145", "BIO-145L"]
+        },
+        {
+          "id": "bio155",
+          "title": "Organismal and Ecological Biology and Laboratory",
+          "codes": ["BIO-155", "BIO-155L"]
+        }
+      ]
+    },
+    {
+      "id": "elective_option",
+      "label": "Elective Option (choose one path)",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "two_electives",
+          "title": "Two biology electives with labs (at least one must be 200-level or higher)",
+          "codes": []
+        },
+        {
+          "id": "one_elective_plus_202",
+          "title": "BIO-202 Topics in Evolution + one biology elective with lab",
+          "codes": ["BIO-202"]
+        }
+      ],
+      "note": "For the two-elective path, enter any two BIO electives with labs. The tool will detect them as BIO open electives."
+    },
+    {
+      "id": "bio_open_electives",
+      "label": "Biology Electives (see elective option above)",
+      "type": "open_n",
+      "n": 1,
+      "description": "At least one biology elective with lab (beyond the core and BIO-202 if applicable).",
+      "constraints": {
+        "prefixes": ["BIO"],
+        "exclude_codes": ["BIO-145", "BIO-155", "BIO-202"]
+      }
+    },
+    {
+      "id": "supporting_chemistry",
+      "label": "Supporting Chemistry",
+      "type": "all",
+      "items": [
+        {
+          "id": "chm121",
+          "title": "General Chemistry I and Laboratory",
+          "codes": ["CHM-121", "CHM-121L"]
+        },
+        {
+          "id": "chm122",
+          "title": "General Chemistry II and Laboratory",
+          "codes": ["CHM-122", "CHM-122L"]
+        }
+      ]
+    }
+  ]
+}

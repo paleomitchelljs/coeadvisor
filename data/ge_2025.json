@@ -1,0 +1,71 @@
+{
+  "version": "GE2025",
+  "label": "General Education (2025-2026 and Greater)",
+  "notes": [
+    "Students who transfer in an AA or AS degree earned after graduating from high school are exempt from all GE requirements except practicum.",
+    "AAS degrees with approved articulation agreements also receive this exemption.",
+    "AP & IB courses may not fulfill any general education requirements."
+  ],
+  "divisional": {
+    "rule": "No more than two courses of the same prefix may be used to fulfill divisional requirements. Each course may only be used once in these requirements.",
+    "sections": {
+      "fine_arts": {
+        "label": "Fine Arts",
+        "credits_required": 2,
+        "slots": 2,
+        "prefixes": ["ARH", "ART", "CRW", "MU", "MUA", "THE"]
+      },
+      "humanities": {
+        "label": "Humanities",
+        "credits_required": 2,
+        "slots": 2,
+        "prefixes": ["AAM", "CLA", "COM", "ENG", "HIS", "JPN", "PHL", "REL", "SPA"]
+      },
+      "nat_sci_math": {
+        "label": "Natural Sciences & Mathematics",
+        "credits_required": 1,
+        "slots": 1,
+        "prefixes": ["BIO", "CHM", "CS", "DS", "ENR", "MTH", "PHY", "STA"]
+      },
+      "lab_science": {
+        "label": "Lab Science",
+        "credits_required": 1,
+        "slots": 1,
+        "note": "Must enroll in and pass both the lab (L suffix) and corresponding lecture."
+      },
+      "social_sciences": {
+        "label": "Social Sciences",
+        "credits_required": 2,
+        "slots": 2,
+        "prefixes": ["ANT", "ECO", "GS", "POL", "PSY", "SOC"]
+      }
+    }
+  },
+  "additional": {
+    "note": "Courses used below may overlap with divisional requirements. A course may be used more than once in the following categories.",
+    "first_year_seminar": {
+      "label": "First Year Seminar",
+      "count": 1,
+      "prefixes": ["FYS"],
+      "note": "Enter FYS course code (e.g. FYS-100) or mark manually"
+    },
+    "writing_emphasis": {
+      "label": "Writing Emphasis",
+      "count_standard": 5,
+      "count_transfer_8_16": 3,
+      "count_transfer_16plus": 2,
+      "note": "Courses must carry a WE designation. Count may be reduced for transfer students."
+    },
+    "dac": {
+      "label": "Diversity Across the Curriculum",
+      "count": 2,
+      "note": "Must be from the official DAC approved course list (see dac_2025.json)"
+    },
+    "practicum": {
+      "label": "Practicum",
+      "count": 1,
+      "prefixes": ["PRX"],
+      "note": "One experience integrating academic learning with significant off-campus or co-curricular activity. Mark manually."
+    }
+  }
+}

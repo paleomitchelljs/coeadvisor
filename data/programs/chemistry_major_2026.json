@@ -1,0 +1,146 @@
+{
+  "id": "chemistry_major_2026",
+  "name": "Chemistry",
+  "program_type": "major",
+  "catalog_year": "2026",
+  "major_code": "CHM",
+  "source": "Chemistry Advising Checklist 2026.pdf",
+  "sections": [
+    {
+      "id": "core_chm",
+      "label": "Core Chemistry Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "chm121",
+          "title": "General Chemistry I with Lab",
+          "codes": ["CHM-121", "CHM-121L"]
+        },
+        {
+          "id": "chm122",
+          "title": "General Chemistry II with Lab",
+          "codes": ["CHM-122", "CHM-122L"]
+        },
+        {
+          "id": "chm211",
+          "title": "Analytical Chemistry and Lab",
+          "codes": ["CHM-211", "CHM-211L"]
+        },
+        {
+          "id": "chm221",
+          "title": "Organic Chemistry I",
+          "codes": ["CHM-221"]
+        },
+        {
+          "id": "chm341",
+          "title": "Physical Chemistry I and Lab",
+          "codes": ["CHM-341", "CHM-341L"]
+        }
+      ]
+    },
+    {
+      "id": "chm_electives",
+      "label": "Advanced Chemistry Electives (choose 3 from list)",
+      "type": "choose_n",
+      "n": 3,
+      "note": "* = required for ACS certification; + = 2 of these needed for ACS certification",
+      "items": [
+        {
+          "id": "chm321",
+          "title": "Organic Chemistry II  [*ACS]",
+          "codes": ["CHM-321"]
+        },
+        {
+          "id": "chm322",
+          "title": "Organic Laboratory  [*ACS]",
+          "codes": ["CHM-322"]
+        },
+        {
+          "id": "chm411",
+          "title": "Advanced Analytical Chemistry  [+ACS]",
+          "codes": ["CHM-411"]
+        },
+        {
+          "id": "chm421",
+          "title": "Advanced Organic Chemistry  [+ACS]",
+          "codes": ["CHM-421"]
+        },
+        {
+          "id": "chm422",
+          "title": "Synthesis Laboratory  [*ACS]",
+          "codes": ["CHM-422"]
+        },
+        {
+          "id": "chm431",
+          "title": "Biochemistry and Laboratory  [*ACS]",
+          "codes": ["CHM-431", "CHM-431L"]
+        },
+        {
+          "id": "chm432",
+          "title": "Protein Biochemistry and Laboratory  [+ACS]",
+          "codes": ["CHM-432", "CHM-432L"]
+        },
+        {
+          "id": "chm441",
+          "title": "Physical Chemistry II  [+ACS]",
+          "codes": ["CHM-441"]
+        },
+        {
+          "id": "chm451",
+          "title": "Inorganic Chemistry and Laboratory  [*ACS]",
+          "codes": ["CHM-451", "CHM-451L"]
+        }
+      ]
+    },
+    {
+      "id": "supporting_math",
+      "label": "Supporting Mathematics",
+      "type": "all",
+      "items": [
+        {
+          "id": "mth145",
+          "title": "Calculus II",
+          "codes": ["MTH-145"]
+        }
+      ]
+    },
+    {
+      "id": "supporting_physics",
+      "label": "Supporting Physics",
+      "type": "all",
+      "items": [
+        {
+          "id": "phy185",
+          "title": "General Physics I with Lab",
+          "codes": ["PHY-185", "PHY-185L"]
+        },
+        {
+          "id": "phy195",
+          "title": "General Physics II with Lab",
+          "codes": ["PHY-195", "PHY-195L"]
+        }
+      ]
+    },
+    {
+      "id": "seminars",
+      "label": "Seminar in Chemistry (both required)",
+      "type": "all",
+      "items": [
+        {
+          "id": "chm464",
+          "title": "Seminar in Chemistry I",
+          "codes": ["CHM-464"]
+        },
+        {
+          "id": "chm474",
+          "title": "Seminar in Chemistry II",
+          "codes": ["CHM-474"]
+        }
+      ]
+    }
+  ],
+  "recommended": [
+    "MTH-255 Calculus III"
+  ],
+  "notes": "ACS Certification: requires CHM-321, CHM-322, CHM-422, CHM-431, CHM-451 (* courses) plus 2 of the + courses, plus CHM-454 or CHM-444. Students with AP Chemistry score of 4 or 5 should consult a chemistry professor. Complete CHM-121 and MTH-135 in the first fall term for ACS certification in four years."
+}

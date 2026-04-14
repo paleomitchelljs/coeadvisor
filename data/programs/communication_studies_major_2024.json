@@ -1,0 +1,102 @@
+{
+  "id": "communication_studies_major_2024",
+  "name": "Communication Studies",
+  "program_type": "major",
+  "catalog_year": "2024",
+  "major_code": "COM",
+  "source": "Comm Studies Checklist 2024.pdf",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Two Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "com101", "title": "Introduction to Communication Studies", "codes": ["COM-101"]},
+        {"id": "com125", "title": "Fundamentals of Public Speaking",       "codes": ["COM-125"]}
+      ]
+    },
+    {
+      "id": "methods",
+      "label": "One Methods Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "com281", "title": "Introduction to Research Methods (WE)",            "codes": ["COM-281"], "attributes": ["WE"]},
+        {"id": "com381", "title": "Research Methods in Communication Studies (WE)",   "codes": ["COM-381"], "attributes": ["WE"]}
+      ]
+    },
+    {
+      "id": "human_comm",
+      "label": "One Course in Human Communication",
+      "type": "choose_one",
+      "options": [
+        {"id": "com137", "title": "Interpersonal Communication (WE)",                             "codes": ["COM-137"]},
+        {"id": "com231", "title": "Communication in Teams (WE)",                                   "codes": ["COM-231"]},
+        {"id": "com225", "title": "Topics in Communication Studies (COM-225/227)",                 "codes": ["COM-225"]},
+        {"id": "com322", "title": "Professional Communication and Writing (WE)",                   "codes": ["COM-322"]},
+        {"id": "com327", "title": "Organizational Communication (WE)",                             "codes": ["COM-327"]},
+        {"id": "com236", "title": "Intercultural Communication (WE)",                              "codes": ["COM-236"]},
+        {"id": "com323", "title": "Relational Communication: Theory and Application (WE)",        "codes": ["COM-323"]},
+        {"id": "com332", "title": "Health Communication (WE)",                                     "codes": ["COM-332"]},
+        {"id": "com435", "title": "Advanced Topics in Human Communication (COM-435/-437) (WE)",   "codes": ["COM-435"]}
+      ]
+    },
+    {
+      "id": "mass_media",
+      "label": "One Course in Mass Media",
+      "type": "choose_one",
+      "options": [
+        {"id": "com141", "title": "Introduction to Journalism (WE)",                   "codes": ["COM-141"]},
+        {"id": "com151", "title": "Introduction to New Media Studies (WE)",             "codes": ["COM-151"]},
+        {"id": "com157", "title": "Introduction to Media Analysis (WE)",               "codes": ["COM-157"]},
+        {"id": "com241", "title": "Multimedia Journalism (WE)",                        "codes": ["COM-241"]},
+        {"id": "com245", "title": "Topics in Communication Studies (COM-245/247)",     "codes": ["COM-245"]},
+        {"id": "com257", "title": "Sex, Race, and Gender in the Media (WE)",           "codes": ["COM-257"]},
+        {"id": "com341", "title": "Digital Storytelling (WE)",                         "codes": ["COM-341"]},
+        {"id": "com455", "title": "Advanced Topics in Mass Media (COM-455/-457) (WE)", "codes": ["COM-455"]}
+      ]
+    },
+    {
+      "id": "cultural_critical",
+      "label": "One Course in Cultural and Critical Communication",
+      "type": "choose_one",
+      "options": [
+        {"id": "com160", "title": "Rhetorical Theory and Practice",                                    "codes": ["COM-160"]},
+        {"id": "com161", "title": "Visual Rhetoric",                                                   "codes": ["COM-161"]},
+        {"id": "com267", "title": "Environmental Rhetoric (WE)",                                       "codes": ["COM-267"]},
+        {"id": "com275", "title": "Topics in Communication Studies (COM-275/277)",                     "codes": ["COM-275"]},
+        {"id": "com377", "title": "Language, Power, and Social Change (WE)",                           "codes": ["COM-377"]},
+        {"id": "com465", "title": "Advanced Topics in Cultural and Critical Communication (COM-465/-467) (WE)", "codes": ["COM-465"]}
+      ]
+    },
+    {
+      "id": "upper_level",
+      "label": "One COM Course Numbered 400 or Above (not used to satisfy req 3, 4, or 5)",
+      "type": "open_n",
+      "n": 1,
+      "description": "One COM course at the 400-level not already used to satisfy the methods, human comm, mass media, or cultural/critical requirements.",
+      "constraints": {
+        "prefixes": ["COM"],
+        "min_level": 400,
+        "min_level_count": 1,
+        "exclude_codes": ["COM-435", "COM-437", "COM-455", "COM-457", "COM-465", "COM-467"]
+      }
+    },
+    {
+      "id": "additional",
+      "label": "Three Additional COM Courses (ECC prefix counts up to 1.0 credit)",
+      "type": "open_n",
+      "n": 3,
+      "description": "Three additional COM prefix courses. Students may count up to 1.0 credits with ECC prefix, including ECC-494.",
+      "constraints": {
+        "prefixes": ["COM", "ECC"],
+        "exclude_codes": ["COM-101", "COM-125", "COM-281", "COM-381",
+                          "COM-137", "COM-231", "COM-225", "COM-322", "COM-327",
+                          "COM-236", "COM-323", "COM-332", "COM-435",
+                          "COM-141", "COM-151", "COM-157", "COM-241", "COM-245",
+                          "COM-257", "COM-341", "COM-455",
+                          "COM-160", "COM-161", "COM-267", "COM-275", "COM-377", "COM-465"]
+      }
+    }
+  ],
+  "notes": "Minimum cumulative 2.0 GPA in all courses counted toward the major. Students on catalogs prior to 2024-2025 should confirm substitutions with the department."
+}

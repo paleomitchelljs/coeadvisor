@@ -1,0 +1,93 @@
+{
+  "id": "premed",
+  "name": "Pre-Medicine (MD/DO)",
+  "pathway_type": "preprofessional",
+  "source": "Storer's List of Required Courses for Premedical Study (2020)",
+  "related_programs": ["biology_major_2025", "chemistry_major_2026"],
+  "timing_note": "CHM-121/121L must start first semester freshman year for on-time completion of the chemistry sequence before MCAT.",
+  "sections": [
+    {
+      "id": "bio_req",
+      "label": "Required Biology",
+      "type": "all",
+      "items": [
+        {"id": "bio145", "title": "Cell and Molecular Biology + Lab",      "codes": ["BIO-145", "BIO-145L"]},
+        {"id": "bio155", "title": "Organismal & Ecological Biology + Lab", "codes": ["BIO-155", "BIO-155L"]},
+        {"id": "bio230", "title": "Genetics + Lab",                        "codes": ["BIO-230", "BIO-235"]},
+        {"id": "bio325", "title": "Microbiology + Lab",                    "codes": ["BIO-325", "BIO-325L"]},
+        {"id": "bio375", "title": "Integrated Human Physiology + Lab",     "codes": ["BIO-375", "BIO-375L"]}
+      ]
+    },
+    {
+      "id": "chm_req",
+      "label": "Required Chemistry",
+      "type": "all",
+      "items": [
+        {"id": "chm121", "title": "General Chemistry I + Lab",      "codes": ["CHM-121", "CHM-121L"]},
+        {"id": "chm122", "title": "General Chemistry II + Lab",     "codes": ["CHM-122", "CHM-122L"]},
+        {"id": "chm221", "title": "Organic Chemistry I",            "codes": ["CHM-221"]},
+        {"id": "chm321", "title": "Organic Chemistry II",           "codes": ["CHM-321"]},
+        {"id": "chm322", "title": "Organic Chemistry Lab",          "codes": ["CHM-322"]},
+        {"id": "chm431", "title": "Biochemistry + Lab",             "codes": ["CHM-431", "CHM-431L"]}
+      ]
+    },
+    {
+      "id": "phy_req",
+      "label": "Required Physics",
+      "type": "all",
+      "items": [
+        {"id": "phy165", "title": "Basic Physics I + Lab",  "codes": ["PHY-165", "PHY-165L"]},
+        {"id": "phy175", "title": "Basic Physics II + Lab", "codes": ["PHY-175", "PHY-175L"]}
+      ]
+    },
+    {
+      "id": "math_req",
+      "label": "Required Math / Statistics",
+      "type": "all",
+      "items": [
+        {"id": "mth135", "title": "Calculus I",                                       "codes": ["MTH-135"]},
+        {"id": "sta100", "title": "Statistical Reasoning I + IIA (STA-100 + STA-110)","codes": ["STA-100", "STA-110"]}
+      ]
+    },
+    {
+      "id": "soc_req",
+      "label": "Required Social Sciences (MCAT)",
+      "type": "all",
+      "items": [
+        {"id": "psy100", "title": "Introductory Psychology", "codes": ["PSY-100"]},
+        {"id": "soc107", "title": "Introductory Sociology",  "codes": ["SOC-107"]}
+      ]
+    },
+    {
+      "id": "writing_req",
+      "label": "Required Humanities — Writing",
+      "type": "non_course",
+      "description": "Writing Emphasis (WE) courses required. ENG or CRW course highly recommended."
+    },
+    {
+      "id": "mcat",
+      "label": "MCAT Exam",
+      "type": "non_course",
+      "description": "MCAT typically taken spring junior year or summer after junior year. Register ≥3 months in advance at aamc.org."
+    },
+    {
+      "id": "shadowing",
+      "label": "Clinical Shadowing / Experience",
+      "type": "non_course",
+      "description": "Most MD/DO programs expect 100–200+ hours of clinical shadowing and/or volunteering before application."
+    }
+  ],
+  "recommended": [
+    {"codes": ["BIO-415", "BIO-415L"], "title": "Developmental Biology + Lab"},
+    {"codes": ["BIO-435", "BIO-435L"], "title": "Cell Physiology + Lab"},
+    {"codes": ["BIO-315", "BIO-315L"], "title": "Integrated Human Anatomy + Lab"},
+    {"codes": ["PSY-235"],             "title": "Abnormal Psychology"},
+    {"codes": ["PSY-250"],             "title": "Intro to Biopsychology"},
+    {"codes": ["PSY-325"],             "title": "Health Psychology"},
+    {"codes": ["CLA-155"],             "title": "Latin/Greek Origins of Medical Terminology"},
+    {"codes": ["PHL-165"],             "title": "Bio-Medical Ethics"},
+    {"codes": ["COM-237"],             "title": "Interpersonal Communication"},
+    {"codes": ["COM-332"],             "title": "Health Communication"}
+  ],
+  "notes": "Source: Storer's List (2020). Requirements vary by medical school — verify with each school's admissions page and with the pre-health advisor. Students should register with the Health Professions Advisory Committee (HPAC) early."
+}

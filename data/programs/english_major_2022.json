@@ -1,0 +1,55 @@
+{
+  "id": "english_major_2022",
+  "name": "English",
+  "program_type": "major",
+  "catalog_year": "2022",
+  "major_code": "ENG",
+  "source": "English 2022 Checklist.pdf",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Core Courses",
+      "type": "all",
+      "items": [
+        {"id": "eng111", "title": "Introduction to Literary Studies: The Art of Reading and Writing", "codes": ["ENG-111"]},
+        {"id": "eng281", "title": "Literatures in English to 1800",   "codes": ["ENG-281"]},
+        {"id": "eng291", "title": "Literatures in English after 1800","codes": ["ENG-291"]},
+        {"id": "eng301", "title": "The Art of Literary Research",     "codes": ["ENG-301"]}
+      ]
+    },
+    {
+      "id": "upper_courses",
+      "label": "Three English Courses (305+, one must be British lit before 1800)",
+      "type": "open_n",
+      "n": 3,
+      "description": "Three ENG courses numbered 305 or above. At least one must be in British literature before 1800. Confirm with department which courses satisfy the British lit before 1800 requirement.",
+      "constraints": {
+        "prefixes": ["ENG"],
+        "min_level": 305,
+        "min_level_count": 3,
+        "exclude_codes": ["ENG-111", "ENG-281", "ENG-291", "ENG-301"]
+      }
+    },
+    {
+      "id": "additional",
+      "label": "Two Additional Courses",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two additional courses; one must be an ENG course. The second may be ENG, CRW, or French/Spanish lit in translation (FRE-145, FRE-146, FRE-148, SPA-148).",
+      "constraints": {
+        "prefixes": ["ENG", "CRW", "FRE", "SPA"],
+        "exclude_codes": ["ENG-111", "ENG-281", "ENG-291", "ENG-301"]
+      }
+    },
+    {
+      "id": "seminar",
+      "label": "One Senior Seminar",
+      "type": "choose_one",
+      "options": [
+        {"id": "eng464", "title": "Seminar in Literature",                           "codes": ["ENG-464"]},
+        {"id": "eng467", "title": "Seminar in Literature: United States Pluralism (WE)", "codes": ["ENG-467"], "attributes": ["WE"]}
+      ]
+    }
+  ],
+  "notes": "Ten full-credit courses required for the major."
+}

@@ -1,0 +1,55 @@
+{
+  "id": "physics_major_2019",
+  "name": "Physics",
+  "program_type": "major",
+  "catalog_year": "2019",
+  "major_code": "PHY",
+  "source": "Physics 2019.pdf",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Core Courses",
+      "type": "all",
+      "items": [
+        {"id": "phy185", "title": "General Physics I and Lab",              "codes": ["PHY-185", "PHY-185L"]},
+        {"id": "phy195", "title": "General Physics II and Lab",             "codes": ["PHY-195", "PHY-195L"]},
+        {"id": "phy231", "title": "Mathematical Methods for Physicists",    "codes": ["PHY-231"]},
+        {"id": "phy235", "title": "Modern Physics and Lab",                 "codes": ["PHY-235", "PHY-235L"]},
+        {"id": "phy265", "title": "Electromagnetism",                       "codes": ["PHY-265"]}
+      ]
+    },
+    {
+      "id": "upper_core",
+      "label": "Two Upper-Level Core Courses",
+      "type": "choose_n",
+      "n": 2,
+      "items": [
+        {"id": "phy275", "title": "Classical Mechanics",                    "codes": ["PHY-275"]},
+        {"id": "phy315", "title": "Thermodynamics and Statistical Mechanics","codes": ["PHY-315"]},
+        {"id": "phy335", "title": "Quantum Physics",                        "codes": ["PHY-335"]},
+        {"id": "phy425", "title": "Solid State Physics",                    "codes": ["PHY-425"]}
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Four Additional Physics Courses (150+)",
+      "type": "open_n",
+      "n": 4,
+      "description": "Four additional PHY courses numbered 150 or above, not used to satisfy the upper-level core requirement.",
+      "constraints": {
+        "prefixes": ["PHY"],
+        "min_level": 150,
+        "min_level_count": 4,
+        "exclude_codes": ["PHY-185", "PHY-185L", "PHY-195", "PHY-195L",
+                          "PHY-231", "PHY-235", "PHY-235L", "PHY-265",
+                          "PHY-275", "PHY-315", "PHY-335", "PHY-425"]
+      }
+    },
+    {
+      "id": "comp_eval",
+      "label": "Comprehensive Evaluation",
+      "type": "non_course",
+      "description": "Satisfactory completion of written and oral examinations during the junior or senior year."
+    }
+  ]
+}

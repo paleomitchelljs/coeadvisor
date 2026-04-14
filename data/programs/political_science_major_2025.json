@@ -1,0 +1,74 @@
+{
+  "id": "political_science_major_2025",
+  "name": "Political Science",
+  "program_type": "major",
+  "catalog_year": "2025",
+  "major_code": "POL",
+  "source": "Political Science Checklist 2025.pdf",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Core Requirements",
+      "type": "all",
+      "items": [
+        {"id": "pol108", "title": "Introduction to Politics",                      "codes": ["POL-108"]},
+        {"id": "pol115", "title": "American National Government and Politics",      "codes": ["POL-115"]},
+        {"id": "pol244", "title": "Research Methods in Political Science",          "codes": ["POL-244"]}
+      ]
+    },
+    {
+      "id": "american_govt",
+      "label": "One Additional American Government Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "pol245", "title": "Political Parties and Elections",                "codes": ["POL-245"]},
+        {"id": "pol277", "title": "Women and Politics in the United States",        "codes": ["POL-277"]},
+        {"id": "pol325", "title": "The American Congress",                          "codes": ["POL-325"]},
+        {"id": "pol345", "title": "The American Presidency",                        "codes": ["POL-345"]},
+        {"id": "pol350", "title": "U.S. Social Policy Process",                    "codes": ["POL-350"]}
+      ]
+    },
+    {
+      "id": "comparative_intl",
+      "label": "Two Comparative or International Politics Courses (choose 2)",
+      "type": "choose_n",
+      "n": 2,
+      "items": [
+        {"id": "pol258", "title": "World Politics",                                 "codes": ["POL-258"]},
+        {"id": "pol266", "title": "Latin American Politics",                        "codes": ["POL-266"]},
+        {"id": "pol276", "title": "African Politics",                               "codes": ["POL-276"]},
+        {"id": "pol286", "title": "Asian Politics",                                 "codes": ["POL-286"]},
+        {"id": "pol298", "title": "European Politics",                              "codes": ["POL-298"]},
+        {"id": "pol305", "title": "Terrorism",                                      "codes": ["POL-305"]},
+        {"id": "pol310", "title": "International Organizations",                    "codes": ["POL-310"]},
+        {"id": "pol365", "title": "American Foreign Policy",                        "codes": ["POL-365"]}
+      ]
+    },
+    {
+      "id": "additional_pol",
+      "label": "Four Additional Political Science Courses",
+      "type": "open_n",
+      "n": 4,
+      "description": "Any four additional POL courses. POL-284 and POL-296 (Topics) may satisfy any departmental requirement with consent of department chair.",
+      "constraints": {
+        "prefixes": ["POL"],
+        "exclude_codes": ["POL-108", "POL-115", "POL-244", "POL-245", "POL-258",
+                          "POL-266", "POL-276", "POL-277", "POL-286", "POL-298",
+                          "POL-305", "POL-310", "POL-325", "POL-345", "POL-350", "POL-365"]
+      }
+    },
+    {
+      "id": "upper_level",
+      "label": "300/400-Level Requirement (at least 2 of the 10 courses must be 300 or 400 level)",
+      "type": "open_n",
+      "n": 2,
+      "description": "At least two courses in the major must be 300-level or above. This is automatically checked from all POL courses entered.",
+      "constraints": {
+        "prefixes": ["POL"],
+        "min_level": 300,
+        "min_level_count": 2
+      }
+    }
+  ],
+  "notes": "Take POL-108 or POL-115 in your first fall term. POL-284 and POL-296 (Topics in Political Science) may satisfy any departmental requirement with department chair consent."
+}
