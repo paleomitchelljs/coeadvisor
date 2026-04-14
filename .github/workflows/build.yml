@@ -1,0 +1,86 @@
+name: Build CoeAdvisor
+
+on:
+  push:
+    tags:
+      - 'v*'          # trigger on version tags: git tag v1.2 && git push --tags
+  workflow_dispatch:  # allow manual runs from the Actions tab
+
+jobs:
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install pyinstaller
+
+      - name: Build macOS app
+        run: pyinstaller advisor.spec --clean --noconfirm
+
+      - name: Package as zip
+        run: ditto -c -k --keepParent dist/CoeAdvisor.app dist/CoeAdvisor_macOS.zip
+
+      - name: Upload macOS artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: CoeAdvisor_macOS
+          path: dist/CoeAdvisor_macOS.zip
+          retention-days: 30
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install pyinstaller
+
+      - name: Build Windows exe
+        run: pyinstaller advisor_windows.spec --clean --noconfirm
+
+      - name: Verify exe exists
+        run: dir dist\CoeAdvisor.exe
+
+      - name: Upload Windows artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: CoeAdvisor_Windows
+          path: dist/CoeAdvisor.exe
+          retention-days: 30
+
+  release:
+    # Only runs on tag pushes; attaches both artifacts to the GitHub Release
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: [build-macos, build-windows]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download macOS artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: CoeAdvisor_macOS
+
+      - name: Download Windows artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: CoeAdvisor_Windows
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            CoeAdvisor_macOS.zip
+            CoeAdvisor.exe
+          generate_release_notes: true
