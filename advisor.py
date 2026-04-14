@@ -987,7 +987,9 @@ class AdvisorApp:
         if sel_ids:
             frame = tk.Frame(self.nb, bg=COLORS["bg"])
             self.nb.add(frame, text="Suggested Plan")
-            self._render_suggested_plan(frame, sel_ids, taken, ge_result, we_required)
+            self._render_suggested_plan(
+                frame, sel_ids, taken, ge_result, we_required,
+                active_pathway_ids, f2y_entries)
 
         # Summary
         name     = self.name_var.get().strip() or "Student"
@@ -1374,23 +1376,154 @@ class AdvisorApp:
             self._variant_container.pack_forget()
 
     def _render_suggested_plan(self, parent: tk.Frame, sel_ids: list,
-                               taken: set, ge_result: dict, we_required: int):
+                               taken: set, ge_result: dict, we_required: int,
+                               active_pathway_ids: list, f2y_entries: list):
         """Render a semester-ordered plan of what remains to be completed."""
+        _CODE_RE = re.compile(r'^[A-Z]+-\d')
+        _YEAR_SEM = {
+            "First Year":       1,
+            "Sophomore":        3,
+            "Junior":           5,
+            "Senior":           7,
+            "Transfer Student": 3,
+        }
+        _SEM_NUM = {"y1_fall": 1, "y1_spring": 2, "y2_fall": 3, "y2_spring": 4}
+        _SEM_KEYS = ["y1_fall", "y1_spring", "y2_fall", "y2_spring"]
+        _SEM_LABELS = {
+            "y1_fall":   "Year 1 — Fall",
+            "y1_spring": "Year 1 — Spring",
+            "y2_fall":   "Year 2 — Fall",
+            "y2_spring": "Year 2 — Spring",
+        }
+
+        year_label  = self._year_var.get() if self._year_var else "First Year"
+        current_sem = _YEAR_SEM.get(year_label, 1)
+        taken_norm  = {normalize(c) for c in taken}
+
         t = self._make_text(parent)
+        shown_codes: set = set()   # primary non-aux codes already rendered anywhere
+
+        def _f2y_primary(course_str):
+            """Primary non-aux code from an F2Y entry string, or None."""
+            if not _CODE_RE.match(course_str):
+                return None
+            raw  = course_str.split()[0]
+            norm = normalize(raw)
+            return None if is_auxiliary(norm) else norm
+
+        def _primary_code(codes_list):
+            """First non-auxiliary normalized code from a requirement codes list."""
+            for c in codes_list:
+                n = normalize(c)
+                if not is_auxiliary(n):
+                    return n
+            return None
+
+        # ── A: Status header ─────────────────────────────────────────────────────
         self._ins(t, "SUGGESTED COURSE PLAN\n", "h1")
+        prog_names = [self.programs[pid]["name"]
+                      for pid in sel_ids if pid in self.programs]
+        cred = total_credits(taken, self.course_credits)
         self._ins(t,
-            "Required courses are sorted by typical semester (from historical student data).\n"
-            "✓ = already completed.  □ = still needed.  ◇ = flexible / choose-from list.\n\n",
+            f"Year: {year_label}   Programs: {', '.join(prog_names) or '(none)'}   "
+            f"Credits taken: {cred:.1f}\n"
+            "□ = needed   ◇ = choose from options   ◻ = non-course   ⚠ = overdue\n\n",
             "summary")
 
-        # ── Gather all unsatisfied requirements across selected programs ────────
-        soon, mid, later, flex, non_courses = [], [], [], [], []
+        # ── B: Near-term — F2Y essentials (Y1/Y2) or overdue list (Y3+) ─────────
+        overdue_lines = []   # [(display_str, prog_name)] for Y3+ students
+
+        if f2y_entries:
+            if current_sem <= 4:
+                any_printed = False
+                for entry, prog in f2y_entries:
+                    entry_label  = entry.get("label", "")
+                    variant_note = entry.get("variant_note", "")
+                    entry_sems   = entry.get("semesters", {})
+                    upcoming = [
+                        (sk, _SEM_NUM[sk]) for sk in _SEM_KEYS
+                        if _SEM_NUM[sk] >= current_sem
+                        and (entry_sems.get(sk, {}).get("essential")
+                             or entry_sems.get(sk, {}).get("suggested"))
+                    ]
+                    if not upcoming:
+                        continue
+                    if not any_printed:
+                        self._ins(t,
+                            "── NEAR-TERM  (first two years) ────────────────────────────────\n",
+                            "divider")
+                        any_printed = True
+                    header = (f"{entry_label}  —  {variant_note}"
+                              if variant_note else entry_label)
+                    self._ins(t, f"\n{header}\n", "h2")
+
+                    for sk, snum in upcoming:
+                        sem_data  = entry_sems.get(sk, {})
+                        essential = sem_data.get("essential", [])
+                        suggested = sem_data.get("suggested", [])
+                        marker = "▸ " if snum == current_sem else ""
+                        self._ins(t, f"\n   {marker}{_SEM_LABELS[sk]}\n", "h2")
+                        if essential:
+                            self._ins(t, "     Essential:\n", "hint")
+                            for course in essential:
+                                pcode = _f2y_primary(course)
+                                if pcode:
+                                    shown_codes.add(pcode)
+                                if _CODE_RE.match(course):
+                                    done = pcode in taken_norm if pcode else False
+                                    ico  = "✓" if done else "□"
+                                    tag  = "item_done" if done else "item_todo"
+                                else:
+                                    ico, tag = "•", "hint"
+                                self._ins(t, f"       {ico}  {course}\n", tag)
+                        if suggested:
+                            self._ins(t, "     Suggested:\n", "hint")
+                            for course in suggested:
+                                pcode = _f2y_primary(course)
+                                if pcode:
+                                    shown_codes.add(pcode)
+                                if _CODE_RE.match(course):
+                                    done = pcode in taken_norm if pcode else False
+                                    ico  = "✓" if done else "○"
+                                    tag  = "item_done" if done else "note"
+                                else:
+                                    ico, tag = "○", "note"
+                                self._ins(t, f"       {ico}  {course}\n", tag)
+
+                    notes_str = entry.get("notes", "")
+                    if notes_str:
+                        self._ins(t, f"\n   ℹ  {notes_str}\n", "note")
+
+            else:
+                # Y3+: populate shown_codes and collect overdue essentials
+                for entry, prog in f2y_entries:
+                    prog_name = prog.get("name", "")
+                    for sk in _SEM_KEYS:
+                        for course in entry.get("semesters", {}).get(sk, {}).get("essential", []):
+                            pcode = _f2y_primary(course)
+                            if pcode:
+                                shown_codes.add(pcode)
+                                if pcode not in taken_norm:
+                                    overdue_lines.append((course, prog_name))
+
+        if overdue_lines:
+            self._ins(t,
+                "\n── ⚠ OVERDUE — First-Two-Year Essentials Not Yet Taken ────────────\n",
+                "divider")
+            for display, prog_name in overdue_lines:
+                prog_str = f"  ({prog_name})" if prog_name else ""
+                self._ins(t, f"   ⚠  {display}{prog_str}\n", "item_todo")
+
+        # ── Collect required items for B/C/D from program sections ───────────────
+        soon_req, mid_req, later_req = [], [], []
+        flex_items  = []
+        non_courses = []
 
         for pid in sel_ids:
-            prog = self.programs.get(pid, {})
+            prog   = self.programs.get(pid, {})
             result = check_program(prog, taken)
             major_code = prog.get("major_code", "")
-            prog_name = prog.get("name", pid)
+            prog_name  = prog.get("name", pid)
 
             for sec in result["sections"]:
                 if sec["status"] == COMPLETE:
@@ -1401,7 +1534,7 @@ class AdvisorApp:
                 if stype == "non_course":
                     non_courses.append({
                         "label": label, "program": prog_name,
-                        "desc": sec.get("description", ""),
+                        "desc":  sec.get("description", ""),
                     })
                     continue
 
@@ -1409,11 +1542,14 @@ class AdvisorApp:
                     for item in sec.get("items", []):
                         if item.get("satisfied"):
                             continue
-                        codes = item.get("codes", [])
-                        primary = next(
-                            (normalize(c) for c in codes if not is_auxiliary(normalize(c))),
-                            None)
-                        info = self.trajectory.course_info(major_code, primary) if primary else None
+                        codes   = item.get("codes", [])
+                        primary = _primary_code(codes)
+                        if primary and primary in shown_codes:
+                            continue   # already shown in F2Y
+                        if primary:
+                            shown_codes.add(primary)
+                        info = (self.trajectory.course_info(major_code, primary)
+                                if primary else None)
                         sem  = info["sem"] if info else None
                         pct  = info["pct"] if info else None
                         entry = {
@@ -1421,85 +1557,112 @@ class AdvisorApp:
                             "title":   item.get("title", ""),
                             "program": prog_name,
                             "sem": sem, "pct": pct,
-                            "kind": "req",
                         }
-                        if   sem is None: flex.append(entry)
-                        elif sem <= 3:    soon.append(entry)
-                        elif sem <= 6:    mid.append(entry)
-                        else:             later.append(entry)
+                        if sem is None or sem > current_sem + 5:
+                            later_req.append(entry)
+                        elif sem <= current_sem + 2:
+                            soon_req.append(entry)
+                        else:
+                            mid_req.append(entry)
 
                 elif stype == "choose_one":
                     opts = sec.get("options", [])
-                    codes_preview = " / ".join(
-                        (o.get("codes") or [""])[0]
-                        for o in opts if o.get("codes"))
-                    best_sem = None
+                    best_sem, best_code = None, None
                     for o in opts:
-                        c0 = (o.get("codes") or [""])[0]
+                        c0 = _primary_code(o.get("codes", []))
                         if c0:
-                            inf = self.trajectory.course_info(major_code, normalize(c0))
+                            inf = self.trajectory.course_info(major_code, c0)
                             if inf and inf["sem"]:
                                 if best_sem is None or inf["sem"] < best_sem:
                                     best_sem = inf["sem"]
-                    flex.append({
-                        "display": f"{label}  [{codes_preview}]",
-                        "title": "", "program": prog_name,
-                        "sem": best_sem, "pct": None, "kind": "flex",
+                                    best_code = c0
+                    preview = "  |  ".join(
+                        _primary_code(o.get("codes", [])) or o.get("title", "?")
+                        for o in opts)
+                    hint = f"   [earliest: {best_code}]" if best_code else ""
+                    flex_items.append({
+                        "label":   label,
+                        "preview": preview,
+                        "hint":    hint,
+                        "program": prog_name,
+                        "kind":    "choose_one",
                     })
 
                 elif stype == "choose_n":
-                    n = sec.get("n", 1)
+                    n      = sec.get("n", 1)
                     done_n = sec.get("satisfied_count", 0)
-                    flex.append({
-                        "display": f"{label}  (need {n - done_n} more)",
-                        "title": "", "program": prog_name,
-                        "sem": None, "pct": None, "kind": "flex",
+                    flex_items.append({
+                        "label":   f"{label}  — need {n - done_n} more",
+                        "program": prog_name, "kind": "flex",
                     })
 
                 elif stype == "open_n":
-                    n = sec.get("n", 1)
+                    n     = sec.get("n", 1)
                     found = len(sec.get("matching", []))
                     desc  = sec.get("description", label)
-                    flex.append({
-                        "display": f"{desc}  (need {n - found} more)",
-                        "title": "", "program": prog_name,
-                        "sem": None, "pct": None, "kind": "flex",
+                    flex_items.append({
+                        "label":   f"{desc}  — need {n - found} more",
+                        "program": prog_name, "kind": "flex",
                     })
 
-        def _render_bucket(items, header):
+        def _render_req_bucket(items, header):
             if not items:
                 return
             self._ins(t, f"\n{header}\n", "divider")
             items.sort(key=lambda x: (x.get("sem") or 99, x.get("display", "")))
             for item in items:
-                sem_str = f"   [Sem {item['sem']}]" if item.get("sem") else ""
-                pct_str = f"  {item['pct']:.0%} of grads" if item.get("pct") else ""
+                sem_str  = f"  [Sem {item['sem']}]" if item.get("sem") else ""
+                pct_str  = (f"  ({item['pct']:.0%} of grads)"
+                            if item.get("pct") else "")
                 prog_str = f"  ({item['program']})"
-                title    = f"    {item['title']}" if item.get("title") else ""
-                if item["kind"] == "flex":
-                    self._ins(t, f"   ◇  {item['display']}{prog_str}\n", "note")
-                else:
+                title    = f"  {item['title']}" if item.get("title") else ""
+                self._ins(t,
+                    f"   □  {item['display']}{title}{sem_str}{pct_str}{prog_str}\n",
+                    "item_todo")
+
+        # ── B2: Trajectory-based near-term ───────────────────────────────────────
+        if soon_req:
+            _render_req_bucket(soon_req,
+                f"── REQUIRED — NEXT UP  (traj sems ≤ {current_sem + 2}) ──────────────────────")
+
+        # ── C: Mid-program ───────────────────────────────────────────────────────
+        if mid_req:
+            _render_req_bucket(mid_req,
+                f"── REQUIRED — MID-PROGRAM  "
+                f"(traj sems {current_sem + 3}–{current_sem + 5}) ──────────────")
+
+        # ── D: Later / senior year ───────────────────────────────────────────────
+        if later_req:
+            _render_req_bucket(later_req,
+                "── REQUIRED — LATER / SENIOR YEAR ──────────────────────────────")
+
+        # ── E: Flexible / elective requirements ──────────────────────────────────
+        if flex_items:
+            self._ins(t,
+                "\n── FLEXIBLE / ELECTIVE REQUIREMENTS ─────────────────────────────\n",
+                "divider")
+            for item in flex_items:
+                prog_str = f"  ({item['program']})"
+                if item["kind"] == "choose_one":
+                    self._ins(t, f"   ◇  {item['label']}{prog_str}\n", "note")
                     self._ins(t,
-                        f"   □  {item['display']}{title}{sem_str}{pct_str}{prog_str}\n",
-                        "item_todo")
+                        f"      Options: {item['preview']}{item['hint']}\n", "hint")
+                else:
+                    self._ins(t, f"   ◇  {item['label']}{prog_str}\n", "note")
 
-        _render_bucket(soon,  "── COMPLETE SOON  (typically sems 1–3) ─────────────────────────")
-        _render_bucket(mid,   "── MID-PROGRAM  (typically sems 4–6) ───────────────────────────")
-        _render_bucket(later, "── LATER  (typically sems 7+) ───────────────────────────────────")
-        _render_bucket(flex,  "── FLEXIBLE / ELECTIVE REQUIREMENTS ─────────────────────────────")
-
-        # ── GE gaps ───────────────────────────────────────────────────────────
+        # ── F: GE gaps ───────────────────────────────────────────────────────────
         ge_gaps = []
-        for key in ("fine_arts", "humanities", "nat_sci_math", "lab_science", "social_sciences"):
+        for key in ("fine_arts", "humanities", "nat_sci_math",
+                    "lab_science", "social_sciences"):
             req = ge_result.get(key, {})
             if not req.get("complete"):
                 found_n = len(req.get("courses") or req.get("pairs") or [])
                 still   = req["required"] - found_n
                 ge_gaps.append(f"{req['label']}  — need {still} more")
-        we_found = len(ge_result.get("we", {}).get("courses", []))
+        we_found  = len(ge_result.get("we",  {}).get("courses", []))
+        dac_found = len(ge_result.get("dac", {}).get("courses", []))
         if we_found < we_required:
             ge_gaps.append(f"Writing Emphasis  — need {we_required - we_found} more")
-        dac_found = len(ge_result.get("dac", {}).get("courses", []))
         if dac_found < 2:
             ge_gaps.append(f"Diversity Across Curriculum  — need {2 - dac_found} more")
         if not ge_result.get("fys", {}).get("complete"):
@@ -1508,41 +1671,95 @@ class AdvisorApp:
             ge_gaps.append("Practicum  — 1 required")
 
         if ge_gaps:
-            self._ins(t, "\n── GE REQUIREMENTS STILL TO MEET ────────────────────────────────\n",
-                      "divider")
+            self._ins(t,
+                "\n── GE REQUIREMENTS STILL TO MEET ────────────────────────────────\n",
+                "divider")
             for g in ge_gaps:
                 self._ins(t, f"   □  {g}\n", "item_todo")
 
-        # ── Non-course reminders ──────────────────────────────────────────────
+        # ── G: Non-course requirements ────────────────────────────────────────────
         if non_courses:
-            self._ins(t, "\n── NON-COURSE REQUIREMENTS (mark when complete) ─────────────────\n",
-                      "divider")
+            self._ins(t,
+                "\n── NON-COURSE REQUIREMENTS (mark when complete) ─────────────────\n",
+                "divider")
             for nc in non_courses:
-                self._ins(t, f"   ◻  {nc['label']}  ({nc['program']})\n", "item_manual")
+                self._ins(t,
+                    f"   ◻  {nc['label']}  ({nc['program']})\n", "item_manual")
                 if nc["desc"]:
                     self._ins(t, f"      {nc['desc']}\n", "hint")
 
-        # ── Historical electives ──────────────────────────────────────────────
-        shown_elec_header = set()
+        # ── H: Pathway requirements ───────────────────────────────────────────────
+        if active_pathway_ids:
+            pw_items, pw_non_courses = [], []
+            for pw_id in active_pathway_ids:
+                pw = self.pathways.get(pw_id)
+                if not pw:
+                    continue
+                pw_result = check_program(pw, taken)
+                pw_name   = pw.get("name", pw_id)
+                for sec in pw_result["sections"]:
+                    if sec["status"] == COMPLETE:
+                        continue
+                    stype = sec.get("type", "all")
+                    label = sec.get("label", "")
+                    if stype == "non_course":
+                        pw_non_courses.append({
+                            "label": label, "program": pw_name,
+                            "desc":  sec.get("description", ""),
+                        })
+                        continue
+                    if stype == "all":
+                        for item in sec.get("items", []):
+                            if item.get("satisfied"):
+                                continue
+                            codes   = item.get("codes", [])
+                            primary = _primary_code(codes)
+                            if primary and primary in shown_codes:
+                                continue   # already listed above
+                            if primary:
+                                shown_codes.add(primary)
+                            pw_items.append({
+                                "display": " / ".join(codes),
+                                "title":   item.get("title", ""),
+                                "program": pw_name,
+                            })
+            if pw_items or pw_non_courses:
+                self._ins(t,
+                    "\n── PATHWAY REQUIREMENTS ─────────────────────────────────────────\n",
+                    "divider")
+                for item in pw_items:
+                    title    = f"  {item['title']}" if item.get("title") else ""
+                    prog_str = f"  ({item['program']})"
+                    self._ins(t,
+                        f"   □  {item['display']}{title}{prog_str}\n", "item_todo")
+                for nc in pw_non_courses:
+                    self._ins(t,
+                        f"   ◻  {nc['label']}  ({nc['program']})\n", "item_manual")
+                    if nc["desc"]:
+                        self._ins(t, f"      {nc['desc']}\n", "hint")
+
+        # ── I: Historical electives ───────────────────────────────────────────────
         for pid in sel_ids:
             prog = self.programs.get(pid, {})
             major_code = prog.get("major_code", "")
             if not major_code:
                 continue
-            suggestions = self.trajectory.elective_suggestions(major_code, exclude=taken, n=10)
+            exclude_set = taken_norm | shown_codes
+            suggestions = self.trajectory.elective_suggestions(
+                major_code, exclude=exclude_set, n=10)
             if not suggestions:
                 continue
-            if major_code not in shown_elec_header:
-                self._ins(t,
-                    f"\n── COMMONLY TAKEN ELECTIVES  ({prog['name']}) ──────────────────────\n",
-                    "divider")
-                self._ins(t, "   Taken by ≥15% of graduates — not automatically required.\n", "hint")
-                shown_elec_header.add(major_code)
+            self._ins(t,
+                f"\n── COMMONLY TAKEN ELECTIVES  ({prog['name']}) ─────────────────────\n",
+                "divider")
+            self._ins(t,
+                "   Taken by ≥15% of graduates — not automatically required.\n", "hint")
             for code, info in suggestions:
                 sem_str = f"Sem {info['sem']}" if info["sem"] else "?"
                 pct_str = f"{info['pct']:.0%}"
                 self._ins(t,
                     f"   •  {code:<12}  {pct_str} of grads   {sem_str}\n", "note")
+                shown_codes.add(code)
 
         t.config(state=tk.DISABLED)
 
