@@ -1,0 +1,65 @@
+{
+  "id": "computer_science_major_2021",
+  "name": "Computer Science",
+  "program_type": "major",
+  "catalog_year": "2021",
+  "major_code": "CS",
+  "source": "Computer Science 2021.docx",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Core Courses",
+      "type": "all",
+      "items": [
+        {"id": "cs125",  "title": "Intro to Programming (or commensurate experience)", "codes": ["CS-125"]},
+        {"id": "cs135",  "title": "Data Structures",                                    "codes": ["CS-135"]},
+        {"id": "mth135", "title": "Calculus I",                                         "codes": ["MTH-135"]},
+        {"id": "cs215",  "title": "Analysis of Algorithms",                             "codes": ["CS-215"]},
+        {"id": "cs220",  "title": "Principles of Computer Systems",                     "codes": ["CS-220"]},
+        {"id": "cs245",  "title": "Object-Oriented Software Development",               "codes": ["CS-245"]},
+        {"id": "mth215", "title": "Foundations of Advanced Mathematics",                "codes": ["MTH-215"]}
+      ]
+    },
+    {
+      "id": "se_or_data",
+      "label": "One Software Engineering or Data Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "cs390",  "title": "Software Engineering",    "codes": ["CS-390"]},
+        {"id": "ds230",  "title": "Data-Centric Programming","codes": ["DS-230"]}
+      ]
+    },
+    {
+      "id": "software_dev",
+      "label": "One Software Development Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "cs390d", "title": "Software Engineering (if not used above)",     "codes": ["CS-390"]},
+        {"id": "cs452",  "title": "Interactive Systems Design",                   "codes": ["CS-452"]},
+        {"id": "cs490",  "title": "Mobile Computing",                             "codes": ["CS-490"]}
+      ]
+    },
+    {
+      "id": "systems",
+      "label": "One Systems Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "cs320", "title": "Operating Systems",      "codes": ["CS-320"]},
+        {"id": "cs340", "title": "Programming Languages",  "codes": ["CS-340"]}
+      ]
+    },
+    {
+      "id": "upper_elective",
+      "label": "One Additional CS or DS Course (300+)",
+      "type": "open_n",
+      "n": 1,
+      "description": "One additional CS or DS course numbered 300 or above.",
+      "constraints": {
+        "prefixes": ["CS", "DS"],
+        "min_level": 300,
+        "min_level_count": 1,
+        "exclude_codes": ["CS-320", "CS-340", "CS-390", "CS-452", "CS-490"]
+      }
+    }
+  ]
+}

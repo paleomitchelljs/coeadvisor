@@ -1,0 +1,33 @@
+{
+  "id": "sociology_minor_2025",
+  "name": "Sociology",
+  "program_type": "minor",
+  "catalog_year": "2025",
+  "major_code": "SOC",
+  "source": "Sociology Checklist 2025.pdf",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Core Requirements",
+      "type": "all",
+      "items": [
+        {"id": "soc107", "title": "Introductory Sociology",    "codes": ["SOC-107"]},
+        {"id": "soc235", "title": "Methods of Social Research","codes": ["SOC-235"]},
+        {"id": "soc450", "title": "Sociological Theory",       "codes": ["SOC-450"]}
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Three Additional Sociology Courses (at least one must be 400-level)",
+      "type": "open_n",
+      "n": 3,
+      "description": "Three additional SOC courses; at least one must be at the 400 level.",
+      "constraints": {
+        "prefixes": ["SOC"],
+        "exclude_codes": ["SOC-107", "SOC-235", "SOC-450"],
+        "min_level": 400,
+        "min_level_count": 1
+      }
+    }
+  ]
+}

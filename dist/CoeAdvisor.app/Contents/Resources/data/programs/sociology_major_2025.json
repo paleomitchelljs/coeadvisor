@@ -1,0 +1,51 @@
+{
+  "id": "sociology_major_2025",
+  "name": "Sociology",
+  "program_type": "major",
+  "catalog_year": "2025",
+  "major_code": "SOC",
+  "source": "Sociology Checklist 2025.pdf",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Core Requirements",
+      "type": "all",
+      "items": [
+        {"id": "soc107", "title": "Introductory Sociology",    "codes": ["SOC-107"]},
+        {"id": "soc235", "title": "Methods of Social Research","codes": ["SOC-235"]},
+        {"id": "soc450", "title": "Sociological Theory",       "codes": ["SOC-450"]},
+        {"id": "soc464", "title": "Capstone Seminar in Sociology", "codes": ["SOC-464"]}
+      ]
+    },
+    {
+      "id": "stats",
+      "label": "Statistical Analysis (choose one option)",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "sta100_110",
+          "title": "Statistical Foundations (STA-100, 7 wks) + Inferential Statistics (STA-110, 7 wks)",
+          "codes": ["STA-100", "STA-110"]
+        },
+        {
+          "id": "sta100_130",
+          "title": "Statistical Foundations (STA-100, 7 wks) + Experimental Design (STA-130, 7 wks)",
+          "codes": ["STA-100", "STA-130"]
+        }
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Five Additional Sociology Courses (at least one must be 400-level)",
+      "type": "open_n",
+      "n": 5,
+      "description": "Five additional SOC courses; at least one must be at the 400 level.",
+      "constraints": {
+        "prefixes": ["SOC"],
+        "exclude_codes": ["SOC-107", "SOC-235", "SOC-450", "SOC-464"],
+        "min_level": 400,
+        "min_level_count": 1
+      }
+    }
+  ]
+}

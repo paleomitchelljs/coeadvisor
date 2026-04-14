@@ -1,0 +1,99 @@
+{
+  "id": "biology_major_2025",
+  "name": "Biology",
+  "program_type": "major",
+  "catalog_year": "2025",
+  "major_code": "BIO",
+  "source": "Biology Checklist 2025.pdf",
+  "sections": [
+    {
+      "id": "core_bio",
+      "label": "Core Biology Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "bio145",
+          "title": "Cellular and Molecular Biology and Laboratory",
+          "codes": ["BIO-145", "BIO-145L"]
+        },
+        {
+          "id": "bio155",
+          "title": "Organismal and Ecological Biology and Laboratory",
+          "codes": ["BIO-155", "BIO-155L"]
+        },
+        {
+          "id": "bio202",
+          "title": "Topics in Evolution",
+          "codes": ["BIO-202"]
+        },
+        {
+          "id": "bio235",
+          "title": "Genetics and Genetics Laboratory",
+          "codes": ["BIO-235", "BIO-235L"]
+        }
+      ]
+    },
+    {
+      "id": "bio_electives",
+      "label": "Biology Electives with Labs (4 required; at least 3 must be 200-level or higher)",
+      "type": "open_n",
+      "n": 4,
+      "description": "Four biology electives with their associated labs. At least three must be 200-level or higher and designated as major courses.",
+      "constraints": {
+        "prefixes": ["BIO"],
+        "exclude_codes": ["BIO-145", "BIO-155", "BIO-202", "BIO-235"],
+        "min_level": 200,
+        "min_level_count": 3
+      }
+    },
+    {
+      "id": "supporting_chemistry",
+      "label": "Supporting Chemistry",
+      "type": "all",
+      "items": [
+        {
+          "id": "chm121",
+          "title": "General Chemistry I and Laboratory",
+          "codes": ["CHM-121", "CHM-121L"]
+        },
+        {
+          "id": "chm122",
+          "title": "General Chemistry II and Laboratory",
+          "codes": ["CHM-122", "CHM-122L"]
+        }
+      ]
+    },
+    {
+      "id": "math_stats",
+      "label": "Mathematics or Statistics (choose one option)",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "calculus",
+          "title": "Calculus I",
+          "codes": ["MTH-135"]
+        },
+        {
+          "id": "stats_sequence",
+          "title": "Statistical Foundations + Inferential Statistics",
+          "codes": ["STA-100", "STA-110"]
+        }
+      ]
+    },
+    {
+      "id": "seminar",
+      "label": "Research Seminar Attendance (junior and senior years)",
+      "type": "non_course",
+      "description": "Attendance at research seminars in junior and senior years. Mark when completed."
+    }
+  ],
+  "recommended": [
+    "PHY-165/165L (Basic Physics I & lab) + PHY-175/175L (Basic Physics II & lab)",
+    "PHY-185/185L (General Physics I & lab) + PHY-195/195L (General Physics II & lab)"
+  ],
+  "pathway_notes": {
+    "premed": "⚠ Pre-Med: Take CHM-121/121L first semester freshman year — the chemistry sequence (CHM-121→122→221→321) must finish before MCAT prep junior year.",
+    "pt_dpt": "⚠ Pre-PT: Complete Anatomy + Physiology (BIO-215/225 or BIO-103) by end of sophomore year.",
+    "pa":     "⚠ Pre-PA: Microbiology (BIO-325) and patient care hours are both required — start accumulating clinical hours by sophomore year."
+  }
+}

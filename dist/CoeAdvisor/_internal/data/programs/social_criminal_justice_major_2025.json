@@ -1,0 +1,90 @@
+{
+  "id": "social_criminal_justice_major_2025",
+  "name": "Social and Criminal Justice",
+  "program_type": "major",
+  "catalog_year": "2025",
+  "major_code": "SCJ",
+  "source": "Social and Criminal Justice Checklist 2025.pdf",
+  "sections": [
+    {
+      "id": "core",
+      "label": "SCJ Core (all required)",
+      "type": "all",
+      "items": [
+        {"id": "scj101", "title": "Introduction to Social & Criminal Justice", "codes": ["SCJ-101"]},
+        {"id": "scj202", "title": "Police and Society",                         "codes": ["SCJ-202"]},
+        {"id": "scj203", "title": "Collateral Consequences of Incarceration",  "codes": ["SCJ-203"]},
+        {"id": "soc351", "title": "Criminology",                                "codes": ["SOC-351"]}
+      ]
+    },
+    {
+      "id": "research_methods",
+      "label": "Research Methods (choose one)",
+      "type": "choose_one",
+      "options": [
+        {"id": "soc235", "title": "Methods of Sociological Research (WE)", "codes": ["SOC-235"], "attributes": ["WE"]},
+        {"id": "ant315", "title": "Qualitative Research Methods (WE)",     "codes": ["ANT-315"], "attributes": ["WE"]}
+      ]
+    },
+    {
+      "id": "philosophy_law",
+      "label": "Philosophy of Law (choose one)",
+      "type": "choose_one",
+      "options": [
+        {"id": "phl265", "title": "Political Philosophy (WE)",            "codes": ["PHL-265"], "attributes": ["WE"]},
+        {"id": "phl285", "title": "Law, Morality, and Punishment (WE)",   "codes": ["PHL-285"], "attributes": ["WE"]},
+        {"id": "phl315", "title": "Punishment and Responsibility",         "codes": ["PHL-315"]}
+      ]
+    },
+    {
+      "id": "stats",
+      "label": "Statistical Analysis (choose one option)",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "sta_seq",
+          "title": "Statistical Foundations (STA-100) + Inferential Statistics (STA-110)",
+          "codes": ["STA-100", "STA-110"]
+        },
+        {
+          "id": "psy300",
+          "title": "Statistical Methods and Data Analysis (PSY-300)",
+          "codes": ["PSY-300"]
+        }
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Three SCJ Electives (choose 3; no more than 2 from same prefix)",
+      "type": "choose_n",
+      "n": 3,
+      "note": "No more than two electives may come from the same prefix.",
+      "items": [
+        {"id": "com237", "title": "Interpersonal Communication (WE)",                    "codes": ["COM-237"]},
+        {"id": "edu187", "title": "Human Relations (WE)",                                 "codes": ["EDU-187"]},
+        {"id": "eng127", "title": "Social Justice & Literature: Literature of Incarceration (WE)", "codes": ["ENG-127"]},
+        {"id": "gs107",  "title": "Introduction to Gender and Sexuality Studies (WE)",   "codes": ["GS-107"]},
+        {"id": "his257", "title": "Native American History (WE)",                         "codes": ["HIS-257"]},
+        {"id": "his297", "title": "Women in America (WE)",                                "codes": ["HIS-297"]},
+        {"id": "his347", "title": "African American History (WE)",                        "codes": ["HIS-347"]},
+        {"id": "phl128", "title": "Morality and Moral Controversies (WE)",               "codes": ["PHL-128"]},
+        {"id": "pol185", "title": "Environmental Justice: Race, Class, Power and Sustainability (Wilderness Field Station only)", "codes": ["POL-185"]},
+        {"id": "pol350", "title": "U.S. Social Policy Process (WE)",                    "codes": ["POL-350"]},
+        {"id": "pol375", "title": "The Constitution and Individual Liberties",           "codes": ["POL-375"]},
+        {"id": "psy235", "title": "Abnormal Psychology",                                  "codes": ["PSY-235"]},
+        {"id": "psy255", "title": "Social Psychology",                                    "codes": ["PSY-255"]},
+        {"id": "rel217", "title": "Religion in America (WE)",                             "codes": ["REL-217"]},
+        {"id": "scj190", "title": "Topics in Social and Criminal Justice",               "codes": ["SCJ-190"]},
+        {"id": "scj207", "title": "Restorative Justice",                                  "codes": ["SCJ-207"]},
+        {"id": "scj220", "title": "Juvenile Delinquency and the Justice System",         "codes": ["SCJ-220"]},
+        {"id": "scj301", "title": "Criminal Law and the Fourth, Fifth, and Sixth Amendments", "codes": ["SCJ-301"]},
+        {"id": "scj390", "title": "Advanced Topics in Social and Criminal Justice",      "codes": ["SCJ-390"]},
+        {"id": "scj444", "title": "Independent Study in Social and Criminal Justice",    "codes": ["SCJ-444"]},
+        {"id": "scj494", "title": "Internship in Social and Criminal Justice",           "codes": ["SCJ-494"]},
+        {"id": "soc247", "title": "Sociology of Race",                                    "codes": ["SOC-247"]},
+        {"id": "soc355", "title": "Deviant Behavior",                                     "codes": ["SOC-355"]},
+        {"id": "wsh464", "title": "Washington Term Internship Seminar (must have SCJ focus)", "codes": ["WSH-464"]}
+      ]
+    }
+  ]
+}

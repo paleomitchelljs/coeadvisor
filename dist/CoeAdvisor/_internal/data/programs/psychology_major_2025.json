@@ -1,0 +1,159 @@
+{
+  "id": "psychology_major_2025",
+  "name": "Psychology",
+  "program_type": "major",
+  "catalog_year": "2025",
+  "major_code": "PSY",
+  "source": "Psychology Major Checklist & GPA - 2025.pdf",
+  "sections": [
+    {
+      "id": "foundations",
+      "label": "Foundation Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "psy100",
+          "title": "Introductory Psychology",
+          "codes": ["PSY-100"]
+        },
+        {
+          "id": "psy200",
+          "title": "Research Methods (WE)",
+          "codes": ["PSY-200"],
+          "attributes": ["WE"]
+        },
+        {
+          "id": "psy295",
+          "title": "Applied Career Development in Psychology (WE)",
+          "codes": ["PSY-295"],
+          "attributes": ["WE"]
+        },
+        {
+          "id": "psy300",
+          "title": "Statistical Methods and Data Analysis",
+          "codes": ["PSY-300"]
+        }
+      ]
+    },
+    {
+      "id": "research_or_internship",
+      "label": "Research or Internship (choose one; P/NP grading only)",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "psy455",
+          "title": "Directed Research Experience (P/NP only)",
+          "codes": ["PSY-455"]
+        },
+        {
+          "id": "psy494",
+          "title": "Internship in Psychology (P/NP only)",
+          "codes": ["PSY-494"]
+        }
+      ]
+    },
+    {
+      "id": "developmental_abnormal",
+      "label": "Developmental or Abnormal (choose one)",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "psy205",
+          "title": "Developmental Psychology",
+          "codes": ["PSY-205"]
+        },
+        {
+          "id": "psy235",
+          "title": "Abnormal Psychology",
+          "codes": ["PSY-235"]
+        }
+      ]
+    },
+    {
+      "id": "social_multicultural",
+      "label": "Social / Multicultural / Organizational (choose one)",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "psy215",
+          "title": "Multicultural Psychology",
+          "codes": ["PSY-215"]
+        },
+        {
+          "id": "psy245",
+          "title": "Organizational Psychology",
+          "codes": ["PSY-245"]
+        },
+        {
+          "id": "psy255",
+          "title": "Social Psychology",
+          "codes": ["PSY-255"]
+        }
+      ]
+    },
+    {
+      "id": "biological_cognitive",
+      "label": "Biological / Cognitive / Learning (choose one)",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "psy250",
+          "title": "Biopsychology",
+          "codes": ["PSY-250"]
+        },
+        {
+          "id": "psy260",
+          "title": "Cognitive Psychology",
+          "codes": ["PSY-260"]
+        },
+        {
+          "id": "psy270",
+          "title": "Learning and Behavior",
+          "codes": ["PSY-270"]
+        }
+      ]
+    },
+    {
+      "id": "lab_course",
+      "label": "300-Level Laboratory Course with WE (choose one)",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "psy325",
+          "title": "Health Psychology & Lab (WE)",
+          "codes": ["PSY-325", "PSY-325L"],
+          "attributes": ["WE"]
+        },
+        {
+          "id": "psy335",
+          "title": "Sensation and Perception & Lab (WE)",
+          "codes": ["PSY-335", "PSY-335L"],
+          "attributes": ["WE"]
+        },
+        {
+          "id": "psy355",
+          "title": "Personality & Laboratory (WE)",
+          "codes": ["PSY-355", "PSY-355L"],
+          "attributes": ["WE"]
+        }
+      ]
+    },
+    {
+      "id": "additional",
+      "label": "Two Additional Psychology Courses (at least one must be 300-level or above)",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two additional courses in psychology, one of which must be 300-level or above.",
+      "constraints": {
+        "prefixes": ["PSY"],
+        "exclude_codes": [
+          "PSY-100", "PSY-200", "PSY-205", "PSY-215", "PSY-235", "PSY-245",
+          "PSY-250", "PSY-255", "PSY-260", "PSY-270", "PSY-295", "PSY-300",
+          "PSY-325", "PSY-335", "PSY-355", "PSY-455", "PSY-494"
+        ],
+        "min_level": 300,
+        "min_level_count": 1
+      }
+    }
+  ]
+}

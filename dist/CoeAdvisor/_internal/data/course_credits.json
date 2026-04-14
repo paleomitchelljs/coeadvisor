@@ -1,0 +1,21 @@
+{
+  "label": "Partial-credit course overrides",
+  "note": "All courses not listed here are 1.0 credit. Labs (-L suffix) and clinicals (-C suffix) are 0.2 credit automatically. Add any additional partial-credit courses below.",
+  "overrides": {
+    "EDU-219": 0.5,
+    "EDU-300": 0.5,
+    "KIN-112": 0.5,
+    "MUA-101": 0.5,
+    "MUA-102": 0.5,
+    "MUA-103": 0.5,
+    "MUA-104": 0.5,
+    "MUA-105": 0.5,
+    "MUA-106": 0.5,
+    "MUA-107": 0.5,
+    "MUA-108": 0.5,
+    "MUA-109": 0.5,
+    "MUA-110": 0.5,
+    "MUA-111": 0.5,
+    "MUA-112": 0.5
+  }
+}
