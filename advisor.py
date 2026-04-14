@@ -324,7 +324,9 @@ def check_ge(ge: dict, taken: set, dac: set, we: set,
             if lecture in taken:
                 lab_pairs.append((lecture, c))
 
-    we_found  = sorted(c for c in taken if c in we  and not is_auxiliary(c))
+    we_found  = sorted(c for c in taken
+                       if not is_auxiliary(c)
+                       and (c in we or c.endswith("W") or c.endswith("WE")))
     dac_found = sorted(c for c in taken if c in dac and not is_auxiliary(c))
     # FYS: accept both the legacy FYS-### prefix and Coe's current FS-110 code
     fys_found = [c for c in taken if prefix_of(c) == "FYS"
@@ -355,7 +357,7 @@ def check_ge(ge: dict, taken: set, dac: set, we: set,
                            "note": "Enter FYS-### course code or check the box below"},
         "we":             {"label": "Writing Emphasis (5 courses)", "required": 5,
                            "courses": we_found, "complete": len(we_found) >= 5,
-                           "note": "Only courses in the WE database are auto-detected"},
+                           "note": "Auto-detected by W/WE suffix (e.g. ENG-110W) or WE course list"},
         "dac":            {"label": "Diversity Across Curriculum (2)","required": 2,
                            "courses": dac_found[:2], "complete": len(dac_found) >= 2},
         "practicum":      {"label": "Practicum (1)",                "required": 1,
@@ -758,8 +760,7 @@ class AdvisorApp:
             self._courses_area.columnconfigure(col, weight=1, minsize=260)
 
         self._add_semester("Transfer", initial_rows=2, is_transfer=True)
-        for i in range(1, 5):
-            self._add_semester(f"Semester {i}", initial_rows=3)
+        self._add_semester("Semester 1", initial_rows=3)
 
         # "+ Add Semester" below grid
         add_sem_f = tk.Frame(f, bg=BG)
@@ -930,8 +931,7 @@ class AdvisorApp:
             sem["frame"].destroy()
         self._semesters.clear()
         self._add_semester("Transfer", initial_rows=2, is_transfer=True)
-        for i in range(1, 5):
-            self._add_semester(f"Semester {i}", initial_rows=3)
+        self._add_semester("Semester 1", initial_rows=3)
 
     # ──────────────────────────────────────────────────────────────────────────
     # Actions
@@ -1878,7 +1878,7 @@ class AdvisorApp:
         shortfall = we_required - len(we_found)
         if shortfall > 0:
             self._ins(t, f"     Need {shortfall} more WE course(s)\n", "item_todo")
-        self._ins(t, "     Note: only courses in the WE database are auto-detected.\n", "hint")
+        self._ins(t, "     Note: courses with W/WE suffix (e.g. ENG-110W) are auto-detected.\n", "hint")
 
         # DAC
         dac_req  = ge["dac"]
