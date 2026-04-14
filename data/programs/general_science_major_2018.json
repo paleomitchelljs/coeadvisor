@@ -1,0 +1,47 @@
+{
+  "id": "general_science_major_2018",
+  "name": "General Science",
+  "program_type": "major",
+  "catalog_year": "2018",
+  "major_code": "SCI",
+  "source": "General Science 2018.txt",
+  "sections": [
+    {
+      "id": "eligibility",
+      "label": "Eligibility",
+      "type": "non_course",
+      "description": "Students earning more than one major in the natural sciences, or a major and a minor in the natural sciences, are not eligible for the General Science major. Students earning a collateral major in the natural sciences or neuroscience are also not eligible."
+    },
+    {
+      "id": "total_credits",
+      "label": "13 Course Credits in Natural Sciences",
+      "type": "non_course",
+      "description": "A minimum of 13 course credits chosen from biology, chemistry, mathematics, and physics. At least seven of these 13 credits must be above the introductory level, and at least two credits must be in biology."
+    },
+    {
+      "id": "primary_field",
+      "label": "Primary Field: Six Course Credits",
+      "type": "non_course",
+      "description": "Six course credits in one of the four natural science areas (biology, chemistry, mathematics, or physics)."
+    },
+    {
+      "id": "secondary_field",
+      "label": "Secondary Field: Five Course Credits",
+      "type": "non_course",
+      "description": "Five course credits in a second natural science field (or mathematics through Linear Algebra, MTH-265)."
+    },
+    {
+      "id": "tertiary_field",
+      "label": "Third Field: Two Course Credits",
+      "type": "non_course",
+      "description": "Two course credits in a third natural science field."
+    },
+    {
+      "id": "comprehensive",
+      "label": "Comprehensive Requirements",
+      "type": "non_course",
+      "description": "Students must meet comprehensive requirements in each of the major areas."
+    }
+  ],
+  "notes": "Students interested in medical technology should take at least one course in biology, one in chemistry, and one in either math or physics by the end of the third year. Students should start in their first term at Coe by taking the beginning course in the area of greatest interest."
+}

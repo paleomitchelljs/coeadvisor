@@ -1,0 +1,50 @@
+{
+  "id": "french_francophone_major_2019",
+  "name": "Interdisciplinary French & Francophone Studies",
+  "program_type": "major",
+  "catalog_year": "2019",
+  "major_code": "FRE",
+  "source": "French Interdisciplinary French and Francophone St.pdf",
+  "sections": [
+    {
+      "id": "french_courses",
+      "label": "Three Courses Taught in French (any level)",
+      "type": "open_n",
+      "n": 3,
+      "description": "Any three FRE courses taught in French (does not include FRE-315 or FRE-499).",
+      "constraints": {
+        "prefixes": ["FRE"],
+        "exclude_codes": ["FRE-315", "FRE-499"]
+      }
+    },
+    {
+      "id": "fre315",
+      "label": "Oral and Written Communication Skills (WE)",
+      "type": "all",
+      "items": [
+        { "id": "fre315", "title": "Oral and Written Communication Skills (WE)", "codes": ["FRE-315"] }
+      ]
+    },
+    {
+      "id": "interdisciplinary",
+      "label": "Four Credits of Interdisciplinary Courses (at least two different prefixes, thematic coherence)",
+      "type": "non_course",
+      "description": "Four credits from the approved interdisciplinary list (see catalog), taught in French or English. Must include at least two different course prefixes and demonstrate thematic coherence. Substitutions require program coordinator approval."
+    },
+    {
+      "id": "study_abroad",
+      "label": "Approved Term-Long Study Abroad Experience",
+      "type": "non_course",
+      "description": "Departmentally approved term-long study abroad in France or a Francophone country."
+    },
+    {
+      "id": "exit_exam",
+      "label": "Exit Exam and Interview",
+      "type": "all",
+      "items": [
+        { "id": "fre499", "title": "Exit Exam and Interview (final term)", "codes": ["FRE-499"] }
+      ]
+    }
+  ],
+  "notes": "Grade of C (2.0) or higher required in all courses. Interdisciplinary course list is in the college catalog; coordinator may approve substitutions."
+}

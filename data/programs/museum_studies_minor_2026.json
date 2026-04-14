@@ -1,0 +1,71 @@
+{
+  "id": "museum_studies_minor_2026",
+  "name": "Museum Studies",
+  "program_type": "minor",
+  "catalog_year": "2026",
+  "major_code": "MS",
+  "source": "Fall 2026 Art and Visual Studies Advising Checklis.pdf",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Core Courses",
+      "type": "all",
+      "items": [
+        { "id": "ms101", "title": "Introduction to Museum Studies", "codes": ["MS-101"] },
+        { "id": "ms115", "title": "History of Museums",             "codes": ["MS-115"] },
+        { "id": "ms283", "title": "Arts Administration (1.0cc)",    "codes": ["MU-283", "MS-283", "THE-283"] }
+      ]
+    },
+    {
+      "id": "museum_practice",
+      "label": "One Credit from Museum Practice Courses (most are 0.5cc — typically two courses needed)",
+      "type": "choose_n",
+      "n": 1,
+      "items": [
+        { "id": "ms201", "title": "Curating a College Collection (0.5cc)",           "codes": ["MS-201"] },
+        { "id": "ms203", "title": "Collection Management and Registration (0.5cc)",   "codes": ["MS-203"] },
+        { "id": "ms205", "title": "Exhibition Planning and Museum Audiences (0.5cc)", "codes": ["ART-205", "MS-205"] },
+        { "id": "ms210", "title": "Exhibition Installation and Lighting (0.5cc)",     "codes": ["ART-215", "MS-210"] },
+        { "id": "ms235", "title": "Arts Advocacy (0.5cc)",                           "codes": ["ART-235", "MS-235"] },
+        { "id": "ms220", "title": "Marketing the Museum (0.5cc)",                    "codes": ["MS-220"] },
+        { "id": "ms225", "title": "Archives: Care, Management, and Best Practices (0.5cc)", "codes": ["MS-225"] },
+        { "id": "ms395", "title": "Topics in Museum Studies (0.5 or 1.0cc)",         "codes": ["MS-395"] }
+      ],
+      "note": "Requirement is one full credit (1.0cc); most courses above are 0.5cc so typically two are needed. MS-395 may be 1.0cc."
+    },
+    {
+      "id": "context",
+      "label": "One Interdisciplinary Context Course",
+      "type": "choose_n",
+      "n": 1,
+      "items": [
+        { "id": "aam107", "title": "Introduction to African American Studies",    "codes": ["AAM-107"] },
+        { "id": "ant125", "title": "Art and Archaeology of the Classical World", "codes": ["ANT-125"] },
+        { "id": "arh106", "title": "World Art",                                  "codes": ["ARH-106"] },
+        { "id": "arh128", "title": "Introduction to Art History",                "codes": ["ARH-128"] },
+        { "id": "arh307", "title": "Modern and Contemporary Art",                "codes": ["ARH-307"] },
+        { "id": "bus275", "title": "Principles of Management",                   "codes": ["BUS-275"] },
+        { "id": "bus355", "title": "Principles of Marketing",                    "codes": ["BUS-355"] },
+        { "id": "bus460", "title": "Advertising",                                "codes": ["BUS-460"] },
+        { "id": "com151", "title": "Introduction to New Media Studies",          "codes": ["COM-151"] },
+        { "id": "com161", "title": "Visual Rhetoric",                            "codes": ["COM-161"] },
+        { "id": "ds100",  "title": "Introduction to Data Science",               "codes": ["DS-100"] },
+        { "id": "is116",  "title": "Introduction to International Studies",      "codes": ["IS-116"] },
+        { "id": "pr205",  "title": "Public Relations",                           "codes": ["PR-205"] },
+        { "id": "rhe265", "title": "Professional Writing",                       "codes": ["RHE-265"] },
+        { "id": "rhe377", "title": "Cultural Studies",                           "codes": ["RHE-377"] }
+      ],
+      "note": "Any ART 1XX course or any HIS course also qualifies."
+    },
+    {
+      "id": "capstone",
+      "label": "Internship or Field Methods",
+      "type": "choose_n",
+      "n": 1,
+      "items": [
+        { "id": "ms494",  "title": "Museum Studies Internship",    "codes": ["MS-494"] },
+        { "id": "ant205", "title": "Archaeological Field Methods", "codes": ["ANT-205"] }
+      ]
+    }
+  ]
+}

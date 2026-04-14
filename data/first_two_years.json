@@ -1,0 +1,399 @@
+{
+  "label": "Recommended First Two Years by Major",
+  "source": "Recommended Courses for First 2 Years by Major 2026",
+  "note": "Each entry's match_major_codes is compared against selected programs' major_code field. match_program_ids allows finer-grained matching when two programs share a major_code (e.g., two KIN programs). Strings in essential/suggested that match PREFIX-NUM are checked against taken courses; other strings are shown as descriptive text.",
+  "entries": [
+    {
+      "id": "biology_well_prepared",
+      "label": "Biology — well-prepared track",
+      "variant_note": "Students with strong high school science background / ACT ≥ 25. Pre-med students who do NOT want a gap year should use this track.",
+      "match_major_codes": ["BIO"],
+      "match_program_ids": ["biology_major_2025"],
+      "semesters": {
+        "y1_fall":   {"essential": ["BIO-155", "BIO-155L"], "suggested": ["CHM-121", "CHM-121L"]},
+        "y1_spring": {"essential": ["BIO-145", "BIO-145L"], "suggested": ["CHM-122", "CHM-122L"]},
+        "y2_fall":   {"essential": ["BIO-202", "CHM-121", "CHM-121L"], "suggested": ["MTH-135", "STA-100", "CHM-221"]},
+        "y2_spring": {"essential": ["BIO-235", "BIO-235L", "CHM-122", "CHM-122L"], "suggested": ["CHM-321"]}
+      },
+      "notes": "BIO-235 is the prime prerequisite for most upper-level biology electives and must be completed by end of sophomore year. MTH-135 or STA-100/110 can be taken any semester during the first two years. 11 courses needed for the major."
+    },
+    {
+      "id": "biology_less_prepared",
+      "label": "Biology — less-prepared track",
+      "variant_note": "Students with limited high school science background. Fall 2026: use BIO-100 instead of BIO-120 (BIO-120 not offered).",
+      "match_major_codes": ["BIO"],
+      "match_program_ids": ["biology_major_2025"],
+      "semesters": {
+        "y1_fall":   {"essential": ["BIO-120"], "suggested": []},
+        "y1_spring": {"essential": ["BIO-145", "BIO-145L"], "suggested": []},
+        "y2_fall":   {"essential": ["BIO-155", "BIO-155L"], "suggested": ["CHM-121", "CHM-121L"]},
+        "y2_spring": {"essential": ["BIO-235", "BIO-235L"], "suggested": ["CHM-122", "CHM-122L"]}
+      },
+      "notes": "BIO-235 must be completed by end of sophomore year. Progress through CHM-121/122 as quickly as possible."
+    },
+    {
+      "id": "business_admin",
+      "label": "Business Administration",
+      "match_major_codes": ["BUS"],
+      "match_program_ids": ["business_admin_major_2018"],
+      "semesters": {
+        "y1_fall":   {"essential": ["ACC-171"], "suggested": ["BUS-190", "ECO-175"]},
+        "y1_spring": {"essential": ["ACC-215"], "suggested": ["BUS-190", "ECO-175", "ECO-215"]},
+        "y2_fall":   {"essential": ["ECO-175"], "suggested": ["BUS-190", "BUS-250", "BUS-300", "ECO-215"]},
+        "y2_spring": {"essential": ["BUS-190"], "suggested": ["BUS-250", "BUS-300", "ECO-215", "BUS-315", "BUS-330", "BUS-350"]}
+      },
+      "notes": "11 courses needed for the major. Most majors complete at least 5 classes in the major by end of sophomore year. Students not starting in Year 1 can still finish in 4 years but will need to double up more."
+    },
+    {
+      "id": "chemistry",
+      "label": "Chemistry",
+      "match_major_codes": ["CHM"],
+      "match_program_ids": ["chemistry_major_2026"],
+      "semesters": {
+        "y1_fall":   {"essential": ["CHM-121", "CHM-121L", "MTH-135"], "suggested": ["MTH-145"]},
+        "y1_spring": {"essential": ["CHM-122", "CHM-122L"], "suggested": ["MTH-145"]},
+        "y2_fall":   {"essential": ["CHM-211", "CHM-211L", "CHM-221"], "suggested": ["PHY-185", "PHY-185L"]},
+        "y2_spring": {"essential": ["PHY-195", "PHY-195L", "CHM-321", "CHM-322"], "suggested": []}
+      },
+      "notes": "Students earning 4-5 on AP Chemistry may start with CHM-122/122L in Year 1 Fall. CHM-221 offered fall only; CHM-321 spring only. ACS certification requires CHM-121/121L and MTH-135 in fall. Complete MTH-145 by end of sophomore year."
+    },
+    {
+      "id": "communication_studies",
+      "label": "Communication Studies",
+      "match_major_codes": ["COM"],
+      "match_program_ids": ["communication_studies_major_2024"],
+      "semesters": {
+        "y1_fall":   {"essential": [], "suggested": ["COM-101", "COM-125", "100-level COM"]},
+        "y1_spring": {"essential": [], "suggested": ["COM-101 or COM-125 (if not taken)", "100-level COM"]},
+        "y2_fall":   {"essential": [], "suggested": ["COM-281 (if offered)", "COM courses up to 250"]},
+        "y2_spring": {"essential": [], "suggested": ["COM-281 (if offered)", "COM courses up to 250"]}
+      },
+      "notes": "The COM major is flexible. 100-level for first-year students, 200-level for sophomores. Students may be ready for 300-level in sophomore year if they have two COM courses beyond COM-101."
+    },
+    {
+      "id": "computer_science",
+      "label": "Computer Science",
+      "match_major_codes": ["CS"],
+      "match_program_ids": ["computer_science_major_2021"],
+      "semesters": {
+        "y1_fall":   {"essential": ["CS-125"], "suggested": ["CS-135", "MTH-135"]},
+        "y1_spring": {"essential": ["CS-135"], "suggested": ["CS-235"]},
+        "y2_fall":   {"essential": ["CS-215", "CS-220"], "suggested": ["DS-230"]},
+        "y2_spring": {"essential": ["CS-245", "MTH-215"], "suggested": ["CS-235"]}
+      },
+      "notes": "Students earning 4-5 on AP Computer Science A earn credit for CS-125. Students with programming experience should consult faculty about placement options."
+    },
+    {
+      "id": "creative_writing",
+      "label": "Creative Writing",
+      "match_major_codes": ["CRW"],
+      "match_program_ids": ["creative_writing_major_2022"],
+      "semesters": {
+        "y1_fall":   {"essential": [], "suggested": ["CRW-125", "ENG-101"]},
+        "y1_spring": {"essential": [], "suggested": ["CRW-125 (if not taken)", "ENG-101"]},
+        "y2_fall":   {"essential": ["CRW-125"], "suggested": ["Creative writing workshop", "ENG 281+"]},
+        "y2_spring": {"essential": ["Creative writing workshop"], "suggested": ["ENG-281 or higher", "ENG-101"]}
+      },
+      "notes": "10 courses needed. Complete CRW-125, ENG-101, and a beginning (200-level) creative writing workshop by end of sophomore year. Majors need beginning workshops in at least two genres and must take 3 English classes including ENG-101 and one numbered ENG-281 or above."
+    },
+    {
+      "id": "economics",
+      "label": "Economics / International Economics",
+      "match_major_codes": ["ECO"],
+      "match_program_ids": ["economics_major_2022"],
+      "semesters": {
+        "y1_fall":   {"essential": ["ECO-175"], "suggested": ["Foreign language (Int'l Econ)", "Calculus (grad school track)"]},
+        "y1_spring": {"essential": ["ECO-215"], "suggested": ["Foreign language (Int'l Econ)", "Calculus (grad school track)"]},
+        "y2_fall":   {"essential": ["200 or 300-level ECO"], "suggested": ["ECO-175 (if not taken)", "Foreign language", "Second 200/300-level ECO"]},
+        "y2_spring": {"essential": ["ECO-315"], "suggested": ["200 or 300-level ECO", "Foreign language (Int'l Econ)"]}
+      },
+      "notes": "Best to complete ECO-175 and ECO-215 in Year 1. Students considering a graduate degree should begin calculus in Year 1 or 2. Many economics majors also complete a math major or minor."
+    },
+    {
+      "id": "elementary_education",
+      "label": "Elementary Education",
+      "match_major_codes": ["EDU"],
+      "match_program_ids": ["elementary_education_major_2025"],
+      "semesters": {
+        "y1_fall":   {"essential": ["EDU-105", "EDU-117"], "suggested": []},
+        "y1_spring": {"essential": ["EDU-105", "EDU-117"], "suggested": []},
+        "y2_fall":   {"essential": ["EDU-215"], "suggested": ["EDU-219"]},
+        "y2_spring": {"essential": ["EDU-241"], "suggested": ["EDU-187"]}
+      },
+      "notes": "Apply to Coe Teacher Education after any two core courses. All majors need at least one teaching endorsement area — nearly all choose Reading (begins with EDU-241 in Y2). All majors must take an American History class and a science with a lab."
+    },
+    {
+      "id": "english",
+      "label": "English",
+      "match_major_codes": ["ENG"],
+      "match_program_ids": ["english_major_2022"],
+      "semesters": {
+        "y1_fall":   {"essential": [], "suggested": ["ENG-101", "Lower-level elective"]},
+        "y1_spring": {"essential": [], "suggested": ["ENG-101 (if not taken)", "ENG-281"]},
+        "y2_fall":   {"essential": ["ENG-101"], "suggested": ["ENG-291", "Lower-level elective"]},
+        "y2_spring": {"essential": ["ENG-281"], "suggested": ["ENG-301"]}
+      },
+      "notes": "10 courses needed. Complete ENG-101, ENG-281, ENG-291 and a lower-level elective by end of sophomore year. ENG-281 offered spring only; ENG-291 fall only. Take ENG-301 in year 2 or 3 before moving deeply into 305+ courses."
+    },
+    {
+      "id": "environmental_studies",
+      "label": "Environmental Studies (collateral)",
+      "match_major_codes": ["EVS"],
+      "match_program_ids": ["environmental_studies_collateral_2025"],
+      "semesters": {
+        "y1_fall":   {"essential": [], "suggested": ["BIO-105", "ECO-175"]},
+        "y1_spring": {"essential": ["BIO-155", "BIO-155L"], "suggested": []},
+        "y2_fall":   {"essential": [], "suggested": []},
+        "y2_spring": {"essential": [], "suggested": []}
+      },
+      "notes": "Collateral major — students typically do not start it in first term. Contact program coordinator Dr. Ellis during the first year. Biology majors must take MTH-135 for this collateral. Chemistry majors should also take BIO-155 in spring of Year 1 (prerequisite for BIO-295)."
+    },
+    {
+      "id": "french_francophone",
+      "label": "Interdisciplinary French & Francophone Studies",
+      "match_major_codes": ["FRE"],
+      "match_program_ids": ["french_francophone_major_2019"],
+      "semesters": {
+        "y1_fall":   {"essential": ["FRE course (appropriate level)"], "suggested": []},
+        "y1_spring": {"essential": ["Next FRE course in sequence"], "suggested": []},
+        "y2_fall":   {"essential": ["FRE-315 (if eligible)"], "suggested": ["Interdisciplinary course"]},
+        "y2_spring": {"essential": ["FRE course or FRE-315"], "suggested": ["Interdisciplinary course"]}
+      },
+      "notes": "Must pass a Spanish placement test or receive instructor approval for initial placement. Students should work toward intermediate-level proficiency before junior year study abroad."
+    },
+    {
+      "id": "health_society_studies",
+      "label": "Health & Society Studies (minor)",
+      "match_major_codes": ["HSS"],
+      "match_program_ids": ["health_society_studies_minor_2020"],
+      "semesters": {
+        "y1_fall":   {"essential": [], "suggested": ["BIO-103", "BIO-120", "BIO-155", "SOC-107", "ANT-116", "KIN-115", "KIN-125", "KIN-155", "PHL-128"]},
+        "y1_spring": {"essential": [], "suggested": ["100-level elective from HSS list", "200+ level elective from HSS list"]},
+        "y2_fall":   {"essential": [], "suggested": ["PHL-165 Biomedical Ethics", "200+ level HSS elective"]},
+        "y2_spring": {"essential": [], "suggested": ["PHL-165 (if not taken)", "200+ level HSS elective"]}
+      },
+      "notes": "Required: PHL-165, SOC-107, one bio course, and three electives from the approved list. Only one 100-level elective allowed."
+    },
+    {
+      "id": "history",
+      "label": "History",
+      "match_major_codes": ["HIS"],
+      "match_program_ids": ["history_major_2021"],
+      "semesters": {
+        "y1_fall":   {"essential": [], "suggested": ["HIS-115", "HIS-145", "200 or 300-level HIS (first-year students welcome)"]},
+        "y1_spring": {"essential": [], "suggested": ["HIS-115", "HIS-145", "200 or 300-level HIS"]},
+        "y2_fall":   {"essential": ["HIS-205"], "suggested": []},
+        "y2_spring": {"essential": [], "suggested": []}
+      },
+      "notes": "10 courses required. History courses generally have no prerequisites, so first-year students may take 200 or 300-level courses of interest. Plan to take HIS-205 in Fall of sophomore year."
+    },
+    {
+      "id": "international_studies",
+      "label": "International Studies",
+      "match_major_codes": ["IS"],
+      "match_program_ids": ["international_studies_major_2021"],
+      "semesters": {
+        "y1_fall":   {"essential": ["Foreign language course (especially if starting new language)"], "suggested": ["IS-116", "ANT-116", "ECO-175"]},
+        "y1_spring": {"essential": ["Next foreign language course in sequence"], "suggested": ["POL-258", "ANT-116", "ECO-175"]},
+        "y2_fall":   {"essential": ["IS-116 (if not taken)", "Next foreign language course"], "suggested": ["ANT-116", "ECO-175"]},
+        "y2_spring": {"essential": [], "suggested": ["POL-258", "ANT-116", "ECO-175", "Next foreign language course"]}
+      },
+      "notes": "Must pass two foreign language courses at the intermediate level. Makes most sense to complete before junior year abroad. Starting a new language in Year 1 Fall is optimal to reach intermediate before going abroad."
+    },
+    {
+      "id": "kinesiology_fitness",
+      "label": "Kinesiology — Fitness Development",
+      "match_major_codes": ["KIN"],
+      "match_program_ids": ["kinesiology_fitness_major_2024"],
+      "semesters": {
+        "y1_fall":   {"essential": ["KIN-105"], "suggested": ["KIN-115", "KIN-125", "KIN-135", "KIN-155"]},
+        "y1_spring": {"essential": ["BIO-155"], "suggested": ["KIN-115", "KIN-125", "KIN-135", "KIN-155"]},
+        "y2_fall":   {"essential": ["KIN-175"], "suggested": ["KIN-115", "KIN-125", "KIN-135", "KIN-155"]},
+        "y2_spring": {"essential": ["BIO-103"], "suggested": []}
+      },
+      "notes": ""
+    },
+    {
+      "id": "kinesiology_athletic_training",
+      "label": "Kinesiology — Pre-Athletic Training",
+      "match_major_codes": ["KIN"],
+      "match_program_ids": ["kinesiology_athletic_training_major_2021"],
+      "semesters": {
+        "y1_fall":   {"essential": ["KIN-105", "BIO-155 (if ready)"], "suggested": ["KIN-115"]},
+        "y1_spring": {"essential": ["KIN-115 (if not taken)"], "suggested": []},
+        "y2_fall":   {"essential": ["BIO-155"], "suggested": ["KIN-275", "BIO-215"]},
+        "y2_spring": {"essential": ["KIN-275 (if not taken)"], "suggested": []}
+      },
+      "notes": "BIO-155 must be completed by end of sophomore year."
+    },
+    {
+      "id": "mathematics",
+      "label": "Mathematics",
+      "match_major_codes": ["MTH"],
+      "match_program_ids": ["mathematics_major_2018"],
+      "semesters": {
+        "y1_fall":   {"essential": ["MTH-135"], "suggested": ["MTH-145 (if AP credit for MTH-135)", "CS-125"]},
+        "y1_spring": {"essential": ["MTH-145"], "suggested": ["MTH-215"]},
+        "y2_fall":   {"essential": ["MTH-255"], "suggested": ["CS-125"]},
+        "y2_spring": {"essential": ["MTH-215"], "suggested": ["MTH-265"]}
+      },
+      "notes": "AP Calculus AB score ≥ 4 earns credit for MTH-135. AP Calculus BC score ≥ 4 earns credit for MTH-145 and MTH-135. CS-125 must be completed before graduation. Consult mathematics faculty about appropriate calculus placement level."
+    },
+    {
+      "id": "museum_studies",
+      "label": "Museum Studies (minor)",
+      "match_major_codes": ["MS"],
+      "match_program_ids": ["museum_studies_minor_2026"],
+      "semesters": {
+        "y1_fall":   {"essential": [], "suggested": ["MS-101", "MS-115", "Elective in MS"]},
+        "y1_spring": {"essential": [], "suggested": ["MS-101 (if not taken)", "MS-115 (if not taken)", "Elective in MS"]},
+        "y2_fall":   {"essential": [], "suggested": ["MS-283", "Elective in MS"]},
+        "y2_spring": {"essential": [], "suggested": ["Elective in MS"]}
+      },
+      "notes": "Students should meet a faculty member in the Art and Visual Studies Department to discuss appropriate courses."
+    },
+    {
+      "id": "music",
+      "label": "Music (Bachelor of Arts)",
+      "match_major_codes": ["MU"],
+      "match_program_ids": ["music_ba_major_2019"],
+      "semesters": {
+        "y1_fall":   {"essential": ["MU-101", "MU-107", "Ensemble (MUA-100/101/104/105)", "Music lessons"], "suggested": ["Additional ensembles", "EDU-105 (Music Education majors)"]},
+        "y1_spring": {"essential": ["MU-201", "Ensemble", "Music lessons"], "suggested": ["MU-284 (Topics: Rock & Roll or Taylor Swift)", "EDU-195", "EDU-117"]},
+        "y2_fall":   {"essential": ["Ensemble"], "suggested": ["Music Education: MU-361 or EDU-187", "Additional ensembles", "Additional lessons"]},
+        "y2_spring": {"essential": ["Ensemble", "Music lessons"], "suggested": ["MU-166", "MU-108", "EDU-219", "May Term: Jazz History"]}
+      },
+      "notes": "Contact Dr. Carson or the advising director with questions. Music Education majors should take EDU-105 and EDU-195 early."
+    },
+    {
+      "id": "nursing",
+      "label": "Nursing (BSN)",
+      "match_major_codes": ["NUR"],
+      "match_program_ids": ["nursing_bsn_2025"],
+      "semesters": {
+        "y1_fall":   {"essential": ["FYS", "NUR-100", "BIO-100"], "suggested": ["PSY-100", "SOC-107", "CHM-103", "CHM-103L"]},
+        "y1_spring": {"essential": ["NUR-100", "CHM-111", "CHM-111L"], "suggested": ["PSY-100", "SOC-107", "STA-100", "STA-110"]},
+        "y2_fall":   {"essential": ["NUR-200", "BIO-215", "BIO-215L", "STA-100", "STA-110"], "suggested": ["PSY-100", "SOC-107"]},
+        "y2_spring": {"essential": ["NUR-200", "BIO-225", "BIO-195", "BIO-195L"], "suggested": ["PSY-100", "SOC-107", "STA-100", "STA-110"]}
+      },
+      "notes": "NUR-100/200 are 0.2cc courses taken fall and spring. Apply to the nursing program in December of sophomore year (NUR-200). Requires GPA ≥ 2.7 and 16 cc completed by end of sophomore year. All Gen Eds (except WE) must be complete by end of sophomore year. Students will receive a Nursing Advisor at the start of freshman year."
+    },
+    {
+      "id": "philosophy",
+      "label": "Philosophy",
+      "match_major_codes": ["PHL"],
+      "match_program_ids": ["philosophy_major_2025"],
+      "semesters": {
+        "y1_fall":   {"essential": [], "suggested": ["PHL-105", "PHL-115", "PHL-128"]},
+        "y1_spring": {"essential": [], "suggested": ["PHL-105", "PHL-115", "PHL-128", "PHL-200", "PHL-205"]},
+        "y2_fall":   {"essential": [], "suggested": ["Additional philosophy course (100 or 200-level)"]},
+        "y2_spring": {"essential": ["PHL-220", "PHL-300"], "suggested": []}
+      },
+      "notes": "9 courses needed. 100-level courses are especially well-suited for first-year students. 200-level for students who have already taken a 100-level course or completed their first year. 300-level courses have prerequisites."
+    },
+    {
+      "id": "physics",
+      "label": "Physics",
+      "match_major_codes": ["PHY"],
+      "match_program_ids": ["physics_major_2019"],
+      "semesters": {
+        "y1_fall":   {"essential": ["PHY-185", "PHY-185L"], "suggested": ["ENR-155 (MTH-155, if proficient in Calculus)", "MTH-135"]},
+        "y1_spring": {"essential": ["PHY-195", "PHY-195L"], "suggested": ["ENR-145", "MTH-145"]},
+        "y2_fall":   {"essential": ["PHY-235", "PHY-236", "PHY-231"], "suggested": ["CHM-122", "CHM-122L"]},
+        "y2_spring": {"essential": ["PHY-265", "PHY-246"], "suggested": ["Additional physics or engineering course"]}
+      },
+      "notes": "Participate in May Term Advanced Laboratory and summer research between Years 1 and 2. Physics uses calculus-based General Physics I — it is exceedingly rare to skip this even with AP credit."
+    },
+    {
+      "id": "political_science",
+      "label": "Political Science",
+      "match_major_codes": ["POL"],
+      "match_program_ids": ["political_science_major_2025"],
+      "semesters": {
+        "y1_fall":   {"essential": [], "suggested": ["POL-108", "POL-115"]},
+        "y1_spring": {"essential": [], "suggested": ["POL-108 (if not taken)", "POL-115 (if not taken)"]},
+        "y2_fall":   {"essential": ["POL-108 or POL-115 (if neither taken)"], "suggested": ["POL-244", "Political science course with prerequisites met"]},
+        "y2_spring": {"essential": ["POL-108", "POL-115"], "suggested": ["Political science course"]}
+      },
+      "notes": "10 courses needed. Complete at least 4 classes in the major by end of sophomore year. Not advisable to take a 300-level course before spring semester sophomore year."
+    },
+    {
+      "id": "psychology",
+      "label": "Psychology",
+      "match_major_codes": ["PSY"],
+      "match_program_ids": ["psychology_major_2025"],
+      "semesters": {
+        "y1_fall":   {"essential": [], "suggested": ["PSY-100"]},
+        "y1_spring": {"essential": [], "suggested": ["PSY-100 (if not taken)", "PSY-200", "PSY-205", "PSY-215", "PSY-235", "PSY-245"]},
+        "y2_fall":   {"essential": ["PSY-100"], "suggested": ["PSY-200", "PSY-205", "PSY-215", "PSY-235", "PSY-245", "PSY-250", "PSY-260", "PSY-270", "PSY-295"]},
+        "y2_spring": {"essential": ["PSY-100 (if not taken)"], "suggested": ["PSY-200", "PSY-235", "PSY-205"]}
+      },
+      "notes": "Applied Career Development in Psychology is a good choice for students seeking to explore or intending an internship (PSY-494 requires it). Org Science majors should take PSY-245 in Year 1 or 2. Neuroscience majors should take PSY-250 in sophomore year."
+    },
+    {
+      "id": "social_criminal_justice",
+      "label": "Social & Criminal Justice",
+      "match_major_codes": ["SCJ"],
+      "match_program_ids": ["social_criminal_justice_major_2025"],
+      "semesters": {
+        "y1_fall":   {"essential": [], "suggested": ["SCJ-101", "SOC-107"]},
+        "y1_spring": {"essential": ["SCJ-101 or SCJ-203 (if SCJ-101 taken fall)"], "suggested": ["SOC-107"]},
+        "y2_fall":   {"essential": [], "suggested": ["SOC-235", "SCJ-202", "PHL-265", "PHL-285"]},
+        "y2_spring": {"essential": [], "suggested": ["PHL-265 or PHL-285 (when offered)", "STA-100", "STA-110"]}
+      },
+      "notes": "10 courses needed (3 are electives). Several courses on every-other-year basis (PHL-265/285, SOC-351). SOC-107 is NOT required for SOC-235 if SCJ-101 has been taken."
+    },
+    {
+      "id": "sociology",
+      "label": "Sociology",
+      "match_major_codes": ["SOC"],
+      "match_program_ids": ["sociology_major_2025"],
+      "semesters": {
+        "y1_fall":   {"essential": [], "suggested": ["SOC-107"]},
+        "y1_spring": {"essential": [], "suggested": ["SOC-107 (if not taken)", "200-level SOC"]},
+        "y2_fall":   {"essential": [], "suggested": ["SOC-107 (if not taken)", "SOC-235", "200-level SOC"]},
+        "y2_spring": {"essential": ["SOC-107 (if not taken)"], "suggested": ["200 or 300-level SOC"]}
+      },
+      "notes": "10 courses needed. SOC-107 (or transfer credit/instructor consent) is a prerequisite for all other SOC courses. Students considering a 300-level course before spring sophomore year should seek departmental feedback."
+    },
+    {
+      "id": "studio_art",
+      "label": "Studio Art",
+      "match_major_codes": ["ART"],
+      "match_program_ids": ["studio_art_major_2026"],
+      "semesters": {
+        "y1_fall":   {"essential": [], "suggested": ["100-level ART", "ARH-128"]},
+        "y1_spring": {"essential": [], "suggested": ["100-level ART", "ARH-128"]},
+        "y2_fall":   {"essential": ["100-level ART"], "suggested": ["200-level ART"]},
+        "y2_spring": {"essential": ["300-level ART"], "suggested": ["200-level ART"]}
+      },
+      "notes": "For the art major, students need to complete two 100, two 200, two 300, and two 400-level ART courses and three ARH courses. Meet with a faculty member in Art and Visual Studies to discuss course selection."
+    },
+    {
+      "id": "art_history_minor",
+      "label": "Art History (minor)",
+      "match_major_codes": ["ARH"],
+      "match_program_ids": ["art_history_minor_2026"],
+      "semesters": {
+        "y1_fall":   {"essential": [], "suggested": ["ARH-128"]},
+        "y1_spring": {"essential": ["ARH-128"], "suggested": []},
+        "y2_fall":   {"essential": ["200-level ARH"], "suggested": []},
+        "y2_spring": {"essential": ["200-level ARH"], "suggested": []}
+      },
+      "notes": "Meet with a faculty member in the Art and Visual Studies Department to discuss appropriate courses."
+    },
+    {
+      "id": "organizational_science",
+      "label": "Organizational Science (collateral)",
+      "match_major_codes": ["ORGSC"],
+      "match_program_ids": ["organizational_science_collateral_2023"],
+      "semesters": {
+        "y1_fall":   {"essential": ["PSY-100"], "suggested": ["PSY-245", "BUS-300"]},
+        "y1_spring": {"essential": ["PSY-200"], "suggested": ["PSY-255", "BUS-315"]},
+        "y2_fall":   {"essential": ["PSY-245", "PSY-255"], "suggested": ["BUS-250", "BUS-375"]},
+        "y2_spring": {"essential": ["BUS-300"], "suggested": ["PSY-355", "PSY-355L", "BUS-387"]}
+      },
+      "notes": "Concurrent completion of the Psychology major is required. See also the Psychology first-two-years plan."
+    }
+  ]
+}

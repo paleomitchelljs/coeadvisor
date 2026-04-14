@@ -46,8 +46,8 @@
     "first_year_seminar": {
       "label": "First Year Seminar",
       "count": 1,
-      "prefixes": ["FYS"],
-      "note": "Enter FYS course code (e.g. FYS-100) or mark manually"
+      "prefixes": ["FYS", "FS"],
+      "note": "Enter FS-110 (current) or a FYS-### course code, or mark manually"
     },
     "writing_emphasis": {
       "label": "Writing Emphasis",

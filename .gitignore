@@ -1,0 +1,32 @@
+# ── Build artifacts ───────────────────────────────────────────
+build/
+dist/
+*.spec.bak
+
+# ── Python ────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+
+# ── Claude Code ───────────────────────────────────────────────
+.claude/
+
+# ── Source documents (available elsewhere, not needed in repo) ─
+checklists/
+catalogs/
+dac/
+gened/
+*.pdf
+*.PDF
+*.docx
+*.DOCX
+*.doc
+*.DOC
+
+# ── Data backups ──────────────────────────────────────────────
+data/student_obs/*.bak
+
+# ── macOS ─────────────────────────────────────────────────────
+.DS_Store
+**/.DS_Store

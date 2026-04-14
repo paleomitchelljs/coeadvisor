@@ -1,0 +1,84 @@
+{
+  "id": "creative_writing_major_2022",
+  "name": "Creative Writing",
+  "program_type": "major",
+  "catalog_year": "2022",
+  "major_code": "CRW",
+  "source": "CRW 2022 Checklist.pdf",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Core Courses",
+      "type": "all",
+      "items": [
+        { "id": "crw125", "title": "Introduction to Creative Writing", "codes": ["CRW-125"] },
+        { "id": "eng111", "title": "Introduction to Literary Studies", "codes": ["ENG-111"] }
+      ]
+    },
+    {
+      "id": "intro_workshops",
+      "label": "Introductory Workshops (choose 2 of 3)",
+      "type": "choose_n",
+      "n": 2,
+      "items": [
+        { "id": "play1",   "title": "Playwriting Workshop 1",  "codes": ["CRW-255", "THE-255"] },
+        { "id": "poetry1", "title": "Poetry Workshop 1",       "codes": ["CRW-280"] },
+        { "id": "fiction1","title": "Fiction Workshop 1",      "codes": ["CRW-290"] }
+      ]
+    },
+    {
+      "id": "advanced_workshops",
+      "label": "Advanced Workshops or Topics Courses (choose 2)",
+      "type": "choose_n",
+      "n": 2,
+      "items": [
+        { "id": "play2",      "title": "Playwriting Workshop 2",             "codes": ["CRW-355", "THE-355"] },
+        { "id": "poetry2",    "title": "Poetry Workshop 2",                  "codes": ["CRW-380"] },
+        { "id": "fiction2",   "title": "Fiction Workshop 2",                 "codes": ["CRW-390"] },
+        { "id": "play3",      "title": "Playwriting Workshop 3",             "codes": ["CRW-455", "THE-455"] },
+        { "id": "poetry3",    "title": "Poetry Workshop 3",                  "codes": ["CRW-480"] },
+        { "id": "fiction3",   "title": "Fiction Workshop 3",                 "codes": ["CRW-490"] },
+        { "id": "adv_topics", "title": "Advanced Topics in Creative Writing", "codes": ["CRW-484"] }
+      ]
+    },
+    {
+      "id": "eng_electives",
+      "label": "Two English Courses (at least one numbered 281 or above)",
+      "type": "open_n",
+      "n": 2,
+      "description": "Any two ENG courses not already used; at least one must be 281+.",
+      "constraints": {
+        "prefixes": ["ENG"],
+        "exclude_codes": ["ENG-111"],
+        "min_level": 281,
+        "min_level_count": 1
+      }
+    },
+    {
+      "id": "elective",
+      "label": "One Elective (CRW elective, ENG elective, two terms CRW-112, or an RHE course below)",
+      "type": "choose_n",
+      "n": 1,
+      "items": [
+        { "id": "rhe255", "title": "The Essay",             "codes": ["RHE-255"] },
+        { "id": "rhe257", "title": "Environmental Rhetoric", "codes": ["RHE-257"] },
+        { "id": "rhe377", "title": "Cultural Studies",       "codes": ["RHE-377"] }
+      ],
+      "note": "Any CRW or ENG elective not already counted, or two terms of CRW-112, also satisfies this requirement."
+    },
+    {
+      "id": "manuscript",
+      "label": "Manuscript Workshop",
+      "type": "all",
+      "items": [
+        { "id": "crw492", "title": "Manuscript Workshop", "codes": ["CRW-492"] }
+      ]
+    },
+    {
+      "id": "senior_reading",
+      "label": "Senior Reading",
+      "type": "non_course",
+      "description": "Public reading from the manuscript produced in CRW-492."
+    }
+  ]
+}

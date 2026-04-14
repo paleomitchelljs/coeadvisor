@@ -1,0 +1,69 @@
+{
+  "id": "data_science_major_2021",
+  "name": "Data Science",
+  "program_type": "major",
+  "catalog_year": "2021",
+  "major_code": "DS",
+  "source": "Data Science 2021.txt",
+  "sections": [
+    {
+      "id": "intro",
+      "label": "Introduction to Data Science (choose one)",
+      "type": "choose_one",
+      "options": [
+        { "id": "ds100", "title": "Introduction to Data Science", "codes": ["DS-100"] },
+        { "id": "ds120", "title": "Sports Analytics",             "codes": ["DS-120"] }
+      ]
+    },
+    {
+      "id": "programming",
+      "label": "Programming",
+      "type": "all",
+      "items": [
+        { "id": "cs125", "title": "Introduction to Programming", "codes": ["CS-125"] }
+      ]
+    },
+    {
+      "id": "statistics",
+      "label": "Statistics (choose one option)",
+      "type": "choose_one",
+      "options": [
+        { "id": "bus190",       "title": "Statistical Analysis (WE)",                                              "codes": ["BUS-190"] },
+        { "id": "bus340",       "title": "Applied Regression Analysis",                                            "codes": ["BUS-340"] },
+        { "id": "psy300",       "title": "Statistical Methods and Data Analysis",                                  "codes": ["PSY-300"] },
+        { "id": "sta100_110",   "title": "Statistical Foundations + Inferential Statistics",                       "codes": ["STA-100", "STA-110"] },
+        { "id": "sta100_130",   "title": "Statistical Foundations + Experimental Design",                          "codes": ["STA-100", "STA-130"] },
+        { "id": "sta315",       "title": "Probability and Statistics I",                                           "codes": ["STA-315"] }
+      ]
+    },
+    {
+      "id": "ds_core",
+      "label": "Data Science Core",
+      "type": "all",
+      "items": [
+        { "id": "ds230", "title": "Data-Centric Programming",              "codes": ["DS-230"] },
+        { "id": "ds260", "title": "Data Analysis and Visualization",       "codes": ["DS-260"] },
+        { "id": "eco375","title": "Econometrics (WE)",                     "codes": ["ECO-375"] },
+        { "id": "ds315", "title": "Machine Learning",                      "codes": ["DS-315"] },
+        { "id": "ds370", "title": "Database Systems and Data Management",  "codes": ["DS-370"] }
+      ]
+    },
+    {
+      "id": "modeling",
+      "label": "Modeling Course (choose one)",
+      "type": "choose_one",
+      "options": [
+        { "id": "ds415",  "title": "Deep Learning",                "codes": ["DS-415"] },
+        { "id": "mth455", "title": "Mathematical Modeling (WE)",   "codes": ["MTH-455"] },
+        { "id": "eco435", "title": "Time Series Analysis",         "codes": ["ECO-435"] },
+        { "id": "eco445", "title": "Econometrics II (WE)",         "codes": ["ECO-445"] }
+      ]
+    },
+    {
+      "id": "domain_electives",
+      "label": "Domain Electives — Three 200+ courses, same prefix, different discipline",
+      "type": "non_course",
+      "description": "Three additional courses from a discipline other than DS/CS/ECO, all numbered 200 or above, all sharing the same course prefix. Selected in consultation with Data Science faculty."
+    }
+  ]
+}

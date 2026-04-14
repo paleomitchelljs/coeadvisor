@@ -1,0 +1,57 @@
+{
+  "id": "creative_writing_minor_2022",
+  "name": "Creative Writing",
+  "program_type": "minor",
+  "catalog_year": "2022",
+  "major_code": "CRW",
+  "source": "CRW 2022 Checklist.pdf",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Core",
+      "type": "all",
+      "items": [
+        { "id": "crw125", "title": "Introduction to Creative Writing", "codes": ["CRW-125"] }
+      ]
+    },
+    {
+      "id": "workshops",
+      "label": "Any Three Workshops (from the list below)",
+      "type": "choose_n",
+      "n": 3,
+      "items": [
+        { "id": "play1",      "title": "Playwriting Workshop 1",             "codes": ["CRW-255", "THE-255"] },
+        { "id": "poetry1",    "title": "Poetry Workshop 1",                  "codes": ["CRW-280"] },
+        { "id": "fiction1",   "title": "Fiction Workshop 1",                 "codes": ["CRW-290"] },
+        { "id": "play2",      "title": "Playwriting Workshop 2",             "codes": ["CRW-355", "THE-355"] },
+        { "id": "poetry2",    "title": "Poetry Workshop 2",                  "codes": ["CRW-380"] },
+        { "id": "fiction2",   "title": "Fiction Workshop 2",                 "codes": ["CRW-390"] },
+        { "id": "play3",      "title": "Playwriting Workshop 3",             "codes": ["CRW-455", "THE-455"] },
+        { "id": "poetry3",    "title": "Poetry Workshop 3",                  "codes": ["CRW-480"] },
+        { "id": "adv_topics", "title": "Advanced Topics in Creative Writing", "codes": ["CRW-484"] },
+        { "id": "fiction3",   "title": "Fiction Workshop 3",                 "codes": ["CRW-490"] },
+        { "id": "manuscript", "title": "Manuscript Workshop",                "codes": ["CRW-492"] }
+      ]
+    },
+    {
+      "id": "eng_course",
+      "label": "One English Course",
+      "type": "open_n",
+      "n": 1,
+      "description": "Any one ENG course.",
+      "constraints": { "prefixes": ["ENG"] }
+    },
+    {
+      "id": "elective",
+      "label": "One Elective (CRW, ENG, two terms CRW-112, or specified RHE courses)",
+      "type": "choose_n",
+      "n": 1,
+      "items": [
+        { "id": "rhe255", "title": "The Essay",             "codes": ["RHE-255"] },
+        { "id": "rhe257", "title": "Environmental Rhetoric", "codes": ["RHE-257"] },
+        { "id": "rhe377", "title": "Cultural Studies",       "codes": ["RHE-377"] }
+      ],
+      "note": "Any additional CRW or ENG elective, or two terms of CRW-112, also satisfies this requirement."
+    }
+  ]
+}

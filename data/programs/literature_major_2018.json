@@ -1,0 +1,46 @@
+{
+  "id": "literature_major_2018",
+  "name": "Literature",
+  "program_type": "major",
+  "catalog_year": "2018",
+  "major_code": "LIT",
+  "source": "Literature 2018.txt",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Course",
+      "type": "all",
+      "items": [
+        { "id": "eng301", "title": "The Art of Literary Research", "codes": ["ENG-301"] }
+      ]
+    },
+    {
+      "id": "capstone",
+      "label": "Capstone Seminar (choose one)",
+      "type": "choose_one",
+      "options": [
+        { "id": "lit464",       "title": "Seminar in World Literature",                    "codes": ["LIT-464"] },
+        { "id": "arrangement",  "title": "A course by arrangement, in consultation with Literature Administrative Coordinator", "codes": [] }
+      ]
+    },
+    {
+      "id": "foreign_language",
+      "label": "Foreign Language (two intermediate or advanced courses, same language)",
+      "type": "non_course",
+      "description": "Two foreign language courses in the same language at the intermediate or advanced level, taken at Coe College with permission of the Literature Administrative Coordinator."
+    },
+    {
+      "id": "lit_in_language",
+      "label": "Literature Course in a Foreign Language",
+      "type": "non_course",
+      "description": "At least one literature course taught in a foreign language."
+    },
+    {
+      "id": "electives",
+      "label": "Six Elective Courses (no more than three from English dept)",
+      "type": "non_course",
+      "description": "Six courses chosen in consultation with the Literature Administrative Coordinator. No more than three from the English department may count. At least four must come from: literature in translation, English/American literature and creative writing, literature taught in a foreign language, linguistics, or Independent Study. At least one or more must be a core course: AAM/ENG-267 African American Literature, ENG-110 Ancient Mythology, or ENG-207 Gender and Literature: U.S. Pluralism."
+    }
+  ],
+  "notes": "Students interested in the major should take a foreign language course and a literature course in their first year."
+}

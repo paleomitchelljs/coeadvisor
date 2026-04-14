@@ -1,0 +1,90 @@
+{
+  "id": "writing_rhetoric_major_2020",
+  "name": "Writing (Rhetoric)",
+  "program_type": "major",
+  "catalog_year": "2020",
+  "major_code": "RHE",
+  "source": "Writing (Rhetoric) 2020 (1).txt",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        { "id": "com125", "title": "Fundamentals of Public Speaking",  "codes": ["COM-125"] },
+        { "id": "rhe200", "title": "Rhetorical Theory and Practice",   "codes": ["RHE-200"] }
+      ]
+    },
+    {
+      "id": "journalism",
+      "label": "Journalism Course (choose one)",
+      "type": "choose_one",
+      "options": [
+        { "id": "com241", "title": "Introduction to Multimedia Journalism",    "codes": ["COM-241"] },
+        { "id": "rhe225", "title": "Journalism and Media Writing Workshop",    "codes": ["RHE-225"] }
+      ]
+    },
+    {
+      "id": "essay_or_cultural",
+      "label": "Essay or Cultural Studies (choose one)",
+      "type": "choose_one",
+      "options": [
+        { "id": "rhe255", "title": "The Essay",       "codes": ["RHE-255"] },
+        { "id": "rhe377", "title": "Cultural Studies", "codes": ["RHE-377"] }
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Six Elective Courses (at least three must be numbered 300 or above; no more than two may be CRW)",
+      "type": "choose_n",
+      "n": 6,
+      "items": [
+        { "id": "com241e", "title": "Introduction to Multimedia Journalism (if not used for #3)",    "codes": ["COM-241"] },
+        { "id": "com337",  "title": "Persuasion",                                                    "codes": ["COM-337"] },
+        { "id": "com341",  "title": "Digital Storytelling",                                          "codes": ["COM-341"] },
+        { "id": "com444",  "title": "Independent Study in Communication Studies (topic appropriate)", "codes": ["COM-444"] },
+        { "id": "com494",  "title": "Internship in Journalism/Communication",                        "codes": ["COM-494"] },
+        { "id": "crw115",  "title": "Exploring Creative Writing",                                    "codes": ["CRW-115"] },
+        { "id": "crw255",  "title": "Playwriting Workshop 1",                                        "codes": ["CRW-255"] },
+        { "id": "crw280",  "title": "Poetry Workshop 1",                                             "codes": ["CRW-280"] },
+        { "id": "crw290",  "title": "Fiction Workshop 1",                                            "codes": ["CRW-290"] },
+        { "id": "crw355",  "title": "Playwriting Workshop 2",                                        "codes": ["CRW-355"] },
+        { "id": "crw380",  "title": "Poetry Workshop 2",                                             "codes": ["CRW-380"] },
+        { "id": "crw390",  "title": "Fiction Workshop 2",                                            "codes": ["CRW-390"] },
+        { "id": "crw455",  "title": "Playwriting Workshop 3",                                        "codes": ["CRW-455"] },
+        { "id": "rhe135",  "title": "Writers Colony",                                                "codes": ["RHE-135"] },
+        { "id": "rhe137",  "title": "Creative Nonfiction and American Culture",                      "codes": ["RHE-137"] },
+        { "id": "rhe146",  "title": "Memoir and Culture",                                            "codes": ["RHE-146"] },
+        { "id": "rhe175",  "title": "Writer's Studio",                                               "codes": ["RHE-175"] },
+        { "id": "rhe210",  "title": "Journalism Practicum",                                          "codes": ["RHE-210"] },
+        { "id": "rhe225e", "title": "Journalism and Media Writing Workshop (if not used for #3)",    "codes": ["RHE-225"] },
+        { "id": "rhe230",  "title": "Grammar and Style Workshop",                                    "codes": ["RHE-230"] },
+        { "id": "rhe255e", "title": "The Essay (if not used for #4)",                                "codes": ["RHE-255"] },
+        { "id": "rhe257",  "title": "Environmental Rhetoric",                                        "codes": ["RHE-257"] },
+        { "id": "rhe265",  "title": "Professional Writing",                                          "codes": ["RHE-265"] },
+        { "id": "rhe275",  "title": "Advanced Writers Studio",                                       "codes": ["RHE-275"] },
+        { "id": "rhe284",  "title": "Topics in Writing and Rhetoric",                                "codes": ["RHE-284"] },
+        { "id": "rhe285",  "title": "Technical Writing and Information Design",                      "codes": ["RHE-285"] },
+        { "id": "rhe312",  "title": "Writing Center Theory and Practice",                            "codes": ["RHE-312"] },
+        { "id": "rhe345",  "title": "Nature Writing",                                                "codes": ["RHE-345"] },
+        { "id": "rhe377e", "title": "Cultural Studies (if not used for #4)",                         "codes": ["RHE-377"] },
+        { "id": "rhe394",  "title": "Directed Studies in Writing",                                   "codes": ["RHE-394"] },
+        { "id": "rhe415e", "title": "Advanced Writing Workshop (if not used for #6)",                "codes": ["RHE-415"] },
+        { "id": "rhe425",  "title": "Advanced Topics in Writing and Rhetorical Studies",             "codes": ["RHE-425"] },
+        { "id": "rhe490",  "title": "Publications Practicum",                                        "codes": ["RHE-490"] },
+        { "id": "rhe494",  "title": "Internship in Writing",                                         "codes": ["RHE-494"] }
+      ]
+    },
+    {
+      "id": "capstone",
+      "label": "Senior Capstone (choose one)",
+      "type": "choose_one",
+      "options": [
+        { "id": "rhe415",  "title": "Advanced Writing Workshop",              "codes": ["RHE-415"] },
+        { "id": "rhe444",  "title": "Independent Study in Writing",           "codes": ["RHE-444"] },
+        { "id": "honors",  "title": "Honors Thesis",                          "codes": [] }
+      ]
+    }
+  ],
+  "notes": "Students may not double-major in Writing and Creative Writing, or Writing and Communication Studies. Students also majoring in Communication Studies may select no more than two additional COM-prefix courses toward the six electives."
+}

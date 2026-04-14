@@ -1,4 +1,4 @@
-('/Users/jmitchell/Library/CloudStorage/Dropbox/Professional/paleomitchelljs.github.io/coe/advising/build/advisor/PYZ-00.pyz',
+('/Users/jmitchell/Library/CloudStorage/Dropbox/Professional/software/advising/build/advisor/PYZ-00.pyz',
  [('__future__',
    '/opt/homebrew/Cellar/python@3.14/3.14.3/Frameworks/Python.framework/Versions/3.14/lib/python3.14/__future__.py',
    'PYMODULE'),

@@ -1,0 +1,76 @@
+{
+  "id": "music_bm_major_2018",
+  "name": "Music — Bachelor of Music",
+  "program_type": "major",
+  "catalog_year": "2018",
+  "major_code": "MU",
+  "source": "Music - Bachelor of Music 2018.txt",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Core Courses (all students)",
+      "type": "all",
+      "items": [
+        { "id": "mu109", "title": "Theory of Music I",             "codes": ["MU-109"] },
+        { "id": "mu209", "title": "Theory of Music II",            "codes": ["MU-209"] },
+        { "id": "mu309", "title": "Theory of Music III",           "codes": ["MU-309"] },
+        { "id": "mu255", "title": "Music History and Literature I", "codes": ["MU-255"] },
+        { "id": "mu355", "title": "Music History and Literature II","codes": ["MU-355"] },
+        { "id": "mu458", "title": "Music History and Literature III","codes": ["MU-458"] },
+        { "id": "mu285", "title": "Conducting I",                  "codes": ["MU-285"] }
+      ]
+    },
+    {
+      "id": "applied_music",
+      "label": "Applied Music — Eight Terms (all emphases except Music Education)",
+      "type": "non_course",
+      "description": "Eight terms of participation in the Applied Music Course (see Catalog). Music Education track requires seven terms."
+    },
+    {
+      "id": "keyboard_exam",
+      "label": "Keyboard Fundamentals Examination",
+      "type": "non_course",
+      "description": "The Keyboard Fundamentals Examination must be passed by the end of the sophomore year. Exceptions require majority faculty approval. After passing, credits may be accumulated toward a secondary performance area in piano."
+    },
+    {
+      "id": "bmasa",
+      "label": "BMASA — Bachelor of Music Advanced Standing Assessment",
+      "type": "non_course",
+      "description": "An audition evaluation whereby the music faculty assesses suitability for student teaching or senior recital. Students performing at the approved level may register for Advanced Level lessons. Students not recommended must select a different degree program or reapply in a later term."
+    },
+    {
+      "id": "senior_assessment",
+      "label": "Senior Assessment Examination",
+      "type": "non_course",
+      "description": "The Senior Assessment Examination in the final term prior to graduation."
+    },
+    {
+      "id": "emphasis",
+      "label": "Emphasis (choose one of four)",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "composition",
+          "title": "Composition: MU-195 + MU-409 + MU-413 + MU-423 + MUA-490 Senior Recital + GE courses (one each from social sciences, natural sciences, humanities) + two courses in French or German + two additional non-music courses",
+          "codes": ["MU-195", "MU-409", "MU-413", "MU-423"]
+        },
+        {
+          "id": "keyboard_instrumental",
+          "title": "Keyboard/Instrumental Performance: MU-409 + four elective MU/MUA courses from approved list + MUA-490 Senior Recital (0 cc) + GE courses + two courses in French or German",
+          "codes": ["MU-409"]
+        },
+        {
+          "id": "vocal",
+          "title": "Vocal Performance: MUA-133V + MUA-134V + MU-409 + four elective MU/MUA courses from approved list + MUA-800 Senior Recital + GE courses + two courses in French or German",
+          "codes": ["MU-409", "MUA-133V", "MUA-134V"]
+        },
+        {
+          "id": "music_education",
+          "title": "Music Education (Vocal or Instrumental): EDU-105 + EDU-117 + EDU-187 + EDU-195 + EDU-219 + MU-205 + MU-360 + one methods sequence (MU-361/362 or MU-363/364) + MU-385 + MU-421 + MU-422 + seven terms Applied Music",
+          "codes": ["EDU-105", "EDU-117", "EDU-187", "EDU-195", "EDU-219", "MU-205", "MU-360", "MU-385", "MU-421", "MU-422"]
+        }
+      ]
+    }
+  ],
+  "notes": "A grade of C or better is required in all Theory and History courses. Music Education students must maintain a minimum 2.7 cumulative GPA and 2.7 in the major per state licensure requirements. To complete Music Education in four years, the sequence must begin in the first year; students entering as sophomores should anticipate a fifth year. Some students will be recommended for MU-055 (for music majors) in the fall term."
+}

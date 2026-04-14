@@ -1,0 +1,46 @@
+{
+  "id": "environmental_science_collateral_2018",
+  "name": "Environmental Science",
+  "program_type": "collateral",
+  "catalog_year": "2018",
+  "major_code": "EVS",
+  "source": "Environmental Science 2018.txt",
+  "sections": [
+    {
+      "id": "primary_major",
+      "label": "Concurrent Primary Major (choose one track)",
+      "type": "non_course",
+      "description": "Concurrent major in biology OR chemistry is required. Track A (with Biology): major in biology + MTH-135 Calculus I + BIO-535/530 Environmental Microbiology and Lab. Track B (with Chemistry): major in chemistry + MTH-145 Calculus II + PHY-185/-185L General Physics I + PHY-195/-195L General Physics II + CHM-412/-412L Environmental Analysis and Lab OR BIO-535/530 Environmental Microbiology and Lab."
+    },
+    {
+      "id": "required_all",
+      "label": "Required Courses (all tracks)",
+      "type": "all",
+      "items": [
+        { "id": "bio295", "title": "Spatial Ecology and Laboratory",         "codes": ["BIO-295", "BIO-295L"] },
+        { "id": "chm211", "title": "Analytical Chemistry and Laboratory",    "codes": ["CHM-211", "CHM-211L"] },
+        { "id": "chm221", "title": "Organic Chemistry I",                    "codes": ["CHM-221"] }
+      ]
+    },
+    {
+      "id": "field_courses",
+      "label": "Field Courses (choose two, with associated labs)",
+      "type": "choose_n",
+      "n": 2,
+      "items": [
+        { "id": "bio115",  "title": "Marine Biology",                                                   "codes": ["BIO-115"] },
+        { "id": "bio165",  "title": "Ecology and Biology of Birds",                                     "codes": ["BIO-165"] },
+        { "id": "bio175",  "title": "Field Botany",                                                     "codes": ["BIO-175"] },
+        { "id": "bio185",  "title": "Entomology",                                                       "codes": ["BIO-185"] },
+        { "id": "bio275",  "title": "Aquatic Ecology",                                                  "codes": ["BIO-275"] },
+        { "id": "bio325",  "title": "Microbiology and Lab",                                             "codes": ["BIO-325", "BIO-325L"] },
+        { "id": "bio385",  "title": "Behavior and Ecology of Vertebrates and Lab",                      "codes": ["BIO-385", "BIO-385L"] },
+        { "id": "bio425",  "title": "Ecology and Lab",                                                  "codes": ["BIO-425", "BIO-425L"] },
+        { "id": "chm411",  "title": "Advanced Analytical Chemistry",                                    "codes": ["CHM-411"] },
+        { "id": "chm444",  "title": "Independent Study in Chemistry",                                   "codes": ["CHM-444"] },
+        { "id": "wfs",     "title": "Any course taught at the Wilderness Field Station (BIO prefix)",   "codes": [] }
+      ]
+    }
+  ],
+  "notes": "Recommended courses: BIO-105 Introduction to Environmental Studies; MTH-145 Calculus II; RHE-357 Environmental Rhetoric; STA-100/110 or STA-100/130. Students with a biology primary should follow biology department guidance for the first year; students with chemistry primary should follow chemistry guidance."
+}

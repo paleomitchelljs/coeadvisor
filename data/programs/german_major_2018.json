@@ -1,0 +1,34 @@
+{
+  "id": "german_major_2018",
+  "name": "German",
+  "program_type": "major",
+  "catalog_year": "2018",
+  "major_code": "GER",
+  "source": "German 2018.txt",
+  "sections": [
+    {
+      "id": "ger_courses",
+      "label": "Eight German Courses Numbered GER-315 or Above",
+      "type": "open_n",
+      "n": 8,
+      "description": "Eight German courses numbered GER-315 or above. Up to three may be substituted with study abroad in a program approved by the College and the Department.",
+      "constraints": {
+        "prefixes": ["GER"],
+        "min_level": 315
+      }
+    },
+    {
+      "id": "lit_senior",
+      "label": "German Literature Course — Senior Year",
+      "type": "non_course",
+      "description": "One German literature course must be taken in the senior year."
+    },
+    {
+      "id": "study_abroad",
+      "label": "Study Abroad (optional, up to three courses)",
+      "type": "non_course",
+      "description": "Students are urged to substitute study abroad in a program approved by the College and the Department for up to three of the eight required courses."
+    }
+  ],
+  "notes": "A grade of C or higher must be earned in all courses counted toward the major. Students selecting German as a second teaching field need only a minimum of four GER courses numbered 315 or above (including GER-315 German Composition and Conversation). Students who study in a German-speaking country for a term may begin counting toward the major from Elementary German I (GER-115)."
+}

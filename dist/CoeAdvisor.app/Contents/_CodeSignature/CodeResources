@@ -1298,15 +1298,19 @@
 		</data>
 		<key>Resources/base_library.zip</key>
 		<data>
-		/JTysiYGyqc7uY6KebDMhpxyqvg=
+		u7qRm+dYyJ1nwcx44pMci0OGc8s=
 		</data>
 		<key>Resources/data/course_credits.json</key>
 		<data>
-		AE+4EvEYiT0K4j4FfRxHvEyBs1g=
+		8JC/NcVChm2SDafJqMcPMSStPrU=
 		</data>
 		<key>Resources/data/dac_2025.json</key>
 		<data>
 		aRZMBANxVV6aBTqaDW14UPt9Srs=
+		</data>
+		<key>Resources/data/first_two_years.json</key>
+		<data>
+		UNdWAVYnfPogvXkhcYeeUXwf6zU=
 		</data>
 		<key>Resources/data/ge_2025.json</key>
 		<data>
@@ -1323,6 +1327,38 @@
 		<key>Resources/data/pathways/pt_dpt.json</key>
 		<data>
 		kZBEcewt24uwdggMMW8Z1KBw+9I=
+		</data>
+		<key>Resources/data/programs/accounting_managerial_major_2018.json</key>
+		<data>
+		uOgdjJZemUw/a9gO8W+h3sBPEUI=
+		</data>
+		<key>Resources/data/programs/accounting_public_major_2018.json</key>
+		<data>
+		y/UEea5efIUXG6O9xH/D8s8oO4Q=
+		</data>
+		<key>Resources/data/programs/african_american_studies_major_2020.json</key>
+		<data>
+		KuOhznzl+0Js2qHkLGUnbOCTpRc=
+		</data>
+		<key>Resources/data/programs/american_studies_major_2018.json</key>
+		<data>
+		MUwQ1KmNxy2O1e7X+jzlszezRTg=
+		</data>
+		<key>Resources/data/programs/art_history_minor_2026.json</key>
+		<data>
+		qDOunicXFDsm6EyCM588w6YTuOg=
+		</data>
+		<key>Resources/data/programs/asian_studies_major_2018.json</key>
+		<data>
+		yFV4YvVX27xwPD+kWclF4+fJXWo=
+		</data>
+		<key>Resources/data/programs/biochemistry_collateral_2018.json</key>
+		<data>
+		vUla5UzNohKgV4kTyw/d0SDoF2o=
+		</data>
+		<key>Resources/data/programs/biology_major_2024.json</key>
+		<data>
+		9IFS4YSTnVFRFI4xAfNLezSaq0U=
 		</data>
 		<key>Resources/data/programs/biology_major_2025.json</key>
 		<data>
@@ -1352,6 +1388,18 @@
 		<data>
 		Gqv5uM/8QCPaEyMS0BmZNTd+PTc=
 		</data>
+		<key>Resources/data/programs/creative_writing_major_2022.json</key>
+		<data>
+		/m3LxrpypaDvQewEX9XFx3eBVio=
+		</data>
+		<key>Resources/data/programs/creative_writing_minor_2022.json</key>
+		<data>
+		k7RLEz3+ptspgID64xIvn4vp6Cc=
+		</data>
+		<key>Resources/data/programs/data_science_major_2021.json</key>
+		<data>
+		BXvhH+qHCGOAi+mhh/odBvKQgTc=
+		</data>
 		<key>Resources/data/programs/economics_major_2022.json</key>
 		<data>
 		g0/uQSTVoJFHqy/k02Hs3yro75Q=
@@ -1372,21 +1420,105 @@
 		<data>
 		/PhwhNOjfwlZS0K18wvIB8sDVGY=
 		</data>
+		<key>Resources/data/programs/environmental_science_collateral_2018.json</key>
+		<data>
+		UEeJ0cENH1JxdWVg7uerRHglvw0=
+		</data>
+		<key>Resources/data/programs/environmental_studies_collateral_2025.json</key>
+		<data>
+		8OcxS4yZppQlD3z7U2BP1dOOy5Y=
+		</data>
+		<key>Resources/data/programs/film_studies_major_2022.json</key>
+		<data>
+		65+AtkudTPKNy/MkRPlQqy0/s9M=
+		</data>
+		<key>Resources/data/programs/film_studies_minor_2022.json</key>
+		<data>
+		ridsTkjJ1UuQFzzVfY2qT4YKHM8=
+		</data>
+		<key>Resources/data/programs/french_francophone_major_2019.json</key>
+		<data>
+		NEwwcP5WtCFPn16dydSzQ1WYhCc=
+		</data>
+		<key>Resources/data/programs/gender_sexuality_studies_collateral_2018.json</key>
+		<data>
+		VsbvBqf5TowmW/oF/e8dHAE+3v0=
+		</data>
+		<key>Resources/data/programs/general_science_major_2018.json</key>
+		<data>
+		G6sJC6tVy+2gTL5PYkd2NrcFU7A=
+		</data>
+		<key>Resources/data/programs/german_major_2018.json</key>
+		<data>
+		47K9s2kxljpq1edrBNJAuS13Ncc=
+		</data>
+		<key>Resources/data/programs/health_society_studies_minor_2020.json</key>
+		<data>
+		BVHE1vCq6Ce0kSesIco/gtneM7k=
+		</data>
 		<key>Resources/data/programs/history_major_2021.json</key>
 		<data>
 		iQ5RqMFs3gZHavIu5YTxnFdrTj0=
+		</data>
+		<key>Resources/data/programs/international_business_major_2018.json</key>
+		<data>
+		g/UlGkJ1MO0AEPhBiqQulrwVDXs=
+		</data>
+		<key>Resources/data/programs/international_economics_major_2018.json</key>
+		<data>
+		teRqsT9gcX6BJVdvzpYRtfHCVOk=
+		</data>
+		<key>Resources/data/programs/international_studies_major_2021.json</key>
+		<data>
+		BG4iI4fH/UexsaRIyX5EwauWm6Q=
+		</data>
+		<key>Resources/data/programs/kinesiology_athletic_training_major_2021.json</key>
+		<data>
+		4m/PiZRxbNLN3ZKPdhcVCr31Qio=
 		</data>
 		<key>Resources/data/programs/kinesiology_fitness_major_2024.json</key>
 		<data>
 		CioRP/2Yudp2yW9k5hzMmXQBz94=
 		</data>
+		<key>Resources/data/programs/kinesiology_teaching_major_2024.json</key>
+		<data>
+		w5yR92wJztKwZ/Fw7Xe9vguX+xM=
+		</data>
+		<key>Resources/data/programs/literature_major_2018.json</key>
+		<data>
+		KnQlATucE7XKvjgMrVPD/HjgbaE=
+		</data>
 		<key>Resources/data/programs/mathematics_major_2018.json</key>
 		<data>
 		J/EFvhDq9WoSqbiBa3niIwfMALA=
 		</data>
+		<key>Resources/data/programs/molecular_biology_collateral_2018.json</key>
+		<data>
+		NS7oGsfdyaaXxG8mLhR2VkdJGpM=
+		</data>
+		<key>Resources/data/programs/museum_studies_minor_2026.json</key>
+		<data>
+		voikfBm2RIpU+D1btdXH769tgJk=
+		</data>
+		<key>Resources/data/programs/music_ba_major_2019.json</key>
+		<data>
+		5IGZlGO/T0fOwSbnYgniPE5yfCY=
+		</data>
+		<key>Resources/data/programs/music_bm_major_2018.json</key>
+		<data>
+		8k4S+lxVmm5rww75tIiI7uP9Bn8=
+		</data>
+		<key>Resources/data/programs/neuroscience_collateral_2018.json</key>
+		<data>
+		oPIeOBjtli8w7USxFcguIQUbxLg=
+		</data>
 		<key>Resources/data/programs/nursing_bsn_2025.json</key>
 		<data>
 		3QHhDhBStsisLzp/AGKF90EaNCk=
+		</data>
+		<key>Resources/data/programs/organizational_science_collateral_2023.json</key>
+		<data>
+		wUlSebTgsOZDKFo+sEuHMRwmZ08=
 		</data>
 		<key>Resources/data/programs/philosophy_major_2025.json</key>
 		<data>
@@ -1408,6 +1540,10 @@
 		<data>
 		sg+if85fR1Uu2hxFSJAn2fCEH9k=
 		</data>
+		<key>Resources/data/programs/public_relations_collateral_2020.json</key>
+		<data>
+		yaFriDH0fmOgfaUcfSKzv69U7w4=
+		</data>
 		<key>Resources/data/programs/social_criminal_justice_major_2025.json</key>
 		<data>
 		Si2100RLPO93o/V4N5SGC8szug0=
@@ -1419,6 +1555,22 @@
 		<key>Resources/data/programs/sociology_minor_2025.json</key>
 		<data>
 		xwzjtYUp4iqVJ8XHHCnO1ukOXK8=
+		</data>
+		<key>Resources/data/programs/spanish_major_2024.json</key>
+		<data>
+		vRyEN8QoyzuaTJTRLootaxx3aHU=
+		</data>
+		<key>Resources/data/programs/studio_art_major_2026.json</key>
+		<data>
+		tzavH5jRP6mvSkV0zG9bclEF6rA=
+		</data>
+		<key>Resources/data/programs/studio_art_minor_2026.json</key>
+		<data>
+		jgJ1LZdIUpDWsEfnkvWTFpnRlGI=
+		</data>
+		<key>Resources/data/programs/writing_rhetoric_major_2020.json</key>
+		<data>
+		BPyUE/+4OtjuDOUoJ8verlCf9EY=
 		</data>
 		<key>Resources/data/student_obs/major_course_summary.csv</key>
 		<data>
@@ -4230,14 +4382,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			UKTBRKIh7hKM2yAy9yYUgzJZtDbZsSOI8RTsaZbDGZ8=
+			zi4RXihOedySx2ifT3wnBWGWUS1UgdEv7ZVtT4qNwmE=
 			</data>
 		</dict>
 		<key>Resources/data/course_credits.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			saRF7bKFdGKiBU6qFxSpESNTbXhx7k46D2bH+coHhng=
+			x8sY7zzR+2b5src9ax3xkbZpR8c3mlYkuZFHGyKB/6A=
 			</data>
 		</dict>
 		<key>Resources/data/dac_2025.json</key>
@@ -4245,6 +4397,13 @@
 			<key>hash2</key>
 			<data>
 			Z3oEBABmVVMiDHQTWtjKtOBdf+zt/KyzjqBkSy00AI8=
+			</data>
+		</dict>
+		<key>Resources/data/first_two_years.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			n0eUN9K/Jq1b2yrR4LsUf7QCqMRnHFbVufSJXRmyDnc=
 			</data>
 		</dict>
 		<key>Resources/data/ge_2025.json</key>
@@ -4273,6 +4432,62 @@
 			<key>hash2</key>
 			<data>
 			6rP3XQa0YbJm1EPAOAtWv/tKQ+jwZfULi3CSWIHZKXM=
+			</data>
+		</dict>
+		<key>Resources/data/programs/accounting_managerial_major_2018.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			9gL91VGlwJwYtBLlwMNoHu6gWx0EyahEcg+cGu+aepo=
+			</data>
+		</dict>
+		<key>Resources/data/programs/accounting_public_major_2018.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			FQgXjiaqIVjuMC4Co2H34FcCEnlpDfK+qRSFJIIQLbI=
+			</data>
+		</dict>
+		<key>Resources/data/programs/african_american_studies_major_2020.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			e5ucZ95zsC0xR9983A66276Ig4N85Q+4D1MPGN1ScYo=
+			</data>
+		</dict>
+		<key>Resources/data/programs/american_studies_major_2018.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			mKW0lRZUJmAei6rMrds51Ud+N1vCcmkoA1X58zKg/lQ=
+			</data>
+		</dict>
+		<key>Resources/data/programs/art_history_minor_2026.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Hq+PxOsvGzrA09xiMXp5NmEiI9RfAJEl+j7nsnZ76bI=
+			</data>
+		</dict>
+		<key>Resources/data/programs/asian_studies_major_2018.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			zQDBgWjTxhsZ4Lo8Gr1k0K4McVLEIBODkAz6PrmSYi4=
+			</data>
+		</dict>
+		<key>Resources/data/programs/biochemistry_collateral_2018.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			dyWnpS1oFL9JZfvNgeZYSsUaONATdxGB3rSq+UYjuOA=
+			</data>
+		</dict>
+		<key>Resources/data/programs/biology_major_2024.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			XYt2q8qiiobOye/zLeqDYvEvEb2AnHPjjtk2doh1j8g=
 			</data>
 		</dict>
 		<key>Resources/data/programs/biology_major_2025.json</key>
@@ -4324,6 +4539,27 @@
 			Ly4y+TgUbfE900BHabPwKoTqtgBrMSA6Zfj9CH6yFT4=
 			</data>
 		</dict>
+		<key>Resources/data/programs/creative_writing_major_2022.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			sXMvwkByoN0CGBx2UFYiJUxsIAW68vS3GMsNtemB6Yk=
+			</data>
+		</dict>
+		<key>Resources/data/programs/creative_writing_minor_2022.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			vr2IIEF2lgSrMyzSmnDb/Qi5KOD2YN10F74D+4KL2Cw=
+			</data>
+		</dict>
+		<key>Resources/data/programs/data_science_major_2021.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			UdfIGi+DUtFaKKO6gVsZhALJIQKbHAZ58zA11HkG2+E=
+			</data>
+		</dict>
 		<key>Resources/data/programs/economics_major_2022.json</key>
 		<dict>
 			<key>hash2</key>
@@ -4359,11 +4595,102 @@
 			Y0uoBYXHA2xJC0p9AOVReE7A26cxMhGxMqjO6mwww2I=
 			</data>
 		</dict>
+		<key>Resources/data/programs/environmental_science_collateral_2018.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			D8Mln1IMNWwMbcEfv+eejTnaZj5f66eEJJsW6vB8aVM=
+			</data>
+		</dict>
+		<key>Resources/data/programs/environmental_studies_collateral_2025.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			6vuMUkqK7IAMHCPjifzbwfL//vaQDiEQHUl+u1gxQsU=
+			</data>
+		</dict>
+		<key>Resources/data/programs/film_studies_major_2022.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			yQzM//FV7Tc7imGw4zc4HMqnat+RY6XuSqZ2RxLvt/8=
+			</data>
+		</dict>
+		<key>Resources/data/programs/film_studies_minor_2022.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			edeHvi5fJshqZERQvZq17UmSxIcEGVOuS/UlwBi1FN0=
+			</data>
+		</dict>
+		<key>Resources/data/programs/french_francophone_major_2019.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			I/GYe81nAZSuyEfdL6vaKTa+a2IMosc+3y3uRwGRBPE=
+			</data>
+		</dict>
+		<key>Resources/data/programs/gender_sexuality_studies_collateral_2018.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			BL/KrX+lyVGFAqLiPRzOTKLEHjiSQEV/X5Jc2V7e2H8=
+			</data>
+		</dict>
+		<key>Resources/data/programs/general_science_major_2018.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			bExkdOfIbnqDn+dPfKQ6KTkzp+IvL1O61Ho//jqTZTs=
+			</data>
+		</dict>
+		<key>Resources/data/programs/german_major_2018.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			imapWqeJHE0BcKBlnUzOrM3Nqm6iC0IISL97RlUtr1U=
+			</data>
+		</dict>
+		<key>Resources/data/programs/health_society_studies_minor_2020.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			kspm3hhpEA3k8mTFQw8lPYLP2FpHuX4ZSJDklQZIGx0=
+			</data>
+		</dict>
 		<key>Resources/data/programs/history_major_2021.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			7H3Pcn7wmKqdCGlrKb0tonqA7vMYvfc+CTW88GSQRRQ=
+			</data>
+		</dict>
+		<key>Resources/data/programs/international_business_major_2018.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			7b2Wh6of6B/SsLIA64mRljz0kFMNw/PrJIMLw3GhkJE=
+			</data>
+		</dict>
+		<key>Resources/data/programs/international_economics_major_2018.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			5Xjjnul4THQ5UvQbaqfiesoo3RETomSUS0XPXqN82Zw=
+			</data>
+		</dict>
+		<key>Resources/data/programs/international_studies_major_2021.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			GbRyOr+rLcNh8FIp2VUxNS1qxOyiDIfeTQ8LUDJ7Pqo=
+			</data>
+		</dict>
+		<key>Resources/data/programs/kinesiology_athletic_training_major_2021.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			LmnuROj/uQ1heT9YLqX+mx+1cEkBH/f6IjF0txneavk=
 			</data>
 		</dict>
 		<key>Resources/data/programs/kinesiology_fitness_major_2024.json</key>
@@ -4373,6 +4700,20 @@
 			iDilC0oMbay+U6IX4w5Q+TVbynRPzKgJzI+9YvxAkhs=
 			</data>
 		</dict>
+		<key>Resources/data/programs/kinesiology_teaching_major_2024.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			b+C6NTzJqo8zv+Rjashv2nJpwZs49AzqpVE4FAdx9oc=
+			</data>
+		</dict>
+		<key>Resources/data/programs/literature_major_2018.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			yxtEWalWivs7uNkJJ+JgshghvRxPLKv8IF4AAXf7ANw=
+			</data>
+		</dict>
 		<key>Resources/data/programs/mathematics_major_2018.json</key>
 		<dict>
 			<key>hash2</key>
@@ -4380,11 +4721,53 @@
 			lIbQ3XQ2mpaVWSrh/Oh8YSAS2mGhQ2l41uYakxBIyTY=
 			</data>
 		</dict>
+		<key>Resources/data/programs/molecular_biology_collateral_2018.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			xZn+etamDjO6Zt3sBN9GEYfC9GPRDdxOz0JBwymBo8E=
+			</data>
+		</dict>
+		<key>Resources/data/programs/museum_studies_minor_2026.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			aUafsy+44GEtJjuSAELUwd3sekQ7YfEnqN8zESskNgI=
+			</data>
+		</dict>
+		<key>Resources/data/programs/music_ba_major_2019.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			jHkQhCD2a62TgDfzcwObBjXHD29Jl6jDWbbhXyAn860=
+			</data>
+		</dict>
+		<key>Resources/data/programs/music_bm_major_2018.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			kmJ9WiYJys7ZJm08RaeB05MN3tt5f6n8+1ar2NUaszY=
+			</data>
+		</dict>
+		<key>Resources/data/programs/neuroscience_collateral_2018.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Eqy9D0EK3YJQOeZtbcIv/0hrq+td6s1cQF5UbPPdd7U=
+			</data>
+		</dict>
 		<key>Resources/data/programs/nursing_bsn_2025.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			BeGa9fzAhgf3XarxmZZNu1QaQIvEus2R5wal9bd7WwY=
+			</data>
+		</dict>
+		<key>Resources/data/programs/organizational_science_collateral_2023.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			X7PowrnRUOWcWONvDOguFvsBVfrgixgvAFOvf6xjrMc=
 			</data>
 		</dict>
 		<key>Resources/data/programs/philosophy_major_2025.json</key>
@@ -4422,6 +4805,13 @@
 			7fOOf9jdDSMUiMEmHWnuc84cBI7IayIkQeqvLuF2TFo=
 			</data>
 		</dict>
+		<key>Resources/data/programs/public_relations_collateral_2020.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			wBsl7vtl9zlxlrD66bvz/3RxToo+I36IKZtgGyuTOGo=
+			</data>
+		</dict>
 		<key>Resources/data/programs/social_criminal_justice_major_2025.json</key>
 		<dict>
 			<key>hash2</key>
@@ -4441,6 +4831,34 @@
 			<key>hash2</key>
 			<data>
 			RDeVeyQ1CHpLpqcC1dToNcHM7KG5fN8lIKbkutlLlGE=
+			</data>
+		</dict>
+		<key>Resources/data/programs/spanish_major_2024.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			oyIVWcad6VQ5AV6QkTsG+tdVw1DI1n5LaoBDJE/TwEM=
+			</data>
+		</dict>
+		<key>Resources/data/programs/studio_art_major_2026.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			hAuabq2zxreHyN9pIXy5SyQ5BDsEq0L7tGWA5OQLcHw=
+			</data>
+		</dict>
+		<key>Resources/data/programs/studio_art_minor_2026.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			HDrhf0DVfObvMqwD/AdbRLR/Oat+yQwqsCUi1VpQDIg=
+			</data>
+		</dict>
+		<key>Resources/data/programs/writing_rhetoric_major_2020.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Z1vHXavKo0eHUgmVhtLFZ/oB5e7S/MgV7nifvZcrHco=
 			</data>
 		</dict>
 		<key>Resources/data/student_obs/major_course_summary.csv</key>

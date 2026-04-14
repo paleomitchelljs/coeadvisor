@@ -1,0 +1,39 @@
+{
+  "id": "biochemistry_collateral_2018",
+  "name": "Biochemistry",
+  "program_type": "collateral",
+  "catalog_year": "2018",
+  "major_code": "BCH",
+  "source": "Biochemistry 2018.txt",
+  "sections": [
+    {
+      "id": "chem_major",
+      "label": "Concurrent Chemistry Major",
+      "type": "non_course",
+      "description": "Must concurrently fulfill all requirements for a major in Chemistry, including Calculus II and two General Physics courses."
+    },
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        { "id": "bio145", "title": "Cellular and Molecular Biology and Laboratory", "codes": ["BIO-145", "BIO-145L"] },
+        { "id": "chm431", "title": "Biochemistry and Laboratory",                   "codes": ["CHM-431", "CHM-431L"] },
+        { "id": "chm432", "title": "Protein Biochemistry and Laboratory",           "codes": ["CHM-432", "CHM-432L"] }
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Electives (choose two)",
+      "type": "choose_n",
+      "n": 2,
+      "items": [
+        { "id": "bio325", "title": "Microbiology and Laboratory",                       "codes": ["BIO-325", "BIO-325L"] },
+        { "id": "bio345", "title": "Techniques in Molecular Biology and Laboratory",    "codes": ["BIO-345", "BIO-345L"] },
+        { "id": "bio405", "title": "Current Topics in Molecular Biology",              "codes": ["BIO-405"] },
+        { "id": "bio435", "title": "Cell Physiology and Laboratory",                   "codes": ["BIO-435", "BIO-435L"] }
+      ]
+    }
+  ],
+  "notes": "BIO-235 Genetics (with lab) and all elective courses are strongly encouraged, especially for students planning graduate study. Students choosing Biochemistry may not also select the Molecular Biology collateral."
+}

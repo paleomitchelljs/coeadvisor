@@ -1,0 +1,63 @@
+{
+  "id": "film_studies_minor_2022",
+  "name": "Film Studies",
+  "program_type": "minor",
+  "catalog_year": "2022",
+  "major_code": "FLM",
+  "source": "Film Studies 2022 Advising Checklist.pdf",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Core Courses",
+      "type": "all",
+      "items": [
+        { "id": "art150", "title": "Time Based Media",                    "codes": ["ART-150"] },
+        { "id": "flm105", "title": "Introduction to Film and Laboratory", "codes": ["FLM-105", "FLM-105L"] },
+        { "id": "flm200", "title": "Film Analysis and Laboratory",        "codes": ["FLM-200", "FLM-200L"] },
+        { "id": "flm225", "title": "Film History and Laboratory",         "codes": ["FLM-225", "FLM-225L"] }
+      ]
+    },
+    {
+      "id": "elective_lower",
+      "label": "One Lower-Level Elective",
+      "type": "choose_n",
+      "n": 1,
+      "items": [
+        { "id": "art145", "title": "Digital Studio",                    "codes": ["ART-145"] },
+        { "id": "art155", "title": "Photography: Light Writing",        "codes": ["ART-155"] },
+        { "id": "com151", "title": "Introduction to New Media Studies", "codes": ["COM-151"] },
+        { "id": "com157", "title": "Introduction to Media Analysis",    "codes": ["COM-157"] },
+        { "id": "com161", "title": "Visual Rhetoric",                   "codes": ["COM-161"] },
+        { "id": "crw255", "title": "Playwriting Workshop I",            "codes": ["CRW-255", "THE-255"] },
+        { "id": "flm250", "title": "Film Topics",                       "codes": ["FLM-250"] },
+        { "id": "mu140",  "title": "Film Music",                        "codes": ["MU-140"] },
+        { "id": "mu195",  "title": "Music Production",                  "codes": ["MU-195"] },
+        { "id": "rhe146", "title": "Memoir and Culture",                "codes": ["RHE-146"] },
+        { "id": "rhe200", "title": "Rhetorical Theory and Practice",    "codes": ["RHE-200"] },
+        { "id": "rhe255", "title": "The Essay",                         "codes": ["RHE-255"] },
+        { "id": "rhe257", "title": "Environmental Rhetoric",            "codes": ["RHE-257"] },
+        { "id": "the130", "title": "Technical Production I",            "codes": ["THE-130"] },
+        { "id": "the140", "title": "Design for the Stage",              "codes": ["THE-140"] },
+        { "id": "the220", "title": "Lighting Design",                   "codes": ["THE-220"] },
+        { "id": "the290", "title": "Directing I",                       "codes": ["THE-290"] }
+      ]
+    },
+    {
+      "id": "elective_upper",
+      "label": "One Upper-Level Elective (300+)",
+      "type": "choose_n",
+      "n": 1,
+      "items": [
+        { "id": "art361", "title": "Documentary",                "codes": ["ART-361"] },
+        { "id": "art370", "title": "Video Art and Production",   "codes": ["ART-370"] },
+        { "id": "com337", "title": "Persuasion",                 "codes": ["COM-337"] },
+        { "id": "com357", "title": "Sex, Race, and Gender in the Media", "codes": ["COM-357"] },
+        { "id": "com341", "title": "Digital Storytelling",       "codes": ["COM-341"] },
+        { "id": "crw350", "title": "Screenwriting",              "codes": ["CRW-350"] },
+        { "id": "flm350", "title": "Advanced Topics in Film",    "codes": ["FLM-350"] },
+        { "id": "flm442", "title": "Independent Study in Film",  "codes": ["FLM-442"] },
+        { "id": "flm494", "title": "Internship in Film",         "codes": ["FLM-494"] }
+      ]
+    }
+  ]
+}

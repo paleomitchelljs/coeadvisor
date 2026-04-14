@@ -1,0 +1,69 @@
+{
+  "id": "gender_sexuality_studies_collateral_2018",
+  "name": "Gender and Sexuality Studies",
+  "program_type": "collateral",
+  "catalog_year": "2018",
+  "major_code": "GS",
+  "source": "Gender & Sexuality Studies 2018.txt",
+  "sections": [
+    {
+      "id": "primary_major",
+      "label": "Concurrent Primary Major",
+      "type": "non_course",
+      "description": "Must concurrently fulfill requirements for any major listed in the catalog."
+    },
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        { "id": "gs107", "title": "Introduction to Gender and Sexuality Studies",              "codes": ["GS-107"] },
+        { "id": "gs327", "title": "Theory and Methods in Gender and Sexuality Studies",        "codes": ["GS-327"] },
+        { "id": "gs464", "title": "Gender and Sexuality Studies Capstone",                     "codes": ["GS-464"] }
+      ]
+    },
+    {
+      "id": "core_courses",
+      "label": "Core Courses (at least four of the seven electives must come from this list)",
+      "type": "choose_n",
+      "n": 4,
+      "items": [
+        { "id": "arh107",  "title": "Gender and Art",                                          "codes": ["ARH-107"] },
+        { "id": "com357",  "title": "Sex, Race, and Gender in the Media",                      "codes": ["COM-357"] },
+        { "id": "eng206",  "title": "Gender and Literature: Non-Western Perspectives",         "codes": ["ENG-206"] },
+        { "id": "eng207",  "title": "Gender and Literature: United States Pluralism",          "codes": ["ENG-207"] },
+        { "id": "eng208",  "title": "Gender and Literature: Diverse Western Perspective",      "codes": ["ENG-208"] },
+        { "id": "fre438",  "title": "Women in French (taught in French)",                      "codes": ["FRE-438"] },
+        { "id": "ger445",  "title": "Race, Class and Gender (taught in German)",               "codes": ["GER-445"] },
+        { "id": "gs127",   "title": "Dress, Gender, and Identity",                             "codes": ["GS-127"] },
+        { "id": "gs136",   "title": "Gender in the Non-Western World",                         "codes": ["GS-136"] },
+        { "id": "gs247",   "title": "Gender and Sexuality Studies Symposium",                  "codes": ["GS-247"] },
+        { "id": "gs387",   "title": "Topics in Gender and Sexuality Studies",                  "codes": ["GS-387"] },
+        { "id": "his297",  "title": "Women in America",                                        "codes": ["HIS-297"] },
+        { "id": "nur137",  "title": "Human Sexuality",                                         "codes": ["NUR-137", "PSY-137"] },
+        { "id": "phl277",  "title": "Philosophy of Gender and Race",                           "codes": ["PHL-277"] },
+        { "id": "pol277",  "title": "Women and Politics in the United States",                 "codes": ["POL-277"] },
+        { "id": "psy208",  "title": "Gender Psychology",                                       "codes": ["PSY-208"] },
+        { "id": "rhe257",  "title": "Environmental Rhetoric",                                  "codes": ["RHE-257"] },
+        { "id": "soc417",  "title": "Sociology of Sex and Sexuality",                          "codes": ["SOC-417"] },
+        { "id": "the288",  "title": "History of Dress",                                        "codes": ["THE-288"] }
+      ]
+    },
+    {
+      "id": "component_courses",
+      "label": "Component Courses (to bring total electives to seven; at least one required)",
+      "type": "choose_n",
+      "n": 1,
+      "items": [
+        { "id": "com236",  "title": "Intercultural Communication",                             "codes": ["COM-236"] },
+        { "id": "com237",  "title": "Interpersonal Communication",                             "codes": ["COM-237"] },
+        { "id": "edu187",  "title": "Human Relations",                                         "codes": ["EDU-187"] },
+        { "id": "eng385",  "title": "Restoration and Eighteenth-Century British Literature",   "codes": ["ENG-385"] },
+        { "id": "eng392",  "title": "The 19th Century British Novel",                          "codes": ["ENG-392"] },
+        { "id": "rhe377",  "title": "Cultural Studies",                                        "codes": ["RHE-377"] },
+        { "id": "soc207",  "title": "Sociology of the Family",                                 "codes": ["SOC-207"] }
+      ]
+    }
+  ],
+  "notes": "Seven total elective courses must be taken. At least three academic disciplines must be represented in the seven; no more than three may be chosen from the student's primary major(s). At least four of the seven must come from the core list (a); the remaining may come from the component list (b) or, when the topic is appropriate as determined by the GS Coordinator, from an additional list including ENG-105/107/108, ENG-347, ENG-464, FRE-145/146/148, FRE-495, HIS-316/317/318, PSY-464, REL-330, REL-385, RHE-407, SOC-425."
+}

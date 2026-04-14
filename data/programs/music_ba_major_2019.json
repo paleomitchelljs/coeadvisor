@@ -1,0 +1,72 @@
+{
+  "id": "music_ba_major_2019",
+  "name": "Music (Bachelor of Arts)",
+  "program_type": "major",
+  "catalog_year": "2019",
+  "major_code": "MU",
+  "source": "Music - Bachelor of Arts 2019.pdf",
+  "sections": [
+    {
+      "id": "theory",
+      "label": "Music Theory Sequence",
+      "type": "all",
+      "items": [
+        { "id": "mu109", "title": "Theory of Music I",   "codes": ["MU-109"] },
+        { "id": "mu209", "title": "Theory of Music II",  "codes": ["MU-209"] },
+        { "id": "mu309", "title": "Theory of Music III", "codes": ["MU-309"] }
+      ]
+    },
+    {
+      "id": "music_hist_core",
+      "label": "Music History (required)",
+      "type": "all",
+      "items": [
+        { "id": "mu458", "title": "Music History and Literature III", "codes": ["MU-458"] }
+      ]
+    },
+    {
+      "id": "applied_music",
+      "label": "Four Terms of Applied Music (piano as primary or secondary area)",
+      "type": "non_course",
+      "description": "Four terms of MUA Applied Music participation with piano as primary or secondary performing area."
+    },
+    {
+      "id": "hist_elective",
+      "label": "One Music History Elective",
+      "type": "choose_n",
+      "n": 1,
+      "items": [
+        { "id": "mu255", "title": "Music History and Literature I",  "codes": ["MU-255"] },
+        { "id": "mu355", "title": "Music History and Literature II", "codes": ["MU-355"] }
+      ]
+    },
+    {
+      "id": "music_elective",
+      "label": "One Additional Music Elective",
+      "type": "choose_n",
+      "n": 1,
+      "items": [
+        { "id": "mu140",   "title": "Film Music",                        "codes": ["MU-140"] },
+        { "id": "mu151",   "title": "Record Label",                      "codes": ["MU-151"] },
+        { "id": "mu157",   "title": "Introduction to Jazz History",      "codes": ["MU-157"] },
+        { "id": "mu195",   "title": "Electronic Music",                  "codes": ["MU-195"] },
+        { "id": "mu255b",  "title": "Music History and Literature I",    "codes": ["MU-255"] },
+        { "id": "mu261",   "title": "Production Techniques",             "codes": ["MU-261"] },
+        { "id": "mu270",   "title": "Musical Theatre Acting",            "codes": ["MU-270"] },
+        { "id": "mu166",   "title": "Topics in Music",                   "codes": ["MU-166"] },
+        { "id": "mu285",   "title": "Conducting I",                      "codes": ["MU-285"] },
+        { "id": "mu355b",  "title": "Music History and Literature II",   "codes": ["MU-355"] },
+        { "id": "mu409",   "title": "Theory of Music IV",                "codes": ["MU-409"] },
+        { "id": "mua133v", "title": "Vocal Literature",                  "codes": ["MUA-133V"] },
+        { "id": "mua134v", "title": "Vocal Literature and Pedagogy",     "codes": ["MUA-134V"] }
+      ]
+    },
+    {
+      "id": "senior_exam",
+      "label": "Senior Assessment Examination",
+      "type": "non_course",
+      "description": "Senior Assessment Examination in the final term prior to graduation."
+    }
+  ],
+  "notes": "Optional emphases (Jazz, Musical Industry, Musical Theatre, Pre-Music Therapy) each require additional courses beyond the BA requirements — consult music advisor for emphasis-specific requirements."
+}

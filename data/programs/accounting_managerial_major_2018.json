@@ -1,0 +1,30 @@
+{
+  "id": "accounting_managerial_major_2018",
+  "name": "Accounting — Managerial",
+  "program_type": "major",
+  "catalog_year": "2018",
+  "major_code": "ACC",
+  "source": "Accounting (Managerial) 2018.txt",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        { "id": "acc171", "title": "Principles of Accounting I",          "codes": ["ACC-171"] },
+        { "id": "eco175", "title": "Principles of Macroeconomics",         "codes": ["ECO-175"] },
+        { "id": "bus190", "title": "Statistical Analysis",                 "codes": ["BUS-190"] },
+        { "id": "acc215", "title": "Principles of Accounting II",          "codes": ["ACC-215"] },
+        { "id": "eco215", "title": "Principles of Microeconomics",         "codes": ["ECO-215"] },
+        { "id": "acc301", "title": "Intermediate Accounting I",            "codes": ["ACC-301"] },
+        { "id": "acc315", "title": "Managerial Accounting",                "codes": ["ACC-315"] },
+        { "id": "bus315", "title": "Business Law I",                       "codes": ["BUS-315"] },
+        { "id": "acc334", "title": "Computer Applications — Accounting",   "codes": ["ACC-334"] },
+        { "id": "acc351", "title": "Intermediate Accounting II",           "codes": ["ACC-351"] },
+        { "id": "acc413", "title": "Auditing",                             "codes": ["ACC-413"] },
+        { "id": "acc415", "title": "Advanced Managerial Accounting",       "codes": ["ACC-415"] }
+      ]
+    }
+  ],
+  "notes": "In addition to the two accounting courses in the first year, students should complete ECO-175 (Principles of Macroeconomics) and BUS-190 (Statistical Analysis)."
+}

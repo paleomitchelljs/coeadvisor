@@ -1,0 +1,99 @@
+{
+  "id": "environmental_studies_collateral_2025",
+  "name": "Environmental Studies",
+  "program_type": "collateral",
+  "catalog_year": "2025",
+  "major_code": "EVS",
+  "source": "Env. Studies Advising Sheet 2025.pdf",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Core Courses",
+      "type": "all",
+      "items": [
+        { "id": "bio105", "title": "Introduction to Environmental Studies",   "codes": ["BIO-105"] },
+        { "id": "eco175", "title": "Principles of Macroeconomics",            "codes": ["ECO-175"] },
+        { "id": "eco195", "title": "Principles of Environmental Economics",   "codes": ["ECO-195"] },
+        { "id": "evs484", "title": "Topics in Environmental Studies",         "codes": ["EVS-484"] }
+      ]
+    },
+    {
+      "id": "bio_req",
+      "label": "Biology Requirement (choose one)",
+      "type": "choose_n",
+      "n": 1,
+      "items": [
+        { "id": "bio155", "title": "Organismal and Ecological Biology and Laboratory (WE)", "codes": ["BIO-155", "BIO-155L"] },
+        { "id": "bio111", "title": "Urban Ecology and Laboratory",                          "codes": ["BIO-111", "BIO-111L"] }
+      ]
+    },
+    {
+      "id": "env_policy",
+      "label": "Environmental Policy or Ethics (choose one)",
+      "type": "choose_n",
+      "n": 1,
+      "items": [
+        { "id": "pol107", "title": "Environmental Justice (Wilderness Field Station)", "codes": ["POL-107"] },
+        { "id": "pol210", "title": "Environmental Politics",                           "codes": ["POL-210"] },
+        { "id": "phl205", "title": "Environmental Ethics (WE)",                        "codes": ["PHL-205"] }
+      ]
+    },
+    {
+      "id": "statistics",
+      "label": "Statistics or Research Methods (choose one)",
+      "type": "choose_n",
+      "n": 1,
+      "items": [
+        { "id": "bus190", "title": "Statistical Analysis (WE)",              "codes": ["BUS-190"] },
+        { "id": "bus340", "title": "Applied Regression Analysis",             "codes": ["BUS-340"] },
+        { "id": "psy300", "title": "Statistical Methods and Data Analysis",   "codes": ["PSY-300"] },
+        { "id": "soc235", "title": "Methods of Sociological Research (WE)",   "codes": ["SOC-235"] },
+        { "id": "sta100", "title": "Statistical Foundations (+ STA-110 or STA-130)", "codes": ["STA-100"] },
+        { "id": "sta315", "title": "Mathematical Probability",                "codes": ["STA-315"] }
+      ]
+    },
+    {
+      "id": "nat_sci_elective",
+      "label": "Natural Science Elective (at least one must have a lab)",
+      "type": "choose_n",
+      "n": 1,
+      "items": [
+        { "id": "bio115",  "title": "Marine Biology (May Term)",                              "codes": ["BIO-115"] },
+        { "id": "bio165",  "title": "Ecology and Biology of Birds and Lab",                   "codes": ["BIO-165", "BIO-165L"] },
+        { "id": "bio175",  "title": "Field Botany",                                           "codes": ["BIO-175"] },
+        { "id": "bio185",  "title": "Entomology and Lab (Wilderness Field Station)",          "codes": ["BIO-185", "BIO-185L"] },
+        { "id": "bio285",  "title": "Animal Behavior and Lab (Wilderness Field Station)",     "codes": ["BIO-285", "BIO-285L"] },
+        { "id": "phy161",  "title": "Energy: Science and Technology",                        "codes": ["PHY-161"] },
+        { "id": "phy311",  "title": "Renewable Energy (WE)",                                 "codes": ["PHY-311"] },
+        { "id": "chm103",  "title": "Selected Concepts in Chemistry or General Chemistry I", "codes": ["CHM-103", "CHM-121"] },
+        { "id": "chm211",  "title": "Analytical Chemistry and Lab",                          "codes": ["CHM-211", "CHM-211L"] }
+      ],
+      "note": "BIO-111/-111L Urban Ecology also qualifies if not used for the Biology Requirement."
+    },
+    {
+      "id": "social_sci_elective",
+      "label": "Social Science Elective",
+      "type": "choose_n",
+      "n": 1,
+      "items": [
+        { "id": "eco215", "title": "Principles of Microeconomics",          "codes": ["ECO-215"] },
+        { "id": "pol115", "title": "American National Government and Politics", "codes": ["POL-115"] },
+        { "id": "pol258", "title": "World Politics (WE)",                   "codes": ["POL-258"] },
+        { "id": "soc226", "title": "Gender and Globalization",              "codes": ["SOC-226"] }
+      ],
+      "note": "POL-107 or POL-210 also qualify if not used for the Policy requirement."
+    },
+    {
+      "id": "humanities_elective",
+      "label": "Humanities Elective",
+      "type": "choose_n",
+      "n": 1,
+      "items": [
+        { "id": "com377", "title": "Language, Power, Social Change",               "codes": ["COM-377"] },
+        { "id": "crw345", "title": "Writing Wilderness (WE) (Wilderness Field Station)", "codes": ["CRW-345"] }
+      ],
+      "note": "COM-257 Environmental Rhetoric or PHL-205 Environmental Ethics also qualify if not used for the Policy requirement."
+    }
+  ],
+  "notes": "Concurrent completion of another major is required. The four elective slots (Natural Science, Social Science, Humanities, plus one more) must draw from at least three different categories. A DS course may substitute for one, allowing one from each category."
+}

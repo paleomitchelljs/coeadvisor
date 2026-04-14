@@ -1,0 +1,49 @@
+{
+  "id": "spanish_major_2024",
+  "name": "Spanish",
+  "program_type": "major",
+  "catalog_year": "2024",
+  "major_code": "SPA",
+  "source": "Spanish_2024- Checklist Requirements for Majors.txt",
+  "sections": [
+    {
+      "id": "spa_courses",
+      "label": "Six Spanish Courses Beyond SPA-225",
+      "type": "open_n",
+      "n": 6,
+      "description": "Six Spanish courses beyond SPA-225. SPA-148 (Spanish Literature in Translation) may count as one. Up to three courses may be fulfilled through approved study abroad.",
+      "constraints": {
+        "prefixes": ["SPA"],
+        "min_level": 226,
+        "exclude_codes": ["SPA-336", "SPA-464"]
+      }
+    },
+    {
+      "id": "hispanic_lit",
+      "label": "Hispanic Literature (SPA-336 or above)",
+      "type": "open_n",
+      "n": 1,
+      "description": "One Hispanic Literature course numbered SPA-336 or above.",
+      "constraints": {
+        "prefixes": ["SPA"],
+        "min_level": 336,
+        "exclude_codes": ["SPA-464"]
+      }
+    },
+    {
+      "id": "capstone",
+      "label": "Capstone (Senior Year)",
+      "type": "all",
+      "items": [
+        { "id": "spa464", "title": "Capstone in Spanish", "codes": ["SPA-464"] }
+      ]
+    },
+    {
+      "id": "study_abroad",
+      "label": "Study Abroad (strongly encouraged)",
+      "type": "non_course",
+      "description": "Students are urged to study abroad in a program approved by the College and the Department for up to three courses toward the major."
+    }
+  ],
+  "notes": "SPA-148 (Spanish Literature in Translation) may count as one of the eight required courses even though it is below SPA-225. A grade of C or above is required for every course counted toward the major."
+}
