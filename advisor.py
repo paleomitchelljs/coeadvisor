@@ -430,15 +430,23 @@ class TrajectoryData:
 # ─────────────────────────── GUI ─────────────────────────────────────────────
 
 COLORS = {
-    "complete":   "#1e8449",
-    "partial":    "#b7770d",
-    "incomplete": "#c0392b",
-    "manual":     "#2471a3",
-    "header":     "#1a1a2e",
-    "hint":       "#7f8c8d",
-    "note":       "#566573",
-    "bg":         "#ffffff",
-    "panel_bg":   "#f2f3f4",
+    # Status / semantic
+    "complete":   "#15803d",   # green-700
+    "partial":    "#b45309",   # amber-700
+    "incomplete": "#b91c1c",   # red-700
+    "manual":     "#1d4ed8",   # blue-700
+    # Typography
+    "header":     "#1e293b",   # slate-800
+    "hint":       "#94a3b8",   # slate-400
+    "note":       "#64748b",   # slate-500
+    # Layout
+    "bg":         "#ffffff",   # card / content background
+    "panel_bg":   "#eef1f5",   # page / scrollable background
+    "border":     "#dde3ea",   # subtle dividers
+    # Brand (Coe crimson + gold)
+    "accent":     "#8b1a1a",
+    "accent_dk":  "#6e1414",
+    "gold":       "#c4991a",
 }
 
 GRADES = ["", "A", "A-", "B+", "B", "B-", "C+", "C", "C-",
@@ -491,49 +499,79 @@ class AdvisorApp:
         self._variant_container: tk.Frame = None
         self._variant_rows_frame: tk.Frame = None
 
+        self._apply_styles()
         self._build_ui()
 
     # ──────────────────────────────────────────────────────────────────────────
     # UI construction
     # ──────────────────────────────────────────────────────────────────────────
 
-    # ──────────────────────────────────────────────────────────────────────────
-    # UI construction
-    # ──────────────────────────────────────────────────────────────────────────
+    def _apply_styles(self):
+        """Configure ttk widget styles for a modern look."""
+        st = ttk.Style()
+        # Notebook — flush tabs, no outer border
+        st.configure("TNotebook",
+                     background=COLORS["panel_bg"],
+                     borderwidth=0, tabmargins=[2, 5, 0, 0])
+        st.configure("TNotebook.Tab",
+                     padding=[14, 7],
+                     font=("Helvetica", 9),
+                     background=COLORS["panel_bg"],
+                     foreground=COLORS["note"])
+        st.map("TNotebook.Tab",
+               background=[("selected", COLORS["bg"])],
+               foreground=[("selected", COLORS["accent"])],
+               expand=[("selected", [1, 1, 1, 0])])
+        # Entry / Combobox
+        st.configure("TEntry",    padding=[5, 4], relief="flat")
+        st.configure("TCombobox", padding=[4, 4])
+        # Standard button
+        st.configure("TButton", padding=[10, 5], font=("Helvetica", 9))
 
     def _build_ui(self):
-        # ── Header bar with page-toggle tabs ─────────────────────────────────
-        top = tk.Frame(self.root, bg="#1a1a2e", height=48)
+        # ── Header bar ───────────────────────────────────────────────────────
+        top = tk.Frame(self.root, bg=COLORS["accent"], height=54)
         top.pack(fill=tk.X)
         top.pack_propagate(False)
-        tk.Label(top, text="  Coe College  |  Academic Advising Tool",
-                 bg="#1a1a2e", fg="white",
-                 font=("Helvetica", 13, "bold")).pack(side=tk.LEFT, padx=12, pady=10)
 
-        tab_bar = tk.Frame(top, bg="#1a1a2e")
-        tab_bar.pack(side=tk.RIGHT, padx=12, pady=6)
+        # Gold left accent stripe
+        tk.Frame(top, bg=COLORS["gold"], width=6).pack(side=tk.LEFT, fill=tk.Y)
+
+        # Branding
+        brand = tk.Frame(top, bg=COLORS["accent"])
+        brand.pack(side=tk.LEFT, padx=14)
+        tk.Label(brand, text="Coe College",
+                 bg=COLORS["accent"], fg="white",
+                 font=("Helvetica", 14, "bold")).pack(anchor=tk.W)
+        tk.Label(brand, text="Academic Advising Tool",
+                 bg=COLORS["accent"], fg="#e8b4b4",
+                 font=("Helvetica", 8)).pack(anchor=tk.W)
+
+        # Nav pills (right side)
+        nav_f = tk.Frame(top, bg=COLORS["accent"])
+        nav_f.pack(side=tk.RIGHT, padx=16, pady=10)
         self._tab_btns = {}
-        for key, label in [("setup", "  Student Setup  "),
-                            ("results", "  Check Requirements  ")]:
-            btn = tk.Button(tab_bar, text=label,
-                            font=("Helvetica", 10),
+        for key, label in [("setup", "Student Setup"),
+                            ("results", "Check Requirements")]:
+            btn = tk.Button(nav_f, text=label,
+                            font=("Helvetica", 9),
                             relief=tk.FLAT, bd=0, cursor="hand2",
-                            padx=8, pady=4,
+                            padx=14, pady=6,
                             command=lambda k=key: self._switch_page(k))
-            btn.pack(side=tk.LEFT, padx=2)
+            btn.pack(side=tk.LEFT, padx=3)
             self._tab_btns[key] = btn
 
-        # ── Full-window page frames ───────────────────────────────────────────
+        # ── Page frames ──────────────────────────────────────────────────────
         self.page_setup   = tk.Frame(self.root, bg=COLORS["panel_bg"])
-        self.page_results = tk.Frame(self.root, bg=COLORS["bg"])
+        self.page_results = tk.Frame(self.root, bg=COLORS["panel_bg"])
 
         self._build_setup_page(self.page_setup)
         self._build_results_page(self.page_results)
 
-        self._switch_page("setup")   # start on setup page
+        self._switch_page("setup")
 
     def _switch_page(self, name: str):
-        """Show one page, hide the other, update tab button styles."""
+        """Show one page, hide the other, update nav pill styles."""
         pages = {"setup": self.page_setup, "results": self.page_results}
         for key, frame in pages.items():
             if key == name:
@@ -542,9 +580,9 @@ class AdvisorApp:
                 frame.pack_forget()
         for key, btn in self._tab_btns.items():
             if key == name:
-                btn.configure(bg="#3a3a6e", fg="white")
+                btn.configure(bg="white", fg=COLORS["accent"])
             else:
-                btn.configure(bg="#1a1a2e", fg="#9999bb")
+                btn.configure(bg=COLORS["accent"], fg="#e8b4b4")
 
     def _build_setup_page(self, parent: tk.Frame):
         """Full-width student-setup page with scrollable content."""
@@ -573,32 +611,33 @@ class AdvisorApp:
 
         # ── Import button ─────────────────────────────────────────────────────
         imp = tk.Frame(f, bg=BG)
-        imp.pack(fill=tk.X, padx=24, pady=(18, 4))
-        ttk.Button(imp, text="Load Student File",
+        imp.pack(fill=tk.X, padx=24, pady=(20, 8))
+        ttk.Button(imp, text="⬆  Load Student File",
                    command=self.load_student).pack(side=tk.LEFT)
-        tk.Label(imp, text="───  or fill in below  ───",
-                 bg=BG, fg="#999999",
-                 font=("Helvetica", 9, "italic")).pack(side=tk.LEFT, padx=16)
+        tk.Label(imp, text="  or fill in below",
+                 bg=BG, fg=COLORS["hint"],
+                 font=("Helvetica", 9, "italic")).pack(side=tk.LEFT, padx=10)
 
         # ── Two-column: Student (left) | Programs (right) ─────────────────────
         self._two_col_frame = tk.Frame(f, bg=BG)
-        self._two_col_frame.pack(fill=tk.X, padx=24, pady=(4, 8))
+        self._two_col_frame.pack(fill=tk.X, padx=24, pady=(4, 10))
         self._two_col_frame.columnconfigure(0, weight=1)
         self._two_col_frame.columnconfigure(1, weight=2)
 
         def _panel(parent_grid, col, title):
-            outer = tk.Frame(parent_grid, bg="#cccccc")
+            outer = tk.Frame(parent_grid, bg=COLORS["border"])
             outer.grid(row=0, column=col,
-                       padx=(0, 12) if col == 0 else (0, 0),
+                       padx=(0, 14) if col == 0 else (0, 0),
                        pady=0, sticky="nsew")
+            tk.Frame(outer, bg=COLORS["accent"], height=3).pack(fill=tk.X)
             inner = tk.Frame(outer, bg=COLORS["bg"])
-            inner.pack(fill=tk.BOTH, expand=True, padx=1, pady=1)
+            inner.pack(fill=tk.BOTH, expand=True, padx=1, pady=(0, 1))
             tk.Label(inner, text=title,
-                     font=("Helvetica", 9, "bold"),
-                     bg=COLORS["bg"], fg="#333333").pack(anchor=tk.W, padx=14, pady=(10, 2))
-            tk.Frame(inner, bg="#dddddd", height=1).pack(fill=tk.X, padx=14, pady=(0, 6))
+                     font=("Helvetica", 10, "bold"),
+                     bg=COLORS["bg"], fg=COLORS["accent"]).pack(anchor=tk.W, padx=14, pady=(10, 2))
+            tk.Frame(inner, bg=COLORS["border"], height=1).pack(fill=tk.X, padx=14, pady=(0, 8))
             content = tk.Frame(inner, bg=COLORS["bg"])
-            content.pack(fill=tk.BOTH, expand=True, padx=4, pady=(0, 10))
+            content.pack(fill=tk.BOTH, expand=True, padx=8, pady=(0, 12))
             return content
 
         # Student panel
@@ -689,16 +728,20 @@ class AdvisorApp:
         self._pw_container.pack(fill=tk.X, padx=24, pady=(0, 4))
         self._pw_container.pack_forget()
 
-        pw_outer = tk.Frame(self._pw_container, bg="#cccccc")
+        pw_outer = tk.Frame(self._pw_container, bg=COLORS["border"])
         pw_outer.pack(fill=tk.X)
+        tk.Frame(pw_outer, bg=COLORS["gold"], height=3).pack(fill=tk.X)
         pw_inner = tk.Frame(pw_outer, bg=COLORS["bg"])
-        pw_inner.pack(fill=tk.BOTH, expand=True, padx=1, pady=1)
-        tk.Label(pw_inner, text="PATHWAYS  (optional — check to add results tab)",
-                 font=("Helvetica", 9, "bold"), bg=COLORS["bg"],
-                 fg="#333333").pack(anchor=tk.W, padx=14, pady=(8, 2))
-        tk.Frame(pw_inner, bg="#dddddd", height=1).pack(fill=tk.X, padx=14, pady=(0, 6))
+        pw_inner.pack(fill=tk.BOTH, expand=True, padx=1, pady=(0, 1))
+        tk.Label(pw_inner, text="PRE-PROFESSIONAL PATHWAYS",
+                 font=("Helvetica", 10, "bold"), bg=COLORS["bg"],
+                 fg=COLORS["accent"]).pack(anchor=tk.W, padx=14, pady=(10, 1))
+        tk.Label(pw_inner, text="Optional — check any that apply to add a detailed pathway tab",
+                 font=("Helvetica", 8), bg=COLORS["bg"],
+                 fg=COLORS["hint"]).pack(anchor=tk.W, padx=14, pady=(0, 4))
+        tk.Frame(pw_inner, bg=COLORS["border"], height=1).pack(fill=tk.X, padx=14, pady=(0, 6))
         self._pw_rows_frame = tk.Frame(pw_inner, bg=COLORS["bg"])
-        self._pw_rows_frame.pack(anchor=tk.W, padx=10, pady=(0, 8))
+        self._pw_rows_frame.pack(anchor=tk.W, padx=10, pady=(0, 10))
 
         self._pathway_rows: dict    = {}
         self._pathway_related: dict = {}
@@ -726,17 +769,20 @@ class AdvisorApp:
         self._variant_container.pack(fill=tk.X, padx=24, pady=(0, 4))
         self._variant_container.pack_forget()
 
-        va_outer = tk.Frame(self._variant_container, bg="#cccccc")
+        va_outer = tk.Frame(self._variant_container, bg=COLORS["border"])
         va_outer.pack(fill=tk.X)
+        tk.Frame(va_outer, bg=COLORS["accent"], height=3).pack(fill=tk.X)
         va_inner = tk.Frame(va_outer, bg=COLORS["bg"])
-        va_inner.pack(fill=tk.BOTH, expand=True, padx=1, pady=1)
-        tk.Label(va_inner,
-                 text="TRACK / CONCENTRATION  (select the path that best fits this student)",
-                 font=("Helvetica", 9, "bold"), bg=COLORS["bg"],
-                 fg="#333333").pack(anchor=tk.W, padx=14, pady=(8, 2))
-        tk.Frame(va_inner, bg="#dddddd", height=1).pack(fill=tk.X, padx=14, pady=(0, 6))
+        va_inner.pack(fill=tk.BOTH, expand=True, padx=1, pady=(0, 1))
+        tk.Label(va_inner, text="TRACK / CONCENTRATION",
+                 font=("Helvetica", 10, "bold"), bg=COLORS["bg"],
+                 fg=COLORS["accent"]).pack(anchor=tk.W, padx=14, pady=(10, 1))
+        tk.Label(va_inner, text="Select the path that best describes this student",
+                 font=("Helvetica", 8), bg=COLORS["bg"],
+                 fg=COLORS["hint"]).pack(anchor=tk.W, padx=14, pady=(0, 4))
+        tk.Frame(va_inner, bg=COLORS["border"], height=1).pack(fill=tk.X, padx=14, pady=(0, 6))
         self._variant_rows_frame = tk.Frame(va_inner, bg=COLORS["bg"])
-        self._variant_rows_frame.pack(anchor=tk.W, padx=10, pady=(0, 8))
+        self._variant_rows_frame.pack(anchor=tk.W, padx=10, pady=(0, 10))
 
         # Traces after pathway/variant structures are built
         for var in self._major_vars + self._minor_vars:
@@ -745,14 +791,14 @@ class AdvisorApp:
 
         # ── Courses by semester ───────────────────────────────────────────────
         hdr_f = tk.Frame(f, bg=BG)
-        hdr_f.pack(fill=tk.X, padx=24, pady=(6, 0))
+        hdr_f.pack(fill=tk.X, padx=24, pady=(10, 0))
         tk.Label(hdr_f, text="COURSES BY SEMESTER",
                  font=("Helvetica", 10, "bold"), bg=BG,
-                 fg="#333333").pack(side=tk.LEFT)
-        tk.Label(hdr_f, text="   ☑ = completed   ☐ = planned",
-                 font=("Helvetica", 8, "italic"), bg=BG,
-                 fg=COLORS["hint"]).pack(side=tk.LEFT, padx=8)
-        tk.Frame(f, bg="#cccccc", height=1).pack(fill=tk.X, padx=24, pady=(4, 6))
+                 fg=COLORS["accent"]).pack(side=tk.LEFT)
+        tk.Label(hdr_f, text="  ☑ completed   ☐ planned",
+                 font=("Helvetica", 8), bg=BG,
+                 fg=COLORS["hint"]).pack(side=tk.LEFT, padx=10)
+        tk.Frame(f, bg=COLORS["border"], height=1).pack(fill=tk.X, padx=24, pady=(6, 8))
 
         self._courses_area = tk.Frame(f, bg=BG)
         self._courses_area.pack(fill=tk.X, padx=18)
@@ -765,32 +811,64 @@ class AdvisorApp:
         # "+ Add Semester" below grid
         add_sem_f = tk.Frame(f, bg=BG)
         add_sem_f.pack(fill=tk.X, padx=24, pady=(4, 6))
-        tk.Button(add_sem_f, text="+ Add Semester",
-                  font=("Helvetica", 9), relief=tk.FLAT,
-                  bg="#d5e8f0", fg="#2c5f8a", cursor="hand2",
-                  command=self._add_next_semester).pack(anchor=tk.W)
+        add_s_btn = tk.Button(add_sem_f, text="＋ Add Semester",
+                              font=("Helvetica", 9), relief=tk.FLAT,
+                              bg=BG, fg=COLORS["accent"], cursor="hand2",
+                              padx=10, pady=4,
+                              command=self._add_next_semester)
+        add_s_btn.pack(anchor=tk.W)
+        add_s_btn.bind("<Enter>", lambda e: add_s_btn.configure(fg=COLORS["accent_dk"]))
+        add_s_btn.bind("<Leave>", lambda e: add_s_btn.configure(fg=COLORS["accent"]))
 
         # ── Bottom action bar ─────────────────────────────────────────────────
+        tk.Frame(f, bg=COLORS["border"], height=1).pack(fill=tk.X, padx=24, pady=(8, 0))
         bot = tk.Frame(f, bg=BG)
-        bot.pack(fill=tk.X, padx=24, pady=(8, 20))
+        bot.pack(fill=tk.X, padx=24, pady=(10, 24))
 
         ttk.Button(bot, text="Save Student File",
                    command=self.save_student).pack(side=tk.LEFT, padx=(0, 8))
         ttk.Button(bot, text="Clear All",
                    command=self.clear_all).pack(side=tk.LEFT)
-        ttk.Button(bot, text="Check Requirements  →",
-                   command=self.check).pack(side=tk.RIGHT)
+
+        check_btn = tk.Button(bot, text="Check Requirements  →",
+                              font=("Helvetica", 10, "bold"),
+                              bg=COLORS["accent"], fg="white",
+                              activebackground=COLORS["accent_dk"],
+                              activeforeground="white",
+                              relief=tk.FLAT, cursor="hand2",
+                              padx=18, pady=7,
+                              command=self.check)
+        check_btn.pack(side=tk.RIGHT)
+        check_btn.bind("<Enter>", lambda e: check_btn.configure(bg=COLORS["accent_dk"]))
+        check_btn.bind("<Leave>", lambda e: check_btn.configure(bg=COLORS["accent"]))
 
     def _build_results_page(self, parent: tk.Frame):
-        """Full-width results page: summary + tabbed requirement checks."""
+        """Full-width results page: summary bar + tabbed requirement checks."""
+        # Summary bar — dark strip with student info + action buttons
+        bar = tk.Frame(parent, bg=COLORS["header"])
+        bar.pack(fill=tk.X)
         self.summary_var = tk.StringVar(
             value="Fill in the Student Setup page and click Check Requirements.")
-        tk.Label(parent, textvariable=self.summary_var,
-                 bg=COLORS["bg"], font=("Helvetica", 10),
-                 wraplength=1020, justify=tk.LEFT,
-                 fg=COLORS["note"]).pack(anchor=tk.W, padx=20, pady=(12, 4))
+        tk.Label(bar, textvariable=self.summary_var,
+                 bg=COLORS["header"], fg="#cbd5e1",
+                 font=("Helvetica", 9),
+                 anchor=tk.W).pack(side=tk.LEFT, padx=16, pady=8, fill=tk.X, expand=True)
+
+        # Export button in the bar
+        exp_btn = tk.Button(bar, text="Export Report",
+                            font=("Helvetica", 8),
+                            bg=COLORS["header"], fg="#94a3b8",
+                            activebackground=COLORS["accent"],
+                            activeforeground="white",
+                            relief=tk.FLAT, cursor="hand2",
+                            padx=10, pady=4,
+                            command=self.export)
+        exp_btn.pack(side=tk.RIGHT, padx=10, pady=6)
+        exp_btn.bind("<Enter>", lambda e: exp_btn.configure(fg="white"))
+        exp_btn.bind("<Leave>", lambda e: exp_btn.configure(fg="#94a3b8"))
+
         self.nb = ttk.Notebook(parent)
-        self.nb.pack(fill=tk.BOTH, expand=True, padx=12, pady=(0, 8))
+        self.nb.pack(fill=tk.BOTH, expand=True, padx=0, pady=0)
 
 
     # ──────────────────────────────────────────────────────────────────────────
@@ -843,26 +921,29 @@ class AdvisorApp:
 
     def _add_semester(self, label: str, initial_rows: int = 3,
                       is_transfer: bool = False) -> dict:
-        """Create a semester box and place it in the 3-column grid."""
-        idx = len(self._semesters)
-        BG  = COLORS["panel_bg"]
-        HDR = "#3a7ca5" if is_transfer else "#2c3e50"
+        """Create a semester card and place it in the 3-column grid."""
+        idx     = len(self._semesters)
+        BG      = COLORS["bg"]
+        HDR_BG  = "#2d5278" if is_transfer else "#2c3e50"
+        ACCENT  = COLORS["gold"] if is_transfer else COLORS["accent"]
 
-        outer = tk.Frame(self._courses_area, bg="#cccccc", relief=tk.FLAT)
-        outer.grid(row=idx // 3, column=idx % 3, sticky="nsew", padx=4, pady=4)
-        # ensure all 3 columns grow equally
+        outer = tk.Frame(self._courses_area, bg=COLORS["border"])
+        outer.grid(row=idx // 3, column=idx % 3, sticky="nsew", padx=5, pady=5)
         self._courses_area.columnconfigure(idx % 3, weight=1, minsize=260)
 
-        inner = tk.Frame(outer, bg=BG)
-        inner.pack(fill=tk.BOTH, expand=True, padx=1, pady=1)
+        # Thin colored top accent
+        tk.Frame(outer, bg=ACCENT, height=3).pack(fill=tk.X)
 
-        hdr = tk.Frame(inner, bg=HDR)
+        inner = tk.Frame(outer, bg=BG)
+        inner.pack(fill=tk.BOTH, expand=True, padx=1, pady=(0, 1))
+
+        hdr = tk.Frame(inner, bg=HDR_BG)
         hdr.pack(fill=tk.X)
         tk.Label(hdr, text=label, font=("Helvetica", 9, "bold"),
-                 bg=HDR, fg="white").pack(side=tk.LEFT, padx=8, pady=3)
+                 bg=HDR_BG, fg="white").pack(side=tk.LEFT, padx=10, pady=6)
 
         rows_frame = tk.Frame(inner, bg=BG)
-        rows_frame.pack(fill=tk.X, padx=4, pady=4)
+        rows_frame.pack(fill=tk.X, padx=6, pady=6)
 
         sem_dict = {"label": label, "frame": outer, "rows": [],
                     "rows_frame": rows_frame, "is_transfer": is_transfer}
@@ -873,26 +954,34 @@ class AdvisorApp:
 
         add_btn = tk.Button(inner, text="+ course",
                             font=("Helvetica", 8), relief=tk.FLAT,
-                            bg=BG, fg="#2c5f8a", cursor="hand2",
+                            bg=BG, fg=COLORS["accent"], cursor="hand2",
                             command=lambda sd=sem_dict: self._add_course_row(sd))
-        add_btn.pack(anchor=tk.W, padx=8, pady=(0, 4))
+        add_btn.pack(anchor=tk.W, padx=8, pady=(0, 6))
+        add_btn.bind("<Enter>", lambda e, b=add_btn: b.configure(fg=COLORS["accent_dk"]))
+        add_btn.bind("<Leave>", lambda e, b=add_btn: b.configure(fg=COLORS["accent"]))
 
         return sem_dict
 
     def _add_course_row(self, sem_dict: dict, code: str = "",
                         grade: str = "", completed: bool = True):
-        """Append one course-entry row to a semester box."""
-        BG = COLORS["panel_bg"]
+        """Append one course-entry row to a semester card."""
+        BG = COLORS["bg"]
         rf = sem_dict["rows_frame"]
         row_f = tk.Frame(rf, bg=BG)
-        row_f.pack(fill=tk.X, pady=1)
+        row_f.pack(fill=tk.X, pady=2)
 
         completed_var = tk.BooleanVar(value=completed)
         ttk.Checkbutton(row_f, variable=completed_var).pack(side=tk.LEFT)
 
         code_var = tk.StringVar(value=code)
-        tk.Entry(row_f, textvariable=code_var, width=10,
-                 font=("Courier", 9)).pack(side=tk.LEFT, padx=(2, 2))
+        code_entry = tk.Entry(row_f, textvariable=code_var, width=10,
+                              font=("Courier New", 10),
+                              bg=COLORS["bg"], fg=COLORS["header"],
+                              relief=tk.FLAT, bd=0,
+                              highlightthickness=1,
+                              highlightbackground=COLORS["border"],
+                              highlightcolor=COLORS["accent"])
+        code_entry.pack(side=tk.LEFT, padx=(3, 3))
 
         grade_var = tk.StringVar(value=grade)
         ttk.Combobox(row_f, textvariable=grade_var,
@@ -907,9 +996,13 @@ class AdvisorApp:
             if rd in sd["rows"]:
                 sd["rows"].remove(rd)
 
-        tk.Button(row_f, text="×", font=("Helvetica", 10), relief=tk.FLAT,
-                  bg=BG, fg="#cc0000", cursor="hand2",
-                  command=_delete).pack(side=tk.LEFT, padx=(2, 0))
+        del_btn = tk.Button(row_f, text="×", font=("Helvetica", 10), relief=tk.FLAT,
+                            bg=BG, fg=COLORS["border"], cursor="hand2",
+                            activeforeground=COLORS["incomplete"],
+                            command=_delete)
+        del_btn.pack(side=tk.LEFT, padx=(3, 0))
+        del_btn.bind("<Enter>", lambda e, b=del_btn: b.configure(fg=COLORS["incomplete"]))
+        del_btn.bind("<Leave>", lambda e, b=del_btn: b.configure(fg=COLORS["border"]))
 
         sem_dict["rows"].append(row_dict)
 
@@ -1263,26 +1356,39 @@ class AdvisorApp:
         frame.pack(fill=tk.BOTH, expand=True)
         vsb = ttk.Scrollbar(frame)
         vsb.pack(side=tk.RIGHT, fill=tk.Y)
-        t = tk.Text(frame, wrap=tk.WORD, padx=14, pady=10,
-                    font=("Courier", 10), bg=COLORS["bg"],
+        t = tk.Text(frame, wrap=tk.WORD, padx=20, pady=14,
+                    font=("Helvetica", 10), bg=COLORS["bg"],
                     relief=tk.FLAT, yscrollcommand=vsb.set,
-                    cursor="arrow")
+                    cursor="arrow", spacing1=1, spacing3=1)
         t.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
         vsb.config(command=t.yview)
 
-        t.tag_configure("h1",     font=("Helvetica", 13, "bold"), foreground=COLORS["header"], spacing3=6)
-        t.tag_configure("h2",     font=("Helvetica", 10, "bold"), foreground=COLORS["header"], spacing1=8, spacing3=2)
-        t.tag_configure("divider",font=("Courier",  8),           foreground="#cccccc", spacing1=6)
-        t.tag_configure("summary",font=("Helvetica", 9),          foreground=COLORS["note"])
-        t.tag_configure("complete",   font=("Helvetica", 10, "bold"), foreground=COLORS["complete"])
-        t.tag_configure("partial",    font=("Helvetica", 10, "bold"), foreground=COLORS["partial"])
-        t.tag_configure("incomplete", font=("Helvetica", 10, "bold"), foreground=COLORS["incomplete"])
-        t.tag_configure("manual",     font=("Helvetica", 10, "bold"), foreground=COLORS["manual"])
-        t.tag_configure("item_done",  font=("Courier", 10),           foreground=COLORS["complete"])
-        t.tag_configure("item_todo",  font=("Courier", 10),           foreground=COLORS["incomplete"])
-        t.tag_configure("item_manual",font=("Courier", 10),           foreground=COLORS["manual"])
-        t.tag_configure("hint",       font=("Courier",  9),           foreground=COLORS["hint"])
-        t.tag_configure("note",       font=("Courier",  9, "italic"), foreground=COLORS["note"])
+        t.tag_configure("h1",      font=("Helvetica", 14, "bold"),
+                        foreground=COLORS["accent"],  spacing1=4, spacing3=8)
+        t.tag_configure("h2",      font=("Helvetica", 10, "bold"),
+                        foreground=COLORS["header"],  spacing1=12, spacing3=3)
+        t.tag_configure("divider", font=("Courier",   8),
+                        foreground=COLORS["border"],  spacing1=10)
+        t.tag_configure("summary", font=("Helvetica", 9),
+                        foreground=COLORS["note"])
+        t.tag_configure("complete",    font=("Helvetica", 10, "bold"),
+                        foreground=COLORS["complete"])
+        t.tag_configure("partial",     font=("Helvetica", 10, "bold"),
+                        foreground=COLORS["partial"])
+        t.tag_configure("incomplete",  font=("Helvetica", 10, "bold"),
+                        foreground=COLORS["incomplete"])
+        t.tag_configure("manual",      font=("Helvetica", 10, "bold"),
+                        foreground=COLORS["manual"])
+        t.tag_configure("item_done",   font=("Helvetica", 10),
+                        foreground=COLORS["complete"])
+        t.tag_configure("item_todo",   font=("Helvetica", 10),
+                        foreground=COLORS["incomplete"])
+        t.tag_configure("item_manual", font=("Helvetica", 10),
+                        foreground=COLORS["manual"])
+        t.tag_configure("hint",        font=("Helvetica",  9),
+                        foreground=COLORS["hint"])
+        t.tag_configure("note",        font=("Helvetica",  9, "italic"),
+                        foreground=COLORS["note"])
         return t
 
     def _ins(self, t: tk.Text, text: str, tag: str = ""):
