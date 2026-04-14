@@ -1,0 +1,48 @@
+{
+  "id": "art_history_minor_2026",
+  "name": "Art History",
+  "program_type": "minor",
+  "catalog_year": "2026",
+  "major_code": "ARH",
+  "source": "Fall 2026 Art and Visual Studies Advising Checklis.pdf",
+  "sections": [
+    {
+      "id": "arh128",
+      "label": "Foundation",
+      "type": "all",
+      "items": [
+        { "id": "arh128", "title": "Introduction to Art History", "codes": ["ARH-128"] }
+      ]
+    },
+    {
+      "id": "arh_additional",
+      "label": "Three Additional Art History Courses (at least one must be 200-level or above)",
+      "type": "open_n",
+      "n": 3,
+      "description": "Any three ARH courses (at least one must be 200+). HIS-318, COM-161, or MS-105 may count as one — confirm with advisor.",
+      "constraints": {
+        "prefixes": ["ARH"],
+        "exclude_codes": ["ARH-128", "ARH-307"],
+        "min_level": 200,
+        "min_level_count": 1
+      }
+    },
+    {
+      "id": "arh307",
+      "label": "Modern and Contemporary Art (WE)",
+      "type": "all",
+      "items": [
+        { "id": "arh307", "title": "Modern and Contemporary Art (WE)", "codes": ["ARH-307"] }
+      ]
+    },
+    {
+      "id": "art_studio",
+      "label": "One 100- or 300-level ART Studio Course",
+      "type": "open_n",
+      "n": 1,
+      "description": "Any 100-level or 300-level ART studio course (not a 200-level).",
+      "constraints": { "prefixes": ["ART"], "min_level": 100 },
+      "note": "Must be 100- or 300-level; 200-level ART courses do not satisfy this requirement."
+    }
+  ]
+}

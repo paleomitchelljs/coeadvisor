@@ -1,0 +1,39 @@
+{
+  "id": "international_economics_major_2018",
+  "name": "International Economics",
+  "program_type": "major",
+  "catalog_year": "2018",
+  "major_code": "ECO",
+  "source": "International Economics 2018.txt",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        { "id": "eco175", "title": "Principles of Macroeconomics",    "codes": ["ECO-175"] },
+        { "id": "eco215", "title": "Principles of Microeconomics",    "codes": ["ECO-215"] },
+        { "id": "eco315", "title": "Intermediate Macroeconomics",     "codes": ["ECO-315"] },
+        { "id": "eco336", "title": "Divergent Economic Growth",       "codes": ["ECO-336"] },
+        { "id": "eco345", "title": "Intermediate Price Theory",       "codes": ["ECO-345"] },
+        { "id": "eco375", "title": "Econometrics",                    "codes": ["ECO-375"] },
+        { "id": "eco436", "title": "Economic Development",            "codes": ["ECO-436"] },
+        { "id": "eco446", "title": "International Economics",         "codes": ["ECO-446"] },
+        { "id": "eco495", "title": "International Finance",           "codes": ["ECO-495"] }
+      ]
+    },
+    {
+      "id": "foreign_language",
+      "label": "Foreign Language (two courses, numbered 115 or above, same language)",
+      "type": "non_course",
+      "description": "Two courses in a foreign language numbered 115 or above, taken in the same language."
+    },
+    {
+      "id": "international_experience",
+      "label": "International Experience (choose one)",
+      "type": "non_course",
+      "description": "One of: a Fall or Spring term abroad; a May Term abroad; or a capstone project in international economics supervised by a member of the economics faculty."
+    }
+  ],
+  "notes": "Students may not major or minor in both International Economics and Economics."
+}

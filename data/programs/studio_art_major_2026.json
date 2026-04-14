@@ -1,0 +1,74 @@
+{
+  "id": "studio_art_major_2026",
+  "name": "Studio Art",
+  "program_type": "major",
+  "catalog_year": "2026",
+  "major_code": "ART",
+  "source": "Fall 2026 Art and Visual Studies Advising Checklis.pdf",
+  "sections": [
+    {
+      "id": "arh_core",
+      "label": "Art History Foundation",
+      "type": "all",
+      "items": [
+        { "id": "arh128", "title": "Introduction to Art History", "codes": ["ARH-128"] }
+      ]
+    },
+    {
+      "id": "art_100",
+      "label": "Two 100-level ART Courses",
+      "type": "open_n",
+      "n": 2,
+      "description": "Any two 100-level ART studio courses.",
+      "constraints": { "prefixes": ["ART"], "min_level": 100 }
+    },
+    {
+      "id": "focus_courses",
+      "label": "Two Focus Courses (0.5 cc each)",
+      "type": "choose_n",
+      "n": 2,
+      "items": [
+        { "id": "art201", "title": "Creative Process (0.5cc)",                 "codes": ["ART-201"] },
+        { "id": "art209", "title": "Professional Practice (0.5cc)",             "codes": ["ART-209"] },
+        { "id": "art205", "title": "Exhibition Planning (0.5cc)",               "codes": ["ART-205"] },
+        { "id": "art215", "title": "Exhibition Installation and Lighting (0.5cc)", "codes": ["ART-215"] },
+        { "id": "art235", "title": "Arts Advocacy (0.5cc)",                    "codes": ["ART-235"] },
+        { "id": "art291", "title": "Topics in Studio Art (0.5cc)",             "codes": ["ART-291"] }
+      ]
+    },
+    {
+      "id": "art_300",
+      "label": "Two 300-level ART Courses",
+      "type": "open_n",
+      "n": 2,
+      "description": "Any two 300-level ART studio courses.",
+      "constraints": { "prefixes": ["ART"], "min_level": 300 }
+    },
+    {
+      "id": "arh_200",
+      "label": "One Additional 200-level Art History Course",
+      "type": "open_n",
+      "n": 1,
+      "description": "Any ARH course numbered 200 or above (other than ARH-307).",
+      "constraints": { "prefixes": ["ARH"], "exclude_codes": ["ARH-128", "ARH-307"], "min_level": 200 }
+    },
+    {
+      "id": "arh307",
+      "label": "Modern and Contemporary Art (WE)",
+      "type": "all",
+      "items": [
+        { "id": "arh307", "title": "Modern and Contemporary Art (WE)", "codes": ["ARH-307"] }
+      ]
+    },
+    {
+      "id": "seminars",
+      "label": "Senior Seminars",
+      "type": "all",
+      "items": [
+        { "id": "art464", "title": "Seminar in Art and Visual Studies I",                    "codes": ["ART-464"] },
+        { "id": "art474", "title": "Seminar in Art and Visual Studies II & Senior Exhibition", "codes": ["ART-474"] }
+      ]
+    }
+  ],
+  "notes": "Grade of C (2.0) or higher required in all courses. Optional concentration tracks (Multimedia Graphic Design, Media Production, Non-Profit Arts & Creative Leadership) add specific courses — consult advisor."
+}

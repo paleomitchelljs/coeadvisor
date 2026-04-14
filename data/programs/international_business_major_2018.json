@@ -1,0 +1,57 @@
+{
+  "id": "international_business_major_2018",
+  "name": "International Business",
+  "program_type": "major",
+  "catalog_year": "2018",
+  "major_code": "BUS",
+  "source": "International Business 2018.txt",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        { "id": "acc171", "title": "Principles of Accounting I",        "codes": ["ACC-171"] },
+        { "id": "eco175", "title": "Principles of Macroeconomics",       "codes": ["ECO-175"] },
+        { "id": "eco215", "title": "Principles of Microeconomics",       "codes": ["ECO-215"] },
+        { "id": "bus190", "title": "Statistical Analysis",               "codes": ["BUS-190"] },
+        { "id": "bus315", "title": "Business Law I",                     "codes": ["BUS-315"] },
+        { "id": "bus446", "title": "International Business Management",  "codes": ["BUS-446"] },
+        { "id": "eco495", "title": "International Finance",              "codes": ["ECO-495"] }
+      ]
+    },
+    {
+      "id": "mgmt_elective",
+      "label": "Management Elective (choose one)",
+      "type": "choose_one",
+      "options": [
+        { "id": "bus250", "title": "Principles of Management",  "codes": ["BUS-250"] },
+        { "id": "bus300", "title": "Human Resource Management", "codes": ["BUS-300"] }
+      ]
+    },
+    {
+      "id": "intl_elective",
+      "label": "International Elective (choose one)",
+      "type": "choose_one",
+      "options": [
+        { "id": "bus466", "title": "Advanced Topics Marketing: Non-Western Perspectives", "codes": ["BUS-466"] },
+        { "id": "eco336", "title": "Divergent Economic Growth",                           "codes": ["ECO-336"] },
+        { "id": "eco436", "title": "Economic Development",                                "codes": ["ECO-436"] },
+        { "id": "eco446", "title": "International Economics",                             "codes": ["ECO-446"] }
+      ]
+    },
+    {
+      "id": "foreign_language",
+      "label": "Foreign Language (two courses, numbered 115 or above)",
+      "type": "non_course",
+      "description": "Two courses in a foreign language numbered 115 or above."
+    },
+    {
+      "id": "international_experience",
+      "label": "International Experience (choose one)",
+      "type": "non_course",
+      "description": "One of: a Fall or Spring term abroad; a May Term abroad; or a capstone project in international business supervised by a member of the Stead Family business faculty."
+    }
+  ],
+  "notes": "Students may not major or minor in both International Business and Business."
+}

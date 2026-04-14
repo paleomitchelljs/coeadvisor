@@ -1,0 +1,59 @@
+{
+  "id": "international_studies_major_2021",
+  "name": "International Studies",
+  "program_type": "major",
+  "catalog_year": "2021",
+  "major_code": "IS",
+  "source": "International Studies 2021.pdf",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Core Courses (all tracks)",
+      "type": "all",
+      "items": [
+        { "id": "is116",  "title": "Introduction to International Studies", "codes": ["IS-116"] },
+        { "id": "ant116", "title": "Cultural Anthropology",                 "codes": ["ANT-116"] },
+        { "id": "pol258", "title": "World Politics (WE)",                   "codes": ["POL-258"] },
+        { "id": "eco175", "title": "Principles of Macroeconomics",          "codes": ["ECO-175"] },
+        { "id": "is464",  "title": "International Studies Colloquium",      "codes": ["IS-464"] }
+      ]
+    },
+    {
+      "id": "language",
+      "label": "World Language Requirement (two courses)",
+      "type": "non_course",
+      "description": "Two world language courses numbered 125+ in Spanish or French, or 115+ in another language."
+    },
+    {
+      "id": "study_abroad",
+      "label": "Term-Long Study Abroad Experience",
+      "type": "non_course",
+      "description": "Approved term-long study abroad experience, subject to IS program committee approval."
+    },
+    {
+      "id": "track",
+      "label": "Track: The Global South, International Relations, or Contemporary European Studies",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "global_south",
+          "title": "The Global South — ECO-215 + ECO-436 (or approved alt) + POL-386 (or approved alt) + 2 regional electives",
+          "codes": ["ECO-215"]
+        },
+        {
+          "id": "int_relations",
+          "title": "International Relations — POL-108 + POL-310 + 3 regional/IR electives",
+          "codes": ["POL-108"]
+        },
+        {
+          "id": "european",
+          "title": "Contemporary European Studies — HIS-365 + POL-298 + 3 European culture courses",
+          "codes": ["HIS-365"]
+        }
+      ],
+      "note": "Each track adds 4-5 additional required courses. Elective substitutions require IS coordinator approval. See full checklist for course lists."
+    }
+  ],
+  "notes": "Three tracks available: The Global South, International Relations, and Contemporary European Studies. Each track adds approximately 5 courses beyond the core. Students considering economics-focused graduate work should consider the International Economics major instead.",
+  "recommended": ["ECO-215", "POL-108", "POL-310", "HIS-365", "POL-298"]
+}

@@ -1,0 +1,67 @@
+{
+  "id": "biology_major_2024",
+  "name": "Biology",
+  "program_type": "major",
+  "catalog_year": "2024",
+  "major_code": "BIO",
+  "source": "BIO Major and Minor Checklist 2024.txt",
+  "sections": [
+    {
+      "id": "core_bio",
+      "label": "Core Biology Courses",
+      "type": "all",
+      "items": [
+        { "id": "bio145", "title": "Cellular and Molecular Biology and Laboratory",    "codes": ["BIO-145", "BIO-145L"] },
+        { "id": "bio155", "title": "Organismal and Ecological Biology and Laboratory", "codes": ["BIO-155", "BIO-155L"] },
+        { "id": "bio202", "title": "Topics in Evolution",                              "codes": ["BIO-202"] },
+        { "id": "bio205", "title": "General Botany and Laboratory",                    "codes": ["BIO-205", "BIO-205L"] },
+        { "id": "bio235", "title": "Genetics and Genetics Laboratory",                 "codes": ["BIO-235", "BIO-235L"] }
+      ]
+    },
+    {
+      "id": "physiology",
+      "label": "Physiology Course (choose one)",
+      "type": "choose_one",
+      "options": [
+        { "id": "bio355", "title": "Animal Physiology and Laboratory",          "codes": ["BIO-355", "BIO-355L"] },
+        { "id": "bio375", "title": "Integrated Human Physiology and Laboratory","codes": ["BIO-375", "BIO-375L"] }
+      ]
+    },
+    {
+      "id": "bio_electives",
+      "label": "Biology Electives with Labs (three required)",
+      "type": "open_n",
+      "n": 3,
+      "description": "Three biology electives with their associated labs.",
+      "constraints": {
+        "prefixes": ["BIO"],
+        "exclude_codes": ["BIO-145", "BIO-155", "BIO-202", "BIO-205", "BIO-235", "BIO-355", "BIO-375"]
+      }
+    },
+    {
+      "id": "supporting_chemistry",
+      "label": "Supporting Chemistry",
+      "type": "all",
+      "items": [
+        { "id": "chm121", "title": "General Chemistry I and Laboratory",  "codes": ["CHM-121", "CHM-121L"] },
+        { "id": "chm122", "title": "General Chemistry II and Laboratory", "codes": ["CHM-122", "CHM-122L"] }
+      ]
+    },
+    {
+      "id": "math_stats",
+      "label": "Mathematics or Statistics (choose one option)",
+      "type": "choose_one",
+      "options": [
+        { "id": "calculus",      "title": "Calculus I",                                    "codes": ["MTH-135"] },
+        { "id": "stats_sequence","title": "Statistical Foundations + Inferential Statistics","codes": ["STA-100", "STA-110"] }
+      ]
+    },
+    {
+      "id": "seminar",
+      "label": "Research Seminar Attendance (junior and senior years)",
+      "type": "non_course",
+      "description": "Attendance at research seminars in junior and senior years. Mark when completed."
+    }
+  ],
+  "notes": "Students on the 2024 catalog year are required to complete BIO-205/205L General Botany (not required in the 2025 catalog). Strongly recommended: one sequence of PHY-165/165L + PHY-175/175L (Basic Physics) or PHY-185/185L + PHY-195/195L (General Physics)."
+}

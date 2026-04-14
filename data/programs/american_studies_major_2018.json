@@ -1,0 +1,41 @@
+{
+  "id": "american_studies_major_2018",
+  "name": "American Studies",
+  "program_type": "major",
+  "catalog_year": "2018",
+  "major_code": "AMS",
+  "source": "American Studies 2018.txt",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        { "id": "ams107", "title": "Introduction to American Studies",              "codes": ["AMS-107"] },
+        { "id": "his145", "title": "History of the United States to 1865",          "codes": ["HIS-145"] },
+        { "id": "his155", "title": "History of the United States Since 1865",       "codes": ["HIS-155"] },
+        { "id": "ams287", "title": "Topics in American Studies: United States Pluralism", "codes": ["AMS-287"] },
+        { "id": "ams490", "title": "Integrative American Studies",                  "codes": ["AMS-490"] }
+      ]
+    },
+    {
+      "id": "american_lit",
+      "label": "American Literature Course",
+      "type": "non_course",
+      "description": "One American literature course from the English Department, chosen in consultation with the American Studies coordinating panel."
+    },
+    {
+      "id": "colloquium",
+      "label": "AMS-100 Interdisciplinary Studies Colloquium (two terms)",
+      "type": "non_course",
+      "description": "Two terms of AMS-100 Interdisciplinary Studies Colloquium."
+    },
+    {
+      "id": "electives",
+      "label": "Five Additional Courses Focused on American Culture",
+      "type": "non_course",
+      "description": "Five additional courses that focus on American culture, chosen in consultation with the American Studies coordinating panel. Constraints: (a) one course must be from the United States Pluralism group; (b) one course must be in economics (ECO), political science (POL), sociology (SOC), or teacher education (EDU); (c) two must be at the upper division level."
+    }
+  ],
+  "notes": "ENG-127 is recommended in the student's first or second term at Coe."
+}

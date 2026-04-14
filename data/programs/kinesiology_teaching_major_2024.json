@@ -1,0 +1,78 @@
+{
+  "id": "kinesiology_teaching_major_2024",
+  "name": "Kinesiology — Teaching",
+  "program_type": "major",
+  "catalog_year": "2024",
+  "major_code": "KIN",
+  "source": "Kinesiology - Teaching Track 2024.txt",
+  "sections": [
+    {
+      "id": "bio_core",
+      "label": "Biology Foundation",
+      "type": "all",
+      "items": [
+        { "id": "bio155", "title": "Organismal and Ecological Biology", "codes": ["BIO-155"] }
+      ]
+    },
+    {
+      "id": "anatomy",
+      "label": "Anatomy and Physiology (choose one option)",
+      "type": "choose_one",
+      "options": [
+        { "id": "bio103",     "title": "Anatomy and Physiology",                    "codes": ["BIO-103"] },
+        { "id": "bio215_225", "title": "Human Anatomy + Human Physiology",         "codes": ["BIO-215", "BIO-225"] }
+      ]
+    },
+    {
+      "id": "kin_core",
+      "label": "Kinesiology Core (both emphases)",
+      "type": "all",
+      "items": [
+        { "id": "kin105", "title": "Foundations of Physical Movement",                              "codes": ["KIN-105"] },
+        { "id": "kin165", "title": "Master Activity Class for Teachers",                            "codes": ["KIN-165"] },
+        { "id": "kin225", "title": "Motor Learning",                                                "codes": ["KIN-225"] },
+        { "id": "kin275", "title": "Prevention and Care of Athletic Injuries and Laboratory",       "codes": ["KIN-275"] },
+        { "id": "kin347", "title": "Adapted Physical Education",                                    "codes": ["KIN-347"] },
+        { "id": "kin440", "title": "Organization and Administration of Physical Education, Health, and Athletics", "codes": ["KIN-440"] },
+        { "id": "kin442", "title": "Physiology of Exercise",                                        "codes": ["KIN-442"] }
+      ]
+    },
+    {
+      "id": "edu_core",
+      "label": "Education Core (both emphases)",
+      "type": "all",
+      "items": [
+        { "id": "edu105", "title": "Education Foundations",               "codes": ["EDU-105"] },
+        { "id": "edu117", "title": "Exceptional Learners",                "codes": ["EDU-117"] },
+        { "id": "edu187", "title": "Human Relations",                     "codes": ["EDU-187"] },
+        { "id": "edu195", "title": "Educational Psychology and Development", "codes": ["EDU-195"] },
+        { "id": "edu215", "title": "Practicum of Education",              "codes": ["EDU-215"] },
+        { "id": "edu219", "title": "Educational Technology Lab (0 cc)",   "codes": ["EDU-219"] }
+      ]
+    },
+    {
+      "id": "emphasis",
+      "label": "Emphasis — Additional Requirements (choose one)",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "elementary",
+          "title": "Elementary Education Emphasis: KIN-315 (Methods of Elementary School Physical Education and Health) + full-time K-8 student teaching (4 cc)",
+          "codes": ["KIN-315"]
+        },
+        {
+          "id": "secondary",
+          "title": "Secondary Education Emphasis: KIN-365 + KIN-415 + KIN-495 + full-time 5-12 student teaching (4 cc)",
+          "codes": ["KIN-365", "KIN-415", "KIN-495"]
+        }
+      ]
+    },
+    {
+      "id": "student_teaching",
+      "label": "Student Teaching (full-time, 4 course credits)",
+      "type": "non_course",
+      "description": "Full-time student teaching placement (four course credits). K-8 for Elementary emphasis; grades 5-12 for Secondary emphasis. See also courses required for K-12 licensure in the Education department."
+    }
+  ],
+  "notes": "Optional endorsements are available: State of Iowa Health Certification Endorsement (KIN-115, KIN-125, KIN-135, KIN-155, KIN-275, plus one family/health course); State of Iowa Coaching Endorsement #55 K-12 (requires teacher certification, KIN-201, KIN-275); State of Iowa Coaching Authorization (KIN-110, KIN-201, KIN-275)."
+}

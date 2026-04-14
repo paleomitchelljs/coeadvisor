@@ -1,0 +1,43 @@
+{
+  "id": "kinesiology_athletic_training_major_2021",
+  "name": "Kinesiology – Athletic Training",
+  "program_type": "major",
+  "catalog_year": "2021",
+  "major_code": "KIN",
+  "source": "Kinesiology - Athletic Training 2021.pdf",
+  "sections": [
+    {
+      "id": "bio_core",
+      "label": "Biology Core",
+      "type": "all",
+      "items": [
+        { "id": "bio155", "title": "Organismal and Ecological Biology",    "codes": ["BIO-155"] },
+        { "id": "bio215", "title": "Human Anatomy and Lab",               "codes": ["BIO-215", "BIO-215L"] },
+        { "id": "bio225", "title": "Human Physiology",                    "codes": ["BIO-225"] }
+      ]
+    },
+    {
+      "id": "kin_core",
+      "label": "Kinesiology Core",
+      "type": "all",
+      "items": [
+        { "id": "kin105", "title": "Foundations of Physical Movement",                          "codes": ["KIN-105"] },
+        { "id": "kin115", "title": "Fundamentals of Exercise and Nutrition",                    "codes": ["KIN-115"] },
+        { "id": "kin175", "title": "Prevention and Care of Athletic Injuries and Lab",          "codes": ["KIN-175"] },
+        { "id": "kin365", "title": "Measurements/Evaluation and Prescription in Physical Education", "codes": ["KIN-365"] },
+        { "id": "kin442", "title": "Physiology of Exercise",                                   "codes": ["KIN-442"] },
+        { "id": "kin495", "title": "Kinesiology (capstone)",                                   "codes": ["KIN-495"] }
+      ]
+    },
+    {
+      "id": "athletic_training",
+      "label": "Athletic Training Courses",
+      "type": "all",
+      "items": [
+        { "id": "kin110", "title": "Emergency Life Skills (0.5cc)",            "codes": ["KIN-110"] },
+        { "id": "kin210", "title": "Athletic Injury Evaluation",               "codes": ["KIN-210"] },
+        { "id": "kin410", "title": "Athletic Injury Treatment & Rehabilitation", "codes": ["KIN-410"] }
+      ]
+    }
+  ]
+}
