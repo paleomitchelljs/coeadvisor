@@ -18,7 +18,7 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install pyinstaller
+        run: pip install pyinstaller customtkinter
 
       - name: Build macOS app
         run: pyinstaller advisor.spec --clean --noconfirm
@@ -44,7 +44,7 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install pyinstaller
+        run: pip install pyinstaller customtkinter
 
       - name: Build Windows exe
         run: pyinstaller advisor_windows.spec --clean --noconfirm

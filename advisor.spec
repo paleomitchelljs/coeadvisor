@@ -4,6 +4,7 @@
 
 import os
 from pathlib import Path
+import customtkinter
 
 HERE = Path(SPECPATH)
 
@@ -16,13 +17,15 @@ a = Analysis(
     datas=[
         # Bundle the entire data/ tree so JSON and CSV files are available at runtime
         (str(HERE / 'data'), 'data'),
+        # CustomTkinter assets (themes, images) must travel with the app
+        (Path(customtkinter.__file__).parent, 'customtkinter'),
     ],
     hiddenimports=[
         'tkinter',
         'tkinter.ttk',
         'tkinter.messagebox',
         'tkinter.filedialog',
-        'tkinter.scrolledtext',
+        'customtkinter',
     ],
     hookspath=[],
     hooksconfig={},
