@@ -1,0 +1,73 @@
+{
+  "id": "engineering_physics_bse_2024",
+  "name": "Engineering Physics (Bachelor of Science in Engineering)",
+  "program_type": "major",
+  "catalog_year": "2024",
+  "major_code": "BSE",
+  "source": "BSE Program 2024 Checklist.pdf",
+  "sections": [
+    {
+      "id": "intro_design",
+      "label": "Introductory Design Course (choose one)",
+      "type": "choose_one",
+      "options": [
+        { "id": "enr101",  "title": "Introduction to Engineering Design", "codes": ["ENR-101"] },
+        { "id": "ds101",   "title": "Data-Driven Design",                 "codes": ["DS-101"] }
+      ]
+    },
+    {
+      "id": "core",
+      "label": "Core Required Courses",
+      "type": "all",
+      "items": [
+        { "id": "enr101l", "title": "Engineering Design Lab",                              "codes": ["ENR-101L"] },
+        { "id": "enr145",  "title": "Computational Methods for Physicists and Engineers",  "codes": ["ENR-145"] },
+        { "id": "phy185",  "title": "General Physics I and Laboratory",                    "codes": ["PHY-185", "PHY-185L"] },
+        { "id": "phy195",  "title": "General Physics II and Laboratory",                   "codes": ["PHY-195", "PHY-195L"] },
+        { "id": "chm121",  "title": "General Chemistry I and Laboratory",                  "codes": ["CHM-121", "CHM-121L"] },
+        { "id": "phy235",  "title": "Modern Physics",                                      "codes": ["PHY-235"] },
+        { "id": "phy236",  "title": "Advanced Lab 1",                                      "codes": ["PHY-236"] },
+        { "id": "phy246",  "title": "Advanced Lab 2",                                      "codes": ["PHY-246"] },
+        { "id": "phy265",  "title": "Electromagnetism",                                    "codes": ["PHY-265"] },
+        { "id": "phy245",  "title": "Principles of Analog Electronics and Laboratory",    "codes": ["PHY-245", "PHY-245L"] },
+        { "id": "phy231",  "title": "Mathematical Methods for Engineering and Physicists", "codes": ["PHY-231"] },
+        { "id": "enr325",  "title": "Principles of Digital Electronics and Laboratory",    "codes": ["ENR-325", "ENR-325L"] },
+        { "id": "enr405",  "title": "Senior Design 1",                                     "codes": ["ENR-405"] },
+        { "id": "enr415",  "title": "Senior Design 2",                                     "codes": ["ENR-415"] }
+      ]
+    },
+    {
+      "id": "calculus",
+      "label": "Calculus Sequence (choose one)",
+      "type": "choose_one",
+      "options": [
+        { "id": "mth155",        "title": "Calculus for Engineers",       "codes": ["MTH-155"] },
+        { "id": "mth135_mth145", "title": "Calculus 1 + Calculus 2",      "codes": ["MTH-135", "MTH-145"] }
+      ]
+    },
+    {
+      "id": "track_electives",
+      "label": "Four Track Electives",
+      "type": "choose_n",
+      "n": 4,
+      "items": [
+        { "id": "enr221", "title": "Materials Science Engineering 1",            "codes": ["ENR-221"] },
+        { "id": "enr321", "title": "Materials Science Engineering 2",            "codes": ["ENR-321"] },
+        { "id": "enr355", "title": "Robotics and Sensors",                       "codes": ["ENR-355"] },
+        { "id": "phy275", "title": "Classical Mechanics",                        "codes": ["PHY-275"] },
+        { "id": "phy311", "title": "Renewable Energy",                           "codes": ["PHY-311"] },
+        { "id": "phy315", "title": "Thermodynamics and Statistical Mechanics",   "codes": ["PHY-315"] }
+      ]
+    },
+    {
+      "id": "additional",
+      "label": "Additional Chemistry or Physics/Engineering Course (choose one)",
+      "type": "choose_one",
+      "options": [
+        { "id": "chm122",    "title": "General Chemistry II and Laboratory",                                                "codes": ["CHM-122", "CHM-122L"] },
+        { "id": "phy_enr_upper", "title": "One full-credit Physics or Engineering Physics course numbered 150 or above",   "codes": [] }
+      ]
+    }
+  ],
+  "notes": "Minimum cumulative 2.0 GPA required in all courses counted toward the major. Students completing the B.S.E. in Engineering Physics cannot minor in Physics and cannot earn a B.A. degree with a major in physics."
+}

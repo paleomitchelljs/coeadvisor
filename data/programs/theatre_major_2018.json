@@ -1,0 +1,58 @@
+{
+  "id": "theatre_major_2018",
+  "name": "Theatre Arts",
+  "program_type": "major",
+  "catalog_year": "2018",
+  "major_code": "THE",
+  "source": "Theatre 2018.pdf",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Theatre Arts Core (required of all theatre arts majors)",
+      "type": "all",
+      "items": [
+        { "id": "the102", "title": "Theatre Production Lab (take 4 terms, 0.25 credits each)", "codes": ["THE-102"] },
+        { "id": "the130", "title": "Technical Production I",                                    "codes": ["THE-130"] },
+        { "id": "the140", "title": "Design for the Stage",                                      "codes": ["THE-140"] },
+        { "id": "the150", "title": "Acting I",                                                  "codes": ["THE-150"] },
+        { "id": "the228", "title": "History of Theatre and Drama I",                            "codes": ["THE-228"] },
+        { "id": "the238", "title": "History of Theatre and Drama II",                           "codes": ["THE-238"] },
+        { "id": "the290", "title": "Directing I",                                               "codes": ["THE-290"] },
+        { "id": "the464", "title": "Senior Seminar",                                            "codes": ["THE-464"] }
+      ]
+    },
+    {
+      "id": "emphasis",
+      "label": "Emphasis (choose one of five)",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "general",
+          "title": "General: three additional theatre arts (THE) courses, chosen with departmental approval",
+          "codes": []
+        },
+        {
+          "id": "acting",
+          "title": "Acting: THE-170 Voice and Diction + THE-250 Acting II + one of {THE-160 Movement for the Stage, THE-260 Acting for the Camera, THE-270 Musical Theatre Acting, THE-350 Advanced Acting: Shakespeare}",
+          "codes": ["THE-170", "THE-250"]
+        },
+        {
+          "id": "directing",
+          "title": "Directing: THE-250 Acting II + THE-390 Directing II + one additional course in acting or design",
+          "codes": ["THE-250", "THE-390"]
+        },
+        {
+          "id": "musical_theatre",
+          "title": "Musical Theatre: MU-109 Theory of Music I + THE-170 Voice and Diction + THE-270 Musical Theatre Acting + four terms of MUA-522 Voice (0.6 ea) + one additional course credit in practical musical theatre (MUA-130V Musical Theatre Practicum, MUA-131V Opera Workshop, or approved musical theatre internship) + six seven-week dance courses (DAN-010 through DAN-045, 0.2 ea)",
+          "codes": ["MU-109", "THE-170", "THE-270"]
+        },
+        {
+          "id": "tech_design",
+          "title": "Technical Theatre/Design: three of {THE-220 Lighting Design, THE-230 Technical Production II, THE-232 Computer-Aided Drafting and Design, THE-242 Scene Design, THE-280 Costume Design, THE-288 History of Dress}",
+          "codes": []
+        }
+      ]
+    }
+  ],
+  "notes": "Strongly recommended courses vary by emphasis and are not required for the major — consult the department. Acting: any DAN-010 through DAN-152, THE-162 Stage Make-Up, THE-452 Advanced Projects in Acting, PHL-105, PSY-100. Directing: ART-118, COM-237, THE-220, THE-242, THE-280, THE-350, THE-462, any art history course. Technical/Design: ART-118, any other art history course, ART-115, ART-145, ART-264, PHY-155 + PHY-155L, THE-442."
+}
