@@ -1,0 +1,44 @@
+{
+  "program_id": "biology_major_2025",
+  "intro": "Two quick questions to build a first-semester plan.",
+  "questions": [
+    {
+      "id": "hs_bio_chem",
+      "text": "Did this student take both Biology and Chemistry in high school?",
+      "type": "yes_no"
+    },
+    {
+      "id": "premed",
+      "text": "Is this student interested in medical school (pre-med)?",
+      "type": "yes_no"
+    }
+  ],
+  "routes": [
+    {
+      "when": { "hs_bio_chem": true,  "premed": true  },
+      "major":      "biology_major_2025",
+      "pathway":    "premed",
+      "semester_1": ["BIO-145", "BIO-145L", "CHM-121", "CHM-121L"],
+      "note": "CHM 121 must begin first semester — the chemistry sequence (121 → 122 → 221 → 321) must finish before MCAT prep junior year."
+    },
+    {
+      "when": { "hs_bio_chem": true,  "premed": false },
+      "major":      "biology_major_2025",
+      "semester_1": ["BIO-155", "BIO-155L"],
+      "note": "BIO 155 is the standard entry point for students with prior high school biology and chemistry."
+    },
+    {
+      "when": { "hs_bio_chem": false, "premed": true  },
+      "major":      "biology_major_2025",
+      "pathway":    "premed",
+      "semester_1": ["BIO-100", "CHM-121", "CHM-121L"],
+      "note": "BIO 100 or 120 first to build the foundation. CHM 121 must still begin this semester to keep pre-med timing on track."
+    },
+    {
+      "when": { "hs_bio_chem": false, "premed": false },
+      "major":      "biology_major_2025",
+      "semester_1": ["BIO-100"],
+      "note": "BIO 100 or BIO 120 builds the foundation before proceeding to the core sequence."
+    }
+  ]
+}

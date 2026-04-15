@@ -14,10 +14,14 @@ import os
 import re
 import sys
 import tkinter as tk
-from tkinter import ttk, messagebox, filedialog
-from tkinter.scrolledtext import ScrolledText
+from tkinter import messagebox, filedialog
 from pathlib import Path
 from datetime import datetime
+
+import customtkinter as ctk
+
+ctk.set_appearance_mode("light")
+ctk.set_default_color_theme("blue")
 
 # ─────────────────────────── Paths ───────────────────────────────────────────
 
@@ -114,6 +118,26 @@ def load_first_two_years() -> list:
     except Exception as exc:
         print(f"Warning: could not load first_two_years.json: {exc}")
         return []
+
+
+def load_intake() -> dict:
+    """Return {program_id: intake_dict} for every file in data/intake/.
+
+    Each file defines 'questions' (yes/no prompts) and 'routes' (answer → first-
+    semester recommendations).  Drop a new JSON file into data/intake/ to enable
+    the wizard for another program — no code changes required.
+    """
+    intake = {}
+    intake_dir = DATA_DIR / "intake"
+    if not intake_dir.exists():
+        return intake
+    for fp in sorted(intake_dir.glob("*.json")):
+        try:
+            data = _load_json(fp)
+            intake[data["program_id"]] = data
+        except Exception as exc:
+            print(f"Warning: could not load intake {fp.name}: {exc}")
+    return intake
 
 # ─────────────────────────── Course utilities ────────────────────────────────
 
@@ -456,7 +480,7 @@ STUDENT_YEARS = ["First Year", "Sophomore", "Junior", "Senior", "Transfer Studen
 
 
 class AdvisorApp:
-    def __init__(self, root: tk.Tk):
+    def __init__(self, root: ctk.CTk):
         self.root = root
         self.root.title("Coe College Academic Advising Tool")
         self.root.geometry("1080x740")
@@ -464,13 +488,14 @@ class AdvisorApp:
 
         # ── Load data ──
         try:
-            self.programs       = load_programs()
-            self.ge_data        = load_ge()
-            self.dac            = load_dac()
-            self.we             = load_we()
-            self.course_credits = load_course_credits()
-            self.pathways       = load_pathways()
+            self.programs        = load_programs()
+            self.ge_data         = load_ge()
+            self.dac             = load_dac()
+            self.we              = load_we()
+            self.course_credits  = load_course_credits()
+            self.pathways        = load_pathways()
             self.first_two_years = load_first_two_years()
+            self.intake_data     = load_intake()
         except FileNotFoundError as e:
             messagebox.showerror("Data Error",
                 f"Could not load data files.\n\nMissing: {e}\n\n"
@@ -485,6 +510,7 @@ class AdvisorApp:
         self.manual_ge: dict[str, tk.BooleanVar] = {}
         self.pathway_vars: dict[str, tk.BooleanVar] = {}
         self._prog_ids: list[str] = []          # kept for legacy compat
+        self._wizard_route_note: str = ""       # note from last intake route; shown in Suggested Plan
 
         # New structured-input state (set fully in _build_left)
         self._major_vars:    list = []          # 3 StringVars for major dropdowns
@@ -499,175 +525,481 @@ class AdvisorApp:
         self._variant_container: tk.Frame = None
         self._variant_rows_frame: tk.Frame = None
 
-        self._apply_styles()
         self._build_ui()
 
     # ──────────────────────────────────────────────────────────────────────────
     # UI construction
     # ──────────────────────────────────────────────────────────────────────────
 
-    def _apply_styles(self):
-        """Configure ttk widget styles for a modern look."""
-        st = ttk.Style()
-        # Notebook — flush tabs, no outer border
-        st.configure("TNotebook",
-                     background=COLORS["panel_bg"],
-                     borderwidth=0, tabmargins=[2, 5, 0, 0])
-        st.configure("TNotebook.Tab",
-                     padding=[14, 7],
-                     font=("Helvetica", 9),
-                     background=COLORS["panel_bg"],
-                     foreground=COLORS["note"])
-        st.map("TNotebook.Tab",
-               background=[("selected", COLORS["bg"])],
-               foreground=[("selected", COLORS["accent"])],
-               expand=[("selected", [1, 1, 1, 0])])
-        # Entry / Combobox
-        st.configure("TEntry",    padding=[5, 4], relief="flat")
-        st.configure("TCombobox", padding=[4, 4])
-        # Standard button
-        st.configure("TButton", padding=[10, 5], font=("Helvetica", 9))
 
     def _build_ui(self):
         # ── Header bar ───────────────────────────────────────────────────────
-        top = tk.Frame(self.root, bg=COLORS["accent"], height=54)
+        top = ctk.CTkFrame(self.root, fg_color=COLORS["accent"], height=54,
+                           corner_radius=0)
         top.pack(fill=tk.X)
         top.pack_propagate(False)
 
         # Gold left accent stripe
-        tk.Frame(top, bg=COLORS["gold"], width=6).pack(side=tk.LEFT, fill=tk.Y)
+        ctk.CTkFrame(top, fg_color=COLORS["gold"], width=6,
+                     corner_radius=0).pack(side=tk.LEFT, fill=tk.Y)
 
         # Branding
-        brand = tk.Frame(top, bg=COLORS["accent"])
+        brand = ctk.CTkFrame(top, fg_color=COLORS["accent"], corner_radius=0)
         brand.pack(side=tk.LEFT, padx=14)
-        tk.Label(brand, text="Coe College",
-                 bg=COLORS["accent"], fg="white",
-                 font=("Helvetica", 14, "bold")).pack(anchor=tk.W)
-        tk.Label(brand, text="Academic Advising Tool",
-                 bg=COLORS["accent"], fg="#e8b4b4",
-                 font=("Helvetica", 8)).pack(anchor=tk.W)
+        ctk.CTkLabel(brand, text="Coe College",
+                     fg_color="transparent", text_color="white",
+                     font=("Helvetica", 14, "bold")).pack(anchor=tk.W)
+        ctk.CTkLabel(brand, text="Academic Advising Tool",
+                     fg_color="transparent", text_color="#e8b4b4",
+                     font=("Helvetica", 8)).pack(anchor=tk.W)
 
         # Nav pills (right side)
-        nav_f = tk.Frame(top, bg=COLORS["accent"])
+        nav_f = ctk.CTkFrame(top, fg_color="transparent", corner_radius=0)
         nav_f.pack(side=tk.RIGHT, padx=16, pady=10)
         self._tab_btns = {}
         for key, label in [("setup", "Student Setup"),
                             ("results", "Check Requirements")]:
-            btn = tk.Button(nav_f, text=label,
-                            font=("Helvetica", 9),
-                            relief=tk.FLAT, bd=0, cursor="hand2",
-                            padx=14, pady=6,
-                            command=lambda k=key: self._switch_page(k))
+            btn = ctk.CTkButton(nav_f, text=label,
+                                font=("Helvetica", 9),
+                                fg_color=COLORS["accent"],
+                                hover_color=COLORS["accent_dk"],
+                                text_color="#e8b4b4",
+                                corner_radius=6,
+                                width=130, height=32,
+                                command=lambda k=key: self._switch_page(k))
             btn.pack(side=tk.LEFT, padx=3)
             self._tab_btns[key] = btn
 
         # ── Page frames ──────────────────────────────────────────────────────
-        self.page_setup   = tk.Frame(self.root, bg=COLORS["panel_bg"])
-        self.page_results = tk.Frame(self.root, bg=COLORS["panel_bg"])
+        self.page_wizard   = ctk.CTkFrame(self.root, fg_color=COLORS["panel_bg"],
+                                          corner_radius=0)
+        self.page_interest = ctk.CTkFrame(self.root, fg_color=COLORS["panel_bg"],
+                                          corner_radius=0)
+        self.page_intake   = ctk.CTkFrame(self.root, fg_color=COLORS["panel_bg"],
+                                          corner_radius=0)
+        self.page_setup    = ctk.CTkFrame(self.root, fg_color=COLORS["panel_bg"],
+                                          corner_radius=0)
+        self.page_results  = ctk.CTkFrame(self.root, fg_color=COLORS["panel_bg"],
+                                          corner_radius=0)
 
+        self._build_wizard_page(self.page_wizard)
+        self._build_interest_page(self.page_interest)
+        # page_intake is built dynamically in _build_intake_page()
         self._build_setup_page(self.page_setup)
         self._build_results_page(self.page_results)
 
-        self._switch_page("setup")
+        self._switch_page("wizard")
 
     def _switch_page(self, name: str):
-        """Show one page, hide the other, update nav pill styles."""
-        pages = {"setup": self.page_setup, "results": self.page_results}
+        """Show one page, hide the rest, update nav pill styles."""
+        pages = {
+            "wizard":   self.page_wizard,
+            "interest": self.page_interest,
+            "intake":   self.page_intake,
+            "setup":    self.page_setup,
+            "results":  self.page_results,
+        }
         for key, frame in pages.items():
             if key == name:
                 frame.pack(fill=tk.BOTH, expand=True)
             else:
                 frame.pack_forget()
+        # Nav pills: only "setup" / "results" are in the header; wizard pages dim both
         for key, btn in self._tab_btns.items():
             if key == name:
-                btn.configure(bg="white", fg=COLORS["accent"])
+                btn.configure(fg_color="white", text_color=COLORS["accent"],
+                              hover_color="#f0f0f0")
             else:
-                btn.configure(bg=COLORS["accent"], fg="#e8b4b4")
+                btn.configure(fg_color=COLORS["accent"], text_color="#e8b4b4",
+                              hover_color=COLORS["accent_dk"])
 
-    def _build_setup_page(self, parent: tk.Frame):
+    # ──────────────────────────────────────────────────────────────────────────
+    # Wizard pages
+    # ──────────────────────────────────────────────────────────────────────────
+
+    def _wizard_card(self, parent, width: int = 520) -> ctk.CTkFrame:
+        """Return a centered white card frame with rounded corners."""
+        outer = ctk.CTkFrame(parent, fg_color="transparent", corner_radius=0)
+        outer.place(relx=0.5, rely=0.5, anchor="center")
+        card = ctk.CTkFrame(outer, fg_color=COLORS["bg"], corner_radius=10,
+                            border_width=1, border_color=COLORS["border"],
+                            width=width)
+        card.pack()
+        card.pack_propagate(False)
+        return card
+
+    def _build_wizard_page(self, parent):
+        """Welcome screen: New Student or Returning Student."""
+        card = self._wizard_card(parent, width=480)
+
+        ctk.CTkLabel(card, text="Coe College Advising Tool",
+                     fg_color="transparent", text_color=COLORS["accent"],
+                     font=("Helvetica", 16, "bold")).pack(pady=(32, 4))
+        ctk.CTkLabel(card, text="Is this a new student or a returning student?",
+                     fg_color="transparent", text_color=COLORS["header"],
+                     font=("Helvetica", 11)).pack(pady=(0, 24))
+
+        ctk.CTkFrame(card, fg_color=COLORS["border"], height=1,
+                     corner_radius=0).pack(fill=tk.X, padx=32, pady=(0, 20))
+
+        def _big_btn(title, subtitle, command):
+            btn_frame = ctk.CTkFrame(card, fg_color=COLORS["panel_bg"],
+                                     corner_radius=8,
+                                     border_width=1,
+                                     border_color=COLORS["border"],
+                                     cursor="hand2")
+            btn_frame.pack(fill=tk.X, padx=32, pady=6)
+
+            inner = ctk.CTkFrame(btn_frame, fg_color="transparent",
+                                 corner_radius=0)
+            inner.pack(fill=tk.X, padx=16, pady=12)
+
+            ctk.CTkLabel(inner, text=title, fg_color="transparent",
+                         text_color=COLORS["accent"],
+                         font=("Helvetica", 11, "bold"),
+                         anchor="w").pack(fill=tk.X)
+            ctk.CTkLabel(inner, text=subtitle, fg_color="transparent",
+                         text_color=COLORS["note"],
+                         font=("Helvetica", 9),
+                         anchor="w").pack(fill=tk.X)
+
+            def _on_enter(e):
+                btn_frame.configure(fg_color=COLORS["bg"],
+                                    border_color=COLORS["accent"])
+            def _on_leave(e):
+                btn_frame.configure(fg_color=COLORS["panel_bg"],
+                                    border_color=COLORS["border"])
+
+            for w in (btn_frame, inner) + tuple(inner.winfo_children()):
+                w.bind("<Button-1>", lambda e, c=command: c())
+                w.bind("<Enter>", _on_enter)
+                w.bind("<Leave>", _on_leave)
+
+        _big_btn("New Student",
+                 "Answer a few questions to build a first-semester plan.",
+                 lambda: self._switch_page("interest"))
+        _big_btn("Returning Student",
+                 "Go directly to manual course entry and requirement checking.",
+                 lambda: self._switch_page("setup"))
+
+        ctk.CTkFrame(card, fg_color="transparent", height=24,
+                     corner_radius=0).pack()
+
+    def _build_interest_page(self, parent):
+        """New-student area of interest page: select a major."""
+        # Back link
+        back_btn = ctk.CTkButton(parent, text="← Back",
+                                 fg_color="transparent",
+                                 hover_color=COLORS["panel_bg"],
+                                 text_color=COLORS["accent"],
+                                 font=("Helvetica", 9),
+                                 width=70, height=28,
+                                 command=lambda: self._switch_page("wizard"))
+        back_btn.place(x=12, y=12)
+
+        card = self._wizard_card(parent, width=480)
+
+        ctk.CTkLabel(card, text="Area of Interest",
+                     fg_color="transparent", text_color=COLORS["accent"],
+                     font=("Helvetica", 16, "bold")).pack(pady=(32, 4))
+        ctk.CTkLabel(card, text="Select this student's primary major of interest.",
+                     fg_color="transparent", text_color=COLORS["header"],
+                     font=("Helvetica", 10)).pack(pady=(0, 4))
+        ctk.CTkLabel(card,
+                     text="Majors marked  ★  have a guided first-semester setup.",
+                     fg_color="transparent", text_color=COLORS["hint"],
+                     font=("Helvetica", 8, "italic")).pack(pady=(0, 18))
+
+        ctk.CTkFrame(card, fg_color=COLORS["border"], height=1,
+                     corner_radius=0).pack(fill=tk.X, padx=32, pady=(0, 18))
+
+        inner = ctk.CTkFrame(card, fg_color="transparent", corner_radius=0)
+        inner.pack(padx=32, fill=tk.X)
+
+        # Build display list — programs with intake data get a ★ prefix
+        major_progs = sorted(
+            [(pid, p) for pid, p in self.programs.items()
+             if p.get("program_type") in ("major", "collateral", "certificate")],
+            key=lambda x: x[1].get("name", ""))
+
+        def _disp(pid, p):
+            yr   = p.get("catalog_year", "")
+            star = "★ " if pid in self.intake_data else ""
+            base = f"{p['name']} ({yr})" if yr else p["name"]
+            return f"{star}{base}"
+
+        self._interest_display_to_pid = {_disp(pid, p): pid for pid, p in major_progs}
+        interest_names = ["(select a major)"] + list(self._interest_display_to_pid.keys())
+
+        self._interest_var = tk.StringVar(value="(select a major)")
+        ctk.CTkComboBox(inner, variable=self._interest_var,
+                        values=interest_names, state="readonly",
+                        width=416, height=36,
+                        fg_color=COLORS["bg"],
+                        border_color=COLORS["border"],
+                        button_color=COLORS["accent"],
+                        button_hover_color=COLORS["accent_dk"],
+                        dropdown_fg_color=COLORS["bg"],
+                        dropdown_hover_color=COLORS["panel_bg"],
+                        text_color=COLORS["header"],
+                        font=("Helvetica", 10)).pack(fill=tk.X, pady=(0, 20))
+
+        ctk.CTkButton(inner,
+                      text="Continue  →",
+                      font=("Helvetica", 10, "bold"),
+                      fg_color=COLORS["accent"],
+                      hover_color=COLORS["accent_dk"],
+                      text_color="white",
+                      corner_radius=6,
+                      height=38,
+                      command=self._interest_continue).pack(anchor=tk.E, pady=(0, 28))
+
+    def _interest_continue(self):
+        """Handle Continue from the interest page."""
+        disp = self._interest_var.get()
+        pid  = self._interest_display_to_pid.get(disp)
+        if not pid:
+            return
+        if pid in self.intake_data:
+            self._build_intake_page(pid)
+            self._switch_page("intake")
+        else:
+            # No wizard for this major — pre-set it and go to manual setup
+            if self._major_vars:
+                display = self._pid_to_display.get(pid, "")
+                if display:
+                    self._major_vars[0].set(display)
+            self._switch_page("setup")
+
+    def _build_intake_page(self, pid: str):
+        """Dynamically build the intake-questions page for the given program."""
+        for w in self.page_intake.winfo_children():
+            w.destroy()
+
+        intake = self.intake_data[pid]
+        prog   = self.programs.get(pid, {})
+
+        # Back link
+        back_btn = ctk.CTkButton(self.page_intake, text="← Back",
+                                 fg_color="transparent",
+                                 hover_color=COLORS["panel_bg"],
+                                 text_color=COLORS["accent"],
+                                 font=("Helvetica", 9),
+                                 width=70, height=28,
+                                 command=lambda: self._switch_page("interest"))
+        back_btn.place(x=12, y=12)
+
+        card = self._wizard_card(self.page_intake, width=500)
+
+        ctk.CTkLabel(card, text=prog.get("name", ""),
+                     fg_color="transparent", text_color=COLORS["accent"],
+                     font=("Helvetica", 16, "bold")).pack(pady=(32, 2))
+        ctk.CTkLabel(card, text=intake.get("intro", ""),
+                     fg_color="transparent", text_color=COLORS["note"],
+                     font=("Helvetica", 9, "italic")).pack(pady=(0, 16))
+        ctk.CTkFrame(card, fg_color=COLORS["border"], height=1,
+                     corner_radius=0).pack(fill=tk.X, padx=32, pady=(0, 18))
+
+        q_vars: dict[str, tk.StringVar] = {}  # "yes" | "no" | ""
+
+        for q in intake.get("questions", []):
+            qid  = q["id"]
+            qvar = tk.StringVar(value="")
+            q_vars[qid] = qvar
+
+            qf = ctk.CTkFrame(card, fg_color="transparent", corner_radius=0)
+            qf.pack(fill=tk.X, padx=32, pady=(0, 16))
+            ctk.CTkLabel(qf, text=q["text"],
+                         fg_color="transparent", text_color=COLORS["header"],
+                         font=("Helvetica", 10),
+                         wraplength=420, justify=tk.LEFT,
+                         anchor="w").pack(anchor=tk.W, pady=(0, 8))
+
+            btn_row = ctk.CTkFrame(qf, fg_color="transparent", corner_radius=0)
+            btn_row.pack(anchor=tk.W)
+
+            btn_yes = ctk.CTkButton(btn_row, text="Yes",
+                                    font=("Helvetica", 9),
+                                    fg_color=COLORS["bg"],
+                                    hover_color=COLORS["panel_bg"],
+                                    text_color=COLORS["accent"],
+                                    border_width=1,
+                                    border_color=COLORS["accent"],
+                                    corner_radius=6,
+                                    width=80, height=32)
+            btn_yes.pack(side=tk.LEFT, padx=(0, 8))
+
+            btn_no = ctk.CTkButton(btn_row, text="No",
+                                   font=("Helvetica", 9),
+                                   fg_color=COLORS["bg"],
+                                   hover_color=COLORS["panel_bg"],
+                                   text_color=COLORS["accent"],
+                                   border_width=1,
+                                   border_color=COLORS["accent"],
+                                   corner_radius=6,
+                                   width=80, height=32)
+            btn_no.pack(side=tk.LEFT)
+
+            def _make_yesno(qv, val, by, bn):
+                def _select():
+                    qv.set(val)
+                    if val == "yes":
+                        by.configure(fg_color=COLORS["accent"], text_color="white",
+                                     border_color=COLORS["accent"])
+                        bn.configure(fg_color=COLORS["bg"], text_color=COLORS["accent"],
+                                     border_color=COLORS["accent"])
+                    else:
+                        bn.configure(fg_color=COLORS["accent"], text_color="white",
+                                     border_color=COLORS["accent"])
+                        by.configure(fg_color=COLORS["bg"], text_color=COLORS["accent"],
+                                     border_color=COLORS["accent"])
+                    _check_ready()
+                return _select
+
+            btn_yes.configure(command=_make_yesno(qvar, "yes", btn_yes, btn_no))
+            btn_no.configure(command=_make_yesno(qvar, "no",  btn_yes, btn_no))
+
+        ctk.CTkFrame(card, fg_color=COLORS["border"], height=1,
+                     corner_radius=0).pack(fill=tk.X, padx=32, pady=(8, 18))
+
+        cont_btn = ctk.CTkButton(card,
+                                 text="Build Plan  →",
+                                 font=("Helvetica", 10, "bold"),
+                                 fg_color=COLORS["border"],
+                                 hover_color=COLORS["border"],
+                                 text_color=COLORS["note"],
+                                 corner_radius=6,
+                                 height=38,
+                                 state="disabled")
+        cont_btn.pack(anchor=tk.E, padx=32, pady=(0, 28))
+
+        def _check_ready():
+            if all(v.get() for v in q_vars.values()):
+                cont_btn.configure(state="normal",
+                                   fg_color=COLORS["accent"],
+                                   hover_color=COLORS["accent_dk"],
+                                   text_color="white")
+            else:
+                cont_btn.configure(state="disabled",
+                                   fg_color=COLORS["border"],
+                                   hover_color=COLORS["border"],
+                                   text_color=COLORS["note"])
+
+        def _on_continue():
+            answers = {qid: (v.get() == "yes") for qid, v in q_vars.items()}
+            route   = self._match_intake_route(intake, answers)
+            if route:
+                self._apply_intake_route(route)
+                self.check(jump_to_suggested=True)
+
+        cont_btn.configure(command=_on_continue)
+
+    def _match_intake_route(self, intake: dict, answers: dict) -> dict | None:
+        """Return the first route whose 'when' conditions match answers."""
+        for route in intake.get("routes", []):
+            when = route.get("when", {})
+            if all(answers.get(k) == v for k, v in when.items()):
+                return route
+        return None
+
+    def _build_setup_page(self, parent):
         """Full-width student-setup page with scrollable content."""
         BG = COLORS["panel_bg"]
 
-        # Scrollable canvas fills the page
-        _canvas = tk.Canvas(parent, bg=BG, highlightthickness=0)
-        _vsb    = ttk.Scrollbar(parent, orient=tk.VERTICAL, command=_canvas.yview)
-        _canvas.configure(yscrollcommand=_vsb.set)
-        _vsb.pack(side=tk.RIGHT, fill=tk.Y)
-        _canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        # CTkScrollableFrame replaces the old canvas+scrollbar pattern
+        sf = ctk.CTkScrollableFrame(parent, fg_color=BG, corner_radius=0,
+                                    scrollbar_button_color=COLORS["border"],
+                                    scrollbar_button_hover_color=COLORS["note"])
+        sf.pack(fill=tk.BOTH, expand=True)
+        f = sf   # alias — rest of the method packs into f
 
-        f = tk.Frame(_canvas, bg=BG)
-        _win = _canvas.create_window((0, 0), window=f, anchor="nw")
+        def _card(parent_f, title, gold=False):
+            """Return a content frame inside a rounded card."""
+            outer = ctk.CTkFrame(parent_f,
+                                 fg_color=COLORS["bg"],
+                                 corner_radius=8,
+                                 border_width=1,
+                                 border_color=COLORS["border"])
+            ctk.CTkLabel(outer, text=title,
+                         fg_color="transparent",
+                         text_color=COLORS["gold"] if gold else COLORS["accent"],
+                         font=("Helvetica", 10, "bold"),
+                         anchor="w").pack(anchor=tk.W, padx=14, pady=(10, 2))
+            ctk.CTkFrame(outer, fg_color=COLORS["border"], height=1,
+                         corner_radius=0).pack(fill=tk.X, padx=14, pady=(0, 8))
+            content = ctk.CTkFrame(outer, fg_color="transparent", corner_radius=0)
+            content.pack(fill=tk.BOTH, expand=True, padx=8, pady=(0, 12))
+            return outer, content
 
-        f.bind("<Configure>",
-               lambda e: _canvas.configure(scrollregion=_canvas.bbox("all")))
-        _canvas.bind("<Configure>",
-                     lambda e: _canvas.itemconfig(_win, width=e.width))
+        def _field_label(parent_f, text):
+            ctk.CTkLabel(parent_f, text=text,
+                         fg_color="transparent", text_color=COLORS["header"],
+                         font=("Helvetica", 9), anchor="w").pack(
+                         anchor=tk.W, padx=10, pady=(4, 0))
 
-        def _mw(e):
-            if e.delta:
-                _canvas.yview_scroll(-1 if e.delta > 0 else 1, "units")
-        _canvas.bind("<Enter>", lambda e: _canvas.bind_all("<MouseWheel>", _mw))
-        _canvas.bind("<Leave>", lambda e: _canvas.unbind_all("<MouseWheel>"))
+        def _combobox(parent_f, variable, values, **kw):
+            return ctk.CTkComboBox(parent_f, variable=variable, values=values,
+                                   state="readonly", height=30,
+                                   fg_color=COLORS["bg"],
+                                   border_color=COLORS["border"],
+                                   button_color=COLORS["accent"],
+                                   button_hover_color=COLORS["accent_dk"],
+                                   dropdown_fg_color=COLORS["bg"],
+                                   dropdown_hover_color=COLORS["panel_bg"],
+                                   text_color=COLORS["header"],
+                                   font=("Helvetica", 9), **kw)
 
         # ── Import button ─────────────────────────────────────────────────────
-        imp = tk.Frame(f, bg=BG)
+        imp = ctk.CTkFrame(f, fg_color="transparent", corner_radius=0)
         imp.pack(fill=tk.X, padx=24, pady=(20, 8))
-        ttk.Button(imp, text="⬆  Load Student File",
-                   command=self.load_student).pack(side=tk.LEFT)
-        tk.Label(imp, text="  or fill in below",
-                 bg=BG, fg=COLORS["hint"],
-                 font=("Helvetica", 9, "italic")).pack(side=tk.LEFT, padx=10)
+        ctk.CTkButton(imp, text="⬆  Load Student File",
+                      fg_color=COLORS["accent"],
+                      hover_color=COLORS["accent_dk"],
+                      text_color="white",
+                      font=("Helvetica", 9),
+                      corner_radius=6, height=32,
+                      command=self.load_student).pack(side=tk.LEFT)
+        ctk.CTkLabel(imp, text="  or fill in below",
+                     fg_color="transparent", text_color=COLORS["hint"],
+                     font=("Helvetica", 9, "italic")).pack(side=tk.LEFT, padx=10)
 
         # ── Two-column: Student (left) | Programs (right) ─────────────────────
-        self._two_col_frame = tk.Frame(f, bg=BG)
+        self._two_col_frame = ctk.CTkFrame(f, fg_color="transparent", corner_radius=0)
         self._two_col_frame.pack(fill=tk.X, padx=24, pady=(4, 10))
         self._two_col_frame.columnconfigure(0, weight=1)
         self._two_col_frame.columnconfigure(1, weight=2)
 
-        def _panel(parent_grid, col, title):
-            outer = tk.Frame(parent_grid, bg=COLORS["border"])
-            outer.grid(row=0, column=col,
-                       padx=(0, 14) if col == 0 else (0, 0),
-                       pady=0, sticky="nsew")
-            tk.Frame(outer, bg=COLORS["accent"], height=3).pack(fill=tk.X)
-            inner = tk.Frame(outer, bg=COLORS["bg"])
-            inner.pack(fill=tk.BOTH, expand=True, padx=1, pady=(0, 1))
-            tk.Label(inner, text=title,
-                     font=("Helvetica", 10, "bold"),
-                     bg=COLORS["bg"], fg=COLORS["accent"]).pack(anchor=tk.W, padx=14, pady=(10, 2))
-            tk.Frame(inner, bg=COLORS["border"], height=1).pack(fill=tk.X, padx=14, pady=(0, 8))
-            content = tk.Frame(inner, bg=COLORS["bg"])
-            content.pack(fill=tk.BOTH, expand=True, padx=8, pady=(0, 12))
-            return content
+        # Student card
+        sp_outer, sp = _card(self._two_col_frame, "STUDENT")
+        sp_outer.grid(row=0, column=0, padx=(0, 14), pady=0, sticky="nsew")
 
-        # Student panel
-        sp = _panel(self._two_col_frame, 0, "STUDENT")
-        pad = {"padx": 10, "pady": 2}
         for lbl, attr in [("Name:", "name_var"), ("Student ID:", "id_var")]:
-            tk.Label(sp, text=lbl, bg=COLORS["bg"],
-                     font=("Helvetica", 9)).pack(anchor=tk.W, **pad)
+            _field_label(sp, lbl)
             var = tk.StringVar()
             setattr(self, attr, var)
-            ttk.Entry(sp, textvariable=var).pack(fill=tk.X, padx=10, pady=1)
+            ctk.CTkEntry(sp, textvariable=var, height=30,
+                         fg_color=COLORS["bg"],
+                         border_color=COLORS["border"],
+                         text_color=COLORS["header"],
+                         font=("Helvetica", 9)).pack(fill=tk.X, padx=10, pady=(2, 0))
 
-        tk.Label(sp, text="Year:", bg=COLORS["bg"],
-                 font=("Helvetica", 9)).pack(anchor=tk.W, **pad)
+        _field_label(sp, "Year:")
         self._year_var = tk.StringVar(value=STUDENT_YEARS[0])
-        ttk.Combobox(sp, textvariable=self._year_var,
-                     values=STUDENT_YEARS, state="readonly",
-                     width=22).pack(anchor=tk.W, padx=10, pady=1)
+        _combobox(sp, self._year_var, STUDENT_YEARS).pack(
+            anchor=tk.W, padx=10, pady=(2, 0))
 
-        tk.Label(sp, text="Transfer credits (WE):", bg=COLORS["bg"],
-                 font=("Helvetica", 9)).pack(anchor=tk.W, **pad)
+        _field_label(sp, "Transfer credits (WE):")
         self.transfer_var = tk.StringVar(value="0 credits (5 WE)")
-        ttk.Combobox(sp, textvariable=self.transfer_var, width=22,
-                     values=["0 credits (5 WE)",
-                             "1–7 credits (5 WE)",
-                             "8 credits — max (3 WE)"],
-                     state="readonly").pack(anchor=tk.W, padx=10, pady=1)
+        _combobox(sp, self.transfer_var,
+                  ["0 credits (5 WE)", "1–7 credits (5 WE)",
+                   "8 credits — max (3 WE)"]).pack(
+            anchor=tk.W, padx=10, pady=(2, 0))
 
-        # Programs panel
-        pp = _panel(self._two_col_frame, 1, "PROGRAMS")
+        # Programs card
+        pp_outer, pp = _card(self._two_col_frame, "PROGRAMS")
+        pp_outer.grid(row=0, column=1, padx=0, pady=0, sticky="nsew")
+        pp.columnconfigure(0, weight=1)
+        pp.columnconfigure(1, weight=1)
 
         NONE_OPT = "(none)"
 
@@ -689,59 +1021,55 @@ class AdvisorApp:
 
         self._major_display_to_pid = {_prog_display(p): pid for pid, p in major_progs}
         self._minor_display_to_pid = {_prog_display(p): pid for pid, p in minor_progs}
-        self._display_to_pid = {**self._major_display_to_pid, **self._minor_display_to_pid}
+        self._display_to_pid = {**self._major_display_to_pid,
+                                **self._minor_display_to_pid}
         self._pid_to_display = {}
         for pid, p in major_progs + minor_progs:
             self._pid_to_display[pid] = _prog_display(p)
 
-        # Lay programs out in two sub-columns within the programs panel
-        pp.columnconfigure(0, weight=1)
-        pp.columnconfigure(1, weight=1)
-
         maj_labels = ["Major:", "Major 2 (optional):", "Major 3 (optional):"]
         for i in range(3):
-            row_f = tk.Frame(pp, bg=COLORS["bg"])
+            row_f = ctk.CTkFrame(pp, fg_color="transparent", corner_radius=0)
             row_f.grid(row=i, column=0, columnspan=2, sticky="ew", padx=4, pady=2)
-            tk.Label(row_f, text=maj_labels[i], width=18, anchor="w",
-                     bg=COLORS["bg"], font=("Helvetica", 9)).pack(side=tk.LEFT)
+            ctk.CTkLabel(row_f, text=maj_labels[i],
+                         fg_color="transparent", text_color=COLORS["header"],
+                         font=("Helvetica", 9), width=130,
+                         anchor="w").pack(side=tk.LEFT)
             var = tk.StringVar(value=NONE_OPT)
             self._major_vars.append(var)
-            ttk.Combobox(row_f, textvariable=var,
-                         values=major_names, state="readonly",
-                         width=28).pack(side=tk.LEFT, fill=tk.X, expand=True)
+            _combobox(row_f, var, major_names, width=220).pack(
+                side=tk.LEFT, fill=tk.X, expand=True)
 
         min_labels = ["Minor (optional):", "Minor 2 (optional):"]
         for i in range(2):
-            row_f = tk.Frame(pp, bg=COLORS["bg"])
-            row_f.grid(row=3 + i, column=0, columnspan=2, sticky="ew", padx=4, pady=2)
-            tk.Label(row_f, text=min_labels[i], width=18, anchor="w",
-                     bg=COLORS["bg"], font=("Helvetica", 9)).pack(side=tk.LEFT)
+            row_f = ctk.CTkFrame(pp, fg_color="transparent", corner_radius=0)
+            row_f.grid(row=3 + i, column=0, columnspan=2, sticky="ew",
+                       padx=4, pady=2)
+            ctk.CTkLabel(row_f, text=min_labels[i],
+                         fg_color="transparent", text_color=COLORS["header"],
+                         font=("Helvetica", 9), width=130,
+                         anchor="w").pack(side=tk.LEFT)
             var = tk.StringVar(value=NONE_OPT)
             self._minor_vars.append(var)
-            ttk.Combobox(row_f, textvariable=var,
-                         values=minor_names, state="readonly",
-                         width=28).pack(side=tk.LEFT, fill=tk.X, expand=True)
+            _combobox(row_f, var, minor_names, width=220).pack(
+                side=tk.LEFT, fill=tk.X, expand=True)
 
         # ── Pathways (conditional, horizontal) ───────────────────────────────
-        self._pw_container = tk.Frame(f, bg=BG)
-        # establish pack order now, then hide
+        self._pw_container = ctk.CTkFrame(f, fg_color="transparent",
+                                          corner_radius=0)
         self._pw_container.pack(fill=tk.X, padx=24, pady=(0, 4))
         self._pw_container.pack_forget()
 
-        pw_outer = tk.Frame(self._pw_container, bg=COLORS["border"])
+        pw_outer, pw_inner = _card(self._pw_container,
+                                   "PRE-PROFESSIONAL PATHWAYS", gold=True)
         pw_outer.pack(fill=tk.X)
-        tk.Frame(pw_outer, bg=COLORS["gold"], height=3).pack(fill=tk.X)
-        pw_inner = tk.Frame(pw_outer, bg=COLORS["bg"])
-        pw_inner.pack(fill=tk.BOTH, expand=True, padx=1, pady=(0, 1))
-        tk.Label(pw_inner, text="PRE-PROFESSIONAL PATHWAYS",
-                 font=("Helvetica", 10, "bold"), bg=COLORS["bg"],
-                 fg=COLORS["accent"]).pack(anchor=tk.W, padx=14, pady=(10, 1))
-        tk.Label(pw_inner, text="Optional — check any that apply to add a detailed pathway tab",
-                 font=("Helvetica", 8), bg=COLORS["bg"],
-                 fg=COLORS["hint"]).pack(anchor=tk.W, padx=14, pady=(0, 4))
-        tk.Frame(pw_inner, bg=COLORS["border"], height=1).pack(fill=tk.X, padx=14, pady=(0, 6))
-        self._pw_rows_frame = tk.Frame(pw_inner, bg=COLORS["bg"])
-        self._pw_rows_frame.pack(anchor=tk.W, padx=10, pady=(0, 10))
+        ctk.CTkLabel(pw_inner,
+                     text="Optional — check any that apply to add a detailed pathway tab",
+                     fg_color="transparent", text_color=COLORS["hint"],
+                     font=("Helvetica", 8)).pack(anchor=tk.W, padx=4, pady=(0, 6))
+        self._pw_rows_frame = ctk.CTkFrame(pw_inner, fg_color="transparent",
+                                           corner_radius=0)
+        self._pw_rows_frame.pack(anchor=tk.W, padx=4, pady=(0, 4))
 
         self._pathway_rows: dict    = {}
         self._pathway_related: dict = {}
@@ -759,48 +1087,53 @@ class AdvisorApp:
             codes_str = ", ".join(rel_codes[:2])
             hint = f"  [{codes_str}]" if rel_codes else ""
             pw_label = f"{pw['name']}{hint}"
-            row = tk.Frame(self._pw_rows_frame, bg=COLORS["bg"])
-            ttk.Checkbutton(row, text=pw_label,
-                            variable=var).pack(anchor=tk.W)
+            row = ctk.CTkFrame(self._pw_rows_frame, fg_color="transparent",
+                               corner_radius=0)
+            ctk.CTkCheckBox(row, text=pw_label, variable=var,
+                            fg_color=COLORS["accent"],
+                            hover_color=COLORS["accent_dk"],
+                            border_color=COLORS["border"],
+                            text_color=COLORS["header"],
+                            font=("Helvetica", 9),
+                            checkmark_color="white").pack(anchor=tk.W)
             self._pathway_rows[pw_id] = row
 
-        # ── Track / variant selector (shown when a program has multiple F2Y tracks) ─
-        self._variant_container = tk.Frame(f, bg=BG)
+        # ── Track / variant selector ──────────────────────────────────────────
+        self._variant_container = ctk.CTkFrame(f, fg_color="transparent",
+                                               corner_radius=0)
         self._variant_container.pack(fill=tk.X, padx=24, pady=(0, 4))
         self._variant_container.pack_forget()
 
-        va_outer = tk.Frame(self._variant_container, bg=COLORS["border"])
+        va_outer, va_inner = _card(self._variant_container,
+                                   "TRACK / CONCENTRATION")
         va_outer.pack(fill=tk.X)
-        tk.Frame(va_outer, bg=COLORS["accent"], height=3).pack(fill=tk.X)
-        va_inner = tk.Frame(va_outer, bg=COLORS["bg"])
-        va_inner.pack(fill=tk.BOTH, expand=True, padx=1, pady=(0, 1))
-        tk.Label(va_inner, text="TRACK / CONCENTRATION",
-                 font=("Helvetica", 10, "bold"), bg=COLORS["bg"],
-                 fg=COLORS["accent"]).pack(anchor=tk.W, padx=14, pady=(10, 1))
-        tk.Label(va_inner, text="Select the path that best describes this student",
-                 font=("Helvetica", 8), bg=COLORS["bg"],
-                 fg=COLORS["hint"]).pack(anchor=tk.W, padx=14, pady=(0, 4))
-        tk.Frame(va_inner, bg=COLORS["border"], height=1).pack(fill=tk.X, padx=14, pady=(0, 6))
-        self._variant_rows_frame = tk.Frame(va_inner, bg=COLORS["bg"])
-        self._variant_rows_frame.pack(anchor=tk.W, padx=10, pady=(0, 10))
+        ctk.CTkLabel(va_inner,
+                     text="Select the path that best describes this student",
+                     fg_color="transparent", text_color=COLORS["hint"],
+                     font=("Helvetica", 8)).pack(anchor=tk.W, padx=4, pady=(0, 6))
+        self._variant_rows_frame = ctk.CTkFrame(va_inner, fg_color="transparent",
+                                                corner_radius=0)
+        self._variant_rows_frame.pack(anchor=tk.W, padx=4, pady=(0, 4))
 
-        # Traces after pathway/variant structures are built
+        # Traces
         for var in self._major_vars + self._minor_vars:
             var.trace_add("write", lambda *_: self._update_pathway_visibility())
             var.trace_add("write", lambda *_: self._update_variant_visibility())
 
         # ── Courses by semester ───────────────────────────────────────────────
-        hdr_f = tk.Frame(f, bg=BG)
+        hdr_f = ctk.CTkFrame(f, fg_color="transparent", corner_radius=0)
         hdr_f.pack(fill=tk.X, padx=24, pady=(10, 0))
-        tk.Label(hdr_f, text="COURSES BY SEMESTER",
-                 font=("Helvetica", 10, "bold"), bg=BG,
-                 fg=COLORS["accent"]).pack(side=tk.LEFT)
-        tk.Label(hdr_f, text="  ☑ completed   ☐ planned",
-                 font=("Helvetica", 8), bg=BG,
-                 fg=COLORS["hint"]).pack(side=tk.LEFT, padx=10)
-        tk.Frame(f, bg=COLORS["border"], height=1).pack(fill=tk.X, padx=24, pady=(6, 8))
+        ctk.CTkLabel(hdr_f, text="COURSES BY SEMESTER",
+                     fg_color="transparent", text_color=COLORS["accent"],
+                     font=("Helvetica", 10, "bold")).pack(side=tk.LEFT)
+        ctk.CTkLabel(hdr_f, text="  ☑ completed   ☐ planned",
+                     fg_color="transparent", text_color=COLORS["hint"],
+                     font=("Helvetica", 8)).pack(side=tk.LEFT, padx=10)
+        ctk.CTkFrame(f, fg_color=COLORS["border"], height=1,
+                     corner_radius=0).pack(fill=tk.X, padx=24, pady=(6, 8))
 
-        self._courses_area = tk.Frame(f, bg=BG)
+        self._courses_area = ctk.CTkFrame(f, fg_color="transparent",
+                                          corner_radius=0)
         self._courses_area.pack(fill=tk.X, padx=18)
         for col in range(3):
             self._courses_area.columnconfigure(col, weight=1, minsize=260)
@@ -808,66 +1141,78 @@ class AdvisorApp:
         self._add_semester("Transfer", initial_rows=2, is_transfer=True)
         self._add_semester("Semester 1", initial_rows=3)
 
-        # "+ Add Semester" below grid
-        add_sem_f = tk.Frame(f, bg=BG)
+        # "+ Add Semester"
+        add_sem_f = ctk.CTkFrame(f, fg_color="transparent", corner_radius=0)
         add_sem_f.pack(fill=tk.X, padx=24, pady=(4, 6))
-        add_s_btn = tk.Button(add_sem_f, text="＋ Add Semester",
-                              font=("Helvetica", 9), relief=tk.FLAT,
-                              bg=BG, fg=COLORS["accent"], cursor="hand2",
-                              padx=10, pady=4,
-                              command=self._add_next_semester)
-        add_s_btn.pack(anchor=tk.W)
-        add_s_btn.bind("<Enter>", lambda e: add_s_btn.configure(fg=COLORS["accent_dk"]))
-        add_s_btn.bind("<Leave>", lambda e: add_s_btn.configure(fg=COLORS["accent"]))
+        ctk.CTkButton(add_sem_f, text="＋ Add Semester",
+                      font=("Helvetica", 9),
+                      fg_color="transparent",
+                      hover_color=COLORS["panel_bg"],
+                      text_color=COLORS["accent"],
+                      corner_radius=6, height=28,
+                      command=self._add_next_semester).pack(anchor=tk.W)
 
         # ── Bottom action bar ─────────────────────────────────────────────────
-        tk.Frame(f, bg=COLORS["border"], height=1).pack(fill=tk.X, padx=24, pady=(8, 0))
-        bot = tk.Frame(f, bg=BG)
+        ctk.CTkFrame(f, fg_color=COLORS["border"], height=1,
+                     corner_radius=0).pack(fill=tk.X, padx=24, pady=(8, 0))
+        bot = ctk.CTkFrame(f, fg_color="transparent", corner_radius=0)
         bot.pack(fill=tk.X, padx=24, pady=(10, 24))
 
-        ttk.Button(bot, text="Save Student File",
-                   command=self.save_student).pack(side=tk.LEFT, padx=(0, 8))
-        ttk.Button(bot, text="Clear All",
-                   command=self.clear_all).pack(side=tk.LEFT)
+        ctk.CTkButton(bot, text="Save Student File",
+                      fg_color=COLORS["panel_bg"],
+                      hover_color=COLORS["border"],
+                      text_color=COLORS["header"],
+                      border_width=1, border_color=COLORS["border"],
+                      font=("Helvetica", 9), corner_radius=6, height=34,
+                      command=self.save_student).pack(side=tk.LEFT, padx=(0, 8))
+        ctk.CTkButton(bot, text="Clear All",
+                      fg_color=COLORS["panel_bg"],
+                      hover_color=COLORS["border"],
+                      text_color=COLORS["header"],
+                      border_width=1, border_color=COLORS["border"],
+                      font=("Helvetica", 9), corner_radius=6, height=34,
+                      command=self.clear_all).pack(side=tk.LEFT)
+        ctk.CTkButton(bot, text="Check Requirements  →",
+                      font=("Helvetica", 10, "bold"),
+                      fg_color=COLORS["accent"],
+                      hover_color=COLORS["accent_dk"],
+                      text_color="white",
+                      corner_radius=6, height=36,
+                      command=self.check).pack(side=tk.RIGHT)
 
-        check_btn = tk.Button(bot, text="Check Requirements  →",
-                              font=("Helvetica", 10, "bold"),
-                              bg=COLORS["accent"], fg="white",
-                              activebackground=COLORS["accent_dk"],
-                              activeforeground="white",
-                              relief=tk.FLAT, cursor="hand2",
-                              padx=18, pady=7,
-                              command=self.check)
-        check_btn.pack(side=tk.RIGHT)
-        check_btn.bind("<Enter>", lambda e: check_btn.configure(bg=COLORS["accent_dk"]))
-        check_btn.bind("<Leave>", lambda e: check_btn.configure(bg=COLORS["accent"]))
-
-    def _build_results_page(self, parent: tk.Frame):
+    def _build_results_page(self, parent):
         """Full-width results page: summary bar + tabbed requirement checks."""
         # Summary bar — dark strip with student info + action buttons
-        bar = tk.Frame(parent, bg=COLORS["header"])
+        bar = ctk.CTkFrame(parent, fg_color=COLORS["header"], corner_radius=0,
+                           height=38)
         bar.pack(fill=tk.X)
+        bar.pack_propagate(False)
+
         self.summary_var = tk.StringVar(
             value="Fill in the Student Setup page and click Check Requirements.")
-        tk.Label(bar, textvariable=self.summary_var,
-                 bg=COLORS["header"], fg="#cbd5e1",
-                 font=("Helvetica", 9),
-                 anchor=tk.W).pack(side=tk.LEFT, padx=16, pady=8, fill=tk.X, expand=True)
+        ctk.CTkLabel(bar, textvariable=self.summary_var,
+                     fg_color="transparent", text_color="#cbd5e1",
+                     font=("Helvetica", 9),
+                     anchor="w").pack(side=tk.LEFT, padx=16, pady=0,
+                                      fill=tk.X, expand=True)
+        ctk.CTkButton(bar, text="Export Report",
+                      font=("Helvetica", 8),
+                      fg_color="transparent",
+                      hover_color=COLORS["accent"],
+                      text_color="#94a3b8",
+                      corner_radius=4, height=26,
+                      command=self.export).pack(side=tk.RIGHT, padx=10, pady=6)
 
-        # Export button in the bar
-        exp_btn = tk.Button(bar, text="Export Report",
-                            font=("Helvetica", 8),
-                            bg=COLORS["header"], fg="#94a3b8",
-                            activebackground=COLORS["accent"],
-                            activeforeground="white",
-                            relief=tk.FLAT, cursor="hand2",
-                            padx=10, pady=4,
-                            command=self.export)
-        exp_btn.pack(side=tk.RIGHT, padx=10, pady=6)
-        exp_btn.bind("<Enter>", lambda e: exp_btn.configure(fg="white"))
-        exp_btn.bind("<Leave>", lambda e: exp_btn.configure(fg="#94a3b8"))
-
-        self.nb = ttk.Notebook(parent)
+        self._nb_tab_names: list[str] = []
+        self.nb = ctk.CTkTabview(parent,
+                                 fg_color=COLORS["bg"],
+                                 segmented_button_fg_color=COLORS["panel_bg"],
+                                 segmented_button_selected_color=COLORS["accent"],
+                                 segmented_button_selected_hover_color=COLORS["accent_dk"],
+                                 segmented_button_unselected_color=COLORS["panel_bg"],
+                                 segmented_button_unselected_hover_color=COLORS["border"],
+                                 text_color="white",
+                                 text_color_disabled=COLORS["note"])
         self.nb.pack(fill=tk.BOTH, expand=True, padx=0, pady=0)
 
 
@@ -922,27 +1267,27 @@ class AdvisorApp:
     def _add_semester(self, label: str, initial_rows: int = 3,
                       is_transfer: bool = False) -> dict:
         """Create a semester card and place it in the 3-column grid."""
-        idx     = len(self._semesters)
-        BG      = COLORS["bg"]
-        HDR_BG  = "#2d5278" if is_transfer else "#2c3e50"
-        ACCENT  = COLORS["gold"] if is_transfer else COLORS["accent"]
+        idx    = len(self._semesters)
+        HDR_BG = "#2d5278" if is_transfer else "#2c3e50"
+        ACCENT = COLORS["gold"] if is_transfer else COLORS["accent"]
 
-        outer = tk.Frame(self._courses_area, bg=COLORS["border"])
+        outer = ctk.CTkFrame(self._courses_area, fg_color=COLORS["bg"],
+                             corner_radius=6, border_width=1,
+                             border_color=COLORS["border"])
         outer.grid(row=idx // 3, column=idx % 3, sticky="nsew", padx=5, pady=5)
         self._courses_area.columnconfigure(idx % 3, weight=1, minsize=260)
 
-        # Thin colored top accent
-        tk.Frame(outer, bg=ACCENT, height=3).pack(fill=tk.X)
+        # Thin colored top accent bar
+        ctk.CTkFrame(outer, fg_color=ACCENT, height=3,
+                     corner_radius=0).pack(fill=tk.X)
 
-        inner = tk.Frame(outer, bg=BG)
-        inner.pack(fill=tk.BOTH, expand=True, padx=1, pady=(0, 1))
-
-        hdr = tk.Frame(inner, bg=HDR_BG)
+        hdr = ctk.CTkFrame(outer, fg_color=HDR_BG, corner_radius=0)
         hdr.pack(fill=tk.X)
-        tk.Label(hdr, text=label, font=("Helvetica", 9, "bold"),
-                 bg=HDR_BG, fg="white").pack(side=tk.LEFT, padx=10, pady=6)
+        ctk.CTkLabel(hdr, text=label, font=("Helvetica", 9, "bold"),
+                     text_color="white", fg_color="transparent",
+                     anchor="w").pack(side=tk.LEFT, padx=10, pady=6)
 
-        rows_frame = tk.Frame(inner, bg=BG)
+        rows_frame = ctk.CTkFrame(outer, fg_color=COLORS["bg"], corner_radius=0)
         rows_frame.pack(fill=tk.X, padx=6, pady=6)
 
         sem_dict = {"label": label, "frame": outer, "rows": [],
@@ -952,41 +1297,51 @@ class AdvisorApp:
         for _ in range(initial_rows):
             self._add_course_row(sem_dict)
 
-        add_btn = tk.Button(inner, text="+ course",
-                            font=("Helvetica", 8), relief=tk.FLAT,
-                            bg=BG, fg=COLORS["accent"], cursor="hand2",
-                            command=lambda sd=sem_dict: self._add_course_row(sd))
-        add_btn.pack(anchor=tk.W, padx=8, pady=(0, 6))
-        add_btn.bind("<Enter>", lambda e, b=add_btn: b.configure(fg=COLORS["accent_dk"]))
-        add_btn.bind("<Leave>", lambda e, b=add_btn: b.configure(fg=COLORS["accent"]))
+        ctk.CTkButton(outer, text="+ course",
+                      font=("Helvetica", 8),
+                      fg_color="transparent",
+                      hover_color=COLORS["border"],
+                      text_color=COLORS["accent"],
+                      border_width=0, anchor="w", height=24,
+                      command=lambda sd=sem_dict: self._add_course_row(sd)
+                      ).pack(anchor=tk.W, padx=4, pady=(0, 6))
 
         return sem_dict
 
     def _add_course_row(self, sem_dict: dict, code: str = "",
                         grade: str = "", completed: bool = True):
         """Append one course-entry row to a semester card."""
-        BG = COLORS["bg"]
         rf = sem_dict["rows_frame"]
-        row_f = tk.Frame(rf, bg=BG)
-        row_f.pack(fill=tk.X, pady=2)
+        row_f = ctk.CTkFrame(rf, fg_color=COLORS["bg"], corner_radius=0)
+        row_f.pack(fill=tk.X, pady=1)
 
         completed_var = tk.BooleanVar(value=completed)
-        ttk.Checkbutton(row_f, variable=completed_var).pack(side=tk.LEFT)
+        ctk.CTkCheckBox(row_f, variable=completed_var, text="",
+                        onvalue=True, offvalue=False,
+                        width=20, height=20,
+                        checkbox_width=16, checkbox_height=16,
+                        fg_color=COLORS["accent"],
+                        border_color=COLORS["border"],
+                        corner_radius=3).pack(side=tk.LEFT, padx=(2, 2))
 
         code_var = tk.StringVar(value=code)
-        code_entry = tk.Entry(row_f, textvariable=code_var, width=10,
-                              font=("Courier New", 10),
-                              bg=COLORS["bg"], fg=COLORS["header"],
-                              relief=tk.FLAT, bd=0,
-                              highlightthickness=1,
-                              highlightbackground=COLORS["border"],
-                              highlightcolor=COLORS["accent"])
-        code_entry.pack(side=tk.LEFT, padx=(3, 3))
+        ctk.CTkEntry(row_f, textvariable=code_var, width=100,
+                     font=("Courier New", 10),
+                     fg_color=COLORS["bg"],
+                     text_color=COLORS["header"],
+                     border_color=COLORS["border"],
+                     border_width=1, corner_radius=4,
+                     height=28).pack(side=tk.LEFT, padx=(2, 2))
 
         grade_var = tk.StringVar(value=grade)
-        ttk.Combobox(row_f, textvariable=grade_var,
-                     values=GRADES, state="readonly",
-                     width=4).pack(side=tk.LEFT)
+        ctk.CTkComboBox(row_f, variable=grade_var,
+                        values=GRADES, state="readonly",
+                        width=70, height=28,
+                        fg_color=COLORS["bg"],
+                        border_color=COLORS["border"],
+                        button_color=COLORS["border"],
+                        border_width=1, corner_radius=4,
+                        font=("Helvetica", 10)).pack(side=tk.LEFT, padx=(2, 2))
 
         row_dict = {"code_var": code_var, "grade_var": grade_var,
                     "completed_var": completed_var, "frame": row_f}
@@ -996,13 +1351,13 @@ class AdvisorApp:
             if rd in sd["rows"]:
                 sd["rows"].remove(rd)
 
-        del_btn = tk.Button(row_f, text="×", font=("Helvetica", 10), relief=tk.FLAT,
-                            bg=BG, fg=COLORS["border"], cursor="hand2",
-                            activeforeground=COLORS["incomplete"],
-                            command=_delete)
-        del_btn.pack(side=tk.LEFT, padx=(3, 0))
-        del_btn.bind("<Enter>", lambda e, b=del_btn: b.configure(fg=COLORS["incomplete"]))
-        del_btn.bind("<Leave>", lambda e, b=del_btn: b.configure(fg=COLORS["border"]))
+        ctk.CTkButton(row_f, text="×",
+                      font=("Helvetica", 12, "bold"),
+                      fg_color="transparent",
+                      hover_color=COLORS["border"],
+                      text_color=COLORS["border"],
+                      width=24, height=24, corner_radius=4,
+                      command=_delete).pack(side=tk.LEFT, padx=(2, 0))
 
         sem_dict["rows"].append(row_dict)
 
@@ -1030,7 +1385,42 @@ class AdvisorApp:
     # Actions
     # ──────────────────────────────────────────────────────────────────────────
 
-    def check(self):
+    def _apply_intake_route(self, route: dict):
+        """Pre-populate the setup form from a wizard intake route result."""
+        # Clear any previous wizard note
+        self._wizard_route_note = route.get("note", "")
+
+        # Set major dropdown
+        major_pid = route.get("major", "")
+        if major_pid and self._major_vars:
+            display = self._pid_to_display.get(major_pid, "")
+            if display:
+                self._major_vars[0].set(display)
+                for var in self._major_vars[1:]:
+                    var.set("(none)")
+            for var in self._minor_vars:
+                var.set("(none)")
+
+        # Set pathway checkbox
+        pathway_id = route.get("pathway", "")
+        for pid, var in self.pathway_vars.items():
+            var.set(pid == pathway_id and bool(pathway_id))
+
+        # Pre-fill Semester 1 with recommended courses (as "planned", not completed)
+        courses = route.get("semester_1", [])
+        if courses:
+            sem1 = next((s for s in self._semesters if s["label"] == "Semester 1"), None)
+            if sem1:
+                for row in list(sem1["rows"]):
+                    row["frame"].destroy()
+                sem1["rows"].clear()
+                for code in courses:
+                    self._add_course_row(sem1, code=code, completed=False)
+                self._add_course_row(sem1)  # one blank row at end
+
+        self._update_pathway_visibility()
+
+    def check(self, jump_to_suggested: bool = False):
         sel_ids = self._selected_program_ids()
         taken   = self._collect_courses()
 
@@ -1038,15 +1428,16 @@ class AdvisorApp:
         we_required = 3 if "8 credits" in self.transfer_var.get() else 5
 
         # Clear tabs
-        for tab in self.nb.tabs():
-            self.nb.forget(tab)
+        for name in self._nb_tab_names:
+            self.nb.delete(name)
+        self._nb_tab_names.clear()
         self.manual_ge.clear()
 
         # GE tab
         ge_result = check_ge(self.ge_data, taken, self.dac, self.we)
-        ge_frame  = tk.Frame(self.nb, bg=COLORS["bg"])
-        self.nb.add(ge_frame, text="GE Requirements")
-        self._render_ge(ge_frame, ge_result, we_required)
+        self.nb.add("GE Requirements")
+        self._nb_tab_names.append("GE Requirements")
+        self._render_ge(self.nb.tab("GE Requirements"), ge_result, we_required)
 
         # Active pathways
         active_pathway_ids = [pid for pid, var in self.pathway_vars.items()
@@ -1054,35 +1445,39 @@ class AdvisorApp:
 
         # Program tabs
         for pid in sel_ids:
-            prog   = self.programs[pid]
+            prog  = self.programs[pid]
             result = check_program(prog, taken)
-            frame  = tk.Frame(self.nb, bg=COLORS["bg"])
-            ptype  = prog.get("program_type", "").title()
-            self.nb.add(frame, text=f"{prog['name']} ({ptype})")
-            self._render_program(frame, result, active_pathways=active_pathway_ids)
+            ptype = prog.get("program_type", "").title()
+            tab_name = f"{prog['name']} ({ptype})"
+            self.nb.add(tab_name)
+            self._nb_tab_names.append(tab_name)
+            self._render_program(self.nb.tab(tab_name), result,
+                                 active_pathways=active_pathway_ids)
 
         # Pathway tabs
         for pw_id in active_pathway_ids:
             pw     = self.pathways[pw_id]
             result = check_program(pw, taken)
-            frame  = tk.Frame(self.nb, bg=COLORS["bg"])
-            self.nb.add(frame, text=f"\u2b21 {pw['name']}")
-            self._render_program(frame, result)
+            tab_name = f"\u2b21 {pw['name']}"
+            self.nb.add(tab_name)
+            self._nb_tab_names.append(tab_name)
+            self._render_program(self.nb.tab(tab_name), result)
 
         # First Two Years tab
         f2y_entries = self._matching_first_two_years(sel_ids)
         if f2y_entries:
-            frame = tk.Frame(self.nb, bg=COLORS["bg"])
-            self.nb.add(frame, text="First 2 Years")
-            self._render_first_two_years(frame, f2y_entries, taken)
+            self.nb.add("First 2 Years")
+            self._nb_tab_names.append("First 2 Years")
+            self._render_first_two_years(self.nb.tab("First 2 Years"),
+                                         f2y_entries, taken)
 
         # Suggested Plan tab
         if sel_ids:
-            frame = tk.Frame(self.nb, bg=COLORS["bg"])
-            self.nb.add(frame, text="Suggested Plan")
+            self.nb.add("Suggested Plan")
+            self._nb_tab_names.append("Suggested Plan")
             self._render_suggested_plan(
-                frame, sel_ids, taken, ge_result, we_required,
-                active_pathway_ids, f2y_entries)
+                self.nb.tab("Suggested Plan"), sel_ids, taken, ge_result,
+                we_required, active_pathway_ids, f2y_entries)
 
         # Summary
         name     = self.name_var.get().strip() or "Student"
@@ -1096,7 +1491,12 @@ class AdvisorApp:
             f"  |  {len(sel_ids)} program(s)  |  {len(active_pathway_ids)} pathway(s)")
         self._switch_page("results")
 
+        # Jump straight to the Suggested Plan tab (used by the new-student wizard)
+        if jump_to_suggested and "Suggested Plan" in self._nb_tab_names:
+            self.nb.set("Suggested Plan")
+
     def clear_all(self):
+        self._wizard_route_note = ""
         self.name_var.set("")
         self.id_var.set("")
         if self._year_var:
@@ -1109,8 +1509,9 @@ class AdvisorApp:
         if self._courses_area:
             self._rebuild_semester_grid()
         self._update_pathway_visibility()
-        for tab in self.nb.tabs():
-            self.nb.forget(tab)
+        for name in self._nb_tab_names:
+            self.nb.delete(name)
+        self._nb_tab_names.clear()
         self.summary_var.set(
             "Select programs and enter courses, then click Check Requirements.")
         self._switch_page("setup")
@@ -1137,16 +1538,14 @@ class AdvisorApp:
             f"Programs: {prog_str}",
             "=" * 60, "",
         ]
-        for tab_id in self.nb.tabs():
-            tab_text = self.nb.tab(tab_id, "text")
-            widget   = self.nb.nametowidget(tab_id)
-            for child in widget.winfo_children():
-                for subchild in child.winfo_children():
-                    if isinstance(subchild, tk.Text):
-                        lines.append(f"\n{'=' * 60}")
-                        lines.append(tab_text.upper())
-                        lines.append('=' * 60)
-                        lines.append(subchild.get("1.0", tk.END).strip())
+        for name in self._nb_tab_names:
+            frame = self.nb.tab(name)
+            for child in frame.winfo_children():
+                if isinstance(child, ctk.CTkTextbox):
+                    lines.append(f"\n{'=' * 60}")
+                    lines.append(name.upper())
+                    lines.append('=' * 60)
+                    lines.append(child.get("1.0", tk.END).strip())
         try:
             Path(path).write_text("\n".join(lines), encoding="utf-8")
             messagebox.showinfo("Exported", f"Saved to:\n{path}")
@@ -1351,17 +1750,14 @@ class AdvisorApp:
     # Rendering helpers
     # ──────────────────────────────────────────────────────────────────────────
 
-    def _make_text(self, parent: tk.Frame) -> tk.Text:
-        frame = tk.Frame(parent, bg=COLORS["bg"])
-        frame.pack(fill=tk.BOTH, expand=True)
-        vsb = ttk.Scrollbar(frame)
-        vsb.pack(side=tk.RIGHT, fill=tk.Y)
-        t = tk.Text(frame, wrap=tk.WORD, padx=20, pady=14,
-                    font=("Helvetica", 10), bg=COLORS["bg"],
-                    relief=tk.FLAT, yscrollcommand=vsb.set,
-                    cursor="arrow", spacing1=1, spacing3=1)
-        t.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
-        vsb.config(command=t.yview)
+    def _make_text(self, parent) -> ctk.CTkTextbox:
+        t = ctk.CTkTextbox(parent, wrap="word",
+                           font=("Helvetica", 10),
+                           fg_color=COLORS["bg"],
+                           text_color=COLORS["header"],
+                           corner_radius=0, border_width=0,
+                           activate_scrollbars=True)
+        t.pack(fill=tk.BOTH, expand=True)
 
         t.tag_configure("h1",      font=("Helvetica", 14, "bold"),
                         foreground=COLORS["accent"],  spacing1=4, spacing3=8)
@@ -1391,7 +1787,7 @@ class AdvisorApp:
                         foreground=COLORS["note"])
         return t
 
-    def _ins(self, t: tk.Text, text: str, tag: str = ""):
+    def _ins(self, t: ctk.CTkTextbox, text: str, tag: str = ""):
         t.insert(tk.END, text, tag)
 
     # ── First Two Years matching & rendering ──────────────────────────────────
@@ -1462,10 +1858,13 @@ class AdvisorApp:
             prog_name = prog.get("name", pid)
             any_visible = True
 
-            grp = tk.Frame(self._variant_rows_frame, bg=COLORS["bg"])
+            grp = ctk.CTkFrame(self._variant_rows_frame, fg_color=COLORS["bg"],
+                               corner_radius=0)
             grp.pack(anchor=tk.W, padx=4, pady=(4, 2))
-            tk.Label(grp, text=f"{prog_name}:", bg=COLORS["bg"],
-                     font=("Helvetica", 9, "bold")).pack(anchor=tk.W)
+            ctk.CTkLabel(grp, text=f"{prog_name}:", fg_color="transparent",
+                         text_color=COLORS["header"],
+                         font=("Helvetica", 9, "bold"),
+                         anchor="w").pack(anchor=tk.W)
 
             var = tk.StringVar(value=entries[0]["id"])
             self._variant_vars[pid] = var
@@ -1473,8 +1872,13 @@ class AdvisorApp:
                 lbl = entry.get("label", entry["id"])
                 vn  = entry.get("variant_note", "")
                 display = lbl + (f"  —  {vn}" if vn else "")
-                ttk.Radiobutton(grp, text=display, variable=var,
-                                value=entry["id"]).pack(anchor=tk.W, padx=20)
+                ctk.CTkRadioButton(grp, text=display, variable=var,
+                                   value=entry["id"],
+                                   fg_color=COLORS["accent"],
+                                   border_color=COLORS["border"],
+                                   font=("Helvetica", 9),
+                                   text_color=COLORS["header"]
+                                   ).pack(anchor=tk.W, padx=20)
 
         if any_visible:
             self._variant_container.pack(fill=tk.X, padx=24, pady=(0, 4))
@@ -1535,6 +1939,13 @@ class AdvisorApp:
             f"Credits taken: {cred:.1f}\n"
             "□ = needed   ◇ = choose from options   ◻ = non-course   ⚠ = overdue\n\n",
             "summary")
+
+        # Wizard routing note (shown when the new-student wizard produced this plan)
+        if self._wizard_route_note:
+            self._ins(t,
+                "── FIRST-SEMESTER RECOMMENDATION ──────────────────────────────\n",
+                "divider")
+            self._ins(t, f"   ℹ  {self._wizard_route_note}\n\n", "note")
 
         # ── B: Near-term — F2Y essentials (Y1/Y2) or overdue list (Y3+) ─────────
         overdue_lines = []   # [(display_str, prog_name)] for Y3+ students
@@ -1867,7 +2278,7 @@ class AdvisorApp:
                     f"   •  {code:<12}  {pct_str} of grads   {sem_str}\n", "note")
                 shown_codes.add(code)
 
-        t.config(state=tk.DISABLED)
+        t.configure(state="disabled")
 
     def _render_first_two_years(self, parent: tk.Frame,
                                 entries: list, taken: set):
@@ -1934,7 +2345,7 @@ class AdvisorApp:
             if notes:
                 self._ins(t, f"\n   ℹ  {notes}\n", "note")
 
-        t.config(state=tk.DISABLED)
+        t.configure(state="disabled")
 
     # ── GE tab ────────────────────────────────────────────────────────────────
 
@@ -2011,7 +2422,7 @@ class AdvisorApp:
             if not ok:
                 self._ins(t, "     → Mark manually in the advisor's notes\n", "note")
 
-        t.config(state=tk.DISABLED)
+        t.configure(state="disabled")
 
     # ── Program tab ───────────────────────────────────────────────────────────
 
@@ -2185,22 +2596,13 @@ class AdvisorApp:
                         f"   • {code:<12}  {pct_str} of grads   {sem_str}\n",
                         "note")
 
-        t.config(state=tk.DISABLED)
+        t.configure(state="disabled")
 
 
 # ─────────────────────────── Entry point ─────────────────────────────────────
 
 def main():
-    root = tk.Tk()
-    try:
-        # Use a clean theme
-        style = ttk.Style(root)
-        for theme in ("aqua", "clam", "alt", "default"):
-            if theme in style.theme_names():
-                style.theme_use(theme)
-                break
-    except Exception:
-        pass
+    root = ctk.CTk()
     AdvisorApp(root)
     root.mainloop()
 

@@ -42,9 +42,9 @@ if ! "$PY" -c "import tkinter" 2>/dev/null; then
   exit 1
 fi
 
-# ── Install / upgrade PyInstaller for this Python ────────────────────────────
-echo "Installing PyInstaller..."
-"$PY" -m pip install --upgrade pyinstaller --quiet
+# ── Install / upgrade PyInstaller and dependencies for this Python ────────────
+echo "Installing PyInstaller and customtkinter..."
+"$PY" -m pip install --upgrade pyinstaller customtkinter --quiet
 
 # ── Clean and rebuild ─────────────────────────────────────────────────────────
 echo "Building app..."
