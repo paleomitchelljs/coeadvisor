@@ -639,7 +639,8 @@ class AdvisorApp:
                             border_width=1, border_color=COLORS["border"],
                             width=width)
         card.pack()
-        card.pack_propagate(False)
+        # Do NOT call pack_propagate(False) — that freezes height at the
+        # CTkFrame default, clipping content below the first widget.
         return card
 
     def _build_wizard_page(self, parent):
