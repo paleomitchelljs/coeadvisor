@@ -1,0 +1,34 @@
+{
+  "program_id": "_default",
+  "intro": "Two quick questions to tailor the first-semester plan.",
+  "questions": [
+    {
+      "id": "math_comfort",
+      "text": "Is this student ready to start a college math course this semester (calculus, statistics, etc.)?",
+      "type": "yes_no"
+    },
+    {
+      "id": "science_comfort",
+      "text": "Is this student ready to start a college science course this semester (biology, chemistry, physics, etc.)?",
+      "type": "yes_no"
+    }
+  ],
+  "routes": [
+    {
+      "when": { "math_comfort": true,  "science_comfort": true  },
+      "comfort_math": true,  "comfort_science": true
+    },
+    {
+      "when": { "math_comfort": true,  "science_comfort": false },
+      "comfort_math": true,  "comfort_science": false
+    },
+    {
+      "when": { "math_comfort": false, "science_comfort": true  },
+      "comfort_math": false, "comfort_science": true
+    },
+    {
+      "when": { "math_comfort": false, "science_comfort": false },
+      "comfort_math": false, "comfort_science": false
+    }
+  ]
+}
