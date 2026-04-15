@@ -494,7 +494,7 @@ STUDENT_YEARS = ["First Year", "Sophomore", "Junior", "Senior", "Transfer Studen
 class AdvisorApp:
     def __init__(self, root: ctk.CTk):
         self.root = root
-        self.root.title("Coe College Academic Advising Tool")
+        self.root.title("CoeAdvisor")
         self.root.geometry("1080x740")
         self.root.minsize(800, 600)
 
@@ -548,7 +548,7 @@ class AdvisorApp:
 
     def _build_ui(self):
         # ── Header bar ───────────────────────────────────────────────────────
-        top = ctk.CTkFrame(self.root, fg_color=COLORS["accent"], height=54,
+        top = ctk.CTkFrame(self.root, fg_color=COLORS["accent"], height=62,
                            corner_radius=0)
         top.pack(fill=tk.X)
         top.pack_propagate(False)
@@ -560,28 +560,30 @@ class AdvisorApp:
         # Branding
         brand = ctk.CTkFrame(top, fg_color=COLORS["accent"], corner_radius=0)
         brand.pack(side=tk.LEFT, padx=14)
-        ctk.CTkLabel(brand, text="Coe College",
+        ctk.CTkLabel(brand, text="CoeAdvisor",
                      fg_color="transparent", text_color="white",
-                     font=("Helvetica", 14, "bold")).pack(anchor=tk.W)
-        ctk.CTkLabel(brand, text="Academic Advising Tool",
+                     font=("Helvetica", 18, "bold")).pack(anchor=tk.W)
+        ctk.CTkLabel(brand, text="Coe College Academic Advising",
                      fg_color="transparent", text_color="#e8b4b4",
                      font=("Helvetica", 8)).pack(anchor=tk.W)
 
         # Nav pills (right side)
         nav_f = ctk.CTkFrame(top, fg_color="transparent", corner_radius=0)
-        nav_f.pack(side=tk.RIGHT, padx=16, pady=10)
+        nav_f.pack(side=tk.RIGHT, padx=16, pady=8)
         self._tab_btns = {}
         for key, label in [("setup", "Student Setup"),
                             ("results", "Check Requirements")]:
             btn = ctk.CTkButton(nav_f, text=label,
-                                font=("Helvetica", 9),
-                                fg_color=COLORS["accent"],
+                                font=("Helvetica", 11, "bold"),
+                                fg_color="transparent",
                                 hover_color=COLORS["accent_dk"],
-                                text_color="#e8b4b4",
-                                corner_radius=6,
-                                width=130, height=32,
+                                text_color="white",
+                                border_width=2,
+                                border_color="white",
+                                corner_radius=8,
+                                width=150, height=36,
                                 command=lambda k=key: self._switch_page(k))
-            btn.pack(side=tk.LEFT, padx=3)
+            btn.pack(side=tk.LEFT, padx=5)
             self._tab_btns[key] = btn
 
         # ── Page frames ──────────────────────────────────────────────────────
@@ -618,13 +620,14 @@ class AdvisorApp:
                 frame.pack(fill=tk.BOTH, expand=True)
             else:
                 frame.pack_forget()
-        # Nav pills: only "setup" / "results" are in the header; wizard pages dim both
+        # Nav pills: active = filled white; inactive = outlined white
         for key, btn in self._tab_btns.items():
             if key == name:
                 btn.configure(fg_color="white", text_color=COLORS["accent"],
-                              hover_color="#f0f0f0")
+                              border_color="white", hover_color="#f0f0f0")
             else:
-                btn.configure(fg_color=COLORS["accent"], text_color="#e8b4b4",
+                btn.configure(fg_color="transparent", text_color="white",
+                              border_color="white",
                               hover_color=COLORS["accent_dk"])
 
     # ──────────────────────────────────────────────────────────────────────────
