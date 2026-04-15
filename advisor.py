@@ -148,6 +148,18 @@ def normalize(code: str) -> str:
     return f"{m.group(1)}-{m.group(2)}" if m else code
 
 
+_MATH_PREFIXES    = {"MTH", "STA", "MAT"}
+_SCIENCE_PREFIXES = {"BIO", "CHM", "PHY", "ESC", "ENS", "GEO"}
+
+def is_math_course(code: str) -> bool:
+    """Return True if the normalized course code is a math/stats course."""
+    return (code.split("-")[0] if "-" in code else code) in _MATH_PREFIXES
+
+def is_science_course(code: str) -> bool:
+    """Return True if the normalized course code is a lab-science course."""
+    return (code.split("-")[0] if "-" in code else code) in _SCIENCE_PREFIXES
+
+
 def parse_courses(text: str) -> list:
     """
     Parse courses from free-form text.
@@ -511,6 +523,8 @@ class AdvisorApp:
         self.pathway_vars: dict[str, tk.BooleanVar] = {}
         self._prog_ids: list[str] = []          # kept for legacy compat
         self._wizard_route_note: str = ""       # note from last intake route; shown in Suggested Plan
+        self._comfort_math:      bool = True   # False → hide Y1 suggested math courses
+        self._comfort_science:   bool = True   # False → hide Y1 suggested science courses
 
         # New structured-input state (set fully in _build_left)
         self._major_vars:    list = []          # 3 StringVars for major dropdowns
@@ -760,23 +774,27 @@ class AdvisorApp:
         pid  = self._interest_display_to_pid.get(disp)
         if not pid:
             return
-        if pid in self.intake_data:
-            self._build_intake_page(pid)
+        # Use a program-specific intake if one exists; fall back to the
+        # universal default intake (comfort questions) if available.
+        intake_key = pid if pid in self.intake_data else (
+            "_default" if "_default" in self.intake_data else None)
+        if intake_key:
+            self._build_intake_page(pid, intake_key)
             self._switch_page("intake")
         else:
-            # No wizard for this major — pre-set it and go to manual setup
+            # No intake data at all — pre-set major and go straight to setup
             if self._major_vars:
                 display = self._pid_to_display.get(pid, "")
                 if display:
                     self._major_vars[0].set(display)
             self._switch_page("setup")
 
-    def _build_intake_page(self, pid: str):
+    def _build_intake_page(self, pid: str, intake_key: str = None):
         """Dynamically build the intake-questions page for the given program."""
         for w in self.page_intake.winfo_children():
             w.destroy()
 
-        intake = self.intake_data[pid]
+        intake = self.intake_data[intake_key or pid]
         prog   = self.programs.get(pid, {})
 
         # Back link
@@ -889,6 +907,11 @@ class AdvisorApp:
             answers = {qid: (v.get() == "yes") for qid, v in q_vars.items()}
             route   = self._match_intake_route(intake, answers)
             if route:
+                # If the matched route doesn't specify a major (e.g. _default
+                # intake), inject the program the student selected on the
+                # interest page so _apply_intake_route can set the dropdown.
+                if not route.get("major") and pid:
+                    route = dict(route, major=pid)
                 self._apply_intake_route(route)
                 self.check(jump_to_suggested=True)
 
@@ -1389,6 +1412,10 @@ class AdvisorApp:
         """Pre-populate the setup form from a wizard intake route result."""
         # Clear any previous wizard note
         self._wizard_route_note = route.get("note", "")
+        # Store comfort flags (default True so programs without these fields
+        # never suppress courses)
+        self._comfort_math    = route.get("comfort_math",    True)
+        self._comfort_science = route.get("comfort_science", True)
 
         # Set major dropdown
         major_pid = route.get("major", "")
@@ -1497,6 +1524,8 @@ class AdvisorApp:
 
     def clear_all(self):
         self._wizard_route_note = ""
+        self._comfort_math      = True
+        self._comfort_science   = True
         self.name_var.set("")
         self.id_var.set("")
         if self._year_var:
@@ -1994,18 +2023,38 @@ class AdvisorApp:
                                     ico, tag = "•", "hint"
                                 self._ins(t, f"       {ico}  {course}\n", tag)
                         if suggested:
-                            self._ins(t, "     Suggested:\n", "hint")
+                            comfort_skipped = False
+                            visible_suggested = []
                             for course in suggested:
                                 pcode = _f2y_primary(course)
-                                if pcode:
-                                    shown_codes.add(pcode)
-                                if _CODE_RE.match(course):
-                                    done = pcode in taken_norm if pcode else False
-                                    ico  = "✓" if done else "○"
-                                    tag  = "item_done" if done else "note"
-                                else:
-                                    ico, tag = "○", "note"
-                                self._ins(t, f"       {ico}  {course}\n", tag)
+                                # In Year 1, hide math/science suggestions when
+                                # the student indicated they're not ready.
+                                # Essential courses above are never filtered.
+                                if pcode and snum <= 2:
+                                    if not self._comfort_math and is_math_course(pcode):
+                                        comfort_skipped = True
+                                        continue
+                                    if not self._comfort_science and is_science_course(pcode):
+                                        comfort_skipped = True
+                                        continue
+                                visible_suggested.append((course, pcode))
+                            if visible_suggested:
+                                self._ins(t, "     Suggested:\n", "hint")
+                                for course, pcode in visible_suggested:
+                                    if pcode:
+                                        shown_codes.add(pcode)
+                                    if _CODE_RE.match(course):
+                                        done = pcode in taken_norm if pcode else False
+                                        ico  = "✓" if done else "○"
+                                        tag  = "item_done" if done else "note"
+                                    else:
+                                        ico, tag = "○", "note"
+                                    self._ins(t, f"       {ico}  {course}\n", tag)
+                            if comfort_skipped:
+                                self._ins(t,
+                                    "     (some math/science courses omitted"
+                                    " — student not ready this semester)\n",
+                                    "note")
 
                     notes_str = entry.get("notes", "")
                     if notes_str:
