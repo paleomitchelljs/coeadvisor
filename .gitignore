@@ -9,8 +9,14 @@ __pycache__/
 *.pyo
 .venv/
 
-# ── Claude Code ───────────────────────────────────────────────
+# ── Claude Code & internal docs ───────────────────────────────
 .claude/
+CLAUDE.md
+update-guide-for-mitchell.md
+
+# ── Advising handbook (large PDF, not needed in repo) ─────────
+*.pdf
+ADVISING\ HANDBOOK*
 
 # ── Source documents (available elsewhere, not needed in repo) ─
 checklists/

@@ -570,9 +570,29 @@ class AdvisorApp:
         # Nav pills (right side)
         nav_f = ctk.CTkFrame(top, fg_color="transparent", corner_radius=0)
         nav_f.pack(side=tk.RIGHT, padx=16, pady=8)
+
+        # "New Student" restart button — ghost style so it doesn't compete
+        ctk.CTkButton(nav_f, text="+ New Student",
+                      font=("Helvetica", 10),
+                      fg_color="transparent",
+                      hover_color=COLORS["accent_dk"],
+                      text_color="#e8b4b4",
+                      border_width=0,
+                      corner_radius=8,
+                      height=36,
+                      command=lambda: self.clear_all(goto="wizard")
+                      ).pack(side=tk.LEFT, padx=(0, 8))
+
+        # Vertical divider
+        ctk.CTkFrame(nav_f, fg_color="#c06060", width=1,
+                     corner_radius=0).pack(side=tk.LEFT, fill=tk.Y, pady=6,
+                                           padx=(0, 8))
+
         self._tab_btns = {}
-        for key, label in [("setup", "Student Setup"),
-                            ("results", "Check Requirements")]:
+        for key, label, cmd in [
+            ("setup",    "Student Setup",      lambda: self._switch_page("setup")),
+            ("results",  "Check Requirements", self.check),
+        ]:
             btn = ctk.CTkButton(nav_f, text=label,
                                 font=("Helvetica", 11, "bold"),
                                 fg_color="transparent",
@@ -582,7 +602,7 @@ class AdvisorApp:
                                 border_color="white",
                                 corner_radius=8,
                                 width=150, height=36,
-                                command=lambda k=key: self._switch_page(k))
+                                command=cmd)
             btn.pack(side=tk.LEFT, padx=5)
             self._tab_btns[key] = btn
 
@@ -1081,11 +1101,16 @@ class AdvisorApp:
             _combobox(row_f, var, minor_names, width=220).pack(
                 side=tk.LEFT, fill=tk.X, expand=True)
 
+        # ── Context strip — always packed here so pathways/track never
+        #    fall below the semester grid when toggled ────────────────────────
+        self._context_strip = ctk.CTkFrame(f, fg_color="transparent",
+                                           corner_radius=0)
+        self._context_strip.pack(fill=tk.X, padx=24, pady=(0, 4))
+
         # ── Pathways (conditional, horizontal) ───────────────────────────────
-        self._pw_container = ctk.CTkFrame(f, fg_color="transparent",
-                                          corner_radius=0)
-        self._pw_container.pack(fill=tk.X, padx=24, pady=(0, 4))
-        self._pw_container.pack_forget()
+        self._pw_container = ctk.CTkFrame(self._context_strip,
+                                          fg_color="transparent", corner_radius=0)
+        # Not packed initially; shown by _update_pathway_visibility
 
         pw_outer, pw_inner = _card(self._pw_container,
                                    "PRE-PROFESSIONAL PATHWAYS", gold=True)
@@ -1126,10 +1151,9 @@ class AdvisorApp:
             self._pathway_rows[pw_id] = row
 
         # ── Track / variant selector ──────────────────────────────────────────
-        self._variant_container = ctk.CTkFrame(f, fg_color="transparent",
-                                               corner_radius=0)
-        self._variant_container.pack(fill=tk.X, padx=24, pady=(0, 4))
-        self._variant_container.pack_forget()
+        self._variant_container = ctk.CTkFrame(self._context_strip,
+                                               fg_color="transparent", corner_radius=0)
+        # Not packed initially; shown by _update_variant_visibility
 
         va_outer, va_inner = _card(self._variant_container,
                                    "TRACK / CONCENTRATION")
@@ -1233,13 +1257,13 @@ class AdvisorApp:
         self._nb_tab_names: list[str] = []
         self.nb = ctk.CTkTabview(parent,
                                  fg_color=COLORS["bg"],
-                                 segmented_button_fg_color=COLORS["panel_bg"],
+                                 segmented_button_fg_color=COLORS["note"],
                                  segmented_button_selected_color=COLORS["accent"],
                                  segmented_button_selected_hover_color=COLORS["accent_dk"],
-                                 segmented_button_unselected_color=COLORS["panel_bg"],
-                                 segmented_button_unselected_hover_color=COLORS["border"],
+                                 segmented_button_unselected_color=COLORS["note"],
+                                 segmented_button_unselected_hover_color=COLORS["header"],
                                  text_color="white",
-                                 text_color_disabled=COLORS["note"])
+                                 text_color_disabled="white")
         self.nb.pack(fill=tk.BOTH, expand=True, padx=0, pady=0)
 
 
@@ -1261,7 +1285,7 @@ class AdvisorApp:
                 row.pack_forget()
                 self.pathway_vars[pw_id].set(False)
         if any_visible:
-            self._pw_container.pack(fill=tk.X, padx=24, pady=(0, 4))
+            self._pw_container.pack(fill=tk.X, pady=(0, 6))
         else:
             self._pw_container.pack_forget()
 
@@ -1458,6 +1482,11 @@ class AdvisorApp:
         # WE count adjustment for transfer students
         we_required = 3 if "8 credits" in self.transfer_var.get() else 5
 
+        # Switch to results page FIRST so the CTkTabview is visible before
+        # tabs are added — CTk does geometry work on add() that requires the
+        # widget tree to be on-screen.
+        self._switch_page("results")
+
         # Clear tabs
         for name in self._nb_tab_names:
             self.nb.delete(name)
@@ -1520,13 +1549,12 @@ class AdvisorApp:
         self.summary_var.set(
             f"{name}{sid_str}{year_str}  |  {cred:.1f} credits ({len(taken)} courses)"
             f"  |  {len(sel_ids)} program(s)  |  {len(active_pathway_ids)} pathway(s)")
-        self._switch_page("results")
 
         # Jump straight to the Suggested Plan tab (used by the new-student wizard)
         if jump_to_suggested and "Suggested Plan" in self._nb_tab_names:
             self.nb.set("Suggested Plan")
 
-    def clear_all(self):
+    def clear_all(self, goto: str = "setup"):
         self._wizard_route_note = ""
         self._comfort_math      = True
         self._comfort_science   = True
@@ -1547,7 +1575,7 @@ class AdvisorApp:
         self._nb_tab_names.clear()
         self.summary_var.set(
             "Select programs and enter courses, then click Check Requirements.")
-        self._switch_page("setup")
+        self._switch_page(goto)
 
     def export(self):
         name  = self.name_var.get().strip() or "student"
@@ -1572,13 +1600,14 @@ class AdvisorApp:
             "=" * 60, "",
         ]
         for name in self._nb_tab_names:
-            frame = self.nb.tab(name)
-            for child in frame.winfo_children():
-                if isinstance(child, ctk.CTkTextbox):
-                    lines.append(f"\n{'=' * 60}")
-                    lines.append(name.upper())
-                    lines.append('=' * 60)
-                    lines.append(child.get("1.0", tk.END).strip())
+            tab_frame = self.nb.tab(name)
+            for child in tab_frame.winfo_children():        # tk.Frame wrapper
+                for subchild in child.winfo_children():     # tk.Text inside it
+                    if isinstance(subchild, tk.Text):
+                        lines.append(f"\n{'=' * 60}")
+                        lines.append(name.upper())
+                        lines.append('=' * 60)
+                        lines.append(subchild.get("1.0", tk.END).strip())
         try:
             Path(path).write_text("\n".join(lines), encoding="utf-8")
             messagebox.showinfo("Exported", f"Saved to:\n{path}")
@@ -1783,14 +1812,27 @@ class AdvisorApp:
     # Rendering helpers
     # ──────────────────────────────────────────────────────────────────────────
 
-    def _make_text(self, parent) -> ctk.CTkTextbox:
-        t = ctk.CTkTextbox(parent, wrap="word",
-                           font=("Helvetica", 10),
-                           fg_color=COLORS["bg"],
-                           text_color=COLORS["header"],
-                           corner_radius=0, border_width=0,
-                           activate_scrollbars=True)
-        t.pack(fill=tk.BOTH, expand=True)
+    def _make_text(self, parent) -> tk.Text:
+        """Create a scrollable read-only text area inside parent.
+
+        Uses plain tk.Text (not CTkTextbox) because tk.Text's tag system is
+        required for coloured, multi-font report output and is not reliably
+        forwarded by CTkTextbox across all customtkinter versions.
+        """
+        frame = tk.Frame(parent, bg=COLORS["bg"])
+        frame.pack(fill=tk.BOTH, expand=True)
+
+        vsb = tk.Scrollbar(frame)
+        vsb.pack(side=tk.RIGHT, fill=tk.Y)
+
+        t = tk.Text(frame, wrap=tk.WORD, padx=20, pady=14,
+                    font=("Helvetica", 10), bg=COLORS["bg"],
+                    fg=COLORS["header"], relief=tk.FLAT,
+                    yscrollcommand=vsb.set, cursor="arrow",
+                    spacing1=1, spacing3=1,
+                    borderwidth=0, highlightthickness=0)
+        t.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        vsb.config(command=t.yview)
 
         t.tag_configure("h1",      font=("Helvetica", 14, "bold"),
                         foreground=COLORS["accent"],  spacing1=4, spacing3=8)
@@ -1820,7 +1862,7 @@ class AdvisorApp:
                         foreground=COLORS["note"])
         return t
 
-    def _ins(self, t: ctk.CTkTextbox, text: str, tag: str = ""):
+    def _ins(self, t: tk.Text, text: str, tag: str = ""):
         t.insert(tk.END, text, tag)
 
     # ── First Two Years matching & rendering ──────────────────────────────────
@@ -1914,7 +1956,7 @@ class AdvisorApp:
                                    ).pack(anchor=tk.W, padx=20)
 
         if any_visible:
-            self._variant_container.pack(fill=tk.X, padx=24, pady=(0, 4))
+            self._variant_container.pack(fill=tk.X, pady=(0, 4))
         else:
             self._variant_container.pack_forget()
 
