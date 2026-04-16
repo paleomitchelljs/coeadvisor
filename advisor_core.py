@@ -302,10 +302,12 @@ def check_section(section: dict, taken: set) -> dict:
         excl = {normalize(x) for x in c.get("exclude_codes", [])}
         min_lvl = c.get("min_level", 0)
         min_cnt = c.get("min_level_count", 0)
+        level_is_floor = min_lvl and (not min_cnt or min_cnt >= n)
         matching = [x for x in taken
                     if not is_auxiliary(x)
                     and (not pfxs or prefix_of(x) in pfxs)
-                    and x not in excl]
+                    and x not in excl
+                    and (not level_is_floor or level_of(x) >= min_lvl)]
         above = sum(1 for x in matching if level_of(x) >= min_lvl) if min_lvl else len(matching)
         level_ok = (above >= min_cnt) if min_cnt else True
         status = (COMPLETE if len(matching) >= n and level_ok
