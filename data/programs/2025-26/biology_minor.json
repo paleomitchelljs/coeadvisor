@@ -1,0 +1,31 @@
+{
+  "id": "biology_minor_2025-26",
+  "name": "Biology",
+  "program_type": "minor",
+  "catalog_year": "2025-26",
+  "major_code": "BIO",
+  "source": "Academic Catalog 2025-26, p. 70",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "bio145", "title": "Cellular and Molecular Biology and Laboratory (WE)", "codes": ["BIO-145", "BIO-145L"]},
+        {"id": "bio155", "title": "Organismal and Ecological Biology and Laboratory (WE)", "codes": ["BIO-155", "BIO-155L"]},
+        {"id": "chm121", "title": "General Chemistry I and Laboratory", "codes": ["CHM-121", "CHM-121L"]},
+        {"id": "chm122", "title": "General Chemistry II and Laboratory", "codes": ["CHM-122", "CHM-122L"]}
+      ]
+    },
+    {
+      "id": "bio_electives",
+      "label": "Biology Elective Series",
+      "type": "choose_one",
+      "description": "Choose one of two paths for biology electives.",
+      "options": [
+        {"id": "two_electives", "title": "Two biology electives with labs (one must be 200+)", "codes": []},
+        {"id": "one_plus_evo", "title": "One biology elective with lab AND BIO-202 Topics in Evolution", "codes": ["BIO-202"]}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "id": "international_studies_intl_relations_major_2025-26",
+  "name": "International Studies — International Relations",
+  "program_type": "major",
+  "catalog_year": "2025-26",
+  "major_code": "IS",
+  "source": "Academic Catalog 2025-26, pp. 141-142",
+  "note": "Requires a minimum cumulative 2.0 GPA. No more than two of the three track courses can be in the Political Science department.",
+  "sections": [
+    {
+      "id": "core",
+      "label": "International Studies Core Courses",
+      "type": "all",
+      "items": [
+        {"id": "is116", "title": "Introduction to International Studies", "codes": ["IS-116"]},
+        {"id": "ant116", "title": "Cultural Anthropology", "codes": ["ANT-116"]},
+        {"id": "pol258", "title": "World Politics (WE)", "codes": ["POL-258"]},
+        {"id": "eco175", "title": "Principles of Macroeconomics", "codes": ["ECO-175"]},
+        {"id": "is464", "title": "International Studies Colloquium", "codes": ["IS-464"]}
+      ]
+    },
+    {
+      "id": "language",
+      "label": "Two World Language Courses",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two world language courses, numbered 125 or above in Spanish or French, 115 or above in another language.",
+      "constraints": {
+        "prefixes": ["SPA", "FRE", "JPN", "GRK", "LTN"]
+      }
+    },
+    {
+      "id": "study_abroad",
+      "label": "Study Abroad",
+      "type": "non_course",
+      "description": "A term-long study abroad experience, subject to prior approval by the International Studies program committee."
+    },
+    {
+      "id": "track_req",
+      "label": "Track Requirements",
+      "type": "all",
+      "items": [
+        {"id": "pol108", "title": "Introduction to Politics", "codes": ["POL-108"]},
+        {"id": "pol310", "title": "International Organizations (WE)", "codes": ["POL-310"]}
+      ]
+    },
+    {
+      "id": "track_regional",
+      "label": "One Regional Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "asc186", "title": "Modern South Asia", "codes": ["ASC-186"]},
+        {"id": "his216", "title": "History of Modern Korea", "codes": ["HIS-216"]},
+        {"id": "his217", "title": "The American War in Vietnam (WE)", "codes": ["HIS-217"]},
+        {"id": "his246", "title": "History of Modern China (WE)", "codes": ["HIS-246"]},
+        {"id": "his256", "title": "History of Modern Japan (WE)", "codes": ["HIS-256"]},
+        {"id": "his268", "title": "Latin America (WE)", "codes": ["HIS-268"]},
+        {"id": "pol266", "title": "Latin American Politics (WE)", "codes": ["POL-266"]},
+        {"id": "pol276", "title": "African Politics (WE)", "codes": ["POL-276"]},
+        {"id": "pol286", "title": "Asian Politics (WE)", "codes": ["POL-286"]},
+        {"id": "pol298", "title": "European Politics (WE)", "codes": ["POL-298"]}
+      ]
+    },
+    {
+      "id": "track_additional",
+      "label": "Two Additional Courses",
+      "type": "choose_n",
+      "n": 2,
+      "options": [
+        {"id": "eco446", "title": "International Economics", "codes": ["ECO-446"]},
+        {"id": "his286", "title": "Modern Middle East (WE)", "codes": ["HIS-286"]},
+        {"id": "his335", "title": "Recent American History II (WE)", "codes": ["HIS-335"]},
+        {"id": "his395", "title": "U.S. Diplomatic History (WE)", "codes": ["HIS-395"]},
+        {"id": "is315", "title": "Topics in International Studies", "codes": ["IS-315"]},
+        {"id": "is316", "title": "Topics in International Studies: Non-Western Perspectives", "codes": ["IS-316"]},
+        {"id": "pol305", "title": "Terrorism (WE)", "codes": ["POL-305"]},
+        {"id": "pol365", "title": "American Foreign Policy (WE)", "codes": ["POL-365"]}
+      ]
+    }
+  ]
+}

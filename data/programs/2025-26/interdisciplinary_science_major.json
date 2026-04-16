@@ -1,0 +1,47 @@
+{
+  "id": "interdisciplinary_science_major_2025-26",
+  "name": "Interdisciplinary Science",
+  "program_type": "major",
+  "catalog_year": "2025-26",
+  "major_code": "SCI",
+  "source": "Academic Catalog 2025-26, p. 138",
+  "note": "Requires a minimum cumulative 2.0 GPA. Students earning a major in the Natural Sciences are not eligible. Minimum of eleven course credits from BIO, CHM, MTH, and PHY. At least five must be above the introductory level.",
+  "sections": [
+    {
+      "id": "primary",
+      "label": "Five Courses in Primary Natural Science Area",
+      "type": "open_n",
+      "n": 5,
+      "description": "Five course credits in one of the four natural science areas (Biology, Chemistry, Mathematics, Physics).",
+      "constraints": {
+        "prefixes": ["BIO", "CHM", "MTH", "PHY"]
+      }
+    },
+    {
+      "id": "secondary",
+      "label": "Four Courses in Second Natural Science Area",
+      "type": "open_n",
+      "n": 4,
+      "description": "Four course credits in a second natural science field.",
+      "constraints": {
+        "prefixes": ["BIO", "CHM", "MTH", "PHY"]
+      }
+    },
+    {
+      "id": "tertiary",
+      "label": "Two Courses in Third Natural Science Area",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two course credits in a third natural science field.",
+      "constraints": {
+        "prefixes": ["BIO", "CHM", "MTH", "PHY"]
+      }
+    },
+    {
+      "id": "assessment",
+      "label": "Assessment Requirement",
+      "type": "non_course",
+      "description": "Satisfactory completion of assessment requirement."
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "id": "biology_major_2025-26",
+  "name": "Biology",
+  "program_type": "major",
+  "catalog_year": "2025-26",
+  "major_code": "BIO",
+  "source": "Academic Catalog 2025-26, pp. 69-70",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "bio145", "title": "Cellular and Molecular Biology and Laboratory (WE)", "codes": ["BIO-145", "BIO-145L"]},
+        {"id": "bio155", "title": "Organismal and Ecological Biology and Laboratory (WE)", "codes": ["BIO-155", "BIO-155L"]},
+        {"id": "bio202", "title": "Topics in Evolution", "codes": ["BIO-202"]},
+        {"id": "bio235", "title": "Genetics and Laboratory", "codes": ["BIO-235", "BIO-235L"]},
+        {"id": "chm121", "title": "General Chemistry I and Laboratory", "codes": ["CHM-121", "CHM-121L"]},
+        {"id": "chm122", "title": "General Chemistry II and Laboratory", "codes": ["CHM-122", "CHM-122L"]}
+      ]
+    },
+    {
+      "id": "bio_electives",
+      "label": "Four Biology Electives with Labs",
+      "type": "open_n",
+      "n": 4,
+      "description": "Four biology electives with the associated laboratories. At least three must be 200-level or higher and be designated as major courses.",
+      "constraints": {
+        "prefixes": ["BIO"],
+        "min_level": 200,
+        "min_level_count": 3,
+        "exclude_codes": ["BIO-100", "BIO-103", "BIO-104", "BIO-105", "BIO-111", "BIO-115", "BIO-120", "BIO-145", "BIO-145L", "BIO-155", "BIO-155L", "BIO-165", "BIO-175", "BIO-185", "BIO-195", "BIO-202", "BIO-235", "BIO-235L"]
+      }
+    },
+    {
+      "id": "math_stat",
+      "label": "Mathematics/Statistics Requirement",
+      "type": "choose_one",
+      "options": [
+        {"id": "mth135", "title": "Calculus I", "codes": ["MTH-135"]},
+        {"id": "sta100_110", "title": "Statistical Foundations + Inferential Statistics", "codes": ["STA-100", "STA-110"]},
+        {"id": "sta100_130", "title": "Statistical Foundations + Experimental Design", "codes": ["STA-100", "STA-130"]}
+      ]
+    },
+    {
+      "id": "research_seminars",
+      "label": "Research Seminars",
+      "type": "non_course",
+      "description": "Attendance at research seminars in junior and senior years."
+    }
+  ]
+}

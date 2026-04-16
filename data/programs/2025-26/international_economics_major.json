@@ -1,0 +1,56 @@
+{
+  "id": "international_economics_major_2025-26",
+  "name": "International Economics",
+  "program_type": "major",
+  "catalog_year": "2025-26",
+  "major_code": "ECO",
+  "source": "Academic Catalog 2025-26, p. 140",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Core Courses",
+      "type": "all",
+      "items": [
+        {"id": "eco175", "title": "Principles of Macroeconomics", "codes": ["ECO-175"]},
+        {"id": "eco215", "title": "Principles of Microeconomics", "codes": ["ECO-215"]},
+        {"id": "eco315", "title": "Intermediate Macroeconomics", "codes": ["ECO-315"]},
+        {"id": "eco336", "title": "Divergent Economic Growth", "codes": ["ECO-336"]},
+        {"id": "eco345", "title": "Intermediate Microeconomics", "codes": ["ECO-345"]},
+        {"id": "eco375", "title": "Econometrics (WE)", "codes": ["ECO-375"]},
+        {"id": "eco436", "title": "Economic Development", "codes": ["ECO-436"]},
+        {"id": "eco446", "title": "International Economics", "codes": ["ECO-446"]}
+      ]
+    },
+    {
+      "id": "eco_elective",
+      "label": "One Additional Economics Course (200+)",
+      "type": "open_n",
+      "n": 1,
+      "description": "One additional economics course numbered 200 or higher.",
+      "constraints": {
+        "prefixes": ["ECO"],
+        "min_level": 200,
+        "min_level_count": 1,
+        "exclude_codes": ["ECO-175", "ECO-215", "ECO-315", "ECO-336", "ECO-345", "ECO-375", "ECO-436", "ECO-446"]
+      }
+    },
+    {
+      "id": "world_language",
+      "label": "Two World Language Courses (115+)",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two courses in a world language numbered 115 or above.",
+      "constraints": {
+        "prefixes": ["SPA", "FRN", "GER", "JPN", "GRK", "LAT", "CHN"],
+        "min_level": 115,
+        "min_level_count": 2
+      }
+    },
+    {
+      "id": "intl_experience",
+      "label": "International Experience",
+      "type": "non_course",
+      "description": "One of: semester abroad, May Experiential Term abroad, or capstone project in international economics supervised by a faculty member."
+    }
+  ]
+}

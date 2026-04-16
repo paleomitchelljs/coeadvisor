@@ -1,0 +1,43 @@
+{
+  "id": "data_science_minor_2025-26",
+  "name": "Data Science",
+  "program_type": "minor",
+  "catalog_year": "2025-26",
+  "major_code": "DS",
+  "source": "Academic Catalog 2025-26, p. 109",
+  "sections": [
+    {
+      "id": "intro",
+      "label": "One Introductory Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "ds100", "title": "Introduction to Data Science", "codes": ["DS-100"]},
+        {"id": "ds101", "title": "Data-Driven Design", "codes": ["DS-101"]},
+        {"id": "ds120", "title": "Sports Analytics", "codes": ["DS-120"]}
+      ]
+    },
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "cs125", "title": "Introduction to Programming", "codes": ["CS-125"]},
+        {"id": "ds230", "title": "Data-Centric Programming", "codes": ["DS-230"]},
+        {"id": "ds260", "title": "Data Analysis and Visualization", "codes": ["DS-260"]}
+      ]
+    },
+    {
+      "id": "stat_foundations",
+      "label": "One Statistical Foundations Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "bus190", "title": "Statistical Analysis (WE)", "codes": ["BUS-190"]},
+        {"id": "bus340", "title": "Applied Regression Analysis", "codes": ["BUS-340"]},
+        {"id": "psy300", "title": "Statistical Methods and Data Analysis", "codes": ["PSY-300"]},
+        {"id": "sta100_110", "title": "Statistical Foundations + Inferential Statistics", "codes": ["STA-100", "STA-110"]},
+        {"id": "sta100_130", "title": "Statistical Foundations + Experimental Design", "codes": ["STA-100", "STA-130"]},
+        {"id": "sta315", "title": "Mathematical Probability", "codes": ["STA-315"]}
+      ]
+    }
+  ]
+}

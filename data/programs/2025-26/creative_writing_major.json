@@ -1,0 +1,81 @@
+{
+  "id": "creative_writing_major_2025-26",
+  "name": "Creative Writing",
+  "program_type": "major",
+  "catalog_year": "2025-26",
+  "major_code": "CRW",
+  "source": "Academic Catalog 2025-26, pp. 104-105",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "crw125", "title": "Introduction to Creative Writing (WE)", "codes": ["CRW-125"]},
+        {"id": "eng111", "title": "Introduction to Literary Studies: The Art of Reading and Writing (WE)", "codes": ["ENG-111"]},
+        {"id": "crw492", "title": "Manuscript Workshop (WE)", "codes": ["CRW-492"]}
+      ]
+    },
+    {
+      "id": "workshop1",
+      "label": "Two Level-1 Workshops",
+      "type": "choose_n",
+      "n": 2,
+      "options": [
+        {"id": "crw255", "title": "Playwriting Workshop 1 (WE)", "codes": ["CRW-255", "THE-255"]},
+        {"id": "crw225", "title": "Creative Nonfiction Workshop 1 (WE)", "codes": ["CRW-225"]},
+        {"id": "crw280", "title": "Poetry Workshop 1 (WE)", "codes": ["CRW-280"]},
+        {"id": "crw290", "title": "Fiction Workshop 1 (WE)", "codes": ["CRW-290"]}
+      ]
+    },
+    {
+      "id": "workshop2",
+      "label": "Two Level-2 or Higher Workshops",
+      "type": "choose_n",
+      "n": 2,
+      "options": [
+        {"id": "crw355", "title": "Playwriting Workshop 2 (WE)", "codes": ["CRW-355", "THE-355"]},
+        {"id": "crw325", "title": "Creative Nonfiction Workshop 2 (WE)", "codes": ["CRW-325"]},
+        {"id": "crw380", "title": "Poetry Workshop 2 (WE)", "codes": ["CRW-380"]},
+        {"id": "crw390", "title": "Fiction Workshop 2 (WE)", "codes": ["CRW-390"]},
+        {"id": "crw455", "title": "Playwriting Workshop 3", "codes": ["CRW-455", "THE-455"]},
+        {"id": "crw480", "title": "Poetry Workshop 3 (WE)", "codes": ["CRW-480"]},
+        {"id": "crw484", "title": "Advanced Topics in Creative Writing (WE)", "codes": ["CRW-484"]},
+        {"id": "crw490", "title": "Fiction Workshop 3 (WE)", "codes": ["CRW-490"]}
+      ]
+    },
+    {
+      "id": "english",
+      "label": "Two English Courses (one must be ENG-281+)",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two courses in English (ENG-), one of which must be ENG-281 or above.",
+      "constraints": {
+        "prefixes": ["ENG"],
+        "min_level": 281,
+        "min_level_count": 1,
+        "exclude_codes": ["ENG-111"]
+      }
+    },
+    {
+      "id": "elective",
+      "label": "One Additional Elective",
+      "type": "choose_one",
+      "description": "One elective from Creative Writing (CRW-), English (ENG-), two terms of CRW-112, COM-267, COM-377, or one 1.0 ECC elective.",
+      "options": [
+        {"id": "crw_elective", "title": "One elective from Creative Writing (CRW-)", "codes": []},
+        {"id": "eng_elective", "title": "One elective from English (ENG-)", "codes": []},
+        {"id": "crw112x2", "title": "Two terms of CRW-112 Advanced Literary Magazine Editing", "codes": ["CRW-112"]},
+        {"id": "com267", "title": "Environmental Rhetoric (WE)", "codes": ["COM-267"]},
+        {"id": "com377", "title": "Language, Power, and Social Change (WE)", "codes": ["COM-377"]},
+        {"id": "ecc_elective", "title": "One 1.0 elective from ECC", "codes": []}
+      ]
+    },
+    {
+      "id": "senior_reading",
+      "label": "Senior Reading",
+      "type": "non_course",
+      "description": "A public reading from the final manuscript completed in CRW-492."
+    }
+  ]
+}

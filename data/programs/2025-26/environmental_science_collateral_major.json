@@ -1,0 +1,50 @@
+{
+  "id": "environmental_science_collateral_major_2025-26",
+  "name": "Environmental Science",
+  "program_type": "major",
+  "catalog_year": "2025-26",
+  "major_code": "BIO",
+  "source": "Academic Catalog 2025-26, pp. 126-127",
+  "note": "Collateral major requiring concurrent completion of a primary major in Biology or Chemistry. Requires a minimum cumulative 2.0 GPA.",
+  "sections": [
+    {
+      "id": "math_sci",
+      "label": "Math/Science Requirement (varies by primary major)",
+      "type": "choose_one",
+      "description": "Biology majors: MTH-135 Calculus I. Chemistry majors: MTH-145 Calculus II, PHY-185/-185L General Physics I, PHY-195/-195L General Physics II. Both require BIO-445/-445L Environmental Microbiology.",
+      "options": [
+        {"id": "bio_path", "title": "Biology majors: Calculus I + Environmental Microbiology", "codes": ["MTH-135", "BIO-445", "BIO-445L"]},
+        {"id": "chm_path", "title": "Chemistry majors: Calculus II + Physics I & II + Environmental Microbiology", "codes": ["MTH-145", "PHY-185", "PHY-185L", "PHY-195", "PHY-195L", "BIO-445", "BIO-445L"]}
+      ]
+    },
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "bio295", "title": "Spatial Ecology and Laboratory (WE)", "codes": ["BIO-295", "BIO-295L"]},
+        {"id": "chm211", "title": "Analytical Chemistry and Laboratory (WE)", "codes": ["CHM-211", "CHM-211L"]},
+        {"id": "chm221", "title": "Organic Chemistry I", "codes": ["CHM-221"]}
+      ]
+    },
+    {
+      "id": "field_courses",
+      "label": "Two Field Courses",
+      "type": "choose_n",
+      "n": 2,
+      "description": "Two courses with associated laboratories from the following list.",
+      "options": [
+        {"id": "bio115", "title": "Marine Biology", "codes": ["BIO-115"]},
+        {"id": "bio165", "title": "Introduction to Ornithology", "codes": ["BIO-165"]},
+        {"id": "bio175", "title": "Field Botany", "codes": ["BIO-175"]},
+        {"id": "bio185", "title": "Entomology", "codes": ["BIO-185"]},
+        {"id": "bio275", "title": "Aquatic Ecology", "codes": ["BIO-275"]},
+        {"id": "bio325", "title": "Microbiology (WE) and Laboratory", "codes": ["BIO-325", "BIO-325L"]},
+        {"id": "bio385", "title": "Behavior and Ecology of Vertebrates", "codes": ["BIO-385", "BIO-385L"]},
+        {"id": "bio425", "title": "Ecology and Laboratory (WE)", "codes": ["BIO-425", "BIO-425L"]},
+        {"id": "chm411", "title": "Advanced Analytical Chemistry", "codes": ["CHM-411"]},
+        {"id": "chm444", "title": "Independent Study", "codes": ["CHM-444"]}
+      ]
+    }
+  ]
+}

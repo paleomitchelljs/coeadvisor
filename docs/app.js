@@ -500,13 +500,13 @@ function generateAdv() {
     `YEAR: ${year}`,
   ];
 
-  for (let i = 1; i <= 3; i++) {
-    const sel = document.getElementById(`major${i}`);
-    lines.push(`MAJOR${i}: ${sel ? sel.value : ""}`);
+  const majorSels = document.querySelectorAll("#major-slots .major-select");
+  for (let i = 0; i < 3; i++) {
+    lines.push(`MAJOR${i+1}: ${majorSels[i] ? majorSels[i].value : ""}`);
   }
-  for (let i = 1; i <= 2; i++) {
-    const sel = document.getElementById(`minor${i}`);
-    lines.push(`MINOR${i}: ${sel ? sel.value : ""}`);
+  const minorSels = document.querySelectorAll("#minor-slots .minor-select");
+  for (let i = 0; i < 2; i++) {
+    lines.push(`MINOR${i+1}: ${minorSels[i] ? minorSels[i].value : ""}`);
   }
 
   const activePw = [];
@@ -660,14 +660,53 @@ function loadAdv(text) {
   const yearSel = document.getElementById("student-year");
   if ([...yearSel.options].some(o => o.value === fields.YEAR)) yearSel.value = fields.YEAR;
 
-  for (let i = 1; i <= 3; i++) {
-    const sel = document.getElementById(`major${i}`);
-    if (sel) sel.value = fields[`MAJOR${i}`] || "";
+  // Rebuild major/minor slots to match loaded data
+  const majorContainer = document.getElementById("major-slots");
+  majorContainer.innerHTML = "";
+  const minorContainer = document.getElementById("minor-slots");
+  minorContainer.innerHTML = "";
+
+  // Create major slots: always at least 1, add extras for non-empty values
+  const majorVals = [fields.MAJOR1, fields.MAJOR2, fields.MAJOR3].filter(Boolean);
+  const majorCount = Math.max(1, majorVals.length);
+  for (let i = 0; i < majorCount; i++) {
+    if (i === 0) {
+      const label = document.createElement("label");
+      const sel = document.createElement("select");
+      sel.className = "major-select";
+      populateMajorSelect(sel);
+      sel.value = majorVals[0] || "";
+      label.appendChild(sel);
+      majorContainer.appendChild(label);
+    } else {
+      addMajorSlot();
+      const sels = majorContainer.querySelectorAll(".major-select");
+      sels[i].value = majorVals[i] || "";
+    }
   }
-  for (let i = 1; i <= 2; i++) {
-    const sel = document.getElementById(`minor${i}`);
-    if (sel) sel.value = fields[`MINOR${i}`] || "";
+  document.querySelector("#major-group .prog-add-btn").style.display =
+    majorContainer.querySelectorAll(".major-select").length >= 3 ? "none" : "";
+
+  // Create minor slots: always at least 1, add extras for non-empty values
+  const minorVals = [fields.MINOR1, fields.MINOR2].filter(Boolean);
+  const minorCount = Math.max(1, minorVals.length);
+  for (let i = 0; i < minorCount; i++) {
+    if (i === 0) {
+      const label = document.createElement("label");
+      const sel = document.createElement("select");
+      sel.className = "minor-select";
+      populateMinorSelect(sel);
+      sel.value = minorVals[0] || "";
+      label.appendChild(sel);
+      minorContainer.appendChild(label);
+    } else {
+      addMinorSlot();
+      const sels = minorContainer.querySelectorAll(".minor-select");
+      sels[i].value = minorVals[i] || "";
+    }
   }
+  document.querySelector("#minor-group .prog-add-btn").style.display =
+    minorContainer.querySelectorAll(".minor-select").length >= 2 ? "none" : "";
 
   const pws = fields.PATHWAYS.split(",").map(x => x.trim()).filter(Boolean);
   // Pathway checkboxes are restored after updatePathways() below
@@ -745,14 +784,12 @@ function showTab(tab) {
 
 function gatherData() {
   const progIds = [];
-  for (let i = 1; i <= 3; i++) {
-    const v = document.getElementById(`major${i}`).value;
-    if (v) progIds.push(v);
-  }
-  for (let i = 1; i <= 2; i++) {
-    const v = document.getElementById(`minor${i}`).value;
-    if (v) progIds.push(v);
-  }
+  document.querySelectorAll("#major-slots .major-select").forEach(sel => {
+    if (sel.value) progIds.push(sel.value);
+  });
+  document.querySelectorAll("#minor-slots .minor-select").forEach(sel => {
+    if (sel.value) progIds.push(sel.value);
+  });
 
   const activePw = [];
   document.querySelectorAll(".pw-check input:checked").forEach(cb => activePw.push(cb.value));
@@ -992,7 +1029,8 @@ function renderPlan(selectedProgs, taken, geResult, activePathways, overrides) {
 // ─── Intake wizard ───────────────────────────────────────────────────────────
 
 function showIntakeWizard() {
-  const majorId = document.getElementById("major1").value;
+  const majorSel = document.querySelector("#major-slots .major-select");
+  const majorId = majorSel ? majorSel.value : "";
   if (!majorId) { alert("Select a major first."); return; }
 
   const intake = DATA.intake[majorId] || DATA.intake["_default"];
@@ -1043,7 +1081,8 @@ function submitWizard() {
 
   // Apply route
   if (matchedRoute.major && DATA.programs[matchedRoute.major]) {
-    document.getElementById("major1").value = matchedRoute.major;
+    const majorSel = document.querySelector("#major-slots .major-select");
+    if (majorSel) majorSel.value = matchedRoute.major;
   }
   // Rebuild pathways for the new major, then check the route's pathway
   updatePathways();
@@ -1096,14 +1135,12 @@ function buildOtherReqs() {
   ];
 
   const selectedProgIds = [];
-  for (let i = 1; i <= 3; i++) {
-    const v = document.getElementById(`major${i}`).value;
-    if (v) selectedProgIds.push(v);
-  }
-  for (let i = 1; i <= 2; i++) {
-    const v = document.getElementById(`minor${i}`).value;
-    if (v) selectedProgIds.push(v);
-  }
+  document.querySelectorAll("#major-slots .major-select").forEach(sel => {
+    if (sel.value) selectedProgIds.push(sel.value);
+  });
+  document.querySelectorAll("#minor-slots .minor-select").forEach(sel => {
+    if (sel.value) selectedProgIds.push(sel.value);
+  });
 
   const seenIds = new Set(["practicum"]);
   for (const pid of selectedProgIds) {
@@ -1205,10 +1242,9 @@ function buildProfReqs() {
 
 function updatePathways() {
   const selectedProgIds = [];
-  for (let i = 1; i <= 3; i++) {
-    const v = document.getElementById(`major${i}`).value;
-    if (v) selectedProgIds.push(v);
-  }
+  document.querySelectorAll("#major-slots .major-select").forEach(sel => {
+    if (sel.value) selectedProgIds.push(sel.value);
+  });
 
   const pwContainer = document.getElementById("pathways");
   // Remember which were checked
@@ -1292,6 +1328,69 @@ function onPlanSemCompleted(checkbox) {
   runCheck();
 }
 
+// ─── Dynamic Program Slots ──────────────────────────────────────────────────
+
+function populateMajorSelect(sel) {
+  sel.innerHTML = '<option value="">Exploratory</option>';
+  for (const m of (window._majorEntries || [])) {
+    const opt = document.createElement("option");
+    opt.value = m.id;
+    opt.textContent = `${m.name} (${m.catalog_year})`;
+    sel.appendChild(opt);
+  }
+}
+
+function populateMinorSelect(sel) {
+  sel.innerHTML = '<option value="">Exploratory</option>';
+  for (const m of (window._minorEntries || [])) {
+    const opt = document.createElement("option");
+    opt.value = m.id;
+    opt.textContent = `${m.name} (${m.catalog_year})`;
+    sel.appendChild(opt);
+  }
+}
+
+function addMajorSlot() {
+  const container = document.getElementById("major-slots");
+  if (container.querySelectorAll(".major-select").length >= 3) return;
+  const label = document.createElement("label");
+  const sel = document.createElement("select");
+  sel.className = "major-select";
+  populateMajorSelect(sel);
+  const btn = document.createElement("button");
+  btn.className = "prog-remove-btn";
+  btn.title = "Remove";
+  btn.textContent = "\u00d7";
+  btn.onclick = () => { label.remove(); updatePathways(); buildOtherReqs(); runCheck(); };
+  label.appendChild(sel);
+  label.appendChild(btn);
+  container.appendChild(label);
+  // Hide "+" if at max
+  if (container.querySelectorAll(".major-select").length >= 3) {
+    document.querySelector("#major-group .prog-add-btn").style.display = "none";
+  }
+}
+
+function addMinorSlot() {
+  const container = document.getElementById("minor-slots");
+  if (container.querySelectorAll(".minor-select").length >= 2) return;
+  const label = document.createElement("label");
+  const sel = document.createElement("select");
+  sel.className = "minor-select";
+  populateMinorSelect(sel);
+  const btn = document.createElement("button");
+  btn.className = "prog-remove-btn";
+  btn.title = "Remove";
+  btn.textContent = "\u00d7";
+  btn.onclick = () => { label.remove(); document.querySelector("#minor-group .prog-add-btn").style.display = ""; runCheck(); };
+  label.appendChild(sel);
+  label.appendChild(btn);
+  container.appendChild(label);
+  if (container.querySelectorAll(".minor-select").length >= 2) {
+    document.querySelector("#minor-group .prog-add-btn").style.display = "none";
+  }
+}
+
 // ─── Initialization ──────────────────────────────────────────────────────────
 
 function init() {
@@ -1304,35 +1403,22 @@ function init() {
   }
 
   // Populate program dropdowns
-  const majors = [], minors = [];
+  const majorEntries = [], minorEntries = [];
   for (const [id, p] of Object.entries(DATA.programs)) {
     const entry = { id, name: p.name, catalog_year: p.catalog_year || "", program_type: p.program_type || "" };
-    if (["major", "collateral", "certificate"].includes(p.program_type)) majors.push(entry);
-    else if (p.program_type === "minor") minors.push(entry);
+    if (["major", "collateral", "certificate"].includes(p.program_type)) majorEntries.push(entry);
+    else if (p.program_type === "minor") minorEntries.push(entry);
   }
-  majors.sort((a, b) => a.name.localeCompare(b.name));
-  minors.sort((a, b) => a.name.localeCompare(b.name));
+  majorEntries.sort((a, b) => a.name.localeCompare(b.name));
+  minorEntries.sort((a, b) => a.name.localeCompare(b.name));
 
-  for (let i = 1; i <= 3; i++) {
-    const sel = document.getElementById(`major${i}`);
-    sel.innerHTML = '<option value="">(none)</option>';
-    for (const m of majors) {
-      const opt = document.createElement("option");
-      opt.value = m.id;
-      opt.textContent = `${m.name} (${m.catalog_year})`;
-      sel.appendChild(opt);
-    }
-  }
-  for (let i = 1; i <= 2; i++) {
-    const sel = document.getElementById(`minor${i}`);
-    sel.innerHTML = '<option value="">(none)</option>';
-    for (const m of minors) {
-      const opt = document.createElement("option");
-      opt.value = m.id;
-      opt.textContent = `${m.name} (${m.catalog_year})`;
-      sel.appendChild(opt);
-    }
-  }
+  // Store for dynamic slot creation
+  window._majorEntries = majorEntries;
+  window._minorEntries = minorEntries;
+
+  // Populate the initial major and minor selects
+  populateMajorSelect(document.querySelector("#major-slots .major-select"));
+  populateMinorSelect(document.querySelector("#minor-slots .minor-select"));
 
   // Pathways are populated dynamically by updatePathways()
 
@@ -1353,13 +1439,10 @@ function init() {
   createDefaultPlanSemesters();
 
   // Filter pathways and rebuild other reqs when program selection changes
-  function onProgramChange() { updatePathways(); buildOtherReqs(); }
-  for (let i = 1; i <= 3; i++) {
-    document.getElementById(`major${i}`).addEventListener("change", onProgramChange);
-  }
-  for (let i = 1; i <= 2; i++) {
-    document.getElementById(`minor${i}`).addEventListener("change", buildOtherReqs);
-  }
+  // Use event delegation on the programs-grid container
+  document.getElementById("programs-grid").addEventListener("change", () => {
+    updatePathways(); buildOtherReqs();
+  });
 
   // Initial other reqs
   buildOtherReqs();

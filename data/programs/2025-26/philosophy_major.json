@@ -1,0 +1,40 @@
+{
+  "id": "philosophy_major_2025-26",
+  "name": "Philosophy",
+  "program_type": "major",
+  "catalog_year": "2025-26",
+  "major_code": "PHL",
+  "source": "Academic Catalog 2025-26, pp. 167-168",
+  "note": "Requires a minimum cumulative GPA of 2.0 in all courses counted towards the major. Of the five additional courses, two of the four may be courses taken outside of the Philosophy program with approval of faculty.",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "phl105", "title": "Introduction to Philosophy (WE)", "codes": ["PHL-105"]},
+        {"id": "phl115", "title": "Logic", "codes": ["PHL-115"]},
+        {"id": "phl220", "title": "Ancient Greek Philosophy (WE)", "codes": ["PHL-220"]},
+        {"id": "phl300", "title": "Early Modern Philosophy (WE)", "codes": ["PHL-300"]}
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Five Additional Courses",
+      "type": "open_n",
+      "n": 5,
+      "description": "Five additional courses, two of which must be Philosophy courses at the 300-level or higher. With faculty approval, two of these five may be courses taken outside of the Philosophy program.",
+      "constraints": {
+        "prefixes": ["PHL"],
+        "min_level": 300,
+        "min_level_count": 2
+      }
+    },
+    {
+      "id": "colloquium",
+      "label": "Philosophy Colloquium",
+      "type": "non_course",
+      "description": "PHL-490 Philosophy Colloquium (WE) (non-credit bearing)."
+    }
+  ]
+}

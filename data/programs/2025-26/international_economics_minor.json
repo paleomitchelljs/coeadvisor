@@ -1,0 +1,35 @@
+{
+  "id": "international_economics_minor_2025-26",
+  "name": "International Economics",
+  "program_type": "minor",
+  "catalog_year": "2025-26",
+  "major_code": "ECO",
+  "source": "Academic Catalog 2025-26, p. 140",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "eco175", "title": "Principles of Macroeconomics", "codes": ["ECO-175"]},
+        {"id": "eco215", "title": "Principles of Microeconomics", "codes": ["ECO-215"]},
+        {"id": "eco336", "title": "Divergent Economic Growth", "codes": ["ECO-336"]},
+        {"id": "eco436", "title": "Economic Development", "codes": ["ECO-436"]},
+        {"id": "eco446", "title": "International Economics", "codes": ["ECO-446"]}
+      ]
+    },
+    {
+      "id": "eco_elective",
+      "label": "One Additional Economics Course (200+)",
+      "type": "open_n",
+      "n": 1,
+      "description": "One additional economics course numbered 200 or higher.",
+      "constraints": {
+        "prefixes": ["ECO"],
+        "min_level": 200,
+        "min_level_count": 1,
+        "exclude_codes": ["ECO-175", "ECO-215", "ECO-336", "ECO-436", "ECO-446"]
+      }
+    }
+  ]
+}

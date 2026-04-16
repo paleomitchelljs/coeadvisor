@@ -84,10 +84,16 @@ h2:first-child { margin-top: 0; }
   font-size: 13px;
 }
 .form-row select { min-width: 140px; }
-.programs-grid { display: grid; grid-template-columns: 1fr; gap: 6px; }
-.programs-grid label { display: flex; align-items: center; gap: 6px; white-space: nowrap; }
-.programs-grid label span { flex-shrink: 0; font-size: 12px; color: #64748b; min-width: 52px; }
-.programs-grid select { flex: 1; min-width: 0; }
+.programs-grid { display: flex; flex-direction: column; gap: 8px; }
+.prog-group-header { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
+.prog-group-label { font-size: 12px; color: #64748b; font-weight: 600; }
+.prog-add-btn { width: 20px; height: 20px; border-radius: 50%; border: 1px solid #cbd5e1; background: #f8fafc; color: #475569; font-size: 14px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; }
+.prog-add-btn:hover { background: #e2e8f0; }
+.prog-slots { display: flex; flex-direction: column; gap: 4px; }
+.prog-slots label { display: flex; align-items: center; gap: 4px; }
+.prog-slots select { flex: 1; min-width: 0; }
+.prog-remove-btn { width: 20px; height: 20px; border-radius: 50%; border: 1px solid #e2e8f0; background: #fef2f2; color: #b91c1c; font-size: 14px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; flex-shrink: 0; }
+.prog-remove-btn:hover { background: #fecaca; }
 
 .pw-label { font-size: 12px; color: #64748b; margin-right: 4px; line-height: 2; }
 .pw-check { font-size: 13px; display: inline-flex; align-items: center; gap: 3px; }

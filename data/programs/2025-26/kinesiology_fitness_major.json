@@ -1,0 +1,52 @@
+{
+  "id": "kinesiology_fitness_major_2025-26",
+  "name": "Kinesiology — Fitness Development",
+  "program_type": "major",
+  "catalog_year": "2025-26",
+  "major_code": "KIN",
+  "source": "Academic Catalog 2025-26, p. 144",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "bio155", "title": "Organismal and Ecological Biology", "codes": ["BIO-155"]},
+        {"id": "kin105", "title": "Foundations of Physical Movement", "codes": ["KIN-105"]},
+        {"id": "kin115", "title": "Fundamentals of Exercise and Nutrition", "codes": ["KIN-115"]},
+        {"id": "kin275", "title": "Prevention and Care of Athletic Injuries & Laboratory", "codes": ["KIN-275"]},
+        {"id": "kin365", "title": "Measurements/Evaluation and Prescription in Kinesiology", "codes": ["KIN-365"]},
+        {"id": "kin440", "title": "Organization and Administration of Physical Education, Health, and Athletics (WE)", "codes": ["KIN-440"]},
+        {"id": "kin442", "title": "Physiology of Exercise", "codes": ["KIN-442"]},
+        {"id": "kin495", "title": "Kinesiology", "codes": ["KIN-495"]}
+      ]
+    },
+    {
+      "id": "anatomy",
+      "label": "Anatomy Requirement",
+      "type": "choose_one",
+      "options": [
+        {"id": "bio103", "title": "Anatomy and Physiology and Lab", "codes": ["BIO-103", "BIO-103L"]},
+        {"id": "bio215_225", "title": "Human Anatomy + Human Physiology", "codes": ["BIO-215", "BIO-225"]}
+      ]
+    },
+    {
+      "id": "track",
+      "label": "Strength & Conditioning Group OR Health & Wellness Group",
+      "type": "choose_one",
+      "description": "Complete ALL courses in one of the two groups below.",
+      "options": [
+        {
+          "id": "strength_conditioning",
+          "title": "Strength & Conditioning: KIN-103 or KIN-104 (twice), KIN-185, KIN-385, KIN-405",
+          "codes": ["KIN-103", "KIN-185", "KIN-385", "KIN-405"]
+        },
+        {
+          "id": "health_wellness",
+          "title": "Health & Wellness: KIN-125, KIN-135, KIN-155",
+          "codes": ["KIN-125", "KIN-135", "KIN-155"]
+        }
+      ]
+    }
+  ]
+}
