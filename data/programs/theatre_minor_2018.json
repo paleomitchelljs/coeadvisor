@@ -1,0 +1,21 @@
+{
+  "id": "theatre_minor_2018",
+  "name": "Theatre Arts",
+  "program_type": "minor",
+  "catalog_year": "2018",
+  "major_code": "THE",
+  "source": "Theatre 2018.pdf",
+  "sections": [
+    {
+      "id": "six_the_courses",
+      "label": "Six full-credit Theatre Arts (THE) courses",
+      "type": "open_n",
+      "n": 6,
+      "constraints": {
+        "prefixes": ["THE"],
+        "exclude_codes": ["THE-102"]
+      }
+    }
+  ],
+  "notes": "Any six full-credit theatre arts courses. THE-102 Theatre Production Lab is partial-credit (0.25) and does not count toward the minor."
+}
