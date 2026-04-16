@@ -61,5 +61,9 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
+    # Embed Windows VERSIONINFO resource (CompanyName, FileVersion, etc.)
+    # so the .exe isn't "anonymous" to SmartScreen / heuristic scanners.
+    # Bump version_info.txt alongside each release tag.
+    version=str(HERE / 'version_info.txt'),
     # No COLLECT step → PyInstaller bundles everything into a single CoeAdvisor.exe
 )
