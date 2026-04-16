@@ -158,7 +158,7 @@ function checkProgram(program, taken) {
   return { program, sections, total: countable.length, complete: done };
 }
 
-function checkGE(ge, taken, dac, we) {
+function checkGE(ge, taken, dac, we, prxCourses) {
   const div = ge.divisional.sections;
   function divCourses(pfxs, maxPer) {
     maxPer = maxPer || 2;
@@ -193,7 +193,7 @@ function checkGE(ge, taken, dac, we) {
   const dacFound = [...taken].filter(c => dac.has(c) && !isAuxiliary(c)).sort();
   const fysFound = [...taken].filter(c =>
     prefixOf(c) === "FYS" || ["FS-110","FS-111","FS-112"].includes(c));
-  const prxFound = [...taken].filter(c => prefixOf(c) === "PRX");
+  const prxFound = [...taken].filter(c => prefixOf(c) === "PRX" || (prxCourses && prxCourses.has(c)));
 
   return {
     fine_arts: { label: "Fine Arts (\u22652 credits)", required: 2, courses: fa,
@@ -794,7 +794,8 @@ function runCheck() {
   if (transferWe.includes("16+")) weRequired = 2;
   else if (transferWe.includes("8")) weRequired = 3;
 
-  const geResult = checkGE(DATA.ge, taken, dacSet, weSet);
+  const prxSet = new Set((DATA.practicum || {}).all_courses || []);
+  const geResult = checkGE(DATA.ge, taken, dacSet, weSet, prxSet);
   geResult.we.required = weRequired;
   geResult.we.complete = geResult.we.courses.length >= weRequired;
   geResult.we.label = `Writing Emphasis (${weRequired} courses)`;
