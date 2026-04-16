@@ -59,6 +59,13 @@ F2Y_SEM_LABELS = {
     "y2_spring": "Year 2 \u2014 Spring",
 }
 
+PLAN_SEM_LABELS = {
+    1: "Fall \u2014 Year 1",   2: "Spring \u2014 Year 1",
+    3: "Fall \u2014 Year 2",   4: "Spring \u2014 Year 2",
+    5: "Fall \u2014 Year 3",   6: "Spring \u2014 Year 3",
+    7: "Fall \u2014 Year 4",   8: "Spring \u2014 Year 4",
+}
+
 # ─────────────────────────── Data loading ────────────────────────────────────
 
 def _load_json(path: Path) -> dict:
@@ -581,7 +588,7 @@ class AdvisorApp:
         # ── State ──
         self.manual_ge: dict[str, tk.BooleanVar] = {}
         self.pathway_vars: dict[str, tk.BooleanVar] = {}
-        self._tab_texts: dict[str, tk.Text] = {}
+        self._tab_texts: dict = {}
         self._wizard_route_note: str = ""       # note from last intake route; shown in Suggested Plan
         self._comfort_math:      bool = True   # False → hide Y1 suggested math courses
         self._comfort_science:   bool = True   # False → hide Y1 suggested science courses
@@ -589,6 +596,9 @@ class AdvisorApp:
         # (orange) in Suggested Plan but don't feed into credit totals or GE
         # completeness — they're tentative, not commitments.
         self._planned: dict[str, str] = {}
+        self._plan_expanded: dict[str, bool] = {}
+        self._plan_canvas = None
+        self._plan_scroll_pos: float = 0.0
 
         # New structured-input state (set fully in _build_left)
         self._major_vars:    list = []          # 3 StringVars for major dropdowns
@@ -1005,7 +1015,7 @@ class AdvisorApp:
 
         cont_btn.configure(command=_on_continue)
 
-    def _match_intake_route(self, intake: dict, answers: dict) -> dict | None:
+    def _match_intake_route(self, intake: dict, answers: dict):
         """Return the first route whose 'when' conditions match answers."""
         for route in intake.get("routes", []):
             when = route.get("when", {})
@@ -1538,6 +1548,9 @@ class AdvisorApp:
             known = set()
             for pdata in self.catalog.get("prefixes", {}).values():
                 known.update(pdata.get("courses", {}).keys())
+            known.update(("FS-110", "FS-111", "FS-112"))
+            known.update(c for c in taken
+                         if prefix_of(c) in ("FYS", "PRX"))
             unknown = sorted(c for c in taken if c not in known)
             if unknown:
                 messagebox.showwarning(
@@ -1647,6 +1660,8 @@ class AdvisorApp:
         self._comfort_math      = True
         self._comfort_science   = True
         self._planned.clear()
+        self._plan_expanded.clear()
+        self._plan_scroll_pos = 0.0
         self.name_var.set("")
         self.id_var.set("")
         if self._year_var:
@@ -1694,7 +1709,10 @@ class AdvisorApp:
                 lines.append(f"\n{'=' * 60}")
                 lines.append(name.upper())
                 lines.append('=' * 60)
-                lines.append(t.get("1.0", tk.END).strip())
+                if isinstance(t, str):
+                    lines.append(t)
+                else:
+                    lines.append(t.get("1.0", tk.END).strip())
         try:
             Path(path).write_text("\n".join(lines), encoding="utf-8")
             messagebox.showinfo("Exported", f"Saved to:\n{path}")
@@ -2098,7 +2116,7 @@ class AdvisorApp:
         title_part = f" — {title}" if title else ""
         return f"{code}{title_part}{self._offering_badge(code)}"
 
-    def _make_plan_combo(self, parent: tk.Text, slot_id: str,
+    def _make_plan_combo(self, parent, slot_id: str,
                          pool: list) -> ttk.Combobox:
         """Create a course-picker combobox for a plan slot.
 
@@ -2119,16 +2137,16 @@ class AdvisorApp:
         return cb
 
     def _on_plan_select(self, slot_id: str, combo_value: str) -> None:
-        """Update self._planned from a combo change and re-render. Entries
-        have the form 'CODE — Title  [FS]' or just 'CODE  [FS]' — in both
-        cases the bare code is the first whitespace-delimited token."""
+        """Update self._planned from a combo change and re-render."""
         if not combo_value or combo_value == "(unset)":
             self._planned.pop(slot_id, None)
         else:
-            first = combo_value.split(" — ", 1)[0]
+            first = combo_value.split(" \u2014 ", 1)[0]
             code = first.split()[0].strip() if first else ""
             if code:
                 self._planned[slot_id] = code
+        if self._plan_canvas and self._plan_canvas.winfo_exists():
+            self._plan_scroll_pos = self._plan_canvas.yview()[0]
         self.check(jump_to_suggested=True)
 
     def _planned_for_pool(self, pool_codes: set) -> list:
@@ -2145,181 +2163,244 @@ class AdvisorApp:
                                taken: set, ge_result: dict, we_required: int,
                                active_pathway_ids: list, f2y_entries: list,
                                tab_name: str = ""):
-        """Render a semester-ordered plan of what remains to be completed."""
+        """Render a semester-organized plan with collapsible sections."""
         _CODE_RE = re.compile(r'^[A-Z]+-\d')
         _YEAR_SEM = {
-            "First Year":       1,
-            "Sophomore":        3,
-            "Junior":           5,
-            "Senior":           7,
-            "Transfer Student": 3,
+            "First Year": 1, "Sophomore": 3, "Junior": 5,
+            "Senior": 7, "Transfer Student": 3,
         }
-        _SEM_NUM    = F2Y_SEM_NUM
-        _SEM_KEYS   = F2Y_SEM_KEYS
-        _SEM_LABELS = F2Y_SEM_LABELS
 
         year_label  = self._year_var.get() if self._year_var else "First Year"
         current_sem = _YEAR_SEM.get(year_label, 1)
         taken_norm  = {normalize(c) for c in taken}
-
-        t = self._make_text(parent, tab_name=tab_name)
-        shown_codes: set = set()   # primary non-aux codes already rendered anywhere
+        shown_codes: set = set()
+        export: list = []
 
         def _f2y_primary(course_str):
-            """Primary non-aux code from an F2Y entry string, or None."""
             if not _CODE_RE.match(course_str):
                 return None
-            raw  = course_str.split()[0]
-            norm = normalize(raw)
+            norm = normalize(course_str.split()[0])
             return None if is_auxiliary(norm) else norm
 
         def _primary_code(codes_list):
-            """First non-auxiliary normalized code from a requirement codes list."""
             for c in codes_list:
                 n = normalize(c)
                 if not is_auxiliary(n):
                     return n
             return None
 
-        # ── A: Status header ─────────────────────────────────────────────────────
-        self._ins(t, "SUGGESTED COURSE PLAN\n", "h1")
+        # ── Scrollable container ────────────────────────────────────────
+        canvas = tk.Canvas(parent, bg=COLORS["bg"], highlightthickness=0,
+                           borderwidth=0)
+        vsb = tk.Scrollbar(parent, orient=tk.VERTICAL, command=canvas.yview)
+        inner = tk.Frame(canvas, bg=COLORS["bg"])
+
+        inner.bind("<Configure>",
+                   lambda _e: canvas.configure(scrollregion=canvas.bbox("all")))
+        win_id = canvas.create_window((0, 0), window=inner, anchor="nw")
+        canvas.configure(yscrollcommand=vsb.set)
+        canvas.bind("<Configure>",
+                    lambda e: canvas.itemconfig(win_id, width=e.width))
+
+        vsb.pack(side=tk.RIGHT, fill=tk.Y)
+        canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        self._plan_canvas = canvas
+
+        # ── Status header (non-collapsible) ─────────────────────────────
+        hdr = tk.Frame(inner, bg=COLORS["bg"])
+        hdr.pack(fill=tk.X, padx=20, pady=(14, 0))
+
         prog_names = [self.programs[pid]["name"]
                       for pid in sel_ids if pid in self.programs]
         cred = total_credits(taken, self.course_credits)
         planned_credits = sum(
-            self.course_credits.get(code, 0.2 if code.endswith(("L", "C")) else 1.0)
+            self.course_credits.get(code,
+                                    0.2 if code.endswith(("L", "C")) else 1.0)
             for code in self._planned.values())
-        planned_str = f"   (+{planned_credits:.1f} planned)" if planned_credits else ""
-        self._ins(t,
-            f"Year: {year_label}   Programs: {', '.join(prog_names) or '(none)'}   "
-            f"Credits taken: {cred:.1f}{planned_str}\n"
-            "□ = needed   ◐ = planned   ◇ = choose from options   "
-            "◻ = non-course   ⚠ = overdue\n"
-            "Dropdown badges: [F] offered Fall 2026   "
-            "[S] offered Spring 2026   [FS] both\n\n",
-            "summary")
+        planned_str = (f"   (+{planned_credits:.1f} planned)"
+                       if planned_credits else "")
 
-        # Wizard routing note (shown when the new-student wizard produced this plan)
+        tk.Label(hdr, text="SUGGESTED COURSE PLAN",
+                 font=("Helvetica", 14, "bold"), fg=COLORS["accent"],
+                 bg=COLORS["bg"], anchor="w").pack(fill=tk.X)
+        tk.Label(hdr,
+            text=(f"Year: {year_label}   "
+                  f"Programs: {', '.join(prog_names) or '(none)'}   "
+                  f"Credits: {cred:.1f}{planned_str}"),
+            font=("Helvetica", 9), fg=COLORS["note"],
+            bg=COLORS["bg"], anchor="w", wraplength=700, justify=tk.LEFT
+        ).pack(fill=tk.X, pady=(2, 0))
+        tk.Label(hdr,
+            text=("\u25a1 = needed   \u25d0 = planned   \u25c7 = choose   "
+                  "\u25fb = non-course   \u26a0 = overdue"),
+            font=("Helvetica", 9), fg=COLORS["note"],
+            bg=COLORS["bg"], anchor="w"
+        ).pack(fill=tk.X)
+        tk.Label(hdr,
+            text=("Dropdown badges: [F] Fall 2026   "
+                  "[S] Spring 2026   [FS] both"),
+            font=("Helvetica", 9), fg=COLORS["note"],
+            bg=COLORS["bg"], anchor="w"
+        ).pack(fill=tk.X, pady=(0, 6))
+
+        export.append("SUGGESTED COURSE PLAN")
+        export.append(
+            f"Year: {year_label}   "
+            f"Programs: {', '.join(prog_names) or '(none)'}   "
+            f"Credits: {cred:.1f}{planned_str}")
+        export.append("")
+
         if self._wizard_route_note:
-            self._ins(t,
-                "── FIRST-SEMESTER RECOMMENDATION ──────────────────────────────\n",
-                "divider")
-            self._ins(t, f"   ℹ  {self._wizard_route_note}\n\n", "note")
+            note_frm = tk.Frame(inner, bg=COLORS["bg"])
+            note_frm.pack(fill=tk.X, padx=20, pady=(0, 6))
+            tk.Label(note_frm,
+                text=f"\u2139  {self._wizard_route_note}",
+                font=("Helvetica", 9, "italic"), fg=COLORS["note"],
+                bg=COLORS["bg"], anchor="w", wraplength=700, justify=tk.LEFT
+            ).pack(fill=tk.X)
+            export.append(f"\u2139  {self._wizard_route_note}")
+            export.append("")
 
-        # ── B: Near-term — F2Y essentials (Y1/Y2) or overdue list (Y3+) ─────────
-        overdue_lines = []   # [(display_str, prog_name)] for Y3+ students
+        # ── Collapsible-section helper ──────────────────────────────────
+        def _section(section_id, title, badge="", default_expanded=False):
+            expanded = self._plan_expanded.get(section_id, default_expanded)
+            sec_frm = tk.Frame(inner, bg=COLORS["bg"])
+            sec_frm.pack(fill=tk.X, pady=(2, 0))
 
+            hdr_frm = tk.Frame(sec_frm, bg=COLORS["panel_bg"],
+                               cursor="hand2")
+            hdr_frm.pack(fill=tk.X, padx=12, pady=(4, 0))
+            hdr_frm.configure(highlightbackground=COLORS["border"],
+                              highlightthickness=1)
+
+            arrow_lbl = tk.Label(hdr_frm,
+                text="\u25bc" if expanded else "\u25b6",
+                font=("Helvetica", 11), fg=COLORS["accent"],
+                bg=COLORS["panel_bg"])
+            arrow_lbl.pack(side=tk.LEFT, padx=(10, 6), pady=6)
+
+            tk.Label(hdr_frm, text=title,
+                     font=("Helvetica", 11, "bold"), fg=COLORS["header"],
+                     bg=COLORS["panel_bg"], anchor="w"
+                     ).pack(side=tk.LEFT, pady=6)
+
+            if badge:
+                tk.Label(hdr_frm, text=badge,
+                         font=("Helvetica", 9), fg=COLORS["note"],
+                         bg=COLORS["panel_bg"]
+                         ).pack(side=tk.RIGHT, padx=10, pady=6)
+
+            body = tk.Frame(sec_frm, bg=COLORS["bg"])
+            if expanded:
+                body.pack(fill=tk.X, padx=12)
+
+            def toggle(_event=None):
+                if body.winfo_manager():
+                    body.pack_forget()
+                    arrow_lbl.configure(text="\u25b6")
+                    self._plan_expanded[section_id] = False
+                else:
+                    body.pack(fill=tk.X, padx=12)
+                    arrow_lbl.configure(text="\u25bc")
+                    self._plan_expanded[section_id] = True
+                inner.update_idletasks()
+                canvas.configure(scrollregion=canvas.bbox("all"))
+
+            for w in (hdr_frm,) + tuple(hdr_frm.winfo_children()):
+                w.bind("<Button-1>", toggle)
+
+            return body
+
+        def _item_row(par, icon, text, color, extra=""):
+            row = tk.Frame(par, bg=COLORS["bg"])
+            row.pack(fill=tk.X, padx=20, pady=1)
+            full = f"{icon}  {text}{extra}"
+            tk.Label(row, text=full, font=("Helvetica", 10),
+                     fg=color, bg=COLORS["bg"], anchor="w",
+                     wraplength=650, justify=tk.LEFT).pack(fill=tk.X)
+            return full
+
+        def _sub_heading(par, text):
+            tk.Label(par, text=text, font=("Helvetica", 9),
+                     fg=COLORS["hint"], bg=COLORS["bg"], anchor="w"
+                     ).pack(fill=tk.X, padx=24, pady=(4, 1))
+
+        # ── Collect data into semester buckets ──────────────────────────
+        sem_buckets: dict = {i: [] for i in range(1, 9)}
+        overdue_items: list = []
+        flex_items: list = []
+        non_courses: list = []
+
+        # Prefix → GE division lookup (for fill-in hints)
+        _pfx_to_div: dict = {}
+        _div_names = {
+            "fine_arts": "Fine Arts", "humanities": "Humanities",
+            "social_sciences": "Social Sciences",
+            "nat_sci_math": "Natural Sciences & Math",
+        }
+        for dk, dn in _div_names.items():
+            div_sec = (self.ge_data.get("divisional", {})
+                       .get("sections", {}).get(dk, {}))
+            for pfx in div_sec.get("prefixes", []):
+                _pfx_to_div[pfx] = dk
+
+        # A) F2Y items
         if f2y_entries:
-            if current_sem <= 4:
-                any_printed = False
-                for entry, prog in f2y_entries:
-                    entry_label  = entry.get("label", "")
-                    variant_note = entry.get("variant_note", "")
-                    entry_sems   = entry.get("semesters", {})
-                    upcoming = [
-                        (sk, _SEM_NUM[sk]) for sk in _SEM_KEYS
-                        if _SEM_NUM[sk] >= current_sem
-                        and (entry_sems.get(sk, {}).get("essential")
-                             or entry_sems.get(sk, {}).get("suggested"))
-                    ]
-                    if not upcoming:
-                        continue
-                    if not any_printed:
-                        self._ins(t,
-                            "── NEAR-TERM  (first two years) ────────────────────────────────\n",
-                            "divider")
-                        any_printed = True
-                    header = (f"{entry_label}  —  {variant_note}"
-                              if variant_note else entry_label)
-                    self._ins(t, f"\n{header}\n", "h2")
+            for entry, prog in f2y_entries:
+                prog_name = prog.get("name", "")
+                entry_sems = entry.get("semesters", {})
 
-                    for sk, snum in upcoming:
-                        sem_data  = entry_sems.get(sk, {})
-                        essential = sem_data.get("essential", [])
-                        suggested = sem_data.get("suggested", [])
-                        marker = "▸ " if snum == current_sem else ""
-                        self._ins(t, f"\n   {marker}{_SEM_LABELS[sk]}\n", "h2")
-                        if essential:
-                            self._ins(t, "     Essential:\n", "hint")
-                            for course in essential:
-                                pcode = _f2y_primary(course)
-                                if pcode:
-                                    shown_codes.add(pcode)
-                                if _CODE_RE.match(course):
-                                    done = pcode in taken_norm if pcode else False
-                                    ico  = "✓" if done else "□"
-                                    tag  = "item_done" if done else "item_todo"
-                                else:
-                                    ico, tag = "•", "hint"
-                                self._ins(t, f"       {ico}  {course}\n", tag)
-                        if suggested:
-                            comfort_skipped = False
-                            visible_suggested = []
-                            for course in suggested:
-                                pcode = _f2y_primary(course)
-                                # In Year 1, hide math/science suggestions when
-                                # the student indicated they're not ready.
-                                # Essential courses above are never filtered.
-                                if pcode and snum <= 2:
-                                    if not self._comfort_math and is_math_course(pcode):
-                                        comfort_skipped = True
-                                        continue
-                                    if not self._comfort_science and is_science_course(pcode):
-                                        comfort_skipped = True
-                                        continue
-                                visible_suggested.append((course, pcode))
-                            if visible_suggested:
-                                self._ins(t, "     Suggested:\n", "hint")
-                                for course, pcode in visible_suggested:
-                                    if pcode:
-                                        shown_codes.add(pcode)
-                                    if _CODE_RE.match(course):
-                                        done = pcode in taken_norm if pcode else False
-                                        ico  = "✓" if done else "○"
-                                        tag  = "item_done" if done else "note"
-                                    else:
-                                        ico, tag = "○", "note"
-                                    self._ins(t, f"       {ico}  {course}\n", tag)
-                            if comfort_skipped:
-                                self._ins(t,
-                                    "     (some math/science courses omitted"
-                                    " — student not ready this semester)\n",
-                                    "note")
+                for sk in F2Y_SEM_KEYS:
+                    snum = F2Y_SEM_NUM[sk]
+                    sem_data = entry_sems.get(sk, {})
 
-                    notes_str = entry.get("notes", "")
-                    if notes_str:
-                        self._ins(t, f"\n   ℹ  {notes_str}\n", "note")
+                    for course in sem_data.get("essential", []):
+                        pcode = _f2y_primary(course)
+                        if pcode:
+                            shown_codes.add(pcode)
+                        done = pcode in taken_norm if pcode else False
+                        is_code = bool(_CODE_RE.match(course))
 
-            else:
-                # Y3+: populate shown_codes and collect overdue essentials
-                for entry, prog in f2y_entries:
-                    prog_name = prog.get("name", "")
-                    for sk in _SEM_KEYS:
-                        for course in entry.get("semesters", {}).get(sk, {}).get("essential", []):
-                            pcode = _f2y_primary(course)
-                            if pcode:
-                                shown_codes.add(pcode)
-                                if pcode not in taken_norm:
-                                    overdue_lines.append((course, prog_name))
+                        if snum < current_sem:
+                            if not done and pcode:
+                                overdue_items.append({
+                                    "display": course, "program": prog_name,
+                                    "category": "overdue", "primary": pcode,
+                                })
+                        else:
+                            sem_buckets[snum].append({
+                                "display": course, "program": prog_name,
+                                "category": "essential", "done": done,
+                                "primary": pcode, "is_code": is_code,
+                            })
 
-        if overdue_lines:
-            self._ins(t,
-                "\n── ⚠ OVERDUE — First-Two-Year Essentials Not Yet Taken ────────────\n",
-                "divider")
-            for display, prog_name in overdue_lines:
-                prog_str = f"  ({prog_name})" if prog_name else ""
-                self._ins(t, f"   ⚠  {display}{prog_str}\n", "item_todo")
+                    for course in sem_data.get("suggested", []):
+                        pcode = _f2y_primary(course)
+                        if pcode and snum <= 2:
+                            if (not self._comfort_math
+                                    and is_math_course(pcode)):
+                                continue
+                            if (not self._comfort_science
+                                    and is_science_course(pcode)):
+                                continue
+                        if pcode:
+                            shown_codes.add(pcode)
+                        if snum < current_sem:
+                            continue
+                        done = pcode in taken_norm if pcode else False
+                        is_code = bool(_CODE_RE.match(course))
+                        sem_buckets[snum].append({
+                            "display": course, "program": prog_name,
+                            "category": "suggested", "done": done,
+                            "primary": pcode, "is_code": is_code,
+                        })
 
-        # ── Collect required items for B/C/D from program sections ───────────────
-        soon_req, mid_req, later_req = [], [], []
-        flex_items  = []
-        non_courses = []
-
+        # B) Required program items — placed by trajectory semester
         for pid in sel_ids:
-            prog   = self.programs.get(pid, {})
+            prog = self.programs.get(pid, {})
             result = check_program(prog, taken)
             major_code = prog.get("major_code", "")
-            prog_name  = prog.get("name", pid)
+            prog_name = prog.get("name", pid)
 
             for sec in result["sections"]:
                 if sec["status"] == COMPLETE:
@@ -2330,7 +2411,7 @@ class AdvisorApp:
                 if stype == "non_course":
                     non_courses.append({
                         "label": label, "program": prog_name,
-                        "desc":  sec.get("description", ""),
+                        "desc": sec.get("description", ""),
                     })
                     continue
 
@@ -2338,28 +2419,29 @@ class AdvisorApp:
                     for item in sec.get("items", []):
                         if item.get("satisfied"):
                             continue
-                        codes   = item.get("codes", [])
+                        codes = item.get("codes", [])
                         primary = _primary_code(codes)
                         if primary and primary in shown_codes:
-                            continue   # already shown in F2Y
+                            continue
                         if primary:
                             shown_codes.add(primary)
-                        info = (self.trajectory.course_info(major_code, primary)
+                        info = (self.trajectory.course_info(
+                                    major_code, primary)
                                 if primary else None)
-                        sem  = info["sem"] if info else None
-                        pct  = info["pct"] if info else None
+                        sem = info["sem"] if info else None
+                        pct = info["pct"] if info else None
                         entry = {
                             "display": " / ".join(codes),
-                            "title":   item.get("title", ""),
+                            "title": item.get("title", ""),
                             "program": prog_name,
+                            "category": "required", "done": False,
+                            "primary": primary, "is_code": True,
                             "sem": sem, "pct": pct,
                         }
-                        if sem is None or sem > current_sem + 5:
-                            later_req.append(entry)
-                        elif sem <= current_sem + 2:
-                            soon_req.append(entry)
+                        if sem and 1 <= sem <= 8:
+                            sem_buckets[sem].append(entry)
                         else:
-                            mid_req.append(entry)
+                            sem_buckets[8].append(entry)
 
                 elif stype == "choose_one":
                     opts = sec.get("options", [])
@@ -2367,34 +2449,38 @@ class AdvisorApp:
                     for o in opts:
                         c0 = _primary_code(o.get("codes", []))
                         if c0:
-                            inf = self.trajectory.course_info(major_code, c0)
+                            inf = self.trajectory.course_info(
+                                major_code, c0)
                             if inf and inf["sem"]:
-                                if best_sem is None or inf["sem"] < best_sem:
+                                if (best_sem is None
+                                        or inf["sem"] < best_sem):
                                     best_sem = inf["sem"]
                                     best_code = c0
                     preview = "  |  ".join(
-                        _primary_code(o.get("codes", [])) or o.get("title", "?")
+                        _primary_code(o.get("codes", []))
+                        or o.get("title", "?")
                         for o in opts)
-                    hint = f"   [earliest: {best_code}]" if best_code else ""
-                    # Pool: one entry per option (uses option's first code).
+                    hint = (f"   [earliest: {best_code}]"
+                            if best_code else "")
                     pool = []
                     for o in opts:
                         c0 = _primary_code(o.get("codes", []))
                         if c0:
-                            pool.append((c0, o.get("title", "") or self._catalog_title(c0)))
+                            pool.append((
+                                c0,
+                                o.get("title", "")
+                                or self._catalog_title(c0)))
                     flex_items.append({
-                        "label":   label,
-                        "preview": preview,
-                        "hint":    hint,
-                        "program": prog_name,
-                        "kind":    "choose_one",
-                        "slot_base": f"prog:{pid}:{sec.get('id', label)}",
-                        "needed":  1,
-                        "pool":    pool,
+                        "label": label, "preview": preview,
+                        "hint": hint, "program": prog_name,
+                        "kind": "choose_one",
+                        "slot_base": f"prog:{pid}:"
+                                     f"{sec.get('id', label)}",
+                        "needed": 1, "pool": pool,
                     })
 
                 elif stype == "choose_n":
-                    n      = sec.get("n", 1)
+                    n = sec.get("n", 1)
                     done_n = sec.get("satisfied_count", 0)
                     pool = []
                     for item in sec.get("items", []):
@@ -2402,271 +2488,446 @@ class AdvisorApp:
                             continue
                         c0 = _primary_code(item.get("codes", []))
                         if c0:
-                            pool.append((c0, item.get("title", "") or self._catalog_title(c0)))
+                            pool.append((
+                                c0,
+                                item.get("title", "")
+                                or self._catalog_title(c0)))
                     flex_items.append({
-                        "label":   f"{label}  — need {n - done_n} more",
+                        "label": f"{label}  \u2014 need "
+                                 f"{n - done_n} more",
                         "program": prog_name, "kind": "choose_n",
-                        "slot_base": f"prog:{pid}:{sec.get('id', label)}",
-                        "needed":  n - done_n,
-                        "pool":    pool,
+                        "slot_base": f"prog:{pid}:"
+                                     f"{sec.get('id', label)}",
+                        "needed": n - done_n, "pool": pool,
                     })
 
                 elif stype == "open_n":
-                    n     = sec.get("n", 1)
+                    n = sec.get("n", 1)
                     found = len(sec.get("matching", []))
-                    desc  = sec.get("description", label)
+                    desc = sec.get("description", label)
                     constraints = sec.get("constraints", {})
-                    pfxs  = constraints.get("prefixes", [])
-                    excl  = {normalize(x) for x in constraints.get("exclude_codes", [])}
-                    pool  = (self._pool_from_prefixes(pfxs, exclude=excl | taken_norm)
-                             if pfxs else [])
+                    pfxs = constraints.get("prefixes", [])
+                    excl = {normalize(x)
+                            for x in constraints.get(
+                                "exclude_codes", [])}
+                    pool = (self._pool_from_prefixes(
+                                pfxs, exclude=excl | taken_norm)
+                            if pfxs else [])
                     flex_items.append({
-                        "label":   f"{desc}  — need {n - found} more",
+                        "label": f"{desc}  \u2014 need "
+                                 f"{n - found} more",
                         "program": prog_name, "kind": "open_n",
-                        "slot_base": f"prog:{pid}:{sec.get('id', label)}",
-                        "needed":  n - found,
-                        "pool":    pool,
+                        "slot_base": f"prog:{pid}:"
+                                     f"{sec.get('id', label)}",
+                        "needed": n - found, "pool": pool,
                     })
 
-        def _render_req_bucket(items, header):
+        # ── Inject FS-110 into Fall Year 1 if FYS not yet satisfied ────
+        fys_done = ge_result.get("fys", {}).get("complete", False)
+        fs110_norm = normalize("FS-110")
+        if not fys_done and fs110_norm not in shown_codes:
+            shown_codes.add(fs110_norm)
+            done = fs110_norm in taken_norm
+            if current_sem <= 1:
+                sem_buckets[1].insert(0, {
+                    "display": "FS-110 First Year Seminar",
+                    "program": "", "category": "essential",
+                    "done": done, "primary": fs110_norm,
+                    "is_code": True,
+                })
+            elif not done:
+                overdue_items.append({
+                    "display": "FS-110 First Year Seminar",
+                    "program": "", "category": "overdue",
+                    "primary": fs110_norm,
+                })
+
+        # ── Render: Overdue ─────────────────────────────────────────────
+        if overdue_items:
+            body = _section("overdue", "\u26a0 Overdue",
+                            f"{len(overdue_items)} items", True)
+            export.append("\u2500\u2500 \u26a0 OVERDUE \u2500\u2500")
+            for it in overdue_items:
+                prog_s = f"  ({it['program']})" if it["program"] else ""
+                line = _item_row(body, "\u26a0", it["display"],
+                                 COLORS["incomplete"], prog_s)
+                export.append(f"   {line}")
+            export.append("")
+
+        # ── Render: Semester sections ───────────────────────────────────
+        for sem_num in range(current_sem, 9):
+            items = sem_buckets.get(sem_num, [])
             if not items:
-                return
-            self._ins(t, f"\n{header}\n", "divider")
-            items.sort(key=lambda x: (x.get("sem") or 99, x.get("display", "")))
-            for item in items:
-                sem_str  = f"  [Sem {item['sem']}]" if item.get("sem") else ""
-                pct_str  = (f"  ({item['pct']:.0%} of grads)"
-                            if item.get("pct") else "")
-                prog_str = f"  ({item['program']})"
-                title    = f"  {item['title']}" if item.get("title") else ""
-                self._ins(t,
-                    f"   □  {item['display']}{title}{sem_str}{pct_str}{prog_str}\n",
-                    "item_todo")
+                continue
 
-        # ── B2: Trajectory-based near-term ───────────────────────────────────────
-        if soon_req:
-            _render_req_bucket(soon_req,
-                f"── REQUIRED — NEXT UP  (traj sems ≤ {current_sem + 2}) ──────────────────────")
+            remaining = sum(1 for it in items
+                            if not it.get("done")
+                            and it.get("is_code", True))
+            done_ct = sum(1 for it in items if it.get("done"))
 
-        # ── C: Mid-program ───────────────────────────────────────────────────────
-        if mid_req:
-            _render_req_bucket(mid_req,
-                f"── REQUIRED — MID-PROGRAM  "
-                f"(traj sems {current_sem + 3}–{current_sem + 5}) ──────────────")
+            if remaining == 0 and done_ct > 0:
+                badge = f"\u2713 {done_ct} complete"
+            elif done_ct > 0:
+                badge = (f"{done_ct}/{done_ct + remaining} complete"
+                         f" \u00b7 {remaining} remaining")
+            else:
+                badge = f"{remaining} courses"
 
-        # ── D: Later / senior year ───────────────────────────────────────────────
-        if later_req:
-            _render_req_bucket(later_req,
-                "── REQUIRED — LATER / SENIOR YEAR ──────────────────────────────")
+            label = PLAN_SEM_LABELS.get(sem_num,
+                                        f"Semester {sem_num}")
+            body = _section(f"sem_{sem_num}", label, badge,
+                            default_expanded=(sem_num == current_sem))
 
-        # ── E: Flexible / elective requirements ──────────────────────────────────
+            export.append(f"\u2500\u2500 {label} \u2500\u2500")
+
+            essentials = [it for it in items
+                          if it["category"] == "essential"]
+            suggested  = [it for it in items
+                          if it["category"] == "suggested"]
+            required   = [it for it in items
+                          if it["category"] == "required"]
+
+            if essentials:
+                _sub_heading(body, "Essential:")
+                for it in essentials:
+                    if it.get("is_code"):
+                        ico = "\u2713" if it["done"] else "\u25a1"
+                        clr = (COLORS["complete"] if it["done"]
+                               else COLORS["incomplete"])
+                    else:
+                        ico, clr = "\u2022", COLORS["hint"]
+                    prog_s = (f"  ({it['program']})"
+                              if it["program"] else "")
+                    line = _item_row(body, ico, it["display"],
+                                     clr, prog_s)
+                    export.append(f"   {line}")
+
+            if suggested:
+                _sub_heading(body, "Suggested:")
+                for it in suggested:
+                    if it.get("is_code"):
+                        ico = "\u2713" if it["done"] else "\u25cb"
+                        clr = (COLORS["complete"] if it["done"]
+                               else COLORS["note"])
+                    else:
+                        ico, clr = "\u25cb", COLORS["note"]
+                    prog_s = (f"  ({it['program']})"
+                              if it["program"] else "")
+                    line = _item_row(body, ico, it["display"],
+                                     clr, prog_s)
+                    export.append(f"   {line}")
+
+            if required:
+                _sub_heading(body, "Required:")
+                required.sort(
+                    key=lambda x: (x.get("pct") or 0), reverse=True)
+                for it in required:
+                    parts = []
+                    if it.get("title"):
+                        parts.append(it["title"])
+                    if it.get("pct"):
+                        parts.append(f"{it['pct']:.0%} of grads")
+                    parts.append(f"({it['program']})")
+                    extra = "  " + "  ".join(parts) if parts else ""
+                    line = _item_row(body, "\u25a1", it["display"],
+                                     COLORS["incomplete"], extra)
+                    export.append(f"   {line}")
+
+            # GE fill-in hint for first two years
+            if sem_num <= 4:
+                primaries = {it["primary"] for it in items
+                             if it.get("primary")}
+                slots_filled = len(primaries)
+                ge_remaining = max(0, 4 - slots_filled)
+                if ge_remaining > 0:
+                    covered = set()
+                    for p in primaries:
+                        d = _pfx_to_div.get(prefix_of(p))
+                        if d:
+                            covered.add(d)
+                    open_divs = [
+                        _div_names[dk]
+                        for dk in ("fine_arts", "humanities",
+                                   "social_sciences", "nat_sci_math")
+                        if dk not in covered
+                        and not ge_result.get(dk, {}).get("complete")]
+                    if open_divs:
+                        nw = {1: "one", 2: "two", 3: "three"
+                              }.get(ge_remaining, str(ge_remaining))
+                        if len(open_divs) == 1:
+                            div_str = open_divs[0]
+                        else:
+                            div_str = (", ".join(open_divs[:-1])
+                                       + ", or " + open_divs[-1])
+                        ge_hint = (f"+ {nw} GE course"
+                                   f"{'s' if ge_remaining != 1 else ''}"
+                                   f" in {div_str}")
+                        _sub_heading(body, "")
+                        _item_row(body, "\u25cb", ge_hint,
+                                  COLORS["hint"])
+                        export.append(f"   {ge_hint}")
+
+            export.append("")
+
+        # ── Render: Flexible / Elective Requirements ────────────────────
         if flex_items:
-            self._ins(t,
-                "\n── FLEXIBLE / ELECTIVE REQUIREMENTS ─────────────────────────────\n",
-                "divider")
+            body = _section("flexible",
+                            "Flexible / Elective Requirements",
+                            f"{len(flex_items)} groups",
+                            default_expanded=True)
+            export.append(
+                "\u2500\u2500 FLEXIBLE / ELECTIVE REQUIREMENTS "
+                "\u2500\u2500")
+
             for item in flex_items:
-                prog_str = f"  ({item['program']})"
-                needed   = item.get("needed", 1)
-                pool     = item.get("pool", [])
-                base_id  = item.get("slot_base", "")
+                prog_s = f"  ({item['program']})"
+                needed = item.get("needed", 1)
+                pool = item.get("pool", [])
+                base_id = item.get("slot_base", "")
                 slot_ids = [f"{base_id}:{i}" for i in range(needed)]
-                slot_picks = [self._planned.get(sid, "") for sid in slot_ids]
+                slot_picks = [self._planned.get(sid, "")
+                              for sid in slot_ids]
                 planned_n = sum(1 for p in slot_picks if p)
 
                 if planned_n:
                     left = max(0, needed - planned_n)
                     status = (f"{planned_n} planned"
-                              + (f" / {left} still needed" if left else ""))
-                    self._ins(t, f"   ◐  {item['label']}  — {status}{prog_str}\n",
-                              "item_planned")
+                              + (f" / {left} still needed"
+                                 if left else ""))
+                    _item_row(body, "\u25d0",
+                              f"{item['label']}  \u2014 "
+                              f"{status}{prog_s}",
+                              COLORS["partial"])
                 else:
-                    self._ins(t, f"   ◇  {item['label']}{prog_str}\n", "note")
+                    _item_row(body, "\u25c7",
+                              f"{item['label']}{prog_s}",
+                              COLORS["note"])
                     if item["kind"] == "choose_one":
-                        self._ins(t,
-                            f"      Options: {item['preview']}{item['hint']}\n", "hint")
+                        _sub_heading(
+                            body,
+                            f"Options: {item['preview']}"
+                            f"{item.get('hint', '')}")
 
                 if base_id and pool:
-                    planned_elsewhere = {v for k, v in self._planned.items()
-                                         if k not in slot_ids}
-                    for i, sid in enumerate(slot_ids):
+                    planned_elsewhere = {
+                        v for k, v in self._planned.items()
+                        if k not in slot_ids}
+                    for sid in slot_ids:
                         this_pick = self._planned.get(sid, "")
-                        avail = [(c, tt) for c, tt in pool
-                                 if c == this_pick or c not in planned_elsewhere]
-                        self._ins(t, "      ", "")
-                        cb = self._make_plan_combo(t, sid, avail)
-                        t.window_create(tk.END, window=cb)
+                        avail = [
+                            (c, tt) for c, tt in pool
+                            if c == this_pick
+                            or c not in planned_elsewhere]
+                        crow = tk.Frame(body, bg=COLORS["bg"])
+                        crow.pack(fill=tk.X, padx=40, pady=2)
+                        cb = self._make_plan_combo(crow, sid, avail)
+                        cb.pack(side=tk.LEFT)
                         if this_pick:
                             title = self._catalog_title(this_pick)
-                            tail = f" — {title}" if title else ""
-                            self._ins(t, f"   ◐ {this_pick}{tail}\n",
-                                      "item_planned")
-                        else:
-                            self._ins(t, "\n", "")
+                            tail = f" \u2014 {title}" if title else ""
+                            tk.Label(crow,
+                                text=f"\u25d0 {this_pick}{tail}",
+                                font=("Helvetica", 10),
+                                fg=COLORS["partial"],
+                                bg=COLORS["bg"]
+                            ).pack(side=tk.LEFT, padx=(8, 0))
+                            export.append(
+                                f"      \u25d0 {this_pick}{tail}")
 
-        # ── F: GE gaps ───────────────────────────────────────────────────────────
-        we_found  = len(ge_result.get("we",  {}).get("courses", []))
+            export.append("")
+
+        # ── Render: GE gaps ─────────────────────────────────────────────
+        we_found = len(ge_result.get("we", {}).get("courses", []))
         dac_found = len(ge_result.get("dac", {}).get("courses", []))
-
         any_gap = False
         for key in ("fine_arts", "humanities", "nat_sci_math",
                     "lab_science", "social_sciences"):
             if not ge_result.get(key, {}).get("complete"):
-                any_gap = True; break
+                any_gap = True
+                break
         if (we_found < we_required or dac_found < 2
                 or not ge_result.get("fys", {}).get("complete")
                 or not ge_result.get("practicum", {}).get("complete")):
             any_gap = True
 
         if any_gap:
-            self._ins(t,
-                "\n── GE REQUIREMENTS STILL TO MEET ────────────────────────────────\n",
-                "divider")
+            ge_body = _section("ge_gaps",
+                               "GE Requirements Still to Meet", "",
+                               default_expanded=True)
+            export.append(
+                "\u2500\u2500 GE REQUIREMENTS STILL TO MEET \u2500\u2500")
 
-            def _render_ge_gap(slot_key, label, needed, pool):
-                """Render a GE gap row with N course-picker combos (one per slot)."""
+            def _ge_gap(slot_key, lbl, needed, pool):
                 if needed <= 0:
                     return
-                slot_ids   = [f"ge:{slot_key}:{i}" for i in range(needed)]
-                picks      = [self._planned.get(sid, "") for sid in slot_ids]
-                planned_n  = sum(1 for p in picks if p)
-                left       = needed - planned_n
-                if planned_n:
-                    status = (f"{planned_n} planned"
-                              + (f" / {left} still needed" if left else ""))
-                    self._ins(t, f"   ◐  {label}  — {status}\n", "item_planned")
+                sids = [f"ge:{slot_key}:{i}" for i in range(needed)]
+                picks = [self._planned.get(s, "") for s in sids]
+                pn = sum(1 for p in picks if p)
+                left = needed - pn
+                if pn:
+                    st = (f"{pn} planned"
+                          + (f" / {left} still needed" if left else ""))
+                    _item_row(ge_body, "\u25d0",
+                              f"{lbl}  \u2014 {st}",
+                              COLORS["partial"])
                 else:
-                    self._ins(t, f"   □  {label}  — need {needed} more\n", "item_todo")
+                    _item_row(ge_body, "\u25a1",
+                              f"{lbl}  \u2014 need {needed} more",
+                              COLORS["incomplete"])
+                export.append(
+                    f"   \u25a1  {lbl}  \u2014 need {needed} more")
                 if not pool:
                     return
-                planned_elsewhere = {v for k, v in self._planned.items()
-                                     if k not in slot_ids}
-                for sid in slot_ids:
-                    this_pick = self._planned.get(sid, "")
-                    avail = [(c, tt) for c, tt in pool
-                             if c == this_pick or c not in planned_elsewhere]
-                    self._ins(t, "      ", "")
-                    cb = self._make_plan_combo(t, sid, avail)
-                    t.window_create(tk.END, window=cb)
-                    if this_pick:
-                        self._ins(t,
-                            f"   ◐ {self._format_combo_entry(this_pick, self._catalog_title(this_pick))}\n",
-                            "item_planned")
-                    else:
-                        self._ins(t, "\n", "")
+                pe = {v for k, v in self._planned.items()
+                      if k not in sids}
+                for sid in sids:
+                    tp = self._planned.get(sid, "")
+                    av = [(c, tt) for c, tt in pool
+                          if c == tp or c not in pe]
+                    crow = tk.Frame(ge_body, bg=COLORS["bg"])
+                    crow.pack(fill=tk.X, padx=40, pady=2)
+                    cb = self._make_plan_combo(crow, sid, av)
+                    cb.pack(side=tk.LEFT)
+                    if tp:
+                        export.append(
+                            f"      \u25d0 {self._format_combo_entry(tp, self._catalog_title(tp))}")
 
-            for div_key in ("fine_arts", "humanities",
-                            "nat_sci_math", "social_sciences"):
-                req = ge_result.get(div_key, {})
+            for dk in ("fine_arts", "humanities",
+                       "nat_sci_math", "social_sciences"):
+                req = ge_result.get(dk, {})
                 if req.get("complete"):
                     continue
-                found_n = len(req.get("courses", []))
-                needed  = req["required"] - found_n
+                fn = len(req.get("courses", []))
+                nd = req["required"] - fn
                 pool = self._pool_from_prefixes(
                     req.get("prefixes", []), exclude=taken_norm)
-                _render_ge_gap(div_key, req["label"], needed, pool)
+                _ge_gap(dk, req["label"], nd, pool)
 
-            # Lab science: no combo (needs paired lecture+lab). Keep as text.
             lab = ge_result.get("lab_science", {})
             if not lab.get("complete"):
-                found_n = len(lab.get("pairs", []))
-                needed  = lab["required"] - found_n
-                self._ins(t, f"   □  {lab['label']}  — need {needed} more\n",
-                          "item_todo")
+                fn = len(lab.get("pairs", []))
+                nd = lab["required"] - fn
+                _item_row(ge_body, "\u25a1",
+                          f"{lab['label']}  \u2014 need {nd} more",
+                          COLORS["incomplete"])
+                export.append(
+                    f"   \u25a1  {lab['label']}  "
+                    f"\u2014 need {nd} more")
 
-            # Diversity Across Curriculum — pool is the approved list.
             if dac_found < 2:
                 dac_pool = self._pool_from_codes(sorted(self.dac))
-                _render_ge_gap("dac", "Diversity Across Curriculum (2)",
-                               2 - dac_found, dac_pool)
+                _ge_gap("dac", "Diversity Across Curriculum (2)",
+                        2 - dac_found, dac_pool)
 
-            # Writing Emphasis — pool is the known-WE list plus catalog WE flags.
             if we_found < we_required:
                 we_codes = set(self.we)
-                for pdata in self.catalog.get("prefixes", {}).values():
-                    for code, info in pdata.get("courses", {}).items():
+                for pdata in self.catalog.get(
+                        "prefixes", {}).values():
+                    for code, info in pdata.get(
+                            "courses", {}).items():
                         if info.get("we"):
                             we_codes.add(code)
                 we_pool = self._pool_from_codes(sorted(we_codes))
-                _render_ge_gap("we", f"Writing Emphasis ({we_required} courses)",
-                               we_required - we_found, we_pool)
+                _ge_gap("we",
+                        f"Writing Emphasis ({we_required} courses)",
+                        we_required - we_found, we_pool)
 
-            # First Year Seminar — 1 slot, FS-110/111/112 (and FYS-###).
             if not ge_result.get("fys", {}).get("complete"):
                 fys_codes = ["FS-110", "FS-111", "FS-112"]
-                for pdata in self.catalog.get("prefixes", {}).values():
+                for pdata in self.catalog.get(
+                        "prefixes", {}).values():
                     for code in pdata.get("courses", {}):
                         if code.startswith("FYS-"):
                             fys_codes.append(code)
-                _render_ge_gap("fys", "First Year Seminar", 1,
-                               self._pool_from_codes(fys_codes))
+                _ge_gap("fys", "First Year Seminar", 1,
+                        self._pool_from_codes(fys_codes))
 
-            # Practicum — 1 slot, PRX-prefixed courses.
             if not ge_result.get("practicum", {}).get("complete"):
                 prx_pool = self._pool_from_prefixes(["PRX"])
-                _render_ge_gap("practicum", "Practicum", 1, prx_pool)
+                _ge_gap("practicum", "Practicum", 1, prx_pool)
 
-        # ── G: Non-course requirements ────────────────────────────────────────────
+            export.append("")
+
+        # ── Render: Non-course requirements ─────────────────────────────
         if non_courses:
-            self._ins(t,
-                "\n── NON-COURSE REQUIREMENTS (mark when complete) ─────────────────\n",
-                "divider")
+            body = _section("non_course", "Non-Course Requirements",
+                            f"{len(non_courses)} items",
+                            default_expanded=False)
+            export.append(
+                "\u2500\u2500 NON-COURSE REQUIREMENTS \u2500\u2500")
             for nc in non_courses:
-                self._ins(t,
-                    f"   ◻  {nc['label']}  ({nc['program']})\n", "item_manual")
+                _item_row(body, "\u25fb",
+                          f"{nc['label']}  ({nc['program']})",
+                          COLORS["manual"])
+                export.append(
+                    f"   \u25fb  {nc['label']}  ({nc['program']})")
                 if nc["desc"]:
-                    self._ins(t, f"      {nc['desc']}\n", "hint")
+                    _sub_heading(body, nc["desc"])
+                    export.append(f"      {nc['desc']}")
+            export.append("")
 
-        # ── H: Pathway requirements ───────────────────────────────────────────────
+        # ── Render: Pathway requirements ────────────────────────────────
         if active_pathway_ids:
-            pw_items, pw_non_courses = [], []
+            pw_items, pw_ncs = [], []
             for pw_id in active_pathway_ids:
                 pw = self.pathways.get(pw_id)
                 if not pw:
                     continue
                 pw_result = check_program(pw, taken)
-                pw_name   = pw.get("name", pw_id)
+                pw_name = pw.get("name", pw_id)
                 for sec in pw_result["sections"]:
                     if sec["status"] == COMPLETE:
                         continue
                     stype = sec.get("type", "all")
-                    label = sec.get("label", "")
+                    slabel = sec.get("label", "")
                     if stype == "non_course":
-                        pw_non_courses.append({
-                            "label": label, "program": pw_name,
-                            "desc":  sec.get("description", ""),
+                        pw_ncs.append({
+                            "label": slabel, "program": pw_name,
+                            "desc": sec.get("description", ""),
                         })
                         continue
                     if stype == "all":
                         for item in sec.get("items", []):
                             if item.get("satisfied"):
                                 continue
-                            codes   = item.get("codes", [])
+                            codes = item.get("codes", [])
                             primary = _primary_code(codes)
                             if primary and primary in shown_codes:
-                                continue   # already listed above
+                                continue
                             if primary:
                                 shown_codes.add(primary)
                             pw_items.append({
                                 "display": " / ".join(codes),
-                                "title":   item.get("title", ""),
+                                "title": item.get("title", ""),
                                 "program": pw_name,
                             })
-            if pw_items or pw_non_courses:
-                self._ins(t,
-                    "\n── PATHWAY REQUIREMENTS ─────────────────────────────────────────\n",
-                    "divider")
-                for item in pw_items:
-                    title    = f"  {item['title']}" if item.get("title") else ""
-                    prog_str = f"  ({item['program']})"
-                    self._ins(t,
-                        f"   □  {item['display']}{title}{prog_str}\n", "item_todo")
-                for nc in pw_non_courses:
-                    self._ins(t,
-                        f"   ◻  {nc['label']}  ({nc['program']})\n", "item_manual")
+            if pw_items or pw_ncs:
+                body = _section(
+                    "pathway", "Pathway Requirements",
+                    f"{len(pw_items) + len(pw_ncs)} items",
+                    default_expanded=False)
+                export.append(
+                    "\u2500\u2500 PATHWAY REQUIREMENTS \u2500\u2500")
+                for it in pw_items:
+                    ttl = (f"  {it['title']}"
+                           if it.get("title") else "")
+                    line = _item_row(
+                        body, "\u25a1",
+                        f"{it['display']}{ttl}  ({it['program']})",
+                        COLORS["incomplete"])
+                    export.append(f"   {line}")
+                for nc in pw_ncs:
+                    _item_row(body, "\u25fb",
+                              f"{nc['label']}  ({nc['program']})",
+                              COLORS["manual"])
+                    export.append(
+                        f"   \u25fb  {nc['label']}  ({nc['program']})")
                     if nc["desc"]:
-                        self._ins(t, f"      {nc['desc']}\n", "hint")
+                        _sub_heading(body, nc["desc"])
+                        export.append(f"      {nc['desc']}")
+                export.append("")
 
-        # ── I: Historical electives ───────────────────────────────────────────────
+        # ── Render: Historical electives ────────────────────────────────
         for pid in sel_ids:
             prog = self.programs.get(pid, {})
             major_code = prog.get("major_code", "")
@@ -2677,19 +2938,57 @@ class AdvisorApp:
                 major_code, exclude=exclude_set, n=10)
             if not suggestions:
                 continue
-            self._ins(t,
-                f"\n── COMMONLY TAKEN ELECTIVES  ({prog['name']}) ─────────────────────\n",
-                "divider")
-            self._ins(t,
-                "   Taken by ≥15% of graduates — not automatically required.\n", "hint")
+            body = _section(
+                f"electives_{pid}",
+                f"Common Electives \u2014 {prog['name']}",
+                f"{len(suggestions)} courses",
+                default_expanded=False)
+            export.append(
+                f"\u2500\u2500 COMMONLY TAKEN ELECTIVES "
+                f"({prog['name']}) \u2500\u2500")
+            _sub_heading(
+                body,
+                "Taken by \u226515% of graduates \u2014 "
+                "not required.")
             for code, info in suggestions:
-                sem_str = f"Sem {info['sem']}" if info["sem"] else "?"
-                pct_str = f"{info['pct']:.0%}"
-                self._ins(t,
-                    f"   •  {code:<12}  {pct_str} of grads   {sem_str}\n", "note")
+                sem_s = (f"Sem {info['sem']}"
+                         if info["sem"] else "?")
+                pct_s = f"{info['pct']:.0%}"
+                _item_row(body, "\u2022",
+                          f"{code:<12}  {pct_s} of grads   {sem_s}",
+                          COLORS["note"])
+                export.append(
+                    f"   \u2022  {code}  {pct_s} of grads  {sem_s}")
                 shown_codes.add(code)
+            export.append("")
 
-        t.configure(state="disabled")
+        # ── Mousewheel scrolling ────────────────────────────────────────
+        def _bind_wheel(widget):
+            def _scroll(event):
+                if canvas.winfo_exists():
+                    d = event.delta
+                    if abs(d) >= 120:
+                        d = d // 120
+                    canvas.yview_scroll(-d, "units")
+                return "break"
+            widget.bind("<MouseWheel>", _scroll)
+            for child in widget.winfo_children():
+                _bind_wheel(child)
+        _bind_wheel(inner)
+        canvas.bind("<MouseWheel>",
+                    lambda e: canvas.yview_scroll(
+                        -(e.delta // 120 if abs(e.delta) >= 120
+                          else e.delta),
+                        "units"))
+
+        if self._plan_scroll_pos > 0:
+            canvas.after(
+                50, lambda: canvas.yview_moveto(
+                    self._plan_scroll_pos))
+
+        if tab_name:
+            self._tab_texts[tab_name] = "\n".join(export)
+
 
     def _render_first_two_years(self, parent: tk.Frame,
                                 entries: list, taken: set,
