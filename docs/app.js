@@ -770,7 +770,7 @@ function runCheck() {
 
   renderGE(geResult);
   renderPrograms(progResults, pwResults);
-  renderPlan(selectedProgs, taken, geResult, activePw);
+  renderPlan(selectedProgs, taken, geResult, activePw, overrides);
 }
 
 function renderGE(ge) {
@@ -854,7 +854,7 @@ function renderSections(sections) {
   return html;
 }
 
-function renderPlan(selectedProgs, taken, geResult, activePathways) {
+function renderPlan(selectedProgs, taken, geResult, activePathways, overrides) {
   const semEls = document.querySelectorAll("#plan-semesters .plan-semester");
   if (semEls.length === 0) return;
 
@@ -921,7 +921,16 @@ function renderPlan(selectedProgs, taken, geResult, activePathways) {
     const summaryEl = semEl.querySelector(".plan-sem-summary");
     if (summaryEl) {
       const count = enteredCourses.length;
-      summaryEl.textContent = count > 0 ? `${count} course${count !== 1 ? "s" : ""}` : "";
+      if (count > 0) {
+        let credits = 0;
+        for (const c of enteredCourses) credits += creditOf(c, overrides);
+        const warn = semNum && (credits < 3 || credits > 5);
+        summaryEl.textContent = `${count} course${count !== 1 ? "s" : ""} \u00b7 ${credits % 1 === 0 ? credits : credits.toFixed(1)} cr`;
+        summaryEl.classList.toggle("sem-credit-warn", warn);
+      } else {
+        summaryEl.textContent = "";
+        summaryEl.classList.remove("sem-credit-warn");
+      }
     }
   });
 }
