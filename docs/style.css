@@ -392,6 +392,17 @@ h2:first-child { margin-top: 0; }
 .other-req-note::placeholder { color: #94a3b8; }
 .other-req-item.done label { color: #15803d; }
 
+#school-courses-area { font-size: 12px; }
+#school-courses-area .sem-courses {
+  width: 100%;
+  font-family: monospace;
+  font-size: 13px;
+  padding: 6px 8px;
+  border: 1px solid #dde3ea;
+  border-radius: 4px;
+  resize: vertical;
+}
+
 .route-note {
   background: #fef3c7;
   border-left: 3px solid #f59e0b;

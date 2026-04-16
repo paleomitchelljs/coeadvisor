@@ -524,6 +524,18 @@ function generateAdv() {
       lines.push(`OTHER: ${id}, ${checked ? "completed" : "incomplete"}, ${note}`);
     }
   });
+
+  // Professional requirements
+  document.querySelectorAll("#prof-reqs .other-req-item").forEach(el => {
+    const id = el.dataset.reqId;
+    const checked = el.querySelector("input[type=checkbox]")?.checked || false;
+    const note = el.querySelector(".other-req-note")?.value?.trim() || "";
+    if (checked || note) {
+      lines.push(`PROF: ${id}, ${checked ? "completed" : "incomplete"}, ${note}`);
+    }
+  });
+  const schoolCourses = (document.getElementById("school-courses")?.value || "").trim();
+  if (schoolCourses) lines.push(`SCHOOL_COURSES: ${schoolCourses.replace(/\n/g, ", ")}`);
   lines.push("");
 
   document.querySelectorAll("#plan-semesters .plan-semester").forEach(semEl => {
@@ -563,6 +575,8 @@ function loadAdv(text) {
   };
   const semesters = [];
   const otherReqs = [];
+  const profReqs = [];
+  let schoolCourses = "";
   let currentSem = null;
   const oldCourses = [];
   let inOldCourses = false;
@@ -577,6 +591,20 @@ function loadAdv(text) {
       const status = parts[1] || "incomplete";
       const note = parts.slice(2).join(",").trim();
       if (id) otherReqs.push({ id, completed: status === "completed", note });
+      continue;
+    }
+
+    if (s.startsWith("PROF:")) {
+      const parts = s.slice(5).split(",").map(x => x.trim());
+      const id = parts[0] || "";
+      const status = parts[1] || "incomplete";
+      const note = parts.slice(2).join(",").trim();
+      if (id) profReqs.push({ id, completed: status === "completed", note });
+      continue;
+    }
+
+    if (s.startsWith("SCHOOL_COURSES:")) {
+      schoolCourses = s.slice(15).trim();
       continue;
     }
 
@@ -689,6 +717,19 @@ function loadAdv(text) {
     if (noteInput) noteInput.value = req.note;
   }
 
+  // Rebuild professional reqs for loaded pathways, then restore state
+  buildProfReqs();
+  for (const req of profReqs) {
+    const el = document.querySelector(`#prof-reqs .other-req-item[data-req-id="${req.id}"]`);
+    if (!el) continue;
+    const cb = el.querySelector("input[type=checkbox]");
+    if (cb) { cb.checked = req.completed; el.classList.toggle("done", req.completed); }
+    const noteInput = el.querySelector(".other-req-note");
+    if (noteInput) noteInput.value = req.note;
+  }
+  const schoolTA = document.getElementById("school-courses");
+  if (schoolTA && schoolCourses) schoolTA.value = schoolCourses.replace(/,\s*/g, "\n");
+
   runCheck();
 }
 
@@ -728,10 +769,17 @@ function gatherData() {
     semesters.push({ label, semNum, courses, completed });
   });
 
+  // Include school-specific courses from professional requirements
+  const schoolTA = document.getElementById("school-courses");
+  if (schoolTA) {
+    for (const c of parseCourses(schoolTA.value)) allCourses.add(c);
+  }
+
   return { progIds, activePw, taken: allCourses, semesters };
 }
 
 function runCheck() {
+  buildProfReqs();
   const { progIds, activePw, taken } = gatherData();
   const overrides = {};
   for (const [k, v] of Object.entries((DATA.course_credits || {}).overrides || {}))
@@ -1078,6 +1126,68 @@ function buildOtherReqs() {
     div.innerHTML = `<label${title}><input type="checkbox"${checked}> ${item.label}</label>
       <input type="text" class="other-req-note" placeholder="Notes..." value="${note.replace(/"/g, '&quot;')}">`;
     // Toggle done styling on checkbox change
+    div.querySelector("input[type=checkbox]").addEventListener("change", function() {
+      div.classList.toggle("done", this.checked);
+    });
+    container.appendChild(div);
+  }
+}
+
+// ─── Professional Requirements ──────────────────────────────────────────────
+
+function buildProfReqs() {
+  const container = document.getElementById("prof-reqs");
+  const section = document.getElementById("prof-reqs-section");
+
+  // Get active pathways
+  const activePwIds = [];
+  document.querySelectorAll(".pw-check input:checked").forEach(cb => activePwIds.push(cb.value));
+
+  if (activePwIds.length === 0) {
+    section.style.display = "none";
+    container.innerHTML = "";
+    return;
+  }
+
+  section.style.display = "";
+
+  // Preserve existing state
+  const prevState = {};
+  container.querySelectorAll(".other-req-item").forEach(el => {
+    const id = el.dataset.reqId;
+    prevState[id] = {
+      checked: el.querySelector("input[type=checkbox]")?.checked || false,
+      note: el.querySelector(".other-req-note")?.value || "",
+    };
+  });
+
+  // Collect non_course sections from active pathways
+  const items = [];
+  const seenIds = new Set();
+  for (const pwId of activePwIds) {
+    const pw = DATA.pathways[pwId];
+    if (!pw) continue;
+    for (const sec of (pw.sections || [])) {
+      if (sec.type !== "non_course") continue;
+      const reqId = "prof_" + pwId + "_" + (sec.id || sec.label.replace(/\s+/g, "_").toLowerCase().slice(0, 40));
+      if (seenIds.has(reqId)) continue;
+      seenIds.add(reqId);
+      items.push({ id: reqId, label: sec.label, description: sec.description || "" });
+    }
+  }
+
+  container.innerHTML = "";
+  for (const item of items) {
+    const prev = prevState[item.id] || {};
+    const checked = prev.checked ? " checked" : "";
+    const note = prev.note || "";
+    const doneClass = prev.checked ? " done" : "";
+    const title = item.description ? ` title="${item.description.replace(/"/g, '&quot;')}"` : "";
+    const div = document.createElement("div");
+    div.className = `other-req-item${doneClass}`;
+    div.dataset.reqId = item.id;
+    div.innerHTML = `<label${title}><input type="checkbox"${checked}> ${item.label}</label>
+      <input type="text" class="other-req-note" placeholder="Notes..." value="${note.replace(/"/g, '&quot;')}">`;
     div.querySelector("input[type=checkbox]").addEventListener("change", function() {
       div.classList.toggle("done", this.checked);
     });
