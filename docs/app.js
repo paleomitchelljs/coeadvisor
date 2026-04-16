@@ -235,6 +235,47 @@ function electiveSuggestions(majorCode, exclude, n) {
   return rows.slice(0, n);
 }
 
+// ─── Offerings index ────────────────────────────────────────────────────────
+
+const OFFERING_TERM = {};
+
+function buildOfferingsIndex() {
+  const off = DATA.offerings || {};
+  const terms = off.terms || {};
+  const fallSet = new Set((terms.fall || {}).courses || []);
+  const springSet = new Set((terms.spring || {}).courses || []);
+  for (const c of fallSet) {
+    OFFERING_TERM[c] = springSet.has(c) ? "both" : "fall";
+  }
+  for (const c of springSet) {
+    if (!OFFERING_TERM[c]) OFFERING_TERM[c] = "spring";
+  }
+}
+
+function semesterTerm(semNum) {
+  return semNum % 2 === 1 ? "fall" : "spring";
+}
+
+function checkTermConflict(code, semNum) {
+  if (!semNum) return null;
+  const offering = OFFERING_TERM[code];
+  if (!offering || offering === "both") return null;
+  const term = semesterTerm(semNum);
+  if (offering !== term) {
+    const offeredIn = offering === "fall" ? "Fall" : "Spring";
+    return `${code} is typically offered ${offeredIn} only`;
+  }
+  return null;
+}
+
+function termBadgeHTML(code) {
+  const t = OFFERING_TERM[code];
+  if (!t) return "";
+  if (t === "fall") return '<span class="term-badge fall">F</span>';
+  if (t === "spring") return '<span class="term-badge spring">S</span>';
+  return '<span class="term-badge both">F/S</span>';
+}
+
 // ─── Suggested Plan builder ──────────────────────────────────────────────────
 
 const PLAN_SEM_LABELS = {
@@ -246,74 +287,74 @@ const PLAN_SEM_LABELS = {
 
 const F2Y_SEM_NUM = { y1_fall: 1, y1_spring: 2, y2_fall: 3, y2_spring: 4 };
 
-function buildSuggestedPlan(selectedPrograms, takenSet, geResult, currentSem) {
-  currentSem = currentSem || 1;
-  const majorCode = findMajorCode(selectedPrograms);
-  const shownCodes = new Set();
-  const semBuckets = {};
-  for (let i = 1; i <= 8; i++) semBuckets[i] = [];
+function buildSemesterSuggestions(semNum, allTaken, shownCodes, selectedProgs, geResult, majorCode, activePathways) {
+  const items = [];
+  const term = semesterTerm(semNum);
 
-  // F2Y entries
-  const f2yEntries = findF2YEntries(selectedPrograms);
-  for (const entry of f2yEntries) {
-    const semesters = entry.semesters || {};
-    for (const [key, semData] of Object.entries(semesters)) {
-      const semNum = F2Y_SEM_NUM[key];
-      if (!semNum) continue;
-      for (const cat of ["essential", "suggested"]) {
-        for (const item of (semData[cat] || [])) {
-          const code = normalize(item);
-          if (!/^[A-Z]+-\d/.test(code)) continue;
-          if (shownCodes.has(code)) continue;
-          shownCodes.add(code);
-          const done = takenSet.has(code);
-          const traj = majorCode ? trajectoryInfo(majorCode, code) : null;
-          semBuckets[semNum].push({
-            display: code, program: entry.label || "", category: cat,
-            done, primary: code, isCode: true,
-            pct: traj ? traj.pct : null, trajSem: traj ? traj.sem : null,
-          });
+  // F2Y courses for semesters 1-4
+  if (semNum <= 4) {
+    const f2yEntries = findF2YEntries(selectedProgs, activePathways);
+    const semKey = Object.entries(F2Y_SEM_NUM).find(([k, v]) => v === semNum);
+    if (semKey) {
+      for (const entry of f2yEntries) {
+        const semData = (entry.semesters || {})[semKey[0]];
+        if (!semData) continue;
+        for (const cat of ["essential", "suggested"]) {
+          for (const item of (semData[cat] || [])) {
+            const code = normalize(item);
+            if (!/^[A-Z]+-\d/.test(code)) continue;
+            if (shownCodes.has(code)) continue;
+            // Check term compatibility
+            const off = OFFERING_TERM[code];
+            if (off && off !== "both" && off !== term) continue;
+            shownCodes.add(code);
+            const done = allTaken.has(code);
+            const traj = majorCode ? trajectoryInfo(majorCode, code) : null;
+            items.push({
+              code, display: code, category: cat,
+              done, pct: traj ? traj.pct : null, trajSem: traj ? traj.sem : null,
+            });
+          }
         }
       }
     }
   }
 
-  // FS-110
-  const fysDone = geResult.fys && geResult.fys.complete;
-  const fs110 = normalize("FS-110");
-  if (!fysDone && !shownCodes.has(fs110)) {
-    shownCodes.add(fs110);
-    const done = takenSet.has(fs110);
-    if (currentSem <= 1) {
-      semBuckets[1].unshift({
-        display: "FS-110 First Year Seminar", program: "", category: "essential",
-        done, primary: fs110, isCode: true,
-      });
-    } else if (!done) {
-      semBuckets[currentSem] = semBuckets[currentSem] || [];
-      semBuckets[currentSem].push({
-        display: "FS-110 First Year Seminar (overdue)", program: "", category: "essential",
-        done: false, primary: fs110, isCode: true,
+  // FS-110 in semester 1
+  if (semNum === 1) {
+    const fs110 = normalize("FS-110");
+    if (!shownCodes.has(fs110) && geResult.fys && !geResult.fys.complete) {
+      shownCodes.add(fs110);
+      items.unshift({
+        code: fs110, display: "FS-110 First Year Seminar", category: "essential",
+        done: allTaken.has(fs110), pct: null, trajSem: null,
       });
     }
   }
 
-  // Required courses from programs (not already placed by F2Y)
-  for (const prog of selectedPrograms) {
+  // Required courses from programs placed by trajectory semester
+  for (const prog of selectedProgs) {
     for (const sec of (prog.sections || [])) {
       if (sec.type === "all") {
         for (const item of (sec.items || [])) {
           const codes = (item.codes || []).map(normalize);
           const primaryCode = codes.find(c => !isAuxiliary(c)) || codes[0];
           if (!primaryCode || shownCodes.has(primaryCode)) continue;
-          shownCodes.add(primaryCode);
-          const done = takenSet.has(primaryCode);
           const traj = majorCode ? trajectoryInfo(majorCode, primaryCode) : null;
-          const targetSem = traj && traj.sem ? traj.sem : 8;
-          semBuckets[targetSem].push({
+          let targetSem = traj && traj.sem ? traj.sem : 8;
+          // Adjust for term compatibility
+          const off = OFFERING_TERM[primaryCode];
+          if (off && off !== "both") {
+            while (targetSem <= 8 && semesterTerm(targetSem) !== off) targetSem++;
+            if (targetSem > 8) targetSem = traj && traj.sem ? traj.sem : 8;
+          }
+          if (targetSem !== semNum) continue;
+          shownCodes.add(primaryCode);
+          const done = allTaken.has(primaryCode);
+          items.push({
+            code: primaryCode,
             display: `${primaryCode} ${item.title || ""}`.trim(),
-            program: prog.name || "", category: "required",
-            done, primary: primaryCode, isCode: true,
+            category: "required", done,
             pct: traj ? traj.pct : null, trajSem: traj ? traj.sem : null,
           });
         }
@@ -321,44 +362,72 @@ function buildSuggestedPlan(selectedPrograms, takenSet, geResult, currentSem) {
     }
   }
 
-  // GE fill-in hints for semesters 1-4
-  const divNames = {
-    fine_arts: "Fine Arts", humanities: "Humanities",
-    social_sciences: "Social Sciences", nat_sci_math: "Natural Sciences & Math",
-  };
-  const pfxToDiv = {};
-  for (const [dk, dn] of Object.entries(divNames)) {
-    const sec = ((DATA.ge.divisional || {}).sections || {})[dk] || {};
-    for (const pfx of (sec.prefixes || [])) pfxToDiv[pfx] = dk;
-  }
-
-  for (let semNum = 1; semNum <= 4; semNum++) {
-    const items = semBuckets[semNum];
-    const primaries = new Set(items.filter(it => it.primary && !isAuxiliary(it.primary)).map(it => it.primary));
-    const slotsFilled = primaries.size;
-    const geRemaining = Math.max(0, 4 - slotsFilled);
-    if (geRemaining > 0) {
-      const coveredDivs = new Set();
-      for (const p of primaries) {
-        const d = pfxToDiv[prefixOf(p)];
-        if (d) coveredDivs.add(d);
+  // Trajectory electives (primarily semesters 5-8, capped at 3)
+  if (majorCode && semNum >= 3) {
+    const maj = DATA.trajectory[majorCode] || {};
+    let elecCount = 0;
+    const rows = [];
+    for (const [code, info] of Object.entries(maj)) {
+      if (shownCodes.has(code) || allTaken.has(code)) continue;
+      if ((info.tier === "elective" || info.tier === "common") && info.pct >= 0.15) {
+        const off = OFFERING_TERM[code];
+        if (off && off !== "both" && off !== term) continue;
+        if (info.sem === semNum) rows.push([code, info]);
       }
-      const openDivs = [];
-      for (const [dk, dn] of Object.entries(divNames)) {
-        if (!coveredDivs.has(dk) && geResult[dk] && !geResult[dk].complete) openDivs.push(dn);
-      }
-      if (openDivs.length > 0) {
-        const count = geRemaining === 1 ? "one GE course" : geRemaining === 2 ? "two GE courses" : `${geRemaining} GE courses`;
-        const divList = openDivs.length <= 2 ? openDivs.join(" or ") : openDivs.slice(0, -1).join(", ") + ", or " + openDivs[openDivs.length - 1];
-        semBuckets[semNum].push({
-          display: `+ ${count} in ${divList}`,
-          isHint: true, done: false,
-        });
-      }
+    }
+    rows.sort((a, b) => b[1].pct - a[1].pct);
+    for (const [code, info] of rows.slice(0, 3)) {
+      if (elecCount >= 3) break;
+      shownCodes.add(code);
+      items.push({
+        code, display: code, category: "elective", done: false,
+        pct: info.pct, trajSem: info.sem,
+      });
+      elecCount++;
     }
   }
 
-  return { semBuckets, majorCode };
+  return items;
+}
+
+function buildPlanHints(semNum, allTaken, geResult, completed) {
+  if (completed) return [];
+  const hints = [];
+
+  // FYS
+  if (semNum <= 2 && geResult.fys && !geResult.fys.complete)
+    hints.push("need First Year Seminar");
+
+  // Divisional GE
+  const divNames = {
+    fine_arts: "Fine Arts", humanities: "Humanities",
+    nat_sci_math: "Nat Sci/Math", social_sciences: "Social Sciences",
+  };
+  for (const [key, label] of Object.entries(divNames)) {
+    if (geResult[key] && !geResult[key].complete) hints.push(`need ${label} GE`);
+  }
+
+  // Lab science
+  if (geResult.lab_science && !geResult.lab_science.complete)
+    hints.push("need Lab Science");
+
+  // WE (relevant in later semesters)
+  if (semNum >= 2 && geResult.we && !geResult.we.complete) {
+    const remaining = geResult.we.required - geResult.we.courses.length;
+    if (remaining > 0) hints.push(`need WE course (${remaining} remaining)`);
+  }
+
+  // DAC
+  if (semNum >= 2 && geResult.dac && !geResult.dac.complete) {
+    const remaining = geResult.dac.required - geResult.dac.courses.length;
+    if (remaining > 0) hints.push(`need DAC course (${remaining} remaining)`);
+  }
+
+  // Practicum
+  if (semNum >= 5 && geResult.practicum && !geResult.practicum.complete)
+    hints.push("need Practicum");
+
+  return hints;
 }
 
 function findMajorCode(programs) {
@@ -368,22 +437,45 @@ function findMajorCode(programs) {
   return "";
 }
 
-function findF2YEntries(programs) {
+function findF2YEntries(programs, activePathways) {
   const f2y = DATA.first_two_years || { entries: [] };
   const entries = f2y.entries || f2y;
   if (!Array.isArray(entries)) return [];
+  const activePwSet = new Set(activePathways || []);
   const result = [];
+
   for (const prog of programs) {
     const majorCode = prog.major_code || "";
     const progId = prog.id || "";
-    for (const entry of entries) {
+
+    // Find all F2Y entries matching this program
+    const matching = entries.filter(entry => {
       const matchCodes = entry.match_major_codes || [];
       const matchIds = entry.match_program_ids || [];
-      if (matchCodes.includes(majorCode) || matchIds.includes(progId)) {
-        result.push(entry);
+      return matchCodes.includes(majorCode) || matchIds.includes(progId);
+    });
+
+    // Select the right variant based on conditions
+    let chosen = null;
+
+    // First: look for a conditional entry whose conditions are met
+    for (const entry of matching) {
+      const cond = entry.conditions;
+      if (!cond) continue;
+      if (cond.intake_only) continue; // wizard-only, skip in Plan tab
+      if (cond.pathways && cond.pathways.some(pw => activePwSet.has(pw))) {
+        chosen = entry;
         break;
       }
     }
+
+    // Fallback: use the default entry
+    if (!chosen) {
+      chosen = matching.find(e => e.default === true)
+            || matching.find(e => !e.conditions);
+    }
+
+    if (chosen) result.push(chosen);
   }
   return result;
 }
@@ -421,8 +513,19 @@ function generateAdv() {
   lines.push(`TRANSFER_WE: ${document.getElementById("transfer-we").value}`);
   lines.push("");
 
-  document.querySelectorAll(".semester").forEach(semEl => {
-    const label = semEl.querySelector(".sem-label").textContent.trim();
+  // Other requirements
+  document.querySelectorAll("#other-reqs .other-req-item").forEach(el => {
+    const id = el.dataset.reqId;
+    const checked = el.querySelector("input[type=checkbox]")?.checked || false;
+    const note = el.querySelector(".other-req-note")?.value?.trim() || "";
+    if (checked || note) {
+      lines.push(`OTHER: ${id}, ${checked ? "completed" : "incomplete"}, ${note}`);
+    }
+  });
+  lines.push("");
+
+  document.querySelectorAll("#plan-semesters .plan-semester").forEach(semEl => {
+    const label = semEl.querySelector(".plan-sem-label").textContent.trim();
     const text = semEl.querySelector(".sem-courses").value.trim();
     if (!text) return;
     const done = semEl.querySelector(".sem-status input").checked;
@@ -457,6 +560,7 @@ function loadAdv(text) {
     MAJOR1: "", MAJOR2: "", MAJOR3: "", MINOR1: "", MINOR2: "",
   };
   const semesters = [];
+  const otherReqs = [];
   let currentSem = null;
   const oldCourses = [];
   let inOldCourses = false;
@@ -464,6 +568,15 @@ function loadAdv(text) {
   for (const line of text.split("\n")) {
     const s = line.trim();
     if (!s || s.startsWith("#")) continue;
+
+    if (s.startsWith("OTHER:")) {
+      const parts = s.slice(6).split(",").map(x => x.trim());
+      const id = parts[0] || "";
+      const status = parts[1] || "incomplete";
+      const note = parts.slice(2).join(",").trim();
+      if (id) otherReqs.push({ id, completed: status === "completed", note });
+      continue;
+    }
 
     if (s === "COURSES:") { inOldCourses = true; continue; }
 
@@ -527,34 +640,53 @@ function loadAdv(text) {
   }
 
   const pws = fields.PATHWAYS.split(",").map(x => x.trim()).filter(Boolean);
-  document.querySelectorAll(".pw-check input").forEach(cb => {
-    cb.checked = pws.includes(cb.value);
-  });
+  // Pathway checkboxes are restored after updatePathways() below
 
   let weVal = fields.TRANSFER_WE;
   if (weVal === "8 credits \u2014 max (3 WE)") weVal = "8\u201315 credits (3 WE)";
   const weSel = document.getElementById("transfer-we");
   if ([...weSel.options].some(o => o.value === weVal)) weSel.value = weVal;
 
-  // Build semester grid
-  const semContainer = document.getElementById("semesters");
+  // Build semester grid in Plan tab
+  const semContainer = document.getElementById("plan-semesters");
   semContainer.innerHTML = "";
   const semData = semesters.length > 0 ? semesters
     : oldCourses.length > 0 ? [{ label: "Semester 1", courses: oldCourses }]
     : [];
 
   if (semData.length === 0) {
-    addSemester("Transfer", "");
-    for (let i = 1; i <= 4; i++) addSemester(`Semester ${i}`, "");
+    createDefaultPlanSemesters();
   } else {
-    for (const sd of semData) {
+    // Map labels to semester numbers for term-awareness
+    const labelToNum = {};
+    for (const [num, lbl] of Object.entries(PLAN_SEM_LABELS)) labelToNum[lbl] = parseInt(num);
+    for (let idx = 0; idx < semData.length; idx++) {
+      const sd = semData[idx];
       const completed = sd.hasCompleted && !sd.hasPlanned;
-      addSemester(sd.label, sd.courses.join("\n"), completed);
+      // Detect semester number from old "Semester N" or new PLAN_SEM_LABELS style
+      const semMatch = sd.label.match(/^Semester\s+(\d+)$/i);
+      let semNum = semMatch ? parseInt(semMatch[1]) : (labelToNum[sd.label] || null);
+      const displayLabel = semNum && PLAN_SEM_LABELS[semNum] ? PLAN_SEM_LABELS[semNum] : sd.label;
+      addPlanSemester(displayLabel, sd.courses.join("\n"), completed, semNum);
     }
   }
-  // Show pathways if a major was loaded
-  const hasMajor = [1,2,3].some(i => document.getElementById(`major${i}`).value);
-  document.getElementById("pathways-row").style.display = hasMajor ? "" : "none";
+  // Rebuild pathways for the loaded majors, then restore checked state
+  updatePathways();
+  document.querySelectorAll(".pw-check input").forEach(cb => {
+    cb.checked = pws.includes(cb.value);
+  });
+
+  // Rebuild other reqs for loaded programs, then restore state
+  buildOtherReqs();
+  for (const req of otherReqs) {
+    const el = document.querySelector(`.other-req-item[data-req-id="${req.id}"]`);
+    if (!el) continue;
+    const cb = el.querySelector("input[type=checkbox]");
+    if (cb) { cb.checked = req.completed; el.classList.toggle("done", req.completed); }
+    const noteInput = el.querySelector(".other-req-note");
+    if (noteInput) noteInput.value = req.note;
+  }
+
   runCheck();
 }
 
@@ -583,11 +715,18 @@ function gatherData() {
   document.querySelectorAll(".pw-check input:checked").forEach(cb => activePw.push(cb.value));
 
   const allCourses = new Set();
-  document.querySelectorAll(".sem-courses").forEach(ta => {
-    for (const c of parseCourses(ta.value)) allCourses.add(c);
+  const semesters = [];
+  document.querySelectorAll("#plan-semesters .plan-semester").forEach((semEl, i) => {
+    const ta = semEl.querySelector(".sem-courses");
+    const courses = parseCourses(ta ? ta.value : "");
+    const completed = semEl.querySelector(".sem-status input")?.checked || false;
+    const label = (semEl.querySelector(".plan-sem-label")?.textContent || "").trim();
+    const semNum = parseInt(semEl.dataset.semNum) || null;
+    for (const c of courses) allCourses.add(c);
+    semesters.push({ label, semNum, courses, completed });
   });
 
-  return { progIds, activePw, taken: allCourses };
+  return { progIds, activePw, taken: allCourses, semesters };
 }
 
 function runCheck() {
@@ -618,16 +757,9 @@ function runCheck() {
 
   const credits = totalCredits(taken, overrides);
 
-  // Render
+  // Render — always show results since Plan tab has editable content
   const resultsEl = document.getElementById("results");
   const emptyEl = document.getElementById("results-empty");
-
-  if (progIds.length === 0 && taken.size === 0) {
-    emptyEl.style.display = "flex";
-    resultsEl.style.display = "none";
-    return;
-  }
-
   emptyEl.style.display = "none";
   resultsEl.style.display = "block";
 
@@ -636,9 +768,7 @@ function runCheck() {
 
   renderGE(geResult);
   renderPrograms(progResults, pwResults);
-  renderSuggestedPlan(selectedProgs, taken, geResult);
-  renderF2Y(selectedProgs, taken);
-  renderTrajectory(selectedProgs, taken);
+  renderPlan(selectedProgs, taken, geResult, activePw);
 }
 
 function renderGE(ge) {
@@ -722,116 +852,76 @@ function renderSections(sections) {
   return html;
 }
 
-function renderSuggestedPlan(selectedProgs, taken, geResult) {
-  const el = document.getElementById("plan-content");
-  if (selectedProgs.length === 0) {
-    el.innerHTML = '<div class="empty">Select a major to see suggested plan</div>';
-    return;
-  }
-  const { semBuckets } = buildSuggestedPlan(selectedProgs, taken, geResult);
-  let html = "";
-  for (let sem = 1; sem <= 8; sem++) {
-    const items = semBuckets[sem];
-    if (items.length === 0) continue;
-    const label = PLAN_SEM_LABELS[sem] || `Semester ${sem}`;
-    const doneCount = items.filter(i => i.done).length;
-    const totalCount = items.filter(i => !i.isHint).length;
-    html += `<div class="plan-section open">
-      <div class="plan-section-header" onclick="this.parentElement.classList.toggle('open')">
-        <span class="arrow">\u25B6</span>
-        ${label}
-        <span class="prog-pct">${doneCount}/${totalCount}</span>
-      </div>
-      <div class="plan-section-body">`;
-    for (const item of items) {
-      if (item.isHint) {
-        html += `<div class="plan-item ge-hint">${item.display}</div>`;
-      } else {
+function renderPlan(selectedProgs, taken, geResult, activePathways) {
+  const semEls = document.querySelectorAll("#plan-semesters .plan-semester");
+  if (semEls.length === 0) return;
+
+  const majorCode = findMajorCode(selectedProgs);
+  const shownCodes = new Set();
+
+  semEls.forEach(semEl => {
+    const semNum = parseInt(semEl.dataset.semNum) || null;
+    const completed = semEl.querySelector(".sem-status input")?.checked || false;
+    const ta = semEl.querySelector(".sem-courses");
+    const enteredCourses = parseCourses(ta ? ta.value : "");
+
+    // Make textarea readonly when completed
+    if (ta) ta.readOnly = completed;
+
+    const hintsEl = semEl.querySelector(".plan-hints");
+    const suggestEl = semEl.querySelector(".plan-suggestions");
+    if (!hintsEl || !suggestEl) return;
+
+    // --- Hints ---
+    let hintsHTML = "";
+    if (!completed && semNum) {
+      // Term conflict warnings for entered courses
+      const warnings = [];
+      for (const code of enteredCourses) {
+        const conflict = checkTermConflict(code, semNum);
+        if (conflict) warnings.push(`<div class="term-warning">\u26A0 ${conflict}</div>`);
+      }
+      if (warnings.length > 0) hintsHTML += warnings.join("");
+
+      // GE hints
+      const hints = buildPlanHints(semNum, taken, geResult, completed);
+      if (hints.length > 0) {
+        hintsHTML += hints.map(h => `<span class="plan-hint-item">${h}</span>`).join("");
+      }
+    }
+    hintsEl.innerHTML = hintsHTML;
+    hintsEl.style.display = hintsHTML ? "" : "none";
+
+    // --- Suggestions ---
+    let sugHTML = "";
+    if (!completed && selectedProgs.length > 0 && semNum) {
+      const items = buildSemesterSuggestions(semNum, taken, shownCodes, selectedProgs, geResult, majorCode, activePathways);
+      for (const item of items) {
         const cls = item.done ? "done" : "todo";
         const icon = item.done ? "\u2713" : "\u25CB";
+        const badge = termBadgeHTML(item.code);
         let hint = "";
         if (item.pct != null) hint = `${Math.round(item.pct * 100)}% of grads`;
         if (item.trajSem) hint += (hint ? " \u00b7 " : "") + `Sem ${item.trajSem}`;
-        html += `<div class="plan-item ${cls}">
+        const catLabel = item.category === "suggested" ? " (suggested)" :
+                         item.category === "elective" ? " (elective)" : "";
+        sugHTML += `<div class="plan-item ${cls}">
           <span class="icon">${icon}</span>
-          <span class="label">${item.display}</span>
+          <span class="label">${item.display}${catLabel}${badge}</span>
           ${hint ? `<span class="hint">${hint}</span>` : ""}
         </div>`;
       }
     }
-    html += `</div></div>`;
-  }
-  el.innerHTML = html || '<div class="empty">No plan data available</div>';
-}
+    suggestEl.innerHTML = sugHTML;
+    suggestEl.style.display = sugHTML ? "" : "none";
 
-function renderF2Y(selectedProgs, taken) {
-  const el = document.getElementById("f2y-content");
-  const entries = findF2YEntries(selectedProgs);
-  if (entries.length === 0) {
-    el.innerHTML = '<div class="empty">No first-two-years data for selected programs</div>';
-    return;
-  }
-  let html = "";
-  for (const entry of entries) {
-    html += `<div class="prog-card open">
-      <div class="prog-header" onclick="this.parentElement.classList.toggle('open')">
-        <span class="arrow">\u25B6</span>
-        <strong>${entry.label}</strong>
-      </div>
-      <div class="prog-body">`;
-    if (entry.variant_note) html += `<div class="plan-note">${entry.variant_note}</div>`;
-    const semKeys = ["y1_fall", "y1_spring", "y2_fall", "y2_spring"];
-    const semLabels = { y1_fall: "Year 1 \u2014 Fall", y1_spring: "Year 1 \u2014 Spring",
-                        y2_fall: "Year 2 \u2014 Fall", y2_spring: "Year 2 \u2014 Spring" };
-    for (const key of semKeys) {
-      const sd = (entry.semesters || {})[key];
-      if (!sd) continue;
-      html += `<div style="margin-top:8px"><strong style="font-size:12px;color:#8b1a1a">${semLabels[key]}</strong></div>`;
-      for (const cat of ["essential", "suggested"]) {
-        for (const item of (sd[cat] || [])) {
-          const code = normalize(item);
-          const isCode = /^[A-Z]+-\d/.test(code);
-          const done = isCode && taken.has(code);
-          const cls = done ? "done" : "todo";
-          const icon = done ? "\u2713" : "\u25CB";
-          const catLabel = cat === "essential" ? "" : " (suggested)";
-          html += `<div class="plan-item ${cls}">
-            <span class="icon">${icon}</span>
-            <span class="label">${item}${catLabel}</span>
-          </div>`;
-        }
-      }
+    // --- Summary in header ---
+    const summaryEl = semEl.querySelector(".plan-sem-summary");
+    if (summaryEl) {
+      const count = enteredCourses.length;
+      summaryEl.textContent = count > 0 ? `${count} course${count !== 1 ? "s" : ""}` : "";
     }
-    if (entry.notes) html += `<div class="plan-note">${entry.notes}</div>`;
-    html += `</div></div>`;
-  }
-  el.innerHTML = html;
-}
-
-function renderTrajectory(selectedProgs, taken) {
-  const el = document.getElementById("trajectory-content");
-  const majorCode = findMajorCode(selectedProgs);
-  if (!majorCode) {
-    el.innerHTML = '<div class="empty">Select a major to see trajectory data</div>';
-    return;
-  }
-  const suggestions = electiveSuggestions(majorCode, taken);
-  if (suggestions.length === 0) {
-    el.innerHTML = '<div class="empty">No trajectory suggestions available</div>';
-    return;
-  }
-  let html = `<p style="font-size:12px;color:#64748b;margin-bottom:8px">
-    Common courses taken by ${majorCode} graduates (not already in your list):</p>`;
-  for (const [code, info] of suggestions) {
-    const pct = Math.round(info.pct * 100);
-    const sem = info.sem ? `Sem ${info.sem}` : "";
-    html += `<div class="plan-item todo">
-      <span class="icon">\u25CB</span>
-      <span class="label">${code}</span>
-      <span class="hint">${pct}% of grads${sem ? " \u00b7 " + sem : ""}</span>
-    </div>`;
-  }
-  el.innerHTML = html;
+  });
 }
 
 // ─── Intake wizard ───────────────────────────────────────────────────────────
@@ -890,6 +980,8 @@ function submitWizard() {
   if (matchedRoute.major && DATA.programs[matchedRoute.major]) {
     document.getElementById("major1").value = matchedRoute.major;
   }
+  // Rebuild pathways for the new major, then check the route's pathway
+  updatePathways();
   if (matchedRoute.pathway) {
     document.querySelectorAll(".pw-check input").forEach(cb => {
       if (cb.value === matchedRoute.pathway) cb.checked = true;
@@ -898,10 +990,10 @@ function submitWizard() {
 
   // Pre-populate first semester courses
   if (matchedRoute.semester_1 && matchedRoute.semester_1.length > 0) {
-    const semContainer = document.getElementById("semesters");
+    const semContainer = document.getElementById("plan-semesters");
     semContainer.innerHTML = "";
-    addSemester("Semester 1", matchedRoute.semester_1.join("\n"));
-    for (let i = 2; i <= 4; i++) addSemester(`Semester ${i}`, "");
+    addPlanSemester(PLAN_SEM_LABELS[1], matchedRoute.semester_1.join("\n"), false, 1);
+    for (let i = 2; i <= 8; i++) addPlanSemester(PLAN_SEM_LABELS[i], "", false, i);
   }
 
   // Show route note
@@ -918,37 +1010,159 @@ function closeWizard() {
   document.getElementById("wizard-modal").classList.remove("visible");
 }
 
-// ─── Semester management ─────────────────────────────────────────────────────
+// ─── Other Requirements ─────────────────────────────────────────────────────
 
-function addSemester(label, courses, completed) {
-  label = label || `Semester ${document.querySelectorAll(".semester").length + 1}`;
-  courses = courses || "";
-  if (completed === undefined) completed = false;
-  const container = document.getElementById("semesters");
-  const div = document.createElement("div");
-  div.className = "semester open";
-  const checkedAttr = completed ? " checked" : "";
-  div.innerHTML = `<div class="sem-header" onclick="toggleSem(event, this)">
-    <span class="arrow">\u25B6</span>
-    <span class="sem-label">${label}</span>
-    <label class="sem-status" onclick="event.stopPropagation()">
-      <input type="checkbox"${checkedAttr}> Completed
-    </label>
-    <button class="small-btn remove-sem" onclick="event.stopPropagation(); this.closest('.semester').remove()" title="Remove">\u00d7</button>
-  </div>
-  <div class="sem-body">
-    <textarea class="sem-courses" rows="3" placeholder="One course per line: BIO-145, CHM 121...">${courses}</textarea>
-  </div>`;
-  container.appendChild(div);
-  // Collapse if it has courses (loaded from file) — keep new empty ones open
-  if (courses && completed) {
-    div.classList.remove("open");
+function buildOtherReqs() {
+  const container = document.getElementById("other-reqs");
+
+  // Preserve existing state
+  const prevState = {};
+  container.querySelectorAll(".other-req-item").forEach(el => {
+    const id = el.dataset.reqId;
+    prevState[id] = {
+      checked: el.querySelector("input[type=checkbox]")?.checked || false,
+      note: el.querySelector(".other-req-note")?.value || "",
+    };
+  });
+
+  // Build items list: Practicum (always) + program non_course sections
+  const items = [
+    { id: "practicum", label: "Practicum" },
+  ];
+
+  const selectedProgIds = [];
+  for (let i = 1; i <= 3; i++) {
+    const v = document.getElementById(`major${i}`).value;
+    if (v) selectedProgIds.push(v);
+  }
+  for (let i = 1; i <= 2; i++) {
+    const v = document.getElementById(`minor${i}`).value;
+    if (v) selectedProgIds.push(v);
+  }
+
+  const seenIds = new Set(["practicum"]);
+  for (const pid of selectedProgIds) {
+    const prog = DATA.programs[pid];
+    if (!prog) continue;
+    for (const sec of (prog.sections || [])) {
+      if (sec.type !== "non_course") continue;
+      const reqId = pid + "_" + (sec.id || sec.label.replace(/\s+/g, "_").toLowerCase().slice(0, 40));
+      if (seenIds.has(reqId)) continue;
+      seenIds.add(reqId);
+      items.push({ id: reqId, label: sec.label, description: sec.description || "" });
+    }
+  }
+
+  // Render
+  container.innerHTML = "";
+  for (const item of items) {
+    const prev = prevState[item.id] || {};
+    const checked = prev.checked ? " checked" : "";
+    const note = prev.note || "";
+    const doneClass = prev.checked ? " done" : "";
+    const title = item.description ? ` title="${item.description.replace(/"/g, '&quot;')}"` : "";
+    const div = document.createElement("div");
+    div.className = `other-req-item${doneClass}`;
+    div.dataset.reqId = item.id;
+    div.innerHTML = `<label${title}><input type="checkbox"${checked}> ${item.label}</label>
+      <input type="text" class="other-req-note" placeholder="Notes..." value="${note.replace(/"/g, '&quot;')}">`;
+    // Toggle done styling on checkbox change
+    div.querySelector("input[type=checkbox]").addEventListener("change", function() {
+      div.classList.toggle("done", this.checked);
+    });
+    container.appendChild(div);
   }
 }
 
-function toggleSem(e, header) {
+// ─── Pathways ────────────────────────────────────────────────────────────────
+
+function updatePathways() {
+  const selectedProgIds = [];
+  for (let i = 1; i <= 3; i++) {
+    const v = document.getElementById(`major${i}`).value;
+    if (v) selectedProgIds.push(v);
+  }
+
+  const pwContainer = document.getElementById("pathways");
+  // Remember which were checked
+  const checked = new Set();
+  pwContainer.querySelectorAll("input:checked").forEach(cb => checked.add(cb.value));
+
+  pwContainer.innerHTML = "";
+  let count = 0;
+  for (const [id, pw] of Object.entries(DATA.pathways || {})) {
+    const related = pw.related_programs || [];
+    // Only show pathways relevant to selected programs
+    if (selectedProgIds.length > 0 && related.length > 0
+        && !related.some(rp => selectedProgIds.includes(rp))) continue;
+    // Don't show any pathways if no major is selected
+    if (selectedProgIds.length === 0) continue;
+    const label = document.createElement("label");
+    label.className = "pw-check";
+    const isChecked = checked.has(id) ? " checked" : "";
+    label.innerHTML = `<input type="checkbox" value="${id}"${isChecked}> ${pw.name || id}`;
+    pwContainer.appendChild(label);
+    count++;
+  }
+
+  document.getElementById("pathways-row").style.display = count > 0 ? "" : "none";
+}
+
+// ─── Plan semester management ────────────────────────────────────────────────
+
+function addPlanSemester(label, courses, completed, semNum) {
+  label = label || `Semester ${document.querySelectorAll("#plan-semesters .plan-semester").length + 1}`;
+  courses = courses || "";
+  if (completed === undefined) completed = false;
+  const container = document.getElementById("plan-semesters");
+  const div = document.createElement("div");
+  div.className = "plan-semester open";
+  if (semNum) div.dataset.semNum = semNum;
+  const checkedAttr = completed ? " checked" : "";
+  const readonlyAttr = completed ? " readonly" : "";
+  div.innerHTML = `<div class="plan-sem-header" onclick="togglePlanSem(event, this)">
+    <span class="arrow">\u25B6</span>
+    <span class="plan-sem-label">${label}</span>
+    <span class="plan-sem-summary"></span>
+    <label class="sem-status" onclick="event.stopPropagation()">
+      <input type="checkbox"${checkedAttr} onchange="onPlanSemCompleted(this)"> Completed
+    </label>
+    <button class="small-btn remove-sem" onclick="event.stopPropagation(); this.closest('.plan-semester').remove(); runCheck();" title="Remove">\u00d7</button>
+  </div>
+  <div class="plan-sem-body">
+    <div class="plan-entry-area">
+      <textarea class="sem-courses" rows="3" placeholder="One course per line: BIO-145, CHM 121..."${readonlyAttr}>${courses}</textarea>
+    </div>
+    <div class="plan-hints" style="display:none"></div>
+    <div class="plan-suggestions" style="display:none"></div>
+  </div>`;
+  container.appendChild(div);
+  if (courses && completed) div.classList.remove("open");
+}
+
+function createDefaultPlanSemesters() {
+  const container = document.getElementById("plan-semesters");
+  container.innerHTML = "";
+  addPlanSemester("Transfer", "", false, null);
+  for (let i = 1; i <= 8; i++) addPlanSemester(PLAN_SEM_LABELS[i], "", false, i);
+}
+
+function togglePlanSem(e, header) {
   if (e.target.closest(".sem-status") || e.target.closest(".remove-sem")) return;
-  header.closest(".semester").classList.toggle("open");
+  header.closest(".plan-semester").classList.toggle("open");
+}
+
+function onPlanSemCompleted(checkbox) {
+  const semEl = checkbox.closest(".plan-semester");
+  const ta = semEl.querySelector(".sem-courses");
+  if (checkbox.checked) {
+    ta.readOnly = true;
+    semEl.classList.remove("open");
+  } else {
+    ta.readOnly = false;
+    semEl.classList.add("open");
+  }
+  runCheck();
 }
 
 // ─── Initialization ──────────────────────────────────────────────────────────
@@ -993,14 +1207,7 @@ function init() {
     }
   }
 
-  // Populate pathways
-  const pwContainer = document.getElementById("pathways");
-  for (const [id, pw] of Object.entries(DATA.pathways || {})) {
-    const label = document.createElement("label");
-    label.className = "pw-check";
-    label.innerHTML = `<input type="checkbox" value="${id}"> ${pw.name || id}`;
-    pwContainer.appendChild(label);
-  }
+  // Pathways are populated dynamically by updatePathways()
 
   // Transfer WE
   const weSel = document.getElementById("transfer-we");
@@ -1012,22 +1219,31 @@ function init() {
     weSel.appendChild(opt);
   }
 
-  // Default semesters
-  addSemester("Transfer", "");
-  for (let i = 1; i <= 4; i++) addSemester(`Semester ${i}`, "");
+  // Build offerings index
+  buildOfferingsIndex();
 
-  // Show/hide pathways when major selection changes
-  function updatePathwaysVisibility() {
-    const hasMajor = [1,2,3].some(i => document.getElementById(`major${i}`).value);
-    document.getElementById("pathways-row").style.display = hasMajor ? "" : "none";
-  }
+  // Default plan semesters
+  createDefaultPlanSemesters();
+
+  // Filter pathways and rebuild other reqs when program selection changes
+  function onProgramChange() { updatePathways(); buildOtherReqs(); }
   for (let i = 1; i <= 3; i++) {
-    document.getElementById(`major${i}`).addEventListener("change", updatePathwaysVisibility);
+    document.getElementById(`major${i}`).addEventListener("change", onProgramChange);
+  }
+  for (let i = 1; i <= 2; i++) {
+    document.getElementById(`minor${i}`).addEventListener("change", buildOtherReqs);
   }
 
-  // Auto-check on changes
+  // Initial other reqs
+  buildOtherReqs();
+
+  // Auto-check on changes in left panel (programs, pathways, transfer WE)
   document.getElementById("input-panel").addEventListener("change", () => runCheck());
   document.getElementById("input-panel").addEventListener("input", debounce(runCheck, 500));
+
+  // Auto-check on changes in plan semesters (course textareas)
+  const planSems = document.getElementById("plan-semesters");
+  planSems.addEventListener("input", debounce(runCheck, 500));
 
   // Tab switching
   document.querySelectorAll(".tab").forEach(t => {
@@ -1043,6 +1259,10 @@ function init() {
     reader.readAsText(file);
     e.target.value = "";
   });
+
+  // Show results panel and Plan tab immediately
+  showTab("plan");
+  runCheck();
 }
 
 function debounce(fn, ms) {

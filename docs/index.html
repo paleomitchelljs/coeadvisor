@@ -55,12 +55,10 @@
       <label>Transfer WE Credits <select id="transfer-we"></select></label>
     </div>
 
-    <div id="route-note" class="route-note" style="display:none"></div>
+    <h2>Other Requirements</h2>
+    <div id="other-reqs"></div>
 
-    <h2>Courses
-      <button class="small-btn" onclick="addSemester()">+ Semester</button>
-    </h2>
-    <div id="semesters"></div>
+    <div id="route-note" class="route-note" style="display:none"></div>
   </div>
 
   <!-- ── Results panel ────────────────────────────────────── -->
@@ -74,9 +72,7 @@
       <div class="tabs">
         <button class="tab active" data-tab="ge">GE Requirements</button>
         <button class="tab" data-tab="programs">Programs</button>
-        <button class="tab" data-tab="plan">Suggested Plan</button>
-        <button class="tab" data-tab="f2y">First Two Years</button>
-        <button class="tab" data-tab="trajectory">Trajectory</button>
+        <button class="tab" data-tab="plan">Plan</button>
       </div>
 
       <div class="tab-panel active" id="tab-ge">
@@ -86,13 +82,10 @@
         <div id="programs-content"></div>
       </div>
       <div class="tab-panel" id="tab-plan">
-        <div id="plan-content"></div>
-      </div>
-      <div class="tab-panel" id="tab-f2y">
-        <div id="f2y-content"></div>
-      </div>
-      <div class="tab-panel" id="tab-trajectory">
-        <div id="trajectory-content"></div>
+        <div class="plan-toolbar">
+          <button class="small-btn" onclick="addPlanSemester()">+ Semester</button>
+        </div>
+        <div id="plan-semesters"></div>
       </div>
     </div>
   </div>

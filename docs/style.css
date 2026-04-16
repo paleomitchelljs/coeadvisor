@@ -103,53 +103,7 @@ h2:first-child { margin-top: 0; }
 }
 .small-btn:hover { background: #dde3ea; }
 
-.semester {
-  border: 1px solid #dde3ea;
-  border-radius: 6px;
-  margin-bottom: 6px;
-  overflow: hidden;
-}
-.sem-header {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 10px;
-  background: #fafbfc;
-  cursor: pointer;
-  user-select: none;
-}
-.sem-header .arrow { transition: transform .15s; font-size: 10px; flex-shrink: 0; }
-.semester.open .sem-header .arrow { transform: rotate(90deg); }
-.sem-label {
-  font-weight: 600;
-  font-size: 13px;
-  border: none;
-  background: none;
-  padding: 0;
-  flex: 1;
-}
-.sem-status {
-  font-size: 11px;
-  color: #64748b;
-  display: flex;
-  align-items: center;
-  gap: 3px;
-  cursor: default;
-}
-.sem-status input { cursor: pointer; }
-.sem-body { display: none; padding: 8px 10px; }
-.semester.open .sem-body { display: block; }
-.sem-courses {
-  width: 100%;
-  font-family: monospace;
-  font-size: 13px;
-  padding: 6px 8px;
-  border: 1px solid #dde3ea;
-  border-radius: 4px;
-  resize: vertical;
-}
-.remove-sem { font-size: 16px; line-height: 1; padding: 0 4px; color: #94a3b8; }
-.remove-sem:hover { color: #b91c1c; }
+.small-btn.plan-section-btn { margin-left: auto; }
 
 /* ── Results ─────────────────────────────────────────────── */
 
@@ -243,29 +197,72 @@ h2:first-child { margin-top: 0; }
 
 .empty { color: #94a3b8; font-style: italic; padding: 20px; text-align: center; }
 
-/* ── Suggested Plan ──────────────────────────────────────── */
+/* ── Plan tab ────────────────────────────────────────────── */
 
-.plan-section {
+.plan-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+}
+
+.plan-semester {
   border: 1px solid #dde3ea;
   border-radius: 6px;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   overflow: hidden;
 }
-.plan-section-header {
-  padding: 8px 12px;
-  cursor: pointer;
+.plan-sem-header {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+  padding: 6px 10px;
   background: #fafbfc;
+  cursor: pointer;
   user-select: none;
+}
+.plan-sem-header .arrow { transition: transform .15s; font-size: 10px; flex-shrink: 0; }
+.plan-semester.open .plan-sem-header .arrow { transform: rotate(90deg); }
+.plan-sem-label {
   font-weight: 600;
   font-size: 13px;
+  flex: 1;
 }
-.plan-section-header .arrow { transition: transform .15s; font-size: 10px; }
-.plan-section.open .plan-section-header .arrow { transform: rotate(90deg); }
-.plan-section-body { display: none; padding: 8px 12px; }
-.plan-section.open .plan-section-body { display: block; }
+.plan-sem-summary {
+  font-size: 11px;
+  color: #64748b;
+  margin-right: 4px;
+}
+.plan-sem-body { display: none; padding: 8px 10px; }
+.plan-semester.open .plan-sem-body { display: block; }
+
+.plan-entry-area { margin-bottom: 6px; }
+.plan-entry-area .sem-courses {
+  width: 100%;
+  font-family: monospace;
+  font-size: 13px;
+  padding: 6px 8px;
+  border: 1px solid #dde3ea;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+.plan-hints {
+  background: #fef2f2;
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin-bottom: 6px;
+  font-size: 12px;
+  color: #b91c1c;
+  line-height: 1.6;
+}
+.plan-hint-item { display: inline; }
+.plan-hint-item + .plan-hint-item::before { content: " \00b7 "; color: #e5a0a0; }
+
+.plan-suggestions {
+  border-left: 3px solid #dde3ea;
+  padding-left: 10px;
+  margin-top: 4px;
+}
 
 .plan-item {
   display: flex;
@@ -281,6 +278,36 @@ h2:first-child { margin-top: 0; }
 .plan-item .hint { font-size: 11px; color: #94a3b8; }
 .plan-item.ge-hint { color: #64748b; font-style: italic; padding-left: 26px; }
 .plan-note { font-size: 12px; color: #64748b; padding: 4px 0 4px 26px; }
+
+.term-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 3px;
+  margin-left: 4px;
+  vertical-align: baseline;
+}
+.term-badge.fall { background: #fef3c7; color: #92400e; }
+.term-badge.spring { background: #dbeafe; color: #1e40af; }
+.term-badge.both { background: #e5e7eb; color: #374151; }
+
+.term-warning {
+  font-size: 12px;
+  color: #b91c1c;
+}
+
+.sem-status {
+  font-size: 11px;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  cursor: default;
+}
+.sem-status input { cursor: pointer; }
+.remove-sem { font-size: 16px; line-height: 1; padding: 0 4px; color: #94a3b8; border: none; background: none; cursor: pointer; }
+.remove-sem:hover { color: #b91c1c; }
 
 /* ── Intake wizard modal ─────────────────────────────────── */
 
@@ -332,6 +359,36 @@ h2:first-child { margin-top: 0; }
 .modal .btn-primary { background: #8b1a1a; color: #fff; }
 .modal .btn-primary:hover { background: #6e1414; }
 .modal .btn-secondary { background: #eef1f5; color: #64748b; }
+
+/* ── Other requirements ─────────────────────────────────── */
+
+.other-req-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 0;
+  font-size: 13px;
+  flex-wrap: wrap;
+}
+.other-req-item label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.other-req-item label input[type="checkbox"] { cursor: pointer; }
+.other-req-note {
+  flex: 1;
+  min-width: 100px;
+  padding: 2px 6px;
+  border: 1px solid #dde3ea;
+  border-radius: 3px;
+  font-size: 12px;
+  color: #1e293b;
+}
+.other-req-note::placeholder { color: #94a3b8; }
+.other-req-item.done label { color: #15803d; }
 
 .route-note {
   background: #fef3c7;
