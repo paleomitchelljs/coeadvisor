@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CoeAdvisor</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header>
+  <h1>Coe College Academic Advising</h1>
+  <div class="toolbar">
+    <button id="btn-check" onclick="runCheck()">Check Progress</button>
+    <button onclick="saveAdv()">Save .adv</button>
+    <label class="file-label">
+      Load .adv <input type="file" id="load-file" accept=".adv,.txt" onchange="loadAdv(event)" hidden>
+    </label>
+  </div>
+</header>
+
+<main>
+  <section class="panel" id="input-panel">
+    <h2>Student Information</h2>
+    <div class="form-row">
+      <label>Name <input type="text" id="student-name"></label>
+      <label>ID <input type="text" id="student-id" size="10"></label>
+      <label>Year
+        <select id="student-year">
+          {% for y in student_years %}
+          <option>{{ y }}</option>
+          {% endfor %}
+        </select>
+      </label>
+    </div>
+    <div class="form-row">
+      <label>Transfer WE
+        <select id="transfer-we">
+          <option>0 credits (5 WE)</option>
+          <option>1-7 credits (5 WE)</option>
+          <option>8-15 credits (3 WE)</option>
+          <option>16+ credits (2 WE)</option>
+        </select>
+      </label>
+    </div>
+
+    <h2>Programs</h2>
+    <div class="form-row programs-grid">
+      <label>Major 1
+        <select class="major-select">
+          <option value="">(none)</option>
+          {% for p in majors %}
+          <option value="{{ p.id }}">{{ p.name }} ({{ p.catalog_year }})</option>
+          {% endfor %}
+        </select>
+      </label>
+      <label>Major 2
+        <select class="major-select">
+          <option value="">(none)</option>
+          {% for p in majors %}
+          <option value="{{ p.id }}">{{ p.name }} ({{ p.catalog_year }})</option>
+          {% endfor %}
+        </select>
+      </label>
+      <label>Minor 1
+        <select class="minor-select">
+          <option value="">(none)</option>
+          {% for p in minors %}
+          <option value="{{ p.id }}">{{ p.name }} ({{ p.catalog_year }})</option>
+          {% endfor %}
+        </select>
+      </label>
+      <label>Minor 2
+        <select class="minor-select">
+          <option value="">(none)</option>
+          {% for p in minors %}
+          <option value="{{ p.id }}">{{ p.name }} ({{ p.catalog_year }})</option>
+          {% endfor %}
+        </select>
+      </label>
+    </div>
+    {% if pathways %}
+    <div class="form-row">
+      <span class="pw-label">Pathways:</span>
+      {% for pw in pathways %}
+      <label class="pw-check">
+        <input type="checkbox" class="pathway-cb" value="{{ pw.id }}"> {{ pw.name }}
+      </label>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <h2>Courses by Semester
+      <button class="small-btn" onclick="addSemester()">+ Add Semester</button>
+    </h2>
+    <div id="semesters">
+      <div class="semester" data-label="Semester 1">
+        <div class="sem-header">
+          <input type="text" class="sem-label" value="Semester 1">
+          <button class="small-btn remove-sem" onclick="removeSemester(this)">&times;</button>
+        </div>
+        <textarea class="sem-courses" rows="4" placeholder="One course per line: BIO-155, CHM-121L ..."></textarea>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="results-panel">
+    <div id="results-empty">
+      <p>Enter student info and courses, then click <strong>Check Progress</strong>.</p>
+    </div>
+    <div id="results-content" hidden>
+      <div class="summary-bar" id="summary-bar"></div>
+      <div class="tabs">
+        <button class="tab active" onclick="showTab('ge')">GE Requirements</button>
+        <button class="tab" onclick="showTab('programs')">Programs</button>
+      </div>
+      <div id="tab-ge" class="tab-body"></div>
+      <div id="tab-programs" class="tab-body" hidden></div>
+    </div>
+  </section>
+</main>
+
+<script>
+const PROGRAMS_DATA = {{ majors | tojson }}.concat({{ minors | tojson }});
+
+function gatherData() {
+  const semesters = [];
+  document.querySelectorAll('.semester').forEach(el => {
+    const label = el.querySelector('.sem-label').value.trim();
+    const text = el.querySelector('.sem-courses').value.trim();
+    const courses = text ? text.split(/\n/).filter(l => l.trim()).map(l => ({code: l.trim()})) : [];
+    if (label) semesters.push({label, courses});
+  });
+
+  const programs = [];
+  document.querySelectorAll('.major-select, .minor-select').forEach(sel => {
+    if (sel.value) programs.push(sel.value);
+  });
+
+  const pathways_active = [];
+  document.querySelectorAll('.pathway-cb:checked').forEach(cb => {
+    pathways_active.push(cb.value);
+  });
+
+  return {
+    name: document.getElementById('student-name').value.trim(),
+    id: document.getElementById('student-id').value.trim(),
+    year: document.getElementById('student-year').value,
+    transfer_we: document.getElementById('transfer-we').value,
+    programs, pathways_active, semesters
+  };
+}
+
+async function runCheck() {
+  const data = gatherData();
+  if (!data.programs.length) {
+    alert('Select at least one program.');
+    return;
+  }
+  const btn = document.getElementById('btn-check');
+  btn.disabled = true;
+  btn.textContent = 'Checking...';
+  try {
+    const resp = await fetch('/api/check', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data)
+    });
+    const result = await resp.json();
+    renderResults(result, data);
+  } catch (e) {
+    alert('Error: ' + e.message);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Check Progress';
+  }
+}
+
+function renderResults(r, input) {
+  document.getElementById('results-empty').hidden = true;
+  document.getElementById('results-content').hidden = false;
+
+  const name = input.name || 'Student';
+  document.getElementById('summary-bar').textContent =
+    `${name}  |  ${r.credits} credits (${r.course_count} courses)  |  ${r.programs.length} program(s)`;
+
+  renderGE(r.ge);
+  renderPrograms(r.programs, r.pathways);
+}
+
+/* ── GE tab ──────────────────────────────────────────────────────────── */
+function renderGE(ge) {
+  const el = document.getElementById('tab-ge');
+  let html = '';
+  const order = ['fine_arts','humanities','nat_sci_math','lab_science',
+                 'social_sciences','fys','we','dac','practicum'];
+  for (const key of order) {
+    const req = ge[key];
+    if (!req) continue;
+    const icon = req.complete ? '\u2713' : '\u25a1';
+    const cls = req.complete ? 'done' : 'todo';
+    const courses = req.courses
+      ? req.courses.join(', ')
+      : req.pairs
+        ? req.pairs.map(p => p.join('+')).join(', ')
+        : '';
+    html += `<div class="req-row ${cls}">
+      <span class="req-icon">${icon}</span>
+      <span class="req-label">${req.label}</span>
+      <span class="req-courses">${courses}</span>
+    </div>`;
+  }
+  el.innerHTML = html;
+}
+
+/* ── Programs tab ────────────────────────────────────────────────────── */
+function renderPrograms(progs, pws) {
+  const el = document.getElementById('tab-programs');
+  let html = '';
+  for (const prog of progs.concat(pws || [])) {
+    const pct = prog.total ? Math.round(100 * prog.complete / prog.total) : 0;
+    const cls = pct === 100 ? 'done' : pct > 0 ? 'partial' : 'todo';
+    html += `<div class="prog-card">
+      <div class="prog-header ${cls}" onclick="this.parentElement.classList.toggle('open')">
+        <span class="arrow">\u25b6</span>
+        <strong>${prog.name}</strong>
+        <span class="prog-pct">${prog.complete}/${prog.total} sections complete</span>
+      </div>
+      <div class="prog-body">`;
+    for (const sec of prog.sections) {
+      const si = sec.status === 'complete' ? '\u2713'
+               : sec.status === 'manual' ? '\u25fb' : '\u25a1';
+      const sc = sec.status === 'complete' ? 'done'
+               : sec.status === 'partial' ? 'partial'
+               : sec.status === 'manual' ? 'manual' : 'todo';
+      html += `<div class="sec-row ${sc}">
+        <span class="req-icon">${si}</span>
+        <span class="sec-label">${sec.label}</span>`;
+      if (sec.message) html += ` <span class="sec-msg">${sec.message}</span>`;
+      html += `</div>`;
+      if (sec.items) {
+        for (const it of sec.items) {
+          const ii = it.satisfied ? '\u2713' : '\u25a1';
+          const ic = it.satisfied ? 'done' : 'todo';
+          const codes = it.codes ? it.codes.join(', ') : '';
+          html += `<div class="item-row ${ic}">
+            <span class="req-icon">${ii}</span>
+            ${codes} ${it.title || ''}
+          </div>`;
+        }
+      }
+      if (sec.options) {
+        for (const o of sec.options) {
+          const oi = o.satisfied ? '\u2713' : '\u25cb';
+          const oc = o.satisfied ? 'done' : 'todo';
+          const codes = o.codes ? o.codes.join(', ') : '';
+          html += `<div class="item-row ${oc}">
+            <span class="req-icon">${oi}</span>
+            ${codes} ${o.title || ''}
+          </div>`;
+        }
+      }
+    }
+    html += '</div></div>';
+  }
+  el.innerHTML = html || '<p class="empty">No programs selected.</p>';
+}
+
+/* ── Tabs ────────────────────────────────────────────────────────────── */
+function showTab(name) {
+  document.querySelectorAll('.tab-body').forEach(t => t.hidden = true);
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + name).hidden = false;
+  event.target.classList.add('active');
+}
+
+/* ── Semester management ─────────────────────────────────────────────── */
+let semCount = 1;
+function addSemester() {
+  semCount++;
+  const div = document.createElement('div');
+  div.className = 'semester';
+  div.innerHTML = `
+    <div class="sem-header">
+      <input type="text" class="sem-label" value="Semester ${semCount}">
+      <button class="small-btn remove-sem" onclick="removeSemester(this)">&times;</button>
+    </div>
+    <textarea class="sem-courses" rows="4" placeholder="One course per line: BIO-155, CHM-121L ..."></textarea>`;
+  document.getElementById('semesters').appendChild(div);
+}
+
+function removeSemester(btn) {
+  const sems = document.querySelectorAll('.semester');
+  if (sems.length <= 1) return;
+  btn.closest('.semester').remove();
+}
+
+/* ── .adv save ───────────────────────────────────────────────────────── */
+function saveAdv() {
+  const d = gatherData();
+  const now = new Date();
+  const ts = now.toISOString().slice(0, 16).replace('T', ' ');
+  let lines = [
+    '# Coe College Academic Advising Student File',
+    `# Generated: ${ts}`,
+    '',
+    `NAME: ${d.name}`,
+    `ID: ${d.id}`,
+    `YEAR: ${d.year}`,
+  ];
+  // Programs — match desktop format
+  const majors = Array.from(document.querySelectorAll('.major-select'))
+    .map((s, i) => `MAJOR${i+1}: ${s.value}`);
+  const minors = Array.from(document.querySelectorAll('.minor-select'))
+    .map((s, i) => `MINOR${i+1}: ${s.value}`);
+  lines.push(...majors, ...minors);
+  lines.push(`PATHWAYS: ${d.pathways_active.join(', ')}`);
+  lines.push(`TRANSFER_WE: ${d.transfer_we}`);
+  lines.push('');
+
+  for (const sem of d.semesters) {
+    if (!sem.courses.length) continue;
+    lines.push(`SEMESTER: ${sem.label}`);
+    for (const c of sem.courses) {
+      lines.push(`COURSE: ${c.code}, completed`);
+    }
+    lines.push('');
+  }
+
+  const blob = new Blob([lines.join('\n')], {type: 'text/plain'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  const safeName = (d.name || 'student').replace(/\s+/g, '_');
+  const dateStr = now.toISOString().slice(0, 10).replace(/-/g, '');
+  a.download = `student_${safeName}_${dateStr}.adv`;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+/* ── .adv load ───────────────────────────────────────────────────────── */
+function loadAdv(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    parseAdv(e.target.result);
+  };
+  reader.readAsText(file);
+  event.target.value = '';
+}
+
+function parseAdv(text) {
+  const fields = {};
+  const semesters = [];
+  let currentSem = null;
+
+  for (const raw of text.split('\n')) {
+    const line = raw.trim();
+    if (!line || line.startsWith('#')) continue;
+
+    if (line.startsWith('SEMESTER:')) {
+      const label = line.slice(9).trim();
+      currentSem = {label, courses: []};
+      semesters.push(currentSem);
+    } else if (line.startsWith('COURSE:') && currentSem) {
+      const parts = line.slice(7).trim().split(',');
+      const code = (parts[0] || '').trim();
+      if (code) currentSem.courses.push(code);
+    } else {
+      const m = line.match(/^([A-Z_0-9]+):\s*(.*)/);
+      if (m) fields[m[1]] = m[2].trim();
+    }
+  }
+
+  // Apply to form
+  document.getElementById('student-name').value = fields.NAME || '';
+  document.getElementById('student-id').value = fields.ID || '';
+  if (fields.YEAR) {
+    const yearSel = document.getElementById('student-year');
+    for (const opt of yearSel.options) {
+      if (opt.value === fields.YEAR) { yearSel.value = fields.YEAR; break; }
+    }
+  }
+
+  // Transfer WE — handle both old and new format
+  let weVal = fields.TRANSFER_WE || '';
+  if (weVal.includes('8 credits')) weVal = '8-15 credits (3 WE)';
+  const weSel = document.getElementById('transfer-we');
+  for (const opt of weSel.options) {
+    if (opt.value === weVal) { weSel.value = weVal; break; }
+  }
+
+  // Programs
+  const majorSels = document.querySelectorAll('.major-select');
+  const minorSels = document.querySelectorAll('.minor-select');
+  for (let i = 0; i < majorSels.length; i++) {
+    majorSels[i].value = fields[`MAJOR${i+1}`] || '';
+  }
+  for (let i = 0; i < minorSels.length; i++) {
+    minorSels[i].value = fields[`MINOR${i+1}`] || '';
+  }
+
+  // Pathways
+  const pwStr = fields.PATHWAYS || '';
+  const pwIds = pwStr.split(',').map(s => s.trim()).filter(Boolean);
+  document.querySelectorAll('.pathway-cb').forEach(cb => {
+    cb.checked = pwIds.includes(cb.value);
+  });
+
+  // Rebuild semester sections
+  const container = document.getElementById('semesters');
+  container.innerHTML = '';
+  semCount = 0;
+  if (semesters.length) {
+    for (const sem of semesters) {
+      semCount++;
+      const div = document.createElement('div');
+      div.className = 'semester';
+      div.innerHTML = `
+        <div class="sem-header">
+          <input type="text" class="sem-label" value="${sem.label}">
+          <button class="small-btn remove-sem" onclick="removeSemester(this)">&times;</button>
+        </div>
+        <textarea class="sem-courses" rows="${Math.max(4, sem.courses.length + 1)}">${sem.courses.join('\n')}</textarea>`;
+      container.appendChild(div);
+    }
+  } else {
+    addSemester();
+  }
+}
+</script>
+
+</body>
+</html>
