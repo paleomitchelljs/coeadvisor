@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coe Advising Tool</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Coe Advising Tool</h1>
+  <div class="toolbar">
+    <button onclick="showIntakeWizard()">New Student</button>
+    <button onclick="downloadAdv()">Save .adv</button>
+    <label class="file-label">
+      Load .adv
+      <input type="file" id="file-input" accept=".adv,.txt" style="display:none">
+    </label>
+  </div>
+</header>
+
+<main>
+  <!-- ── Input panel ──────────────────────────────────────── -->
+  <div class="panel" id="input-panel">
+    <h2>Student Info</h2>
+    <div class="form-row">
+      <label style="flex:1">Name
+        <input type="text" id="student-name" placeholder="Student name">
+      </label>
+      <label style="flex:1">ID
+        <input type="text" id="student-id" placeholder="Student ID">
+      </label>
+      <label>Year
+        <select id="student-year"></select>
+      </label>
+    </div>
+
+    <h2>Programs</h2>
+    <div class="programs-grid">
+      <label>Major 1 <select id="major1"></select></label>
+      <label>Major 2 <select id="major2"></select></label>
+      <label>Major 3 <select id="major3"></select></label>
+      <label>Minor 1 <select id="minor1"></select></label>
+      <label>Minor 2 <select id="minor2"></select></label>
+    </div>
+
+    <div style="margin-top:8px">
+      <span class="pw-label">Pathways:</span>
+      <span id="pathways"></span>
+    </div>
+
+    <div class="form-row" style="margin-top:8px">
+      <label>Transfer WE Credits <select id="transfer-we"></select></label>
+    </div>
+
+    <div id="route-note" class="route-note" style="display:none"></div>
+
+    <h2>Courses
+      <button class="small-btn" onclick="addSemester()">+ Semester</button>
+    </h2>
+    <div id="semesters"></div>
+  </div>
+
+  <!-- ── Results panel ────────────────────────────────────── -->
+  <div class="panel">
+    <div id="results-empty">
+      <p>Select programs and enter courses,<br>then results will appear here.</p>
+    </div>
+    <div id="results" style="display:none">
+      <div class="summary-bar" id="summary-bar"></div>
+
+      <div class="tabs">
+        <button class="tab active" data-tab="ge">GE Requirements</button>
+        <button class="tab" data-tab="programs">Programs</button>
+        <button class="tab" data-tab="plan">Suggested Plan</button>
+        <button class="tab" data-tab="f2y">First Two Years</button>
+        <button class="tab" data-tab="trajectory">Trajectory</button>
+      </div>
+
+      <div class="tab-panel active" id="tab-ge">
+        <div id="ge-content"></div>
+      </div>
+      <div class="tab-panel" id="tab-programs">
+        <div id="programs-content"></div>
+      </div>
+      <div class="tab-panel" id="tab-plan">
+        <div id="plan-content"></div>
+      </div>
+      <div class="tab-panel" id="tab-f2y">
+        <div id="f2y-content"></div>
+      </div>
+      <div class="tab-panel" id="tab-trajectory">
+        <div id="trajectory-content"></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ── Intake Wizard Modal ──────────────────────────────── -->
+<div class="modal-overlay" id="wizard-modal">
+  <div class="modal">
+    <h3>New Student Wizard</h3>
+    <div id="wizard-body"></div>
+    <div class="btn-row">
+      <button class="btn-secondary" onclick="closeWizard()">Cancel</button>
+      <button class="btn-primary" onclick="submitWizard()">Apply</button>
+    </div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -28,6 +28,7 @@ a = Analysis(
         'tkinter.messagebox',
         'tkinter.filedialog',
         'customtkinter',
+        'advisor_core',
     ],
     hookspath=[],
     hooksconfig={},
