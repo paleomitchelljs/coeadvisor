@@ -274,11 +274,30 @@ Both build specs embed the entire `data/` directory and all CustomTkinter theme 
 
 ---
 
+## Web Interface
+
+A Flask-based web interface provides the same advising logic without needing a compiled desktop app. Students and advisors can check progress, view GE/program status, and download `.adv` files from any browser.
+
+**Run locally:**
+```
+pip install flask
+python web_advisor.py
+```
+Then open [http://localhost:5050](http://localhost:5050).
+
+The web app reads the same `data/` directory as the desktop app. `.adv` files saved from the web interface are fully compatible with the desktop app and vice versa.
+
+---
+
 ## Project Structure
 
 ```
 advising/
-├── advisor.py                   Entire application (~2700 lines, single file)
+├── advisor.py                   Desktop application (CustomTkinter)
+├── web_advisor.py               Web interface (Flask)
+├── templates/index.html         Web UI template
+├── static/style.css             Web UI styles
+├── requirements-web.txt         Web app dependency (Flask)
 ├── advisor.spec                 PyInstaller spec — macOS .app bundle
 ├── advisor_windows.spec         PyInstaller spec — Windows .exe
 ├── rebuild_dist.sh              Local macOS build script
