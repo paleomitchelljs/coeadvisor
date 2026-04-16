@@ -12,17 +12,17 @@
     "2": {
       "essential": [],
       "suggested": [
-        "POL-108 (if not taken)",
-        "POL-115 (if not taken)"
+        "POL-108",
+        "POL-115"
       ]
     },
     "3": {
       "essential": [
-        "POL-108 or POL-115 (if neither taken)"
+        "POL-108",
+        "POL-115"
       ],
       "suggested": [
-        "POL-244",
-        "Political science course with prerequisites met"
+        "POL-244"
       ]
     },
     "4": {
@@ -30,9 +30,7 @@
         "POL-108",
         "POL-115"
       ],
-      "suggested": [
-        "Political science course"
-      ]
+      "suggested": []
     },
     "5": {
       "essential": [],

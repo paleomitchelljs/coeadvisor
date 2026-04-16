@@ -8,7 +8,8 @@
         "PHY-185L"
       ],
       "suggested": [
-        "ENR-155 (MTH-155, if proficient in Calculus)",
+        "ENR-155",
+        "MTH-155",
         "MTH-135"
       ]
     },
@@ -38,9 +39,7 @@
         "PHY-265",
         "PHY-246"
       ],
-      "suggested": [
-        "Additional physics or engineering course"
-      ]
+      "suggested": []
     },
     "5": {
       "essential": [],

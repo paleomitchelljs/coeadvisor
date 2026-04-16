@@ -301,7 +301,7 @@ function buildSemesterSuggestions(semNum, allTaken, shownCodes, selectedProgs, g
       for (const cat of ["essential", "suggested"]) {
         for (const item of (semData[cat] || [])) {
           const code = normalize(item);
-          if (!/^[A-Z]+-\d/.test(code)) continue;
+          if (!/^[A-Z]+-\d+[A-Z]?$/.test(code)) continue;
           if (shownCodes.has(code)) continue;
           const off = OFFERING_TERM[code];
           if (off && off !== "both" && off !== term) continue;

@@ -6,30 +6,25 @@
       "essential": [],
       "suggested": [
         "MS-101",
-        "MS-115",
-        "Elective in MS"
+        "MS-115"
       ]
     },
     "2": {
       "essential": [],
       "suggested": [
-        "MS-101 (if not taken)",
-        "MS-115 (if not taken)",
-        "Elective in MS"
+        "MS-101",
+        "MS-115"
       ]
     },
     "3": {
       "essential": [],
       "suggested": [
-        "MS-283",
-        "Elective in MS"
+        "MS-283"
       ]
     },
     "4": {
       "essential": [],
-      "suggested": [
-        "Elective in MS"
-      ]
+      "suggested": []
     },
     "5": {
       "essential": [],

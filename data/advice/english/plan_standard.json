@@ -5,14 +5,13 @@
     "1": {
       "essential": [],
       "suggested": [
-        "ENG-101",
-        "Lower-level elective"
+        "ENG-101"
       ]
     },
     "2": {
       "essential": [],
       "suggested": [
-        "ENG-101 (if not taken)",
+        "ENG-101",
         "ENG-281"
       ]
     },
@@ -21,8 +20,7 @@
         "ENG-101"
       ],
       "suggested": [
-        "ENG-291",
-        "Lower-level elective"
+        "ENG-291"
       ]
     },
     "4": {

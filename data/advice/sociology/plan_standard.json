@@ -11,25 +11,21 @@
     "2": {
       "essential": [],
       "suggested": [
-        "SOC-107 (if not taken)",
-        "200-level SOC"
+        "SOC-107"
       ]
     },
     "3": {
       "essential": [],
       "suggested": [
-        "SOC-107 (if not taken)",
-        "SOC-235",
-        "200-level SOC"
+        "SOC-107",
+        "SOC-235"
       ]
     },
     "4": {
       "essential": [
-        "SOC-107 (if not taken)"
+        "SOC-107"
       ],
-      "suggested": [
-        "200 or 300-level SOC"
-      ]
+      "suggested": []
     },
     "5": {
       "essential": [],

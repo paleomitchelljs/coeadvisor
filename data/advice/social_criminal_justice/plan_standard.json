@@ -11,7 +11,8 @@
     },
     "2": {
       "essential": [
-        "SCJ-101 or SCJ-203 (if SCJ-101 taken fall)"
+        "SCJ-101",
+        "SCJ-203"
       ],
       "suggested": [
         "SOC-107"
@@ -29,7 +30,8 @@
     "4": {
       "essential": [],
       "suggested": [
-        "PHL-265 or PHL-285 (when offered)",
+        "PHL-265",
+        "PHL-285",
         "STA-100",
         "STA-110"
       ]

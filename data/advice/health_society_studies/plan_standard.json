@@ -18,23 +18,18 @@
     },
     "2": {
       "essential": [],
-      "suggested": [
-        "100-level elective from HSS list",
-        "200+ level elective from HSS list"
-      ]
+      "suggested": []
     },
     "3": {
       "essential": [],
       "suggested": [
-        "PHL-165 Biomedical Ethics",
-        "200+ level HSS elective"
+        "PHL-165"
       ]
     },
     "4": {
       "essential": [],
       "suggested": [
-        "PHL-165 (if not taken)",
-        "200+ level HSS elective"
+        "PHL-165"
       ]
     },
     "5": {
