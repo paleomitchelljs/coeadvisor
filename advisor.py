@@ -133,6 +133,19 @@ def load_catalog() -> dict:
         return {}
 
 
+def load_offerings() -> dict:
+    """Return per-term course offerings (from tools/extract_offerings.py),
+    or {} if missing. Shape: {'terms': {'fall': {'courses': [..]}, ...}}."""
+    path = DATA_DIR / "offerings_2026.json"
+    if not path.exists():
+        return {}
+    try:
+        return _load_json(path)
+    except Exception as exc:
+        print(f"Warning: could not load offerings_2026.json: {exc}")
+        return {}
+
+
 def load_intake() -> dict:
     """Return {program_id: intake_dict} for every file in data/intake/.
 
@@ -522,6 +535,7 @@ class AdvisorApp:
             self.first_two_years = load_first_two_years()
             self.intake_data     = load_intake()
             self.catalog         = load_catalog()
+            self.offerings       = load_offerings()
         except FileNotFoundError as e:
             messagebox.showerror("Data Error",
                 f"Could not load data files.\n\nMissing: {e}\n\n"
@@ -531,6 +545,11 @@ class AdvisorApp:
 
         self.trajectory = TrajectoryData(
             DATA_DIR / "student_obs" / "major_course_summary.csv")
+
+        # Precompute fast lookup sets for offering badges in plan dropdowns.
+        terms = self.offerings.get("terms", {})
+        self._fall_offered   = set(terms.get("fall",   {}).get("courses", []))
+        self._spring_offered = set(terms.get("spring", {}).get("courses", []))
 
         # ── State ──
         self.manual_ge: dict[str, tk.BooleanVar] = {}
@@ -2008,20 +2027,37 @@ class AdvisorApp:
         """Return [(code, title), …] for a specific list of codes."""
         return [(c, self._catalog_title(c)) for c in codes if c]
 
+    def _offering_badge(self, code: str) -> str:
+        """Return ' [FS]' / ' [F]' / ' [S]' / '' for a course code, based on
+        the 2026-2027 offerings data (empty if not scheduled either term)."""
+        f = code in self._fall_offered
+        s = code in self._spring_offered
+        if f and s:
+            return "  [FS]"
+        if f:
+            return "  [F]"
+        if s:
+            return "  [S]"
+        return ""
+
+    def _format_combo_entry(self, code: str, title: str) -> str:
+        title_part = f" — {title}" if title else ""
+        return f"{code}{title_part}{self._offering_badge(code)}"
+
     def _make_plan_combo(self, parent: tk.Text, slot_id: str,
                          pool: list) -> ttk.Combobox:
         """Create a course-picker combobox for a plan slot.
 
-        pool is [(code, title), …]. On selection, updates self._planned and
-        re-renders via self.check(jump_to_suggested=True). Combobox is read-
-        only; the "(unset)" option clears the slot.
+        pool is [(code, title), …]. Entries are annotated with offering
+        badges — [F]/[S]/[FS] for courses scheduled in the 2026-2027 terms.
+        Re-renders via self.check(jump_to_suggested=True) on selection.
         """
-        values = ["(unset)"] + [f"{c} — {t}" if t else c for c, t in pool]
-        cb = ttk.Combobox(parent, values=values, state="readonly", width=56)
+        values = ["(unset)"] + [self._format_combo_entry(c, t) for c, t in pool]
+        cb = ttk.Combobox(parent, values=values, state="readonly", width=60)
         selected = self._planned.get(slot_id, "")
         if selected:
-            title = self._catalog_title(selected)
-            cb.set(f"{selected} — {title}" if title else selected)
+            cb.set(self._format_combo_entry(selected,
+                                            self._catalog_title(selected)))
         else:
             cb.set("(unset)")
         cb.bind("<<ComboboxSelected>>",
@@ -2029,12 +2065,16 @@ class AdvisorApp:
         return cb
 
     def _on_plan_select(self, slot_id: str, combo_value: str) -> None:
-        """Update self._planned from a combo change and re-render."""
+        """Update self._planned from a combo change and re-render. Entries
+        have the form 'CODE — Title  [FS]' or just 'CODE  [FS]' — in both
+        cases the bare code is the first whitespace-delimited token."""
         if not combo_value or combo_value == "(unset)":
             self._planned.pop(slot_id, None)
         else:
-            code = combo_value.split(" — ", 1)[0].strip()
-            self._planned[slot_id] = code
+            first = combo_value.split(" — ", 1)[0]
+            code = first.split()[0].strip() if first else ""
+            if code:
+                self._planned[slot_id] = code
         self.check(jump_to_suggested=True)
 
     def _planned_for_pool(self, pool_codes: set) -> list:
@@ -2104,7 +2144,9 @@ class AdvisorApp:
             f"Year: {year_label}   Programs: {', '.join(prog_names) or '(none)'}   "
             f"Credits taken: {cred:.1f}{planned_str}\n"
             "□ = needed   ◐ = planned   ◇ = choose from options   "
-            "◻ = non-course   ⚠ = overdue\n\n",
+            "◻ = non-course   ⚠ = overdue\n"
+            "Dropdown badges: [F] offered Fall 2026   "
+            "[S] offered Spring 2026   [FS] both\n\n",
             "summary")
 
         # Wizard routing note (shown when the new-student wizard produced this plan)
@@ -2456,9 +2498,9 @@ class AdvisorApp:
                     cb = self._make_plan_combo(t, sid, avail)
                     t.window_create(tk.END, window=cb)
                     if this_pick:
-                        title = self._catalog_title(this_pick)
-                        tail = f" — {title}" if title else ""
-                        self._ins(t, f"   ◐ {this_pick}{tail}\n", "item_planned")
+                        self._ins(t,
+                            f"   ◐ {self._format_combo_entry(this_pick, self._catalog_title(this_pick))}\n",
+                            "item_planned")
                     else:
                         self._ins(t, "\n", "")
 
