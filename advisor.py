@@ -48,6 +48,17 @@ PARTIAL    = "partial"
 INCOMPLETE = "incomplete"
 MANUAL     = "manual"
 
+# ─────────────────────────── First-two-years semester keys ───────────────────
+
+F2Y_SEM_KEYS   = ["y1_fall", "y1_spring", "y2_fall", "y2_spring"]
+F2Y_SEM_NUM    = {"y1_fall": 1, "y1_spring": 2, "y2_fall": 3, "y2_spring": 4}
+F2Y_SEM_LABELS = {
+    "y1_fall":   "Year 1 \u2014 Fall",
+    "y1_spring": "Year 1 \u2014 Spring",
+    "y2_fall":   "Year 2 \u2014 Fall",
+    "y2_spring": "Year 2 \u2014 Spring",
+}
+
 # ─────────────────────────── Data loading ────────────────────────────────────
 
 def _load_json(path: Path) -> dict:
@@ -213,8 +224,24 @@ def parse_courses(text: str) -> list:
             pfx = slash_m.group(1).rstrip('-')
             add(f"{pfx}-{slash_m.group(2)}")
             add(f"{pfx}-{slash_m.group(3)}")
-        else:
-            add(raw_line)
+            continue
+
+        # Split on whitespace to handle "BIO-145 CHM-121" on one line,
+        # but recombine "BIO 145" (prefix + number separated by space).
+        tokens = raw_line.split()
+        i = 0
+        while i < len(tokens):
+            tok = tokens[i]
+            # If this token is all-alpha and the next is all-digit, combine
+            # them: "BIO 145" → "BIO-145"
+            if (i + 1 < len(tokens)
+                    and re.match(r'^[A-Za-z]+$', tok)
+                    and re.match(r'^\d+[A-Za-z]*$', tokens[i + 1])):
+                add(f"{tok}-{tokens[i + 1]}")
+                i += 2
+            else:
+                add(tok)
+                i += 1
 
     return result
 
@@ -298,8 +325,11 @@ def check_section(section: dict, taken: set) -> dict:
     if stype == "choose_one":
         opts, any_ok = [], False
         for opt in section.get("options", []):
-            codes = [normalize(c) for c in opt.get("codes", [])]
-            sat = all(c in taken for c in codes) if codes else False
+            codes = opt.get("codes", [])
+            norm = [normalize(c) for c in codes]
+            primary = [c for c in norm if not is_auxiliary(c)]
+            sat = (all(c in taken for c in primary) if primary
+                   else bool(norm and any(c in taken for c in norm)))
             if sat:
                 any_ok = True
             opts.append({**opt, "satisfied": sat})
@@ -362,15 +392,15 @@ def check_ge(ge: dict, taken: set, dac: set, we: set,
 
     def div_courses(pfxs: list, max_per: int = 2) -> list:
         by_pfx: dict = {}
-        for c in taken:
+        for c in sorted(taken):
             if is_auxiliary(c):
                 continue
             p = prefix_of(c)
             if p in set(pfxs):
                 by_pfx.setdefault(p, []).append(c)
         result = []
-        for lst in by_pfx.values():
-            result.extend(lst[:max_per])
+        for p in sorted(by_pfx):
+            result.extend(by_pfx[p][:max_per])
         return result
 
     fa  = div_courses(div["fine_arts"]["prefixes"])
@@ -511,9 +541,6 @@ COLORS = {
     "gold":       "#c4991a",
 }
 
-GRADES = ["", "A", "A-", "B+", "B", "B-", "C+", "C", "C-",
-          "D+", "D", "D-", "F", "P", "NP", "W", "IP"]
-
 STUDENT_YEARS = ["First Year", "Sophomore", "Junior", "Senior", "Transfer Student"]
 
 
@@ -554,7 +581,7 @@ class AdvisorApp:
         # ── State ──
         self.manual_ge: dict[str, tk.BooleanVar] = {}
         self.pathway_vars: dict[str, tk.BooleanVar] = {}
-        self._prog_ids: list[str] = []          # kept for legacy compat
+        self._tab_texts: dict[str, tk.Text] = {}
         self._wizard_route_note: str = ""       # note from last intake route; shown in Suggested Plan
         self._comfort_math:      bool = True   # False → hide Y1 suggested math courses
         self._comfort_science:   bool = True   # False → hide Y1 suggested science courses
@@ -1076,7 +1103,7 @@ class AdvisorApp:
         self.transfer_var = tk.StringVar(value="0 credits (5 WE)")
         _combobox(sp, self.transfer_var,
                   ["0 credits (5 WE)", "1–7 credits (5 WE)",
-                   "8 credits — max (3 WE)"]).pack(
+                   "8–15 credits (3 WE)", "16+ credits (2 WE)"]).pack(
             anchor=tk.W, padx=10, pady=(2, 0))
 
         # Programs card
@@ -1397,7 +1424,7 @@ class AdvisorApp:
         return sem_dict
 
     def _add_course_row(self, sem_dict: dict, code: str = "",
-                        grade: str = "", completed: bool = True):
+                        completed: bool = True):
         """Append one course-entry row to a semester card."""
         rf = sem_dict["rows_frame"]
         row_f = ctk.CTkFrame(rf, fg_color=COLORS["bg"], corner_radius=0)
@@ -1413,7 +1440,7 @@ class AdvisorApp:
                         corner_radius=3).pack(side=tk.LEFT, padx=(2, 2))
 
         code_var = tk.StringVar(value=code)
-        ctk.CTkEntry(row_f, textvariable=code_var, width=100,
+        ctk.CTkEntry(row_f, textvariable=code_var, width=140,
                      font=("Courier New", 10),
                      fg_color=COLORS["bg"],
                      text_color=COLORS["header"],
@@ -1421,17 +1448,7 @@ class AdvisorApp:
                      border_width=1, corner_radius=4,
                      height=28).pack(side=tk.LEFT, padx=(2, 2))
 
-        grade_var = tk.StringVar(value=grade)
-        ctk.CTkComboBox(row_f, variable=grade_var,
-                        values=GRADES, state="readonly",
-                        width=70, height=28,
-                        fg_color=COLORS["bg"],
-                        border_color=COLORS["border"],
-                        button_color=COLORS["border"],
-                        border_width=1, corner_radius=4,
-                        font=("Helvetica", 10)).pack(side=tk.LEFT, padx=(2, 2))
-
-        row_dict = {"code_var": code_var, "grade_var": grade_var,
+        row_dict = {"code_var": code_var,
                     "completed_var": completed_var, "frame": row_f}
 
         def _delete(rd=row_dict, sd=sem_dict):
@@ -1516,8 +1533,27 @@ class AdvisorApp:
         sel_ids = self._selected_program_ids()
         taken   = self._collect_courses()
 
+        # Validate course codes against the catalog
+        if self.catalog and taken:
+            known = set()
+            for pdata in self.catalog.get("prefixes", {}).values():
+                known.update(pdata.get("courses", {}).keys())
+            unknown = sorted(c for c in taken if c not in known)
+            if unknown:
+                messagebox.showwarning(
+                    "Unrecognized Courses",
+                    f"These course codes were not found in the catalog:\n\n"
+                    + ", ".join(unknown)
+                    + "\n\nCheck for typos. They will still be counted if correct.")
+
         # WE count adjustment for transfer students
-        we_required = 3 if "8 credits" in self.transfer_var.get() else 5
+        transfer = self.transfer_var.get()
+        if "16+" in transfer:
+            we_required = 2
+        elif "8" in transfer:
+            we_required = 3
+        else:
+            we_required = 5
 
         # Switch to results page FIRST so the CTkTabview is visible before
         # tabs are added — CTk does geometry work on add() that requires the
@@ -1528,13 +1564,15 @@ class AdvisorApp:
         for name in self._nb_tab_names:
             self.nb.delete(name)
         self._nb_tab_names.clear()
+        self._tab_texts.clear()
         self.manual_ge.clear()
 
         # GE tab
         ge_result = check_ge(self.ge_data, taken, self.dac, self.we)
         self.nb.add("GE Requirements")
         self._nb_tab_names.append("GE Requirements")
-        self._render_ge(self.nb.tab("GE Requirements"), ge_result, we_required)
+        self._render_ge(self.nb.tab("GE Requirements"), ge_result, we_required,
+                        tab_name="GE Requirements")
 
         # Active pathways
         active_pathway_ids = [pid for pid, var in self.pathway_vars.items()
@@ -1549,7 +1587,8 @@ class AdvisorApp:
             self.nb.add(tab_name)
             self._nb_tab_names.append(tab_name)
             self._render_program(self.nb.tab(tab_name), result,
-                                 active_pathways=active_pathway_ids)
+                                 active_pathways=active_pathway_ids,
+                                 tab_name=tab_name)
 
         # Pathway tabs
         for pw_id in active_pathway_ids:
@@ -1558,7 +1597,8 @@ class AdvisorApp:
             tab_name = f"\u2b21 {pw['name']}"
             self.nb.add(tab_name)
             self._nb_tab_names.append(tab_name)
-            self._render_program(self.nb.tab(tab_name), result)
+            self._render_program(self.nb.tab(tab_name), result,
+                                 tab_name=tab_name)
 
         # First Two Years tab
         f2y_entries = self._matching_first_two_years(sel_ids)
@@ -1566,7 +1606,8 @@ class AdvisorApp:
             self.nb.add("First 2 Years")
             self._nb_tab_names.append("First 2 Years")
             self._render_first_two_years(self.nb.tab("First 2 Years"),
-                                         f2y_entries, taken)
+                                         f2y_entries, taken,
+                                         tab_name="First 2 Years")
 
         # Suggested Plan tab
         if sel_ids:
@@ -1574,7 +1615,8 @@ class AdvisorApp:
             self._nb_tab_names.append("Suggested Plan")
             self._render_suggested_plan(
                 self.nb.tab("Suggested Plan"), sel_ids, taken, ge_result,
-                we_required, active_pathway_ids, f2y_entries)
+                we_required, active_pathway_ids, f2y_entries,
+                tab_name="Suggested Plan")
 
         # Summary
         name     = self.name_var.get().strip() or "Student"
@@ -1592,6 +1634,15 @@ class AdvisorApp:
             self.nb.set("Suggested Plan")
 
     def clear_all(self, goto: str = "setup"):
+        has_data = (self.name_var.get().strip()
+                    or self.id_var.get().strip()
+                    or any(r["code_var"].get().strip()
+                           for s in self._semesters for r in s["rows"]))
+        if has_data and goto != "wizard":
+            if not messagebox.askyesno(
+                    "Clear All",
+                    "This will erase all entered data. Continue?"):
+                return
         self._wizard_route_note = ""
         self._comfort_math      = True
         self._comfort_science   = True
@@ -1638,14 +1689,12 @@ class AdvisorApp:
             "=" * 60, "",
         ]
         for name in self._nb_tab_names:
-            tab_frame = self.nb.tab(name)
-            for child in tab_frame.winfo_children():        # tk.Frame wrapper
-                for subchild in child.winfo_children():     # tk.Text inside it
-                    if isinstance(subchild, tk.Text):
-                        lines.append(f"\n{'=' * 60}")
-                        lines.append(name.upper())
-                        lines.append('=' * 60)
-                        lines.append(subchild.get("1.0", tk.END).strip())
+            t = self._tab_texts.get(name)
+            if t:
+                lines.append(f"\n{'=' * 60}")
+                lines.append(name.upper())
+                lines.append('=' * 60)
+                lines.append(t.get("1.0", tk.END).strip())
         try:
             Path(path).write_text("\n".join(lines), encoding="utf-8")
             messagebox.showinfo("Exported", f"Saved to:\n{path}")
@@ -1691,7 +1740,6 @@ class AdvisorApp:
         for sem in self._semesters:
             sem_courses = [
                 (row["code_var"].get().strip(),
-                 row["grade_var"].get().strip(),
                  row["completed_var"].get())
                 for row in sem["rows"]
                 if row["code_var"].get().strip()
@@ -1699,9 +1747,9 @@ class AdvisorApp:
             if not sem_courses:
                 continue
             lines.append(f"SEMESTER: {sem['label']}")
-            for code, grade, done in sem_courses:
+            for code, done in sem_courses:
                 status = "completed" if done else "planned"
-                lines.append(f"COURSE: {code}, {status}, {grade}")
+                lines.append(f"COURSE: {code}, {status}")
             lines.append("")
 
         # Suggested courses as comments (not imported)
@@ -1801,9 +1849,13 @@ class AdvisorApp:
         if fields["YEAR"] in STUDENT_YEARS and self._year_var:
             self._year_var.set(fields["YEAR"])
         valid_we = ["0 credits (5 WE)", "1\u20137 credits (5 WE)",
+                    "8\u201315 credits (3 WE)", "16+ credits (2 WE)",
                     "8 credits \u2014 max (3 WE)"]
-        if fields["TRANSFER_WE"] in valid_we:
-            self.transfer_var.set(fields["TRANSFER_WE"])
+        we_val = fields["TRANSFER_WE"]
+        if we_val == "8 credits \u2014 max (3 WE)":
+            we_val = "8\u201315 credits (3 WE)"
+        if we_val in valid_we:
+            self.transfer_var.set(we_val)
 
         # Set major/minor dropdowns
         for i, var in enumerate(self._major_vars, 1):
@@ -1827,8 +1879,8 @@ class AdvisorApp:
             for label, courses in semesters_data:
                 is_t = label.lower() == "transfer"
                 sd = self._add_semester(label, initial_rows=0, is_transfer=is_t)
-                for code, status, grade in courses:
-                    self._add_course_row(sd, code=code, grade=grade,
+                for code, status, _grade in courses:
+                    self._add_course_row(sd, code=code,
                                         completed=(status.lower() == "completed"))
                 if not courses:
                     for _ in range(2 if is_t else 3):
@@ -1850,7 +1902,7 @@ class AdvisorApp:
     # Rendering helpers
     # ──────────────────────────────────────────────────────────────────────────
 
-    def _make_text(self, parent) -> tk.Text:
+    def _make_text(self, parent, tab_name: str = "") -> tk.Text:
         """Create a scrollable read-only text area inside parent.
 
         Uses plain tk.Text (not CTkTextbox) because tk.Text's tag system is
@@ -1900,6 +1952,8 @@ class AdvisorApp:
                         foreground=COLORS["hint"])
         t.tag_configure("note",        font=("Helvetica",  9, "italic"),
                         foreground=COLORS["note"])
+        if tab_name:
+            self._tab_texts[tab_name] = t
         return t
 
     def _ins(self, t: tk.Text, text: str, tag: str = ""):
@@ -2089,7 +2143,8 @@ class AdvisorApp:
 
     def _render_suggested_plan(self, parent: tk.Frame, sel_ids: list,
                                taken: set, ge_result: dict, we_required: int,
-                               active_pathway_ids: list, f2y_entries: list):
+                               active_pathway_ids: list, f2y_entries: list,
+                               tab_name: str = ""):
         """Render a semester-ordered plan of what remains to be completed."""
         _CODE_RE = re.compile(r'^[A-Z]+-\d')
         _YEAR_SEM = {
@@ -2099,20 +2154,15 @@ class AdvisorApp:
             "Senior":           7,
             "Transfer Student": 3,
         }
-        _SEM_NUM = {"y1_fall": 1, "y1_spring": 2, "y2_fall": 3, "y2_spring": 4}
-        _SEM_KEYS = ["y1_fall", "y1_spring", "y2_fall", "y2_spring"]
-        _SEM_LABELS = {
-            "y1_fall":   "Year 1 — Fall",
-            "y1_spring": "Year 1 — Spring",
-            "y2_fall":   "Year 2 — Fall",
-            "y2_spring": "Year 2 — Spring",
-        }
+        _SEM_NUM    = F2Y_SEM_NUM
+        _SEM_KEYS   = F2Y_SEM_KEYS
+        _SEM_LABELS = F2Y_SEM_LABELS
 
         year_label  = self._year_var.get() if self._year_var else "First Year"
         current_sem = _YEAR_SEM.get(year_label, 1)
         taken_norm  = {normalize(c) for c in taken}
 
-        t = self._make_text(parent)
+        t = self._make_text(parent, tab_name=tab_name)
         shown_codes: set = set()   # primary non-aux codes already rendered anywhere
 
         def _f2y_primary(course_str):
@@ -2642,11 +2692,12 @@ class AdvisorApp:
         t.configure(state="disabled")
 
     def _render_first_two_years(self, parent: tk.Frame,
-                                entries: list, taken: set):
+                                entries: list, taken: set,
+                                tab_name: str = ""):
         """Render the First Two Years tab."""
         _CODE_RE = re.compile(r'^[A-Z]+-\d')
 
-        t = self._make_text(parent)
+        t = self._make_text(parent, tab_name=tab_name)
         self._ins(t, "RECOMMENDED COURSES — FIRST TWO YEARS\n", "h1")
         self._ins(t,
             "Essential = strongly advised to take in that semester.\n"
@@ -2654,13 +2705,8 @@ class AdvisorApp:
             "✓ = already completed.  □ = not yet taken.\n\n",
             "summary")
 
-        sem_keys  = ["y1_fall", "y1_spring", "y2_fall", "y2_spring"]
-        sem_labels = {
-            "y1_fall":   "Year 1 — Fall",
-            "y1_spring": "Year 1 — Spring",
-            "y2_fall":   "Year 2 — Fall",
-            "y2_spring": "Year 2 — Spring",
-        }
+        sem_keys   = F2Y_SEM_KEYS
+        sem_labels = F2Y_SEM_LABELS
 
         for entry, _prog in entries:
             label = entry.get("label", "")
@@ -2710,8 +2756,9 @@ class AdvisorApp:
 
     # ── GE tab ────────────────────────────────────────────────────────────────
 
-    def _render_ge(self, parent: tk.Frame, ge: dict, we_required: int):
-        t = self._make_text(parent)
+    def _render_ge(self, parent: tk.Frame, ge: dict, we_required: int,
+                    tab_name: str = ""):
+        t = self._make_text(parent, tab_name=tab_name)
 
         self._ins(t, "GENERAL EDUCATION REQUIREMENTS  (2025–2026)\n", "h1")
         self._ins(t, "Divisional rule: ≤2 courses per prefix; each course used once.\n"
@@ -2800,8 +2847,8 @@ class AdvisorApp:
         return f"  ← {', '.join(parts)}" if parts else ""
 
     def _render_program(self, parent: tk.Frame, result: dict,
-                        active_pathways: list = None):
-        t = self._make_text(parent)
+                        active_pathways: list = None, tab_name: str = ""):
+        t = self._make_text(parent, tab_name=tab_name)
         prog = result["program"]
 
         major_code = prog.get("major_code", "")

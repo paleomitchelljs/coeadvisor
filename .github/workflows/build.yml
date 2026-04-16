@@ -26,11 +26,16 @@ jobs:
       - name: Package as zip
         run: ditto -c -k --keepParent dist/CoeAdvisor.app dist/CoeAdvisor_macOS.zip
 
+      - name: Generate SHA-256 checksum
+        run: shasum -a 256 dist/CoeAdvisor_macOS.zip > dist/CoeAdvisor_macOS.zip.sha256
+
       - name: Upload macOS artifact
         uses: actions/upload-artifact@v4
         with:
           name: CoeAdvisor_macOS
-          path: dist/CoeAdvisor_macOS.zip
+          path: |
+            dist/CoeAdvisor_macOS.zip
+            dist/CoeAdvisor_macOS.zip.sha256
           retention-days: 30
 
   build-windows:
@@ -46,21 +51,33 @@ jobs:
       - name: Install dependencies
         run: pip install pyinstaller customtkinter
 
-      - name: Build Windows exe
+      # onedir mode reduces antivirus false positives compared to onefile
+      - name: Build Windows app
         run: pyinstaller advisor_windows.spec --clean --noconfirm
 
-      - name: Verify exe exists
-        run: dir dist\CoeAdvisor.exe
+      - name: Verify build output
+        run: dir dist\CoeAdvisor\CoeAdvisor.exe
+
+      - name: Package as zip
+        run: Compress-Archive -Path dist\CoeAdvisor -DestinationPath dist\CoeAdvisor_Windows.zip
+        shell: pwsh
+
+      - name: Generate SHA-256 checksum
+        run: |
+          $hash = (Get-FileHash dist\CoeAdvisor_Windows.zip -Algorithm SHA256).Hash
+          "$hash  CoeAdvisor_Windows.zip" | Out-File dist\CoeAdvisor_Windows.zip.sha256 -Encoding ascii
+        shell: pwsh
 
       - name: Upload Windows artifact
         uses: actions/upload-artifact@v4
         with:
           name: CoeAdvisor_Windows
-          path: dist/CoeAdvisor.exe
+          path: |
+            dist/CoeAdvisor_Windows.zip
+            dist/CoeAdvisor_Windows.zip.sha256
           retention-days: 30
 
   release:
-    # Only runs on tag pushes; attaches both artifacts to the GitHub Release
     if: startsWith(github.ref, 'refs/tags/')
     needs: [build-macos, build-windows]
     runs-on: ubuntu-latest
@@ -82,5 +99,15 @@ jobs:
         with:
           files: |
             CoeAdvisor_macOS.zip
-            CoeAdvisor.exe
+            CoeAdvisor_macOS.zip.sha256
+            CoeAdvisor_Windows.zip
+            CoeAdvisor_Windows.zip.sha256
+          body: |
+            ## Installation
+
+            **macOS:** Download `CoeAdvisor_macOS.zip`, unzip, then right-click `CoeAdvisor.app` and choose **Open** (required on first launch because the app is not notarized).
+
+            **Windows:** Download `CoeAdvisor_Windows.zip`, extract the folder, and run `CoeAdvisor\CoeAdvisor.exe`. If SmartScreen shows "Windows protected your PC," click **More info** then **Run anyway**.
+
+            SHA-256 checksums are included for verification.
           generate_release_notes: true
