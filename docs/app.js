@@ -135,8 +135,10 @@ function checkSection(section, taken) {
     const excl = new Set((c.exclude_codes || []).map(normalize));
     const minLvl = c.min_level || 0;
     const minCnt = c.min_level_count || 0;
+    const levelIsFloor = minLvl && (!minCnt || minCnt >= n);
     const matching = [...taken].filter(x =>
-      !isAuxiliary(x) && (!pfxs.size || pfxs.has(prefixOf(x))) && !excl.has(x));
+      !isAuxiliary(x) && (!pfxs.size || pfxs.has(prefixOf(x))) && !excl.has(x)
+      && (!levelIsFloor || levelOf(x) >= minLvl));
     const above = minLvl ? matching.filter(x => levelOf(x) >= minLvl).length : matching.length;
     const levelOk = minCnt ? above >= minCnt : true;
     const status = (matching.length >= n && levelOk) ? COMPLETE
