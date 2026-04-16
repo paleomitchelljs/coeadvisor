@@ -90,10 +90,12 @@ h2:first-child { margin-top: 0; }
 .prog-add-btn { width: 20px; height: 20px; border-radius: 50%; border: 1px solid #cbd5e1; background: #f8fafc; color: #475569; font-size: 14px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; }
 .prog-add-btn:hover { background: #e2e8f0; }
 .prog-slots { display: flex; flex-direction: column; gap: 4px; }
-.prog-slots label { display: flex; align-items: center; gap: 4px; }
+.prog-slots label { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
 .prog-slots select { flex: 1; min-width: 0; }
 .prog-remove-btn { width: 20px; height: 20px; border-radius: 50%; border: 1px solid #e2e8f0; background: #fef2f2; color: #b91c1c; font-size: 14px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; flex-shrink: 0; }
 .prog-remove-btn:hover { background: #fecaca; }
+.conc-select-wrapper { width: 100%; margin-top: 2px; }
+.conc-select-wrapper select { width: 100%; font-size: 12px; padding: 3px 6px; border: 1px solid #cbd5e1; border-radius: 4px; color: #475569; }
 
 .pw-label { font-size: 12px; color: #64748b; margin-right: 4px; line-height: 2; }
 .pw-check { font-size: 13px; display: inline-flex; align-items: center; gap: 3px; }
@@ -196,6 +198,11 @@ h2:first-child { margin-top: 0; }
 .prog-pct { margin-left: auto; font-size: 12px; font-weight: 400; color: #64748b; }
 .prog-body { display: none; padding: 8px 12px; }
 .prog-card.open .prog-body { display: block; }
+.conc-section { border-top: 1px solid #dde3ea; margin-top: 8px; padding-top: 8px; }
+.conc-header { font-size: 13px; font-weight: 600; color: #475569; margin-bottom: 4px; }
+.conc-pct { font-weight: 400; font-size: 12px; color: #64748b; }
+.conc-note { font-size: 12px; color: #64748b; font-style: italic; margin-bottom: 4px; }
+.conc-hint { font-size: 12px; color: #94a3b8; font-style: italic; margin-top: 8px; padding-top: 6px; border-top: 1px dashed #dde3ea; }
 
 .sec-row { padding: 3px 0; }
 .sec-label { font-weight: 600; font-size: 13px; }
