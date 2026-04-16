@@ -1,0 +1,76 @@
+{
+  "id": "nursing_standard",
+  "label": "Nursing (BSN)",
+  "semesters": {
+    "1": {
+      "essential": [
+        "FYS",
+        "NUR-100",
+        "BIO-100"
+      ],
+      "suggested": [
+        "PSY-100",
+        "SOC-107",
+        "CHM-103",
+        "CHM-103L"
+      ]
+    },
+    "2": {
+      "essential": [
+        "NUR-100",
+        "CHM-111",
+        "CHM-111L"
+      ],
+      "suggested": [
+        "PSY-100",
+        "SOC-107",
+        "STA-100",
+        "STA-110"
+      ]
+    },
+    "3": {
+      "essential": [
+        "NUR-200",
+        "BIO-215",
+        "BIO-215L",
+        "STA-100",
+        "STA-110"
+      ],
+      "suggested": [
+        "PSY-100",
+        "SOC-107"
+      ]
+    },
+    "4": {
+      "essential": [
+        "NUR-200",
+        "BIO-225",
+        "BIO-195",
+        "BIO-195L"
+      ],
+      "suggested": [
+        "PSY-100",
+        "SOC-107",
+        "STA-100",
+        "STA-110"
+      ]
+    },
+    "5": {
+      "essential": [],
+      "suggested": []
+    },
+    "6": {
+      "essential": [],
+      "suggested": []
+    },
+    "7": {
+      "essential": [],
+      "suggested": []
+    },
+    "8": {
+      "essential": [],
+      "suggested": []
+    }
+  },
+  "general_notes": "NUR-100/200 are 0.2cc courses taken fall and spring. Apply to the nursing program in December of sophomore year (NUR-200). Requires GPA ≥ 2.7 and 16 cc completed by end of sophomore year. All Gen Eds (except WE) must be complete by end of sophomore year. Students will receive a Nursing Advisor at the start of freshman year."
+}

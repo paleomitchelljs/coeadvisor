@@ -1,0 +1,58 @@
+{
+  "id": "health_society_studies_standard",
+  "label": "Health & Society Studies (minor)",
+  "semesters": {
+    "1": {
+      "essential": [],
+      "suggested": [
+        "BIO-103",
+        "BIO-120",
+        "BIO-155",
+        "SOC-107",
+        "ANT-116",
+        "KIN-115",
+        "KIN-125",
+        "KIN-155",
+        "PHL-128"
+      ]
+    },
+    "2": {
+      "essential": [],
+      "suggested": [
+        "100-level elective from HSS list",
+        "200+ level elective from HSS list"
+      ]
+    },
+    "3": {
+      "essential": [],
+      "suggested": [
+        "PHL-165 Biomedical Ethics",
+        "200+ level HSS elective"
+      ]
+    },
+    "4": {
+      "essential": [],
+      "suggested": [
+        "PHL-165 (if not taken)",
+        "200+ level HSS elective"
+      ]
+    },
+    "5": {
+      "essential": [],
+      "suggested": []
+    },
+    "6": {
+      "essential": [],
+      "suggested": []
+    },
+    "7": {
+      "essential": [],
+      "suggested": []
+    },
+    "8": {
+      "essential": [],
+      "suggested": []
+    }
+  },
+  "general_notes": "Required: PHL-165, SOC-107, one bio course, and three electives from the approved list. Only one 100-level elective allowed."
+}

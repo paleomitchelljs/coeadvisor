@@ -1,0 +1,19 @@
+{
+  "id": "physics",
+  "major_code": "PHY",
+  "display_name": "Physics",
+  "match_programs": [
+    "physics_major_2019",
+    "physics_major_2025-26"
+  ],
+  "default_plan": "standard",
+  "plans": [
+    {
+      "id": "standard",
+      "file": "plan_standard.json",
+      "label": "Physics",
+      "default": true
+    }
+  ],
+  "notes": "notes.json"
+}

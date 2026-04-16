@@ -1,0 +1,45 @@
+{
+  "id": "environmental_studies_standard",
+  "label": "Environmental Studies (collateral)",
+  "semesters": {
+    "1": {
+      "essential": [],
+      "suggested": [
+        "BIO-105",
+        "ECO-175"
+      ]
+    },
+    "2": {
+      "essential": [
+        "BIO-155",
+        "BIO-155L"
+      ],
+      "suggested": []
+    },
+    "3": {
+      "essential": [],
+      "suggested": []
+    },
+    "4": {
+      "essential": [],
+      "suggested": []
+    },
+    "5": {
+      "essential": [],
+      "suggested": []
+    },
+    "6": {
+      "essential": [],
+      "suggested": []
+    },
+    "7": {
+      "essential": [],
+      "suggested": []
+    },
+    "8": {
+      "essential": [],
+      "suggested": []
+    }
+  },
+  "general_notes": "Collateral major — students typically do not start it in first term. Contact program coordinator Dr. Ellis during the first year. Biology majors must take MTH-135 for this collateral. Chemistry majors should also take BIO-155 in spring of Year 1 (prerequisite for BIO-295)."
+}

@@ -1,0 +1,52 @@
+{
+  "id": "communication_studies_standard",
+  "label": "Communication Studies",
+  "semesters": {
+    "1": {
+      "essential": [],
+      "suggested": [
+        "COM-101",
+        "COM-125",
+        "100-level COM"
+      ]
+    },
+    "2": {
+      "essential": [],
+      "suggested": [
+        "COM-101 or COM-125 (if not taken)",
+        "100-level COM"
+      ]
+    },
+    "3": {
+      "essential": [],
+      "suggested": [
+        "COM-281 (if offered)",
+        "COM courses up to 250"
+      ]
+    },
+    "4": {
+      "essential": [],
+      "suggested": [
+        "COM-281 (if offered)",
+        "COM courses up to 250"
+      ]
+    },
+    "5": {
+      "essential": [],
+      "suggested": []
+    },
+    "6": {
+      "essential": [],
+      "suggested": []
+    },
+    "7": {
+      "essential": [],
+      "suggested": []
+    },
+    "8": {
+      "essential": [],
+      "suggested": []
+    }
+  },
+  "general_notes": "The COM major is flexible. 100-level for first-year students, 200-level for sophomores. Students may be ready for 300-level in sophomore year if they have two COM courses beyond COM-101."
+}

@@ -1,0 +1,21 @@
+{
+  "id": "economics",
+  "major_code": "ECO",
+  "display_name": "Economics / International Economics",
+  "match_programs": [
+    "economics_major_2022",
+    "economics_major_2025-26",
+    "international_economics_major_2018",
+    "international_economics_major_2025-26"
+  ],
+  "default_plan": "standard",
+  "plans": [
+    {
+      "id": "standard",
+      "file": "plan_standard.json",
+      "label": "Economics / International Economics",
+      "default": true
+    }
+  ],
+  "notes": "notes.json"
+}

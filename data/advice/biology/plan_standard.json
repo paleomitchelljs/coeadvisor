@@ -1,0 +1,57 @@
+{
+  "id": "biology_standard",
+  "label": "Biology — standard track",
+  "semesters": {
+    "1": {
+      "essential": [
+        "BIO-155",
+        "BIO-155L"
+      ],
+      "suggested": []
+    },
+    "2": {
+      "essential": [
+        "BIO-145",
+        "BIO-145L"
+      ],
+      "suggested": []
+    },
+    "3": {
+      "essential": [
+        "BIO-202"
+      ],
+      "suggested": [
+        "CHM-121",
+        "CHM-121L",
+        "MTH-135"
+      ]
+    },
+    "4": {
+      "essential": [
+        "BIO-235",
+        "BIO-235L"
+      ],
+      "suggested": [
+        "CHM-122",
+        "CHM-122L"
+      ]
+    },
+    "5": {
+      "essential": [],
+      "suggested": []
+    },
+    "6": {
+      "essential": [],
+      "suggested": []
+    },
+    "7": {
+      "essential": [],
+      "suggested": []
+    },
+    "8": {
+      "essential": [],
+      "suggested": []
+    }
+  },
+  "general_notes": "BIO-235 is the prime prerequisite for most upper-level biology electives and must be completed by end of sophomore year. MTH-135 or STA-100/110 can be taken any semester during the first two years. 11 courses needed for the major."
+}

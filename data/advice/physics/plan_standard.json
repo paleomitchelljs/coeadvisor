@@ -1,0 +1,63 @@
+{
+  "id": "physics_standard",
+  "label": "Physics",
+  "semesters": {
+    "1": {
+      "essential": [
+        "PHY-185",
+        "PHY-185L"
+      ],
+      "suggested": [
+        "ENR-155 (MTH-155, if proficient in Calculus)",
+        "MTH-135"
+      ]
+    },
+    "2": {
+      "essential": [
+        "PHY-195",
+        "PHY-195L"
+      ],
+      "suggested": [
+        "ENR-145",
+        "MTH-145"
+      ]
+    },
+    "3": {
+      "essential": [
+        "PHY-235",
+        "PHY-236",
+        "PHY-231"
+      ],
+      "suggested": [
+        "CHM-122",
+        "CHM-122L"
+      ]
+    },
+    "4": {
+      "essential": [
+        "PHY-265",
+        "PHY-246"
+      ],
+      "suggested": [
+        "Additional physics or engineering course"
+      ]
+    },
+    "5": {
+      "essential": [],
+      "suggested": []
+    },
+    "6": {
+      "essential": [],
+      "suggested": []
+    },
+    "7": {
+      "essential": [],
+      "suggested": []
+    },
+    "8": {
+      "essential": [],
+      "suggested": []
+    }
+  },
+  "general_notes": "Participate in May Term Advanced Laboratory and summer research between Years 1 and 2. Physics uses calculus-based General Physics I — it is exceedingly rare to skip this even with AP credit."
+}

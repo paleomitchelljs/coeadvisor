@@ -1,0 +1,56 @@
+{
+  "id": "biology_typical",
+  "label": "Biology — typical track",
+  "semesters": {
+    "1": {
+      "essential": [
+        "BIO-120"
+      ],
+      "suggested": []
+    },
+    "2": {
+      "essential": [
+        "BIO-145",
+        "BIO-145L"
+      ],
+      "suggested": []
+    },
+    "3": {
+      "essential": [
+        "BIO-155",
+        "BIO-155L"
+      ],
+      "suggested": [
+        "CHM-121",
+        "CHM-121L"
+      ]
+    },
+    "4": {
+      "essential": [
+        "BIO-235",
+        "BIO-235L"
+      ],
+      "suggested": [
+        "CHM-122",
+        "CHM-122L"
+      ]
+    },
+    "5": {
+      "essential": [],
+      "suggested": []
+    },
+    "6": {
+      "essential": [],
+      "suggested": []
+    },
+    "7": {
+      "essential": [],
+      "suggested": []
+    },
+    "8": {
+      "essential": [],
+      "suggested": []
+    }
+  },
+  "general_notes": "BIO-235 must be completed by end of sophomore year. Progress through CHM-121/122 as quickly as possible."
+}

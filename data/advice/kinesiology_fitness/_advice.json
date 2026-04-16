@@ -1,0 +1,18 @@
+{
+  "id": "kinesiology_fitness",
+  "major_code": "KIN",
+  "display_name": "Kinesiology",
+  "match_programs": [
+    "kinesiology_fitness_major_2024",
+    "kinesiology_fitness_major_2025-26"
+  ],
+  "default_plan": "standard",
+  "plans": [
+    {
+      "id": "standard",
+      "file": "plan_standard.json",
+      "label": "Kinesiology — Fitness Development",
+      "default": true
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "social_criminal_justice",
+  "major_code": "SCJ",
+  "display_name": "Social & Criminal Justice",
+  "match_programs": [
+    "social_criminal_justice_major_2025",
+    "social_criminal_justice_major_2025-26"
+  ],
+  "default_plan": "standard",
+  "plans": [
+    {
+      "id": "standard",
+      "file": "plan_standard.json",
+      "label": "Social & Criminal Justice",
+      "default": true
+    }
+  ],
+  "notes": "notes.json"
+}

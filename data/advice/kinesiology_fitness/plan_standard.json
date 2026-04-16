@@ -1,0 +1,62 @@
+{
+  "id": "kinesiology_fitness_standard",
+  "label": "Kinesiology — Fitness Development",
+  "semesters": {
+    "1": {
+      "essential": [
+        "KIN-105"
+      ],
+      "suggested": [
+        "KIN-115",
+        "KIN-125",
+        "KIN-135",
+        "KIN-155"
+      ]
+    },
+    "2": {
+      "essential": [
+        "BIO-155"
+      ],
+      "suggested": [
+        "KIN-115",
+        "KIN-125",
+        "KIN-135",
+        "KIN-155"
+      ]
+    },
+    "3": {
+      "essential": [
+        "KIN-175"
+      ],
+      "suggested": [
+        "KIN-115",
+        "KIN-125",
+        "KIN-135",
+        "KIN-155"
+      ]
+    },
+    "4": {
+      "essential": [
+        "BIO-103"
+      ],
+      "suggested": []
+    },
+    "5": {
+      "essential": [],
+      "suggested": []
+    },
+    "6": {
+      "essential": [],
+      "suggested": []
+    },
+    "7": {
+      "essential": [],
+      "suggested": []
+    },
+    "8": {
+      "essential": [],
+      "suggested": []
+    }
+  },
+  "general_notes": ""
+}

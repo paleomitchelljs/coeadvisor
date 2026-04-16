@@ -1,0 +1,19 @@
+{
+  "id": "communication_studies",
+  "major_code": "COM",
+  "display_name": "Communication Studies",
+  "match_programs": [
+    "communication_studies_major_2024",
+    "communication_studies_major_2025-26"
+  ],
+  "default_plan": "standard",
+  "plans": [
+    {
+      "id": "standard",
+      "file": "plan_standard.json",
+      "label": "Communication Studies",
+      "default": true
+    }
+  ],
+  "notes": "notes.json"
+}

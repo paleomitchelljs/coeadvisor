@@ -1,0 +1,18 @@
+{
+  "id": "french_francophone",
+  "major_code": "FRE",
+  "display_name": "Interdisciplinary French & Francophone Studies",
+  "match_programs": [
+    "french_francophone_major_2019"
+  ],
+  "default_plan": "standard",
+  "plans": [
+    {
+      "id": "standard",
+      "file": "plan_standard.json",
+      "label": "Interdisciplinary French & Francophone Studies",
+      "default": true
+    }
+  ],
+  "notes": "notes.json"
+}

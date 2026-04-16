@@ -1,0 +1,53 @@
+{
+  "id": "studio_art_standard",
+  "label": "Studio Art",
+  "semesters": {
+    "1": {
+      "essential": [],
+      "suggested": [
+        "100-level ART",
+        "ARH-128"
+      ]
+    },
+    "2": {
+      "essential": [],
+      "suggested": [
+        "100-level ART",
+        "ARH-128"
+      ]
+    },
+    "3": {
+      "essential": [
+        "100-level ART"
+      ],
+      "suggested": [
+        "200-level ART"
+      ]
+    },
+    "4": {
+      "essential": [
+        "300-level ART"
+      ],
+      "suggested": [
+        "200-level ART"
+      ]
+    },
+    "5": {
+      "essential": [],
+      "suggested": []
+    },
+    "6": {
+      "essential": [],
+      "suggested": []
+    },
+    "7": {
+      "essential": [],
+      "suggested": []
+    },
+    "8": {
+      "essential": [],
+      "suggested": []
+    }
+  },
+  "general_notes": "For the art major, students need to complete two 100, two 200, two 300, and two 400-level ART courses and three ARH courses. Meet with a faculty member in Art and Visual Studies to discuss course selection."
+}

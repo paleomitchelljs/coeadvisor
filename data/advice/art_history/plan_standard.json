@@ -1,0 +1,47 @@
+{
+  "id": "art_history_standard",
+  "label": "Art History (minor)",
+  "semesters": {
+    "1": {
+      "essential": [],
+      "suggested": [
+        "ARH-128"
+      ]
+    },
+    "2": {
+      "essential": [
+        "ARH-128"
+      ],
+      "suggested": []
+    },
+    "3": {
+      "essential": [
+        "200-level ARH"
+      ],
+      "suggested": []
+    },
+    "4": {
+      "essential": [
+        "200-level ARH"
+      ],
+      "suggested": []
+    },
+    "5": {
+      "essential": [],
+      "suggested": []
+    },
+    "6": {
+      "essential": [],
+      "suggested": []
+    },
+    "7": {
+      "essential": [],
+      "suggested": []
+    },
+    "8": {
+      "essential": [],
+      "suggested": []
+    }
+  },
+  "general_notes": "Meet with a faculty member in the Art and Visual Studies Department to discuss appropriate courses."
+}

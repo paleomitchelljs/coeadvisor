@@ -1,0 +1,19 @@
+{
+  "id": "creative_writing",
+  "major_code": "CRW",
+  "display_name": "Creative Writing",
+  "match_programs": [
+    "creative_writing_major_2022",
+    "creative_writing_major_2025-26"
+  ],
+  "default_plan": "standard",
+  "plans": [
+    {
+      "id": "standard",
+      "file": "plan_standard.json",
+      "label": "Creative Writing",
+      "default": true
+    }
+  ],
+  "notes": "notes.json"
+}

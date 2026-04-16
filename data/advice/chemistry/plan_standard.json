@@ -1,0 +1,62 @@
+{
+  "id": "chemistry_standard",
+  "label": "Chemistry",
+  "semesters": {
+    "1": {
+      "essential": [
+        "CHM-121",
+        "CHM-121L",
+        "MTH-135"
+      ],
+      "suggested": [
+        "MTH-145"
+      ]
+    },
+    "2": {
+      "essential": [
+        "CHM-122",
+        "CHM-122L"
+      ],
+      "suggested": [
+        "MTH-145"
+      ]
+    },
+    "3": {
+      "essential": [
+        "CHM-211",
+        "CHM-211L",
+        "CHM-221"
+      ],
+      "suggested": [
+        "PHY-185",
+        "PHY-185L"
+      ]
+    },
+    "4": {
+      "essential": [
+        "PHY-195",
+        "PHY-195L",
+        "CHM-321",
+        "CHM-322"
+      ],
+      "suggested": []
+    },
+    "5": {
+      "essential": [],
+      "suggested": []
+    },
+    "6": {
+      "essential": [],
+      "suggested": []
+    },
+    "7": {
+      "essential": [],
+      "suggested": []
+    },
+    "8": {
+      "essential": [],
+      "suggested": []
+    }
+  },
+  "general_notes": "Students earning 4-5 on AP Chemistry may start with CHM-122/122L in Year 1 Fall. CHM-221 offered fall only; CHM-321 spring only. ACS certification requires CHM-121/121L and MTH-135 in fall. Complete MTH-145 by end of sophomore year."
+}

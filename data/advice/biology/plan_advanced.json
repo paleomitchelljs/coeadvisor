@@ -1,0 +1,59 @@
+{
+  "id": "biology_advanced",
+  "label": "Biology — advanced track",
+  "semesters": {
+    "1": {
+      "essential": [
+        "BIO-155",
+        "BIO-155L",
+        "CHM-121",
+        "CHM-121L"
+      ],
+      "suggested": []
+    },
+    "2": {
+      "essential": [
+        "BIO-145",
+        "BIO-145L",
+        "CHM-122",
+        "CHM-122L"
+      ],
+      "suggested": []
+    },
+    "3": {
+      "essential": [
+        "BIO-202",
+        "CHM-221"
+      ],
+      "suggested": [
+        "MTH-135",
+        "STA-100"
+      ]
+    },
+    "4": {
+      "essential": [
+        "BIO-235",
+        "BIO-235L",
+        "CHM-321"
+      ],
+      "suggested": []
+    },
+    "5": {
+      "essential": [],
+      "suggested": []
+    },
+    "6": {
+      "essential": [],
+      "suggested": []
+    },
+    "7": {
+      "essential": [],
+      "suggested": []
+    },
+    "8": {
+      "essential": [],
+      "suggested": []
+    }
+  },
+  "general_notes": "CHM-121 must begin first semester — the chemistry sequence (121 → 122 → 221 → 321) must finish before MCAT prep junior year. BIO-235 must be completed by end of sophomore year. 11 courses needed for the major."
+}

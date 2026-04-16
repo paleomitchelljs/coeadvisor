@@ -1,0 +1,19 @@
+{
+  "id": "mathematics",
+  "major_code": "MTH",
+  "display_name": "Mathematics",
+  "match_programs": [
+    "mathematics_major_2018",
+    "mathematics_major_2025-26"
+  ],
+  "default_plan": "standard",
+  "plans": [
+    {
+      "id": "standard",
+      "file": "plan_standard.json",
+      "label": "Mathematics",
+      "default": true
+    }
+  ],
+  "notes": "notes.json"
+}

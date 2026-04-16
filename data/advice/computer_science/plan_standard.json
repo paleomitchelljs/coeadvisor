@@ -1,0 +1,58 @@
+{
+  "id": "computer_science_standard",
+  "label": "Computer Science",
+  "semesters": {
+    "1": {
+      "essential": [
+        "CS-125"
+      ],
+      "suggested": [
+        "CS-135",
+        "MTH-135"
+      ]
+    },
+    "2": {
+      "essential": [
+        "CS-135"
+      ],
+      "suggested": [
+        "CS-235"
+      ]
+    },
+    "3": {
+      "essential": [
+        "CS-215",
+        "CS-220"
+      ],
+      "suggested": [
+        "DS-230"
+      ]
+    },
+    "4": {
+      "essential": [
+        "CS-245",
+        "MTH-215"
+      ],
+      "suggested": [
+        "CS-235"
+      ]
+    },
+    "5": {
+      "essential": [],
+      "suggested": []
+    },
+    "6": {
+      "essential": [],
+      "suggested": []
+    },
+    "7": {
+      "essential": [],
+      "suggested": []
+    },
+    "8": {
+      "essential": [],
+      "suggested": []
+    }
+  },
+  "general_notes": "Students earning 4-5 on AP Computer Science A earn credit for CS-125. Students with programming experience should consult faculty about placement options."
+}

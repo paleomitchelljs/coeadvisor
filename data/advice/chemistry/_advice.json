@@ -1,0 +1,20 @@
+{
+  "id": "chemistry",
+  "major_code": "CHM",
+  "display_name": "Chemistry",
+  "match_programs": [
+    "chemistry_major_2026",
+    "chemistry_major_2025-26",
+    "chemistry_acs_major_2025-26"
+  ],
+  "default_plan": "standard",
+  "plans": [
+    {
+      "id": "standard",
+      "file": "plan_standard.json",
+      "label": "Chemistry",
+      "default": true
+    }
+  ],
+  "notes": "notes.json"
+}

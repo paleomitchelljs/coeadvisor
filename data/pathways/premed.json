@@ -3,7 +3,7 @@
   "name": "Pre-Medicine (MD/DO)",
   "pathway_type": "preprofessional",
   "source": "Storer's List of Required Courses for Premedical Study (2020)",
-  "related_programs": ["biology_major_2025", "chemistry_major_2026"],
+  "related_major_codes": ["BIO", "CHM"],
   "timing_note": "CHM-121/121L must start first semester freshman year for on-time completion of the chemistry sequence before MCAT.",
   "sections": [
     {

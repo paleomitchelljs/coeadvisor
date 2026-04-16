@@ -1,0 +1,69 @@
+{
+  "id": "music_standard",
+  "label": "Music (Bachelor of Arts)",
+  "semesters": {
+    "1": {
+      "essential": [
+        "MU-101",
+        "MU-107",
+        "Ensemble (MUA-100/101/104/105)",
+        "Music lessons"
+      ],
+      "suggested": [
+        "Additional ensembles",
+        "EDU-105 (Music Education majors)"
+      ]
+    },
+    "2": {
+      "essential": [
+        "MU-201",
+        "Ensemble",
+        "Music lessons"
+      ],
+      "suggested": [
+        "MU-284 (Topics: Rock & Roll or Taylor Swift)",
+        "EDU-195",
+        "EDU-117"
+      ]
+    },
+    "3": {
+      "essential": [
+        "Ensemble"
+      ],
+      "suggested": [
+        "Music Education: MU-361 or EDU-187",
+        "Additional ensembles",
+        "Additional lessons"
+      ]
+    },
+    "4": {
+      "essential": [
+        "Ensemble",
+        "Music lessons"
+      ],
+      "suggested": [
+        "MU-166",
+        "MU-108",
+        "EDU-219",
+        "May Term: Jazz History"
+      ]
+    },
+    "5": {
+      "essential": [],
+      "suggested": []
+    },
+    "6": {
+      "essential": [],
+      "suggested": []
+    },
+    "7": {
+      "essential": [],
+      "suggested": []
+    },
+    "8": {
+      "essential": [],
+      "suggested": []
+    }
+  },
+  "general_notes": "Contact Dr. Carson or the advising director with questions. Music Education majors should take EDU-105 and EDU-195 early."
+}

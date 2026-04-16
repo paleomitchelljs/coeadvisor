@@ -1,0 +1,60 @@
+{
+  "id": "economics_standard",
+  "label": "Economics / International Economics",
+  "semesters": {
+    "1": {
+      "essential": [
+        "ECO-175"
+      ],
+      "suggested": [
+        "Foreign language (Int'l Econ)",
+        "Calculus (grad school track)"
+      ]
+    },
+    "2": {
+      "essential": [
+        "ECO-215"
+      ],
+      "suggested": [
+        "Foreign language (Int'l Econ)",
+        "Calculus (grad school track)"
+      ]
+    },
+    "3": {
+      "essential": [
+        "200 or 300-level ECO"
+      ],
+      "suggested": [
+        "ECO-175 (if not taken)",
+        "Foreign language",
+        "Second 200/300-level ECO"
+      ]
+    },
+    "4": {
+      "essential": [
+        "ECO-315"
+      ],
+      "suggested": [
+        "200 or 300-level ECO",
+        "Foreign language (Int'l Econ)"
+      ]
+    },
+    "5": {
+      "essential": [],
+      "suggested": []
+    },
+    "6": {
+      "essential": [],
+      "suggested": []
+    },
+    "7": {
+      "essential": [],
+      "suggested": []
+    },
+    "8": {
+      "essential": [],
+      "suggested": []
+    }
+  },
+  "general_notes": "Best to complete ECO-175 and ECO-215 in Year 1. Students considering a graduate degree should begin calculus in Year 1 or 2. Many economics majors also complete a math major or minor."
+}

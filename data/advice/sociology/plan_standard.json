@@ -1,0 +1,52 @@
+{
+  "id": "sociology_standard",
+  "label": "Sociology",
+  "semesters": {
+    "1": {
+      "essential": [],
+      "suggested": [
+        "SOC-107"
+      ]
+    },
+    "2": {
+      "essential": [],
+      "suggested": [
+        "SOC-107 (if not taken)",
+        "200-level SOC"
+      ]
+    },
+    "3": {
+      "essential": [],
+      "suggested": [
+        "SOC-107 (if not taken)",
+        "SOC-235",
+        "200-level SOC"
+      ]
+    },
+    "4": {
+      "essential": [
+        "SOC-107 (if not taken)"
+      ],
+      "suggested": [
+        "200 or 300-level SOC"
+      ]
+    },
+    "5": {
+      "essential": [],
+      "suggested": []
+    },
+    "6": {
+      "essential": [],
+      "suggested": []
+    },
+    "7": {
+      "essential": [],
+      "suggested": []
+    },
+    "8": {
+      "essential": [],
+      "suggested": []
+    }
+  },
+  "general_notes": "10 courses needed. SOC-107 (or transfer credit/instructor consent) is a prerequisite for all other SOC courses. Students considering a 300-level course before spring sophomore year should seek departmental feedback."
+}

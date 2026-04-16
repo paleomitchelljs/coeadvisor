@@ -1,0 +1,19 @@
+{
+  "id": "art_history",
+  "major_code": "ARH",
+  "display_name": "Art History",
+  "match_programs": [
+    "art_history_minor_2026",
+    "art_minor_2025-26"
+  ],
+  "default_plan": "standard",
+  "plans": [
+    {
+      "id": "standard",
+      "file": "plan_standard.json",
+      "label": "Art History (minor)",
+      "default": true
+    }
+  ],
+  "notes": "notes.json"
+}

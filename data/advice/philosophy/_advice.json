@@ -1,0 +1,19 @@
+{
+  "id": "philosophy",
+  "major_code": "PHL",
+  "display_name": "Philosophy",
+  "match_programs": [
+    "philosophy_major_2025",
+    "philosophy_major_2025-26"
+  ],
+  "default_plan": "standard",
+  "plans": [
+    {
+      "id": "standard",
+      "file": "plan_standard.json",
+      "label": "Philosophy",
+      "default": true
+    }
+  ],
+  "notes": "notes.json"
+}

@@ -1,0 +1,53 @@
+{
+  "id": "elementary_education_standard",
+  "label": "Elementary Education",
+  "semesters": {
+    "1": {
+      "essential": [
+        "EDU-105",
+        "EDU-117"
+      ],
+      "suggested": []
+    },
+    "2": {
+      "essential": [
+        "EDU-105",
+        "EDU-117"
+      ],
+      "suggested": []
+    },
+    "3": {
+      "essential": [
+        "EDU-215"
+      ],
+      "suggested": [
+        "EDU-219"
+      ]
+    },
+    "4": {
+      "essential": [
+        "EDU-241"
+      ],
+      "suggested": [
+        "EDU-187"
+      ]
+    },
+    "5": {
+      "essential": [],
+      "suggested": []
+    },
+    "6": {
+      "essential": [],
+      "suggested": []
+    },
+    "7": {
+      "essential": [],
+      "suggested": []
+    },
+    "8": {
+      "essential": [],
+      "suggested": []
+    }
+  },
+  "general_notes": "Apply to Coe Teacher Education after any two core courses. All majors need at least one teaching endorsement area — nearly all choose Reading (begins with EDU-241 in Y2). All majors must take an American History class and a science with a lab."
+}

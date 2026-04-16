@@ -1,0 +1,61 @@
+{
+  "id": "organizational_science_standard",
+  "label": "Organizational Science (collateral)",
+  "semesters": {
+    "1": {
+      "essential": [
+        "PSY-100"
+      ],
+      "suggested": [
+        "PSY-245",
+        "BUS-300"
+      ]
+    },
+    "2": {
+      "essential": [
+        "PSY-200"
+      ],
+      "suggested": [
+        "PSY-255",
+        "BUS-315"
+      ]
+    },
+    "3": {
+      "essential": [
+        "PSY-245",
+        "PSY-255"
+      ],
+      "suggested": [
+        "BUS-250",
+        "BUS-375"
+      ]
+    },
+    "4": {
+      "essential": [
+        "BUS-300"
+      ],
+      "suggested": [
+        "PSY-355",
+        "PSY-355L",
+        "BUS-387"
+      ]
+    },
+    "5": {
+      "essential": [],
+      "suggested": []
+    },
+    "6": {
+      "essential": [],
+      "suggested": []
+    },
+    "7": {
+      "essential": [],
+      "suggested": []
+    },
+    "8": {
+      "essential": [],
+      "suggested": []
+    }
+  },
+  "general_notes": "Concurrent completion of the Psychology major is required. See also the Psychology first-two-years plan."
+}

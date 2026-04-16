@@ -1,0 +1,19 @@
+{
+  "id": "business_admin",
+  "major_code": "BUS",
+  "display_name": "Business Administration",
+  "match_programs": [
+    "business_admin_major_2018",
+    "business_admin_major_2025-26"
+  ],
+  "default_plan": "standard",
+  "plans": [
+    {
+      "id": "standard",
+      "file": "plan_standard.json",
+      "label": "Business Administration",
+      "default": true
+    }
+  ],
+  "notes": "notes.json"
+}

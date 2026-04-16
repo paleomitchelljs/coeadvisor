@@ -1,0 +1,19 @@
+{
+  "id": "music",
+  "major_code": "MU",
+  "display_name": "Music",
+  "match_programs": [
+    "music_ba_major_2019",
+    "music_major_2025-26"
+  ],
+  "default_plan": "standard",
+  "plans": [
+    {
+      "id": "standard",
+      "file": "plan_standard.json",
+      "label": "Music (Bachelor of Arts)",
+      "default": true
+    }
+  ],
+  "notes": "notes.json"
+}
