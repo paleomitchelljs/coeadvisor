@@ -4,23 +4,40 @@
   "note": "Each entry's match_major_codes is compared against selected programs' major_code field. match_program_ids allows finer-grained matching when two programs share a major_code (e.g., two KIN programs). Strings in essential/suggested that match PREFIX-NUM are checked against taken courses; other strings are shown as descriptive text.",
   "entries": [
     {
-      "id": "biology_well_prepared",
-      "label": "Biology — well-prepared track",
-      "variant_note": "Students with strong high school science background / ACT ≥ 25. Pre-med students who do NOT want a gap year should use this track.",
+      "id": "biology_standard",
+      "label": "Biology — standard track",
+      "default": true,
+      "variant_note": "Default track for Biology majors. CHM sequence begins sophomore year unless pre-med.",
       "match_major_codes": ["BIO"],
       "match_program_ids": ["biology_major_2025"],
       "semesters": {
-        "y1_fall":   {"essential": ["BIO-155", "BIO-155L"], "suggested": ["CHM-121", "CHM-121L"]},
-        "y1_spring": {"essential": ["BIO-145", "BIO-145L"], "suggested": ["CHM-122", "CHM-122L"]},
-        "y2_fall":   {"essential": ["BIO-202", "CHM-121", "CHM-121L"], "suggested": ["MTH-135", "STA-100", "CHM-221"]},
-        "y2_spring": {"essential": ["BIO-235", "BIO-235L", "CHM-122", "CHM-122L"], "suggested": ["CHM-321"]}
+        "y1_fall":   {"essential": ["BIO-155", "BIO-155L"], "suggested": []},
+        "y1_spring": {"essential": ["BIO-145", "BIO-145L"], "suggested": []},
+        "y2_fall":   {"essential": ["BIO-202"], "suggested": ["CHM-121", "CHM-121L", "MTH-135"]},
+        "y2_spring": {"essential": ["BIO-235", "BIO-235L"], "suggested": ["CHM-122", "CHM-122L"]}
       },
       "notes": "BIO-235 is the prime prerequisite for most upper-level biology electives and must be completed by end of sophomore year. MTH-135 or STA-100/110 can be taken any semester during the first two years. 11 courses needed for the major."
     },
     {
-      "id": "biology_less_prepared",
-      "label": "Biology — less-prepared track",
-      "variant_note": "Students with limited high school science background. Fall 2026: use BIO-100 instead of BIO-120 (BIO-120 not offered).",
+      "id": "biology_advanced",
+      "label": "Biology — advanced track",
+      "conditions": {"pathways": ["premed"]},
+      "variant_note": "For pre-med students and those with strong high school science background (ACT ≥ 25). CHM sequence begins immediately.",
+      "match_major_codes": ["BIO"],
+      "match_program_ids": ["biology_major_2025"],
+      "semesters": {
+        "y1_fall":   {"essential": ["BIO-155", "BIO-155L", "CHM-121", "CHM-121L"], "suggested": []},
+        "y1_spring": {"essential": ["BIO-145", "BIO-145L", "CHM-122", "CHM-122L"], "suggested": []},
+        "y2_fall":   {"essential": ["BIO-202", "CHM-221"], "suggested": ["MTH-135", "STA-100"]},
+        "y2_spring": {"essential": ["BIO-235", "BIO-235L", "CHM-321"], "suggested": []}
+      },
+      "notes": "CHM-121 must begin first semester — the chemistry sequence (121 → 122 → 221 → 321) must finish before MCAT prep junior year. BIO-235 must be completed by end of sophomore year. 11 courses needed for the major."
+    },
+    {
+      "id": "biology_typical",
+      "label": "Biology — typical track",
+      "conditions": {"intake_only": true},
+      "variant_note": "For students with limited high school science background. Fall 2026: use BIO-100 instead of BIO-120 (BIO-120 not offered).",
       "match_major_codes": ["BIO"],
       "match_program_ids": ["biology_major_2025"],
       "semesters": {
