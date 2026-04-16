@@ -5,32 +5,22 @@
     "1": {
       "essential": [],
       "suggested": [
-        "100-level ART",
         "ARH-128"
       ]
     },
     "2": {
       "essential": [],
       "suggested": [
-        "100-level ART",
         "ARH-128"
       ]
     },
     "3": {
-      "essential": [
-        "100-level ART"
-      ],
-      "suggested": [
-        "200-level ART"
-      ]
+      "essential": [],
+      "suggested": []
     },
     "4": {
-      "essential": [
-        "300-level ART"
-      ],
-      "suggested": [
-        "200-level ART"
-      ]
+      "essential": [],
+      "suggested": []
     },
     "5": {
       "essential": [],

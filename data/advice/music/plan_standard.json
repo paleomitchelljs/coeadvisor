@@ -6,46 +6,38 @@
       "essential": [
         "MU-101",
         "MU-107",
-        "Ensemble (MUA-100/101/104/105)",
-        "Music lessons"
+        "MUA-100",
+        "MUA-101",
+        "MUA-104",
+        "MUA-105"
       ],
       "suggested": [
-        "Additional ensembles",
-        "EDU-105 (Music Education majors)"
+        "EDU-105"
       ]
     },
     "2": {
       "essential": [
-        "MU-201",
-        "Ensemble",
-        "Music lessons"
+        "MU-201"
       ],
       "suggested": [
-        "MU-284 (Topics: Rock & Roll or Taylor Swift)",
+        "MU-284",
         "EDU-195",
         "EDU-117"
       ]
     },
     "3": {
-      "essential": [
-        "Ensemble"
-      ],
+      "essential": [],
       "suggested": [
-        "Music Education: MU-361 or EDU-187",
-        "Additional ensembles",
-        "Additional lessons"
+        "MU-361",
+        "EDU-187"
       ]
     },
     "4": {
-      "essential": [
-        "Ensemble",
-        "Music lessons"
-      ],
+      "essential": [],
       "suggested": [
         "MU-166",
         "MU-108",
-        "EDU-219",
-        "May Term: Jazz History"
+        "EDU-219"
       ]
     },
     "5": {

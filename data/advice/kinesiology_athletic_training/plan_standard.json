@@ -5,7 +5,7 @@
     "1": {
       "essential": [
         "KIN-105",
-        "BIO-155 (if ready)"
+        "BIO-155"
       ],
       "suggested": [
         "KIN-115"
@@ -13,7 +13,7 @@
     },
     "2": {
       "essential": [
-        "KIN-115 (if not taken)"
+        "KIN-115"
       ],
       "suggested": []
     },
@@ -28,7 +28,7 @@
     },
     "4": {
       "essential": [
-        "KIN-275 (if not taken)"
+        "KIN-275"
       ],
       "suggested": []
     },

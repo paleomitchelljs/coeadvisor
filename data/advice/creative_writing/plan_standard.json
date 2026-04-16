@@ -12,7 +12,7 @@
     "2": {
       "essential": [],
       "suggested": [
-        "CRW-125 (if not taken)",
+        "CRW-125",
         "ENG-101"
       ]
     },
@@ -20,17 +20,12 @@
       "essential": [
         "CRW-125"
       ],
-      "suggested": [
-        "Creative writing workshop",
-        "ENG 281+"
-      ]
+      "suggested": []
     },
     "4": {
-      "essential": [
-        "Creative writing workshop"
-      ],
+      "essential": [],
       "suggested": [
-        "ENG-281 or higher",
+        "ENG-281",
         "ENG-101"
       ]
     },

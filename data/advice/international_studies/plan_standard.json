@@ -3,9 +3,7 @@
   "label": "International Studies",
   "semesters": {
     "1": {
-      "essential": [
-        "Foreign language course (especially if starting new language)"
-      ],
+      "essential": [],
       "suggested": [
         "IS-116",
         "ANT-116",
@@ -13,9 +11,7 @@
       ]
     },
     "2": {
-      "essential": [
-        "Next foreign language course in sequence"
-      ],
+      "essential": [],
       "suggested": [
         "POL-258",
         "ANT-116",
@@ -24,8 +20,7 @@
     },
     "3": {
       "essential": [
-        "IS-116 (if not taken)",
-        "Next foreign language course"
+        "IS-116"
       ],
       "suggested": [
         "ANT-116",
@@ -37,8 +32,7 @@
       "suggested": [
         "POL-258",
         "ANT-116",
-        "ECO-175",
-        "Next foreign language course"
+        "ECO-175"
       ]
     },
     "5": {

@@ -6,38 +6,25 @@
       "essential": [
         "ECO-175"
       ],
-      "suggested": [
-        "Foreign language (Int'l Econ)",
-        "Calculus (grad school track)"
-      ]
+      "suggested": []
     },
     "2": {
       "essential": [
         "ECO-215"
       ],
-      "suggested": [
-        "Foreign language (Int'l Econ)",
-        "Calculus (grad school track)"
-      ]
+      "suggested": []
     },
     "3": {
-      "essential": [
-        "200 or 300-level ECO"
-      ],
+      "essential": [],
       "suggested": [
-        "ECO-175 (if not taken)",
-        "Foreign language",
-        "Second 200/300-level ECO"
+        "ECO-175"
       ]
     },
     "4": {
       "essential": [
         "ECO-315"
       ],
-      "suggested": [
-        "200 or 300-level ECO",
-        "Foreign language (Int'l Econ)"
-      ]
+      "suggested": []
     },
     "5": {
       "essential": [],

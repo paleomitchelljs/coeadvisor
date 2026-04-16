@@ -11,7 +11,7 @@
     "2": {
       "essential": [],
       "suggested": [
-        "PSY-100 (if not taken)",
+        "PSY-100",
         "PSY-200",
         "PSY-205",
         "PSY-215",
@@ -37,7 +37,7 @@
     },
     "4": {
       "essential": [
-        "PSY-100 (if not taken)"
+        "PSY-100"
       ],
       "suggested": [
         "PSY-200",

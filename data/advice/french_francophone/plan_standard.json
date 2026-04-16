@@ -3,32 +3,24 @@
   "label": "Interdisciplinary French & Francophone Studies",
   "semesters": {
     "1": {
-      "essential": [
-        "FRE course (appropriate level)"
-      ],
+      "essential": [],
       "suggested": []
     },
     "2": {
-      "essential": [
-        "Next FRE course in sequence"
-      ],
+      "essential": [],
       "suggested": []
     },
     "3": {
       "essential": [
-        "FRE-315 (if eligible)"
+        "FRE-315"
       ],
-      "suggested": [
-        "Interdisciplinary course"
-      ]
+      "suggested": []
     },
     "4": {
       "essential": [
-        "FRE course or FRE-315"
+        "FRE-315"
       ],
-      "suggested": [
-        "Interdisciplinary course"
-      ]
+      "suggested": []
     },
     "5": {
       "essential": [],
