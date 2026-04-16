@@ -1,6 +1,10 @@
 # -*- mode: python ; coding: utf-8 -*-
 # PyInstaller spec for Coe College Academic Advising Tool — Windows build
-# Build with:   pyinstaller advisor_windows.spec
+# Build with:   pyinstaller advisor_windows.spec --clean --noconfirm
+#
+# Uses onedir mode (not onefile) to reduce antivirus false positives.
+# The onefile self-extractor pattern triggers SmartScreen / heuristic scanners.
+# The CI workflow zips the output directory for distribution.
 
 import os
 from pathlib import Path
@@ -15,9 +19,7 @@ a = Analysis(
     pathex=[str(HERE)],
     binaries=[],
     datas=[
-        # Bundle the entire data/ tree so JSON and CSV files are available at runtime
         (str(HERE / 'data'), 'data'),
-        # CustomTkinter assets (themes, images) must travel with the app
         (Path(customtkinter.__file__).parent, 'customtkinter'),
     ],
     hiddenimports=[
@@ -33,6 +35,7 @@ a = Analysis(
     excludes=[
         'matplotlib', 'numpy', 'scipy', 'pandas',
         'PIL', 'cv2', 'PyQt5', 'PyQt6', 'wx',
+        'unittest', 'test', 'xmlrpc', 'pydoc',
     ],
     win_no_prefer_redirects=False,
     win_private_assemblies=False,
@@ -45,25 +48,33 @@ pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 exe = EXE(
     pyz,
     a.scripts,
-    a.binaries,   # included here (not in COLLECT) → onefile mode
-    a.datas,      # ditto
     [],
+    exclude_binaries=True,
     name='CoeAdvisor',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
     upx=False,
-    upx_exclude=[],
-    runtime_tmpdir=None,
-    console=False,        # no terminal window; GUI-only
+    console=False,
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    # Embed Windows VERSIONINFO resource (CompanyName, FileVersion, etc.)
-    # so the .exe isn't "anonymous" to SmartScreen / heuristic scanners.
-    # Bump version_info.txt alongside each release tag.
     version=str(HERE / 'version_info.txt'),
-    # No COLLECT step → PyInstaller bundles everything into a single CoeAdvisor.exe
+    # UAC manifest: request no elevation (asInvoker) to signal
+    # to SmartScreen that this is a normal user-mode app.
+    uac_admin=False,
+    uac_uiaccess=False,
+)
+
+coll = COLLECT(
+    exe,
+    a.binaries,
+    a.zipfiles,
+    a.datas,
+    strip=False,
+    upx=False,
+    upx_exclude=[],
+    name='CoeAdvisor',
 )

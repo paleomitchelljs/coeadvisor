@@ -13,7 +13,12 @@ python advisor.py
 Requires Python 3.10+ with `customtkinter` installed (`pip install customtkinter`).
 
 **Download a built release:**
-Go to the [Releases](../../releases) page and download the `.zip` (macOS) or `.exe` (Windows) for the latest version.
+Go to the [Releases](../../releases) page and download the `.zip` for the latest version.
+
+**First-launch instructions (important):**
+
+- **macOS:** Unzip and right-click `CoeAdvisor.app`, then choose **Open**. macOS will warn that the app is from an unidentified developer — click **Open** in the dialog. You only need to do this once; after that it opens normally.
+- **Windows:** Extract the `CoeAdvisor_Windows.zip` folder and run `CoeAdvisor.exe`. If SmartScreen shows "Windows protected your PC," click **More info** then **Run anyway**. This happens because the app is not commercially code-signed — it is safe to run.
 
 ---
 

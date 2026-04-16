@@ -5,8 +5,8 @@
 # ProductVersion strings together when cutting a release tag.
 VSVersionInfo(
   ffi=FixedFileInfo(
-    filevers=(1, 1, 4, 0),
-    prodvers=(1, 1, 4, 0),
+    filevers=(1, 2, 0, 0),
+    prodvers=(1, 2, 0, 0),
     mask=0x3f,
     flags=0x0,
     OS=0x40004,
@@ -21,12 +21,12 @@ VSVersionInfo(
         [
           StringStruct('CompanyName',      'Coe College'),
           StringStruct('FileDescription',  'Coe College Academic Advising Tool'),
-          StringStruct('FileVersion',      '1.1.4.0'),
+          StringStruct('FileVersion',      '1.2.0.0'),
           StringStruct('InternalName',     'CoeAdvisor'),
           StringStruct('LegalCopyright',   '\u00a9 Coe College'),
           StringStruct('OriginalFilename', 'CoeAdvisor.exe'),
           StringStruct('ProductName',      'Coe Advising Tool'),
-          StringStruct('ProductVersion',   '1.1.4.0'),
+          StringStruct('ProductVersion',   '1.2.0.0'),
         ])
     ]),
     VarFileInfo([VarStruct('Translation', [1033, 1200])])

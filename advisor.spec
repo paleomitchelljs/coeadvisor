@@ -79,8 +79,8 @@ app = BUNDLE(
     info_plist={
         'CFBundleName':             'Coe Advising Tool',
         'CFBundleDisplayName':      'Coe Advising Tool',
-        'CFBundleShortVersionString': '1.1.4',
-        'CFBundleVersion':          '1.1.4',
+        'CFBundleShortVersionString': '1.2.0',
+        'CFBundleVersion':          '1.2.0',
         'NSHighResolutionCapable':  True,
         'LSMinimumSystemVersion':   '10.13.0',
         'NSHumanReadableCopyright': '© Coe College',
