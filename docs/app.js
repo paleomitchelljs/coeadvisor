@@ -799,6 +799,10 @@ function runCheck() {
   geResult.we.complete = geResult.we.courses.length >= weRequired;
   geResult.we.label = `Writing Emphasis (${weRequired} courses)`;
 
+  // Practicum checkbox in Other Requirements overrides GE practicum
+  const prxCb = document.querySelector('#other-reqs .other-req-item[data-req-id="practicum"] input[type=checkbox]');
+  if (prxCb && prxCb.checked) geResult.practicum.complete = true;
+
   const selectedProgs = progIds.map(id => DATA.programs[id]).filter(Boolean);
   const progResults = selectedProgs.map(prog => checkProgram(prog, taken));
 
@@ -955,7 +959,8 @@ function renderPlan(selectedProgs, taken, geResult, activePathways, overrides) {
         if (item.trajSem) hint += (hint ? " \u00b7 " : "") + `Sem ${item.trajSem}`;
         const catLabel = item.category === "suggested" ? " (suggested)" :
                          item.category === "elective" ? " (elective)" : "";
-        sugHTML += `<div class="plan-item ${cls}">
+        const clickable = !item.done ? ` data-add-code="${item.code}"` : "";
+        sugHTML += `<div class="plan-item ${cls}"${clickable}>
           <span class="icon">${icon}</span>
           <span class="label">${item.display}${catLabel}${badge}</span>
           ${hint ? `<span class="hint">${hint}</span>` : ""}
@@ -1365,6 +1370,19 @@ function init() {
   // Auto-check on changes in plan semesters (course textareas)
   const planSems = document.getElementById("plan-semesters");
   planSems.addEventListener("input", debounce(runCheck, 500));
+
+  // Click-to-add on suggestions
+  planSems.addEventListener("click", e => {
+    const item = e.target.closest("[data-add-code]");
+    if (!item) return;
+    const code = item.dataset.addCode;
+    const sem = item.closest(".plan-semester");
+    const ta = sem?.querySelector(".sem-courses");
+    if (!ta || ta.readOnly) return;
+    const val = ta.value.trim();
+    ta.value = val ? val + "\n" + code : code;
+    runCheck();
+  });
 
   // Tab switching
   document.querySelectorAll(".tab").forEach(t => {
