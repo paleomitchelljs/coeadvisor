@@ -520,15 +520,20 @@ function generateAdv() {
     `NAME: ${name}`,
     `ID: ${id}`,
     `YEAR: ${year}`,
+    `CATALOG_YEAR: ${document.getElementById("catalog-year").value}`,
   ];
 
   const majorSels = document.querySelectorAll("#major-slots .major-select");
   for (let i = 0; i < 3; i++) {
     lines.push(`MAJOR${i+1}: ${majorSels[i] ? majorSels[i].value : ""}`);
+    const concSel = majorSels[i]?.closest("label")?.querySelector(".conc-select");
+    lines.push(`MAJOR${i+1}_CONC: ${concSel ? concSel.value : ""}`);
   }
   const minorSels = document.querySelectorAll("#minor-slots .minor-select");
   for (let i = 0; i < 2; i++) {
     lines.push(`MINOR${i+1}: ${minorSels[i] ? minorSels[i].value : ""}`);
+    const concSel = minorSels[i]?.closest("label")?.querySelector(".conc-select");
+    lines.push(`MINOR${i+1}_CONC: ${concSel ? concSel.value : ""}`);
   }
 
   const activePw = [];
@@ -592,7 +597,9 @@ function downloadAdv() {
 
 function loadAdv(text) {
   const fields = {
-    NAME: "", ID: "", YEAR: "", PATHWAYS: "", TRANSFER_WE: "",
+    NAME: "", ID: "", YEAR: "", CATALOG_YEAR: "", PATHWAYS: "", TRANSFER_WE: "",
+    MAJOR1_CONC: "", MAJOR2_CONC: "", MAJOR3_CONC: "",
+    MINOR1_CONC: "", MINOR2_CONC: "",
     MAJOR1: "", MAJOR2: "", MAJOR3: "", MINOR1: "", MINOR2: "",
   };
   const semesters = [];
@@ -669,7 +676,8 @@ function loadAdv(text) {
       continue;
     }
 
-    for (const key of Object.keys(fields)) {
+    const sortedKeys = Object.keys(fields).sort((a, b) => b.length - a.length);
+    for (const key of sortedKeys) {
       if (s.startsWith(key + ":")) {
         fields[key] = s.slice(key.length + 1).trim();
         break;
@@ -681,6 +689,17 @@ function loadAdv(text) {
   document.getElementById("student-id").value = fields.ID;
   const yearSel = document.getElementById("student-year");
   if ([...yearSel.options].some(o => o.value === fields.YEAR)) yearSel.value = fields.YEAR;
+
+  // Restore catalog year (infer from programs if not saved)
+  const catYearSel = document.getElementById("catalog-year");
+  let loadedCatYear = fields.CATALOG_YEAR;
+  if (!loadedCatYear) {
+    const firstProgId = [fields.MAJOR1, fields.MAJOR2, fields.MAJOR3, fields.MINOR1, fields.MINOR2].find(Boolean);
+    if (firstProgId && DATA.programs[firstProgId])
+      loadedCatYear = DATA.programs[firstProgId].catalog_year || "";
+  }
+  if (loadedCatYear && [...catYearSel.options].some(o => o.value === loadedCatYear))
+    catYearSel.value = loadedCatYear;
 
   // Rebuild major/minor slots to match loaded data
   const majorContainer = document.getElementById("major-slots");
@@ -729,6 +748,25 @@ function loadAdv(text) {
   }
   document.querySelector("#minor-group .prog-add-btn").style.display =
     minorContainer.querySelectorAll(".minor-select").length >= 2 ? "none" : "";
+
+  // Restore concentration dropdowns and selections
+  updateConcentrations();
+  const majorConcVals = [fields.MAJOR1_CONC, fields.MAJOR2_CONC, fields.MAJOR3_CONC];
+  majorContainer.querySelectorAll(".major-select").forEach((sel, i) => {
+    if (majorConcVals[i]) {
+      const concSel = sel.closest("label")?.querySelector(".conc-select");
+      if (concSel && [...concSel.options].some(o => o.value === majorConcVals[i]))
+        concSel.value = majorConcVals[i];
+    }
+  });
+  const minorConcVals = [fields.MINOR1_CONC, fields.MINOR2_CONC];
+  minorContainer.querySelectorAll(".minor-select").forEach((sel, i) => {
+    if (minorConcVals[i]) {
+      const concSel = sel.closest("label")?.querySelector(".conc-select");
+      if (concSel && [...concSel.options].some(o => o.value === minorConcVals[i]))
+        concSel.value = minorConcVals[i];
+    }
+  });
 
   const pws = fields.PATHWAYS.split(",").map(x => x.trim()).filter(Boolean);
   // Pathway checkboxes are restored after updatePathways() below
@@ -864,7 +902,24 @@ function runCheck() {
   if (prxCb && prxCb.checked) geResult.practicum.complete = true;
 
   const selectedProgs = progIds.map(id => DATA.programs[id]).filter(Boolean);
-  const progResults = selectedProgs.map(prog => checkProgram(prog, taken));
+  const progResults = selectedProgs.map(prog => {
+    const result = checkProgram(prog, taken);
+    const concId = getSelectedConcentrationForProgram(prog.id);
+    if (concId && prog.concentrations) {
+      const conc = prog.concentrations.find(c => c.id === concId);
+      if (conc) {
+        const concSections = (conc.sections || []).map(s => checkSection(s, taken));
+        const countable = concSections.filter(s => s.status !== MANUAL);
+        result.concentration = {
+          name: conc.name, note: conc.note || "",
+          sections: concSections,
+          total: countable.length,
+          complete: countable.filter(s => s.status === COMPLETE).length
+        };
+      }
+    }
+    return result;
+  });
 
   const pwResults = activePw.map(id => DATA.pathways[id]).filter(Boolean)
     .map(pw => checkProgram(pw, taken));
@@ -923,11 +978,28 @@ function renderPrograms(progResults, pwResults) {
         <strong>${prog.name || prog.id}</strong>
         <span class="prog-pct">${pr.complete}/${pr.total} (${pct}%)</span>
       </div>
-      <div class="prog-body">${renderSections(pr.sections)}</div>
+      <div class="prog-body">${renderSections(pr.sections)}${renderConcentration(pr, prog)}</div>
     </div>`;
   }
   if (!html) html = '<div class="empty">Select programs to see requirements</div>';
   el.innerHTML = html;
+}
+
+function renderConcentration(pr, prog) {
+  if (pr.concentration) {
+    const c = pr.concentration;
+    const cPct = c.total > 0 ? Math.round(c.complete / c.total * 100) : 0;
+    return `<div class="conc-section">
+      <div class="conc-header">Concentration: ${c.name} <span class="conc-pct">${c.complete}/${c.total} (${cPct}%)</span></div>
+      ${c.note ? `<div class="conc-note">${c.note}</div>` : ""}
+      ${renderSections(c.sections)}
+    </div>`;
+  }
+  if (prog.concentrations && prog.concentrations.length > 0) {
+    const names = prog.concentrations.map(c => c.name).join(", ");
+    return `<div class="conc-hint">Concentrations available: ${names}</div>`;
+  }
+  return "";
 }
 
 function renderSections(sections) {
@@ -1192,6 +1264,20 @@ function buildOtherReqs() {
       seenIds.add(reqId);
       items.push({ id: reqId, label: sec.label, description: sec.description || "" });
     }
+    // Include non_course sections from selected concentrations
+    const concId = getSelectedConcentrationForProgram(pid);
+    if (concId && prog.concentrations) {
+      const conc = prog.concentrations.find(c => c.id === concId);
+      if (conc) {
+        for (const sec of (conc.sections || [])) {
+          if (sec.type !== "non_course") continue;
+          const reqId = pid + "_conc_" + (sec.id || sec.label.replace(/\s+/g, "_").toLowerCase().slice(0, 40));
+          if (seenIds.has(reqId)) continue;
+          seenIds.add(reqId);
+          items.push({ id: reqId, label: `${conc.name}: ${sec.label}`, description: sec.description || "" });
+        }
+      }
+    }
   }
 
   // Render
@@ -1278,6 +1364,50 @@ function buildProfReqs() {
 }
 
 // ─── Pathways ────────────────────────────────────────────────────────────────
+
+// ─── Concentration dropdowns ────────────────────────────────────────────────
+
+function updateConcentrations() {
+  document.querySelectorAll("#major-slots .major-select, #minor-slots .minor-select").forEach(sel => {
+    const label = sel.closest("label");
+    if (!label) return;
+    const existing = label.querySelector(".conc-select-wrapper");
+    const prevVal = existing ? (existing.querySelector(".conc-select")?.value || "") : "";
+    if (existing) existing.remove();
+
+    const progId = sel.value;
+    if (!progId) return;
+    const prog = DATA.programs[progId];
+    if (!prog || !prog.concentrations || prog.concentrations.length === 0) return;
+
+    const wrapper = document.createElement("div");
+    wrapper.className = "conc-select-wrapper";
+    const concSel = document.createElement("select");
+    concSel.className = "conc-select";
+    concSel.innerHTML = '<option value="">No concentration</option>';
+    for (const conc of prog.concentrations) {
+      const opt = document.createElement("option");
+      opt.value = conc.id;
+      opt.textContent = conc.name;
+      concSel.appendChild(opt);
+    }
+    if (prevVal && [...concSel.options].some(o => o.value === prevVal)) {
+      concSel.value = prevVal;
+    }
+    wrapper.appendChild(concSel);
+    label.appendChild(wrapper);
+  });
+}
+
+function getSelectedConcentrationForProgram(progId) {
+  const allSelects = document.querySelectorAll("#major-slots .major-select, #minor-slots .minor-select");
+  for (const sel of allSelects) {
+    if (sel.value !== progId) continue;
+    const concSel = sel.closest("label")?.querySelector(".conc-select");
+    if (concSel && concSel.value) return concSel.value;
+  }
+  return null;
+}
 
 function updatePathways() {
   const selectedProgIds = [];
@@ -1378,21 +1508,25 @@ function onPlanSemCompleted(checkbox) {
 // ─── Dynamic Program Slots ──────────────────────────────────────────────────
 
 function populateMajorSelect(sel) {
+  const catYear = document.getElementById("catalog-year")?.value || "";
   sel.innerHTML = '<option value="">Exploratory</option>';
   for (const m of (window._majorEntries || [])) {
+    if (catYear && m.catalog_year !== catYear) continue;
     const opt = document.createElement("option");
     opt.value = m.id;
-    opt.textContent = `${m.name} (${m.catalog_year})`;
+    opt.textContent = m.name;
     sel.appendChild(opt);
   }
 }
 
 function populateMinorSelect(sel) {
+  const catYear = document.getElementById("catalog-year")?.value || "";
   sel.innerHTML = '<option value="">Exploratory</option>';
   for (const m of (window._minorEntries || [])) {
+    if (catYear && m.catalog_year !== catYear) continue;
     const opt = document.createElement("option");
     opt.value = m.id;
-    opt.textContent = `${m.name} (${m.catalog_year})`;
+    opt.textContent = m.name;
     sel.appendChild(opt);
   }
 }
@@ -1463,6 +1597,18 @@ function init() {
   window._majorEntries = majorEntries;
   window._minorEntries = minorEntries;
 
+  // Populate catalog year dropdown (must happen before program selects)
+  const catalogYears = [...new Set(
+    Object.values(DATA.programs).map(p => p.catalog_year).filter(Boolean)
+  )].sort();
+  const catYearSel = document.getElementById("catalog-year");
+  for (const y of catalogYears) {
+    const opt = document.createElement("option");
+    opt.value = y; opt.textContent = y;
+    catYearSel.appendChild(opt);
+  }
+  catYearSel.value = catalogYears[catalogYears.length - 1] || "";
+
   // Populate the initial major and minor selects
   populateMajorSelect(document.querySelector("#major-slots .major-select"));
   populateMinorSelect(document.querySelector("#minor-slots .minor-select"));
@@ -1485,10 +1631,37 @@ function init() {
   // Default plan semesters
   createDefaultPlanSemesters();
 
+  // Catalog year change: re-populate program dropdowns, try to preserve selections
+  document.getElementById("catalog-year").addEventListener("change", () => {
+    document.querySelectorAll("#major-slots .major-select").forEach(sel => {
+      const prevProg = sel.value ? DATA.programs[sel.value] : null;
+      populateMajorSelect(sel);
+      if (prevProg) {
+        const match = [...sel.options].find(o => {
+          const p = DATA.programs[o.value];
+          return p && p.name === prevProg.name && p.program_type === prevProg.program_type;
+        });
+        if (match) sel.value = match.value;
+      }
+    });
+    document.querySelectorAll("#minor-slots .minor-select").forEach(sel => {
+      const prevProg = sel.value ? DATA.programs[sel.value] : null;
+      populateMinorSelect(sel);
+      if (prevProg) {
+        const match = [...sel.options].find(o => {
+          const p = DATA.programs[o.value];
+          return p && p.name === prevProg.name && p.program_type === prevProg.program_type;
+        });
+        if (match) sel.value = match.value;
+      }
+    });
+    updateConcentrations(); updatePathways(); buildOtherReqs(); runCheck();
+  });
+
   // Filter pathways and rebuild other reqs when program selection changes
   // Use event delegation on the programs-grid container
   document.getElementById("programs-grid").addEventListener("change", () => {
-    updatePathways(); buildOtherReqs();
+    updateConcentrations(); updatePathways(); buildOtherReqs();
   });
 
   // Initial other reqs
