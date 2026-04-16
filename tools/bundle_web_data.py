@@ -66,6 +66,7 @@ def main():
         "course_credits": load_json(DATA / "course_credits.json"),
         "dac": load_json(DATA / "dac_2025.json"),
         "we": load_json(DATA / "we_courses.json"),
+        "practicum": load_json(DATA / "practicum_2025.json"),
         "first_two_years": load_json(DATA / "first_two_years.json"),
         "intake": load_dir(DATA / "intake", key_fn=lambda d: d["program_id"]),
         "trajectory": load_trajectory(),

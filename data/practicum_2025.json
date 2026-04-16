@@ -1,0 +1,43 @@
+{
+  "version": "2025",
+  "label": "Practicum-Qualifying Experiences (2025-2026 Catalog, pp. 20-21)",
+  "note": "All students must complete at least ONE practicum experience. Practicum integrates academic learning with significant educational experiences beyond the classroom, typically completed junior or senior year.",
+  "categories": {
+    "off_campus_study": "Full-Term Off-Campus Study",
+    "may_term": "May Experiential Term Courses",
+    "field_station": "Wilderness Field Station or Archaeological Field School Summer Courses",
+    "honors_project": "Departmental Honors Project (if transcripted with appropriate course code)",
+    "independent_study": "Independent Study",
+    "student_teaching": "Student Teaching",
+    "internship": "Internship (minimum 140 hours on-site)",
+    "community_project": "Community-Based Project (minimum 140 hours, P/NP only)"
+  },
+  "internship_courses": [
+    "AAM-494", "ARH-494", "ART-494", "BIO-494", "BUS-494", "CHM-494",
+    "CS-494", "DS-494", "ECC-494", "EDU-494", "HIS-494", "HSS-494",
+    "INT-494", "INT-499", "KIN-494", "MS-494", "MTH-494", "NUR-494",
+    "NYT-394", "PHL-494", "PHY-494", "POL-494", "PR-494", "PSY-494",
+    "REL-494", "SCJ-494", "SMT-494", "SOC-494", "SPA-494", "THE-494",
+    "WSH-494"
+  ],
+  "additional_practicum_courses": [
+    "ART-474", "BIO-115", "BIO-454", "BIO-462", "BUS-454",
+    "CFP-401", "CFP-402", "CHM-454", "CRW-112", "CRW-492",
+    "CS-454", "DS-454", "ECO-454", "EDU-215",
+    "ENG-454", "MTH-454", "MUA-490", "NUR-455",
+    "PHL-490", "PHY-255", "PHY-355", "PSY-354", "PSY-455",
+    "SOC-365", "THE-442", "THE-452", "THE-462"
+  ],
+  "all_courses": [
+    "AAM-494", "ARH-494", "ART-474", "ART-494", "BIO-115", "BIO-454",
+    "BIO-462", "BIO-494", "BUS-454", "BUS-494", "CFP-401", "CFP-402",
+    "CHM-454", "CHM-494", "CRW-112", "CRW-492", "CS-454", "CS-494",
+    "DS-454", "DS-494", "ECC-494", "ECO-454", "EDU-215", "EDU-494",
+    "ENG-454", "HIS-494", "HSS-494", "INT-494", "INT-499", "KIN-494",
+    "MS-494", "MTH-454", "MTH-494", "MUA-490", "NUR-455", "NUR-494",
+    "NYT-394", "PHL-490", "PHL-494", "PHY-255", "PHY-355", "PHY-494",
+    "POL-494", "PR-494", "PSY-354", "PSY-455", "PSY-494", "REL-494",
+    "SCJ-494", "SMT-494", "SOC-365", "SOC-494", "SPA-494",
+    "THE-442", "THE-452", "THE-462", "THE-494", "WSH-494"
+  ]
+}
