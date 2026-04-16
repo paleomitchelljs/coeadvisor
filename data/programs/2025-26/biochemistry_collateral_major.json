@@ -1,0 +1,33 @@
+{
+  "id": "biochemistry_collateral_major_2025-26",
+  "name": "Biochemistry",
+  "program_type": "collateral",
+  "catalog_year": "2025-26",
+  "major_code": "CHM",
+  "source": "Academic Catalog 2025-26, p. 69",
+  "note": "Concurrent completion of a primary major in chemistry, including Calculus II and two General Physics courses, is required. Students choosing a collateral major in biochemistry may not select a collateral major in molecular biology.",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "bio145", "title": "Cellular and Molecular Biology and Laboratory (WE)", "codes": ["BIO-145", "BIO-145L"]},
+        {"id": "chm431", "title": "Biochemistry and Laboratory", "codes": ["CHM-431", "CHM-431L"]},
+        {"id": "chm432", "title": "Protein Biochemistry and Laboratory", "codes": ["CHM-432", "CHM-432L"]}
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Two Advanced Electives",
+      "type": "choose_n",
+      "n": 2,
+      "options": [
+        {"id": "bio325", "title": "Microbiology (WE) and Laboratory", "codes": ["BIO-325", "BIO-325L"]},
+        {"id": "bio345", "title": "Techniques in Molecular Biology and Laboratory", "codes": ["BIO-345", "BIO-345L"]},
+        {"id": "bio405", "title": "Current Topics in Molecular Biology", "codes": ["BIO-405"]},
+        {"id": "bio435", "title": "Cell Physiology and Laboratory", "codes": ["BIO-435", "BIO-435L"]}
+      ]
+    }
+  ]
+}

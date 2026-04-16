@@ -56,11 +56,55 @@ def load_trajectory():
     return by_major
 
 
+def load_programs(programs_dir):
+    """Load programs from flat dir and catalog-year subfolders.
+
+    Flat files:  data/programs/*.json  (legacy)
+    Year folders: data/programs/2025-26/*.json  (new structure)
+
+    Year-folder programs override flat files with the same id.
+    """
+    programs = {}
+    catalog_years = set()
+
+    # Legacy flat files
+    for fp in sorted(programs_dir.glob("*.json")):
+        data = load_json(fp)
+        programs[data["id"]] = data
+        cy = data.get("catalog_year", "")
+        if cy:
+            catalog_years.add(cy)
+
+    # Catalog-year subfolders (e.g. data/programs/2025-26/)
+    for subdir in sorted(programs_dir.iterdir()):
+        if not subdir.is_dir() or subdir.name.startswith("."):
+            continue
+        year_label = subdir.name          # e.g. "2025-26"
+        catalog_years.add(year_label)
+        for fp in sorted(subdir.glob("*.json")):
+            data = load_json(fp)
+            # Ensure catalog_year matches the folder
+            data["catalog_year"] = year_label
+            programs[data["id"]] = data
+
+    return programs, sorted(catalog_years)
+
+
+def load_advice(advice_dir):
+    """Load advice files from data/advice/."""
+    if not advice_dir.is_dir():
+        return {}
+    return load_dir(advice_dir, key_fn=lambda d: d.get("program_id", ""))
+
+
 def main():
     DOCS.mkdir(exist_ok=True)
 
+    programs, catalog_years = load_programs(DATA / "programs")
+
     bundle = {
-        "programs": load_dir(DATA / "programs", key_fn=lambda d: d["id"]),
+        "programs": programs,
+        "catalog_years": catalog_years,
         "pathways": load_dir(DATA / "pathways", key_fn=lambda d: d["id"]),
         "ge": load_json(DATA / "ge_2025.json"),
         "course_credits": load_json(DATA / "course_credits.json"),
@@ -72,6 +116,10 @@ def main():
         "trajectory": load_trajectory(),
     }
 
+    advice = load_advice(DATA / "advice")
+    if advice:
+        bundle["advice"] = advice
+
     if (DATA / "courses_catalog_2025.json").exists():
         bundle["catalog"] = load_json(DATA / "courses_catalog_2025.json")
     if (DATA / "offerings_2026.json").exists():
@@ -82,6 +130,7 @@ def main():
     out.write_text(js, encoding="utf-8")
     size_kb = len(js) / 1024
     print(f"Wrote {out} ({size_kb:.0f} KB, {len(bundle['programs'])} programs, "
+          f"{len(catalog_years)} catalog years, "
           f"{len(bundle['trajectory'])} majors in trajectory)")
 
 

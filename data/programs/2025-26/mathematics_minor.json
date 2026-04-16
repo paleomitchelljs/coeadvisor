@@ -1,0 +1,45 @@
+{
+  "id": "mathematics_minor_2025-26",
+  "name": "Mathematics",
+  "program_type": "minor",
+  "catalog_year": "2025-26",
+  "major_code": "MTH",
+  "source": "Academic Catalog 2025-26, p. 150",
+  "note": "Students choosing a minor in Mathematics may not select a minor in Applied Mathematics.",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "mth135", "title": "Calculus I", "codes": ["MTH-135"]},
+        {"id": "mth145", "title": "Calculus II", "codes": ["MTH-145"]},
+        {"id": "mth165", "title": "Computational Linear Algebra", "codes": ["MTH-165"]},
+        {"id": "mth215", "title": "Foundations of Advanced Mathematics (WE)", "codes": ["MTH-215"]}
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Two Additional Electives",
+      "type": "choose_n",
+      "n": 2,
+      "options": [
+        {"id": "sta315", "title": "Mathematical Probability", "codes": ["STA-315"]},
+        {"id": "sta325", "title": "Mathematical Statistics", "codes": ["STA-325"]},
+        {"id": "mth255", "title": "Calculus III", "codes": ["MTH-255"]},
+        {"id": "mth305", "title": "Advanced Geometry (WE)", "codes": ["MTH-305"]},
+        {"id": "mth325", "title": "Differential Equations (WE)", "codes": ["MTH-325"]},
+        {"id": "mth365", "title": "Abstract Linear Algebra", "codes": ["MTH-365"]},
+        {"id": "mth385", "title": "Modern Algebra I", "codes": ["MTH-385"]},
+        {"id": "mth395", "title": "Modern Algebra II", "codes": ["MTH-395"]},
+        {"id": "mth415", "title": "Real Analysis I", "codes": ["MTH-415"]},
+        {"id": "mth425", "title": "Real Analysis II", "codes": ["MTH-425"]},
+        {"id": "mth444", "title": "Independent Study", "codes": ["MTH-444"]},
+        {"id": "mth445", "title": "Complex Analysis (WE)", "codes": ["MTH-445"]},
+        {"id": "mth455", "title": "Mathematical Modeling (WE)", "codes": ["MTH-455"]},
+        {"id": "mth463", "title": "Set Theory and Topology", "codes": ["MTH-463"]},
+        {"id": "mth484", "title": "Special Topics (WE)", "codes": ["MTH-484"]}
+      ]
+    }
+  ]
+}

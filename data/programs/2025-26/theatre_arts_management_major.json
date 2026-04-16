@@ -1,0 +1,77 @@
+{
+  "id": "theatre_arts_management_major_2025-26",
+  "name": "Theatre Arts — Management Emphasis",
+  "program_type": "major",
+  "catalog_year": "2025-26",
+  "major_code": "THE",
+  "source": "Academic Catalog 2025-26, pp. 200-201",
+  "note": "Requires a cumulative 2.0 GPA. Only one Theatre Arts major (base or with emphasis) may be earned.",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Core Courses",
+      "type": "all",
+      "items": [
+        {"id": "the100", "title": "Introduction to Theatre", "codes": ["THE-100"]},
+        {"id": "the130", "title": "Technical Theatre I", "codes": ["THE-130"]},
+        {"id": "the140", "title": "Design for the Stage", "codes": ["THE-140"]},
+        {"id": "the150", "title": "Acting I", "codes": ["THE-150"]},
+        {"id": "the185", "title": "Production and Performance (at least once as stage manager)", "codes": ["THE-185"]},
+        {"id": "the283", "title": "Arts Administration", "codes": ["THE-283"]}
+      ]
+    },
+    {
+      "id": "production_tech",
+      "label": "Technical Theatre Experience",
+      "type": "choose_one",
+      "description": "One full credit of technical theatre experience.",
+      "options": [
+        {"id": "the102", "title": "Theatre Production Lab (taken four times)", "codes": ["THE-102"]},
+        {"id": "the112", "title": "Production Experience (taken twice)", "codes": ["THE-112"]}
+      ]
+    },
+    {
+      "id": "practicum",
+      "label": "Internship/New York Term",
+      "type": "choose_one",
+      "options": [
+        {"id": "the494", "title": "Internship in Theatre", "codes": ["THE-494"]},
+        {"id": "nyt250", "title": "New York Term", "codes": ["NYT-250"]}
+      ]
+    },
+    {
+      "id": "theatre_electives",
+      "label": "Two Additional Theatre Courses (200+)",
+      "type": "choose_n",
+      "n": 2,
+      "options": [
+        {"id": "the220", "title": "Lighting Design", "codes": ["THE-220"]},
+        {"id": "the255", "title": "Playwriting Workshop I", "codes": ["THE-255", "CRW-255"]},
+        {"id": "the288", "title": "History of Dress", "codes": ["THE-288"]},
+        {"id": "the355", "title": "Playwriting Workshop 2", "codes": ["THE-355"]},
+        {"id": "the444", "title": "Independent Study in Theatre", "codes": ["THE-444"]},
+        {"id": "the455", "title": "Playwriting Workshop 3", "codes": ["THE-455"]},
+        {"id": "the486", "title": "Special Topics in Theatre", "codes": ["THE-486"]},
+        {"id": "the494b", "title": "Internship in Theatre", "codes": ["THE-494"]},
+        {"id": "nyt250b", "title": "New York Term", "codes": ["NYT-250"]}
+      ]
+    },
+    {
+      "id": "interdisciplinary",
+      "label": "Two Interdisciplinary Courses",
+      "type": "choose_n",
+      "n": 2,
+      "description": "At least two additional full course credit equivalents selected in consultation with advisor.",
+      "options": [
+        {"id": "bus125", "title": "Computers in Business", "codes": ["BUS-125"]},
+        {"id": "pr205", "title": "Public Relations", "codes": ["PR-205"]},
+        {"id": "bus250", "title": "Principles of Management", "codes": ["BUS-250"]},
+        {"id": "com322", "title": "Professional Communication and Writing (WE)", "codes": ["COM-322"]},
+        {"id": "bus280", "title": "Business Websites (0.50cc)", "codes": ["BUS-280"]},
+        {"id": "bus281", "title": "Social Media in Business (0.50cc)", "codes": ["BUS-281"]},
+        {"id": "bus300", "title": "Human Resource Management", "codes": ["BUS-300"]},
+        {"id": "bus330", "title": "Principles of Marketing (WE)", "codes": ["BUS-330"]}
+      ]
+    }
+  ]
+}

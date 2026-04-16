@@ -1,0 +1,58 @@
+{
+  "id": "political_science_minor_2025-26",
+  "name": "Political Science",
+  "program_type": "minor",
+  "catalog_year": "2025-26",
+  "major_code": "POL",
+  "source": "Academic Catalog 2025-26, pp. 176-177",
+  "note": "At least one 300- or 400-level course required. POL-284/-296 may be used with consent of department chair.",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "pol108", "title": "Introduction to Politics", "codes": ["POL-108"]},
+        {"id": "pol115", "title": "American National Government and Politics", "codes": ["POL-115"]},
+        {"id": "pol244", "title": "Research Methods in Political Science", "codes": ["POL-244"]}
+      ]
+    },
+    {
+      "id": "american_govt",
+      "label": "One Additional American Government Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "pol245", "title": "Political Parties and Elections", "codes": ["POL-245"]},
+        {"id": "pol277", "title": "Women and Politics in the United States (WE)", "codes": ["POL-277"]},
+        {"id": "pol325", "title": "The American Congress (WE)", "codes": ["POL-325"]},
+        {"id": "pol345", "title": "The American Presidency (WE)", "codes": ["POL-345"]},
+        {"id": "pol350", "title": "U.S. Social Policy Process (WE)", "codes": ["POL-350"]}
+      ]
+    },
+    {
+      "id": "comparative_intl",
+      "label": "One Comparative or International Politics Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "pol258", "title": "World Politics (WE)", "codes": ["POL-258"]},
+        {"id": "pol266", "title": "Latin American Politics (WE)", "codes": ["POL-266"]},
+        {"id": "pol276", "title": "African Politics (WE)", "codes": ["POL-276"]},
+        {"id": "pol286", "title": "Asian Politics (WE)", "codes": ["POL-286"]},
+        {"id": "pol298", "title": "European Politics (WE)", "codes": ["POL-298"]},
+        {"id": "pol305", "title": "Terrorism (WE)", "codes": ["POL-305"]},
+        {"id": "pol310", "title": "International Organizations (WE)", "codes": ["POL-310"]},
+        {"id": "pol365", "title": "American Foreign Policy (WE)", "codes": ["POL-365"]}
+      ]
+    },
+    {
+      "id": "additional",
+      "label": "One Additional Political Science Course",
+      "type": "open_n",
+      "n": 1,
+      "description": "One additional political science course.",
+      "constraints": {
+        "prefixes": ["POL"]
+      }
+    }
+  ]
+}

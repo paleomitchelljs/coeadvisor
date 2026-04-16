@@ -1,0 +1,57 @@
+{
+  "id": "economics_minor_2025-26",
+  "name": "Economics",
+  "program_type": "minor",
+  "catalog_year": "2025-26",
+  "major_code": "ECO",
+  "source": "Academic Catalog 2025-26, p. 90",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "eco175", "title": "Principles of Macroeconomics", "codes": ["ECO-175"]},
+        {"id": "eco215", "title": "Principles of Microeconomics", "codes": ["ECO-215"]}
+      ]
+    },
+    {
+      "id": "micro_course",
+      "label": "One Microeconomics Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "eco237", "title": "Labor Economics", "codes": ["ECO-237"]},
+        {"id": "eco247", "title": "Health Economics", "codes": ["ECO-247"]},
+        {"id": "eco345", "title": "Intermediate Microeconomics", "codes": ["ECO-345"]},
+        {"id": "eco447", "title": "Urban Economics", "codes": ["ECO-447"]}
+      ]
+    },
+    {
+      "id": "macro_course",
+      "label": "One Macroeconomics Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "eco225", "title": "Money and Banking", "codes": ["ECO-225"]},
+        {"id": "eco315", "title": "Intermediate Macroeconomic Theory", "codes": ["ECO-315"]},
+        {"id": "eco336", "title": "Divergent Economic Growth", "codes": ["ECO-336"]},
+        {"id": "eco422", "title": "Macroeconomics Policy", "codes": ["ECO-422"]},
+        {"id": "eco446", "title": "International Economics", "codes": ["ECO-446"]}
+      ]
+    },
+    {
+      "id": "additional",
+      "label": "Two Additional Economics Courses (200+, at least one 300+)",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two additional ECO courses numbered 200 or higher; at least one must be 300 or higher. Cannot reuse courses already used above.",
+      "constraints": {
+        "prefixes": ["ECO"],
+        "min_level": 300,
+        "min_level_count": 1,
+        "exclude_codes": ["ECO-175", "ECO-215",
+                          "ECO-237", "ECO-247", "ECO-345", "ECO-447",
+                          "ECO-225", "ECO-315", "ECO-336", "ECO-422", "ECO-446"]
+      }
+    }
+  ]
+}

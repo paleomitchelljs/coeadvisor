@@ -1,0 +1,79 @@
+{
+  "id": "elementary_education_major_2025-26",
+  "name": "Elementary Education",
+  "program_type": "major",
+  "catalog_year": "2025-26",
+  "major_code": "EDU",
+  "source": "Academic Catalog 2025-26, pp. 111-112",
+  "note": "GPA of 2.7 or higher and grade of C or better required in all professional education courses. Students must also complete Iowa Distribution Requirements and a K-8 endorsement area. Students must be admitted to the Teacher Education Program before enrolling in practicum or methods courses.",
+  "sections": [
+    {
+      "id": "iowa_math",
+      "label": "Iowa Distribution: Mathematics",
+      "type": "open_n",
+      "n": 1,
+      "description": "One mathematics course with a prefix of MTH or STA. Grade of C or better required.",
+      "constraints": {
+        "prefixes": ["MTH", "STA"]
+      }
+    },
+    {
+      "id": "iowa_history",
+      "label": "Iowa Distribution: American History",
+      "type": "open_n",
+      "n": 1,
+      "description": "One American History course. Grade of C or better required.",
+      "constraints": {
+        "prefixes": ["HIS"]
+      }
+    },
+    {
+      "id": "iowa_science",
+      "label": "Iowa Distribution: Lab Science",
+      "type": "choose_one",
+      "description": "One lab science course. Grade of C or better required.",
+      "options": [
+        {"id": "bio_any", "title": "Any BIO course", "codes": []},
+        {"id": "phy114", "title": "Modern Astronomy", "codes": ["PHY-114"]}
+      ]
+    },
+    {
+      "id": "iowa_socsci",
+      "label": "Iowa Distribution: Social Science",
+      "type": "open_n",
+      "n": 1,
+      "description": "One social science course with a prefix of ANT, ECO, POL, PSY, or SOC. Grade of C or better required.",
+      "constraints": {
+        "prefixes": ["ANT", "ECO", "POL", "PSY", "SOC"]
+      }
+    },
+    {
+      "id": "endorsement",
+      "label": "K-8 Endorsement Area",
+      "type": "non_course",
+      "description": "A K-8 endorsement in Art, English/Language Arts, Spanish, Health, History, Mathematics, Music, Physical Education, Reading, Science, Social Studies, or Speech Communication and Theater."
+    },
+    {
+      "id": "professional",
+      "label": "Professional Education Courses",
+      "type": "all",
+      "items": [
+        {"id": "edu105", "title": "Foundations of Education (WE)", "codes": ["EDU-105"]},
+        {"id": "edu117", "title": "Exceptional Learners", "codes": ["EDU-117"]},
+        {"id": "edu187", "title": "Human Relations (WE)", "codes": ["EDU-187"]},
+        {"id": "edu195", "title": "Educational Psychology and Development", "codes": ["EDU-195"]},
+        {"id": "edu215", "title": "Practicum in Education (WE)", "codes": ["EDU-215"]},
+        {"id": "edu219", "title": "Instructional Technology for Teaching and Learning (0.5cc)", "codes": ["EDU-219"]},
+        {"id": "edu270", "title": "Literature K-12 (WE)", "codes": ["EDU-270"]},
+        {"id": "edu275", "title": "Mathematics Comprehension for Teaching", "codes": ["EDU-275"]},
+        {"id": "edu300", "title": "Expressive Methods (0.5cc)", "codes": ["EDU-300"]},
+        {"id": "edu305", "title": "Methods of Elementary Science (WE)", "codes": ["EDU-305"]},
+        {"id": "edu335", "title": "Methods of Elementary Mathematics (WE)", "codes": ["EDU-335"]},
+        {"id": "edu345", "title": "Methods of Elementary Language Arts (WE)", "codes": ["EDU-345"]},
+        {"id": "edu355", "title": "Methods of Elementary Reading (WE)", "codes": ["EDU-355"]},
+        {"id": "edu365", "title": "Methods of Elementary Social Studies (WE)", "codes": ["EDU-365"]},
+        {"id": "kin112", "title": "Health Education for the Elementary Teacher (0.5cc)", "codes": ["KIN-112"]}
+      ]
+    }
+  ]
+}

@@ -38,12 +38,25 @@
     </div>
 
     <h2>Programs</h2>
-    <div class="programs-grid">
-      <label><span>Major 1</span> <select id="major1"></select></label>
-      <label><span>Major 2</span> <select id="major2"></select></label>
-      <label><span>Major 3</span> <select id="major3"></select></label>
-      <label><span>Minor 1</span> <select id="minor1"></select></label>
-      <label><span>Minor 2</span> <select id="minor2"></select></label>
+    <div class="programs-grid" id="programs-grid">
+      <div class="prog-group" id="major-group">
+        <div class="prog-group-header">
+          <span class="prog-group-label">Major</span>
+          <button class="prog-add-btn" onclick="addMajorSlot()" title="Add another major">+</button>
+        </div>
+        <div class="prog-slots" id="major-slots">
+          <label><select class="major-select"></select></label>
+        </div>
+      </div>
+      <div class="prog-group" id="minor-group">
+        <div class="prog-group-header">
+          <span class="prog-group-label">Minor</span>
+          <button class="prog-add-btn" onclick="addMinorSlot()" title="Add another minor">+</button>
+        </div>
+        <div class="prog-slots" id="minor-slots">
+          <label><select class="minor-select"></select></label>
+        </div>
+      </div>
     </div>
 
     <div id="pathways-row" style="margin-top:8px; display:none">

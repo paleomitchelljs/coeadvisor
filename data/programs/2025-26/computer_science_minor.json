@@ -1,0 +1,43 @@
+{
+  "id": "computer_science_minor_2025-26",
+  "name": "Computer Science",
+  "program_type": "minor",
+  "catalog_year": "2025-26",
+  "major_code": "CS",
+  "source": "Academic Catalog 2025-26, p. 102",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "cs125", "title": "Introduction to Programming", "codes": ["CS-125"]},
+        {"id": "cs135", "title": "Data Structures", "codes": ["CS-135"]},
+        {"id": "cs215", "title": "Analysis of Algorithms", "codes": ["CS-215"]},
+        {"id": "cs245", "title": "Object Oriented Software Development", "codes": ["CS-245"]}
+      ]
+    },
+    {
+      "id": "programming",
+      "label": "One Programming Paradigm Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "cs235", "title": "Net-Centric Programming", "codes": ["CS-235"]},
+        {"id": "ds230", "title": "Data-Centric Programming", "codes": ["DS-230"]}
+      ]
+    },
+    {
+      "id": "cs_elective",
+      "label": "One Additional CS or DS Course (300+)",
+      "type": "open_n",
+      "n": 1,
+      "description": "One additional Computer Science or Data Science course numbered 300 or higher.",
+      "constraints": {
+        "prefixes": ["CS", "DS"],
+        "min_level": 300,
+        "min_level_count": 1,
+        "exclude_codes": ["CS-125", "CS-135", "CS-215", "CS-235", "CS-245"]
+      }
+    }
+  ]
+}

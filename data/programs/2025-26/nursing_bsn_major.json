@@ -1,0 +1,85 @@
+{
+  "id": "nursing_bsn_major_2025-26",
+  "name": "Nursing (B.S.N.)",
+  "program_type": "major",
+  "catalog_year": "2025-26",
+  "major_code": "NUR",
+  "source": "Academic Catalog 2025-26, pp. 162-164",
+  "note": "Competitive admission to the BSN program required. Minimum grade of C (2.0) in all nursing courses; C- (1.7) or lower requires repeating the course. Cumulative GPA of 2.70 required for admission. Valid LPN license or CNA certification required. Criminal background check required.",
+  "sections": [
+    {
+      "id": "supporting_bio",
+      "label": "Supporting Courses: Biology",
+      "type": "all",
+      "items": [
+        {"id": "bio195", "title": "Introduction to Microbiology and Laboratory", "codes": ["BIO-195", "BIO-195L"]},
+        {"id": "bio215", "title": "Human Anatomy and Laboratory", "codes": ["BIO-215", "BIO-215L"]},
+        {"id": "bio225", "title": "Human Physiology", "codes": ["BIO-225"]}
+      ]
+    },
+    {
+      "id": "supporting_bio_intro",
+      "label": "Supporting: Introductory Biology",
+      "type": "choose_one",
+      "options": [
+        {"id": "bio100", "title": "Human Biology", "codes": ["BIO-100"]},
+        {"id": "bio145", "title": "Cellular and Molecular Biology", "codes": ["BIO-145"]}
+      ]
+    },
+    {
+      "id": "supporting_chm",
+      "label": "Supporting Courses: Chemistry",
+      "type": "all",
+      "items": [
+        {"id": "chm111", "title": "Introduction to Organic and Biological Chemistry and Laboratory", "codes": ["CHM-111", "CHM-111L"]}
+      ]
+    },
+    {
+      "id": "supporting_other",
+      "label": "Supporting Courses: Psychology, Sociology, Statistics",
+      "type": "all",
+      "items": [
+        {"id": "psy100", "title": "Introductory Psychology", "codes": ["PSY-100"]},
+        {"id": "soc107", "title": "Introductory Sociology", "codes": ["SOC-107"]}
+      ]
+    },
+    {
+      "id": "supporting_stats",
+      "label": "Supporting: Statistics",
+      "type": "choose_one",
+      "options": [
+        {"id": "psy300", "title": "Statistical Methods and Data Analysis", "codes": ["PSY-300"]},
+        {"id": "sta100_110", "title": "Statistical Foundations and Inferential Statistics", "codes": ["STA-100", "STA-110"]}
+      ]
+    },
+    {
+      "id": "pre_nursing",
+      "label": "Pre-Nursing Seminars",
+      "type": "all",
+      "items": [
+        {"id": "nur100", "title": "Nursing Issues (0.2cc)", "codes": ["NUR-100"]},
+        {"id": "nur200", "title": "Nursing Issues II (0.2cc)", "codes": ["NUR-200"]}
+      ]
+    },
+    {
+      "id": "nursing_courses",
+      "label": "Required Nursing Courses",
+      "type": "all",
+      "items": [
+        {"id": "nur300", "title": "Art and Science of Nursing", "codes": ["NUR-300"]},
+        {"id": "nur305", "title": "Information Literacy and Management (WE) (0.5cc)", "codes": ["NUR-305"]},
+        {"id": "nur315", "title": "Pathophysiology and Assessment", "codes": ["NUR-315", "NUR-315L", "NUR-315C"]},
+        {"id": "nur345", "title": "Mental Health Nursing", "codes": ["NUR-345"]},
+        {"id": "nur355", "title": "Introductory Concepts in Nursing", "codes": ["NUR-355", "NUR-355L", "NUR-355C"]},
+        {"id": "nur360", "title": "Pharmacological Principles (0.5cc)", "codes": ["NUR-360"]},
+        {"id": "nur375", "title": "Legal and Ethical Issues in Nursing (WE)", "codes": ["NUR-375"]},
+        {"id": "nur415", "title": "Advanced Concepts in Nursing", "codes": ["NUR-415", "NUR-415L", "NUR-415C"]},
+        {"id": "nur425", "title": "Nursing Research (WE)", "codes": ["NUR-425"]},
+        {"id": "nur430", "title": "Community and Population Oriented Nursing", "codes": ["NUR-430"]},
+        {"id": "nur431", "title": "Maintaining Wellness in Aging and Chronicity", "codes": ["NUR-431"]},
+        {"id": "nur455", "title": "Leadership and Contemporary Issues in Nursing (WE)", "codes": ["NUR-455", "NUR-455C"]},
+        {"id": "nur495", "title": "Maternal Newborn Nursing", "codes": ["NUR-495"]}
+      ]
+    }
+  ]
+}

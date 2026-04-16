@@ -1,0 +1,53 @@
+{
+  "id": "theatre_arts_major_2025-26",
+  "name": "Theatre Arts",
+  "program_type": "major",
+  "catalog_year": "2025-26",
+  "major_code": "THE",
+  "source": "Academic Catalog 2025-26, pp. 199-200",
+  "note": "Requires a cumulative 2.0 GPA in all courses counted toward the major. Because of significant overlap, only one Theatre Arts major (base or with emphasis) may be earned.",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Core Courses",
+      "type": "all",
+      "items": [
+        {"id": "the100", "title": "Introduction to Theatre", "codes": ["THE-100"]},
+        {"id": "the130", "title": "Technical Production I", "codes": ["THE-130"]},
+        {"id": "the140", "title": "Design for the Stage", "codes": ["THE-140"]},
+        {"id": "the150", "title": "Acting I", "codes": ["THE-150"]},
+        {"id": "the185", "title": "Production and Performance", "codes": ["THE-185"]}
+      ]
+    },
+    {
+      "id": "production_tech",
+      "label": "Technical Theatre Experience",
+      "type": "choose_one",
+      "description": "One full credit of technical theatre experience via THE-102 (4x 0.25cc) or THE-112 (2x 0.50cc) or a combination.",
+      "options": [
+        {"id": "the102", "title": "Theatre Production Lab (taken four times)", "codes": ["THE-102"]},
+        {"id": "the112", "title": "Production Experience (taken twice)", "codes": ["THE-112"]}
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Four Additional THE Courses (3 at 200+)",
+      "type": "choose_n",
+      "n": 4,
+      "description": "Four additional THE course credits with at least three at the 200 level or above.",
+      "options": [
+        {"id": "the162", "title": "Stage Makeup", "codes": ["THE-162"]},
+        {"id": "the220", "title": "Lighting Design", "codes": ["THE-220"]},
+        {"id": "the255", "title": "Playwriting Workshop 1", "codes": ["THE-255", "CRW-255"]},
+        {"id": "the283", "title": "Arts Administration", "codes": ["THE-283"]},
+        {"id": "the288", "title": "History of Dress", "codes": ["THE-288"]},
+        {"id": "the355", "title": "Playwriting Workshop 2", "codes": ["THE-355"]},
+        {"id": "the444", "title": "Independent Study in Theatre", "codes": ["THE-444"]},
+        {"id": "the455", "title": "Playwriting Workshop 3", "codes": ["THE-455"]},
+        {"id": "the486", "title": "Special Topics in Theatre", "codes": ["THE-486"]},
+        {"id": "the494", "title": "Internship in Theatre", "codes": ["THE-494"]},
+        {"id": "nyt250", "title": "New York Term", "codes": ["NYT-250"]}
+      ]
+    }
+  ]
+}

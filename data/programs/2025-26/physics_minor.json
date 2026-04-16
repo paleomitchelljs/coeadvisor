@@ -1,0 +1,49 @@
+{
+  "id": "physics_minor_2025-26",
+  "name": "Physics",
+  "program_type": "minor",
+  "catalog_year": "2025-26",
+  "major_code": "PHY",
+  "source": "Academic Catalog 2025-26, pp. 170-171",
+  "sections": [
+    {
+      "id": "physics1",
+      "label": "Physics I",
+      "type": "choose_one",
+      "options": [
+        {"id": "phy185", "title": "General Physics I & Laboratory", "codes": ["PHY-185", "PHY-185L"]},
+        {"id": "phy165", "title": "Basic Physics I & Laboratory", "codes": ["PHY-165", "PHY-165L"]}
+      ]
+    },
+    {
+      "id": "physics2",
+      "label": "Physics II",
+      "type": "choose_one",
+      "options": [
+        {"id": "phy195", "title": "General Physics II & Laboratory", "codes": ["PHY-195", "PHY-195L"]},
+        {"id": "phy175", "title": "Basic Physics II & Laboratory", "codes": ["PHY-175", "PHY-175L"]}
+      ]
+    },
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "phy235", "title": "Modern Physics & Advanced Lab 1 (WE)", "codes": ["PHY-235", "PHY-236"]},
+        {"id": "phy265", "title": "Electromagnetism", "codes": ["PHY-265"]}
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Two Additional Physics Courses (150+)",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two additional physics courses approved by the department, both numbered 150 or above.",
+      "constraints": {
+        "prefixes": ["PHY"],
+        "min_level": 150,
+        "min_level_count": 2
+      }
+    }
+  ]
+}

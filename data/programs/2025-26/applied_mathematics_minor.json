@@ -1,0 +1,39 @@
+{
+  "id": "applied_mathematics_minor_2025-26",
+  "name": "Applied Mathematics",
+  "program_type": "minor",
+  "catalog_year": "2025-26",
+  "major_code": "MTH",
+  "source": "Academic Catalog 2025-26, p. 150",
+  "note": "Students choosing a minor in Applied Mathematics may not select a minor in Mathematics.",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "mth135", "title": "Calculus I", "codes": ["MTH-135"]},
+        {"id": "mth145", "title": "Calculus II", "codes": ["MTH-145"]},
+        {"id": "mth165", "title": "Computational Linear Algebra", "codes": ["MTH-165"]},
+        {"id": "cs125", "title": "Introduction to Programming", "codes": ["CS-125"]}
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Two Additional Electives",
+      "type": "choose_n",
+      "n": 2,
+      "options": [
+        {"id": "sta315", "title": "Mathematical Probability", "codes": ["STA-315"]},
+        {"id": "sta325", "title": "Mathematical Statistics", "codes": ["STA-325"]},
+        {"id": "mth255", "title": "Calculus III", "codes": ["MTH-255"]},
+        {"id": "mth325", "title": "Differential Equations (WE)", "codes": ["MTH-325"]},
+        {"id": "mth444", "title": "Independent Study", "codes": ["MTH-444"]},
+        {"id": "mth445", "title": "Complex Analysis (WE)", "codes": ["MTH-445"]},
+        {"id": "mth455", "title": "Mathematical Modeling (WE)", "codes": ["MTH-455"]},
+        {"id": "mth484", "title": "Special Topics (WE)", "codes": ["MTH-484"]},
+        {"id": "eco375", "title": "Econometrics", "codes": ["ECO-375"]}
+      ]
+    }
+  ]
+}

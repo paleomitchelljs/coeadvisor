@@ -1,0 +1,43 @@
+{
+  "id": "molecular_biology_collateral_major_2025-26",
+  "name": "Molecular Biology",
+  "program_type": "major",
+  "catalog_year": "2025-26",
+  "major_code": "BIO",
+  "source": "Academic Catalog 2025-26, pp. 152-153",
+  "note": "Collateral major requiring concurrent completion of a primary major in Biology. Students choosing Molecular Biology may not select the collateral major in Biochemistry. Requires a minimum cumulative 2.0 GPA. Physics sequence (Basic or General) is strongly recommended.",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "chm221", "title": "Organic Chemistry I", "codes": ["CHM-221"]},
+        {"id": "chm321", "title": "Organic Chemistry II", "codes": ["CHM-321"]},
+        {"id": "chm322", "title": "Organic Laboratory", "codes": ["CHM-322"]},
+        {"id": "bio345", "title": "Techniques in Molecular Biology and Laboratory", "codes": ["BIO-345", "BIO-345L"]},
+        {"id": "bio405", "title": "Current Topics in Molecular Biology", "codes": ["BIO-405"]}
+      ]
+    },
+    {
+      "id": "biochem",
+      "label": "One Biochemistry Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "chm431", "title": "Biochemistry and Laboratory", "codes": ["CHM-431", "CHM-431L"]},
+        {"id": "chm432", "title": "Protein Biochemistry and Laboratory", "codes": ["CHM-432", "CHM-432L"]}
+      ]
+    },
+    {
+      "id": "advanced_bio",
+      "label": "One Advanced Biology Sequence",
+      "type": "choose_one",
+      "options": [
+        {"id": "bio325", "title": "Microbiology (WE) and Laboratory", "codes": ["BIO-325", "BIO-325L"]},
+        {"id": "bio415", "title": "Developmental Biology and Laboratory", "codes": ["BIO-415", "BIO-415L"]},
+        {"id": "bio435", "title": "Cell Physiology and Laboratory", "codes": ["BIO-435", "BIO-435L"]},
+        {"id": "bio455", "title": "Molecular Neurobiology and Laboratory", "codes": ["BIO-455", "BIO-455L"]}
+      ]
+    }
+  ]
+}

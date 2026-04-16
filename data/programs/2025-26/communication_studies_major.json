@@ -1,0 +1,94 @@
+{
+  "id": "communication_studies_major_2025-26",
+  "name": "Communication Studies",
+  "program_type": "major",
+  "catalog_year": "2025-26",
+  "major_code": "COM",
+  "source": "Academic Catalog 2025-26, pp. 98-99",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "com101", "title": "Introduction to Communication Studies", "codes": ["COM-101"]},
+        {"id": "com125", "title": "Fundamentals of Public Speaking", "codes": ["COM-125"]}
+      ]
+    },
+    {
+      "id": "methods",
+      "label": "One Methods Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "com281", "title": "Introduction to Research Methods (WE)", "codes": ["COM-281"]},
+        {"id": "com381", "title": "Research Methods in Communication Studies (WE)", "codes": ["COM-381"]}
+      ]
+    },
+    {
+      "id": "human_comm",
+      "label": "One Course in Human Communication",
+      "type": "choose_one",
+      "options": [
+        {"id": "com137", "title": "Interpersonal Communication (WE)", "codes": ["COM-137"]},
+        {"id": "com231", "title": "Communication in Teams (WE)", "codes": ["COM-231"]},
+        {"id": "com225", "title": "Topics in Communication Studies", "codes": ["COM-225"]},
+        {"id": "com322", "title": "Professional Communication and Writing (WE)", "codes": ["COM-322"]},
+        {"id": "com327", "title": "Organizational Communication (WE)", "codes": ["COM-327"]},
+        {"id": "com236", "title": "Intercultural Communication (WE)", "codes": ["COM-236"]},
+        {"id": "com323", "title": "Relational Communication: Theory and Application (WE)", "codes": ["COM-323"]},
+        {"id": "com332", "title": "Health Communication (WE)", "codes": ["COM-332"]},
+        {"id": "com435", "title": "Advanced Topics in Human Communication (WE)", "codes": ["COM-435"]}
+      ]
+    },
+    {
+      "id": "mass_media",
+      "label": "One Course in Mass Media",
+      "type": "choose_one",
+      "options": [
+        {"id": "com141", "title": "Introduction to Journalism (WE)", "codes": ["COM-141"]},
+        {"id": "com151", "title": "Introduction to New Media Studies (WE)", "codes": ["COM-151"]},
+        {"id": "com157", "title": "Introduction to Media Analysis (WE)", "codes": ["COM-157"]},
+        {"id": "com241", "title": "Multimedia Journalism (WE)", "codes": ["COM-241"]},
+        {"id": "com245", "title": "Topics in Communication Studies", "codes": ["COM-245"]},
+        {"id": "com257", "title": "Sex, Race, and Gender in the Media (WE)", "codes": ["COM-257"]},
+        {"id": "com341", "title": "Digital Storytelling (WE)", "codes": ["COM-341"]},
+        {"id": "com455", "title": "Advanced Topics in Mass Media (WE)", "codes": ["COM-455"]}
+      ]
+    },
+    {
+      "id": "cultural_critical",
+      "label": "One Course in Cultural and Critical Communication",
+      "type": "choose_one",
+      "options": [
+        {"id": "com160", "title": "Rhetorical Theory & Practice", "codes": ["COM-160"]},
+        {"id": "com161", "title": "Visual Rhetoric", "codes": ["COM-161"]},
+        {"id": "com267", "title": "Environmental Rhetoric (WE)", "codes": ["COM-267"]},
+        {"id": "com275", "title": "Topics in Communication Studies", "codes": ["COM-275"]},
+        {"id": "com377", "title": "Language, Power, and Social Change (WE)", "codes": ["COM-377"]},
+        {"id": "com465", "title": "Advanced Topics in Cultural and Critical Communication (WE)", "codes": ["COM-465"]}
+      ]
+    },
+    {
+      "id": "advanced_com",
+      "label": "One COM Course (400+)",
+      "type": "open_n",
+      "n": 1,
+      "description": "A Communication Studies (COM) course numbered 400 or above, if not used to satisfy the Human Communication, Mass Media, or Cultural/Critical requirement.",
+      "constraints": {
+        "prefixes": ["COM"],
+        "min_level": 400,
+        "min_level_count": 1
+      }
+    },
+    {
+      "id": "additional",
+      "label": "Three Additional COM Courses",
+      "type": "open_n",
+      "n": 3,
+      "description": "Three additional courses with a COM prefix. Students may count up to 1.0 credits with ECC prefix toward this requirement, including ECC-494.",
+      "constraints": {
+        "prefixes": ["COM"]
+      }
+    }
+  ]
+}
