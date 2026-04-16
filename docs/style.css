@@ -297,6 +297,8 @@ h2:first-child { margin-top: 0; }
   color: #b91c1c;
 }
 
+.sem-credit-warn { color: #b91c1c; font-weight: 700; }
+
 .sem-status {
   font-size: 11px;
   color: #64748b;
