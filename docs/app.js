@@ -425,10 +425,12 @@ function generateAdv() {
     const label = semEl.querySelector(".sem-label").textContent.trim();
     const text = semEl.querySelector(".sem-courses").value.trim();
     if (!text) return;
+    const done = semEl.querySelector(".sem-status input").checked;
+    const status = done ? "completed" : "planned";
     lines.push(`SEMESTER: ${label}`);
     for (const code of text.split(/\n/)) {
       const c = code.trim();
-      if (c) lines.push(`COURSE: ${c}, completed`);
+      if (c) lines.push(`COURSE: ${c}, ${status}`);
     }
     lines.push("");
   });
@@ -467,7 +469,7 @@ function loadAdv(text) {
 
     if (s.startsWith("SEMESTER:")) {
       inOldCourses = false;
-      currentSem = { label: s.slice(9).trim(), courses: [] };
+      currentSem = { label: s.slice(9).trim(), courses: [], hasCompleted: false, hasPlanned: false };
       semesters.push(currentSem);
       continue;
     }
@@ -475,7 +477,12 @@ function loadAdv(text) {
     if (s.startsWith("COURSE:") && currentSem) {
       const parts = s.slice(7).trim().split(",");
       const code = (parts[0] || "").trim();
-      if (code) currentSem.courses.push(code);
+      const status = (parts[1] || "").trim().toLowerCase();
+      if (code) {
+        currentSem.courses.push(code);
+        if (status === "planned") currentSem.hasPlanned = true;
+        else currentSem.hasCompleted = true;
+      }
       continue;
     }
 
@@ -541,9 +548,13 @@ function loadAdv(text) {
     for (let i = 1; i <= 4; i++) addSemester(`Semester ${i}`, "");
   } else {
     for (const sd of semData) {
-      addSemester(sd.label, sd.courses.join("\n"));
+      const completed = sd.hasCompleted && !sd.hasPlanned;
+      addSemester(sd.label, sd.courses.join("\n"), completed);
     }
   }
+  // Show pathways if a major was loaded
+  const hasMajor = [1,2,3].some(i => document.getElementById(`major${i}`).value);
+  document.getElementById("pathways-row").style.display = hasMajor ? "" : "none";
   runCheck();
 }
 
@@ -909,22 +920,35 @@ function closeWizard() {
 
 // ─── Semester management ─────────────────────────────────────────────────────
 
-function addSemester(label, courses) {
+function addSemester(label, courses, completed) {
   label = label || `Semester ${document.querySelectorAll(".semester").length + 1}`;
   courses = courses || "";
+  if (completed === undefined) completed = false;
   const container = document.getElementById("semesters");
   const div = document.createElement("div");
-  div.className = "semester";
-  div.innerHTML = `<div class="sem-header">
+  div.className = "semester open";
+  const checkedAttr = completed ? " checked" : "";
+  div.innerHTML = `<div class="sem-header" onclick="toggleSem(event, this)">
+    <span class="arrow">\u25B6</span>
     <span class="sem-label">${label}</span>
-    <button class="small-btn remove-sem" onclick="this.closest('.semester').remove()" title="Remove">\u00d7</button>
+    <label class="sem-status" onclick="event.stopPropagation()">
+      <input type="checkbox"${checkedAttr}> Completed
+    </label>
+    <button class="small-btn remove-sem" onclick="event.stopPropagation(); this.closest('.semester').remove()" title="Remove">\u00d7</button>
   </div>
-  <textarea class="sem-courses" rows="3" placeholder="One course per line: BIO-145, CHM 121...">${courses}</textarea>`;
+  <div class="sem-body">
+    <textarea class="sem-courses" rows="3" placeholder="One course per line: BIO-145, CHM 121...">${courses}</textarea>
+  </div>`;
   container.appendChild(div);
+  // Collapse if it has courses (loaded from file) — keep new empty ones open
+  if (courses && completed) {
+    div.classList.remove("open");
+  }
 }
 
-function removeSemester(btn) {
-  btn.closest(".semester").remove();
+function toggleSem(e, header) {
+  if (e.target.closest(".sem-status") || e.target.closest(".remove-sem")) return;
+  header.closest(".semester").classList.toggle("open");
 }
 
 // ─── Initialization ──────────────────────────────────────────────────────────
@@ -991,6 +1015,15 @@ function init() {
   // Default semesters
   addSemester("Transfer", "");
   for (let i = 1; i <= 4; i++) addSemester(`Semester ${i}`, "");
+
+  // Show/hide pathways when major selection changes
+  function updatePathwaysVisibility() {
+    const hasMajor = [1,2,3].some(i => document.getElementById(`major${i}`).value);
+    document.getElementById("pathways-row").style.display = hasMajor ? "" : "none";
+  }
+  for (let i = 1; i <= 3; i++) {
+    document.getElementById(`major${i}`).addEventListener("change", updatePathwaysVisibility);
+  }
 
   // Auto-check on changes
   document.getElementById("input-panel").addEventListener("change", () => runCheck());
