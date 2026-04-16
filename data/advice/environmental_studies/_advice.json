@@ -1,0 +1,19 @@
+{
+  "id": "environmental_studies",
+  "major_code": "EVS",
+  "display_name": "Environmental Studies",
+  "match_programs": [
+    "environmental_studies_collateral_2025",
+    "environmental_studies_collateral_major_2025-26"
+  ],
+  "default_plan": "standard",
+  "plans": [
+    {
+      "id": "standard",
+      "file": "plan_standard.json",
+      "label": "Environmental Studies (collateral)",
+      "default": true
+    }
+  ],
+  "notes": "notes.json"
+}

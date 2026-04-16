@@ -1,0 +1,19 @@
+{
+  "id": "kinesiology_athletic_training",
+  "major_code": "KIN",
+  "display_name": "Kinesiology",
+  "match_programs": [
+    "kinesiology_athletic_training_major_2021",
+    "kinesiology_pre_athletic_training_major_2025-26"
+  ],
+  "default_plan": "standard",
+  "plans": [
+    {
+      "id": "standard",
+      "file": "plan_standard.json",
+      "label": "Kinesiology — Pre-Athletic Training",
+      "default": true
+    }
+  ],
+  "notes": "notes.json"
+}

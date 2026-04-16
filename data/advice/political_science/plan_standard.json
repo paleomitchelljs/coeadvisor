@@ -1,0 +1,55 @@
+{
+  "id": "political_science_standard",
+  "label": "Political Science",
+  "semesters": {
+    "1": {
+      "essential": [],
+      "suggested": [
+        "POL-108",
+        "POL-115"
+      ]
+    },
+    "2": {
+      "essential": [],
+      "suggested": [
+        "POL-108 (if not taken)",
+        "POL-115 (if not taken)"
+      ]
+    },
+    "3": {
+      "essential": [
+        "POL-108 or POL-115 (if neither taken)"
+      ],
+      "suggested": [
+        "POL-244",
+        "Political science course with prerequisites met"
+      ]
+    },
+    "4": {
+      "essential": [
+        "POL-108",
+        "POL-115"
+      ],
+      "suggested": [
+        "Political science course"
+      ]
+    },
+    "5": {
+      "essential": [],
+      "suggested": []
+    },
+    "6": {
+      "essential": [],
+      "suggested": []
+    },
+    "7": {
+      "essential": [],
+      "suggested": []
+    },
+    "8": {
+      "essential": [],
+      "suggested": []
+    }
+  },
+  "general_notes": "10 courses needed. Complete at least 4 classes in the major by end of sophomore year. Not advisable to take a 300-level course before spring semester sophomore year."
+}

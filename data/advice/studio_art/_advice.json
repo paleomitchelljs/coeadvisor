@@ -1,0 +1,19 @@
+{
+  "id": "studio_art",
+  "major_code": "ART",
+  "display_name": "Studio Art",
+  "match_programs": [
+    "studio_art_major_2026",
+    "art_major_2025-26"
+  ],
+  "default_plan": "standard",
+  "plans": [
+    {
+      "id": "standard",
+      "file": "plan_standard.json",
+      "label": "Studio Art",
+      "default": true
+    }
+  ],
+  "notes": "notes.json"
+}

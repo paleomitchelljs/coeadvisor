@@ -1,0 +1,19 @@
+{
+  "id": "political_science",
+  "major_code": "POL",
+  "display_name": "Political Science",
+  "match_programs": [
+    "political_science_major_2025",
+    "political_science_major_2025-26"
+  ],
+  "default_plan": "standard",
+  "plans": [
+    {
+      "id": "standard",
+      "file": "plan_standard.json",
+      "label": "Political Science",
+      "default": true
+    }
+  ],
+  "notes": "notes.json"
+}

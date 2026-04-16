@@ -1,0 +1,54 @@
+{
+  "id": "philosophy_standard",
+  "label": "Philosophy",
+  "semesters": {
+    "1": {
+      "essential": [],
+      "suggested": [
+        "PHL-105",
+        "PHL-115",
+        "PHL-128"
+      ]
+    },
+    "2": {
+      "essential": [],
+      "suggested": [
+        "PHL-105",
+        "PHL-115",
+        "PHL-128",
+        "PHL-200",
+        "PHL-205"
+      ]
+    },
+    "3": {
+      "essential": [],
+      "suggested": [
+        "Additional philosophy course (100 or 200-level)"
+      ]
+    },
+    "4": {
+      "essential": [
+        "PHL-220",
+        "PHL-300"
+      ],
+      "suggested": []
+    },
+    "5": {
+      "essential": [],
+      "suggested": []
+    },
+    "6": {
+      "essential": [],
+      "suggested": []
+    },
+    "7": {
+      "essential": [],
+      "suggested": []
+    },
+    "8": {
+      "essential": [],
+      "suggested": []
+    }
+  },
+  "general_notes": "9 courses needed. 100-level courses are especially well-suited for first-year students. 200-level for students who have already taken a 100-level course or completed their first year. 300-level courses have prerequisites."
+}

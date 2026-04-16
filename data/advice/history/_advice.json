@@ -1,0 +1,19 @@
+{
+  "id": "history",
+  "major_code": "HIS",
+  "display_name": "History",
+  "match_programs": [
+    "history_major_2021",
+    "history_major_2025-26"
+  ],
+  "default_plan": "standard",
+  "plans": [
+    {
+      "id": "standard",
+      "file": "plan_standard.json",
+      "label": "History",
+      "default": true
+    }
+  ],
+  "notes": "notes.json"
+}

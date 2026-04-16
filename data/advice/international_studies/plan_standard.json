@@ -1,0 +1,62 @@
+{
+  "id": "international_studies_standard",
+  "label": "International Studies",
+  "semesters": {
+    "1": {
+      "essential": [
+        "Foreign language course (especially if starting new language)"
+      ],
+      "suggested": [
+        "IS-116",
+        "ANT-116",
+        "ECO-175"
+      ]
+    },
+    "2": {
+      "essential": [
+        "Next foreign language course in sequence"
+      ],
+      "suggested": [
+        "POL-258",
+        "ANT-116",
+        "ECO-175"
+      ]
+    },
+    "3": {
+      "essential": [
+        "IS-116 (if not taken)",
+        "Next foreign language course"
+      ],
+      "suggested": [
+        "ANT-116",
+        "ECO-175"
+      ]
+    },
+    "4": {
+      "essential": [],
+      "suggested": [
+        "POL-258",
+        "ANT-116",
+        "ECO-175",
+        "Next foreign language course"
+      ]
+    },
+    "5": {
+      "essential": [],
+      "suggested": []
+    },
+    "6": {
+      "essential": [],
+      "suggested": []
+    },
+    "7": {
+      "essential": [],
+      "suggested": []
+    },
+    "8": {
+      "essential": [],
+      "suggested": []
+    }
+  },
+  "general_notes": "Must pass two foreign language courses at the intermediate level. Makes most sense to complete before junior year abroad. Starting a new language in Year 1 Fall is optimal to reach intermediate before going abroad."
+}

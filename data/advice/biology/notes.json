@@ -1,0 +1,8 @@
+{
+  "general": "BIO-235 is the prime prerequisite for most upper-level biology electives and must be completed by end of sophomore year. MTH-135 or STA-100/110 can be taken any semester during the first two years. 11 courses needed for the major.",
+  "variant_notes": {
+    "standard": "Default track for Biology majors. CHM sequence begins sophomore year unless pre-med.",
+    "advanced": "For pre-med students and those with strong high school science background (ACT ≥ 25). CHM sequence begins immediately.",
+    "typical": "For students with limited high school science background. Fall 2026: use BIO-100 instead of BIO-120 (BIO-120 not offered)."
+  }
+}

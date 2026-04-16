@@ -1,0 +1,55 @@
+{
+  "id": "social_criminal_justice_standard",
+  "label": "Social & Criminal Justice",
+  "semesters": {
+    "1": {
+      "essential": [],
+      "suggested": [
+        "SCJ-101",
+        "SOC-107"
+      ]
+    },
+    "2": {
+      "essential": [
+        "SCJ-101 or SCJ-203 (if SCJ-101 taken fall)"
+      ],
+      "suggested": [
+        "SOC-107"
+      ]
+    },
+    "3": {
+      "essential": [],
+      "suggested": [
+        "SOC-235",
+        "SCJ-202",
+        "PHL-265",
+        "PHL-285"
+      ]
+    },
+    "4": {
+      "essential": [],
+      "suggested": [
+        "PHL-265 or PHL-285 (when offered)",
+        "STA-100",
+        "STA-110"
+      ]
+    },
+    "5": {
+      "essential": [],
+      "suggested": []
+    },
+    "6": {
+      "essential": [],
+      "suggested": []
+    },
+    "7": {
+      "essential": [],
+      "suggested": []
+    },
+    "8": {
+      "essential": [],
+      "suggested": []
+    }
+  },
+  "general_notes": "10 courses needed (3 are electives). Several courses on every-other-year basis (PHL-265/285, SOC-351). SOC-107 is NOT required for SOC-235 if SCJ-101 has been taken."
+}

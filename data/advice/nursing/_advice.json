@@ -1,0 +1,19 @@
+{
+  "id": "nursing",
+  "major_code": "NUR",
+  "display_name": "Nursing",
+  "match_programs": [
+    "nursing_bsn_2025",
+    "nursing_bsn_major_2025-26"
+  ],
+  "default_plan": "standard",
+  "plans": [
+    {
+      "id": "standard",
+      "file": "plan_standard.json",
+      "label": "Nursing (BSN)",
+      "default": true
+    }
+  ],
+  "notes": "notes.json"
+}

@@ -1,0 +1,19 @@
+{
+  "id": "museum_studies",
+  "major_code": "MS",
+  "display_name": "Museum Studies",
+  "match_programs": [
+    "museum_studies_minor_2026",
+    "museum_studies_minor_2025-26"
+  ],
+  "default_plan": "standard",
+  "plans": [
+    {
+      "id": "standard",
+      "file": "plan_standard.json",
+      "label": "Museum Studies (minor)",
+      "default": true
+    }
+  ],
+  "notes": "notes.json"
+}

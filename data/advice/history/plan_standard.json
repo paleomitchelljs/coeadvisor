@@ -1,0 +1,49 @@
+{
+  "id": "history_standard",
+  "label": "History",
+  "semesters": {
+    "1": {
+      "essential": [],
+      "suggested": [
+        "HIS-115",
+        "HIS-145",
+        "200 or 300-level HIS (first-year students welcome)"
+      ]
+    },
+    "2": {
+      "essential": [],
+      "suggested": [
+        "HIS-115",
+        "HIS-145",
+        "200 or 300-level HIS"
+      ]
+    },
+    "3": {
+      "essential": [
+        "HIS-205"
+      ],
+      "suggested": []
+    },
+    "4": {
+      "essential": [],
+      "suggested": []
+    },
+    "5": {
+      "essential": [],
+      "suggested": []
+    },
+    "6": {
+      "essential": [],
+      "suggested": []
+    },
+    "7": {
+      "essential": [],
+      "suggested": []
+    },
+    "8": {
+      "essential": [],
+      "suggested": []
+    }
+  },
+  "general_notes": "10 courses required. History courses generally have no prerequisites, so first-year students may take 200 or 300-level courses of interest. Plan to take HIS-205 in Fall of sophomore year."
+}

@@ -77,7 +77,7 @@ def load_programs(programs_dir):
 
     # Catalog-year subfolders (e.g. data/programs/2025-26/)
     for subdir in sorted(programs_dir.iterdir()):
-        if not subdir.is_dir() or subdir.name.startswith("."):
+        if not subdir.is_dir() or subdir.name.startswith((".", "_")):
             continue
         year_label = subdir.name          # e.g. "2025-26"
         catalog_years.add(year_label)
@@ -91,10 +91,56 @@ def load_programs(programs_dir):
 
 
 def load_advice(advice_dir):
-    """Load advice files from data/advice/."""
+    """Load advice from data/advice/ subdirectories.
+
+    Each subdirectory contains:
+      _advice.json  — master file with metadata and pointers
+      plan_*.json   — plan files referenced by the master
+      intake.json   — optional intake wizard data
+      notes.json    — optional advisor notes
+
+    Sub-files are inlined into the master, so the bundled output is
+    a flat dict keyed by the advice directory name with everything resolved.
+    """
     if not advice_dir.is_dir():
         return {}
-    return load_dir(advice_dir, key_fn=lambda d: d.get("program_id", ""))
+    result = {}
+    for subdir in sorted(advice_dir.iterdir()):
+        if not subdir.is_dir() or subdir.name.startswith("."):
+            continue
+        master_path = subdir / "_advice.json"
+        if not master_path.exists():
+            continue
+        master = load_json(master_path)
+        # Inline plan files (preserve master's id/label/conditions)
+        for plan in master.get("plans", []):
+            plan_file = plan.pop("file", None)
+            if plan_file:
+                plan_path = subdir / plan_file
+                if plan_path.exists():
+                    plan_data = load_json(plan_path)
+                    # Keep master's id, merge plan data underneath
+                    saved_id = plan.get("id")
+                    saved_label = plan.get("label")
+                    plan.update(plan_data)
+                    if saved_id:
+                        plan["id"] = saved_id
+                    if saved_label:
+                        plan["label"] = saved_label
+        # Inline intake
+        intake_ref = master.pop("intake", None)
+        if intake_ref:
+            intake_path = subdir / intake_ref
+            if intake_path.exists():
+                master["intake"] = load_json(intake_path)
+        # Inline notes
+        notes_ref = master.pop("notes", None)
+        if notes_ref:
+            notes_path = subdir / notes_ref
+            if notes_path.exists():
+                master["notes"] = load_json(notes_path)
+        result[master["id"]] = master
+    return result
 
 
 def main():

@@ -1,0 +1,19 @@
+{
+  "id": "psychology",
+  "major_code": "PSY",
+  "display_name": "Psychology",
+  "match_programs": [
+    "psychology_major_2025",
+    "psychology_major_2025-26"
+  ],
+  "default_plan": "standard",
+  "plans": [
+    {
+      "id": "standard",
+      "file": "plan_standard.json",
+      "label": "Psychology",
+      "default": true
+    }
+  ],
+  "notes": "notes.json"
+}

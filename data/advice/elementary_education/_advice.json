@@ -1,0 +1,19 @@
+{
+  "id": "elementary_education",
+  "major_code": "EDU",
+  "display_name": "Elementary Education",
+  "match_programs": [
+    "elementary_education_major_2025",
+    "elementary_education_major_2025-26"
+  ],
+  "default_plan": "standard",
+  "plans": [
+    {
+      "id": "standard",
+      "file": "plan_standard.json",
+      "label": "Elementary Education",
+      "default": true
+    }
+  ],
+  "notes": "notes.json"
+}

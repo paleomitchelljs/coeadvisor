@@ -287,36 +287,31 @@ const PLAN_SEM_LABELS = {
   7: "Fall \u2014 Year 4",   8: "Spring \u2014 Year 4",
 };
 
-const F2Y_SEM_NUM = { y1_fall: 1, y1_spring: 2, y2_fall: 3, y2_spring: 4 };
 
 function buildSemesterSuggestions(semNum, allTaken, shownCodes, selectedProgs, geResult, majorCode, activePathways) {
   const items = [];
   const term = semesterTerm(semNum);
 
-  // F2Y courses for semesters 1-4
-  if (semNum <= 4) {
-    const f2yEntries = findF2YEntries(selectedProgs, activePathways);
-    const semKey = Object.entries(F2Y_SEM_NUM).find(([k, v]) => v === semNum);
-    if (semKey) {
-      for (const entry of f2yEntries) {
-        const semData = (entry.semesters || {})[semKey[0]];
-        if (!semData) continue;
-        for (const cat of ["essential", "suggested"]) {
-          for (const item of (semData[cat] || [])) {
-            const code = normalize(item);
-            if (!/^[A-Z]+-\d/.test(code)) continue;
-            if (shownCodes.has(code)) continue;
-            // Check term compatibility
-            const off = OFFERING_TERM[code];
-            if (off && off !== "both" && off !== term) continue;
-            shownCodes.add(code);
-            const done = allTaken.has(code);
-            const traj = majorCode ? trajectoryInfo(majorCode, code) : null;
-            items.push({
-              code, display: code, category: cat,
-              done, pct: traj ? traj.pct : null, trajSem: traj ? traj.sem : null,
-            });
-          }
+  // Advice plan courses (all 8 semesters)
+  {
+    const advicePlans = findAdvicePlan(selectedProgs, activePathways);
+    for (const entry of advicePlans) {
+      const semData = (entry.semesters || {})[String(semNum)];
+      if (!semData) continue;
+      for (const cat of ["essential", "suggested"]) {
+        for (const item of (semData[cat] || [])) {
+          const code = normalize(item);
+          if (!/^[A-Z]+-\d/.test(code)) continue;
+          if (shownCodes.has(code)) continue;
+          const off = OFFERING_TERM[code];
+          if (off && off !== "both" && off !== term) continue;
+          shownCodes.add(code);
+          const done = allTaken.has(code);
+          const traj = majorCode ? trajectoryInfo(majorCode, code) : null;
+          items.push({
+            code, display: code, category: cat,
+            done, pct: traj ? traj.pct : null, trajSem: traj ? traj.sem : null,
+          });
         }
       }
     }
@@ -439,10 +434,11 @@ function findMajorCode(programs) {
   return "";
 }
 
-function findF2YEntries(programs, activePathways) {
-  const f2y = DATA.first_two_years || { entries: [] };
-  const entries = f2y.entries || f2y;
-  if (!Array.isArray(entries)) return [];
+function findAdvicePlan(programs, activePathways) {
+  // Find the best advice plan for the selected programs and active pathways.
+  // Returns an object with the same shape as old F2Y entries (semesters with
+  // essential/suggested arrays) so downstream code works unchanged.
+  const advice = DATA.advice || {};
   const activePwSet = new Set(activePathways || []);
   const result = [];
 
@@ -450,36 +446,62 @@ function findF2YEntries(programs, activePathways) {
     const majorCode = prog.major_code || "";
     const progId = prog.id || "";
 
-    // Find all F2Y entries matching this program
-    const matching = entries.filter(entry => {
-      const matchCodes = entry.match_major_codes || [];
-      const matchIds = entry.match_program_ids || [];
-      return matchCodes.includes(majorCode) || matchIds.includes(progId);
-    });
+    // Find matching advice entry (by match_programs or major_code)
+    let adviceEntry = null;
+    for (const [, entry] of Object.entries(advice)) {
+      const matchProgs = entry.match_programs || [];
+      if (matchProgs.includes(progId)) { adviceEntry = entry; break; }
+    }
+    if (!adviceEntry) {
+      for (const [, entry] of Object.entries(advice)) {
+        if (entry.major_code === majorCode) { adviceEntry = entry; break; }
+      }
+    }
+    if (!adviceEntry) continue;
 
-    // Select the right variant based on conditions
+    const plans = adviceEntry.plans || [];
     let chosen = null;
 
-    // First: look for a conditional entry whose conditions are met
-    for (const entry of matching) {
-      const cond = entry.conditions;
+    // Look for a conditional plan whose conditions are met
+    for (const plan of plans) {
+      const cond = plan.conditions;
       if (!cond) continue;
-      if (cond.intake_only) continue; // wizard-only, skip in Plan tab
+      if (cond.intake_only) continue;
       if (cond.pathways && cond.pathways.some(pw => activePwSet.has(pw))) {
-        chosen = entry;
-        break;
+        chosen = plan; break;
       }
     }
 
-    // Fallback: use the default entry
+    // Fallback: default plan
     if (!chosen) {
-      chosen = matching.find(e => e.default === true)
-            || matching.find(e => !e.conditions);
+      chosen = plans.find(p => p.default === true) || plans[0];
     }
 
-    if (chosen) result.push(chosen);
+    if (chosen) {
+      // Build F2Y-compatible shape: semesters keyed y1_fall..y2_spring
+      // plus new numeric keys for semesters 5-8
+      const semMap = { 1: "y1_fall", 2: "y1_spring", 3: "y2_fall", 4: "y2_spring" };
+      const semesters = {};
+      const planSems = chosen.semesters || {};
+      for (let i = 1; i <= 8; i++) {
+        const semData = planSems[String(i)] || { essential: [], suggested: [] };
+        if (i <= 4) semesters[semMap[i]] = semData;
+        semesters[String(i)] = semData;
+      }
+      result.push({
+        semesters,
+        label: chosen.label || "",
+        notes: chosen.general_notes || "",
+        match_major_codes: [majorCode],
+      });
+    }
   }
   return result;
+}
+
+// Legacy alias — old code references findF2YEntries
+function findF2YEntries(programs, activePathways) {
+  return findAdvicePlan(programs, activePathways);
 }
 
 // ─── .adv file format ────────────────────────────────────────────────────────
@@ -1028,12 +1050,29 @@ function renderPlan(selectedProgs, taken, geResult, activePathways, overrides) {
 
 // ─── Intake wizard ───────────────────────────────────────────────────────────
 
+function findIntakeData(progId) {
+  // Look for intake data in advice system first, then legacy DATA.intake
+  const prog = DATA.programs[progId];
+  if (prog) {
+    const majorCode = prog.major_code || "";
+    for (const [, entry] of Object.entries(DATA.advice || {})) {
+      const matchProgs = entry.match_programs || [];
+      if (matchProgs.includes(progId) || entry.major_code === majorCode) {
+        if (entry.intake) return entry.intake;
+      }
+    }
+  }
+  // Legacy fallback
+  if (DATA.intake) return DATA.intake[progId] || DATA.intake["_default"] || null;
+  return null;
+}
+
 function showIntakeWizard() {
   const majorSel = document.querySelector("#major-slots .major-select");
   const majorId = majorSel ? majorSel.value : "";
   if (!majorId) { alert("Select a major first."); return; }
 
-  const intake = DATA.intake[majorId] || DATA.intake["_default"];
+  const intake = findIntakeData(majorId);
   if (!intake) { alert("No intake questions available."); return; }
 
   const modal = document.getElementById("wizard-modal");
@@ -1050,13 +1089,13 @@ function showIntakeWizard() {
   }
   body.innerHTML = html;
   modal.classList.add("visible");
-  modal.dataset.intakeId = intake.program_id;
+  modal.dataset.intakeId = majorId;
 }
 
 function submitWizard() {
   const modal = document.getElementById("wizard-modal");
   const intakeId = modal.dataset.intakeId;
-  const intake = DATA.intake[intakeId] || DATA.intake["_default"];
+  const intake = findIntakeData(intakeId);
   if (!intake) return;
 
   const answers = {};
@@ -1242,8 +1281,13 @@ function buildProfReqs() {
 
 function updatePathways() {
   const selectedProgIds = [];
+  const selectedMajorCodes = new Set();
   document.querySelectorAll("#major-slots .major-select").forEach(sel => {
-    if (sel.value) selectedProgIds.push(sel.value);
+    if (sel.value) {
+      selectedProgIds.push(sel.value);
+      const prog = DATA.programs[sel.value];
+      if (prog && prog.major_code) selectedMajorCodes.add(prog.major_code);
+    }
   });
 
   const pwContainer = document.getElementById("pathways");
@@ -1254,10 +1298,13 @@ function updatePathways() {
   pwContainer.innerHTML = "";
   let count = 0;
   for (const [id, pw] of Object.entries(DATA.pathways || {})) {
-    const related = pw.related_programs || [];
-    // Only show pathways relevant to selected programs
-    if (selectedProgIds.length > 0 && related.length > 0
-        && !related.some(rp => selectedProgIds.includes(rp))) continue;
+    const relatedCodes = pw.related_major_codes || [];
+    const relatedProgs = pw.related_programs || [];
+    // Only show pathways relevant to selected programs (by major_code or program ID)
+    const matchesByCode = relatedCodes.length > 0 && relatedCodes.some(c => selectedMajorCodes.has(c));
+    const matchesByProg = relatedProgs.length > 0 && relatedProgs.some(rp => selectedProgIds.includes(rp));
+    if (selectedProgIds.length > 0 && (relatedCodes.length > 0 || relatedProgs.length > 0)
+        && !matchesByCode && !matchesByProg) continue;
     // Don't show any pathways if no major is selected
     if (selectedProgIds.length === 0) continue;
     const label = document.createElement("label");

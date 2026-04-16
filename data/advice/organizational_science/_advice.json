@@ -1,0 +1,19 @@
+{
+  "id": "organizational_science",
+  "major_code": "ORGSC",
+  "display_name": "Organizational Science",
+  "match_programs": [
+    "organizational_science_collateral_2023",
+    "psychology_major_2025-26"
+  ],
+  "default_plan": "standard",
+  "plans": [
+    {
+      "id": "standard",
+      "file": "plan_standard.json",
+      "label": "Organizational Science (collateral)",
+      "default": true
+    }
+  ],
+  "notes": "notes.json"
+}

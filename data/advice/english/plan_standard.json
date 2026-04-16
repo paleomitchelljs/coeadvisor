@@ -1,0 +1,54 @@
+{
+  "id": "english_standard",
+  "label": "English",
+  "semesters": {
+    "1": {
+      "essential": [],
+      "suggested": [
+        "ENG-101",
+        "Lower-level elective"
+      ]
+    },
+    "2": {
+      "essential": [],
+      "suggested": [
+        "ENG-101 (if not taken)",
+        "ENG-281"
+      ]
+    },
+    "3": {
+      "essential": [
+        "ENG-101"
+      ],
+      "suggested": [
+        "ENG-291",
+        "Lower-level elective"
+      ]
+    },
+    "4": {
+      "essential": [
+        "ENG-281"
+      ],
+      "suggested": [
+        "ENG-301"
+      ]
+    },
+    "5": {
+      "essential": [],
+      "suggested": []
+    },
+    "6": {
+      "essential": [],
+      "suggested": []
+    },
+    "7": {
+      "essential": [],
+      "suggested": []
+    },
+    "8": {
+      "essential": [],
+      "suggested": []
+    }
+  },
+  "general_notes": "10 courses needed. Complete ENG-101, ENG-281, ENG-291 and a lower-level elective by end of sophomore year. ENG-281 offered spring only; ENG-291 fall only. Take ENG-301 in year 2 or 3 before moving deeply into 305+ courses."
+}

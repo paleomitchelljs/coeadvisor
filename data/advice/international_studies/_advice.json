@@ -1,0 +1,21 @@
+{
+  "id": "international_studies",
+  "major_code": "IS",
+  "display_name": "International Studies",
+  "match_programs": [
+    "international_studies_major_2021",
+    "international_studies_global_south_major_2025-26",
+    "international_studies_intl_relations_major_2025-26",
+    "international_studies_european_major_2025-26"
+  ],
+  "default_plan": "standard",
+  "plans": [
+    {
+      "id": "standard",
+      "file": "plan_standard.json",
+      "label": "International Studies",
+      "default": true
+    }
+  ],
+  "notes": "notes.json"
+}

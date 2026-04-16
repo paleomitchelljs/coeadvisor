@@ -1,0 +1,19 @@
+{
+  "id": "english",
+  "major_code": "ENG",
+  "display_name": "English",
+  "match_programs": [
+    "english_major_2022",
+    "english_major_2025-26"
+  ],
+  "default_plan": "standard",
+  "plans": [
+    {
+      "id": "standard",
+      "file": "plan_standard.json",
+      "label": "English",
+      "default": true
+    }
+  ],
+  "notes": "notes.json"
+}

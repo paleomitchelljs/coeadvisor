@@ -1,0 +1,56 @@
+{
+  "id": "mathematics_standard",
+  "label": "Mathematics",
+  "semesters": {
+    "1": {
+      "essential": [
+        "MTH-135"
+      ],
+      "suggested": [
+        "MTH-145 (if AP credit for MTH-135)",
+        "CS-125"
+      ]
+    },
+    "2": {
+      "essential": [
+        "MTH-145"
+      ],
+      "suggested": [
+        "MTH-215"
+      ]
+    },
+    "3": {
+      "essential": [
+        "MTH-255"
+      ],
+      "suggested": [
+        "CS-125"
+      ]
+    },
+    "4": {
+      "essential": [
+        "MTH-215"
+      ],
+      "suggested": [
+        "MTH-265"
+      ]
+    },
+    "5": {
+      "essential": [],
+      "suggested": []
+    },
+    "6": {
+      "essential": [],
+      "suggested": []
+    },
+    "7": {
+      "essential": [],
+      "suggested": []
+    },
+    "8": {
+      "essential": [],
+      "suggested": []
+    }
+  },
+  "general_notes": "AP Calculus AB score ≥ 4 earns credit for MTH-135. AP Calculus BC score ≥ 4 earns credit for MTH-145 and MTH-135. CS-125 must be completed before graduation. Consult mathematics faculty about appropriate calculus placement level."
+}

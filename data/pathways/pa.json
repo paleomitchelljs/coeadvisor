@@ -2,7 +2,7 @@
   "id": "pa",
   "name": "Pre-Physician Assistant (PA-C)",
   "pathway_type": "preprofessional",
-  "related_programs": ["biology_major_2025", "chemistry_major_2026"],
+  "related_major_codes": ["BIO", "CHM"],
   "timing_note": "Patient care experience should begin sophomore year; most programs expect 1,000–3,000 documented hours as a paid or volunteer healthcare worker.",
   "sections": [
     {

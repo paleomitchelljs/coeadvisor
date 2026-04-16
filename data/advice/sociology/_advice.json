@@ -1,0 +1,19 @@
+{
+  "id": "sociology",
+  "major_code": "SOC",
+  "display_name": "Sociology",
+  "match_programs": [
+    "sociology_major_2025",
+    "sociology_major_2025-26"
+  ],
+  "default_plan": "standard",
+  "plans": [
+    {
+      "id": "standard",
+      "file": "plan_standard.json",
+      "label": "Sociology",
+      "default": true
+    }
+  ],
+  "notes": "notes.json"
+}

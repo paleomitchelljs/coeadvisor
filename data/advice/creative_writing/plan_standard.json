@@ -1,0 +1,55 @@
+{
+  "id": "creative_writing_standard",
+  "label": "Creative Writing",
+  "semesters": {
+    "1": {
+      "essential": [],
+      "suggested": [
+        "CRW-125",
+        "ENG-101"
+      ]
+    },
+    "2": {
+      "essential": [],
+      "suggested": [
+        "CRW-125 (if not taken)",
+        "ENG-101"
+      ]
+    },
+    "3": {
+      "essential": [
+        "CRW-125"
+      ],
+      "suggested": [
+        "Creative writing workshop",
+        "ENG 281+"
+      ]
+    },
+    "4": {
+      "essential": [
+        "Creative writing workshop"
+      ],
+      "suggested": [
+        "ENG-281 or higher",
+        "ENG-101"
+      ]
+    },
+    "5": {
+      "essential": [],
+      "suggested": []
+    },
+    "6": {
+      "essential": [],
+      "suggested": []
+    },
+    "7": {
+      "essential": [],
+      "suggested": []
+    },
+    "8": {
+      "essential": [],
+      "suggested": []
+    }
+  },
+  "general_notes": "10 courses needed. Complete CRW-125, ENG-101, and a beginning (200-level) creative writing workshop by end of sophomore year. Majors need beginning workshops in at least two genres and must take 3 English classes including ENG-101 and one numbered ENG-281 or above."
+}

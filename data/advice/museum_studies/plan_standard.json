@@ -1,0 +1,52 @@
+{
+  "id": "museum_studies_standard",
+  "label": "Museum Studies (minor)",
+  "semesters": {
+    "1": {
+      "essential": [],
+      "suggested": [
+        "MS-101",
+        "MS-115",
+        "Elective in MS"
+      ]
+    },
+    "2": {
+      "essential": [],
+      "suggested": [
+        "MS-101 (if not taken)",
+        "MS-115 (if not taken)",
+        "Elective in MS"
+      ]
+    },
+    "3": {
+      "essential": [],
+      "suggested": [
+        "MS-283",
+        "Elective in MS"
+      ]
+    },
+    "4": {
+      "essential": [],
+      "suggested": [
+        "Elective in MS"
+      ]
+    },
+    "5": {
+      "essential": [],
+      "suggested": []
+    },
+    "6": {
+      "essential": [],
+      "suggested": []
+    },
+    "7": {
+      "essential": [],
+      "suggested": []
+    },
+    "8": {
+      "essential": [],
+      "suggested": []
+    }
+  },
+  "general_notes": "Students should meet a faculty member in the Art and Visual Studies Department to discuss appropriate courses."
+}

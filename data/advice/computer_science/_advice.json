@@ -1,0 +1,19 @@
+{
+  "id": "computer_science",
+  "major_code": "CS",
+  "display_name": "Computer Science",
+  "match_programs": [
+    "computer_science_major_2021",
+    "computer_science_major_2025-26"
+  ],
+  "default_plan": "standard",
+  "plans": [
+    {
+      "id": "standard",
+      "file": "plan_standard.json",
+      "label": "Computer Science",
+      "default": true
+    }
+  ],
+  "notes": "notes.json"
+}

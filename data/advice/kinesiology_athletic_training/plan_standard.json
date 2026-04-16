@@ -1,0 +1,53 @@
+{
+  "id": "kinesiology_athletic_training_standard",
+  "label": "Kinesiology — Pre-Athletic Training",
+  "semesters": {
+    "1": {
+      "essential": [
+        "KIN-105",
+        "BIO-155 (if ready)"
+      ],
+      "suggested": [
+        "KIN-115"
+      ]
+    },
+    "2": {
+      "essential": [
+        "KIN-115 (if not taken)"
+      ],
+      "suggested": []
+    },
+    "3": {
+      "essential": [
+        "BIO-155"
+      ],
+      "suggested": [
+        "KIN-275",
+        "BIO-215"
+      ]
+    },
+    "4": {
+      "essential": [
+        "KIN-275 (if not taken)"
+      ],
+      "suggested": []
+    },
+    "5": {
+      "essential": [],
+      "suggested": []
+    },
+    "6": {
+      "essential": [],
+      "suggested": []
+    },
+    "7": {
+      "essential": [],
+      "suggested": []
+    },
+    "8": {
+      "essential": [],
+      "suggested": []
+    }
+  },
+  "general_notes": "BIO-155 must be completed by end of sophomore year."
+}

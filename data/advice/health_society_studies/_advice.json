@@ -1,0 +1,19 @@
+{
+  "id": "health_society_studies",
+  "major_code": "HSS",
+  "display_name": "Health & Society Studies",
+  "match_programs": [
+    "health_society_studies_minor_2020",
+    "health_society_studies_minor_2025-26"
+  ],
+  "default_plan": "standard",
+  "plans": [
+    {
+      "id": "standard",
+      "file": "plan_standard.json",
+      "label": "Health & Society Studies (minor)",
+      "default": true
+    }
+  ],
+  "notes": "notes.json"
+}

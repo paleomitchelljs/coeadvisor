@@ -2,7 +2,7 @@
   "id": "pt_dpt",
   "name": "Pre-Physical Therapy (DPT)",
   "pathway_type": "preprofessional",
-  "related_programs": ["kinesiology_fitness_major_2024", "biology_major_2025"],
+  "related_major_codes": ["KIN", "BIO"],
   "timing_note": "Anatomy and Physiology (BIO-215/225 or BIO-103) should be completed by end of sophomore year for most DPT timelines.",
   "sections": [
     {

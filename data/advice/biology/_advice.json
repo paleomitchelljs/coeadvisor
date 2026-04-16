@@ -1,0 +1,38 @@
+{
+  "id": "biology",
+  "major_code": "BIO",
+  "display_name": "Biology",
+  "match_programs": [
+    "biology_major_2025",
+    "biology_major_2025-26"
+  ],
+  "default_plan": "standard",
+  "plans": [
+    {
+      "id": "standard",
+      "file": "plan_standard.json",
+      "label": "Biology — standard track",
+      "default": true
+    },
+    {
+      "id": "advanced",
+      "file": "plan_advanced.json",
+      "label": "Biology — advanced track",
+      "conditions": {
+        "pathways": [
+          "premed"
+        ]
+      }
+    },
+    {
+      "id": "typical",
+      "file": "plan_typical.json",
+      "label": "Biology — typical track",
+      "conditions": {
+        "intake_only": true
+      }
+    }
+  ],
+  "intake": "intake.json",
+  "notes": "notes.json"
+}

@@ -1,0 +1,51 @@
+{
+  "id": "french_francophone_standard",
+  "label": "Interdisciplinary French & Francophone Studies",
+  "semesters": {
+    "1": {
+      "essential": [
+        "FRE course (appropriate level)"
+      ],
+      "suggested": []
+    },
+    "2": {
+      "essential": [
+        "Next FRE course in sequence"
+      ],
+      "suggested": []
+    },
+    "3": {
+      "essential": [
+        "FRE-315 (if eligible)"
+      ],
+      "suggested": [
+        "Interdisciplinary course"
+      ]
+    },
+    "4": {
+      "essential": [
+        "FRE course or FRE-315"
+      ],
+      "suggested": [
+        "Interdisciplinary course"
+      ]
+    },
+    "5": {
+      "essential": [],
+      "suggested": []
+    },
+    "6": {
+      "essential": [],
+      "suggested": []
+    },
+    "7": {
+      "essential": [],
+      "suggested": []
+    },
+    "8": {
+      "essential": [],
+      "suggested": []
+    }
+  },
+  "general_notes": "Must pass a Spanish placement test or receive instructor approval for initial placement. Students should work toward intermediate-level proficiency before junior year study abroad."
+}
