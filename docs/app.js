@@ -189,7 +189,8 @@ function checkGE(ge, taken, dac, we, prxCourses) {
   }
 
   const weFound = [...taken].filter(c =>
-    we.has(c) || c.endsWith("W") || c.endsWith("WE")).sort();
+    we.has(c) || c.endsWith("W") || c.endsWith("WE")
+    || prefixOf(c) === "FYS" || prefixOf(c) === "FS").sort();
   const dacFound = [...taken].filter(c => dac.has(c) && !isAuxiliary(c)).sort();
   const fysFound = [...taken].filter(c =>
     prefixOf(c) === "FYS" || ["FS-110","FS-111","FS-112"].includes(c));
