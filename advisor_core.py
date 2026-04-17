@@ -363,8 +363,7 @@ def check_ge(ge: dict, taken: set, dac: set, we: set,
                 lab_pairs.append((lecture, c))
 
     we_found  = sorted(c for c in taken
-                       if not is_auxiliary(c)
-                       and (c in we or c.endswith("W") or c.endswith("WE")))
+                       if c in we or c.endswith("W") or c.endswith("WE"))
     dac_found = sorted(c for c in taken if c in dac and not is_auxiliary(c))
     fys_found = [c for c in taken if prefix_of(c) == "FYS"
                  or c in ("FS-110", "FS-111", "FS-112")]
