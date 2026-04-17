@@ -171,6 +171,16 @@ def main():
     if (DATA / "offerings_2026.json").exists():
         bundle["offerings"] = load_json(DATA / "offerings_2026.json")
 
+    # Schedule data (class lists parsed from PDFs)
+    sched_dir = DATA / "schedules"
+    if sched_dir.exists():
+        schedules = {}
+        for sf in sorted(sched_dir.glob("*.json")):
+            sd = load_json(sf)
+            schedules[sd.get("term_code", sf.stem)] = sd
+        if schedules:
+            bundle["schedules"] = schedules
+
     js = "const DATA = " + json.dumps(bundle, separators=(",", ":")) + ";\n"
     out = DOCS / "data.js"
     out.write_text(js, encoding="utf-8")

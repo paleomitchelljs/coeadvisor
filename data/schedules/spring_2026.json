@@ -1,0 +1,7041 @@
+{
+  "term": "Spring 2026",
+  "term_code": "spring_2026",
+  "source": "SP 2026 11.12.2025.pdf",
+  "courses": {
+    "ACC-171": {
+      "title": "Principles of Accounting I",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "C Melcher",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "13:00",
+              "end": "13:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "ACC-215": {
+      "title": "Principles of Accounting II",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "A Perry",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "10:00",
+              "end": "10:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "A Perry",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "11:00",
+              "end": "11:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        },
+        {
+          "id": "03",
+          "instructor": "J Lutz",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "14:00",
+              "end": "14:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "ACC-215N": {
+      "title": "Principles of Accounting II",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "A Perry",
+          "credits": 1.0,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "ACC-313": {
+      "title": "Fraud Examination",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "C Melcher",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "09:00",
+              "end": "09:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "ACC-315": {
+      "title": "Managerial Accounting",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Lutz",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "13:00",
+              "end": "13:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "ACC-334": {
+      "title": "Computer Applications - Accounting",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "C Melcher",
+          "credits": 0.5,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "09:30",
+              "end": "10:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "ACC-351": {
+      "title": "Intermediate Accounting II",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "C Melcher",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "11:00",
+              "end": "12:15",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "ACC-472": {
+      "title": "Advanced Tax Accounting",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "A Perry",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "12:30",
+              "end": "13:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "ANT-204": {
+      "title": "Food and Culture",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Fairbanks",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "11:00",
+              "end": "11:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "ANT-450": {
+      "title": "Anthropological Theory",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Fairbanks",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MW",
+              "start": "14:00",
+              "end": "15:20",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "ANT-484": {
+      "title": "AdvTop: Anthropology",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Fairbanks",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "11:00",
+              "end": "11:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "ARH-128": {
+      "title": "Introduction to Art History",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "K Kunau",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "09:00",
+              "end": "09:50",
+              "location": "Dows Center"
+            }
+          ]
+        }
+      ]
+    },
+    "ARH-248": {
+      "title": "Baroque, Rococo, and Neoclassicism",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "K Kunau",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "10:00",
+              "end": "10:50",
+              "location": "Dows Center"
+            }
+          ]
+        }
+      ]
+    },
+    "ART-103": {
+      "title": "Ceramic Sculpture",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Rogers",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "09:30",
+              "end": "11:20",
+              "location": "Dows Center"
+            }
+          ]
+        }
+      ]
+    },
+    "ART-135": {
+      "title": "Ceramics: Form, Function & Meaning",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Rogers",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MW",
+              "start": "09:00",
+              "end": "10:50",
+              "location": "Dows Center"
+            }
+          ]
+        }
+      ]
+    },
+    "ART-145": {
+      "title": "Digital Studio",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "R Morrow",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MW",
+              "start": "13:00",
+              "end": "14:50",
+              "location": "Dows Center"
+            }
+          ]
+        }
+      ]
+    },
+    "ART-175": {
+      "title": "Printmaking",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "A Escobedo Wickham",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "12:30",
+              "end": "14:20",
+              "location": "Dows Center"
+            }
+          ]
+        }
+      ]
+    },
+    "ART-235": {
+      "title": "Arts Advocacy",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "L Lane",
+          "credits": 0.5,
+          "we": false,
+          "meetings": [
+            {
+              "days": "T",
+              "start": "09:30",
+              "end": "10:50",
+              "location": "Dows Center"
+            }
+          ]
+        }
+      ]
+    },
+    "ART-350": {
+      "title": "Advanced Digital Research I",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "R Morrow",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "12:30",
+              "end": "14:20",
+              "location": "Dows Center"
+            }
+          ]
+        }
+      ]
+    },
+    "ART-355": {
+      "title": "Advanced Digital Research II",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "R Morrow",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "12:30",
+              "end": "14:20",
+              "location": "Dows Center"
+            }
+          ]
+        }
+      ]
+    },
+    "ART-464": {
+      "title": "Seminar in Art and Visual Studies I",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Rogers",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "11:00",
+              "end": "11:50",
+              "location": "Dows Center"
+            }
+          ]
+        }
+      ]
+    },
+    "ART-474": {
+      "title": "Seminar in Art and Visual StudiesII",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Rogers",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "11:00",
+              "end": "11:50",
+              "location": "Dows Center"
+            }
+          ]
+        }
+      ]
+    },
+    "AVI-131": {
+      "title": "Private Pilot Lab 2",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "",
+          "credits": 0.25,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "AVI-211": {
+      "title": "Instrument Pilot Ground",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "T Busch",
+          "credits": 0.75,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "08:00",
+              "end": "08:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "AVI-221": {
+      "title": "Instrument Pilot Flight Lab 1",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "T Busch",
+          "credits": 0.5,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "AVM-201": {
+      "title": "Principles of Meterology",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "R Kopelman",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "13:00",
+              "end": "13:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "AVM-201L": {
+      "title": "Principles of Meterology Lab",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "R Kopelman",
+          "credits": 0.2,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "13:00",
+              "end": "13:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "BIO-103": {
+      "title": "Anatomy & Physiology",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "K Keyes",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "09:00",
+              "end": "09:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "BIO-103L": {
+      "title": "Anatomy and Physiology Lab",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "K Keyes",
+          "credits": 0.2,
+          "we": false,
+          "meetings": [
+            {
+              "days": "T",
+              "start": "08:00",
+              "end": "10:50",
+              "location": "Center for Health an"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "K Keyes",
+          "credits": 0.2,
+          "we": false,
+          "meetings": [
+            {
+              "days": "T",
+              "start": "13:00",
+              "end": "15:50",
+              "location": "Center for Health an"
+            }
+          ]
+        }
+      ]
+    },
+    "BIO-111": {
+      "title": "Urban Ecology",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Ellis",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "WRF",
+              "start": "10:00",
+              "end": "10:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "BIO-111L": {
+      "title": "Urban Ecology Lab",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Ellis",
+          "credits": 0.2,
+          "we": false,
+          "meetings": [
+            {
+              "days": "W",
+              "start": "14:00",
+              "end": "16:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "BIO-145": {
+      "title": "Cellular & Molecular Biology",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Mitchell",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "09:00",
+              "end": "09:50",
+              "location": "Cherry Auditorium"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "R Christensen",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "10:00",
+              "end": "10:50",
+              "location": "Cherry Auditorium"
+            }
+          ]
+        }
+      ]
+    },
+    "BIO-145L": {
+      "title": "Cellular and Molecular Biology Lab",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Mitchell",
+          "credits": 0.2,
+          "we": true,
+          "meetings": [
+            {
+              "days": "T",
+              "start": "08:00",
+              "end": "10:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "C Cozine",
+          "credits": 0.2,
+          "we": true,
+          "meetings": [
+            {
+              "days": "T",
+              "start": "11:00",
+              "end": "13:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        },
+        {
+          "id": "03",
+          "instructor": "Staff",
+          "credits": 0.2,
+          "we": true,
+          "meetings": [
+            {
+              "days": "T",
+              "start": "14:00",
+              "end": "16:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        },
+        {
+          "id": "04",
+          "instructor": "J Mitchell",
+          "credits": 0.2,
+          "we": true,
+          "meetings": [
+            {
+              "days": "R",
+              "start": "20:00",
+              "end": "22:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        },
+        {
+          "id": "05",
+          "instructor": "J Ellis",
+          "credits": 0.2,
+          "we": true,
+          "meetings": [
+            {
+              "days": "R",
+              "start": "13:00",
+              "end": "15:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "BIO-195": {
+      "title": "Introduction to Microbiology",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "M Leonardo",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "09:00",
+              "end": "09:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "BIO-195L": {
+      "title": "Introduction to Microbiology Lab",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "M Leonardo",
+          "credits": 0.2,
+          "we": false,
+          "meetings": [
+            {
+              "days": "T",
+              "start": "08:00",
+              "end": "10:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "M Leonardo",
+          "credits": 0.2,
+          "we": false,
+          "meetings": [
+            {
+              "days": "T",
+              "start": "13:00",
+              "end": "15:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "BIO-202": {
+      "title": "Topics in Evolution",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Mitchell",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "10:00",
+              "end": "10:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "BIO-225": {
+      "title": "Human Physiology",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "C Cozine",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "11:00",
+              "end": "11:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "BIO-235": {
+      "title": "Genetics",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "R Christensen",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "13:00",
+              "end": "13:50",
+              "location": "Cherry Auditorium"
+            }
+          ]
+        }
+      ]
+    },
+    "BIO-235L": {
+      "title": "Genetics Laboratory",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "R Christensen",
+          "credits": 0.2,
+          "we": false,
+          "meetings": [
+            {
+              "days": "T",
+              "start": "08:00",
+              "end": "10:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "R Christensen",
+          "credits": 0.2,
+          "we": false,
+          "meetings": [
+            {
+              "days": "R",
+              "start": "08:00",
+              "end": "10:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "BIO-315": {
+      "title": "Integrated Human Anatomy",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Mitchell",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "14:00",
+              "end": "14:50",
+              "location": "Center for Health an"
+            }
+          ]
+        }
+      ]
+    },
+    "BIO-315L": {
+      "title": "Integrated Human Anatomy Lab",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Mitchell",
+          "credits": 0.2,
+          "we": false,
+          "meetings": [
+            {
+              "days": "T",
+              "start": "13:00",
+              "end": "13:50",
+              "location": "Center for Health an"
+            }
+          ]
+        }
+      ]
+    },
+    "BIO-375": {
+      "title": "Integrated Human Physiology",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "C Cozine",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "08:00",
+              "end": "08:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "BIO-375L": {
+      "title": "Integrated Human Physiology Lab",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "C Cozine",
+          "credits": 0.2,
+          "we": false,
+          "meetings": [
+            {
+              "days": "R",
+              "start": "08:00",
+              "end": "10:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "C Cozine",
+          "credits": 0.2,
+          "we": false,
+          "meetings": [
+            {
+              "days": "R",
+              "start": "13:00",
+              "end": "15:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "BIO-405": {
+      "title": "Current Topics in Molecular Biology",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "M Leonardo",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "11:00",
+              "end": "11:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "BUS-125": {
+      "title": "Computers in Business",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "M Calman",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MW",
+              "start": "14:00",
+              "end": "15:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "BUS-130": {
+      "title": "Personal Finance for College Studen",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "A Perry",
+          "credits": 0.5,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "11:00",
+              "end": "12:20",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "BUS-190": {
+      "title": "Statistical Analysis",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "M Calman",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "12:00",
+              "end": "12:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "M Calman",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "13:00",
+              "end": "13:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "BUS-250": {
+      "title": "Principles of Management",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "V Nguyen",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "13:00",
+              "end": "13:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "V Nguyen",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "14:00",
+              "end": "14:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "BUS-250N": {
+      "title": "Principles of Management",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "R Kuennen",
+          "credits": 1.0,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "BUS-280": {
+      "title": "Business Websites",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "R Morrow",
+          "credits": 0.5,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "09:30",
+              "end": "10:50",
+              "location": "Dows Center"
+            }
+          ]
+        }
+      ]
+    },
+    "BUS-281": {
+      "title": "Social Media in Business",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "R Morrow",
+          "credits": 0.5,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "09:30",
+              "end": "10:50",
+              "location": "Dows Center"
+            }
+          ]
+        }
+      ]
+    },
+    "BUS-300N": {
+      "title": "Human Resource Managment",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "V Nguyen",
+          "credits": 1.0,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "BUS-315": {
+      "title": "Business Law I",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Christensen",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "12:30",
+              "end": "13:30",
+              "location": "Stuart Hall"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "J Christensen",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "14:00",
+              "end": "15:20",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "BUS-330": {
+      "title": "Principles of Marketing",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "R Kuennen",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "09:30",
+              "end": "10:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "BUS-350": {
+      "title": "Principles of Finance",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Chen",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "13:00",
+              "end": "13:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "BUS-410": {
+      "title": "Business Law II",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Christensen",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "11:00",
+              "end": "12:20",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "BUS-446": {
+      "title": "International Business Management",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "V Nguyen",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "09:00",
+              "end": "09:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "BUS-461": {
+      "title": "Marketing Decision Making/Analysis",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "R Kuennen",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "14:00",
+              "end": "15:20",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "BUS-472": {
+      "title": "Monetary Policy and Stocks",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Chen",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "11:00",
+              "end": "11:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "BUS-475": {
+      "title": "Adv Topic: AI in Business Practice",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Chen",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "10:00",
+              "end": "10:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "BUS-485": {
+      "title": "Investment Fund Management",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "R Trout",
+          "credits": 0.5,
+          "we": false,
+          "meetings": [
+            {
+              "days": "T",
+              "start": "18:30",
+              "end": "21:00",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "BUS-494": {
+      "title": "Internship in Business",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "P Carstens",
+          "credits": 1.0,
+          "we": false,
+          "meetings": []
+        },
+        {
+          "id": "02",
+          "instructor": "C Melcher",
+          "credits": 1.0,
+          "we": false,
+          "meetings": []
+        },
+        {
+          "id": "03",
+          "instructor": "A Perry",
+          "credits": 1.0,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "CHM-111": {
+      "title": "Intro Org & Biological Chemistry",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Singleton",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "11:00",
+              "end": "11:50",
+              "location": "Center for Health an"
+            }
+          ]
+        }
+      ]
+    },
+    "CHM-111L": {
+      "title": "Organic & Biological Chemistry Lab",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "H Edvenson",
+          "credits": 0.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "R",
+              "start": "08:00",
+              "end": "10:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "H Edvenson",
+          "credits": 0.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "R",
+              "start": "13:00",
+              "end": "15:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "CHM-121": {
+      "title": "General Chemistry I",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "C Stead",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "08:00",
+              "end": "08:50",
+              "location": "Center for Health an"
+            }
+          ]
+        }
+      ]
+    },
+    "CHM-121L": {
+      "title": "General Chemistry I Laboratory",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "H Edvenson",
+          "credits": 0.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "T",
+              "start": "08:00",
+              "end": "10:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "H Edvenson",
+          "credits": 0.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "T",
+              "start": "13:00",
+              "end": "15:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        },
+        {
+          "id": "03",
+          "instructor": "C Stead",
+          "credits": 0.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "R",
+              "start": "08:00",
+              "end": "10:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "CHM-122": {
+      "title": "General Chemistry II",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Singleton",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "14:00",
+              "end": "14:50",
+              "location": "Center for Health an"
+            }
+          ]
+        }
+      ]
+    },
+    "CHM-122L": {
+      "title": "General Chemistry II Laboratory",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Singleton",
+          "credits": 0.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "R",
+              "start": "13:00",
+              "end": "15:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "S Singleton",
+          "credits": 0.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "R",
+              "start": "08:00",
+              "end": "10:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "CHM-321": {
+      "title": "Organic Chemistry II",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Stoudt",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "10:00",
+              "end": "10:50",
+              "location": "Center for Health an"
+            }
+          ]
+        }
+      ]
+    },
+    "CHM-322": {
+      "title": "Organic Laboratory",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Stoudt",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MW",
+              "start": "13:00",
+              "end": "15:50",
+              "location": "Peterson Hall"
+            },
+            {
+              "days": "F",
+              "start": "13:00",
+              "end": "14:30",
+              "location": "Peterson Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "CHM-422": {
+      "title": "Synthesis Laboratory I",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Stoudt",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "08:00",
+              "end": "11:00",
+              "location": "Peterson Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "CHM-431": {
+      "title": "Biochemistry",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "C Stead",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "10:00",
+              "end": "10:50",
+              "location": "Center for Health an"
+            }
+          ]
+        }
+      ]
+    },
+    "CHM-431L": {
+      "title": "Biochemistry Laboratory",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "C Stead",
+          "credits": 0.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "T",
+              "start": "08:00",
+              "end": "10:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "CHM-451": {
+      "title": "Inorganic Chemistry",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Stoudt",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "08:00",
+              "end": "08:50",
+              "location": "Center for Health an"
+            }
+          ]
+        }
+      ]
+    },
+    "CHM-451L": {
+      "title": "Inorganic Chemistry Laboratory",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Stoudt",
+          "credits": 0.2,
+          "we": true,
+          "meetings": [
+            {
+              "days": "T",
+              "start": "13:00",
+              "end": "15:30",
+              "location": "Peterson Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "CHM-454": {
+      "title": "Undergraduate Summer Research",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "",
+          "credits": 1.0,
+          "we": false,
+          "meetings": []
+        },
+        {
+          "id": "02",
+          "instructor": "",
+          "credits": 1.0,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "CHM-464": {
+      "title": "Seminar in Chemistry I",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Singleton",
+          "credits": 0.25,
+          "we": false,
+          "meetings": [
+            {
+              "days": "R",
+              "start": "11:00",
+              "end": "11:50",
+              "location": "Center for Health an"
+            }
+          ]
+        }
+      ]
+    },
+    "COM-125": {
+      "title": "Fundamentals of Public Speaking",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "C Picton",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "09:30",
+              "end": "10:50",
+              "location": "Struve Comm Ctr"
+            }
+          ]
+        }
+      ]
+    },
+    "COM-137": {
+      "title": "Interpersonal Communication",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "O Opayemi",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "10:00",
+              "end": "10:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "COM-241": {
+      "title": "Multimedia Journalism",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Harmsen",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "08:00",
+              "end": "09:20",
+              "location": "Struve Comm Ctr"
+            }
+          ]
+        }
+      ]
+    },
+    "COM-377": {
+      "title": "Language, Power, and Social Change",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Harmsen",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "11:00",
+              "end": "12:20",
+              "location": "Struve Comm Ctr"
+            }
+          ]
+        }
+      ]
+    },
+    "COM-381": {
+      "title": "Research Method Communication Study",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "O Opayemi",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "08:00",
+              "end": "08:50",
+              "location": "Struve Comm Ctr"
+            }
+          ]
+        }
+      ]
+    },
+    "COM-435": {
+      "title": "Sp Topics: Relational Communication",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "O Opayemi",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "13:00",
+              "end": "13:50",
+              "location": "Struve Comm Ctr"
+            }
+          ]
+        }
+      ]
+    },
+    "CRW-106": {
+      "title": "Exploring CRW:Non-Western Persp(WE)",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Colville",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "09:30",
+              "end": "10:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "CRW-125": {
+      "title": "Introduction to Creative Writing",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Ferguson",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "09:00",
+              "end": "09:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "J Ferguson",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "13:00",
+              "end": "13:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        },
+        {
+          "id": "03",
+          "instructor": "J Colville",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "11:00",
+              "end": "12:20",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "CRW-280": {
+      "title": "Poetry Workshop I",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "M LeMay-Lewis",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "11:00",
+              "end": "12:20",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "CRW-390": {
+      "title": "Fiction Workshop II",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Ferguson",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MW",
+              "start": "15:30",
+              "end": "16:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "CRW-490": {
+      "title": "Fiction Workshop III",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Ferguson",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MW",
+              "start": "15:30",
+              "end": "16:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "CS-125": {
+      "title": "Computer Science I",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "N Saha",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "11:00",
+              "end": "11:50",
+              "location": "Stuart Hall"
+            },
+            {
+              "days": "R",
+              "start": "12:30",
+              "end": "13:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "CS-135": {
+      "title": "Data Structures",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Hughes",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "09:00",
+              "end": "09:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "CS-220": {
+      "title": "Principles of Computer Systems",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Hughes",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "11:00",
+              "end": "11:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "CS-245": {
+      "title": "Object Oriented Programming",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Hughes",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "13:00",
+              "end": "13:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "DAN-141": {
+      "title": "Dance - Tap I",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "C Rezabek",
+          "credits": 0.2,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "12:20",
+              "end": "13:50",
+              "location": "Dows Center"
+            }
+          ]
+        }
+      ]
+    },
+    "DAN-142": {
+      "title": "Dance - Tap II",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "C Rezabek",
+          "credits": 0.2,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "DS-260": {
+      "title": "Data Analysis and Visualization",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "N Saha",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "09:30",
+              "end": "10:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "DS-370": {
+      "title": "Database Systems & Data Management",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "N Saha",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "14:00",
+              "end": "15:20",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "ECC-312": {
+      "title": "Writing Center Theory & Pract (WE)",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Janca",
+          "credits": 0.3,
+          "we": true,
+          "meetings": []
+        },
+        {
+          "id": "02",
+          "instructor": "J Janca",
+          "credits": 0.3,
+          "we": true,
+          "meetings": []
+        }
+      ]
+    },
+    "ECC-325": {
+      "title": "Community Based Projects",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Colville",
+          "credits": 0.5,
+          "we": false,
+          "meetings": [
+            {
+              "days": "T",
+              "start": "14:00",
+              "end": "15:20",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "ECO-175": {
+      "title": "Principles of Macroeconomics",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "D Westberg",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "10:00",
+              "end": "10:50",
+              "location": "Center for Health an"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "D Westberg",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "11:00",
+              "end": "11:50",
+              "location": "Center for Health an"
+            }
+          ]
+        }
+      ]
+    },
+    "ECO-175N": {
+      "title": "Principles of Macroeconomics",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "R Eichhorn",
+          "credits": 1.0,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "ECO-195": {
+      "title": "Prin of Environmental Economics",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "R Eichhorn",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "12:30",
+              "end": "13:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "ECO-215": {
+      "title": "Prin Microeconomics",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "R Baranowski",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "09:00",
+              "end": "09:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "R Baranowski",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "10:00",
+              "end": "10:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "ECO-345": {
+      "title": "Intermediate Microeconomics",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "C Lensing",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "11:00",
+              "end": "11:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "ECO-375": {
+      "title": "Econometrics",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "R Eichhorn",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "09:30",
+              "end": "10:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "ECO-401": {
+      "title": "Seminar in Macroeconomics",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "R Baranowski",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "12:00",
+              "end": "12:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "ECO-422": {
+      "title": "Macroeconomics Policy",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "R Eichhorn",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "14:00",
+              "end": "15:20",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "ECO-445": {
+      "title": "Econometrics II",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "C Lensing",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "09:00",
+              "end": "09:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "ECO-447": {
+      "title": "Urban Economics",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "D Westberg",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "11:00",
+              "end": "12:20",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "EDU-105": {
+      "title": "Foundations of Education",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Haynes-Moore",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "10:00",
+              "end": "10:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "EDU-117": {
+      "title": "Exceptional Learners",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "D Geers",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "12:30",
+              "end": "13:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "D Geers",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "14:00",
+              "end": "15:20",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "EDU-187": {
+      "title": "Human Relations",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "M Staeheli",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "11:00",
+              "end": "11:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "B Christoffersen",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "14:00",
+              "end": "15:20",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "EDU-195": {
+      "title": "Educ Psychology & Development",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "B Christoffersen",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "09:00",
+              "end": "09:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "EDU-215": {
+      "title": "Practicum in Education",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "M Staeheli",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MW",
+              "start": "14:00",
+              "end": "15:20",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "EDU-219": {
+      "title": "InstructTech for Teaching &Learning",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "L Wiebenga",
+          "credits": 0.5,
+          "we": false,
+          "meetings": [
+            {
+              "days": "R",
+              "start": "08:00",
+              "end": "09:20",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "EDU-237": {
+      "title": "English Language Learners",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "M Staeheli",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "09:30",
+              "end": "10:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "EDU-241": {
+      "title": "Foundations of Reading",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Haynes-Moore",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "13:00",
+              "end": "13:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "EDU-284": {
+      "title": "Topic in Edu: AI Access & Equity",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "D Geers",
+          "credits": 0.5,
+          "we": false,
+          "meetings": [
+            {
+              "days": "W",
+              "start": "11:00",
+              "end": "12:20",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "EDU-335": {
+      "title": "Methods of Elementary Mathematics",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "B Christoffersen",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MW",
+              "start": "11:00",
+              "end": "12:20",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "EDU-345": {
+      "title": "Methods of Elementary Language Arts",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Kress",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "08:00",
+              "end": "08:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "EDU-355": {
+      "title": "Methods of Elementary Reading",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Kress",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "09:00",
+              "end": "09:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "EDU-395": {
+      "title": "Diagnostic Reading & Tutorial",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Kress",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MW",
+              "start": "14:00",
+              "end": "15:20",
+              "location": "Stuart Hall"
+            },
+            {
+              "days": "T",
+              "start": "16:00",
+              "end": "18:00",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "EDU-478": {
+      "title": "Student Teaching Music Elementary",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "M Bartlett",
+          "credits": 2.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "W",
+              "start": "17:00",
+              "end": "18:00",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "EDU-479": {
+      "title": "Student Teaching Music Secondary",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "M Bartlett",
+          "credits": 2.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "W",
+              "start": "16:00",
+              "end": "17:00",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "EDU-481": {
+      "title": "Stu Tchg Sec: ART",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "M Bartlett",
+          "credits": 2.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "W",
+              "start": "16:00",
+              "end": "17:00",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "EDU-482": {
+      "title": "Stu Tchg Sec: Phys Education",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "M Bartlett",
+          "credits": 2.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "W",
+              "start": "16:00",
+              "end": "17:00",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "EDU-483": {
+      "title": "Std Teaching Elem: ART",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "M Bartlett",
+          "credits": 2.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "W",
+              "start": "17:00",
+              "end": "18:00",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "EDU-485": {
+      "title": "Std Teaching Elem: Phys Ed",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "M Bartlett",
+          "credits": 2.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "W",
+              "start": "17:00",
+              "end": "18:00",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "EDU-489": {
+      "title": "Student Teaching Sr HS",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "M Bartlett",
+          "credits": 2.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "W",
+              "start": "16:00",
+              "end": "17:00",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "EDU-490": {
+      "title": "Student Teaching Jr HS",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "M Bartlett",
+          "credits": 2.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "W",
+              "start": "17:00",
+              "end": "18:00",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "EDU-491": {
+      "title": "Student Teaching 4-6",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "M Bartlett",
+          "credits": 2.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "W",
+              "start": "16:00",
+              "end": "17:00",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "EDU-492": {
+      "title": "Student Teaching K-3",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "M Bartlett",
+          "credits": 2.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "W",
+              "start": "17:00",
+              "end": "18:00",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "ENG-105": {
+      "title": "Exploring Literature: Humanities",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "Staff",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "12:30",
+              "end": "13:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "ENG-111": {
+      "title": "Intro to Lit:Art of Rdng & Writing",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "T Mahadin",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "10:00",
+              "end": "10:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "M Sodeman",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "09:30",
+              "end": "10:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "ENG-127": {
+      "title": "Social Justice & Lit: Prison Voices",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "G Hausknecht",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "13:00",
+              "end": "13:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "ENG-281": {
+      "title": "Literatures in English to 1800",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "M Sodeman",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "12:30",
+              "end": "13:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "ENG-347": {
+      "title": "Modern/Contemp. American Literature",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "M Sodeman",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "14:00",
+              "end": "15:20",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "ENG-464": {
+      "title": "Seminar in Eng:Revenge Tragedy",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "G Hausknecht",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "T",
+              "start": "15:30",
+              "end": "17:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "ENR-145": {
+      "title": "Comput Mthds for Physicist & Engin",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "X Li",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MW",
+              "start": "15:00",
+              "end": "16:20",
+              "location": "Peterson Hall"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "X Li",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "11:00",
+              "end": "12:20",
+              "location": "Peterson Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "ENR-321": {
+      "title": "Materials Science Engineering 2",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Wheaton",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "12:30",
+              "end": "13:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "ENR-355": {
+      "title": "Robotics and Sensors",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "X Li",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "09:00",
+              "end": "10:20",
+              "location": "Center for Health an"
+            }
+          ]
+        }
+      ]
+    },
+    "ENR-415": {
+      "title": "Senior Design 2",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "U Akgun",
+          "credits": 1.0,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "ESL-210": {
+      "title": "Seminar in Culture",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "A Drexler",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "09:30",
+              "end": "10:50",
+              "location": "Eby Fieldhouse"
+            }
+          ]
+        }
+      ]
+    },
+    "ESL-444": {
+      "title": "Independent Study",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "A Drexler",
+          "credits": 0.0,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "GS-107": {
+      "title": "Intro Gender & Sexuality Studies",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Janca",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MW",
+              "start": "14:00",
+              "end": "15:20",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "HIS-125": {
+      "title": "History of Europe Since 1500",
+      "sections": [
+        {
+          "id": "02",
+          "instructor": "B Keenan",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "12:00",
+              "end": "12:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "HIS-155": {
+      "title": "History of United States since 1865",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "D Buckaloo",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "10:00",
+              "end": "10:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "D Buckaloo",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "11:00",
+              "end": "11:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "HIS-257": {
+      "title": "Native American History",
+      "sections": [
+        {
+          "id": "01 WE",
+          "instructor": "D Buckaloo",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "12:30",
+              "end": "13:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "HIS-308": {
+      "title": "Legacies of the Cold War inLatin Am",
+      "sections": [
+        {
+          "id": "01 WE",
+          "instructor": "L Rodriguez Moreno",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "11:00",
+              "end": "12:20",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "HIS-365": {
+      "title": "20th Century Europe",
+      "sections": [
+        {
+          "id": "01 WE",
+          "instructor": "B Keenan",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "13:00",
+              "end": "13:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "HSS-100": {
+      "title": "Exploration in Health & Society",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "T Charles",
+          "credits": 0.5,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "09:30",
+              "end": "10:50",
+              "location": "Center for Health an"
+            }
+          ]
+        }
+      ]
+    },
+    "HSS-200": {
+      "title": "Comparative Health Systems",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "C Lensing",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "12:00",
+              "end": "12:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "INT-100": {
+      "title": "Professionalism & Self Presentation",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Brown",
+          "credits": 0.25,
+          "we": false,
+          "meetings": [
+            {
+              "days": "R",
+              "start": "14:00",
+              "end": "15:20",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "INT-494": {
+      "title": "Internship",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Chaimov",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "12:30",
+              "end": "13:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "JPN-125": {
+      "title": "Elementary Japanese II",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "M Potter",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "13:00",
+              "end": "13:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "KIN-103": {
+      "title": "PE: Fencing",
+      "sections": [
+        {
+          "id": "02",
+          "instructor": "R Christensen",
+          "credits": 0.2,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "14:00",
+              "end": "15:20",
+              "location": "Eby Fieldhouse"
+            }
+          ]
+        },
+        {
+          "id": "03",
+          "instructor": "D LeFevre",
+          "credits": 0.2,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "12:30",
+              "end": "13:50",
+              "location": "Clark Rac Center"
+            }
+          ]
+        }
+      ]
+    },
+    "KIN-104": {
+      "title": "PE: Stress Reduction & Relaxation",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "T Galbraith",
+          "credits": 0.2,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "12:30",
+              "end": "13:50",
+              "location": "Clark Rac Center"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "J Rummel",
+          "credits": 0.2,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "12:00",
+              "end": "12:50",
+              "location": "Eby Fieldhouse"
+            }
+          ]
+        },
+        {
+          "id": "03",
+          "instructor": "M Moeller",
+          "credits": 0.2,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "14:00",
+              "end": "15:20",
+              "location": "Eby Fieldhouse"
+            }
+          ]
+        },
+        {
+          "id": "04",
+          "instructor": "A Parks",
+          "credits": 0.2,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "11:00",
+              "end": "12:20",
+              "location": "Clark Rac Center"
+            }
+          ]
+        },
+        {
+          "id": "05",
+          "instructor": "T Galbraith",
+          "credits": 0.2,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "13:00",
+              "end": "13:50",
+              "location": "Clark Rac Center"
+            }
+          ]
+        }
+      ]
+    },
+    "KIN-105": {
+      "title": "Foundations of Physical Movement",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "E Rydze",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "11:00",
+              "end": "11:50",
+              "location": "Eby Fieldhouse"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "E Rydze",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "12:00",
+              "end": "12:50",
+              "location": "Eby Fieldhouse"
+            }
+          ]
+        }
+      ]
+    },
+    "KIN-110": {
+      "title": "Emergency Life Skills",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "C Libby",
+          "credits": 0.5,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MW",
+              "start": "14:00",
+              "end": "15:20",
+              "location": "Eby Fieldhouse"
+            }
+          ]
+        }
+      ]
+    },
+    "KIN-112": {
+      "title": "Health Educ for Elementary Teacher",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "K Hynek",
+          "credits": 0.5,
+          "we": false,
+          "meetings": [
+            {
+              "days": "W",
+              "start": "18:30",
+              "end": "21:00",
+              "location": "Eby Fieldhouse"
+            }
+          ]
+        }
+      ]
+    },
+    "KIN-115": {
+      "title": "Fundamentals:Exercise & Nutrition",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "E Rydze",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "14:00",
+              "end": "14:50",
+              "location": "Eby Fieldhouse"
+            }
+          ]
+        }
+      ]
+    },
+    "KIN-135": {
+      "title": "Concepts of Individual Wellness",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "L Kirkpatrick",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "10:00",
+              "end": "10:50",
+              "location": "Eby Fieldhouse"
+            }
+          ]
+        }
+      ]
+    },
+    "KIN-165": {
+      "title": "Master Activity Class for Teachers",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "D Wohlstein",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "14:00",
+              "end": "15:20",
+              "location": "Eby Fieldhouse"
+            }
+          ]
+        }
+      ]
+    },
+    "KIN-185": {
+      "title": "Group Exercise",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Rummel",
+          "credits": 0.5,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MW",
+              "start": "14:00",
+              "end": "15:20",
+              "location": "Eby Fieldhouse"
+            }
+          ]
+        }
+      ]
+    },
+    "KIN-201": {
+      "title": "Fundamentals of Coaching",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "M Littleton",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "11:00",
+              "end": "11:50",
+              "location": "Eby Fieldhouse"
+            }
+          ]
+        }
+      ]
+    },
+    "KIN-202": {
+      "title": "Family Life Education",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Sebring",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "T",
+              "start": "18:30",
+              "end": "21:00",
+              "location": "Eby Fieldhouse"
+            }
+          ]
+        }
+      ]
+    },
+    "KIN-215": {
+      "title": "Psychology of Sport and Excercise",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "L Kirkpatrick",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "13:00",
+              "end": "13:50",
+              "location": "Eby Fieldhouse"
+            }
+          ]
+        }
+      ]
+    },
+    "KIN-275": {
+      "title": "Prevention & Care of Athletic Injur",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Chandler",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "10:00",
+              "end": "10:50",
+              "location": "Eby Fieldhouse"
+            },
+            {
+              "days": "T",
+              "start": "09:30",
+              "end": "10:50",
+              "location": "Eby Fieldhouse"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "J Chandler",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "13:00",
+              "end": "13:50",
+              "location": "Eby Fieldhouse"
+            },
+            {
+              "days": "R",
+              "start": "09:30",
+              "end": "10:50",
+              "location": "Eby Fieldhouse"
+            }
+          ]
+        }
+      ]
+    },
+    "KIN-347": {
+      "title": "Adapted Physical Education",
+      "sections": [
+        {
+          "id": "01 WE",
+          "instructor": "E Rydze",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "09:30",
+              "end": "10:50",
+              "location": "Clark Rac Center"
+            }
+          ]
+        }
+      ]
+    },
+    "KIN-365": {
+      "title": "Measurement/Eval and Prescription",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "L Kirkpatrick",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "08:00",
+              "end": "09:20",
+              "location": "Eby Fieldhouse"
+            }
+          ]
+        }
+      ]
+    },
+    "KIN-405": {
+      "title": "Program Design",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Vassalotti",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "12:30",
+              "end": "13:50",
+              "location": "Eby Fieldhouse"
+            }
+          ]
+        }
+      ]
+    },
+    "KIN-410": {
+      "title": "Athletic Injury Treatment & Rehab",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "C Libby",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "12:00",
+              "end": "12:50",
+              "location": "Eby Fieldhouse"
+            }
+          ]
+        }
+      ]
+    },
+    "KIN-415": {
+      "title": "Methods of Secondary Schl PE & Hlth",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "D Wohlstein",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "12:30",
+              "end": "13:50",
+              "location": "Eby Fieldhouse"
+            }
+          ]
+        }
+      ]
+    },
+    "KIN-494": {
+      "title": "Internship in Kin, Health & Rec",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "C Libby",
+          "credits": 1.0,
+          "we": false,
+          "meetings": []
+        },
+        {
+          "id": "02",
+          "instructor": "E Rydze",
+          "credits": 1.0,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "KIN-495": {
+      "title": "Kinesiology",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "C Libby",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "11:00",
+              "end": "12:20",
+              "location": "Eby Fieldhouse"
+            }
+          ]
+        }
+      ]
+    },
+    "MIL-102": {
+      "title": "Intro Tactical Leadership",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "A ROTC",
+          "credits": 0.25,
+          "we": false,
+          "meetings": [
+            {
+              "days": "M",
+              "start": "09:30",
+              "end": "10:20",
+              "location": "University of Iowa"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "A ROTC",
+          "credits": 0.25,
+          "we": false,
+          "meetings": [
+            {
+              "days": "W",
+              "start": "11:30",
+              "end": "12:20",
+              "location": "University of Iowa"
+            }
+          ]
+        },
+        {
+          "id": "03",
+          "instructor": "A ROTC",
+          "credits": 0.25,
+          "we": false,
+          "meetings": [
+            {
+              "days": "W",
+              "start": "14:30",
+              "end": "15:20",
+              "location": "University of Iowa"
+            }
+          ]
+        }
+      ]
+    },
+    "MIL-104": {
+      "title": "Foundations of Tactical Leadership",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "A ROTC",
+          "credits": 0.5,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MW",
+              "start": "10:30",
+              "end": "11:20",
+              "location": "University of Iowa"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "A ROTC",
+          "credits": 0.5,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MW",
+              "start": "13:30",
+              "end": "14:20",
+              "location": "University of Iowa"
+            }
+          ]
+        },
+        {
+          "id": "03",
+          "instructor": "A ROTC",
+          "credits": 0.5,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "12:30",
+              "end": "13:20",
+              "location": "University of Iowa"
+            }
+          ]
+        }
+      ]
+    },
+    "MIL-209": {
+      "title": "Leadership Lab",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "A ROTC",
+          "credits": 0.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "06:15",
+              "end": "08:15",
+              "location": "University of Iowa"
+            }
+          ]
+        }
+      ]
+    },
+    "MIL-215": {
+      "title": "Adv Military Fitness Training",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "A ROTC",
+          "credits": 0.5,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MIL-305": {
+      "title": "Leadership in Changing Environs",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "A ROTC",
+          "credits": 0.75,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MW",
+              "start": "08:00",
+              "end": "09:20",
+              "location": "University of Iowa"
+            }
+          ]
+        }
+      ]
+    },
+    "MIL-360": {
+      "title": "Leadership in Complex World",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "A ROTC",
+          "credits": 0.75,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MW",
+              "start": "08:00",
+              "end": "09:20",
+              "location": "University of Iowa"
+            }
+          ]
+        }
+      ]
+    },
+    "MS-220": {
+      "title": "Marketing the Museum",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "L Lane",
+          "credits": 0.5,
+          "we": false,
+          "meetings": [
+            {
+              "days": "R",
+              "start": "09:30",
+              "end": "10:50",
+              "location": "Dows Center"
+            }
+          ]
+        }
+      ]
+    },
+    "MS-235": {
+      "title": "Arts Advocacy",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "L Lane",
+          "credits": 0.5,
+          "we": false,
+          "meetings": [
+            {
+              "days": "T",
+              "start": "09:30",
+              "end": "10:50",
+              "location": "Dows Center"
+            }
+          ]
+        }
+      ]
+    },
+    "MSA-120": {
+      "title": "Air Force Heritage and Values II",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "A ROTC",
+          "credits": 0.25,
+          "we": false,
+          "meetings": [
+            {
+              "days": "R",
+              "start": "09:30",
+              "end": "10:20",
+              "location": "University of Iowa"
+            }
+          ]
+        }
+      ]
+    },
+    "MSA-120L": {
+      "title": "AFROTC Leadrshp Lab II",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "A ROTC",
+          "credits": 0.25,
+          "we": false,
+          "meetings": [
+            {
+              "days": "R",
+              "start": "07:00",
+              "end": "08:50",
+              "location": "University of Iowa"
+            }
+          ]
+        }
+      ]
+    },
+    "MSA-220": {
+      "title": "Team and Leadership Fundamentals II",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "A ROTC",
+          "credits": 0.25,
+          "we": false,
+          "meetings": [
+            {
+              "days": "R",
+              "start": "10:30",
+              "end": "11:20",
+              "location": "University of Iowa"
+            }
+          ]
+        }
+      ]
+    },
+    "MSA-220L": {
+      "title": "AFROTC Leadrshp Lab ASP II",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "A ROTC",
+          "credits": 0.25,
+          "we": false,
+          "meetings": [
+            {
+              "days": "R",
+              "start": "07:00",
+              "end": "08:50",
+              "location": "University of Iowa"
+            }
+          ]
+        }
+      ]
+    },
+    "MSA-320": {
+      "title": "Air Force Leadership Studies II",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "A ROTC",
+          "credits": 0.75,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "09:30",
+              "end": "10:45",
+              "location": "University of Iowa"
+            }
+          ]
+        }
+      ]
+    },
+    "MSA-320L": {
+      "title": "AFROTC leadrshp Lab AFLS II",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "A ROTC",
+          "credits": 0.25,
+          "we": false,
+          "meetings": [
+            {
+              "days": "R",
+              "start": "07:00",
+              "end": "08:50",
+              "location": "University of Iowa"
+            }
+          ]
+        }
+      ]
+    },
+    "MSA-420": {
+      "title": "National Security / Lead II",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "A ROTC",
+          "credits": 0.75,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MW",
+              "start": "08:00",
+              "end": "09:15",
+              "location": "University of Iowa"
+            }
+          ]
+        }
+      ]
+    },
+    "MSA-420L": {
+      "title": "National Security Lab",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "A ROTC",
+          "credits": 0.25,
+          "we": false,
+          "meetings": [
+            {
+              "days": "R",
+              "start": "07:00",
+              "end": "08:50",
+              "location": "University of Iowa"
+            }
+          ]
+        }
+      ]
+    },
+    "MTH-104": {
+      "title": "Introduction to Contract Bridge",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "R Johanson",
+          "credits": 0.2,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MTH-135": {
+      "title": "Calculus I",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J White",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MTWF",
+              "start": "10:00",
+              "end": "10:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "MTH-145": {
+      "title": "Calculus II",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "B Miller",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MTWF",
+              "start": "10:00",
+              "end": "10:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "MTH-215": {
+      "title": "Foundations of Advanced Mathematics",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J White",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "09:00",
+              "end": "09:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "J White",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "13:00",
+              "end": "13:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "MTH-325": {
+      "title": "Differential Equations WE",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "B Miller",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "11:00",
+              "end": "11:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "MTH-463": {
+      "title": "Set Theory & Toplogy",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J White",
+          "credits": 1.0,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MU-201": {
+      "title": "Music Fundamentals II",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Shanley",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "11:00",
+              "end": "12:20",
+              "location": "Marquis Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "MU-284": {
+      "title": "Topics in Music:Music of the 1960s",
+      "sections": [
+        {
+          "id": "02",
+          "instructor": "W Carson",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "14:00",
+              "end": "14:50",
+              "location": "Marquis Hall"
+            }
+          ]
+        },
+        {
+          "id": "03",
+          "instructor": "W Carson",
+          "credits": 1.0,
+          "we": false,
+          "meetings": []
+        },
+        {
+          "id": "04",
+          "instructor": "L Lovegood",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "10:00",
+              "end": "10:50",
+              "location": "Marquis Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "MU-385": {
+      "title": "Conducting II",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Shanley",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "12:30",
+              "end": "13:50",
+              "location": "Marquis Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "MU-444": {
+      "title": "Independent Study",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "W Carson",
+          "credits": 1.0,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-100": {
+      "title": "Concert Band",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "W Carson",
+          "credits": 0.3,
+          "we": false,
+          "meetings": [
+            {
+              "days": "M",
+              "start": "16:00",
+              "end": "17:30",
+              "location": "Marquis Hall"
+            },
+            {
+              "days": "W",
+              "start": "19:00",
+              "end": "20:30",
+              "location": "Marquis Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "MUA-101": {
+      "title": "Jazz Band",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Shanley",
+          "credits": 0.3,
+          "we": false,
+          "meetings": [
+            {
+              "days": "T",
+              "start": "19:00",
+              "end": "20:30",
+              "location": "Marquis Hall"
+            },
+            {
+              "days": "R",
+              "start": "16:00",
+              "end": "17:30",
+              "location": "Marquis Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "MUA-101B": {
+      "title": "Trumpet",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "D Terrell",
+          "credits": 0.3,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-101C": {
+      "title": "Composition",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Reznicow",
+          "credits": 0.3,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-101K": {
+      "title": "Piano Lessons",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "Staff",
+          "credits": 0.3,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-101P": {
+      "title": "Percussion",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "T Mackey",
+          "credits": 0.3,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-101S": {
+      "title": "Violin",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "R Peters",
+          "credits": 0.3,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-101V": {
+      "title": "Voice",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "L Lovegood",
+          "credits": 0.3,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-101W": {
+      "title": "Flute",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "V Bishop",
+          "credits": 0.3,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-102K": {
+      "title": "Piano Arranging Lessons",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Shanley",
+          "credits": 0.3,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-103K": {
+      "title": "Piano: Jazz",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Shanley",
+          "credits": 0.3,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-104": {
+      "title": "Concert Choir",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "L Lovegood",
+          "credits": 0.3,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "12:00",
+              "end": "12:50",
+              "location": "Marquis Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "MUA-105": {
+      "title": "Crimson Singers",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "L Lovegood",
+          "credits": 0.3,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "08:00",
+              "end": "09:20",
+              "location": "Marquis Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "MUA-111B": {
+      "title": "French Horn",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "C Harris",
+          "credits": 0.3,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-111C": {
+      "title": "Music Production and Engineering",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "C Broszeit",
+          "credits": 0.3,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-111K": {
+      "title": "Organ",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "Staff",
+          "credits": 0.3,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-111S": {
+      "title": "Viola",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "R Peters",
+          "credits": 0.3,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-111W": {
+      "title": "Oboe",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "L Fleer",
+          "credits": 0.3,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-121B": {
+      "title": "Trombone",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Nagel",
+          "credits": 0.3,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-121K": {
+      "title": "Harpsichord Lessons",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "",
+          "credits": 0.3,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-121S": {
+      "title": "Cello",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "H Rumora",
+          "credits": 0.3,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-121W": {
+      "title": "Clarinet",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "L Wissenberg",
+          "credits": 0.3,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-131B": {
+      "title": "Low Brass",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Nagel",
+          "credits": 0.3,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-131S": {
+      "title": "String Bass",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Hall",
+          "credits": 0.3,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-131W": {
+      "title": "Saxophone",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "R Morton",
+          "credits": 0.3,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-141S": {
+      "title": "Harp",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "G Brumwell",
+          "credits": 0.3,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-141W": {
+      "title": "Bassoon",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "R Morton",
+          "credits": 0.3,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-151S": {
+      "title": "Guitar",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Nothnagle",
+          "credits": 0.3,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-202B": {
+      "title": "Trumpet",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "D Terrell",
+          "credits": 0.6,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-202C": {
+      "title": "Composition",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Reznicow",
+          "credits": 0.6,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-202K": {
+      "title": "Piano Lessons",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "Staff",
+          "credits": 0.6,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-202P": {
+      "title": "Percussion",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "T Mackey",
+          "credits": 0.6,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-202S": {
+      "title": "Violin",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "R Peters",
+          "credits": 0.6,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-202V": {
+      "title": "Voice",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "L Lovegood",
+          "credits": 0.6,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-202W": {
+      "title": "Flute",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "V Bishop",
+          "credits": 0.6,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-212B": {
+      "title": "French Horn",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "C Harris",
+          "credits": 0.6,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-212K": {
+      "title": "Organ",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "Staff",
+          "credits": 0.6,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-212S": {
+      "title": "Viola",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "R Peters",
+          "credits": 0.6,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-212W": {
+      "title": "Oboe",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "L Fleer",
+          "credits": 0.6,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-222B": {
+      "title": "Trombone",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Nagel",
+          "credits": 0.6,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-222C": {
+      "title": "Music Production and Engineering",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "C Broszeit",
+          "credits": 0.6,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-222K": {
+      "title": "Harpsichord Lessons",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "Staff",
+          "credits": 0.6,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-222S": {
+      "title": "Cello",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "H Rumora",
+          "credits": 0.6,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-222W": {
+      "title": "Clarinet",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "L Wissenberg",
+          "credits": 0.6,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-232B": {
+      "title": "Low Brass",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Nagel",
+          "credits": 0.6,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-232S": {
+      "title": "String Bass",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Hall",
+          "credits": 0.6,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-232W": {
+      "title": "Saxophone",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "R Morton",
+          "credits": 0.6,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-242S": {
+      "title": "Harp",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "G Brumwell",
+          "credits": 0.6,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-242W": {
+      "title": "Bassoon",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "R Morton",
+          "credits": 0.6,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-252S": {
+      "title": "Guitar",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Nothnagle",
+          "credits": 0.6,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-284": {
+      "title": "Applied Music: Special Topics",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "W Carson",
+          "credits": 0.3,
+          "we": false,
+          "meetings": [
+            {
+              "days": "M",
+              "start": "19:00",
+              "end": "21:00",
+              "location": "Marquis Hall"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "W Carson",
+          "credits": 0.3,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-300A": {
+      "title": "Alexander Technique",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "M Marrs",
+          "credits": 0.3,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-413": {
+      "title": "Orchestration",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Reznicow",
+          "credits": 0.6,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-490": {
+      "title": "Senior Recital",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "W Carson",
+          "credits": 1.0,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "NUR-100": {
+      "title": "Nursing Issues",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Mulford",
+          "credits": 0.2,
+          "we": false,
+          "meetings": [
+            {
+              "days": "W",
+              "start": "15:00",
+              "end": "16:20",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "NUR-200": {
+      "title": "Nursing Issues II",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Mulford",
+          "credits": 0.2,
+          "we": false,
+          "meetings": [
+            {
+              "days": "W",
+              "start": "15:00",
+              "end": "16:20",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "NUR-345": {
+      "title": "Mental Health Nursing",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "C Crockett",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "08:00",
+              "end": "09:20",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "NUR-355": {
+      "title": "Intro Concepts in Nursing",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "K Siems",
+          "credits": 2.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "T",
+              "start": "09:30",
+              "end": "10:50",
+              "location": "Stuart Hall"
+            },
+            {
+              "days": "W",
+              "start": "12:00",
+              "end": "13:20",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "NUR-355C": {
+      "title": "Intro Concepts in Nursing Clinical",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Mulford",
+          "credits": 0.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "M",
+              "start": "10:30",
+              "end": "11:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "J Mulford",
+          "credits": 0.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "M",
+              "start": "13:00",
+              "end": "14:20",
+              "location": "Stuart Hall"
+            }
+          ]
+        },
+        {
+          "id": "03",
+          "instructor": "S Guthrie",
+          "credits": 0.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "W",
+              "start": "08:00",
+              "end": "09:20",
+              "location": "Stuart Hall"
+            }
+          ]
+        },
+        {
+          "id": "04",
+          "instructor": "S Crook-Lockwood",
+          "credits": 0.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "W",
+              "start": "13:00",
+              "end": "16:20",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "NUR-355L": {
+      "title": "Intro Concepts in Nursing Lab",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "L Kromminga",
+          "credits": 0.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "M",
+              "start": "08:00",
+              "end": "12:00",
+              "location": "Stuart Hall"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "L Kromminga",
+          "credits": 0.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "M",
+              "start": "13:00",
+              "end": "17:00",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "NUR-375": {
+      "title": "Legal & Ethical Issues in Nursing",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "K Siems",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "13:30",
+              "end": "14:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "NUR-431": {
+      "title": "Wellness in Aging & Chronicity",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Mulford",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "T",
+              "start": "08:00",
+              "end": "10:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "NUR-455": {
+      "title": "Leadership & Cont Issues in Nursing",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Guthrie",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "12:00",
+              "end": "14:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "NUR-455C": {
+      "title": "Leadership &Cont Iss Clinical",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "K Siems",
+          "credits": 0.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "T",
+              "start": "15:00",
+              "end": "16:20",
+              "location": "Stuart Hall"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "C Crockett",
+          "credits": 0.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "T",
+              "start": "15:00",
+              "end": "16:20",
+              "location": "Stuart Hall"
+            }
+          ]
+        },
+        {
+          "id": "03",
+          "instructor": "K Siems",
+          "credits": 0.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "R",
+              "start": "15:00",
+              "end": "16:20",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "NUR-495": {
+      "title": "Maternal Newborn Nursing",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Mulford",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "R",
+              "start": "08:00",
+              "end": "10:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "OCC-220": {
+      "title": "Nagoya-Gakuin Exchange Japan",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "Staff",
+          "credits": 3.0,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "OCC-230": {
+      "title": "U Jaume I Exchange Castello Spain",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "Staff",
+          "credits": 3.0,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "PHL-105": {
+      "title": "Intro Philos:God, Self, & Free Will",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Lemos",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "10:00",
+              "end": "10:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "PHL-128": {
+      "title": "Morality & Moral Controversies",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Lemos",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "14:00",
+              "end": "15:20",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "PHL-205": {
+      "title": "Environmental Ethics",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Lemos",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "11:00",
+              "end": "12:20",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "PHL-265": {
+      "title": "Political Philosophy",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "B Nesmith",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "12:30",
+              "end": "13:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "PHL-300": {
+      "title": "Early Modern Philosophy",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Lemos",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "14:00",
+              "end": "14:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "PHY-114": {
+      "title": "Modern Astronomy",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Wetzel",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MW",
+              "start": "18:00",
+              "end": "19:20",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "PHY-114L": {
+      "title": "Modern Astronomy - Lab",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Wetzel",
+          "credits": 0.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "M",
+              "start": "19:30",
+              "end": "21:20",
+              "location": "Peterson Hall"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "J Wetzel",
+          "credits": 0.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "W",
+              "start": "19:30",
+              "end": "21:20",
+              "location": "Peterson Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "PHY-175": {
+      "title": "Basic Physics II",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "M Affatigato",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "11:00",
+              "end": "11:50",
+              "location": "Center for Health an"
+            }
+          ]
+        }
+      ]
+    },
+    "PHY-175L": {
+      "title": "Basic Physics II - Lab",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "U Akgun",
+          "credits": 0.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "T",
+              "start": "08:00",
+              "end": "09:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "U Akgun",
+          "credits": 0.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "T",
+              "start": "13:00",
+              "end": "14:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        },
+        {
+          "id": "03",
+          "instructor": "U Akgun",
+          "credits": 0.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "R",
+              "start": "08:00",
+              "end": "09:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        },
+        {
+          "id": "04",
+          "instructor": "U Akgun",
+          "credits": 0.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "R",
+              "start": "13:00",
+              "end": "14:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "PHY-185": {
+      "title": "General Physics I",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "F Duru",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "12:00",
+              "end": "12:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "PHY-185L": {
+      "title": "General Physics I Laboratory",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Wheaton",
+          "credits": 0.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "T",
+              "start": "08:00",
+              "end": "10:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "PHY-195": {
+      "title": "General Physics II",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "F Duru",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "11:00",
+              "end": "11:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "PHY-195L": {
+      "title": "General Physics II - Lab",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "U Akgun",
+          "credits": 0.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "T",
+              "start": "08:00",
+              "end": "09:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "U Akgun",
+          "credits": 0.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "T",
+              "start": "13:00",
+              "end": "14:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        },
+        {
+          "id": "03",
+          "instructor": "U Akgun",
+          "credits": 0.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "R",
+              "start": "08:00",
+              "end": "09:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        },
+        {
+          "id": "04",
+          "instructor": "U Akgun",
+          "credits": 0.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "R",
+              "start": "13:00",
+              "end": "14:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "PHY-246": {
+      "title": "Advanced Laboratory 2 (WE)",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Wheaton",
+          "credits": 0.5,
+          "we": true,
+          "meetings": [
+            {
+              "days": "R",
+              "start": "08:00",
+              "end": "10:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "PHY-265": {
+      "title": "Electromagnetism",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "M Affatigato",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "13:00",
+              "end": "13:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "PHY-301": {
+      "title": "Optics & Waves",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "M Affatigato",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "10:00",
+              "end": "10:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "PHY-315": {
+      "title": "Thermodynamics & Stat Mech",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Wheaton",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "14:00",
+              "end": "14:50",
+              "location": "Peterson Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "PHY-444": {
+      "title": "Ind Study-Physics",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Feller",
+          "credits": 1.0,
+          "we": true,
+          "meetings": []
+        }
+      ]
+    },
+    "POL-108": {
+      "title": "Introduction to Politics",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "K Lanegran",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "11:00",
+              "end": "11:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "POL-115": {
+      "title": "American National Gov & Pol",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "R Snyder",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "12:00",
+              "end": "12:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "POL-276": {
+      "title": "African Politics",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "K Lanegran",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "09:00",
+              "end": "09:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "POL-284": {
+      "title": "Topics: Human Rights",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "K Lanegran",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "09:30",
+              "end": "10:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "POL-345": {
+      "title": "American Presidency",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "R Snyder",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "14:00",
+              "end": "14:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "POL-350": {
+      "title": "US Social Policy Process",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "R Snyder",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "11:00",
+              "end": "12:20",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "POL-375": {
+      "title": "Constitution & Individual Liberties",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Jensen",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "T",
+              "start": "18:30",
+              "end": "21:00",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "PR-205": {
+      "title": "Public Relations",
+      "sections": [
+        {
+          "id": "01 WE",
+          "instructor": "T Nagel",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "W",
+              "start": "18:00",
+              "end": "20:30",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "PSY-100": {
+      "title": "Introductory Psychology",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "T Rosenberger",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "09:00",
+              "end": "09:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "T Rosenberger",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "10:00",
+              "end": "10:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "PSY-200": {
+      "title": "Research Methods",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "K Recker",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "09:30",
+              "end": "10:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "K Recker",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "11:00",
+              "end": "12:20",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "PSY-205": {
+      "title": "Developmental Psychology",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "K Recker",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "14:00",
+              "end": "15:20",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "PSY-235": {
+      "title": "Abnormal Psychology",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Brown",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "12:30",
+              "end": "13:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "PSY-250": {
+      "title": "Biopsychology",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "A Toftness",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "11:00",
+              "end": "11:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "PSY-255": {
+      "title": "Social Psychology",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "C Stephenson",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "08:00",
+              "end": "08:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "PSY-260": {
+      "title": "Cognitive Psychology",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "A Toftness",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "09:00",
+              "end": "09:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "PSY-295": {
+      "title": "Applied Career Development in Psych",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Farrell",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "10:00",
+              "end": "10:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "PSY-300": {
+      "title": "Stat Methods and Data Analysis",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "B Chihak",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "12:00",
+              "end": "12:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "PSY-335": {
+      "title": "Sensation & Perception",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "B Chihak",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MW",
+              "start": "14:00",
+              "end": "15:20",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "PSY-335L": {
+      "title": "Sensation & Perception Laboratory",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "B Chihak",
+          "credits": 0.2,
+          "we": true,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "14:00",
+              "end": "15:20",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "PSY-415": {
+      "title": "Counseling Psychology",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "C Stephenson",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "09:00",
+              "end": "09:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "PSY-450": {
+      "title": "Behavioral Neuroscience",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "A Toftness",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "12:00",
+              "end": "12:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "PSY-455": {
+      "title": "Directed Research Experience",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Farrell",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "11:00",
+              "end": "12:20",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "PSY-464": {
+      "title": "Seminar in Psy: Positive Psychology",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Farrell",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "09:30",
+              "end": "10:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "PSY-494": {
+      "title": "Internship in Psychology",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Brown",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "08:00",
+              "end": "09:20",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "REL-106": {
+      "title": "Eastern Religions",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "C Hatchell",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "09:00",
+              "end": "09:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "REL-108": {
+      "title": "Western Religions",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "M Hagele",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "09:30",
+              "end": "10:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "REL-136": {
+      "title": "Religions of China",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "C Hatchell",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "11:00",
+              "end": "11:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "REL-246": {
+      "title": "Caste & Untouchability in S. Asia",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "C Hatchell",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "13:00",
+              "end": "13:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "SCJ-203": {
+      "title": "Collateral Consequences of Correcti",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "N McNabb",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "09:30",
+              "end": "10:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "N McNabb",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "11:00",
+              "end": "12:20",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "SCJ-494": {
+      "title": "Internship in Social and Criminal J",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "N McNabb",
+          "credits": 1.0,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "SKD-120": {
+      "title": "Concepts of Individualized Learning",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "R Eichhorn",
+          "credits": 0.0,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "SKD-130": {
+      "title": "Personal Finance for College Studen",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "A Slack",
+          "credits": 0.5,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "12:30",
+              "end": "13:50",
+              "location": "Stewart Mem Lib"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "A Slack",
+          "credits": 0.5,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "11:00",
+              "end": "12:20",
+              "location": "Stewart Mem Lib"
+            }
+          ]
+        }
+      ]
+    },
+    "SKD-145": {
+      "title": "Strategies for Academic Success",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "S Zahn",
+          "credits": 0.5,
+          "we": false,
+          "meetings": [
+            {
+              "days": "W",
+              "start": "15:40",
+              "end": "17:00",
+              "location": "Stewart Mem Lib"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "R Peters",
+          "credits": 0.5,
+          "we": false,
+          "meetings": [
+            {
+              "days": "T",
+              "start": "09:30",
+              "end": "10:50",
+              "location": "Stewart Mem Lib"
+            }
+          ]
+        },
+        {
+          "id": "03",
+          "instructor": "A Drexler",
+          "credits": 0.5,
+          "we": false,
+          "meetings": [
+            {
+              "days": "R",
+              "start": "14:00",
+              "end": "15:20",
+              "location": "Stewart Mem Lib"
+            }
+          ]
+        }
+      ]
+    },
+    "SKD-150": {
+      "title": "Transfer Advisory",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "M LeMay-Lewis",
+          "credits": 0.2,
+          "we": false,
+          "meetings": [
+            {
+              "days": "R",
+              "start": "12:30",
+              "end": "13:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "SMT-454": {
+      "title": "Seminar in Sports Management",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Chandler",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "09:00",
+              "end": "09:50",
+              "location": "Eby Fieldhouse"
+            }
+          ]
+        }
+      ]
+    },
+    "SOC-107": {
+      "title": "Introductory Sociology",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "L Barnett",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "09:00",
+              "end": "09:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "L Barnett",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "10:00",
+              "end": "10:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        },
+        {
+          "id": "03",
+          "instructor": "K Rodgers",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MW",
+              "start": "14:00",
+              "end": "15:20",
+              "location": "Hickok Hall"
+            }
+          ]
+        },
+        {
+          "id": "04",
+          "instructor": "A Boguslaw",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "14:00",
+              "end": "15:20",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "SOC-207": {
+      "title": "Sociology of the Family",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "K Rodgers",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "09:30",
+              "end": "10:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "SOC-236": {
+      "title": "Topics: Inventing Nationalism",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "A Boguslaw",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MW",
+              "start": "14:00",
+              "end": "15:20",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "SOC-351": {
+      "title": "Criminology",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "L Barnett",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "11:00",
+              "end": "11:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "SOC-425": {
+      "title": "Social Change",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "A Boguslaw",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "11:00",
+              "end": "12:20",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "SOC-464": {
+      "title": "Capstone Seminar in Sociology",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "K Rodgers",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "14:00",
+              "end": "15:20",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "SPA-115": {
+      "title": "Elementary Spanish I",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "Staff",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "13:00",
+              "end": "13:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "SPA-125": {
+      "title": "Elementary Spanish II",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "F Lynch",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "13:00",
+              "end": "13:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "SPA-225": {
+      "title": "Intermediate Spanish II",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "E Munoz Perez",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "13:00",
+              "end": "13:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "SPA-325": {
+      "title": "Spanish Language & Literature",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "L Rodriguez Moreno",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "09:30",
+              "end": "10:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "SPA-349": {
+      "title": "Business Spanish",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "F Lynch",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "14:00",
+              "end": "14:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "SPA-431": {
+      "title": "Hispanic Graphic Novel:Theory& Prac",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "Staff",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "14:00",
+              "end": "15:20",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "SPA-476": {
+      "title": "Topics in Hispanic Lit:Latin Amer",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "A Torres",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "12:30",
+              "end": "13:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "STA-100": {
+      "title": "Statistical Reasoning I-Foundations",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "G Cross",
+          "credits": 0.5,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "08:00",
+              "end": "08:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "",
+          "credits": 0.5,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "STA-110": {
+      "title": "Stats IIA: Inferential Reasoning",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "G Cross",
+          "credits": 0.5,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "08:00",
+              "end": "08:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "G Cross",
+          "credits": 0.5,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "09:00",
+              "end": "09:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "STA-325": {
+      "title": "Mathematical Statistics",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "G Cross",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "10:00",
+              "end": "10:50",
+              "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "THE-100": {
+      "title": "Introduction to Theatre",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "E Ganfield",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "09:00",
+              "end": "09:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "THE-102": {
+      "title": "Theatre Production Lab",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "E Ganfield",
+          "credits": 0.25,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "13:00",
+              "end": "14:50",
+              "location": "Dows Center"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "E Ganfield",
+          "credits": 0.25,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "15:00",
+              "end": "16:50",
+              "location": "Dows Center"
+            }
+          ]
+        },
+        {
+          "id": "03",
+          "instructor": "B Schmidt",
+          "credits": 0.25,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "13:00",
+              "end": "14:50",
+              "location": "Dows Center"
+            }
+          ]
+        },
+        {
+          "id": "04",
+          "instructor": "B Schmidt",
+          "credits": 0.25,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "15:00",
+              "end": "16:50",
+              "location": "Dows Center"
+            }
+          ]
+        }
+      ]
+    },
+    "THE-112": {
+      "title": "Production Experience",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "E Ganfield",
+          "credits": 0.5,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "THE-140": {
+      "title": "Design for the Stage",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "E Ganfield",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "11:00",
+              "end": "12:20",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "THE-150": {
+      "title": "Acting I",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "J Alberty",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "14:00",
+              "end": "15:20",
+              "location": "Dows Center"
+            }
+          ]
+        }
+      ]
+    },
+    "THE-185": {
+      "title": "Production and Performance",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "E Ganfield",
+          "credits": 1.0,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "THE-220": {
+      "title": "Lighting Design",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "B Schmidt",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "09:30",
+              "end": "10:50",
+              "location": "Hickok Hall"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
