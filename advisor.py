@@ -114,6 +114,7 @@ class AdvisorApp:
         self._major_display_to_pid: dict = {}   # major/collateral only — avoids collision with same-named minors
         self._minor_display_to_pid: dict = {}   # minor only
         self._semesters:     list = []          # list of semester dicts
+        self._advisor_notes: list = []          # preserved from .adv for round-trip
         self._courses_area:  tk.Frame = None    # frame semester sections pack into
         self._variant_vars:  dict = {}          # {program_id: StringVar} for F2Y track selection
         self._variant_container: tk.Frame = None
@@ -1276,6 +1277,14 @@ class AdvisorApp:
                 lines.append(f"COURSE: {code}, {status}")
             lines.append("")
 
+        # Advisor notes (round-trip from web app)
+        for note in self._advisor_notes:
+            lines.append(f"NOTE_START: {note['date']}")
+            for nl in note["text"].split("\n"):
+                lines.append(nl)
+            lines.append("NOTE_END")
+            lines.append("")
+
         # Suggested courses as comments (not imported)
         taken = self._collect_courses()
         major_code = ""
@@ -1320,12 +1329,30 @@ class AdvisorApp:
         }
         semesters_data = []   # list of [label, [(code, status, grade)]]
         old_courses    = []   # flat list from legacy COURSES: format
+        advisor_notes  = []   # list of {"date": str, "text": str}
         current_sem    = None
+        current_note   = None
         in_old_courses = False
 
         for line in text.splitlines():
             stripped = line.strip()
+
+            # Multi-line note content (checked before blank-line skip)
+            if current_note is not None:
+                if stripped == "NOTE_END":
+                    current_note["text"] = "\n".join(current_note["_lines"]).strip()
+                    del current_note["_lines"]
+                    current_note = None
+                else:
+                    current_note["_lines"].append(line)
+                continue
+
             if not stripped or stripped.startswith("#"):
+                continue
+
+            if stripped.startswith("NOTE_START:"):
+                current_note = {"date": stripped[11:].strip(), "_lines": []}
+                advisor_notes.append(current_note)
                 continue
 
             if stripped == "COURSES:":
@@ -1421,6 +1448,9 @@ class AdvisorApp:
                 self._add_semester(f"Semester {i}", initial_rows=3)
         else:
             self._rebuild_semester_grid()
+
+        # Preserve advisor notes for round-trip saving
+        self._advisor_notes = advisor_notes
 
         self._update_pathway_visibility()
         messagebox.showinfo("Loaded", f"Student file loaded:\n{Path(path).name}")
