@@ -102,6 +102,7 @@
         <button class="tab active" data-tab="ge">GE Requirements</button>
         <button class="tab" data-tab="programs">Programs</button>
         <button class="tab" data-tab="plan">Plan</button>
+        <button class="tab" data-tab="schedule">Schedule</button>
       </div>
 
       <div class="tab-panel active" id="tab-ge">
@@ -115,6 +116,35 @@
           <button class="small-btn" onclick="addPlanSemester()">+ Semester</button>
         </div>
         <div id="plan-semesters"></div>
+      </div>
+      <div class="tab-panel" id="tab-schedule">
+        <div class="sched-toolbar">
+          <label class="sched-label">Term
+            <select id="sched-term" onchange="onSchedTermChange()"></select>
+          </label>
+          <label class="sched-label">Plan Semester
+            <select id="sched-plan-sem" onchange="syncSchedFromPlan()"></select>
+          </label>
+        </div>
+        <div class="sched-picker">
+          <div class="sched-add-row">
+            <input type="text" id="sched-search" placeholder="Search courses (e.g. BIO-145)" list="sched-datalist" autocomplete="off">
+            <datalist id="sched-datalist"></datalist>
+            <button class="small-btn" onclick="schedAddCourse()">Add</button>
+          </div>
+          <div id="sched-courses"></div>
+        </div>
+        <div id="sched-overlap-alert" class="sched-overlap-alert" style="display:none"></div>
+        <div class="sched-calendar-wrap">
+          <div class="sched-calendar" id="sched-calendar">
+            <div class="sched-time-col" id="sched-time-col"></div>
+            <div class="sched-day-col" data-day="M"><div class="sched-day-header">Mon</div><div class="sched-day-body"></div></div>
+            <div class="sched-day-col" data-day="T"><div class="sched-day-header">Tue</div><div class="sched-day-body"></div></div>
+            <div class="sched-day-col" data-day="W"><div class="sched-day-header">Wed</div><div class="sched-day-body"></div></div>
+            <div class="sched-day-col" data-day="R"><div class="sched-day-header">Thu</div><div class="sched-day-body"></div></div>
+            <div class="sched-day-col" data-day="F"><div class="sched-day-header">Fri</div><div class="sched-day-body"></div></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

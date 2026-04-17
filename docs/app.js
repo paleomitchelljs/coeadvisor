@@ -1645,6 +1645,325 @@ function addMinorSlot() {
   }
 }
 
+// ─── Schedule tab ───────────────────────────────────────────────────────────
+
+const SCHED_COLORS = 8;
+const SCHED_START_HOUR = 8;   // 8 AM
+const SCHED_END_HOUR = 18;    // 6 PM
+const SCHED_PX_PER_HOUR = 50;
+
+// State: list of {code, sectionId, colorIdx}
+let schedEntries = [];
+let schedColorNext = 0;
+
+function getScheduleData() {
+  const termCode = document.getElementById("sched-term")?.value;
+  return (DATA.schedules && DATA.schedules[termCode]) || null;
+}
+
+function onSchedTermChange() {
+  buildSchedDatalist();
+  // Clear entries that don't exist in new term
+  const sd = getScheduleData();
+  if (sd) {
+    schedEntries = schedEntries.filter(e => sd.courses[e.code]);
+  }
+  renderSchedCourses();
+  renderSchedCalendar();
+}
+
+function buildSchedDatalist() {
+  const dl = document.getElementById("sched-datalist");
+  dl.innerHTML = "";
+  const sd = getScheduleData();
+  if (!sd) return;
+  const sorted = Object.keys(sd.courses).sort();
+  for (const code of sorted) {
+    const c = sd.courses[code];
+    // Only include courses with scheduled meetings
+    if (c.sections.some(s => s.meetings.length > 0)) {
+      const opt = document.createElement("option");
+      opt.value = code;
+      opt.label = `${code} — ${c.title}`;
+      dl.appendChild(opt);
+    }
+  }
+}
+
+function schedAddCourse() {
+  const input = document.getElementById("sched-search");
+  const raw = input.value.trim();
+  if (!raw) return;
+  const code = normalize(raw);
+  const sd = getScheduleData();
+  if (!sd || !sd.courses[code]) {
+    input.value = "";
+    return;
+  }
+  if (schedEntries.some(e => e.code === code)) {
+    input.value = "";
+    return;
+  }
+  // Default to first section with meetings
+  const defaultSec = sd.courses[code].sections.find(s => s.meetings.length > 0)
+                  || sd.courses[code].sections[0];
+  schedEntries.push({ code, sectionId: defaultSec.id, colorIdx: schedColorNext++ % SCHED_COLORS });
+  input.value = "";
+  renderSchedCourses();
+  renderSchedCalendar();
+  syncSchedToPlan();
+}
+
+function schedRemoveCourse(code) {
+  schedEntries = schedEntries.filter(e => e.code !== code);
+  renderSchedCourses();
+  renderSchedCalendar();
+  syncSchedToPlan();
+}
+
+function schedChangeSection(code, sectionId) {
+  const entry = schedEntries.find(e => e.code === code);
+  if (entry) entry.sectionId = sectionId;
+  renderSchedCalendar();
+  syncSchedToPlan();
+}
+
+function renderSchedCourses() {
+  const el = document.getElementById("sched-courses");
+  const sd = getScheduleData();
+  if (!sd) { el.innerHTML = ""; return; }
+  let html = "";
+  for (const entry of schedEntries) {
+    const course = sd.courses[entry.code];
+    if (!course) continue;
+    const sections = course.sections.filter(s => s.meetings.length > 0);
+    let secOptions = "";
+    for (const s of sections) {
+      const mtg = s.meetings.map(m => `${m.days} ${m.start}-${m.end}`).join(", ");
+      const sel = s.id === entry.sectionId ? " selected" : "";
+      secOptions += `<option value="${s.id}"${sel}>${s.id} — ${s.instructor} — ${mtg}</option>`;
+    }
+    html += `<div class="sched-course">
+      <span class="sched-course-code" style="color: var(--sched-c${entry.colorIdx})">${entry.code}</span>
+      <span class="sched-course-title">${course.title}</span>
+      <select onchange="schedChangeSection('${entry.code}', this.value)">${secOptions}</select>
+      <button class="prog-remove-btn" onclick="schedRemoveCourse('${entry.code}')" title="Remove">\u00d7</button>
+    </div>`;
+  }
+  el.innerHTML = html;
+}
+
+function timeToMinutes(t) {
+  const [h, m] = t.split(":").map(Number);
+  return h * 60 + m;
+}
+
+function minutesToDisplay(mins) {
+  const h = Math.floor(mins / 60);
+  const m = mins % 60;
+  const ap = h >= 12 ? "PM" : "AM";
+  const h12 = h > 12 ? h - 12 : (h === 0 ? 12 : h);
+  return `${h12}:${String(m).padStart(2, "0")} ${ap}`;
+}
+
+function renderSchedCalendar() {
+  const sd = getScheduleData();
+  const dayBodies = {};
+  document.querySelectorAll(".sched-day-col").forEach(col => {
+    const day = col.dataset.day;
+    const body = col.querySelector(".sched-day-body");
+    body.innerHTML = "";
+    dayBodies[day] = body;
+  });
+
+  const totalHours = SCHED_END_HOUR - SCHED_START_HOUR;
+  const totalPx = totalHours * SCHED_PX_PER_HOUR;
+
+  // Set heights
+  for (const body of Object.values(dayBodies)) {
+    body.style.height = totalPx + "px";
+  }
+
+  // Hour lines
+  for (const body of Object.values(dayBodies)) {
+    for (let h = SCHED_START_HOUR; h <= SCHED_END_HOUR; h++) {
+      const line = document.createElement("div");
+      line.className = "sched-hour-line";
+      line.style.top = ((h - SCHED_START_HOUR) * SCHED_PX_PER_HOUR) + "px";
+      body.appendChild(line);
+    }
+  }
+
+  // Time labels
+  const timeCol = document.getElementById("sched-time-col");
+  timeCol.innerHTML = "";
+  timeCol.style.height = (totalPx + 24) + "px"; // +header
+  for (let h = SCHED_START_HOUR; h <= SCHED_END_HOUR; h++) {
+    const label = document.createElement("div");
+    label.className = "sched-time-label";
+    label.style.top = (24 + (h - SCHED_START_HOUR) * SCHED_PX_PER_HOUR) + "px";
+    const ap = h >= 12 ? "PM" : "AM";
+    const h12 = h > 12 ? h - 12 : h;
+    label.textContent = `${h12}${ap}`;
+    timeCol.appendChild(label);
+  }
+
+  if (!sd) return;
+
+  // Collect all blocks for overlap detection
+  const allBlocks = []; // {day, startMin, endMin, code, entry}
+  for (const entry of schedEntries) {
+    const course = sd.courses[entry.code];
+    if (!course) continue;
+    const sec = course.sections.find(s => s.id === entry.sectionId);
+    if (!sec) continue;
+    for (const mtg of sec.meetings) {
+      const startMin = timeToMinutes(mtg.start);
+      const endMin = timeToMinutes(mtg.end);
+      for (const dayChar of mtg.days) {
+        allBlocks.push({ day: dayChar, startMin, endMin, code: entry.code, colorIdx: entry.colorIdx,
+                         start: mtg.start, end: mtg.end, location: mtg.location });
+      }
+    }
+  }
+
+  // Detect overlaps
+  const overlapPairs = new Set();
+  for (let i = 0; i < allBlocks.length; i++) {
+    for (let j = i + 1; j < allBlocks.length; j++) {
+      const a = allBlocks[i], b = allBlocks[j];
+      if (a.day === b.day && a.startMin < b.endMin && b.startMin < a.endMin) {
+        overlapPairs.add(i);
+        overlapPairs.add(j);
+      }
+    }
+  }
+
+  // Show overlap alert
+  const alertEl = document.getElementById("sched-overlap-alert");
+  if (overlapPairs.size > 0) {
+    const conflictCodes = [...new Set([...overlapPairs].map(i => allBlocks[i].code))];
+    alertEl.textContent = `Time conflict: ${conflictCodes.join(", ")}`;
+    alertEl.style.display = "";
+  } else {
+    alertEl.style.display = "none";
+  }
+
+  // Render blocks
+  const startBase = SCHED_START_HOUR * 60;
+  for (let i = 0; i < allBlocks.length; i++) {
+    const b = allBlocks[i];
+    const body = dayBodies[b.day];
+    if (!body) continue;
+    const top = (b.startMin - startBase) / 60 * SCHED_PX_PER_HOUR;
+    const height = (b.endMin - b.startMin) / 60 * SCHED_PX_PER_HOUR;
+    const block = document.createElement("div");
+    block.className = `sched-block sched-color-${b.colorIdx}${overlapPairs.has(i) ? " overlap" : ""}`;
+    block.style.top = top + "px";
+    block.style.height = Math.max(height, 14) + "px";
+    block.title = `${b.code}\n${minutesToDisplay(b.startMin)}-${minutesToDisplay(b.endMin)}\n${b.location}`;
+    block.innerHTML = `<div class="sched-block-code">${b.code}</div>`
+      + (height >= 28 ? `<div class="sched-block-time">${minutesToDisplay(b.startMin)}-${minutesToDisplay(b.endMin)}</div>` : "");
+    body.appendChild(block);
+  }
+}
+
+// ── Plan tab integration ──────────────────────────────────────────────────
+
+function getSchedPlanSemNum() {
+  const sel = document.getElementById("sched-plan-sem");
+  return sel ? parseInt(sel.value) || null : null;
+}
+
+function syncSchedToPlan() {
+  const semNum = getSchedPlanSemNum();
+  if (!semNum) return;
+  const semEl = document.querySelector(`#plan-semesters .plan-semester[data-sem-num="${semNum}"]`);
+  if (!semEl) return;
+  const ta = semEl.querySelector(".sem-courses");
+  if (!ta || ta.readOnly) return;
+
+  // Merge: keep existing non-schedule courses, add schedule courses
+  const existingLines = ta.value.split("\n").map(l => l.trim()).filter(Boolean);
+  const schedCodes = new Set(schedEntries.map(e => normalize(e.code)));
+  // Keep lines that aren't from our schedule set (manually typed courses)
+  const kept = existingLines.filter(l => {
+    const n = normalize(l);
+    return !schedCodes.has(n) && !ta.dataset.schedCodes?.split(",").includes(n);
+  });
+  const newLines = [...kept, ...schedEntries.map(e => e.code)];
+  ta.value = newLines.join("\n");
+  ta.dataset.schedCodes = [...schedCodes].join(",");
+  runCheck();
+}
+
+function syncSchedFromPlan() {
+  const semNum = getSchedPlanSemNum();
+  if (!semNum) return;
+  const sd = getScheduleData();
+  if (!sd) return;
+
+  const semEl = document.querySelector(`#plan-semesters .plan-semester[data-sem-num="${semNum}"]`);
+  if (!semEl) return;
+  const ta = semEl.querySelector(".sem-courses");
+  if (!ta) return;
+
+  const codes = parseCourses(ta.value);
+  // Load courses that exist in the current schedule
+  schedEntries = [];
+  schedColorNext = 0;
+  for (const code of codes) {
+    if (sd.courses[code] && !schedEntries.some(e => e.code === code)) {
+      const defaultSec = sd.courses[code].sections.find(s => s.meetings.length > 0)
+                      || sd.courses[code].sections[0];
+      if (defaultSec) {
+        schedEntries.push({ code, sectionId: defaultSec.id, colorIdx: schedColorNext++ % SCHED_COLORS });
+      }
+    }
+  }
+  renderSchedCourses();
+  renderSchedCalendar();
+
+  // Detect term from semester label
+  const termSel = document.getElementById("sched-term");
+  if (termSel && semNum) {
+    const isFall = semNum % 2 === 1;
+    const wanted = isFall ? "fall" : "spring";
+    for (const opt of termSel.options) {
+      if (opt.value.startsWith(wanted)) { termSel.value = opt.value; break; }
+    }
+    buildSchedDatalist();
+  }
+}
+
+function initScheduleTab() {
+  const termSel = document.getElementById("sched-term");
+  if (!DATA.schedules) return;
+  for (const [code, sched] of Object.entries(DATA.schedules)) {
+    const opt = document.createElement("option");
+    opt.value = code;
+    opt.textContent = sched.term;
+    termSel.appendChild(opt);
+  }
+
+  // Plan semester dropdown
+  const planSemSel = document.getElementById("sched-plan-sem");
+  for (const [num, lbl] of Object.entries(PLAN_SEM_LABELS)) {
+    const opt = document.createElement("option");
+    opt.value = num;
+    opt.textContent = lbl;
+    planSemSel.appendChild(opt);
+  }
+
+  buildSchedDatalist();
+  renderSchedCalendar();
+
+  // Allow Enter key in search
+  document.getElementById("sched-search").addEventListener("keydown", e => {
+    if (e.key === "Enter") { e.preventDefault(); schedAddCourse(); }
+  });
+}
+
 // ─── Initialization ──────────────────────────────────────────────────────────
 
 function init() {
@@ -1703,6 +2022,9 @@ function init() {
 
   // Default plan semesters
   createDefaultPlanSemesters();
+
+  // Schedule tab
+  initScheduleTab();
 
   // Catalog year change: re-populate program dropdowns, try to preserve selections
   document.getElementById("catalog-year").addEventListener("change", () => {
