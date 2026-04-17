@@ -1,0 +1,106 @@
+{
+  "id": "social_criminal_justice_major_2023-24",
+  "name": "Social & Criminal Justice",
+  "program_type": "major",
+  "catalog_year": "2023-24",
+  "major_code": "SCJ",
+  "source": "Academic Catalog 2023-24, pp. 190-192",
+  "note": "Requires a minimum cumulative 2.0 GPA. The capstone experience is expected during the junior or senior year.",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "scj101", "title": "Introduction to Social and Criminal Justice", "codes": ["SCJ-101"]},
+        {"id": "scj201", "title": "Law Enforcement and Corrections", "codes": ["SCJ-201"]},
+        {"id": "soc235", "title": "Methods of Sociological Research (WE)", "codes": ["SOC-235"]},
+        {"id": "phl285", "title": "Law, Morality, and Punishment (WE)", "codes": ["PHL-285"]},
+        {"id": "scj350", "title": "Human Rights and Comparative Justice Systems", "codes": ["SCJ-350"]},
+        {"id": "soc351", "title": "Criminology", "codes": ["SOC-351"]}
+      ]
+    },
+    {
+      "id": "statistics",
+      "label": "One Statistics Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "sta100_110", "title": "Statistical Foundations and Inferential Statistics", "codes": ["STA-100", "STA-110"]},
+        {"id": "sta100_130", "title": "Statistical Foundations and Experimental Design", "codes": ["STA-100", "STA-130"]},
+        {"id": "bus190", "title": "Statistical Analysis (WE)", "codes": ["BUS-190"]},
+        {"id": "psy300", "title": "Statistical Methods and Data Analysis", "codes": ["PSY-300"]}
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Three Elective Courses",
+      "type": "choose_n",
+      "n": 3,
+      "description": "Three courses chosen in consultation with the student's advisor and/or the SCJ administrative coordinator. No more than two courses may be selected from the same prefix.",
+      "options": [
+        {"id": "acc313", "title": "Fraud Examination (WE)", "codes": ["ACC-313"]},
+        {"id": "arh107", "title": "Gender and Art", "codes": ["ARH-107"]},
+        {"id": "com237", "title": "Interpersonal Communication (WE)", "codes": ["COM-237"]},
+        {"id": "com357", "title": "Sex, Race, and Gender in the Media (WE)", "codes": ["COM-357"]},
+        {"id": "com361", "title": "Communication and Social Change", "codes": ["COM-361"]},
+        {"id": "com362", "title": "U.S. Public Address (WE)", "codes": ["COM-362"]},
+        {"id": "eco115", "title": "Introduction to Political Economy", "codes": ["ECO-115"]},
+        {"id": "edu187", "title": "Human Relations (WE)", "codes": ["EDU-187"]},
+        {"id": "eng116", "title": "Human Rights and Literature (WE)", "codes": ["ENG-116"]},
+        {"id": "eng146", "title": "Introduction to Postcolonial Literature (WE)", "codes": ["ENG-146"]},
+        {"id": "gs107", "title": "Introduction to Gender and Sexuality Studies (WE)", "codes": ["GS-107"]},
+        {"id": "his145", "title": "History of the United States to 1865", "codes": ["HIS-145"]},
+        {"id": "his155", "title": "History of the United States Since 1865", "codes": ["HIS-155"]},
+        {"id": "his247", "title": "African American History (WE)", "codes": ["HIS-247"]},
+        {"id": "his257", "title": "Native American History (WE)", "codes": ["HIS-257"]},
+        {"id": "his297", "title": "Women in America (WE)", "codes": ["HIS-297"]},
+        {"id": "his325", "title": "Recent American History I (WE)", "codes": ["HIS-325"]},
+        {"id": "is126", "title": "Human Rights Work with Burmese Immigrants in Thailand", "codes": ["IS-126"]},
+        {"id": "phl128", "title": "Morality and Moral Controversies (WE)", "codes": ["PHL-128"]},
+        {"id": "phl205", "title": "Environmental Ethics (WE)", "codes": ["PHL-205"]},
+        {"id": "phl265", "title": "Political Philosophy (WE)", "codes": ["PHL-265"]},
+        {"id": "phl270", "title": "Ethical Theory (WE)", "codes": ["PHL-270"]},
+        {"id": "phl277", "title": "Philosophy of Gender and Race (WE)", "codes": ["PHL-277"]},
+        {"id": "pol305", "title": "Terrorism (WE)", "codes": ["POL-305"]},
+        {"id": "pol350", "title": "U.S. Social Policy Process (WE)", "codes": ["POL-350"]},
+        {"id": "pol375", "title": "The Constitution and Individual Liberties", "codes": ["POL-375"]},
+        {"id": "psy235", "title": "Abnormal Psychology", "codes": ["PSY-235"]},
+        {"id": "psy245", "title": "Organizational Psychology", "codes": ["PSY-245"]},
+        {"id": "psy255", "title": "Social Psychology", "codes": ["PSY-255"]},
+        {"id": "psy315", "title": "Learning and Behavior", "codes": ["PSY-315"]},
+        {"id": "psy350", "title": "Drugs and Behavior", "codes": ["PSY-350"]},
+        {"id": "psy415", "title": "Counseling Psychology", "codes": ["PSY-415"]},
+        {"id": "rel217", "title": "Religion in America (WE)", "codes": ["REL-217"]},
+        {"id": "scj190", "title": "Topics in Social and Criminal Justice", "codes": ["SCJ-190"]},
+        {"id": "scj220", "title": "Juvenile Delinquency and the Justice System", "codes": ["SCJ-220"]},
+        {"id": "scj301", "title": "Criminal Law and the Fourth, Fifth, and Sixth Amendments", "codes": ["SCJ-301"]},
+        {"id": "scj390", "title": "Advanced Topics in Social and Criminal Justice", "codes": ["SCJ-390"]},
+        {"id": "soc207", "title": "Sociology of the Family", "codes": ["SOC-207"]},
+        {"id": "soc247", "title": "Sociology of Race", "codes": ["SOC-247"]},
+        {"id": "soc328", "title": "Urban Sociology", "codes": ["SOC-328"]},
+        {"id": "soc338", "title": "Political Sociology", "codes": ["SOC-338"]},
+        {"id": "soc355", "title": "Deviant Behavior", "codes": ["SOC-355"]},
+        {"id": "soc425", "title": "Social Change", "codes": ["SOC-425"]}
+      ]
+    },
+    {
+      "id": "capstone",
+      "label": "Capstone Project",
+      "type": "choose_one",
+      "options": [
+        {"id": "scj444", "title": "Independent Study in Social and Criminal Justice", "codes": ["SCJ-444"]},
+        {"id": "scj494", "title": "Internship in Social and Criminal Justice", "codes": ["SCJ-494"]},
+        {"id": "occ323", "title": "Chicago Program (if internship/independent study has SCJ focus)", "codes": ["OCC-323"]},
+        {"id": "wsh464", "title": "Washington Term Internship Seminar (if internship has SCJ focus)", "codes": ["WSH-464"]}
+      ]
+    },
+    {
+      "id": "colloquium",
+      "label": "SCJ Colloquium",
+      "type": "all",
+      "items": [
+        {"id": "scj490", "title": "Social & Criminal Justice Colloquium (non-credit bearing)", "codes": ["SCJ-490"]}
+      ]
+    }
+  ]
+}

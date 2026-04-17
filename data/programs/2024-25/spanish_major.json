@@ -1,0 +1,45 @@
+{
+  "id": "spanish_major_2024-25",
+  "name": "Spanish",
+  "program_type": "major",
+  "catalog_year": "2024-25",
+  "major_code": "SPA",
+  "source": "Academic Catalog 2024-25, p. 212",
+  "note": "Grade of C (2.0) or higher required in all courses. Eight courses beyond Intermediate Spanish II (SPA-225). Elementary Spanish (SPA-115/125), Spanish Review and Preparation (SPA-135), and Intermediate Spanish (SPA-215/225) do not count. SPA-148 may count as one of the eight. One Hispanic literature course (SPA-336 or above) must be taken in the senior year. Up to three courses may be substituted by study abroad.",
+  "sections": [
+    {
+      "id": "capstone",
+      "label": "Required Capstone",
+      "type": "all",
+      "items": [
+        {
+          "id": "spa464",
+          "title": "Capstone in Spanish",
+          "codes": [
+            "SPA-464"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Seven Additional Spanish Courses Beyond SPA-225",
+      "type": "open_n",
+      "n": 7,
+      "description": "Seven additional courses in Spanish beyond SPA-225. SPA-148 Spanish Literature in Translation may count as one. One Hispanic literature course (SPA-336+) must be taken senior year.",
+      "constraints": {
+        "prefixes": [
+          "SPA"
+        ],
+        "exclude_codes": [
+          "SPA-115",
+          "SPA-125",
+          "SPA-129",
+          "SPA-135",
+          "SPA-215",
+          "SPA-225"
+        ]
+      }
+    }
+  ]
+}

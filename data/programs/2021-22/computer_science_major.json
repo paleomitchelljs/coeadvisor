@@ -1,0 +1,47 @@
+{
+  "id": "computer_science_major_2021-22",
+  "name": "Computer Science",
+  "program_type": "major",
+  "catalog_year": "2021-22",
+  "major_code": "CS",
+  "source": "Academic Catalog 2021-22, pp. 98-99",
+  "note": "Requires a minimum cumulative 2.0 GPA in all courses counted toward the major.",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "cs125", "title": "Computer Science I", "codes": ["CS-125"]},
+        {"id": "cs135", "title": "Computer Science II", "codes": ["CS-135"]},
+        {"id": "cs145", "title": "Foundations of Computer Science", "codes": ["CS-145"]},
+        {"id": "cs215", "title": "Data Structures and Algorithms", "codes": ["CS-215"]},
+        {"id": "cs245", "title": "Object Oriented Programming", "codes": ["CS-245"]},
+        {"id": "mth135", "title": "Calculus I", "codes": ["MTH-135"]},
+        {"id": "mth215", "title": "Foundations of Advanced Mathematics (WE)", "codes": ["MTH-215"]}
+      ]
+    },
+    {
+      "id": "upper_core",
+      "label": "Two Upper-Division Core Courses",
+      "type": "choose_n",
+      "n": 2,
+      "options": [
+        {"id": "cs320", "title": "Operating Systems", "codes": ["CS-320"]},
+        {"id": "cs340", "title": "Programming Languages", "codes": ["CS-340"]},
+        {"id": "cs390", "title": "Software Engineering (WE)", "codes": ["CS-390"]}
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Two Additional Computer Science Courses (200+)",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two additional computer science courses numbered 200 or above.",
+      "constraints": {
+        "prefixes": ["CS"],
+        "min_number": 200
+      }
+    }
+  ]
+}

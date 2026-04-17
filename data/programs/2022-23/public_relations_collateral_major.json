@@ -1,0 +1,89 @@
+{
+  "id": "public_relations_collateral_major_2022-23",
+  "name": "Public Relations",
+  "program_type": "collateral",
+  "catalog_year": "2022-23",
+  "major_code": "PR",
+  "source": "Academic Catalog 2022-23, pp. 181-182",
+  "note": "Requires a minimum cumulative 2.0 GPA. Concurrent completion of a primary major is required. Students must consult with the Public Relations administrative coordinator no later than the first term of their junior year.",
+  "sections": [
+    {
+      "id": "art",
+      "label": "One Art/Design Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "art101", "title": "Works on Paper: Two-Dimensional Design", "codes": ["ART-101"]},
+        {"id": "art145", "title": "Illuminated Pixels", "codes": ["ART-145"]},
+        {"id": "art155", "title": "Photography: Light Writing", "codes": ["ART-155"]},
+        {"id": "art263", "title": "Graphic Design Studio", "codes": ["ART-263"]}
+      ]
+    },
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "pr205", "title": "Public Relations (WE)", "codes": ["PR-205"]},
+        {"id": "bus330", "title": "Principles of Marketing (WE)", "codes": ["BUS-330"]},
+        {"id": "bus460", "title": "Advertising (WE)", "codes": ["BUS-460"]}
+      ]
+    },
+    {
+      "id": "journalism",
+      "label": "One Journalism/Media Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "com241", "title": "Introduction to Multimedia Journalism (WE)", "codes": ["COM-241"]},
+        {"id": "rhe225", "title": "Journalism and Media Writing Workshop (WE)", "codes": ["RHE-225"]}
+      ]
+    },
+    {
+      "id": "portfolio",
+      "label": "One Portfolio/Writing Course",
+      "type": "choose_one",
+      "description": "One of the following (producing a portfolio of writings related to the field of public relations).",
+      "options": [
+        {"id": "bus461", "title": "Marketing Decision-Making & Strategy (WE)", "codes": ["BUS-461"]},
+        {"id": "rhe415", "title": "Advanced Writing Workshop (WE)", "codes": ["RHE-415"]}
+      ]
+    },
+    {
+      "id": "internship",
+      "label": "One Internship",
+      "type": "choose_one",
+      "options": [
+        {"id": "bus494", "title": "Internship in Business", "codes": ["BUS-494"]},
+        {"id": "int494", "title": "Summer Internship", "codes": ["INT-494"]},
+        {"id": "pr494", "title": "Internship in Public Relations", "codes": ["PR-494"]}
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Three Elective Courses",
+      "type": "choose_n",
+      "n": 3,
+      "description": "Three of the following. No more than two courses may be selected from within any one department.",
+      "options": [
+        {"id": "acc171", "title": "Principles of Accounting I", "codes": ["ACC-171"]},
+        {"id": "art101e", "title": "Works on Paper: Two-Dimensional Design (if not used above)", "codes": ["ART-101"]},
+        {"id": "art145e", "title": "Illuminated Pixels (if not used above)", "codes": ["ART-145"]},
+        {"id": "art155e", "title": "Photography: Light Writing (if not used above)", "codes": ["ART-155"]},
+        {"id": "art203", "title": "SpaceTime", "codes": ["ART-203"]},
+        {"id": "art253", "title": "Advanced Photography: Bridging the Gap", "codes": ["ART-253"]},
+        {"id": "art263e", "title": "Graphic Design Studio (if not used above)", "codes": ["ART-263"]},
+        {"id": "bus250", "title": "Principles of Management", "codes": ["BUS-250"]},
+        {"id": "bus375", "title": "Business Ethics (WE)", "codes": ["BUS-375"]},
+        {"id": "bus461e", "title": "Marketing Decision-Making & Strategy (WE) (if not used above)", "codes": ["BUS-461"]},
+        {"id": "bus464", "title": "Seminar in Management (WE)", "codes": ["BUS-464"]},
+        {"id": "bus465", "title": "Advanced Topics in Marketing", "codes": ["BUS-465"]},
+        {"id": "com125", "title": "Fundamentals of Public Speaking", "codes": ["COM-125"]},
+        {"id": "com157", "title": "Introduction to Media Analysis (WE)", "codes": ["COM-157"]},
+        {"id": "com337", "title": "Persuasion", "codes": ["COM-337"]},
+        {"id": "com341", "title": "Digital Storytelling (WE)", "codes": ["COM-341"]},
+        {"id": "rhe225e", "title": "Journalism and Media Writing Workshop (WE) (if not used above)", "codes": ["RHE-225"]},
+        {"id": "rhe265", "title": "Professional Writing (WE)", "codes": ["RHE-265"]},
+        {"id": "rhe415e", "title": "Advanced Writing Workshop (WE) (if not used above)", "codes": ["RHE-415"]}
+      ]
+    }
+  ]
+}

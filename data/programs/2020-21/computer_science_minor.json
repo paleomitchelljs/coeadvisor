@@ -1,0 +1,32 @@
+{
+  "id": "computer_science_minor_2020-21",
+  "name": "Computer Science",
+  "program_type": "minor",
+  "catalog_year": "2020-21",
+  "major_code": "CS",
+  "source": "Academic Catalog 2020-21, p. 99",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "cs125", "title": "Computer Science I", "codes": ["CS-125"]},
+        {"id": "cs135", "title": "Computer Science II", "codes": ["CS-135"]},
+        {"id": "cs145", "title": "Foundations of Computer Science", "codes": ["CS-145"]},
+        {"id": "cs245", "title": "Object Oriented Programming", "codes": ["CS-245"]}
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Two Additional Computer Science Courses (200+)",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two additional computer science courses numbered 200 or above.",
+      "constraints": {
+        "prefixes": ["CS"],
+        "min_number": 200
+      }
+    }
+  ]
+}

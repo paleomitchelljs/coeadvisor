@@ -1,0 +1,86 @@
+{
+  "id": "communication_studies_major_2020-21",
+  "name": "Communication Studies",
+  "program_type": "major",
+  "catalog_year": "2020-21",
+  "major_code": "COM",
+  "source": "Academic Catalog 2020-21, p. 96",
+  "note": "A minimum cumulative 2.0 GPA is required in all courses counted toward the major.",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "com125", "title": "Fundamentals of Public Speaking", "codes": ["COM-125"]},
+        {"id": "com381", "title": "Research Methods in Communication Studies (WE)", "codes": ["COM-381"]},
+        {"id": "rhe200", "title": "Rhetorical Theory & Practice", "codes": ["RHE-200"]}
+      ]
+    },
+    {
+      "id": "relational",
+      "label": "One Course in Relational Communication",
+      "type": "choose_one",
+      "options": [
+        {"id": "com236", "title": "Intercultural Communication (WE)", "codes": ["COM-236"]},
+        {"id": "com237", "title": "Interpersonal Communication (WE)", "codes": ["COM-237"]},
+        {"id": "com337", "title": "Persuasion", "codes": ["COM-337"]},
+        {"id": "com435", "title": "Special Topics in Relational Communication (WE)", "codes": ["COM-435", "COM-437"]}
+      ]
+    },
+    {
+      "id": "production",
+      "label": "One Course in Production",
+      "type": "choose_one",
+      "options": [
+        {"id": "com241", "title": "Introduction to Multimedia Journalism (WE)", "codes": ["COM-241"]},
+        {"id": "com341", "title": "Digital Storytelling (WE)", "codes": ["COM-341"]},
+        {"id": "com445", "title": "Special Topics in Production (WE)", "codes": ["COM-445", "COM-447"]},
+        {"id": "rhe225", "title": "Journalism and Media Writing Workshop (WE)", "codes": ["RHE-225"]}
+      ]
+    },
+    {
+      "id": "media_studies",
+      "label": "One Course in Media Studies",
+      "type": "choose_one",
+      "options": [
+        {"id": "com151", "title": "Introduction to New Media Studies (WE)", "codes": ["COM-151"]},
+        {"id": "com157", "title": "Introduction to Media Analysis (WE)", "codes": ["COM-157"]},
+        {"id": "com357", "title": "Sex, Race, and Gender in the Media (WE)", "codes": ["COM-357"]},
+        {"id": "com455", "title": "Special Topics in Media Studies (WE)", "codes": ["COM-455", "COM-457"]}
+      ]
+    },
+    {
+      "id": "public_discourse",
+      "label": "One Course in Public Discourse",
+      "type": "choose_one",
+      "options": [
+        {"id": "com161", "title": "Visual Rhetoric", "codes": ["COM-161"]},
+        {"id": "com361", "title": "Communication & Social Change", "codes": ["COM-361"]},
+        {"id": "com362", "title": "U.S. Public Address (WE)", "codes": ["COM-362"]},
+        {"id": "com465", "title": "Special Topics in Public Discourse (WE)", "codes": ["COM-465", "COM-467"]}
+      ]
+    },
+    {
+      "id": "advanced_com",
+      "label": "One COM Course (400+)",
+      "type": "open_n",
+      "n": 1,
+      "description": "A Communication Studies course numbered 400 or above (if not used to satisfy a requirement above), excluding COM-494 Internship in Journalism/Communication.",
+      "constraints": {
+        "prefixes": ["COM"],
+        "min_number": 400
+      }
+    },
+    {
+      "id": "additional",
+      "label": "Two Additional Communication Studies Courses",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two additional Communication Studies courses.",
+      "constraints": {
+        "prefixes": ["COM"]
+      }
+    }
+  ]
+}

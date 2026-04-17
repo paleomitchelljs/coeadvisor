@@ -1,0 +1,174 @@
+{
+  "id": "theatre_arts_performing_arts_major_2024-25",
+  "name": "Theatre Arts \u2014 Performing Arts Emphasis",
+  "program_type": "major",
+  "catalog_year": "2024-25",
+  "major_code": "THE",
+  "source": "Academic Catalog 2024-25, p. 220",
+  "note": "Requires a cumulative 2.0 GPA. Only one Theatre Arts major (base or with emphasis) may be earned. THE-185 must be taken twice in a performance role.",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Core Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "the100",
+          "title": "Introduction to Theatre",
+          "codes": [
+            "THE-100"
+          ]
+        },
+        {
+          "id": "the130",
+          "title": "Technical Production I",
+          "codes": [
+            "THE-130"
+          ]
+        },
+        {
+          "id": "the140",
+          "title": "Design for the Stage",
+          "codes": [
+            "THE-140"
+          ]
+        },
+        {
+          "id": "the150",
+          "title": "Acting I",
+          "codes": [
+            "THE-150"
+          ]
+        },
+        {
+          "id": "the185",
+          "title": "Production and Performance (taken twice in performance role)",
+          "codes": [
+            "THE-185"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "practicum",
+      "label": "Internship/New York Term",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "the494",
+          "title": "Internship in Theatre",
+          "codes": [
+            "THE-494"
+          ]
+        },
+        {
+          "id": "nyt250",
+          "title": "New York Term",
+          "codes": [
+            "NYT-250"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "interdisciplinary",
+      "label": "Two Interdisciplinary Courses",
+      "type": "choose_n",
+      "n": 2,
+      "description": "At least two additional full credit course equivalents in consultation with advisor.",
+      "options": [
+        {
+          "id": "eng111",
+          "title": "Literary Studies",
+          "codes": [
+            "ENG-111"
+          ]
+        },
+        {
+          "id": "eng382",
+          "title": "Shakespeare: Comedies",
+          "codes": [
+            "ENG-382"
+          ]
+        },
+        {
+          "id": "eng383",
+          "title": "Shakespeare: Tragedies/Histories",
+          "codes": [
+            "ENG-383"
+          ]
+        },
+        {
+          "id": "the165",
+          "title": "Stage Make-Up",
+          "codes": [
+            "THE-165"
+          ]
+        },
+        {
+          "id": "the255",
+          "title": "Playwriting Workshop I",
+          "codes": [
+            "THE-255",
+            "CRW-255"
+          ]
+        },
+        {
+          "id": "the288",
+          "title": "History of Dress",
+          "codes": [
+            "THE-288"
+          ]
+        },
+        {
+          "id": "the355",
+          "title": "Playwriting Workshop 2",
+          "codes": [
+            "THE-355"
+          ]
+        },
+        {
+          "id": "the444",
+          "title": "Independent Study in Theatre",
+          "codes": [
+            "THE-444"
+          ]
+        },
+        {
+          "id": "the455",
+          "title": "Playwriting Workshop 3",
+          "codes": [
+            "THE-455"
+          ]
+        },
+        {
+          "id": "the486",
+          "title": "Special Topics in Theatre",
+          "codes": [
+            "THE-486"
+          ]
+        },
+        {
+          "id": "the494b",
+          "title": "Internship in Theatre",
+          "codes": [
+            "THE-494"
+          ]
+        },
+        {
+          "id": "nyt250b",
+          "title": "New York Term",
+          "codes": [
+            "NYT-250"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vocal",
+      "label": "Vocal Training",
+      "type": "non_course",
+      "description": "Four MUA vocal ensemble or vocal lessons full credit equivalent experiences."
+    }
+  ]
+}

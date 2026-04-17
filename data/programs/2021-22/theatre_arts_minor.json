@@ -1,0 +1,20 @@
+{
+  "id": "theatre_arts_minor_2021-22",
+  "name": "Theatre Arts",
+  "program_type": "minor",
+  "catalog_year": "2021-22",
+  "major_code": "THE",
+  "source": "Academic Catalog 2021-22, p. 200",
+  "sections": [
+    {
+      "id": "courses",
+      "label": "Six Theatre Arts Courses",
+      "type": "open_n",
+      "n": 6,
+      "description": "Six course credits of theatre arts.",
+      "constraints": {
+        "prefixes": ["THE"]
+      }
+    }
+  ]
+}

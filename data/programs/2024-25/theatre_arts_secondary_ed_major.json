@@ -1,0 +1,183 @@
+{
+  "id": "theatre_arts_secondary_ed_major_2024-25",
+  "name": "Theatre Arts \u2014 Secondary Education Endorsement",
+  "program_type": "major",
+  "catalog_year": "2024-25",
+  "major_code": "THE",
+  "source": "Academic Catalog 2024-25, pp. 218-219",
+  "note": "Requires a cumulative 2.0 GPA. Only one Theatre Arts major (base or with emphasis) may be earned.",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Core Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "the100",
+          "title": "Introduction to Theatre",
+          "codes": [
+            "THE-100"
+          ]
+        },
+        {
+          "id": "eng111",
+          "title": "Introduction to Literary Studies",
+          "codes": [
+            "ENG-111"
+          ]
+        },
+        {
+          "id": "com125",
+          "title": "Fundamentals of Public Speaking",
+          "codes": [
+            "COM-125"
+          ]
+        },
+        {
+          "id": "the130",
+          "title": "Technical Production I",
+          "codes": [
+            "THE-130"
+          ]
+        },
+        {
+          "id": "the140",
+          "title": "Design for the Stage",
+          "codes": [
+            "THE-140"
+          ]
+        },
+        {
+          "id": "the150",
+          "title": "Acting I",
+          "codes": [
+            "THE-150"
+          ]
+        },
+        {
+          "id": "the185",
+          "title": "Production and Performance",
+          "codes": [
+            "THE-185"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "production_tech",
+      "label": "Technical Theatre Experience",
+      "type": "choose_one",
+      "description": "One full credit of technical theatre experience.",
+      "options": [
+        {
+          "id": "the102",
+          "title": "Theatre Production Lab (taken four times)",
+          "codes": [
+            "THE-102"
+          ]
+        },
+        {
+          "id": "the112",
+          "title": "Production Experience (taken twice)",
+          "codes": [
+            "THE-112"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shakespeare",
+      "label": "Shakespeare Course",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "eng382",
+          "title": "Shakespeare: Comedies",
+          "codes": [
+            "ENG-382"
+          ]
+        },
+        {
+          "id": "eng383",
+          "title": "Shakespeare: Tragedies/Histories",
+          "codes": [
+            "ENG-383"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Three Additional Theatre Courses",
+      "type": "choose_n",
+      "n": 3,
+      "description": "At least three selected in consultation with advisor.",
+      "options": [
+        {
+          "id": "the162",
+          "title": "Stage Make-Up",
+          "codes": [
+            "THE-162"
+          ]
+        },
+        {
+          "id": "the185b",
+          "title": "Production and Performance (additional)",
+          "codes": [
+            "THE-185"
+          ]
+        },
+        {
+          "id": "the255",
+          "title": "Playwriting Workshop I",
+          "codes": [
+            "THE-255",
+            "CRW-255"
+          ]
+        },
+        {
+          "id": "the288",
+          "title": "History of Dress",
+          "codes": [
+            "THE-288"
+          ]
+        },
+        {
+          "id": "the355",
+          "title": "Playwriting Workshop 2",
+          "codes": [
+            "THE-355"
+          ]
+        },
+        {
+          "id": "the444",
+          "title": "Independent Study in Theatre",
+          "codes": [
+            "THE-444"
+          ]
+        },
+        {
+          "id": "the455",
+          "title": "Playwriting Workshop 3",
+          "codes": [
+            "THE-455"
+          ]
+        },
+        {
+          "id": "the486",
+          "title": "Special Topics in Theatre",
+          "codes": [
+            "THE-486"
+          ]
+        },
+        {
+          "id": "the494",
+          "title": "Internship in Theatre",
+          "codes": [
+            "THE-494"
+          ]
+        }
+      ]
+    }
+  ]
+}

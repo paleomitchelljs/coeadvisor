@@ -1,0 +1,58 @@
+{
+  "id": "religion_major_2020-21",
+  "name": "Religion",
+  "program_type": "major",
+  "catalog_year": "2020-21",
+  "major_code": "REL",
+  "source": "Academic Catalog 2020-21, p. 182",
+  "note": "A grade of C (2.0) or higher must be earned in all courses counted toward a major in religion.",
+  "sections": [
+    {
+      "id": "intro",
+      "label": "One Introductory Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "rel101", "title": "Introduction to Religion (WE)", "codes": ["REL-101"]},
+        {"id": "rel103", "title": "Belief and Unbelief (WE)", "codes": ["REL-103"]}
+      ]
+    },
+    {
+      "id": "required",
+      "label": "Required Survey Courses",
+      "type": "all",
+      "items": [
+        {"id": "rel106", "title": "Eastern Religions", "codes": ["REL-106"]},
+        {"id": "rel108", "title": "Western Religions (WE)", "codes": ["REL-108"]}
+      ]
+    },
+    {
+      "id": "scripture",
+      "label": "One Scripture Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "rel105", "title": "Introduction to Hebrew Bible (WE)", "codes": ["REL-105"]},
+        {"id": "rel115", "title": "Introduction to New Testament (WE)", "codes": ["REL-115"]}
+      ]
+    },
+    {
+      "id": "eastern",
+      "label": "One Eastern Religion Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "rel116", "title": "Buddhism", "codes": ["REL-116"]},
+        {"id": "rel136", "title": "Religions of China (WE)", "codes": ["REL-136"]},
+        {"id": "rel196", "title": "Hinduism", "codes": ["REL-196"]}
+      ]
+    },
+    {
+      "id": "additional",
+      "label": "Five Additional Religion Courses",
+      "type": "open_n",
+      "n": 5,
+      "description": "Five additional religion courses, at least three of which are numbered 300 or above.",
+      "constraints": {
+        "prefixes": ["REL"]
+      }
+    }
+  ]
+}

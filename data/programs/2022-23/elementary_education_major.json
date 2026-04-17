@@ -1,0 +1,67 @@
+{
+  "id": "elementary_education_major_2022-23",
+  "name": "Elementary Education",
+  "program_type": "major",
+  "catalog_year": "2022-23",
+  "major_code": "EDU",
+  "source": "Academic Catalog 2022-23, pp. 107-108",
+  "note": "Cumulative GPA of 2.7 or higher and grade of C or better required in all professional education courses. Students must complete Iowa Distribution Requirements and obtain a K-8 endorsement area. Students must be admitted to the Education Program before enrolling in practicum or methods courses. A non-licensure option is available for students who wish to work with children in settings that do not require licensure.",
+  "sections": [
+    {
+      "id": "iowa_math",
+      "label": "Iowa Distribution: Mathematics",
+      "type": "open_n",
+      "n": 1,
+      "description": "One mathematics course with a prefix of MTH or STA.",
+      "constraints": {
+        "prefixes": ["MTH", "STA"]
+      }
+    },
+    {
+      "id": "iowa_history",
+      "label": "Iowa Distribution: American History",
+      "type": "open_n",
+      "n": 1,
+      "description": "One American History course.",
+      "constraints": {
+        "prefixes": ["HIS"]
+      }
+    },
+    {
+      "id": "endorsement",
+      "label": "K-8 Endorsement Area",
+      "type": "non_course",
+      "description": "A K-8 endorsement in Art, English/Language Arts, French, German, Spanish, Health, History, Mathematics, Music, Physical Education, Reading, Science, Social Studies, or Speech."
+    },
+    {
+      "id": "professional",
+      "label": "Professional Education Courses",
+      "type": "all",
+      "items": [
+        {"id": "edu105", "title": "Educational Foundations (WE)", "codes": ["EDU-105"]},
+        {"id": "edu112", "title": "Expressive Methods (0.5cc)", "codes": ["EDU-112"]},
+        {"id": "edu117", "title": "Exceptional Learners", "codes": ["EDU-117"]},
+        {"id": "edu187", "title": "Human Relations (WE)", "codes": ["EDU-187"]},
+        {"id": "edu195", "title": "Educational Psychology and Development", "codes": ["EDU-195"]},
+        {"id": "edu215", "title": "Practicum in Education (WE)", "codes": ["EDU-215"]},
+        {"id": "edu219", "title": "Educational Technology Lab (WE) (0.0cc)", "codes": ["EDU-219"]},
+        {"id": "edu275", "title": "Mathematics Comprehension for Teaching", "codes": ["EDU-275"]},
+        {"id": "edu305", "title": "Methods of Elementary Science (WE)", "codes": ["EDU-305"]},
+        {"id": "edu335", "title": "Methods of Elementary Mathematics (WE)", "codes": ["EDU-335"]},
+        {"id": "edu345", "title": "Methods of Elementary Language Arts (WE)", "codes": ["EDU-345"]},
+        {"id": "edu355", "title": "Methods of Elementary Reading (WE)", "codes": ["EDU-355"]},
+        {"id": "edu365", "title": "Methods of Elementary Social Studies (WE)", "codes": ["EDU-365"]},
+        {"id": "kin112", "title": "Health Education for the Elementary Teacher (0.5cc)", "codes": ["KIN-112"]}
+      ]
+    },
+    {
+      "id": "ell_or_lit",
+      "label": "English Language Learners or Literature K-12",
+      "type": "choose_one",
+      "options": [
+        {"id": "edu237", "title": "English Language Learners (WE)", "codes": ["EDU-237"]},
+        {"id": "edu270", "title": "Literature K-12 (WE)", "codes": ["EDU-270"]}
+      ]
+    }
+  ]
+}

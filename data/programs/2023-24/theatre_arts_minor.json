@@ -1,0 +1,20 @@
+{
+  "id": "theatre_arts_minor_2023-24",
+  "name": "Theatre Arts",
+  "program_type": "minor",
+  "catalog_year": "2023-24",
+  "major_code": "THE",
+  "source": "Academic Catalog 2023-24, p. 200",
+  "sections": [
+    {
+      "id": "courses",
+      "label": "Six Theatre Arts Courses",
+      "type": "open_n",
+      "n": 6,
+      "description": "Six course credits of theatre arts.",
+      "constraints": {
+        "prefixes": ["THE"]
+      }
+    }
+  ]
+}

@@ -1,0 +1,356 @@
+{
+  "id": "music_major_2024-25",
+  "name": "Music",
+  "program_type": "major",
+  "catalog_year": "2024-25",
+  "major_code": "MU",
+  "source": "Academic Catalog 2024-25, pp. 172-176",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "mu101",
+          "title": "Music Fundamentals I",
+          "codes": [
+            "MU-101"
+          ]
+        },
+        {
+          "id": "mu107",
+          "title": "American Music (WE)",
+          "codes": [
+            "MU-107"
+          ]
+        },
+        {
+          "id": "mu166",
+          "title": "Music of the World",
+          "codes": [
+            "MU-166"
+          ]
+        },
+        {
+          "id": "mu201",
+          "title": "Music Fundamentals II",
+          "codes": [
+            "MU-201"
+          ]
+        },
+        {
+          "id": "mu384",
+          "title": "Conducting I (WE)",
+          "codes": [
+            "MU-384"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "applied",
+      "label": "Applied Music (4.5 credits MUA-)",
+      "type": "non_course",
+      "description": "4.5 credits of MUA- lessons or ensembles."
+    },
+    {
+      "id": "mu_elective",
+      "label": "One Additional MU Course (300+)",
+      "type": "open_n",
+      "n": 1,
+      "description": "One additional credit in MU- coursework, numbered 300-level or above.",
+      "constraints": {
+        "prefixes": [
+          "MU"
+        ],
+        "min_level": 300,
+        "min_level_count": 1,
+        "exclude_codes": [
+          "MU-101",
+          "MU-107",
+          "MU-166",
+          "MU-201",
+          "MU-384"
+        ]
+      }
+    },
+    {
+      "id": "senior_assessment",
+      "label": "Senior Assessment Examination",
+      "type": "non_course",
+      "description": "The Senior Assessment Examination in the final term prior to graduation."
+    }
+  ],
+  "concentrations": [
+    {
+      "id": "jazz",
+      "name": "Jazz Emphasis",
+      "note": "Concurrent completion of a major in music is required. 6.3 additional course credits minimum.",
+      "sections": [
+        {
+          "id": "jazz_core",
+          "label": "Required Jazz Courses",
+          "type": "all",
+          "items": [
+            {
+              "id": "mu301",
+              "title": "Music Fundamentals III",
+              "codes": [
+                "MU-301"
+              ]
+            },
+            {
+              "id": "aam107",
+              "title": "Introduction to African American Studies",
+              "codes": [
+                "AAM-107"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "jazz_history",
+          "label": "Jazz History",
+          "type": "choose_one",
+          "options": [
+            {
+              "id": "mu117",
+              "title": "Jazz: The Early Years",
+              "codes": [
+                "MU-117"
+              ]
+            },
+            {
+              "id": "mu157",
+              "title": "Introduction to Jazz History",
+              "codes": [
+                "MU-157"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "jazz_applied",
+          "label": "Applied Jazz Requirements",
+          "type": "non_course",
+          "description": "Seven terms of MUA-101 Jazz Band (0.3 cc each), two terms of MUA-102K Piano: Arranging (0.3 cc each), two terms of MUA-103K Piano: Jazz (0.3 cc each)."
+        }
+      ]
+    },
+    {
+      "id": "music_industry",
+      "name": "Music Industry Emphasis",
+      "note": "Concurrent completion of a major in music is required. 6.5 additional course credits minimum.",
+      "sections": [
+        {
+          "id": "mi_production",
+          "label": "Music Production",
+          "type": "non_course",
+          "description": "Minimum 1 credit from MUA-111C Music Production and Engineering (0.3 cc) or MUA-222C Music Production and Engineering (0.6 cc)."
+        },
+        {
+          "id": "mi_core",
+          "label": "Required Course",
+          "type": "all",
+          "items": [
+            {
+              "id": "mu283",
+              "title": "Arts Administration",
+              "codes": [
+                "MU-283"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mi_comm",
+          "label": "One Communication Course",
+          "type": "choose_one",
+          "options": [
+            {
+              "id": "com231",
+              "title": "Communication in Teams (WE)",
+              "codes": [
+                "COM-231"
+              ]
+            },
+            {
+              "id": "com322",
+              "title": "Professional Communication and Writing (WE)",
+              "codes": [
+                "COM-322"
+              ]
+            },
+            {
+              "id": "com327",
+              "title": "Organizational Communication (WE)",
+              "codes": [
+                "COM-327"
+              ]
+            },
+            {
+              "id": "pr205",
+              "title": "Public Relations (WE)",
+              "codes": [
+                "PR-205"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mi_business",
+          "label": "One Business Course",
+          "type": "choose_one",
+          "options": [
+            {
+              "id": "bus250",
+              "title": "Principles of Management",
+              "codes": [
+                "BUS-250"
+              ]
+            },
+            {
+              "id": "bus330",
+              "title": "Principles of Marketing (WE)",
+              "codes": [
+                "BUS-330"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mi_internship",
+          "label": "Music Industry Internship or Independent Study",
+          "type": "non_course",
+          "description": "A music industry-related internship or independent study."
+        }
+      ]
+    },
+    {
+      "id": "pre_music_therapy",
+      "name": "Pre-Music Therapy Emphasis",
+      "note": "Concurrent completion of a major in music is required. 7 additional course credits minimum. Courses used for the major may NOT also satisfy Pre-Music Therapy requirements.",
+      "sections": [
+        {
+          "id": "pmt_core",
+          "label": "Required Courses",
+          "type": "all",
+          "items": [
+            {
+              "id": "psy100",
+              "title": "Introductory Psychology",
+              "codes": [
+                "PSY-100"
+              ]
+            },
+            {
+              "id": "bio103",
+              "title": "Anatomy and Physiology",
+              "codes": [
+                "BIO-103"
+              ]
+            },
+            {
+              "id": "bio100",
+              "title": "Human Biology",
+              "codes": [
+                "BIO-100"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pmt_psych",
+          "label": "One Psychology/Education Course",
+          "type": "choose_one",
+          "options": [
+            {
+              "id": "edu117",
+              "title": "Exceptional Learners",
+              "codes": [
+                "EDU-117"
+              ]
+            },
+            {
+              "id": "edu187",
+              "title": "Human Relations (WE)",
+              "codes": [
+                "EDU-187"
+              ]
+            },
+            {
+              "id": "edu195",
+              "title": "Educational Psychology and Development",
+              "codes": [
+                "EDU-195"
+              ]
+            },
+            {
+              "id": "psy235",
+              "title": "Abnormal Psychology",
+              "codes": [
+                "PSY-235"
+              ]
+            },
+            {
+              "id": "psy270",
+              "title": "Learning and Behavior",
+              "codes": [
+                "PSY-270"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pmt_theatre",
+          "label": "One Theatre Course",
+          "type": "choose_one",
+          "options": [
+            {
+              "id": "the100",
+              "title": "Introduction to Theatre",
+              "codes": [
+                "THE-100"
+              ]
+            },
+            {
+              "id": "the150",
+              "title": "Acting I",
+              "codes": [
+                "THE-150"
+              ]
+            },
+            {
+              "id": "the160",
+              "title": "Movement for the Stage",
+              "codes": [
+                "THE-160"
+              ]
+            },
+            {
+              "id": "the170",
+              "title": "Voice and Diction",
+              "codes": [
+                "THE-170"
+              ]
+            },
+            {
+              "id": "the270",
+              "title": "Musical Theatre Acting",
+              "codes": [
+                "THE-270"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pmt_ensemble",
+          "label": "Two Additional Credits of Music",
+          "type": "non_course",
+          "description": "Two credits or more from: MU-301 Music Fundamentals III, additional ensemble participation (Concert Band, Jazz Band, Concert Choir, Coe Sho Cho, Crimson Singers at 0.3 each), or additional terms of lessons beyond the major requirement."
+        }
+      ]
+    }
+  ]
+}

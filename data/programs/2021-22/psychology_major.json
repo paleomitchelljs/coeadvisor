@@ -1,0 +1,54 @@
+{
+  "id": "psychology_major_2021-22",
+  "name": "Psychology",
+  "program_type": "major",
+  "catalog_year": "2021-22",
+  "major_code": "PSY",
+  "source": "Academic Catalog 2021-22, p. 178",
+  "note": "Requires a minimum cumulative 2.0 GPA. PSY-137 Human Sexuality does not satisfy any requirements for a major in psychology.",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "psy100", "title": "Introductory Psychology", "codes": ["PSY-100"]},
+        {"id": "psy200", "title": "Research Methods (WE)", "codes": ["PSY-200"]},
+        {"id": "psy250", "title": "Introduction to Biopsychology", "codes": ["PSY-250"]},
+        {"id": "psy300", "title": "Statistical Methods and Data Analysis", "codes": ["PSY-300"]},
+        {"id": "psy490", "title": "Memory and Cognition and Laboratory (WE)", "codes": ["PSY-490", "PSY-490L"]}
+      ]
+    },
+    {
+      "id": "capstone",
+      "label": "One Capstone Option",
+      "type": "choose_one",
+      "options": [
+        {"id": "psy455", "title": "Advanced Experimental Psychology", "codes": ["PSY-455"]},
+        {"id": "psy464", "title": "Seminar in Psychology (WE)", "codes": ["PSY-464"]},
+        {"id": "psy295_494", "title": "Applied Contemporary Psychology (WE) and Internship in Psychology", "codes": ["PSY-295", "PSY-494"]}
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Four Additional Psychology Courses",
+      "type": "choose_n",
+      "n": 4,
+      "description": "Four additional psychology courses, three of which must be selected from the following list.",
+      "options": [
+        {"id": "psy205", "title": "Developmental Psychology", "codes": ["PSY-205"]},
+        {"id": "psy235", "title": "Abnormal Psychology", "codes": ["PSY-235"]},
+        {"id": "psy245", "title": "Organizational Psychology", "codes": ["PSY-245"]},
+        {"id": "psy255", "title": "Social Psychology", "codes": ["PSY-255"]},
+        {"id": "psy315", "title": "Learning and Behavior", "codes": ["PSY-315"]},
+        {"id": "psy325", "title": "Health Psychology", "codes": ["PSY-325"]},
+        {"id": "psy350", "title": "Drugs and Behavior", "codes": ["PSY-350"]},
+        {"id": "psy355", "title": "Personality", "codes": ["PSY-355"]},
+        {"id": "psy415", "title": "Counseling Psychology", "codes": ["PSY-415"]},
+        {"id": "psy450", "title": "Behavioral Neuroscience", "codes": ["PSY-450"]},
+        {"id": "psy465", "title": "Industrial Psychology", "codes": ["PSY-465"]},
+        {"id": "psy475", "title": "Testing and Measurement", "codes": ["PSY-475"]}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "id": "art_history_major_2020-21",
+  "name": "Art History",
+  "program_type": "major",
+  "catalog_year": "2020-21",
+  "major_code": "ARH",
+  "source": "Academic Catalog 2020-21, p. 65",
+  "note": "A grade of C (2.0) or higher must be earned in all courses counted toward a major in art history. An Art History major may also complete an Art minor, but only two courses may count toward both.",
+  "sections": [
+    {
+      "id": "intro",
+      "label": "Introduction",
+      "type": "all",
+      "items": [
+        {"id": "arh128", "title": "Introduction to Art History", "codes": ["ARH-128"]}
+      ]
+    },
+    {
+      "id": "additional_arh",
+      "label": "Four Additional Courses",
+      "type": "choose_n",
+      "n": 4,
+      "description": "Four additional courses approved by the department.",
+      "options": [
+        {"id": "ant125", "title": "Art and Archaeology of the Classical World", "codes": ["ANT-125"]},
+        {"id": "his318", "title": "Topics in History: DWP (WE)", "codes": ["HIS-318"]}
+      ],
+      "constraints": {
+        "prefixes": ["ARH"],
+        "also_accept": ["ANT-125", "HIS-318"]
+      }
+    },
+    {
+      "id": "arh_upper",
+      "label": "One Upper-Level Art History Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "arh307", "title": "Modern and Contemporary Art (WE)", "codes": ["ARH-307"]},
+        {"id": "arh310", "title": "Contemporary Art, Theory and Criticism (WE)", "codes": ["ARH-310"]}
+      ]
+    },
+    {
+      "id": "focus",
+      "label": "All Four Focus Courses (0.25 credit each)",
+      "type": "all",
+      "items": [
+        {"id": "arh311", "title": "Focus Course: Research in Art History and Visual Culture", "codes": ["ARH-311"]},
+        {"id": "arh313", "title": "Focus Course: Contemporary Issues in Art History and Visual Culture", "codes": ["ARH-313"]},
+        {"id": "arh321", "title": "Focus Course: Theory and Practice in Art History and Visual Culture", "codes": ["ARH-321"]},
+        {"id": "arh323", "title": "Focus Course: Curatorial Conversations", "codes": ["ARH-323"]}
+      ]
+    },
+    {
+      "id": "art_course",
+      "label": "One ART Course",
+      "type": "open_n",
+      "n": 1,
+      "description": "One 100- or 200-level ART course.",
+      "constraints": {
+        "prefixes": ["ART"],
+        "min_number": 100,
+        "max_number": 299
+      }
+    },
+    {
+      "id": "junior_review",
+      "label": "Junior Review",
+      "type": "non_course",
+      "description": "Junior Review must be completed no later than the second term of the junior year, assessed by the art and art history faculty."
+    },
+    {
+      "id": "capstone",
+      "label": "Senior Capstone",
+      "type": "all",
+      "items": [
+        {"id": "arh464", "title": "Senior Seminar I (WE)", "codes": ["ARH-464"]},
+        {"id": "arh474", "title": "Senior Seminar II & Senior Project (WE)", "codes": ["ARH-474"]}
+      ]
+    }
+  ]
+}

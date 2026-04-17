@@ -1,0 +1,43 @@
+{
+  "id": "molecular_biology_collateral_major_2021-22",
+  "name": "Molecular Biology",
+  "program_type": "collateral",
+  "catalog_year": "2021-22",
+  "major_code": "BIO",
+  "source": "Academic Catalog 2021-22, p. 148",
+  "note": "Requires a minimum cumulative 2.0 GPA. Concurrent completion of a primary major in biology is required. Students choosing a collateral major in Molecular Biology may not select the collateral major in Biochemistry.",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "chm221", "title": "Organic Chemistry I", "codes": ["CHM-221"]},
+        {"id": "chm321", "title": "Organic Chemistry II", "codes": ["CHM-321"]},
+        {"id": "chm322", "title": "Organic Laboratory", "codes": ["CHM-322"]},
+        {"id": "bio345", "title": "Techniques in Molecular Biology and Laboratory", "codes": ["BIO-345", "BIO-345L"]},
+        {"id": "bio405", "title": "Current Topics in Molecular Biology", "codes": ["BIO-405"]}
+      ]
+    },
+    {
+      "id": "biochemistry",
+      "label": "One Biochemistry Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "chm431", "title": "Biochemistry (WE) and Laboratory", "codes": ["CHM-431", "CHM-431L"]},
+        {"id": "chm432", "title": "Protein Biochemistry and Laboratory", "codes": ["CHM-432", "CHM-432L"]}
+      ]
+    },
+    {
+      "id": "lab_sequence",
+      "label": "One Laboratory Sequence",
+      "type": "choose_one",
+      "options": [
+        {"id": "bio325", "title": "Microbiology (WE) and Laboratory", "codes": ["BIO-325", "BIO-325L"]},
+        {"id": "bio415", "title": "Developmental Biology and Laboratory", "codes": ["BIO-415", "BIO-415L"]},
+        {"id": "bio435", "title": "Cell Physiology and Laboratory", "codes": ["BIO-435", "BIO-435L"]},
+        {"id": "bio455", "title": "Molecular Neurobiology and Laboratory", "codes": ["BIO-455", "BIO-455L"]}
+      ]
+    }
+  ]
+}

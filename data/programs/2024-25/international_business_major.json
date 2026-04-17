@@ -1,0 +1,57 @@
+{
+  "id": "international_business_major_2024-25",
+  "name": "International Business",
+  "program_type": "major",
+  "catalog_year": "2024-25",
+  "major_code": "BUS",
+  "source": "Academic Catalog 2024-25, pp. 156-157",
+  "note": "Only one of Business Administration or International Business may be elected by a student.",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Core Courses",
+      "type": "all",
+      "items": [
+        {"id": "acc171", "title": "Principles of Accounting I", "codes": ["ACC-171"]},
+        {"id": "eco175", "title": "Principles of Macroeconomics", "codes": ["ECO-175"]},
+        {"id": "eco215", "title": "Principles of Microeconomics", "codes": ["ECO-215"]},
+        {"id": "bus190", "title": "Statistical Analysis (WE)", "codes": ["BUS-190"]},
+        {"id": "bus315", "title": "Business Law I", "codes": ["BUS-315"]},
+        {"id": "bus446", "title": "International Business Management", "codes": ["BUS-446"]},
+        {"id": "eco495", "title": "International Finance", "codes": ["ECO-495"]}
+      ]
+    },
+    {
+      "id": "management",
+      "label": "One Management Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "bus250", "title": "Principles of Management", "codes": ["BUS-250"]},
+        {"id": "bus300", "title": "Human Resource Management", "codes": ["BUS-300"]}
+      ]
+    },
+    {
+      "id": "intl_course",
+      "label": "One International Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "bus466", "title": "Advanced Topics Marketing: Non-Western Perspectives (WE)", "codes": ["BUS-466"]},
+        {"id": "eco336", "title": "Divergent Economic Growth", "codes": ["ECO-336"]},
+        {"id": "eco436", "title": "Economic Development", "codes": ["ECO-436"]},
+        {"id": "eco446", "title": "International Economics", "codes": ["ECO-446"]}
+      ]
+    },
+    {
+      "id": "world_language",
+      "label": "World Language Requirement",
+      "type": "non_course",
+      "description": "Two courses in a world language numbered 115 or above."
+    },
+    {
+      "id": "intl_experience",
+      "label": "International Experience (choose one)",
+      "type": "non_course",
+      "description": "A semester abroad, a May Experiential Term abroad, or a capstone project in international business supervised by a member of the business faculty."
+    }
+  ]
+}

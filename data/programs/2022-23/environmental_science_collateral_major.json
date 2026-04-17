@@ -1,0 +1,51 @@
+{
+  "id": "environmental_science_collateral_major_2022-23",
+  "name": "Environmental Science",
+  "program_type": "collateral",
+  "catalog_year": "2022-23",
+  "major_code": "EVS",
+  "source": "Academic Catalog 2022-23, p. 117",
+  "note": "Requires a minimum cumulative 2.0 GPA. Concurrent completion of a primary major in biology or chemistry is required.",
+  "sections": [
+    {
+      "id": "track",
+      "label": "Track-Specific Requirements",
+      "type": "choose_one",
+      "description": "One of the following combinations depending on primary major.",
+      "options": [
+        {"id": "bio_track", "title": "Biology majors: MTH-135 Calculus I and BIO-445/-445L Environmental Microbiology and Lab", "codes": ["MTH-135", "BIO-445", "BIO-445L"]},
+        {"id": "chm_track_a", "title": "Chemistry majors: MTH-145, PHY-185/-185L, PHY-195/-195L, and CHM-412/-412L Environmental Analysis", "codes": ["MTH-145", "PHY-185", "PHY-185L", "PHY-195", "PHY-195L", "CHM-412", "CHM-412L"]},
+        {"id": "chm_track_b", "title": "Chemistry majors: MTH-145, PHY-185/-185L, PHY-195/-195L, and BIO-445/-445L Environmental Microbiology", "codes": ["MTH-145", "PHY-185", "PHY-185L", "PHY-195", "PHY-195L", "BIO-445", "BIO-445L"]}
+      ]
+    },
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "bio295", "title": "Spatial Ecology and Laboratory (WE)", "codes": ["BIO-295", "BIO-295L"]},
+        {"id": "chm211", "title": "Analytical Chemistry and Laboratory (WE)", "codes": ["CHM-211", "CHM-211L"]},
+        {"id": "chm221", "title": "Organic Chemistry I", "codes": ["CHM-221"]}
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Two Elective Courses",
+      "type": "choose_n",
+      "n": 2,
+      "description": "Two of the following with the associated laboratories.",
+      "options": [
+        {"id": "bio115", "title": "Marine Biology", "codes": ["BIO-115"]},
+        {"id": "bio165", "title": "Ecology and Biology of Birds", "codes": ["BIO-165"]},
+        {"id": "bio175", "title": "Field Botany", "codes": ["BIO-175"]},
+        {"id": "bio185", "title": "Entomology", "codes": ["BIO-185"]},
+        {"id": "bio275", "title": "Aquatic Ecology", "codes": ["BIO-275"]},
+        {"id": "bio325", "title": "Microbiology (WE) and Laboratory", "codes": ["BIO-325", "BIO-325L"]},
+        {"id": "bio385", "title": "Behavior and Ecology of Vertebrates", "codes": ["BIO-385", "BIO-385L"]},
+        {"id": "bio425", "title": "Ecology and Laboratory (WE)", "codes": ["BIO-425", "BIO-425L"]},
+        {"id": "chm411", "title": "Advanced Analytical Chemistry", "codes": ["CHM-411"]},
+        {"id": "chm444", "title": "Independent Study", "codes": ["CHM-444"]}
+      ]
+    }
+  ]
+}

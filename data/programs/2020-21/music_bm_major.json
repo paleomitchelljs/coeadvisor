@@ -1,0 +1,232 @@
+{
+  "id": "music_bm_major_2020-21",
+  "name": "Music (Bachelor of Music)",
+  "program_type": "major",
+  "catalog_year": "2020-21",
+  "major_code": "MU",
+  "source": "Academic Catalog 2020-21, pp. 149-150",
+  "note": "Candidates for the Bachelor of Music degree must complete the core requirements plus one of four areas of study: Composition, Keyboard and Instrumental Performance, Vocal Performance, or Music Education. The Keyboard Fundamentals Examination must be passed by the end of the sophomore year. The BMASA (Advanced Standing Assessment) is required.",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Core Theory and History",
+      "type": "all",
+      "items": [
+        {"id": "mu109", "title": "Theory of Music I", "codes": ["MU-109"]},
+        {"id": "mu209", "title": "Theory of Music II", "codes": ["MU-209"]},
+        {"id": "mu309", "title": "Theory of Music III", "codes": ["MU-309"]},
+        {"id": "mu255", "title": "Music History and Literature I (WE)", "codes": ["MU-255"]},
+        {"id": "mu355", "title": "Music History and Literature II (WE)", "codes": ["MU-355"]},
+        {"id": "mu458", "title": "Music History and Literature III (WE)", "codes": ["MU-458"]},
+        {"id": "mu285", "title": "Conducting I", "codes": ["MU-285"]}
+      ]
+    },
+    {
+      "id": "keyboard_exam",
+      "label": "Keyboard Fundamentals Examination",
+      "type": "non_course",
+      "description": "Must be passed by the end of the sophomore year."
+    },
+    {
+      "id": "senior_assessment",
+      "label": "Senior Assessment Examination",
+      "type": "non_course",
+      "description": "The Senior Assessment Examination in the final term prior to graduation."
+    }
+  ],
+  "concentrations": [
+    {
+      "id": "composition",
+      "label": "Composition",
+      "sections": [
+        {
+          "id": "comp_required",
+          "label": "Required Courses",
+          "type": "all",
+          "items": [
+            {"id": "mu195", "title": "Electronic Music", "codes": ["MU-195"]},
+            {"id": "mu409", "title": "Theory of Music IV", "codes": ["MU-409"]},
+            {"id": "mua413", "title": "Orchestration", "codes": ["MUA-413"]},
+            {"id": "mua423", "title": "Advanced Counterpoint", "codes": ["MUA-423"]}
+          ]
+        },
+        {
+          "id": "comp_applied",
+          "label": "Applied Music",
+          "type": "non_course",
+          "description": "Eight terms of participation in the Applied Music Course, which must include four terms each of MUA-202C and MUA-303C."
+        },
+        {
+          "id": "comp_breadth",
+          "label": "Breadth Requirements",
+          "type": "non_course",
+          "description": "One course each from the social sciences, natural sciences, and humanities. Two courses in French or German in consecutive terms. Two additional non-music courses."
+        },
+        {
+          "id": "comp_recital",
+          "label": "Senior Recital",
+          "type": "all",
+          "items": [
+            {"id": "mua490", "title": "Senior Recital", "codes": ["MUA-490"]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "keyboard_instrumental",
+      "label": "Keyboard and Instrumental Performance",
+      "sections": [
+        {
+          "id": "ki_required",
+          "label": "Required Course",
+          "type": "all",
+          "items": [
+            {"id": "mu409", "title": "Theory of Music IV", "codes": ["MU-409"]}
+          ]
+        },
+        {
+          "id": "ki_electives",
+          "label": "Four Additional Music Courses",
+          "type": "choose_n",
+          "n": 4,
+          "options": [
+            {"id": "mu140", "title": "Film Music", "codes": ["MU-140"]},
+            {"id": "mu151", "title": "Record Label", "codes": ["MU-151"]},
+            {"id": "mu157", "title": "Introduction to Jazz History", "codes": ["MU-157"]},
+            {"id": "mu195", "title": "Electronic Music", "codes": ["MU-195"]},
+            {"id": "mu261", "title": "Production Techniques", "codes": ["MU-261"]},
+            {"id": "mu270", "title": "Musical Theatre Acting", "codes": ["MU-270"]},
+            {"id": "mu166", "title": "Topics in Music", "codes": ["MU-166"]},
+            {"id": "mu385", "title": "Conducting II", "codes": ["MU-385"]},
+            {"id": "mu444", "title": "Independent Study", "codes": ["MU-444"]},
+            {"id": "mua133v", "title": "Vocal Literature", "codes": ["MUA-133V"]},
+            {"id": "mua134v", "title": "Vocal Diction and Pedagogy", "codes": ["MUA-134V"]},
+            {"id": "mua413", "title": "Orchestration", "codes": ["MUA-413"]},
+            {"id": "mua423", "title": "Advanced Counterpoint", "codes": ["MUA-423"]}
+          ]
+        },
+        {
+          "id": "ki_applied",
+          "label": "Applied Music",
+          "type": "non_course",
+          "description": "Eight terms of participation in the Applied Music Course."
+        },
+        {
+          "id": "ki_breadth",
+          "label": "Breadth Requirements",
+          "type": "non_course",
+          "description": "One course each from the social sciences, natural sciences, and humanities. Two courses in French or German in consecutive terms."
+        },
+        {
+          "id": "ki_recital",
+          "label": "Senior Recital",
+          "type": "all",
+          "items": [
+            {"id": "mua490", "title": "Senior Recital", "codes": ["MUA-490"]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vocal_performance",
+      "label": "Vocal Performance",
+      "sections": [
+        {
+          "id": "vp_required",
+          "label": "Required Courses",
+          "type": "all",
+          "items": [
+            {"id": "mua133v", "title": "Vocal Literature", "codes": ["MUA-133V"]},
+            {"id": "mua134v", "title": "Vocal Diction and Pedagogy", "codes": ["MUA-134V"]},
+            {"id": "mu409", "title": "Theory of Music IV", "codes": ["MU-409"]}
+          ]
+        },
+        {
+          "id": "vp_electives",
+          "label": "Four Additional Music Courses",
+          "type": "choose_n",
+          "n": 4,
+          "options": [
+            {"id": "mu140", "title": "Film Music", "codes": ["MU-140"]},
+            {"id": "mu151", "title": "Record Label", "codes": ["MU-151"]},
+            {"id": "mu157", "title": "Introduction to Jazz History", "codes": ["MU-157"]},
+            {"id": "mu195", "title": "Electronic Music", "codes": ["MU-195"]},
+            {"id": "mu261", "title": "Production Techniques", "codes": ["MU-261"]},
+            {"id": "mu270", "title": "Musical Theatre Acting", "codes": ["MU-270"]},
+            {"id": "mu166", "title": "Topics in Music", "codes": ["MU-166"]},
+            {"id": "mu385", "title": "Conducting II", "codes": ["MU-385"]},
+            {"id": "mu444", "title": "Independent Study", "codes": ["MU-444"]},
+            {"id": "mua133ve", "title": "Vocal Literature (additional)", "codes": ["MUA-133V"]},
+            {"id": "mua413", "title": "Orchestration", "codes": ["MUA-413"]},
+            {"id": "mua423", "title": "Advanced Counterpoint", "codes": ["MUA-423"]}
+          ]
+        },
+        {
+          "id": "vp_applied",
+          "label": "Applied Music",
+          "type": "non_course",
+          "description": "Eight terms of participation in the Applied Music Course."
+        },
+        {
+          "id": "vp_breadth",
+          "label": "Breadth Requirements",
+          "type": "non_course",
+          "description": "One course each from the social sciences, natural sciences, and humanities. Two courses in French or German in consecutive terms."
+        },
+        {
+          "id": "vp_recital",
+          "label": "Senior Recital",
+          "type": "all",
+          "items": [
+            {"id": "mua490", "title": "Senior Recital", "codes": ["MUA-490"]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "music_education",
+      "label": "Music Education (Vocal or Instrumental)",
+      "sections": [
+        {
+          "id": "me_required",
+          "label": "Required Courses",
+          "type": "all",
+          "items": [
+            {"id": "edu105", "title": "Educational Foundations (WE)", "codes": ["EDU-105"]},
+            {"id": "edu117", "title": "Exceptional Learners", "codes": ["EDU-117"]},
+            {"id": "edu187", "title": "Human Relations (WE)", "codes": ["EDU-187"]},
+            {"id": "edu195", "title": "Educational Psychology and Development", "codes": ["EDU-195"]},
+            {"id": "edu219", "title": "Educational Technology Lab", "codes": ["EDU-219"]},
+            {"id": "mu205", "title": "Practicum in Music Education", "codes": ["MU-205"]},
+            {"id": "mu360", "title": "Elementary and General Music Methods", "codes": ["MU-360"]},
+            {"id": "mu385", "title": "Conducting II", "codes": ["MU-385"]},
+            {"id": "mu421", "title": "Student Teaching in the Elementary School", "codes": ["MU-421"]},
+            {"id": "mu422", "title": "Student Teaching in the Secondary School", "codes": ["MU-422"]}
+          ]
+        },
+        {
+          "id": "me_methods",
+          "label": "Methods Track",
+          "type": "choose_one",
+          "description": "One of the following pairs.",
+          "options": [
+            {"id": "choral", "title": "Choral: MU-361 Choral Music Methods and MU-362 Instrumental Music Methods for the Choral Teacher", "codes": ["MU-361", "MU-362"]},
+            {"id": "instrumental", "title": "Instrumental: MU-363 Instrumental Music Methods and MU-364 Choral Music Methods for the Instrumental Teacher", "codes": ["MU-363", "MU-364"]}
+          ]
+        },
+        {
+          "id": "me_applied",
+          "label": "Applied Music",
+          "type": "non_course",
+          "description": "Seven terms of participation in the Applied Music Course."
+        },
+        {
+          "id": "me_licensure",
+          "label": "Licensure GPA Requirement",
+          "type": "non_course",
+          "description": "Fulfillment of the general licensure grade point requirement (minimum 2.7 cumulative and in the major)."
+        }
+      ]
+    }
+  ]
+}

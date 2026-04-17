@@ -1,0 +1,38 @@
+{
+  "id": "spanish_studies_major_2024-25",
+  "name": "Spanish Studies",
+  "program_type": "major",
+  "catalog_year": "2024-25",
+  "major_code": "SPA",
+  "source": "Academic Catalog 2024-25, pp. 212-213",
+  "note": "Grade of C (2.0) or higher required in all courses. Elementary Spanish (SPA-115/125), Spanish Review and Preparation (SPA-135), and Intermediate Spanish (SPA-215/225) do not count. Interdisciplinary courses must be departmentally approved and show internal coherence and relevance to Spanish coursework. Application for approval by Spring of junior year.",
+  "sections": [
+    {
+      "id": "spanish_courses",
+      "label": "Four Spanish Courses Beyond SPA-225",
+      "type": "open_n",
+      "n": 4,
+      "description": "Four courses in Spanish beyond Intermediate Spanish II (SPA-225). Hispanic Life and Culture (SPA-336/-338) recommended as one of the four.",
+      "constraints": {
+        "prefixes": [
+          "SPA"
+        ],
+        "exclude_codes": [
+          "SPA-115",
+          "SPA-125",
+          "SPA-129",
+          "SPA-135",
+          "SPA-215",
+          "SPA-225"
+        ]
+      }
+    },
+    {
+      "id": "interdisciplinary",
+      "label": "Five Departmentally Approved Interdisciplinary Courses",
+      "type": "open_n",
+      "n": 5,
+      "description": "Five courses from a departmentally approved list proposed by the student, exhibiting internal coherence and relevance to Spanish coursework."
+    }
+  ]
+}

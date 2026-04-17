@@ -1,0 +1,52 @@
+{
+  "id": "asian_studies_major_2022-23",
+  "name": "Asian Studies",
+  "program_type": "major",
+  "catalog_year": "2022-23",
+  "major_code": "ASC",
+  "source": "Academic Catalog 2022-23, pp. 68-69",
+  "note": "Requires a minimum cumulative 2.0 GPA in all courses counted toward the major. The major is interdisciplinary and requires courses in art history, history, literature, and religion, and suggests courses in economics, music, and political science.",
+  "sections": [
+    {
+      "id": "intro",
+      "label": "One Introductory Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "asc186", "title": "Modern South Asia", "codes": ["ASC-186"]},
+        {"id": "his136", "title": "East Asian Civilization", "codes": ["HIS-136"]}
+      ]
+    },
+    {
+      "id": "study_abroad",
+      "label": "Overseas Study in Asia",
+      "type": "non_course",
+      "description": "Participation in one overseas study program in Asia: an ACM overseas study program (India Studies or Japan Study), a Coe foreign exchange program (Chiang Mai University of Thailand, Nagoya Gakuin University of Japan, or Sookmyong University in South Korea), or Coe's Asia Term."
+    },
+    {
+      "id": "electives",
+      "label": "Four Courses from Approved List",
+      "type": "choose_n",
+      "n": 4,
+      "description": "Four courses chosen in consultation with the Asian Studies administrative coordinator.",
+      "options": [
+        {"id": "asc106", "title": "May Term in Asia", "codes": ["ASC-106"]},
+        {"id": "asc176", "title": "China and Japan", "codes": ["ASC-176"]},
+        {"id": "eco436", "title": "Economic Development", "codes": ["ECO-436"]},
+        {"id": "eco446", "title": "International Economics", "codes": ["ECO-446"]},
+        {"id": "eng156", "title": "Global Anglophone Literature (WE)", "codes": ["ENG-156"]},
+        {"id": "his217", "title": "The American War in Vietnam (WE)", "codes": ["HIS-217"]},
+        {"id": "his246", "title": "History of Modern China (WE)", "codes": ["HIS-246"]},
+        {"id": "his256", "title": "History of Modern Japan (WE)", "codes": ["HIS-256"]},
+        {"id": "his316", "title": "Topics in History: Non-Western Perspectives (WE)", "codes": ["HIS-316"]},
+        {"id": "his466", "title": "Seminar in Modern East Asian History (WE)", "codes": ["HIS-466"]},
+        {"id": "jpn115", "title": "Elementary Japanese I", "codes": ["JPN-115"]},
+        {"id": "jpn125", "title": "Elementary Japanese II", "codes": ["JPN-125"]},
+        {"id": "jpn215", "title": "Intermediate Japanese I", "codes": ["JPN-215"]},
+        {"id": "jpn225", "title": "Intermediate Japanese II", "codes": ["JPN-225"]},
+        {"id": "phl206", "title": "Buddhist Thought (WE)", "codes": ["PHL-206", "REL-206"]},
+        {"id": "pol286", "title": "Asian Politics (WE)", "codes": ["POL-286"]},
+        {"id": "rel106", "title": "Eastern Religions", "codes": ["REL-106"]}
+      ]
+    }
+  ]
+}

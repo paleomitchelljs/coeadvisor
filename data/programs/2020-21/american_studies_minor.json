@@ -1,0 +1,44 @@
+{
+  "id": "american_studies_minor_2020-21",
+  "name": "American Studies",
+  "program_type": "minor",
+  "catalog_year": "2020-21",
+  "major_code": "AMS",
+  "source": "Academic Catalog 2020-21, p. 57",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "ams107", "title": "Introduction to American Studies", "codes": ["AMS-107"]},
+        {"id": "ams287", "title": "Topics in American Studies: United States Pluralism", "codes": ["AMS-287"]}
+      ]
+    },
+    {
+      "id": "additional_ams",
+      "label": "One Additional American Studies Course",
+      "type": "open_n",
+      "n": 1,
+      "description": "One additional American Studies (AMS) course.",
+      "constraints": {
+        "prefixes": ["AMS"]
+      }
+    },
+    {
+      "id": "colloquium",
+      "label": "Interdisciplinary Studies Colloquium",
+      "type": "all",
+      "items": [
+        {"id": "ams100", "title": "Interdisciplinary Studies Colloquium (one term)", "codes": ["AMS-100"]}
+      ]
+    },
+    {
+      "id": "additional",
+      "label": "Three Additional Courses",
+      "type": "open_n",
+      "n": 3,
+      "description": "Three additional courses that focus on American culture, chosen in consultation with the American Studies panel. One course must be from the United States Pluralism group (see catalog p. 22)."
+    }
+  ]
+}

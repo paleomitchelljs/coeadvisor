@@ -1,0 +1,95 @@
+{
+  "id": "art_major_2020-21",
+  "name": "Art",
+  "program_type": "major",
+  "catalog_year": "2020-21",
+  "major_code": "ART",
+  "source": "Academic Catalog 2020-21, p. 60",
+  "note": "A grade of C (2.0) or higher must be earned in all courses counted toward a major in art.",
+  "sections": [
+    {
+      "id": "art_history_intro",
+      "label": "Art History Introduction",
+      "type": "all",
+      "items": [
+        {"id": "arh128", "title": "Introduction to Art History", "codes": ["ARH-128"]}
+      ]
+    },
+    {
+      "id": "art_100",
+      "label": "Two 100-Level ART Courses",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two 100-level ART courses.",
+      "constraints": {
+        "prefixes": ["ART"],
+        "min_number": 100,
+        "max_number": 199
+      }
+    },
+    {
+      "id": "art_200",
+      "label": "Two 200-Level ART Courses",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two 200-level ART courses. A maximum of one credit earned through partial-credit WKS workshops may count toward this requirement.",
+      "constraints": {
+        "prefixes": ["ART"],
+        "min_number": 200,
+        "max_number": 299
+      }
+    },
+    {
+      "id": "arh_200",
+      "label": "One Additional 200-Level Art History Course",
+      "type": "open_n",
+      "n": 1,
+      "description": "One additional 200-level Art History course.",
+      "constraints": {
+        "prefixes": ["ARH"],
+        "min_number": 200,
+        "max_number": 299
+      }
+    },
+    {
+      "id": "arh_upper",
+      "label": "One Upper-Level Art History Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "arh307", "title": "Modern and Contemporary Art (WE)", "codes": ["ARH-307"]},
+        {"id": "arh310", "title": "Contemporary Art, Theory and Criticism (WE)", "codes": ["ARH-310"]}
+      ]
+    },
+    {
+      "id": "focus",
+      "label": "Four Focus Courses (0.25 credit each)",
+      "type": "choose_n",
+      "n": 4,
+      "description": "Four Focus Courses (0.25 course credit each). Completion of four Focus Courses is considered as a single course credit.",
+      "options": [
+        {"id": "art301", "title": "Focus Course: Creative Process", "codes": ["ART-301"]},
+        {"id": "art302", "title": "Focus Course: Portfolio Development", "codes": ["ART-302"]},
+        {"id": "art303", "title": "Focus Course: Contemporary Artistic Practice", "codes": ["ART-303"]},
+        {"id": "art311", "title": "Focus Course: Artist Statements/Talks", "codes": ["ART-311"]},
+        {"id": "art312", "title": "Focus Course: Website Development", "codes": ["ART-312"]},
+        {"id": "art313", "title": "Focus Course: Critique", "codes": ["ART-313"]},
+        {"id": "art391", "title": "Focus Course: Topics in Studio Art", "codes": ["ART-391"]}
+      ]
+    },
+    {
+      "id": "junior_review",
+      "label": "Junior Review",
+      "type": "non_course",
+      "description": "Junior Review must be completed no later than the second term of the junior year, assessed by the art and art history faculty."
+    },
+    {
+      "id": "capstone",
+      "label": "Senior Capstone",
+      "type": "all",
+      "items": [
+        {"id": "art464", "title": "Senior Seminar I", "codes": ["ART-464"]},
+        {"id": "art474", "title": "Senior Seminar II & Senior Exhibition", "codes": ["ART-474"]}
+      ]
+    }
+  ]
+}

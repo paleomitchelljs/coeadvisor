@@ -1,0 +1,24 @@
+{
+  "id": "international_economics_minor_2022-23",
+  "name": "International Economics",
+  "program_type": "minor",
+  "catalog_year": "2022-23",
+  "major_code": "ECO",
+  "source": "Academic Catalog 2022-23, p. 138",
+  "note": "Students majoring in economics or international economics may not minor in either economics or international economics.",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "eco175", "title": "Principles of Macroeconomics", "codes": ["ECO-175"]},
+        {"id": "eco215", "title": "Principles of Microeconomics", "codes": ["ECO-215"]},
+        {"id": "eco336", "title": "Divergent Economic Growth", "codes": ["ECO-336"]},
+        {"id": "eco436", "title": "Economic Development", "codes": ["ECO-436"]},
+        {"id": "eco446", "title": "International Economics", "codes": ["ECO-446"]},
+        {"id": "eco495", "title": "International Finance", "codes": ["ECO-495"]}
+      ]
+    }
+  ]
+}

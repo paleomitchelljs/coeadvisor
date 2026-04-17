@@ -1,0 +1,184 @@
+{
+  "id": "data_science_major_2024-25",
+  "name": "Data Science",
+  "program_type": "major",
+  "catalog_year": "2024-25",
+  "major_code": "DS",
+  "source": "Academic Catalog 2024-25, pp. 122-123",
+  "sections": [
+    {
+      "id": "intro",
+      "label": "One Introductory Course",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "ds100",
+          "title": "Introduction to Data Science",
+          "codes": [
+            "DS-100"
+          ]
+        },
+        {
+          "id": "ds101",
+          "title": "Data-Driven Design",
+          "codes": [
+            "DS-101"
+          ]
+        },
+        {
+          "id": "ds120",
+          "title": "Sports Analytics",
+          "codes": [
+            "DS-120"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "cs125",
+          "title": "Introduction to Programming",
+          "codes": [
+            "CS-125"
+          ]
+        },
+        {
+          "id": "ds230",
+          "title": "Data-Centric Programming",
+          "codes": [
+            "DS-230"
+          ]
+        },
+        {
+          "id": "ds260",
+          "title": "Data Analysis and Visualization",
+          "codes": [
+            "DS-260"
+          ]
+        },
+        {
+          "id": "eco375",
+          "title": "Econometrics (WE)",
+          "codes": [
+            "ECO-375"
+          ]
+        },
+        {
+          "id": "ds315",
+          "title": "Machine Learning",
+          "codes": [
+            "DS-315"
+          ]
+        },
+        {
+          "id": "ds370",
+          "title": "Database Systems and Data Management",
+          "codes": [
+            "DS-370"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "stat_foundations",
+      "label": "One Statistical Foundations Course",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "bus190",
+          "title": "Statistical Analysis (WE)",
+          "codes": [
+            "BUS-190"
+          ]
+        },
+        {
+          "id": "bus340",
+          "title": "Applied Regression Analysis",
+          "codes": [
+            "BUS-340"
+          ]
+        },
+        {
+          "id": "psy300",
+          "title": "Statistical Methods and Data Analysis",
+          "codes": [
+            "PSY-300"
+          ]
+        },
+        {
+          "id": "sta100_110",
+          "title": "Statistical Foundations + Inferential Statistics",
+          "codes": [
+            "STA-100",
+            "STA-110"
+          ]
+        },
+        {
+          "id": "sta100_130",
+          "title": "Statistical Foundations + Experimental Design",
+          "codes": [
+            "STA-100",
+            "STA-130"
+          ]
+        },
+        {
+          "id": "sta315",
+          "title": "Mathematical Probability",
+          "codes": [
+            "STA-315"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "modeling",
+      "label": "One Modeling Course",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "ds415",
+          "title": "Deep Learning",
+          "codes": [
+            "DS-415"
+          ]
+        },
+        {
+          "id": "mth455",
+          "title": "Mathematical Modeling (WE)",
+          "codes": [
+            "MTH-455"
+          ]
+        },
+        {
+          "id": "eco435",
+          "title": "Time Series Analysis",
+          "codes": [
+            "ECO-435"
+          ]
+        },
+        {
+          "id": "eco445",
+          "title": "Econometrics II (WE)",
+          "codes": [
+            "ECO-445"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "discipline_courses",
+      "label": "Three Discipline Courses (200+)",
+      "type": "open_n",
+      "n": 3,
+      "description": "Three additional courses from a different discipline numbered 200+ with the same course prefix. Selected with advice from the Data Science faculty.",
+      "constraints": {
+        "min_level": 200,
+        "min_level_count": 3
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "history_minor_2021-22",
+  "name": "History",
+  "program_type": "minor",
+  "catalog_year": "2021-22",
+  "major_code": "HIS",
+  "source": "Academic Catalog 2021-22, p. 130",
+  "sections": [
+    {
+      "id": "foundation",
+      "label": "Foundation Sequence",
+      "type": "choose_one",
+      "description": "One of these two foundation sequences.",
+      "options": [
+        {"id": "western_focus", "title": "Western focus: HIS-115, HIS-125, one U.S. History, one Asian History, two additional", "codes": ["HIS-115", "HIS-125"]},
+        {"id": "us_focus", "title": "U.S. focus: HIS-145, HIS-155, one European History, one Asian History, two additional", "codes": ["HIS-145", "HIS-155"]}
+      ]
+    }
+  ]
+}

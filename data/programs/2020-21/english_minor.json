@@ -1,0 +1,40 @@
+{
+  "id": "english_minor_2020-21",
+  "name": "English",
+  "program_type": "minor",
+  "catalog_year": "2020-21",
+  "major_code": "ENG",
+  "source": "Academic Catalog 2020-21, p. 113",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Course",
+      "type": "all",
+      "items": [
+        {"id": "eng101", "title": "Introduction to Literary Studies: The Art of Reading and Writing (WE)", "codes": ["ENG-101"]}
+      ]
+    },
+    {
+      "id": "upper",
+      "label": "Two English Courses (300+)",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two English courses numbered 300 or above.",
+      "constraints": {
+        "prefixes": ["ENG"],
+        "min_number": 300
+      }
+    },
+    {
+      "id": "additional",
+      "label": "Two Additional Courses",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two additional courses. One course in Creative Writing (CRW) or in French, German, or Spanish literature in translation (FRE-145, FRE-146, FRE-148, GER-148, or SPA-148) may count toward the five course credits.",
+      "constraints": {
+        "prefixes": ["ENG"],
+        "also_accept": ["CRW", "FRE-145", "FRE-146", "FRE-148", "GER-148", "SPA-148"]
+      }
+    }
+  ]
+}

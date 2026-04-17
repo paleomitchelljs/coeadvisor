@@ -1,0 +1,248 @@
+{
+  "id": "neuroscience_collateral_major_2024-25",
+  "name": "Neuroscience",
+  "program_type": "major",
+  "catalog_year": "2024-25",
+  "major_code": "PSY",
+  "source": "Academic Catalog 2024-25, pp. 178-179",
+  "note": "Collateral major requiring concurrent completion of a primary major in Biology, Chemistry, or Psychology. A minimum of six course credits must be taken that do not count toward the student's primary major.",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "bio145",
+          "title": "Cellular and Molecular Biology and Laboratory (WE)",
+          "codes": [
+            "BIO-145",
+            "BIO-145L"
+          ]
+        },
+        {
+          "id": "bio155",
+          "title": "Organismal and Ecological Biology and Laboratory (WE)",
+          "codes": [
+            "BIO-155",
+            "BIO-155L"
+          ]
+        },
+        {
+          "id": "bio375",
+          "title": "Integrated Human Physiology and Laboratory",
+          "codes": [
+            "BIO-375",
+            "BIO-375L"
+          ]
+        },
+        {
+          "id": "chm121",
+          "title": "General Chemistry I and Laboratory",
+          "codes": [
+            "CHM-121",
+            "CHM-121L"
+          ]
+        },
+        {
+          "id": "chm122",
+          "title": "General Chemistry II and Laboratory",
+          "codes": [
+            "CHM-122",
+            "CHM-122L"
+          ]
+        },
+        {
+          "id": "psy100",
+          "title": "Introductory Psychology",
+          "codes": [
+            "PSY-100"
+          ]
+        },
+        {
+          "id": "psy250",
+          "title": "Biopsychology",
+          "codes": [
+            "PSY-250"
+          ]
+        },
+        {
+          "id": "psy350",
+          "title": "Drugs and Behavior",
+          "codes": [
+            "PSY-350"
+          ]
+        },
+        {
+          "id": "psy450",
+          "title": "Behavioral Neuroscience",
+          "codes": [
+            "PSY-450"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Four Elective Courses",
+      "type": "choose_n",
+      "n": 4,
+      "description": "Four courses chosen from the lists below. Unless explicitly listed, associated laboratories are recommended but not required.",
+      "options": [
+        {
+          "id": "bio202",
+          "title": "Topics in Evolution",
+          "codes": [
+            "BIO-202"
+          ]
+        },
+        {
+          "id": "bio215",
+          "title": "Human Anatomy",
+          "codes": [
+            "BIO-215"
+          ]
+        },
+        {
+          "id": "bio315",
+          "title": "Integrated Human Anatomy",
+          "codes": [
+            "BIO-315"
+          ]
+        },
+        {
+          "id": "bio235",
+          "title": "Genetics",
+          "codes": [
+            "BIO-235"
+          ]
+        },
+        {
+          "id": "bio285",
+          "title": "Animal Behavior and Laboratory",
+          "codes": [
+            "BIO-285",
+            "BIO-285L"
+          ]
+        },
+        {
+          "id": "bio345",
+          "title": "Techniques in Molecular Biology and Laboratory",
+          "codes": [
+            "BIO-345",
+            "BIO-345L"
+          ]
+        },
+        {
+          "id": "bio415",
+          "title": "Developmental Biology",
+          "codes": [
+            "BIO-415"
+          ]
+        },
+        {
+          "id": "bio435",
+          "title": "Cell Physiology",
+          "codes": [
+            "BIO-435"
+          ]
+        },
+        {
+          "id": "bio455",
+          "title": "Molecular Neurobiology and Laboratory",
+          "codes": [
+            "BIO-455",
+            "BIO-455L"
+          ]
+        },
+        {
+          "id": "chm211",
+          "title": "Analytical Chemistry and Laboratory (WE)",
+          "codes": [
+            "CHM-211",
+            "CHM-211L"
+          ]
+        },
+        {
+          "id": "chm221",
+          "title": "Organic Chemistry I",
+          "codes": [
+            "CHM-221"
+          ]
+        },
+        {
+          "id": "chm321",
+          "title": "Organic Chemistry II",
+          "codes": [
+            "CHM-321"
+          ]
+        },
+        {
+          "id": "chm421",
+          "title": "Advanced Organic Chemistry",
+          "codes": [
+            "CHM-421"
+          ]
+        },
+        {
+          "id": "chm431",
+          "title": "Biochemistry and Laboratory",
+          "codes": [
+            "CHM-431",
+            "CHM-431L"
+          ]
+        },
+        {
+          "id": "chm432",
+          "title": "Protein Biochemistry",
+          "codes": [
+            "CHM-432"
+          ]
+        },
+        {
+          "id": "psy205",
+          "title": "Developmental Psychology",
+          "codes": [
+            "PSY-205"
+          ]
+        },
+        {
+          "id": "psy235",
+          "title": "Abnormal Psychology",
+          "codes": [
+            "PSY-235"
+          ]
+        },
+        {
+          "id": "psy270",
+          "title": "Learning and Behavior",
+          "codes": [
+            "PSY-270"
+          ]
+        },
+        {
+          "id": "psy325",
+          "title": "Health Psychology (WE)",
+          "codes": [
+            "PSY-325",
+            "PSY-325L"
+          ]
+        },
+        {
+          "id": "psy455",
+          "title": "Directed Research Experience",
+          "codes": [
+            "PSY-455"
+          ]
+        },
+        {
+          "id": "psy464",
+          "title": "Seminar in Psychology (WE)",
+          "codes": [
+            "PSY-464"
+          ]
+        }
+      ]
+    }
+  ]
+}

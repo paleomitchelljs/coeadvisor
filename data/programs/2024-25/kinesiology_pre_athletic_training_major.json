@@ -1,0 +1,109 @@
+{
+  "id": "kinesiology_pre_athletic_training_major_2024-25",
+  "name": "Kinesiology \u2014 Pre-Athletic Training",
+  "program_type": "major",
+  "catalog_year": "2024-25",
+  "major_code": "KIN",
+  "source": "Academic Catalog 2024-25, pp. 162-163",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "bio155",
+          "title": "Organismal and Ecological Biology",
+          "codes": [
+            "BIO-155"
+          ]
+        },
+        {
+          "id": "bio215",
+          "title": "Human Anatomy & Laboratory",
+          "codes": [
+            "BIO-215",
+            "BIO-215L"
+          ]
+        },
+        {
+          "id": "bio225",
+          "title": "Human Physiology",
+          "codes": [
+            "BIO-225"
+          ]
+        },
+        {
+          "id": "kin105",
+          "title": "Foundations of Physical Movement",
+          "codes": [
+            "KIN-105"
+          ]
+        },
+        {
+          "id": "kin115",
+          "title": "Fundamentals of Exercise and Nutrition",
+          "codes": [
+            "KIN-115"
+          ]
+        },
+        {
+          "id": "kin275",
+          "title": "Prevention and Care of Athletic Injuries & Laboratory",
+          "codes": [
+            "KIN-275"
+          ]
+        },
+        {
+          "id": "kin365",
+          "title": "Measurements/Evaluation and Prescription in Kinesiology",
+          "codes": [
+            "KIN-365"
+          ]
+        },
+        {
+          "id": "kin442",
+          "title": "Physiology of Exercise",
+          "codes": [
+            "KIN-442"
+          ]
+        },
+        {
+          "id": "kin495",
+          "title": "Kinesiology",
+          "codes": [
+            "KIN-495"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "athletic_training",
+      "label": "Pre-Athletic Training Group",
+      "type": "all",
+      "items": [
+        {
+          "id": "kin110",
+          "title": "Emergency Life Skills",
+          "codes": [
+            "KIN-110"
+          ]
+        },
+        {
+          "id": "kin310",
+          "title": "Athletic Injury Evaluation",
+          "codes": [
+            "KIN-310"
+          ]
+        },
+        {
+          "id": "kin410",
+          "title": "Athletic Injury Treatment & Rehabilitation",
+          "codes": [
+            "KIN-410"
+          ]
+        }
+      ]
+    }
+  ]
+}

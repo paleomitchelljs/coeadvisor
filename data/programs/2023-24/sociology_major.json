@@ -1,0 +1,41 @@
+{
+  "id": "sociology_major_2023-24",
+  "name": "Sociology",
+  "program_type": "major",
+  "catalog_year": "2023-24",
+  "major_code": "SOC",
+  "source": "Academic Catalog 2023-24, p. 193",
+  "note": "Requires a minimum cumulative 2.0 GPA. SOC-275, SOC-365/-375, SOC-444, SOC-494, and SOC-499 do not satisfy any requirements for a major or minor in sociology.",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "soc107", "title": "Introductory Sociology", "codes": ["SOC-107"]},
+        {"id": "soc235", "title": "Methods of Sociological Research (WE)", "codes": ["SOC-235"]},
+        {"id": "soc450", "title": "Sociological Theory (WE)", "codes": ["SOC-450"]},
+        {"id": "soc464", "title": "Capstone Seminar in Sociology (WE)", "codes": ["SOC-464"]}
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Five Additional Sociology Courses",
+      "type": "open_n",
+      "n": 5,
+      "description": "Five additional sociology courses, including at least one course numbered between 400-449 (not including SOC-444 Independent Study).",
+      "constraints": {
+        "prefixes": ["SOC"]
+      }
+    },
+    {
+      "id": "statistics",
+      "label": "One Statistics Sequence",
+      "type": "choose_one",
+      "options": [
+        {"id": "sta100_110", "title": "Statistical Foundations and Inferential Statistics", "codes": ["STA-100", "STA-110"]},
+        {"id": "sta100_130", "title": "Statistical Foundations and Experimental Design", "codes": ["STA-100", "STA-130"]}
+      ]
+    }
+  ]
+}

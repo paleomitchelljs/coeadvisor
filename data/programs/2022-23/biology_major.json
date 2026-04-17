@@ -1,0 +1,67 @@
+{
+  "id": "biology_major_2022-23",
+  "name": "Biology",
+  "program_type": "major",
+  "catalog_year": "2022-23",
+  "major_code": "BIO",
+  "source": "Academic Catalog 2022-23, p. 71",
+  "note": "Requires a minimum cumulative 2.0 GPA over courses counted toward the major. Physics is strongly recommended.",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "bio145", "title": "Cellular and Molecular Biology and Laboratory (WE)", "codes": ["BIO-145", "BIO-145L"]},
+        {"id": "bio155", "title": "Organismal and Ecological Biology and Laboratory (WE)", "codes": ["BIO-155", "BIO-155L"]},
+        {"id": "bio202", "title": "Topics in Evolution", "codes": ["BIO-202"]},
+        {"id": "bio205", "title": "General Botany and Laboratory (WE)", "codes": ["BIO-205", "BIO-205L"]},
+        {"id": "bio235", "title": "Genetics and Laboratory", "codes": ["BIO-235", "BIO-235L"]}
+      ]
+    },
+    {
+      "id": "physiology",
+      "label": "One Physiology Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "bio355", "title": "Animal Physiology and Laboratory", "codes": ["BIO-355", "BIO-355L"]},
+        {"id": "bio375", "title": "Integrated Human Physiology and Laboratory", "codes": ["BIO-375", "BIO-375L"]}
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Three Biology Electives with Labs",
+      "type": "open_n",
+      "n": 3,
+      "description": "Three biology electives with the associated laboratories.",
+      "constraints": {
+        "prefixes": ["BIO"]
+      }
+    },
+    {
+      "id": "chemistry",
+      "label": "Chemistry Requirement",
+      "type": "all",
+      "items": [
+        {"id": "chm121", "title": "General Chemistry I and Laboratory", "codes": ["CHM-121", "CHM-121L"]},
+        {"id": "chm122", "title": "General Chemistry II and Laboratory", "codes": ["CHM-122", "CHM-122L"]}
+      ]
+    },
+    {
+      "id": "math_stats",
+      "label": "One Math/Statistics Option",
+      "type": "choose_one",
+      "options": [
+        {"id": "mth135", "title": "Calculus I", "codes": ["MTH-135"]},
+        {"id": "sta100_110", "title": "Statistical Foundations and Inferential Statistics", "codes": ["STA-100", "STA-110"]},
+        {"id": "sta100_130", "title": "Statistical Foundations and Experimental Design", "codes": ["STA-100", "STA-130"]}
+      ]
+    },
+    {
+      "id": "seminars",
+      "label": "Research Seminars",
+      "type": "non_course",
+      "description": "Attendance at research seminars in junior and senior years."
+    }
+  ]
+}

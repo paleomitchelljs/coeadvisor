@@ -1,0 +1,216 @@
+{
+  "id": "gender_sexuality_studies_minor_2024-25",
+  "name": "Gender and Sexuality Studies",
+  "program_type": "minor",
+  "catalog_year": "2024-25",
+  "major_code": "GS",
+  "source": "Academic Catalog 2024-25, pp. 145-146",
+  "note": "Minimum cumulative 2.0 GPA required. At least three of the four electives must be core courses. Other courses not listed may count as electives with consent of the academic coordinator.",
+  "sections": [
+    {
+      "id": "intro",
+      "label": "Required Course",
+      "type": "all",
+      "items": [
+        {
+          "id": "gs107",
+          "title": "Introduction to Gender and Sexuality Studies (WE)",
+          "codes": [
+            "GS-107"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Four Additional Courses (at least 3 Core)",
+      "type": "choose_n",
+      "n": 4,
+      "description": "Four courses from the core and component lists below, with at least three from the core courses list.",
+      "options": [
+        {
+          "id": "arh107",
+          "title": "Gender and Art",
+          "codes": [
+            "ARH-107"
+          ]
+        },
+        {
+          "id": "com137",
+          "title": "Interpersonal Communication (WE)",
+          "codes": [
+            "COM-137"
+          ]
+        },
+        {
+          "id": "com257",
+          "title": "Sex, Race, and Gender in the Media (WE)",
+          "codes": [
+            "COM-257"
+          ]
+        },
+        {
+          "id": "com323",
+          "title": "Relational Communication: Theory and Application (WE)",
+          "codes": [
+            "COM-323"
+          ]
+        },
+        {
+          "id": "com377",
+          "title": "Language, Power, and Social Change (WE)",
+          "codes": [
+            "COM-377"
+          ]
+        },
+        {
+          "id": "eng206",
+          "title": "Gender and Literature: Non-western Perspectives (WE)",
+          "codes": [
+            "ENG-206"
+          ]
+        },
+        {
+          "id": "eng207",
+          "title": "Gender and Literature: United States Pluralism (WE)",
+          "codes": [
+            "ENG-207"
+          ]
+        },
+        {
+          "id": "eng208",
+          "title": "Gender and Literature: Diverse Western Perspectives (WE)",
+          "codes": [
+            "ENG-208"
+          ]
+        },
+        {
+          "id": "gs127",
+          "title": "Dress, Gender, and Identity OR THE-288 History of Dress (WE)",
+          "codes": [
+            "GS-127"
+          ]
+        },
+        {
+          "id": "gs247",
+          "title": "Gender and Sexuality Studies Symposium",
+          "codes": [
+            "GS-247"
+          ]
+        },
+        {
+          "id": "gs327",
+          "title": "Theory and Methods in Gender and Sexuality Studies (WE)",
+          "codes": [
+            "GS-327"
+          ]
+        },
+        {
+          "id": "gs387",
+          "title": "Topics in Gender and Sexuality Studies (WE)",
+          "codes": [
+            "GS-387"
+          ]
+        },
+        {
+          "id": "his297",
+          "title": "Women in America (WE)",
+          "codes": [
+            "HIS-297"
+          ]
+        },
+        {
+          "id": "nur137",
+          "title": "Human Sexuality",
+          "codes": [
+            "NUR-137",
+            "PSY-137"
+          ]
+        },
+        {
+          "id": "pol277",
+          "title": "Women and Politics in the United States (WE)",
+          "codes": [
+            "POL-277"
+          ]
+        },
+        {
+          "id": "psy208",
+          "title": "Gender Psychology",
+          "codes": [
+            "PSY-208"
+          ]
+        },
+        {
+          "id": "soc207",
+          "title": "Sociology of the Family",
+          "codes": [
+            "SOC-207"
+          ]
+        },
+        {
+          "id": "soc227",
+          "title": "Sociology of Sex & Sexuality",
+          "codes": [
+            "SOC-227"
+          ]
+        },
+        {
+          "id": "spa418",
+          "title": "Gender and Sexuality in the Hispanic World (WE)",
+          "codes": [
+            "SPA-418"
+          ]
+        },
+        {
+          "id": "ant116",
+          "title": "Cultural Anthropology (Component)",
+          "codes": [
+            "ANT-116"
+          ]
+        },
+        {
+          "id": "com236",
+          "title": "Intercultural Communication (WE) (Component)",
+          "codes": [
+            "COM-236"
+          ]
+        },
+        {
+          "id": "edu187",
+          "title": "Human Relations (WE) (Component)",
+          "codes": [
+            "EDU-187"
+          ]
+        },
+        {
+          "id": "eng127",
+          "title": "Social Justice and Literature (WE) (Component)",
+          "codes": [
+            "ENG-127"
+          ]
+        },
+        {
+          "id": "mth105",
+          "title": "Math for Social Justice (Component)",
+          "codes": [
+            "MTH-105"
+          ]
+        },
+        {
+          "id": "psy215",
+          "title": "Multicultural Psychology (Component)",
+          "codes": [
+            "PSY-215"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exit_survey",
+      "label": "Exit Survey",
+      "type": "non_course",
+      "description": "Completion of an exit survey regarding courses, learning, and applicability, which includes a short essay."
+    }
+  ]
+}

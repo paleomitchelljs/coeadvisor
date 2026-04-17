@@ -1,0 +1,71 @@
+{
+  "id": "african_american_studies_minor_2020-21",
+  "name": "African American Studies",
+  "program_type": "minor",
+  "catalog_year": "2020-21",
+  "major_code": "AAM",
+  "source": "Academic Catalog 2020-21, p. 55",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "aam107", "title": "Introduction to African American Studies", "codes": ["AAM-107"]},
+        {"id": "aam137", "title": "African American Literature (WE)", "codes": ["AAM-137", "ENG-137"]},
+        {"id": "his347", "title": "African American History (WE)", "codes": ["HIS-347"]}
+      ]
+    },
+    {
+      "id": "us_history",
+      "label": "One U.S. History Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "his145", "title": "History of the United States to 1865", "codes": ["HIS-145"]},
+        {"id": "his155", "title": "History of the United States Since 1865", "codes": ["HIS-155"]},
+        {"id": "his227", "title": "The American Civil War", "codes": ["HIS-227"]}
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Two Additional Courses",
+      "type": "choose_n",
+      "n": 2,
+      "description": "Two additional courses from the approved elective lists for the major (lists 5a and 5b).",
+      "options": [
+        {"id": "aam217", "title": "Sport and Black Culture", "codes": ["AAM-217"]},
+        {"id": "aam287", "title": "Topics in African American Studies", "codes": ["AAM-287"]},
+        {"id": "aam367", "title": "Studies in African American Literature", "codes": ["AAM-367"]},
+        {"id": "aam387", "title": "Advanced Topics in African American Studies", "codes": ["AAM-387"]},
+        {"id": "aam447", "title": "Directed Studies in African American Studies", "codes": ["AAM-447"]},
+        {"id": "aam467", "title": "Seminar in African American Literature", "codes": ["AAM-467"]},
+        {"id": "aam494", "title": "Internship in African American Studies", "codes": ["AAM-494"]},
+        {"id": "com236", "title": "Intercultural Communication (WE)", "codes": ["COM-236"]},
+        {"id": "com357", "title": "Sex, Race, and Gender in the Media (WE)", "codes": ["COM-357"]},
+        {"id": "edu187", "title": "Human Relations (WE)", "codes": ["EDU-187"]},
+        {"id": "his145e", "title": "History of the United States to 1865 (if not used above)", "codes": ["HIS-145"]},
+        {"id": "his155e", "title": "History of the United States Since 1865 (if not used above)", "codes": ["HIS-155"]},
+        {"id": "his227e", "title": "The American Civil War (if not used above)", "codes": ["HIS-227"]},
+        {"id": "mu157", "title": "Introduction to Jazz History", "codes": ["MU-157"]},
+        {"id": "soc247", "title": "Sociology of Race", "codes": ["SOC-247"]},
+        {"id": "ams287", "title": "Topics in American Studies: United States Pluralism", "codes": ["AMS-287"]},
+        {"id": "ams444", "title": "Independent Study", "codes": ["AMS-444"]},
+        {"id": "arh297", "title": "Topics in Art History: U.S. Pluralism", "codes": ["ARH-297"]},
+        {"id": "com157", "title": "Intro to Media Analysis (WE)", "codes": ["COM-157"]},
+        {"id": "com161", "title": "Visual Rhetoric", "codes": ["COM-161"]},
+        {"id": "com361", "title": "Communication & Social Change", "codes": ["COM-361"]},
+        {"id": "eng107", "title": "Exploring Literature: United States Pluralism", "codes": ["ENG-107"]},
+        {"id": "eng207", "title": "Gender and Literature: United States Pluralism (WE)", "codes": ["ENG-207"]},
+        {"id": "eng347", "title": "Studies in Modern or Contemporary American Literature (WE)", "codes": ["ENG-347"]},
+        {"id": "eng394", "title": "Directed Studies in English (WE)", "codes": ["ENG-394"]},
+        {"id": "his297", "title": "Women in America (WE)", "codes": ["HIS-297"]},
+        {"id": "his444", "title": "Independent Study (WE)", "codes": ["HIS-444"]},
+        {"id": "his472", "title": "Seminar in American History I (WE)", "codes": ["HIS-472"]},
+        {"id": "his473", "title": "Seminar in American History II (WE)", "codes": ["HIS-473"]},
+        {"id": "soc237", "title": "Topics in Sociology: United States Pluralism", "codes": ["SOC-237"]},
+        {"id": "soc464", "title": "Capstone Seminar in Sociology (WE)", "codes": ["SOC-464"]},
+        {"id": "the488", "title": "Special Topics in Theatre or Film: Diverse Western Perspectives", "codes": ["THE-488"]}
+      ]
+    }
+  ]
+}

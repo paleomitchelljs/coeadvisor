@@ -1,0 +1,42 @@
+{
+  "id": "philosophy_minor_2023-24",
+  "name": "Philosophy",
+  "program_type": "minor",
+  "catalog_year": "2023-24",
+  "major_code": "PHL",
+  "source": "Academic Catalog 2023-24, p. 166",
+  "sections": [
+    {
+      "id": "history",
+      "label": "Two History of Philosophy Courses",
+      "type": "choose_n",
+      "n": 2,
+      "description": "Two of the following, one of which must be either PHL-240 Early Modern Philosophy or PHL-335 Late Modern Philosophy.",
+      "options": [
+        {"id": "phl220", "title": "Ancient Greek Philosophy (WE)", "codes": ["PHL-220"]},
+        {"id": "phl230", "title": "Medieval Philosophy (WE)", "codes": ["PHL-230"]},
+        {"id": "phl240", "title": "Early Modern Philosophy (WE)", "codes": ["PHL-240"]},
+        {"id": "phl335", "title": "Late Modern Philosophy (WE)", "codes": ["PHL-335"]}
+      ]
+    },
+    {
+      "id": "upper_level",
+      "label": "One Additional 300-Level Philosophy Course",
+      "type": "open_n",
+      "n": 1,
+      "constraints": {
+        "prefixes": ["PHL"],
+        "min_number": 300
+      }
+    },
+    {
+      "id": "additional",
+      "label": "Three Additional Philosophy Courses",
+      "type": "open_n",
+      "n": 3,
+      "constraints": {
+        "prefixes": ["PHL"]
+      }
+    }
+  ]
+}

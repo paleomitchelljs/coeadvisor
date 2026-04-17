@@ -1,0 +1,22 @@
+{
+  "id": "german_minor_2020-21",
+  "name": "German",
+  "program_type": "minor",
+  "catalog_year": "2020-21",
+  "major_code": "GER",
+  "source": "Academic Catalog 2020-21, p. 127",
+  "note": "CLOSED: No students will be admitted to any German Program after May 8, 2019. A grade of C (2.0) or higher must be earned in all courses.",
+  "sections": [
+    {
+      "id": "german_courses",
+      "label": "Four German Courses (315+)",
+      "type": "open_n",
+      "n": 4,
+      "description": "Four German courses numbered 315 or above.",
+      "constraints": {
+        "prefixes": ["GER"],
+        "min_number": 315
+      }
+    }
+  ]
+}

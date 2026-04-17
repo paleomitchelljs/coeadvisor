@@ -1,0 +1,37 @@
+{
+  "id": "film_studies_major_2021-22",
+  "name": "Film Studies",
+  "program_type": "major",
+  "catalog_year": "2021-22",
+  "major_code": "FLM",
+  "source": "Academic Catalog 2021-22, pp. 119-120",
+  "note": "Requires a minimum cumulative 2.0 GPA in all courses counted toward the major. A major in film studies requires ten courses taken from each of the three disciplines represented in the major.",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "art170", "title": "Movement", "codes": ["ART-170"]},
+        {"id": "flm105", "title": "Introduction to Film", "codes": ["FLM-105"]},
+        {"id": "flm200", "title": "Film Analysis (WE)", "codes": ["FLM-200"]},
+        {"id": "flm225", "title": "Film History (WE)", "codes": ["FLM-225"]},
+        {"id": "flm444", "title": "Independent Project in Film", "codes": ["FLM-444"]}
+      ]
+    },
+    {
+      "id": "elective",
+      "label": "One Elective",
+      "type": "choose_one",
+      "options": [
+        {"id": "art203", "title": "SpaceTime", "codes": ["ART-203"]},
+        {"id": "crw350", "title": "Screenwriting (WE)", "codes": ["CRW-350"]},
+        {"id": "crw355", "title": "Playwriting Workshop 2", "codes": ["CRW-355", "THE-355"]},
+        {"id": "flm350", "title": "Advanced Topics in Film", "codes": ["FLM-350"]},
+        {"id": "flm464", "title": "Seminar in Film", "codes": ["FLM-464"]},
+        {"id": "flm494", "title": "Internship in Film", "codes": ["FLM-494"]},
+        {"id": "the490", "title": "Directing II", "codes": ["THE-490"]}
+      ]
+    }
+  ]
+}

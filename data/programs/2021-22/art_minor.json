@@ -1,0 +1,67 @@
+{
+  "id": "art_minor_2021-22",
+  "name": "Art",
+  "program_type": "minor",
+  "catalog_year": "2021-22",
+  "major_code": "ART",
+  "source": "Academic Catalog 2021-22, p. 60",
+  "note": "A grade of C (2.0) or higher must be earned in all courses counted toward a minor in art.",
+  "sections": [
+    {
+      "id": "art_history_intro",
+      "label": "Art History Introduction",
+      "type": "all",
+      "items": [
+        {"id": "arh128", "title": "Introduction to Art History", "codes": ["ARH-128"]}
+      ]
+    },
+    {
+      "id": "art_100",
+      "label": "Two 100-Level ART Courses",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two 100-level ART courses.",
+      "constraints": {
+        "prefixes": ["ART"],
+        "min_number": 100,
+        "max_number": 199
+      }
+    },
+    {
+      "id": "art_200",
+      "label": "One 200-Level ART Course",
+      "type": "open_n",
+      "n": 1,
+      "description": "One 200-level ART course.",
+      "constraints": {
+        "prefixes": ["ART"],
+        "min_number": 200,
+        "max_number": 299
+      }
+    },
+    {
+      "id": "art_additional",
+      "label": "One Additional ART Course",
+      "type": "open_n",
+      "n": 1,
+      "description": "One additional 100-level or 200-level ART course. With consent of department chair, Focus Courses may count toward this requirement.",
+      "constraints": {
+        "prefixes": ["ART"],
+        "min_number": 100,
+        "max_number": 299
+      }
+    },
+    {
+      "id": "arh_200",
+      "label": "One 200-Level ARH Course",
+      "type": "open_n",
+      "n": 1,
+      "description": "One 200-level ARH course.",
+      "constraints": {
+        "prefixes": ["ARH"],
+        "min_number": 200,
+        "max_number": 299
+      }
+    }
+  ]
+}

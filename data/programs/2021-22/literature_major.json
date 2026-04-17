@@ -1,0 +1,63 @@
+{
+  "id": "literature_major_2021-22",
+  "name": "Literature",
+  "program_type": "major",
+  "catalog_year": "2021-22",
+  "major_code": "LIT",
+  "source": "Academic Catalog 2021-22, p. 145",
+  "note": "Requirements are designed to provide a framework within which the student can shape a program to suit individual interests. No more than three from the English department can be counted in the six elective courses.",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "eng301", "title": "The Art of Literary Research (WE)", "codes": ["ENG-301"]}
+      ]
+    },
+    {
+      "id": "seminar",
+      "label": "Senior Seminar",
+      "type": "choose_one",
+      "description": "LIT-464 Seminar in World Literature or a course by arrangement chosen in consultation with the Literature Administrative Coordinator.",
+      "options": [
+        {"id": "lit464", "title": "Seminar in World Literature", "codes": ["LIT-464"]}
+      ]
+    },
+    {
+      "id": "foreign_language",
+      "label": "Two Foreign Language Courses",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two foreign language courses in the same language, intermediate or advanced, taken at Coe College with permission of Literature Administrative Coordinator.",
+      "constraints": {
+        "min_number": 115
+      }
+    },
+    {
+      "id": "literature_in_language",
+      "label": "Literature Course in a Foreign Language",
+      "type": "non_course",
+      "description": "At least one literature course taught in a foreign language."
+    },
+    {
+      "id": "electives_a",
+      "label": "Four Core Elective Courses",
+      "type": "open_n",
+      "n": 4,
+      "description": "At least four courses from: courses in literature in translation, courses in English and American literature and in creative writing offered by the English department, literature courses taught in a foreign language, linguistics courses offered by the English or foreign language departments, or Independent Study."
+    },
+    {
+      "id": "electives_b",
+      "label": "Additional Elective Courses",
+      "type": "choose_n",
+      "n": 2,
+      "description": "One or more courses from the following list of core courses to bring the total number of elective courses to six.",
+      "options": [
+        {"id": "aam137", "title": "African American Literature (WE)", "codes": ["AAM-137", "ENG-137"]},
+        {"id": "eng110", "title": "Ancient Mythology", "codes": ["ENG-110"]},
+        {"id": "eng207", "title": "Gender and Literature: United States Pluralism (WE)", "codes": ["ENG-207"]}
+      ]
+    }
+  ]
+}

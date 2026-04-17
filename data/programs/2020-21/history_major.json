@@ -1,0 +1,61 @@
+{
+  "id": "history_major_2020-21",
+  "name": "History",
+  "program_type": "major",
+  "catalog_year": "2020-21",
+  "major_code": "HIS",
+  "source": "Academic Catalog 2020-21, p. 130",
+  "note": "Requires a minimum cumulative 2.0 GPA in all courses counted toward the major.",
+  "sections": [
+    {
+      "id": "foundation",
+      "label": "Four Foundation Courses",
+      "type": "choose_one",
+      "description": "One of these two foundation sequences.",
+      "options": [
+        {"id": "western_focus", "title": "Western Civilization focus: HIS-115, HIS-125, one of HIS-145/HIS-155, and one additional U.S. History course", "codes": ["HIS-115", "HIS-125"]},
+        {"id": "us_focus", "title": "U.S. History focus: HIS-145, HIS-155, one of HIS-115/HIS-125, and one additional European History course", "codes": ["HIS-145", "HIS-155"]}
+      ]
+    },
+    {
+      "id": "methods",
+      "label": "Methods",
+      "type": "all",
+      "items": [
+        {"id": "his205", "title": "The Historian's Craft (WE)", "codes": ["HIS-205"]}
+      ]
+    },
+    {
+      "id": "non_western",
+      "label": "One Non-Western History Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "his136", "title": "East Asian Civilization", "codes": ["HIS-136"]},
+        {"id": "his246", "title": "History of Modern China (WE)", "codes": ["HIS-246"]},
+        {"id": "his256", "title": "History of Modern Japan (WE)", "codes": ["HIS-256"]}
+      ]
+    },
+    {
+      "id": "seminar",
+      "label": "One Seminar",
+      "type": "choose_one",
+      "options": [
+        {"id": "his465", "title": "Seminar in Ancient History (WE)", "codes": ["HIS-465"]},
+        {"id": "his466", "title": "Seminar in Modern East Asian History (WE)", "codes": ["HIS-466"]},
+        {"id": "his472", "title": "Seminar in American History I (WE)", "codes": ["HIS-472"]},
+        {"id": "his473", "title": "Seminar in American History II (WE)", "codes": ["HIS-473"]},
+        {"id": "his474", "title": "Seminar in Modern European History (WE)", "codes": ["HIS-474"]}
+      ]
+    },
+    {
+      "id": "additional",
+      "label": "Three Additional History Courses",
+      "type": "open_n",
+      "n": 3,
+      "description": "Three additional history courses.",
+      "constraints": {
+        "prefixes": ["HIS"]
+      }
+    }
+  ]
+}

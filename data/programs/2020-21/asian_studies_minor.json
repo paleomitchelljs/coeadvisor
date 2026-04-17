@@ -1,0 +1,44 @@
+{
+  "id": "asian_studies_minor_2020-21",
+  "name": "Asian Studies",
+  "program_type": "minor",
+  "catalog_year": "2020-21",
+  "major_code": "ASC",
+  "source": "Academic Catalog 2020-21, p. 69",
+  "sections": [
+    {
+      "id": "intro",
+      "label": "One Introductory Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "his316", "title": "Topics in History: Non-Western Perspectives (WE)", "codes": ["HIS-316"]},
+        {"id": "asc186", "title": "Modern South Asia", "codes": ["ASC-186"]}
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Five Courses from Approved List",
+      "type": "choose_n",
+      "n": 5,
+      "description": "Five courses chosen in consultation with the Asian Studies administrative coordinator.",
+      "options": [
+        {"id": "asc176", "title": "China and Japan", "codes": ["ASC-176"]},
+        {"id": "eco436", "title": "Economic Development", "codes": ["ECO-436"]},
+        {"id": "eco446", "title": "International Economics", "codes": ["ECO-446"]},
+        {"id": "eng156", "title": "Global Anglophone Literature (WE)", "codes": ["ENG-156"]},
+        {"id": "his217", "title": "The American War in Vietnam (WE)", "codes": ["HIS-217"]},
+        {"id": "his246", "title": "History of Modern China (WE)", "codes": ["HIS-246"]},
+        {"id": "his256", "title": "History of Modern Japan (WE)", "codes": ["HIS-256"]},
+        {"id": "his316", "title": "Topics in History: Non-Western Perspectives (WE)", "codes": ["HIS-316"]},
+        {"id": "his466", "title": "Seminar in Modern East Asian History (WE)", "codes": ["HIS-466"]},
+        {"id": "jpn115", "title": "Elementary Japanese I", "codes": ["JPN-115"]},
+        {"id": "jpn125", "title": "Elementary Japanese II", "codes": ["JPN-125"]},
+        {"id": "jpn215", "title": "Intermediate Japanese I", "codes": ["JPN-215"]},
+        {"id": "jpn225", "title": "Intermediate Japanese II", "codes": ["JPN-225"]},
+        {"id": "phl206", "title": "Buddhist Thought (WE)", "codes": ["PHL-206", "REL-206"]},
+        {"id": "pol286", "title": "Asian Politics (WE)", "codes": ["POL-286"]},
+        {"id": "rel106", "title": "Eastern Religions", "codes": ["REL-106"]}
+      ]
+    }
+  ]
+}

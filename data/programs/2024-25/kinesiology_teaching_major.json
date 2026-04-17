@@ -1,0 +1,72 @@
+{
+  "id": "kinesiology_teaching_major_2024-25",
+  "name": "Kinesiology \u2014 Physical Education",
+  "program_type": "major",
+  "catalog_year": "2024-25",
+  "major_code": "KIN",
+  "source": "Academic Catalog 2024-25, pp. 163-164",
+  "sections": [
+    {
+      "id": "anatomy",
+      "label": "Anatomy Requirement",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "bio103",
+          "title": "Anatomy and Physiology",
+          "codes": [
+            "BIO-103"
+          ]
+        },
+        {
+          "id": "bio215_225",
+          "title": "Human Anatomy + Human Physiology",
+          "codes": [
+            "BIO-215",
+            "BIO-225"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "emphasis",
+      "label": "Education Emphasis",
+      "type": "choose_one",
+      "description": "Choose Secondary Education or Elementary Education emphasis.",
+      "options": [
+        {
+          "id": "secondary_ed",
+          "title": "Secondary Education Emphasis",
+          "codes": [
+            "BIO-155",
+            "KIN-105",
+            "KIN-165",
+            "KIN-225",
+            "KIN-275",
+            "KIN-347",
+            "KIN-365",
+            "KIN-415",
+            "KIN-440",
+            "KIN-442",
+            "KIN-495"
+          ]
+        },
+        {
+          "id": "elementary_ed",
+          "title": "Elementary Education Emphasis",
+          "codes": [
+            "BIO-155",
+            "KIN-105",
+            "KIN-165",
+            "KIN-225",
+            "KIN-275",
+            "KIN-347",
+            "KIN-315",
+            "KIN-440",
+            "KIN-442"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "id": "philosophy_major_2024-25",
+  "name": "Philosophy",
+  "program_type": "major",
+  "catalog_year": "2024-25",
+  "major_code": "PHL",
+  "source": "Academic Catalog 2024-25, p. 184",
+  "note": "A grade of C (2.0) or higher must be earned in all courses counted toward a major in philosophy.",
+  "sections": [
+    {
+      "id": "history",
+      "label": "Two History of Philosophy Courses",
+      "type": "choose_n",
+      "n": 2,
+      "description": "Two of the following, one of which must be either PHL-240 or PHL-335.",
+      "options": [
+        {"id": "phl220", "title": "Ancient Greek Philosophy (WE)", "codes": ["PHL-220"]},
+        {"id": "phl230", "title": "Medieval Philosophy (WE)", "codes": ["PHL-230"]},
+        {"id": "phl240", "title": "Early Modern Philosophy (WE)", "codes": ["PHL-240"]},
+        {"id": "phl335", "title": "Late Modern Philosophy (WE)", "codes": ["PHL-335"]}
+      ]
+    },
+    {
+      "id": "advanced_300",
+      "label": "Three Additional 300-Level Philosophy Courses",
+      "type": "open_n",
+      "n": 3,
+      "description": "Three additional 300-level philosophy courses.",
+      "constraints": {
+        "prefixes": ["PHL"],
+        "min_level": 300,
+        "min_level_count": 3
+      }
+    },
+    {
+      "id": "electives",
+      "label": "Five Additional Philosophy Courses",
+      "type": "open_n",
+      "n": 5,
+      "description": "Five additional philosophy courses, at least two of which must be numbered 200 or above.",
+      "constraints": {
+        "prefixes": ["PHL"],
+        "min_level": 200,
+        "min_level_count": 2
+      }
+    },
+    {
+      "id": "colloquium",
+      "label": "Philosophy Colloquium",
+      "type": "non_course",
+      "description": "PHL-490 Philosophy Colloquium (WE) (non-credit bearing)."
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "mathematics_minor_2021-22",
+  "name": "Mathematics",
+  "program_type": "minor",
+  "catalog_year": "2021-22",
+  "major_code": "MTH",
+  "source": "Academic Catalog 2021-22, p. 146",
+  "note": "Requires a minimum cumulative 2.0 GPA in all courses counted toward the minor.",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "mth135", "title": "Calculus I", "codes": ["MTH-135"]},
+        {"id": "mth145", "title": "Calculus II", "codes": ["MTH-145"]},
+        {"id": "mth215", "title": "Foundations of Advanced Mathematics (WE)", "codes": ["MTH-215"]}
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Three Additional Courses",
+      "type": "choose_n",
+      "n": 3,
+      "options": [
+        {"id": "sta315", "title": "Probability and Statistics I", "codes": ["STA-315"]},
+        {"id": "sta325", "title": "Probability and Statistics II", "codes": ["STA-325"]},
+        {"id": "mth255", "title": "Calculus III", "codes": ["MTH-255"]},
+        {"id": "mth265", "title": "Linear Algebra", "codes": ["MTH-265"]},
+        {"id": "mth305", "title": "Advanced Geometry (WE)", "codes": ["MTH-305"]},
+        {"id": "mth325", "title": "Differential Equations (WE)", "codes": ["MTH-325"]},
+        {"id": "mth385", "title": "Modern Algebra I", "codes": ["MTH-385"]},
+        {"id": "mth395", "title": "Modern Algebra II", "codes": ["MTH-395"]},
+        {"id": "mth415", "title": "Real Analysis I", "codes": ["MTH-415"]},
+        {"id": "mth425", "title": "Real Analysis II", "codes": ["MTH-425"]},
+        {"id": "mth444", "title": "Independent Study", "codes": ["MTH-444"]},
+        {"id": "mth445", "title": "Complex Analysis (WE)", "codes": ["MTH-445"]},
+        {"id": "mth455", "title": "Mathematical Modeling (WE)", "codes": ["MTH-455"]},
+        {"id": "mth463", "title": "Set Theory and Topology", "codes": ["MTH-463"]},
+        {"id": "mth484", "title": "Special Topics (WE)", "codes": ["MTH-484"]}
+      ]
+    }
+  ]
+}

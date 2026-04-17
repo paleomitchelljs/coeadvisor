@@ -1,0 +1,186 @@
+{
+  "id": "international_studies_major_2023-24",
+  "name": "International Studies",
+  "program_type": "major",
+  "catalog_year": "2023-24",
+  "major_code": "IS",
+  "source": "Academic Catalog 2023-24, pp. 138-139",
+  "note": "Requires a minimum cumulative 2.0 GPA in all courses counted toward the major. Students select one of three tracks: The Global South, International Relations, or Global Cultural Studies (Contemporary European Studies).",
+  "sections": [
+    {
+      "id": "core",
+      "label": "International Studies Core Courses",
+      "type": "all",
+      "items": [
+        {"id": "is116", "title": "Introduction to International Studies", "codes": ["IS-116"]},
+        {"id": "ant116", "title": "Cultural Anthropology", "codes": ["ANT-116"]},
+        {"id": "pol258", "title": "World Politics (WE)", "codes": ["POL-258"]},
+        {"id": "eco175", "title": "Macroeconomics", "codes": ["ECO-175"]},
+        {"id": "is464", "title": "International Studies Colloquium", "codes": ["IS-464"]}
+      ]
+    },
+    {
+      "id": "foreign_language",
+      "label": "Two Foreign Language Courses",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two foreign language courses, intermediate or advanced, in the same language, subject to prior approval by the International Studies program committee.",
+      "constraints": {
+        "min_number": 115
+      }
+    },
+    {
+      "id": "study_abroad",
+      "label": "Study Abroad",
+      "type": "non_course",
+      "description": "A term-long study abroad experience, subject to prior approval by the International Studies program committee."
+    }
+  ],
+  "concentrations": [
+    {
+      "id": "global_south",
+      "label": "The Global South",
+      "sections": [
+        {
+          "id": "gs_required",
+          "label": "Required Course",
+          "type": "all",
+          "items": [
+            {"id": "eco215", "title": "Microeconomics", "codes": ["ECO-215"]}
+          ]
+        },
+        {
+          "id": "gs_economics",
+          "label": "One Economics Course",
+          "type": "choose_one",
+          "description": "ECO-436 Economic Development, or with approval: ECO-336 Divergent Economic Growth or ECO-446 International Economics.",
+          "options": [
+            {"id": "eco436", "title": "Economic Development", "codes": ["ECO-436"]},
+            {"id": "eco336", "title": "Divergent Economic Growth", "codes": ["ECO-336"]},
+            {"id": "eco446", "title": "International Economics", "codes": ["ECO-446"]}
+          ]
+        },
+        {
+          "id": "gs_politics",
+          "label": "One Political Science Course",
+          "type": "choose_one",
+          "description": "POL-386 International Development (WE), or with approval: POL-310 International Organizations (WE).",
+          "options": [
+            {"id": "pol386", "title": "International Development (WE)", "codes": ["POL-386"]},
+            {"id": "pol310", "title": "International Organizations (WE)", "codes": ["POL-310"]}
+          ]
+        },
+        {
+          "id": "gs_electives",
+          "label": "Two or More Additional Courses",
+          "type": "choose_n",
+          "n": 2,
+          "description": "Two or more additional courses from the economics/politics choices above or the following list. Not more than one can be from political science and not more than one can be from economics. At least one course must be at the 300 level or above.",
+          "options": [
+            {"id": "ant286", "title": "Topics in Anthropology (WE)", "codes": ["ANT-286"]},
+            {"id": "gs136", "title": "Gender in the Non-Western World", "codes": ["GS-136"]},
+            {"id": "his246", "title": "History of Modern China (WE)", "codes": ["HIS-246"]},
+            {"id": "his268", "title": "Latin America (WE)", "codes": ["HIS-268"]},
+            {"id": "his286", "title": "Modern Middle East (WE)", "codes": ["HIS-286"]},
+            {"id": "his316", "title": "Topics in History: Non-Western Perspectives (WE)", "codes": ["HIS-316"]},
+            {"id": "is316", "title": "Topics in International Studies: Non-Western Perspectives", "codes": ["IS-316"]},
+            {"id": "pol266", "title": "Latin American Politics (WE)", "codes": ["POL-266"]},
+            {"id": "pol276", "title": "African Politics (WE)", "codes": ["POL-276"]},
+            {"id": "pol286", "title": "Asian Politics (WE)", "codes": ["POL-286"]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "international_relations",
+      "label": "International Relations",
+      "sections": [
+        {
+          "id": "ir_required",
+          "label": "Required Courses",
+          "type": "all",
+          "items": [
+            {"id": "pol108", "title": "Introduction to Politics", "codes": ["POL-108"]},
+            {"id": "pol310", "title": "International Organizations (WE)", "codes": ["POL-310"]}
+          ]
+        },
+        {
+          "id": "ir_history",
+          "label": "One History/Area Studies Course",
+          "type": "choose_one",
+          "options": [
+            {"id": "his217", "title": "The American War in Vietnam (WE)", "codes": ["HIS-217"]},
+            {"id": "his246", "title": "History of Modern China (WE)", "codes": ["HIS-246"]},
+            {"id": "his256", "title": "History of Modern Japan (WE)", "codes": ["HIS-256"]},
+            {"id": "his268", "title": "Latin America (WE)", "codes": ["HIS-268"]},
+            {"id": "pol266", "title": "Latin American Politics (WE)", "codes": ["POL-266"]},
+            {"id": "pol276", "title": "African Politics (WE)", "codes": ["POL-276"]},
+            {"id": "pol286", "title": "Asian Politics (WE)", "codes": ["POL-286"]},
+            {"id": "pol298", "title": "European Politics (WE)", "codes": ["POL-298"]}
+          ]
+        },
+        {
+          "id": "ir_electives",
+          "label": "Two Additional Courses",
+          "type": "choose_n",
+          "n": 2,
+          "description": "No more than two of the three courses in this section and the history/area course above can be completed in the Political Science department.",
+          "options": [
+            {"id": "ant286", "title": "Topics in Anthropology: NWP (WE)", "codes": ["ANT-286"]},
+            {"id": "eco446", "title": "International Economics", "codes": ["ECO-446"]},
+            {"id": "eco495", "title": "International Finance", "codes": ["ECO-495"]},
+            {"id": "his286", "title": "Modern Middle East (WE)", "codes": ["HIS-286"]},
+            {"id": "his335", "title": "Recent American History II (WE)", "codes": ["HIS-335"]},
+            {"id": "his395", "title": "U.S. Diplomatic History (WE)", "codes": ["HIS-395"]},
+            {"id": "is315", "title": "Topics in International Studies", "codes": ["IS-315"]},
+            {"id": "is316", "title": "Topics in International Studies: Non-Western Perspectives", "codes": ["IS-316"]},
+            {"id": "pol305", "title": "Terrorism (WE)", "codes": ["POL-305"]},
+            {"id": "pol365", "title": "American Foreign Policy (WE)", "codes": ["POL-365"]},
+            {"id": "pol386", "title": "International Development (WE)", "codes": ["POL-386"]},
+            {"id": "pol398", "title": "Religion and World Politics (WE)", "codes": ["POL-398"]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "global_cultural_studies",
+      "label": "Global Cultural Studies — Contemporary European Studies",
+      "sections": [
+        {
+          "id": "gcs_required",
+          "label": "Required Courses",
+          "type": "all",
+          "items": [
+            {"id": "his365", "title": "20th-Century Europe (WE)", "codes": ["HIS-365"]},
+            {"id": "pol298", "title": "European Politics (WE)", "codes": ["POL-298"]}
+          ]
+        },
+        {
+          "id": "gcs_electives",
+          "label": "Three Additional Courses",
+          "type": "choose_n",
+          "n": 3,
+          "description": "Three of the following, two of which must be numbered 300 or above. At least two academic disciplines must be represented.",
+          "options": [
+            {"id": "arh211", "title": "Modern and Contemporary Architecture", "codes": ["ARH-211"]},
+            {"id": "arh248", "title": "The Grand Tour", "codes": ["ARH-248"]},
+            {"id": "arh307", "title": "Modern and Contemporary Art (WE)", "codes": ["ARH-307"]},
+            {"id": "eng393", "title": "Studies in Modern or Contemporary British Literature (WE)", "codes": ["ENG-393"]},
+            {"id": "fre158", "title": "France and the Francophone World", "codes": ["FRE-158"]},
+            {"id": "fre432", "title": "French Cinema and Contemporary Culture", "codes": ["FRE-432"]},
+            {"id": "ger168", "title": "Holocaust and Memory", "codes": ["GER-168"]},
+            {"id": "ger445", "title": "Race, Class, and Gender", "codes": ["GER-445"]},
+            {"id": "his238", "title": "Modern France (WE)", "codes": ["HIS-238"]},
+            {"id": "his292", "title": "Modern England (WE)", "codes": ["HIS-292"]},
+            {"id": "is315", "title": "Topics in International Studies", "codes": ["IS-315"]},
+            {"id": "mu458", "title": "Music History and Literature III (WE)", "codes": ["MU-458"]},
+            {"id": "rel138", "title": "Modern Judaism (WE)", "codes": ["REL-138"]},
+            {"id": "rel148", "title": "Islam (WE)", "codes": ["REL-148"]},
+            {"id": "rel178", "title": "Christianity", "codes": ["REL-178"]},
+            {"id": "the238", "title": "History and Theatre and Drama II (WE)", "codes": ["THE-238"]}
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "id": "english_major_2020-21",
+  "name": "English",
+  "program_type": "major",
+  "catalog_year": "2020-21",
+  "major_code": "ENG",
+  "source": "Academic Catalog 2020-21, p. 113",
+  "note": "Requires a minimum cumulative 2.0 GPA in all courses counted toward the major.",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "eng101", "title": "Introduction to Literary Studies: The Art of Reading and Writing (WE)", "codes": ["ENG-101"]},
+        {"id": "eng281", "title": "Literatures in English to 1800 (WE)", "codes": ["ENG-281"]},
+        {"id": "eng291", "title": "Literatures in English after 1800 (WE)", "codes": ["ENG-291"]},
+        {"id": "eng301", "title": "The Art of Literary Research (WE)", "codes": ["ENG-301"]}
+      ]
+    },
+    {
+      "id": "upper_english",
+      "label": "Three English Courses (305+)",
+      "type": "open_n",
+      "n": 3,
+      "description": "Three English courses numbered 305 or above, one of which must be in British literature before 1800.",
+      "constraints": {
+        "prefixes": ["ENG"],
+        "min_number": 305
+      }
+    },
+    {
+      "id": "additional",
+      "label": "Two Additional English Courses",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two additional English course credits, one of which may be in Creative Writing or in French, German, or Spanish literature in translation (FRE-145, FRE-146, FRE-148, GER-148, or SPA-148).",
+      "constraints": {
+        "prefixes": ["ENG"],
+        "also_accept": ["CRW", "FRE-145", "FRE-146", "FRE-148", "GER-148", "SPA-148"]
+      }
+    },
+    {
+      "id": "capstone",
+      "label": "Senior Seminar",
+      "type": "choose_one",
+      "options": [
+        {"id": "eng464", "title": "Seminar in Literature (WE)", "codes": ["ENG-464"]},
+        {"id": "eng467", "title": "Seminar in Literature: United States Pluralism (WE)", "codes": ["ENG-467"]}
+      ]
+    }
+  ]
+}
