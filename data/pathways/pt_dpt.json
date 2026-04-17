@@ -35,11 +35,11 @@
     },
     {
       "id": "phy_req",
-      "label": "Physics Requirements",
-      "type": "all",
-      "items": [
-        {"id": "phy165", "title": "Basic Physics I + Lab",  "codes": ["PHY-165", "PHY-165L"]},
-        {"id": "phy175", "title": "Basic Physics II + Lab", "codes": ["PHY-175", "PHY-175L"]}
+      "label": "Physics Requirements (choose one sequence)",
+      "type": "choose_one",
+      "options": [
+        {"id": "phy_basic",   "title": "Basic Physics I & II + Labs",   "codes": ["PHY-165", "PHY-165L", "PHY-175", "PHY-175L"]},
+        {"id": "phy_general", "title": "General Physics I & II + Labs", "codes": ["PHY-185", "PHY-185L", "PHY-195", "PHY-195L"]}
       ]
     },
     {
