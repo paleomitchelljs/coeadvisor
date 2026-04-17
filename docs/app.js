@@ -565,6 +565,18 @@ function generateAdv() {
   if (schoolCourses) lines.push(`SCHOOL_COURSES: ${schoolCourses.replace(/\n/g, ", ")}`);
   lines.push("");
 
+  // Advisor notes
+  document.querySelectorAll("#advisor-notes .advisor-note").forEach(noteEl => {
+    const date = noteEl.querySelector(".note-date").value;
+    const text = noteEl.querySelector(".note-text").value.trim();
+    if (date || text) {
+      lines.push(`NOTE_START: ${date}`);
+      for (const nl of text.split("\n")) lines.push(nl);
+      lines.push("NOTE_END");
+      lines.push("");
+    }
+  });
+
   document.querySelectorAll("#plan-semesters .plan-semester").forEach(semEl => {
     const label = semEl.querySelector(".plan-sem-label").textContent.trim();
     const text = semEl.querySelector(".sem-courses").value.trim();
@@ -605,14 +617,30 @@ function loadAdv(text) {
   const semesters = [];
   const otherReqs = [];
   const profReqs = [];
+  const advisorNotes = [];
   let schoolCourses = "";
   let currentSem = null;
+  let currentNote = null;
   const oldCourses = [];
   let inOldCourses = false;
 
   for (const line of text.split("\n")) {
     const s = line.trim();
+
+    // Multi-line note content (must be checked before blank-line skip)
+    if (currentNote !== null) {
+      if (s === "NOTE_END") { currentNote = null; continue; }
+      currentNote.lines.push(line);
+      continue;
+    }
+
     if (!s || s.startsWith("#")) continue;
+
+    if (s.startsWith("NOTE_START:")) {
+      currentNote = { date: s.slice(11).trim(), lines: [] };
+      advisorNotes.push(currentNote);
+      continue;
+    }
 
     if (s.startsWith("OTHER:")) {
       const parts = s.slice(6).split(",").map(x => x.trim());
@@ -832,6 +860,13 @@ function loadAdv(text) {
   }
   const schoolTA = document.getElementById("school-courses");
   if (schoolTA && schoolCourses) schoolTA.value = schoolCourses.replace(/,\s*/g, "\n");
+
+  // Restore advisor notes
+  const notesContainer = document.getElementById("advisor-notes");
+  notesContainer.innerHTML = "";
+  for (const note of advisorNotes) {
+    addAdvisorNote(note.date, note.lines.join("\n").trim());
+  }
 
   runCheck();
 }
@@ -1507,6 +1542,27 @@ function onPlanSemCompleted(checkbox) {
     semEl.classList.add("open");
   }
   runCheck();
+}
+
+// ─── Advisor Notes ──────────────────────────────────────────────────────────
+
+function addAdvisorNote(date, text) {
+  const container = document.getElementById("advisor-notes");
+  if (!date) {
+    const now = new Date();
+    date = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}-${String(now.getDate()).padStart(2,"0")}`;
+  }
+  const div = document.createElement("div");
+  div.className = "advisor-note";
+  div.innerHTML = `<div class="note-header">
+    <input type="date" class="note-date" value="${date}">
+    <button class="prog-remove-btn" onclick="this.closest('.advisor-note').remove()" title="Remove note">\u00d7</button>
+  </div>
+  <textarea class="note-text" rows="3" placeholder="Meeting notes..."></textarea>`;
+  container.appendChild(div);
+  if (text) div.querySelector(".note-text").value = text;
+  // Scroll the new note into view
+  div.querySelector(".note-text").focus();
 }
 
 // ─── Dynamic Program Slots ──────────────────────────────────────────────────

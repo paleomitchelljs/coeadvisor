@@ -426,3 +426,36 @@ h2:first-child { margin-top: 0; }
   margin-bottom: 12px;
   border-radius: 0 4px 4px 0;
 }
+
+/* ── Advisor Notes ─────────────────────────────────────── */
+
+.advisor-note {
+  border: 1px solid #dde3ea;
+  border-radius: 4px;
+  padding: 8px;
+  margin-bottom: 6px;
+}
+.note-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+.note-date {
+  font-size: 12px;
+  padding: 2px 6px;
+  border: 1px solid #dde3ea;
+  border-radius: 3px;
+  color: #1e293b;
+  flex: 1;
+}
+.note-text {
+  width: 100%;
+  font-size: 12px;
+  padding: 6px 8px;
+  border: 1px solid #dde3ea;
+  border-radius: 4px;
+  resize: vertical;
+  line-height: 1.5;
+  font-family: inherit;
+}
