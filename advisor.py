@@ -1338,12 +1338,14 @@ class AdvisorApp:
                 semesters_data.append(current_sem)
 
             elif stripped.startswith("COURSE:") and current_sem is not None:
-                parts  = stripped[7:].strip().split(",", 2)
-                code   = parts[0].strip() if len(parts) > 0 else ""
-                status = parts[1].strip() if len(parts) > 1 else "planned"
-                grade  = parts[2].strip() if len(parts) > 2 else ""
-                if code:
-                    current_sem[1].append((code, status, grade))
+                parts = [p.strip() for p in stripped[7:].strip().split(",") if p.strip()]
+                # Last element may be status (completed/planned)
+                status = "planned"
+                if parts and parts[-1].lower() in ("completed", "planned"):
+                    status = parts.pop().lower()
+                for code in parts:
+                    if code:
+                        current_sem[1].append((code, status, ""))
 
             elif in_old_courses:
                 old_courses.append(stripped)

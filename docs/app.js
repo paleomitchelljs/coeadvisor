@@ -647,14 +647,18 @@ function loadAdv(text) {
     }
 
     if (s.startsWith("COURSE:") && currentSem) {
-      const parts = s.slice(7).trim().split(",");
-      const code = (parts[0] || "").trim();
-      const status = (parts[1] || "").trim().toLowerCase();
-      if (code) {
-        currentSem.courses.push(code);
-        if (status === "planned") currentSem.hasPlanned = true;
-        else currentSem.hasCompleted = true;
+      const parts = s.slice(7).trim().split(",").map(x => x.trim()).filter(Boolean);
+      const lastPart = (parts[parts.length - 1] || "").toLowerCase();
+      let status = "";
+      if (lastPart === "completed" || lastPart === "planned") {
+        status = lastPart;
+        parts.pop();
       }
+      for (const code of parts) {
+        if (code) currentSem.courses.push(code);
+      }
+      if (status === "planned") currentSem.hasPlanned = true;
+      else if (parts.length > 0) currentSem.hasCompleted = true;
       continue;
     }
 
