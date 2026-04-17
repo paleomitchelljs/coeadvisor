@@ -43,6 +43,7 @@ COLORS = {
     "partial":    "#b45309",   # amber-700
     "incomplete": "#b91c1c",   # red-700
     "manual":     "#1d4ed8",   # blue-700
+    "muted":      "#c0c7d0",   # gray — satisfied alternative not taken
     # Typography
     "header":     "#1e293b",   # slate-800
     "hint":       "#94a3b8",   # slate-400
@@ -1504,6 +1505,8 @@ class AdvisorApp:
                         foreground=COLORS["partial"])
         t.tag_configure("item_manual", font=("Helvetica", 10),
                         foreground=COLORS["manual"])
+        t.tag_configure("item_muted",  font=("Helvetica", 10),
+                        foreground=COLORS["muted"])
         t.tag_configure("hint",        font=("Helvetica",  9),
                         foreground=COLORS["hint"])
         t.tag_configure("note",        font=("Helvetica",  9, "italic"),
@@ -2752,6 +2755,7 @@ class AdvisorApp:
                         self._ins(t, f"     □  {codes_str}    {title_str}{hint}\n", "item_todo")
 
             elif stype == "choose_one":
+                sec_done = sec.get("status") == COMPLETE
                 for opt in sec.get("options", []):
                     codes = opt.get("codes", [])
                     primary = next((normalize(c) for c in codes
@@ -2763,10 +2767,13 @@ class AdvisorApp:
                     hint = self._traj_hint(major_code, primary) if primary else ""
                     if opt.get("satisfied"):
                         self._ins(t, f"     ✓  {codes_str}    {title_str}{hint}\n", "item_done")
+                    elif sec_done:
+                        self._ins(t, f"     ─  {codes_str}    {title_str}\n", "item_muted")
                     else:
                         self._ins(t, f"     □  {codes_str}    {title_str}{hint}\n", "item_todo")
 
             elif stype == "choose_n":
+                sec_done = sec.get("status") == COMPLETE
                 for item in sec.get("items", []):
                     codes = item.get("codes", [])
                     primary = next((normalize(c) for c in codes
@@ -2778,6 +2785,8 @@ class AdvisorApp:
                     hint = self._traj_hint(major_code, primary) if primary else ""
                     if item.get("satisfied"):
                         self._ins(t, f"     ✓  {codes_str}    {title_str}{hint}\n", "item_done")
+                    elif sec_done:
+                        self._ins(t, f"     ─  {codes_str}    {title_str}\n", "item_muted")
                     else:
                         self._ins(t, f"     □  {codes_str}    {title_str}{hint}\n", "item_todo")
 

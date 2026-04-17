@@ -173,6 +173,7 @@ h2:first-child { margin-top: 0; }
 .todo .req-icon, .todo { color: #b91c1c; }
 .partial .req-icon, .partial { color: #b45309; }
 .manual .req-icon, .manual { color: #1d4ed8; }
+.muted .req-icon, .muted { color: #c0c7d0; }
 
 .item-row { padding-left: 20px; font-size: 12px; }
 

@@ -83,7 +83,14 @@ def load_dac(data_dir: Path = None) -> set:
 
 def load_we(data_dir: Path = None) -> set:
     data = _load_json((data_dir or DATA_DIR) / "we_courses.json")
-    return set(data.get("courses", []))
+    we = set(data.get("courses", []))
+    # Also include courses marked WE in the catalog
+    catalog = load_catalog(data_dir)
+    for pfx_data in (catalog.get("prefixes") or {}).values():
+        for code, info in (pfx_data.get("courses") or {}).items():
+            if info.get("we"):
+                we.add(code)
+    return we
 
 
 def load_course_credits(data_dir: Path = None) -> dict:

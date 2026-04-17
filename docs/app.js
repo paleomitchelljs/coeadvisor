@@ -923,6 +923,14 @@ function runCheck() {
 
   const dacSet = new Set(DATA.dac.courses || DATA.dac || []);
   const weSet = new Set(DATA.we.courses || DATA.we || []);
+  // Also include courses marked WE in the catalog
+  if (DATA.catalog && DATA.catalog.prefixes) {
+    for (const pfx of Object.values(DATA.catalog.prefixes)) {
+      for (const [code, info] of Object.entries(pfx.courses || {})) {
+        if (info.we) weSet.add(code);
+      }
+    }
+  }
 
   // WE adjustment
   const transferWe = document.getElementById("transfer-we").value;
@@ -1055,8 +1063,10 @@ function renderSections(sections) {
     </div>`;
     if (s.items) {
       for (const it of s.items) {
-        const ic = it.satisfied ? "\u2713" : "\u2717";
-        const c = it.satisfied ? "done" : "todo";
+        // For choose_n: if section is complete, mute unfulfilled alternatives
+        const muted = !it.satisfied && s.status === COMPLETE;
+        const ic = it.satisfied ? "\u2713" : muted ? "\u2015" : "\u2717";
+        const c = it.satisfied ? "done" : muted ? "muted" : "todo";
         html += `<div class="item-row ${c}">
           <span class="req-icon">${ic}</span>
           <span>${it.title || ""} <span class="req-courses">${(it.codes||[]).join(", ")}</span></span>
@@ -1065,8 +1075,10 @@ function renderSections(sections) {
     }
     if (s.options) {
       for (const o of s.options) {
-        const ic = o.satisfied ? "\u2713" : "\u2717";
-        const c = o.satisfied ? "done" : "todo";
+        // If section is satisfied, mute unfulfilled alternatives
+        const muted = !o.satisfied && s.status === COMPLETE;
+        const ic = o.satisfied ? "\u2713" : muted ? "\u2015" : "\u2717";
+        const c = o.satisfied ? "done" : muted ? "muted" : "todo";
         html += `<div class="item-row ${c}">
           <span class="req-icon">${ic}</span>
           <span>${o.title || ""} <span class="req-courses">${(o.codes||[]).join(", ")}</span></span>
