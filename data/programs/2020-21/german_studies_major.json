@@ -1,0 +1,28 @@
+{
+  "id": "german_studies_major_2020-21",
+  "name": "German Studies",
+  "program_type": "major",
+  "catalog_year": "2020-21",
+  "major_code": "GER",
+  "source": "Academic Catalog 2020-21, p. 127",
+  "note": "CLOSED: No students will be admitted to any German Program after May 8, 2019. A grade of C (2.0) or higher must be earned in all courses. Requires either: (a) four German courses numbered 315 or above (i.e., a minor), or (b) four German courses at any level and a departmentally approved term-long study abroad experience. Application for approval of interdisciplinary courses is to be made no later than Spring Term of the junior year.",
+  "sections": [
+    {
+      "id": "german_courses",
+      "label": "Four German Courses",
+      "type": "open_n",
+      "n": 4,
+      "description": "Four German courses numbered 315 or above, OR four German courses at any level plus a departmentally approved term-long study abroad experience.",
+      "constraints": {
+        "prefixes": ["GER"]
+      }
+    },
+    {
+      "id": "interdisciplinary",
+      "label": "Five Interdisciplinary Courses",
+      "type": "open_n",
+      "n": 5,
+      "description": "Five departmentally approved courses proposed by the student which exhibit both internal coherence and relevance to the course work in German. Synthesizing work across disciplines such as language, literature, history, political science, art, philosophy, and religion."
+    }
+  ]
+}

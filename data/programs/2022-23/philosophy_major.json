@@ -1,0 +1,53 @@
+{
+  "id": "philosophy_major_2022-23",
+  "name": "Philosophy",
+  "program_type": "major",
+  "catalog_year": "2022-23",
+  "major_code": "PHL",
+  "source": "Academic Catalog 2022-23, p. 166",
+  "note": "A grade of C (2.0) or higher must be earned in all courses counted toward a major in philosophy. The recommended beginning course is PHL-105 Introduction to Philosophy, but any 100-level course is suitable.",
+  "sections": [
+    {
+      "id": "history",
+      "label": "Two History of Philosophy Courses",
+      "type": "choose_n",
+      "n": 2,
+      "description": "Two of the following, one of which must be either PHL-240 Early Modern Philosophy or PHL-335 Late Modern Philosophy.",
+      "options": [
+        {"id": "phl220", "title": "Ancient Greek Philosophy (WE)", "codes": ["PHL-220"]},
+        {"id": "phl230", "title": "Medieval Philosophy (WE)", "codes": ["PHL-230"]},
+        {"id": "phl240", "title": "Early Modern Philosophy (WE)", "codes": ["PHL-240"]},
+        {"id": "phl335", "title": "Late Modern Philosophy (WE)", "codes": ["PHL-335"]}
+      ]
+    },
+    {
+      "id": "upper_level",
+      "label": "Three Additional 300-Level Philosophy Courses",
+      "type": "open_n",
+      "n": 3,
+      "description": "Three additional 300-level philosophy courses.",
+      "constraints": {
+        "prefixes": ["PHL"],
+        "min_number": 300
+      }
+    },
+    {
+      "id": "additional",
+      "label": "Five Additional Philosophy Courses",
+      "type": "open_n",
+      "n": 5,
+      "description": "Five additional philosophy courses, at least two of which must be numbered 200 or above.",
+      "constraints": {
+        "prefixes": ["PHL"]
+      }
+    },
+    {
+      "id": "colloquium",
+      "label": "Philosophy Colloquium",
+      "type": "all",
+      "items": [
+        {"id": "phl490", "title": "Philosophy Colloquium (WE) (non-credit bearing)", "codes": ["PHL-490"]}
+      ]
+    }
+  ]
+}

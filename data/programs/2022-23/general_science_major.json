@@ -1,0 +1,41 @@
+{
+  "id": "general_science_major_2022-23",
+  "name": "General Science",
+  "program_type": "major",
+  "catalog_year": "2022-23",
+  "major_code": "SCI",
+  "source": "Academic Catalog 2022-23, p. 126",
+  "note": "Requires a minimum cumulative 2.0 GPA in all courses counted toward the major. Students choosing a collateral major in the natural sciences or Neuroscience may not select the major in General Science. Students earning more than one major in the natural sciences or a major and a minor in the natural sciences are not eligible.",
+  "sections": [
+    {
+      "id": "primary",
+      "label": "Primary Science Area (6 courses)",
+      "type": "open_n",
+      "n": 6,
+      "description": "Six course credits in one of the four natural science areas (biology, chemistry, mathematics, physics).",
+      "constraints": {
+        "prefixes": ["BIO", "CHM", "MTH", "PHY"]
+      }
+    },
+    {
+      "id": "secondary",
+      "label": "Secondary Science Area (5 courses)",
+      "type": "open_n",
+      "n": 5,
+      "description": "Five course credits in a second natural science field (or mathematics through Linear Algebra MTH-265).",
+      "constraints": {
+        "prefixes": ["BIO", "CHM", "MTH", "PHY"]
+      }
+    },
+    {
+      "id": "tertiary",
+      "label": "Third Science Area (2 courses)",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two course credits in a third natural science field. At least seven of the 13 total course credits must be above the introductory level and at least two must be in biology.",
+      "constraints": {
+        "prefixes": ["BIO", "CHM", "MTH", "PHY"]
+      }
+    }
+  ]
+}

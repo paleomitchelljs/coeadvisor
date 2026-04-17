@@ -1,0 +1,70 @@
+{
+  "id": "writing_minor_2021-22",
+  "name": "Writing",
+  "program_type": "minor",
+  "catalog_year": "2021-22",
+  "major_code": "RHE",
+  "source": "Academic Catalog 2021-22, p. 187",
+  "note": "Requires a minimum cumulative 2.0 GPA.",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Course",
+      "type": "all",
+      "items": [
+        {"id": "rhe200", "title": "Rhetorical Theory and Practice", "codes": ["RHE-200"]}
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Four Elective Courses",
+      "type": "choose_n",
+      "n": 4,
+      "description": "Four courses, at least three numbered 300 or above. No more than one course from CRW may count. Students majoring in Communication Studies may select no more than 1 course with a COM prefix.",
+      "options": [
+        {"id": "com241", "title": "Introduction to Multimedia Journalism (WE)", "codes": ["COM-241"]},
+        {"id": "com337", "title": "Persuasion", "codes": ["COM-337"]},
+        {"id": "com341", "title": "Digital Storytelling (WE)", "codes": ["COM-341"]},
+        {"id": "com444", "title": "Independent Study in Communication Studies (WE)", "codes": ["COM-444"]},
+        {"id": "com494", "title": "Internship in Journalism/Communication", "codes": ["COM-494"]},
+        {"id": "crw115", "title": "Exploring Creative Writing (WE)", "codes": ["CRW-115"]},
+        {"id": "crw255", "title": "Playwriting Workshop 1 (WE)", "codes": ["CRW-255"]},
+        {"id": "crw280", "title": "Poetry Workshop 1 (WE)", "codes": ["CRW-280"]},
+        {"id": "crw290", "title": "Fiction Workshop 1 (WE)", "codes": ["CRW-290"]},
+        {"id": "crw355", "title": "Playwriting Workshop 2 (WE)", "codes": ["CRW-355"]},
+        {"id": "crw380", "title": "Poetry Workshop 2 (WE)", "codes": ["CRW-380"]},
+        {"id": "crw390", "title": "Fiction Workshop 2 (WE)", "codes": ["CRW-390"]},
+        {"id": "rhe135", "title": "Writers Colony (WE)", "codes": ["RHE-135"]},
+        {"id": "rhe137", "title": "Creative Nonfiction and American Culture (WE)", "codes": ["RHE-137"]},
+        {"id": "rhe146", "title": "Memoir and Culture (WE)", "codes": ["RHE-146"]},
+        {"id": "rhe175", "title": "Writer's Studio (WE)", "codes": ["RHE-175"]},
+        {"id": "rhe210", "title": "Journalism Practicum", "codes": ["RHE-210"]},
+        {"id": "rhe225", "title": "Journalism and Media Writing Workshop (WE)", "codes": ["RHE-225"]},
+        {"id": "rhe230", "title": "Grammar and Style Workshop", "codes": ["RHE-230"]},
+        {"id": "rhe255", "title": "The Essay (WE)", "codes": ["RHE-255"]},
+        {"id": "rhe257", "title": "Environmental Rhetoric (WE)", "codes": ["RHE-257"]},
+        {"id": "rhe265", "title": "Professional Writing (WE)", "codes": ["RHE-265"]},
+        {"id": "rhe275", "title": "Advanced Writers Studio (WE)", "codes": ["RHE-275"]},
+        {"id": "rhe284", "title": "Topics in Writing and Rhetoric", "codes": ["RHE-284"]},
+        {"id": "rhe285", "title": "Technical Writing and Information Design (WE)", "codes": ["RHE-285"]},
+        {"id": "rhe312", "title": "Writing Center Theory and Practice (WE)", "codes": ["RHE-312"]},
+        {"id": "rhe345", "title": "Nature Writing (WE)", "codes": ["RHE-345"]},
+        {"id": "rhe377", "title": "Cultural Studies (WE)", "codes": ["RHE-377"]},
+        {"id": "rhe394", "title": "Directed Studies in Writing (WE)", "codes": ["RHE-394"]},
+        {"id": "rhe415e", "title": "Advanced Writing Workshop (WE) (if not used for capstone)", "codes": ["RHE-415"]},
+        {"id": "rhe425", "title": "Advanced Topics in Writing and Rhetorical Studies (WE)", "codes": ["RHE-425"]},
+        {"id": "rhe490", "title": "Publications Practicum", "codes": ["RHE-490"]},
+        {"id": "rhe494", "title": "Internship in Writing", "codes": ["RHE-494"]}
+      ]
+    },
+    {
+      "id": "capstone",
+      "label": "Capstone",
+      "type": "choose_one",
+      "options": [
+        {"id": "rhe415c", "title": "Advanced Writing Workshop (WE)", "codes": ["RHE-415"]},
+        {"id": "rhe444", "title": "Independent Study in Writing (WE)", "codes": ["RHE-444"]}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "sociology_minor_2022-23",
+  "name": "Sociology",
+  "program_type": "minor",
+  "catalog_year": "2022-23",
+  "major_code": "SOC",
+  "source": "Academic Catalog 2022-23, p. 193",
+  "note": "SOC-275, SOC-365/-375, SOC-444, SOC-494, and SOC-499 do not satisfy any requirements for a major or minor in sociology.",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "soc107", "title": "Introductory Sociology", "codes": ["SOC-107"]},
+        {"id": "soc235", "title": "Methods of Sociological Research (WE)", "codes": ["SOC-235"]},
+        {"id": "soc450", "title": "Sociological Theory (WE)", "codes": ["SOC-450"]}
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Three Additional Sociology Courses",
+      "type": "open_n",
+      "n": 3,
+      "description": "Three additional sociology courses, including at least one course numbered between 400-449 (not including SOC-444 Independent Study).",
+      "constraints": {
+        "prefixes": ["SOC"]
+      }
+    }
+  ]
+}

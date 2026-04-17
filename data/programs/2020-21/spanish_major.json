@@ -1,0 +1,22 @@
+{
+  "id": "spanish_major_2020-21",
+  "name": "Spanish",
+  "program_type": "major",
+  "catalog_year": "2020-21",
+  "major_code": "SPA",
+  "source": "Academic Catalog 2020-21, p. 196",
+  "note": "A grade of C (2.0) or higher must be earned in all courses. SPA-115, SPA-125, and SPA-135 are not counted toward the major. SPA-148 Spanish Literature in Translation may be taken as one of the eight. One Hispanic literature course (SPA-336 or above) must be taken in the senior year. Up to three courses may be substituted by study abroad. A minimum of four courses must be numbered 315 or above.",
+  "sections": [
+    {
+      "id": "spanish_courses",
+      "label": "Eight Courses Beyond Intermediate Spanish II",
+      "type": "open_n",
+      "n": 8,
+      "description": "Eight courses in Spanish beyond Intermediate Spanish II (SPA-225). SPA-148 may count as one. A minimum of four must be numbered 315 or above.",
+      "constraints": {
+        "prefixes": ["SPA"],
+        "min_number": 226
+      }
+    }
+  ]
+}

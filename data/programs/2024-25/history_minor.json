@@ -1,0 +1,34 @@
+{
+  "id": "history_minor_2024-25",
+  "name": "History",
+  "program_type": "minor",
+  "catalog_year": "2024-25",
+  "major_code": "HIS",
+  "source": "Academic Catalog 2024-25, p. 149",
+  "sections": [
+    {
+      "id": "foundation",
+      "label": "Six Courses (Europe or US Focus)",
+      "type": "choose_one",
+      "description": "Choose one of two tracks: Europe-focused (HIS-115, HIS-125, one US, one Asian, two additional) or US-focused (HIS-145, HIS-155, one European, one Asian, two additional).",
+      "options": [
+        {
+          "id": "europe_focus",
+          "title": "Europe Focus: HIS-115, HIS-125, one US history, one Asian history, two additional",
+          "codes": [
+            "HIS-115",
+            "HIS-125"
+          ]
+        },
+        {
+          "id": "us_focus",
+          "title": "US Focus: HIS-145, HIS-155, one European history, one Asian history, two additional",
+          "codes": [
+            "HIS-145",
+            "HIS-155"
+          ]
+        }
+      ]
+    }
+  ]
+}

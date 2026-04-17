@@ -1,0 +1,70 @@
+{
+  "id": "political_science_minor_2022-23",
+  "name": "Political Science",
+  "program_type": "minor",
+  "catalog_year": "2022-23",
+  "major_code": "POL",
+  "source": "Academic Catalog 2022-23, pp. 174-175",
+  "note": "Requires six courses, including at least two 300- or 400-level courses.",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "pol108", "title": "Introduction to Politics", "codes": ["POL-108"]},
+        {"id": "pol115", "title": "American National Government and Politics", "codes": ["POL-115"]}
+      ]
+    },
+    {
+      "id": "theory",
+      "label": "One Political Theory Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "pol405", "title": "Contemporary Political Theory (WE)", "codes": ["POL-405"]},
+        {"id": "pol435", "title": "Ancient and Medieval Political Theory (WE)", "codes": ["POL-435"]},
+        {"id": "pol445", "title": "Modern Political Theory (WE)", "codes": ["POL-445"]}
+      ]
+    },
+    {
+      "id": "american_govt",
+      "label": "One Additional American Government Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "pol207", "title": "Religion and American Politics (WE)", "codes": ["POL-207"]},
+        {"id": "pol245", "title": "Political Parties and Elections", "codes": ["POL-245"]},
+        {"id": "pol277", "title": "Women and Politics in the United States (WE)", "codes": ["POL-277"]},
+        {"id": "pol325", "title": "The American Congress (WE)", "codes": ["POL-325"]},
+        {"id": "pol345", "title": "The American Presidency (WE)", "codes": ["POL-345"]},
+        {"id": "pol350", "title": "U.S. Social Policy Process (WE)", "codes": ["POL-350"]}
+      ]
+    },
+    {
+      "id": "comparative_intl",
+      "label": "One Comparative or International Politics Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "pol248", "title": "Political Violence and the Violent", "codes": ["POL-248"]},
+        {"id": "pol258", "title": "World Politics (WE)", "codes": ["POL-258"]},
+        {"id": "pol266", "title": "Latin American Politics (WE)", "codes": ["POL-266"]},
+        {"id": "pol276", "title": "African Politics (WE)", "codes": ["POL-276"]},
+        {"id": "pol286", "title": "Asian Politics (WE)", "codes": ["POL-286"]},
+        {"id": "pol298", "title": "European Politics (WE)", "codes": ["POL-298"]},
+        {"id": "pol305", "title": "Terrorism (WE)", "codes": ["POL-305"]},
+        {"id": "pol310", "title": "International Organizations (WE)", "codes": ["POL-310"]},
+        {"id": "pol365", "title": "American Foreign Policy (WE)", "codes": ["POL-365"]},
+        {"id": "pol386", "title": "International Development (WE)", "codes": ["POL-386"]},
+        {"id": "pol398", "title": "Religion and World Politics (WE)", "codes": ["POL-398"]}
+      ]
+    },
+    {
+      "id": "additional",
+      "label": "One Additional Political Science Course",
+      "type": "open_n",
+      "n": 1,
+      "constraints": {
+        "prefixes": ["POL"]
+      }
+    }
+  ]
+}

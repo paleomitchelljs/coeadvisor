@@ -1,0 +1,68 @@
+{
+  "id": "chemistry_major_2020-21",
+  "name": "Chemistry",
+  "program_type": "major",
+  "catalog_year": "2020-21",
+  "major_code": "CHM",
+  "source": "Academic Catalog 2020-21, pp. 90-91",
+  "note": "Requires a minimum cumulative 2.0 GPA in all courses counted toward the major.",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "chm121", "title": "General Chemistry I and Laboratory", "codes": ["CHM-121", "CHM-121L"]},
+        {"id": "chm122", "title": "General Chemistry II and Laboratory", "codes": ["CHM-122", "CHM-122L"]},
+        {"id": "chm211", "title": "Analytical Chemistry and Laboratory (WE)", "codes": ["CHM-211", "CHM-211L"]},
+        {"id": "chm221", "title": "Organic Chemistry I", "codes": ["CHM-221"]},
+        {"id": "chm341", "title": "Physical Chemistry I (WE) and Laboratory", "codes": ["CHM-341", "CHM-341L"]}
+      ]
+    },
+    {
+      "id": "advanced_electives",
+      "label": "Three Advanced Chemistry Electives",
+      "type": "choose_n",
+      "n": 3,
+      "options": [
+        {"id": "chm321", "title": "Organic Chemistry II", "codes": ["CHM-321"]},
+        {"id": "chm322", "title": "Organic Laboratory", "codes": ["CHM-322"]},
+        {"id": "chm411", "title": "Advanced Analytical Chemistry", "codes": ["CHM-411"]},
+        {"id": "chm421", "title": "Advanced Organic Chemistry", "codes": ["CHM-421"]},
+        {"id": "chm422", "title": "Synthesis Laboratory (WE)", "codes": ["CHM-422"]},
+        {"id": "chm431", "title": "Biochemistry (WE) and Laboratory", "codes": ["CHM-431", "CHM-431L"]},
+        {"id": "chm432", "title": "Protein Biochemistry and Laboratory", "codes": ["CHM-432", "CHM-432L"]},
+        {"id": "chm441", "title": "Physical Chemistry II", "codes": ["CHM-441"]},
+        {"id": "chm451", "title": "Inorganic Chemistry and Laboratory (WE)", "codes": ["CHM-451", "CHM-451L"]},
+        {"id": "chm442", "title": "Materials Physics and Chemistry", "codes": ["CHM-442"]}
+      ]
+    },
+    {
+      "id": "math",
+      "label": "Mathematics Requirement",
+      "type": "all",
+      "items": [
+        {"id": "mth145", "title": "Calculus II", "codes": ["MTH-145"]}
+      ]
+    },
+    {
+      "id": "physics",
+      "label": "Physics Requirement",
+      "type": "all",
+      "items": [
+        {"id": "phy185", "title": "General Physics I & Laboratory", "codes": ["PHY-185", "PHY-185L"]},
+        {"id": "phy195", "title": "General Physics II & Laboratory", "codes": ["PHY-195", "PHY-195L"]}
+      ]
+    },
+    {
+      "id": "seminar",
+      "label": "Senior Seminar",
+      "type": "choose_one",
+      "description": "One of the following seminar combinations.",
+      "options": [
+        {"id": "chm_sem", "title": "Seminar in Chemistry I and Seminar in Chemistry II", "codes": ["CHM-464", "CHM-474"]},
+        {"id": "occ_sem", "title": "Study and Research at Oak Ridge Laboratory and Seminar in Chemistry II", "codes": ["OCC-365", "CHM-474"]}
+      ]
+    }
+  ]
+}

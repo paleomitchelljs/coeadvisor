@@ -1,0 +1,279 @@
+{
+  "id": "public_relations_collateral_major_2024-25",
+  "name": "Public Relations",
+  "program_type": "major",
+  "catalog_year": "2024-25",
+  "major_code": "PR",
+  "source": "Academic Catalog 2024-25, pp. 202-203",
+  "note": "Collateral major. Concurrent completion of any B.A. major is required. Requires a minimum cumulative 2.0 GPA. Students must consult with the PR coordinator no later than the first term of their junior year. No more than two electives from any one department. Business Administration majors may select no more than one BUS or ACC course. Communication Studies majors may select no more than one COM course.",
+  "sections": [
+    {
+      "id": "art",
+      "label": "One Art/Visual Course",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "art104",
+          "title": "Digital Photography",
+          "codes": [
+            "ART-104"
+          ]
+        },
+        {
+          "id": "art115",
+          "title": "Drawing: Observation and Interpretation",
+          "codes": [
+            "ART-115"
+          ]
+        },
+        {
+          "id": "art145",
+          "title": "Digital Studio",
+          "codes": [
+            "ART-145"
+          ]
+        },
+        {
+          "id": "art150",
+          "title": "Time-Based Media",
+          "codes": [
+            "ART-150"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "pr205",
+          "title": "Public Relations (WE)",
+          "codes": [
+            "PR-205"
+          ]
+        },
+        {
+          "id": "bus330",
+          "title": "Principles of Marketing (WE)",
+          "codes": [
+            "BUS-330"
+          ]
+        },
+        {
+          "id": "bus460",
+          "title": "Advertising (WE)",
+          "codes": [
+            "BUS-460"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "journalism",
+      "label": "One Journalism Course",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "com141",
+          "title": "Introduction to Journalism (WE)",
+          "codes": [
+            "COM-141"
+          ]
+        },
+        {
+          "id": "com241",
+          "title": "Multimedia Journalism (WE)",
+          "codes": [
+            "COM-241"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "portfolio",
+      "label": "One Portfolio/Writing Course",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "bus461",
+          "title": "Marketing Decision-Making & Strategy (WE)",
+          "codes": [
+            "BUS-461"
+          ]
+        },
+        {
+          "id": "ecc345",
+          "title": "Writing Process (WE)",
+          "codes": [
+            "ECC-345"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "internship",
+      "label": "One Internship",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "bus494",
+          "title": "Internship in Business (with PR/advertising focus)",
+          "codes": [
+            "BUS-494"
+          ]
+        },
+        {
+          "id": "int499",
+          "title": "Summer Internship (with PR focus)",
+          "codes": [
+            "INT-499"
+          ]
+        },
+        {
+          "id": "pr494",
+          "title": "Internship in Public Relations",
+          "codes": [
+            "PR-494"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Three Elective Courses",
+      "type": "choose_n",
+      "n": 3,
+      "description": "No more than two courses from any one department.",
+      "options": [
+        {
+          "id": "acc171",
+          "title": "Principles of Accounting I",
+          "codes": [
+            "ACC-171"
+          ]
+        },
+        {
+          "id": "art104b",
+          "title": "Digital Photography (if not used for #1)",
+          "codes": [
+            "ART-104"
+          ]
+        },
+        {
+          "id": "art115b",
+          "title": "Drawing: Observation and Interpretation (if not used for #1)",
+          "codes": [
+            "ART-115"
+          ]
+        },
+        {
+          "id": "art145b",
+          "title": "Digital Studio (if not used for #1)",
+          "codes": [
+            "ART-145"
+          ]
+        },
+        {
+          "id": "art150b",
+          "title": "Time-Based Media (if not used for #1)",
+          "codes": [
+            "ART-150"
+          ]
+        },
+        {
+          "id": "art363",
+          "title": "Graphic Design Studio",
+          "codes": [
+            "ART-363"
+          ]
+        },
+        {
+          "id": "bus250",
+          "title": "Principles of Management",
+          "codes": [
+            "BUS-250"
+          ]
+        },
+        {
+          "id": "bus375",
+          "title": "Business Ethics (WE)",
+          "codes": [
+            "BUS-375"
+          ]
+        },
+        {
+          "id": "bus461b",
+          "title": "Marketing Decision-Making & Strategy (WE)",
+          "codes": [
+            "BUS-461"
+          ]
+        },
+        {
+          "id": "bus464",
+          "title": "Seminar in Management (WE)",
+          "codes": [
+            "BUS-464"
+          ]
+        },
+        {
+          "id": "bus465",
+          "title": "Advanced Topics in Marketing",
+          "codes": [
+            "BUS-465"
+          ]
+        },
+        {
+          "id": "com125",
+          "title": "Fundamentals of Public Speaking",
+          "codes": [
+            "COM-125"
+          ]
+        },
+        {
+          "id": "com157",
+          "title": "Introduction to Media Analysis (WE)",
+          "codes": [
+            "COM-157"
+          ]
+        },
+        {
+          "id": "com341",
+          "title": "Digital Storytelling (WE)",
+          "codes": [
+            "COM-341"
+          ]
+        },
+        {
+          "id": "com347",
+          "title": "Persuasion",
+          "codes": [
+            "COM-347"
+          ]
+        },
+        {
+          "id": "com141b",
+          "title": "Introduction to Journalism (WE)",
+          "codes": [
+            "COM-141"
+          ]
+        },
+        {
+          "id": "com322",
+          "title": "Professional Communication and Writing (WE)",
+          "codes": [
+            "COM-322"
+          ]
+        },
+        {
+          "id": "ecc345b",
+          "title": "Writing Process (WE)",
+          "codes": [
+            "ECC-345"
+          ]
+        }
+      ]
+    }
+  ]
+}

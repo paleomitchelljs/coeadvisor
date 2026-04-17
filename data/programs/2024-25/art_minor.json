@@ -1,0 +1,67 @@
+{
+  "id": "art_minor_2024-25",
+  "name": "Art",
+  "program_type": "minor",
+  "catalog_year": "2024-25",
+  "major_code": "ART",
+  "source": "Academic Catalog 2024-25, p. 76",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Course",
+      "type": "all",
+      "items": [
+        {
+          "id": "arh128",
+          "title": "Introduction to Art History",
+          "codes": [
+            "ARH-128"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "art_100",
+      "label": "Two 100-level ART Courses",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two 100-level ART courses.",
+      "constraints": {
+        "prefixes": [
+          "ART"
+        ]
+      }
+    },
+    {
+      "id": "art_300",
+      "label": "Two 300-level ART Courses",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two 300-level ART courses.",
+      "constraints": {
+        "prefixes": [
+          "ART"
+        ],
+        "min_level": 300,
+        "min_level_count": 2
+      }
+    },
+    {
+      "id": "arh_200",
+      "label": "One 200-level Art History Course",
+      "type": "open_n",
+      "n": 1,
+      "description": "One Art History course numbered 200 or above (beyond ARH-128).",
+      "constraints": {
+        "prefixes": [
+          "ARH"
+        ],
+        "min_level": 200,
+        "min_level_count": 1,
+        "exclude_codes": [
+          "ARH-128"
+        ]
+      }
+    }
+  ]
+}

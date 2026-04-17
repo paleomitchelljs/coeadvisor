@@ -1,0 +1,68 @@
+{
+  "id": "music_ba_major_2022-23",
+  "name": "Music (Bachelor of Arts)",
+  "program_type": "major",
+  "catalog_year": "2022-23",
+  "major_code": "MU",
+  "source": "Academic Catalog 2022-23, p. 151",
+  "note": "Students who major in music may select either the Bachelor of Arts degree or the Bachelor of Music degree.",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "mu109", "title": "Theory of Music I", "codes": ["MU-109"]},
+        {"id": "mu209", "title": "Theory of Music II", "codes": ["MU-209"]},
+        {"id": "mu309", "title": "Theory of Music III", "codes": ["MU-309"]},
+        {"id": "mu458", "title": "Music History and Literature III (WE)", "codes": ["MU-458"]}
+      ]
+    },
+    {
+      "id": "applied_music",
+      "label": "Applied Music",
+      "type": "non_course",
+      "description": "Four terms of participation in the Applied Music Course with piano as the primary or secondary performing area."
+    },
+    {
+      "id": "music_history",
+      "label": "One Music History and Literature Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "mu255", "title": "Music History and Literature I (WE)", "codes": ["MU-255"]},
+        {"id": "mu355", "title": "Music History and Literature II (WE)", "codes": ["MU-355"]}
+      ]
+    },
+    {
+      "id": "elective",
+      "label": "One Additional Music Course",
+      "type": "choose_one",
+      "description": "One of the following (if not used to satisfy the Music History requirement).",
+      "options": [
+        {"id": "mu140", "title": "Film Music", "codes": ["MU-140"]},
+        {"id": "mu151", "title": "Record Label", "codes": ["MU-151"]},
+        {"id": "mu157", "title": "Introduction to Jazz History", "codes": ["MU-157"]},
+        {"id": "mu195", "title": "Electronic Music", "codes": ["MU-195"]},
+        {"id": "mu261", "title": "Production Techniques", "codes": ["MU-261"]},
+        {"id": "mu270", "title": "Musical Theatre Acting", "codes": ["MU-270"]},
+        {"id": "mu166", "title": "Topics in Music", "codes": ["MU-166"]},
+        {"id": "mu255e", "title": "Music History and Literature I (WE) (if not used above)", "codes": ["MU-255"]},
+        {"id": "mu355e", "title": "Music History and Literature II (WE) (if not used above)", "codes": ["MU-355"]},
+        {"id": "mu285", "title": "Conducting I", "codes": ["MU-285"]},
+        {"id": "mu385", "title": "Conducting II", "codes": ["MU-385"]},
+        {"id": "mu409", "title": "Theory of Music IV", "codes": ["MU-409"]},
+        {"id": "mu444", "title": "Independent Study", "codes": ["MU-444"]},
+        {"id": "mua133v", "title": "Vocal Literature", "codes": ["MUA-133V"]},
+        {"id": "mua134v", "title": "Vocal Diction and Pedagogy", "codes": ["MUA-134V"]},
+        {"id": "mua413", "title": "Orchestration", "codes": ["MUA-413"]},
+        {"id": "mua423", "title": "Advanced Counterpoint", "codes": ["MUA-423"]}
+      ]
+    },
+    {
+      "id": "senior_assessment",
+      "label": "Senior Assessment Examination",
+      "type": "non_course",
+      "description": "The Senior Assessment Examination in the final term prior to graduation."
+    }
+  ]
+}

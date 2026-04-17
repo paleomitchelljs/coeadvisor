@@ -1,0 +1,73 @@
+{
+  "id": "environmental_studies_collateral_major_2020-21",
+  "name": "Environmental Studies",
+  "program_type": "collateral",
+  "catalog_year": "2020-21",
+  "major_code": "EVS",
+  "source": "Academic Catalog 2020-21, pp. 118-119",
+  "note": "Requires a minimum cumulative 2.0 GPA. Concurrent completion of a primary major is required. Students may not select both environmental studies and environmental science collateral majors.",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "bio105", "title": "Introduction to Environmental Studies", "codes": ["BIO-105"]},
+        {"id": "bio155", "title": "Organismal and Ecological Biology and Laboratory (WE)", "codes": ["BIO-155", "BIO-155L"]},
+        {"id": "eco175", "title": "Principles of Macroeconomics", "codes": ["ECO-175"]},
+        {"id": "eco195", "title": "Principles of Environmental Economics", "codes": ["ECO-195"]},
+        {"id": "evs484", "title": "Topics in Environmental Studies", "codes": ["EVS-484"]}
+      ]
+    },
+    {
+      "id": "policy_ethics",
+      "label": "One Policy/Ethics Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "evs112", "title": "Environmental Law and Policy", "codes": ["EVS-112"]},
+        {"id": "phl205", "title": "Environmental Ethics (WE)", "codes": ["PHL-205"]}
+      ]
+    },
+    {
+      "id": "statistics",
+      "label": "One Statistics Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "bus190", "title": "Statistical Analysis (WE)", "codes": ["BUS-190"]},
+        {"id": "bus340", "title": "Applied Regression Analysis", "codes": ["BUS-340"]},
+        {"id": "psy300", "title": "Statistical Methods and Data Analysis", "codes": ["PSY-300"]},
+        {"id": "soc235", "title": "Methods of Sociological Research (WE)", "codes": ["SOC-235"]},
+        {"id": "sta100_110", "title": "Statistical Foundations and Inferential Statistics", "codes": ["STA-100", "STA-110"]},
+        {"id": "sta100_130", "title": "Statistical Foundations and Experimental Design", "codes": ["STA-100", "STA-130"]},
+        {"id": "sta315", "title": "Probability and Statistics I", "codes": ["STA-315"]}
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Four Elective Courses from Three Lists",
+      "type": "choose_n",
+      "n": 4,
+      "description": "Four courses from the three lists below. One or more from Natural Science, one or more from Social Science, one or more from Humanities.",
+      "options": [
+        {"id": "bio165", "title": "Ecology and Biology of Birds", "codes": ["BIO-165"]},
+        {"id": "bio175", "title": "Field Botany", "codes": ["BIO-175"]},
+        {"id": "bio185", "title": "Entomology", "codes": ["BIO-185"]},
+        {"id": "bio285", "title": "Animal Behavior", "codes": ["BIO-285"]},
+        {"id": "bio295", "title": "Spatial Ecology and Laboratory (WE)", "codes": ["BIO-295", "BIO-295L"]},
+        {"id": "chm103", "title": "Selected Concepts in Chemistry or CHM-121/-121L General Chemistry I", "codes": ["CHM-103", "CHM-103L"]},
+        {"id": "bus170", "title": "Business Sustainability and the Environment", "codes": ["BUS-170"]},
+        {"id": "eco155", "title": "The Economics and Ethics of Alternative Energies", "codes": ["ECO-155"]},
+        {"id": "eco215", "title": "Principles of Microeconomics", "codes": ["ECO-215"]},
+        {"id": "evs112e", "title": "Environmental Law and Policy (if not used above)", "codes": ["EVS-112"]},
+        {"id": "evs137", "title": "Environmental Law: The Wilderness Act and the Boundary Waters", "codes": ["EVS-137"]},
+        {"id": "pol115", "title": "American National Government and Politics", "codes": ["POL-115"]},
+        {"id": "pol386", "title": "International Development (WE)", "codes": ["POL-386"]},
+        {"id": "soc328", "title": "Urban Sociology", "codes": ["SOC-328"]},
+        {"id": "phl205e", "title": "Environmental Ethics (WE) (if not used above)", "codes": ["PHL-205"]},
+        {"id": "rhe135", "title": "Writers Colony (WE)", "codes": ["RHE-135"]},
+        {"id": "rhe257", "title": "Environmental Rhetoric (WE)", "codes": ["RHE-257"]},
+        {"id": "rhe345", "title": "Nature Writing (WE)", "codes": ["RHE-345"]}
+      ]
+    }
+  ]
+}

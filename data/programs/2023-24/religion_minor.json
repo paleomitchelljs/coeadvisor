@@ -1,0 +1,28 @@
+{
+  "id": "religion_minor_2023-24",
+  "name": "Religion",
+  "program_type": "minor",
+  "catalog_year": "2023-24",
+  "major_code": "REL",
+  "source": "Academic Catalog 2023-24, p. 182",
+  "sections": [
+    {
+      "id": "survey",
+      "label": "One Survey Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "rel106", "title": "Eastern Religions", "codes": ["REL-106"]},
+        {"id": "rel108", "title": "Western Religions (WE)", "codes": ["REL-108"]}
+      ]
+    },
+    {
+      "id": "additional",
+      "label": "Four Additional Religion Courses",
+      "type": "open_n",
+      "n": 4,
+      "constraints": {
+        "prefixes": ["REL"]
+      }
+    }
+  ]
+}

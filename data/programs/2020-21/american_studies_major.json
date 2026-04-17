@@ -1,0 +1,55 @@
+{
+  "id": "american_studies_major_2020-21",
+  "name": "American Studies",
+  "program_type": "major",
+  "catalog_year": "2020-21",
+  "major_code": "AMS",
+  "source": "Academic Catalog 2020-21, pp. 56-57",
+  "note": "Requires a minimum cumulative 2.0 GPA in all courses counted toward the major.",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "ams107", "title": "Introduction to American Studies", "codes": ["AMS-107"]},
+        {"id": "his145", "title": "History of the United States to 1865", "codes": ["HIS-145"]},
+        {"id": "his155", "title": "History of the United States Since 1865", "codes": ["HIS-155"]},
+        {"id": "ams287", "title": "Topics in American Studies: United States Pluralism", "codes": ["AMS-287"]}
+      ]
+    },
+    {
+      "id": "american_lit",
+      "label": "One American Literature Course",
+      "type": "open_n",
+      "n": 1,
+      "description": "One American literature course from the English Department, chosen in consultation with the American Studies coordinating panel.",
+      "constraints": {
+        "prefixes": ["ENG"]
+      }
+    },
+    {
+      "id": "colloquium",
+      "label": "Interdisciplinary Studies Colloquium",
+      "type": "all",
+      "items": [
+        {"id": "ams100", "title": "Interdisciplinary Studies Colloquium (two terms)", "codes": ["AMS-100"]}
+      ]
+    },
+    {
+      "id": "additional",
+      "label": "Five Additional Courses",
+      "type": "open_n",
+      "n": 5,
+      "description": "Five additional courses that focus on American culture, chosen in consultation with the American Studies coordinating panel. One course must be from the United States Pluralism group; one must be in economics (ECO), political science (POL), sociology (SOC), or education (EDU); two courses must be at the upper division level."
+    },
+    {
+      "id": "capstone",
+      "label": "Capstone",
+      "type": "all",
+      "items": [
+        {"id": "ams490", "title": "Integrative American Studies", "codes": ["AMS-490"]}
+      ]
+    }
+  ]
+}

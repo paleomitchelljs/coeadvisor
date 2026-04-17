@@ -1,0 +1,61 @@
+{
+  "id": "creative_writing_minor_2022-23",
+  "name": "Creative Writing",
+  "program_type": "minor",
+  "catalog_year": "2022-23",
+  "major_code": "CRW",
+  "source": "Academic Catalog 2022-23, p. 100",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Course",
+      "type": "all",
+      "items": [
+        {"id": "crw125", "title": "Introduction to Creative Writing", "codes": ["CRW-125"]}
+      ]
+    },
+    {
+      "id": "workshops",
+      "label": "Three Workshops",
+      "type": "choose_n",
+      "n": 3,
+      "options": [
+        {"id": "crw255", "title": "Playwriting Workshop 1 (WE)", "codes": ["CRW-255", "THE-255"]},
+        {"id": "crw280", "title": "Poetry Workshop 1 (WE)", "codes": ["CRW-280"]},
+        {"id": "crw290", "title": "Fiction Workshop 1 (WE)", "codes": ["CRW-290"]},
+        {"id": "crw355", "title": "Playwriting Workshop 2 (WE)", "codes": ["CRW-355", "THE-355"]},
+        {"id": "crw380", "title": "Poetry Workshop 2 (WE)", "codes": ["CRW-380"]},
+        {"id": "crw390", "title": "Fiction Workshop 2 (WE)", "codes": ["CRW-390"]},
+        {"id": "crw455", "title": "Playwriting Workshop 3", "codes": ["CRW-455", "THE-455"]},
+        {"id": "crw480", "title": "Poetry Workshop 3 (WE)", "codes": ["CRW-480"]},
+        {"id": "crw484", "title": "Advanced Topics in Creative Writing", "codes": ["CRW-484"]},
+        {"id": "crw490", "title": "Fiction Workshop 3", "codes": ["CRW-490"]},
+        {"id": "crw492", "title": "Manuscript Workshop (WE)", "codes": ["CRW-492"]}
+      ]
+    },
+    {
+      "id": "english",
+      "label": "One English Course",
+      "type": "open_n",
+      "n": 1,
+      "description": "One course in English (ENG-___).",
+      "constraints": {
+        "prefixes": ["ENG"]
+      }
+    },
+    {
+      "id": "elective",
+      "label": "One Elective",
+      "type": "choose_one",
+      "description": "One of the following.",
+      "options": [
+        {"id": "crw_elec", "title": "One elective from Creative Writing (CRW-___)", "codes": []},
+        {"id": "eng_elec", "title": "One elective from English (ENG-___)", "codes": []},
+        {"id": "crw112", "title": "Two terms of Advanced Literary Magazine Editing", "codes": ["CRW-112"]},
+        {"id": "rhe255", "title": "The Essay (WE)", "codes": ["RHE-255"]},
+        {"id": "rhe257", "title": "Environmental Rhetoric (WE)", "codes": ["RHE-257"]},
+        {"id": "rhe377", "title": "Cultural Studies (WE)", "codes": ["RHE-377"]}
+      ]
+    }
+  ]
+}

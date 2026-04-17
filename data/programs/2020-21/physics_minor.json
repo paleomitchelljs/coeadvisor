@@ -1,0 +1,49 @@
+{
+  "id": "physics_minor_2020-21",
+  "name": "Physics",
+  "program_type": "minor",
+  "catalog_year": "2020-21",
+  "major_code": "PHY",
+  "source": "Academic Catalog 2020-21, p. 170",
+  "note": "Requires a cumulative 2.0 GPA in all courses counted toward the minor.",
+  "sections": [
+    {
+      "id": "physics1",
+      "label": "Physics I",
+      "type": "choose_one",
+      "options": [
+        {"id": "phy185", "title": "General Physics I & Laboratory", "codes": ["PHY-185", "PHY-185L"]},
+        {"id": "phy165", "title": "Basic Physics I & Laboratory", "codes": ["PHY-165", "PHY-165L"]}
+      ]
+    },
+    {
+      "id": "physics2",
+      "label": "Physics II",
+      "type": "choose_one",
+      "options": [
+        {"id": "phy195", "title": "General Physics II & Laboratory", "codes": ["PHY-195", "PHY-195L"]},
+        {"id": "phy175", "title": "Basic Physics II & Laboratory", "codes": ["PHY-175", "PHY-175L"]}
+      ]
+    },
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "phy235", "title": "Modern Physics & Laboratory (WE)", "codes": ["PHY-235", "PHY-235L"]},
+        {"id": "phy265", "title": "Electromagnetism", "codes": ["PHY-265"]}
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Two Additional Physics Courses",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two additional physics courses approved by the department, both of which must be numbered 150 and above.",
+      "constraints": {
+        "prefixes": ["PHY"],
+        "min_number": 150
+      }
+    }
+  ]
+}

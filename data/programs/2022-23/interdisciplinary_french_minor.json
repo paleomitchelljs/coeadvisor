@@ -1,0 +1,67 @@
+{
+  "id": "interdisciplinary_french_minor_2022-23",
+  "name": "Interdisciplinary French & Francophone Studies",
+  "program_type": "minor",
+  "catalog_year": "2022-23",
+  "major_code": "FRE",
+  "source": "Academic Catalog 2022-23, p. 122",
+  "note": "A grade of C (2.0) or higher must be earned in all courses. Courses not on the approved list may count with approval of the program coordinator. FRE-499 Exit Exam and Interview is required during the final term before graduation.",
+  "sections": [
+    {
+      "id": "fre315",
+      "label": "Required French Course",
+      "type": "all",
+      "items": [
+        {"id": "fre315", "title": "Oral and Written Communication Skills (WE)", "codes": ["FRE-315"]}
+      ]
+    },
+    {
+      "id": "french_courses",
+      "label": "Three Additional Courses Taught in French",
+      "type": "open_n",
+      "n": 3,
+      "description": "Three additional credits of courses taught in French at any level.",
+      "constraints": {
+        "prefixes": ["FRE"]
+      }
+    },
+    {
+      "id": "interdisciplinary",
+      "label": "Three Interdisciplinary Courses",
+      "type": "choose_n",
+      "n": 3,
+      "description": "Three credits from courses, taught in either French or English, from the approved list. Must include at least two different prefixes and demonstrate thematic coherence.",
+      "options": [
+        {"id": "arh201", "title": "Art and Architecture of the Middle Ages", "codes": ["ARH-201"]},
+        {"id": "arh218", "title": "The World of Renaissance Art", "codes": ["ARH-218"]},
+        {"id": "arh231", "title": "19th-Century Art", "codes": ["ARH-231"]},
+        {"id": "arh307", "title": "Modern and Contemporary Art (WE)", "codes": ["ARH-307"]},
+        {"id": "com236", "title": "Intercultural Communication (WE)", "codes": ["COM-236"]},
+        {"id": "eng146", "title": "Introduction to Postcolonial Literature (WE)", "codes": ["ENG-146"]},
+        {"id": "fre145", "title": "French & Francophone Literature in Translation", "codes": ["FRE-145", "FRE-146", "FRE-148"]},
+        {"id": "fre158", "title": "France and the Francophone World", "codes": ["FRE-158"]},
+        {"id": "his238", "title": "Modern France (WE)", "codes": ["HIS-238"]},
+        {"id": "his248", "title": "The French Revolution (WE)", "codes": ["HIS-248"]},
+        {"id": "his272", "title": "History of Medieval Europe (WE)", "codes": ["HIS-272"]},
+        {"id": "his288", "title": "Renaissance and Reformation (WE)", "codes": ["HIS-288"]},
+        {"id": "his355", "title": "19th-Century Europe (WE)", "codes": ["HIS-355"]},
+        {"id": "his365", "title": "20th-Century Europe (WE)", "codes": ["HIS-365"]},
+        {"id": "his372", "title": "Early Modern Europe (WE)", "codes": ["HIS-372"]},
+        {"id": "phl230", "title": "Medieval Philosophy (WE)", "codes": ["PHL-230"]},
+        {"id": "phl240", "title": "Early Modern Philosophy (WE)", "codes": ["PHL-240"]},
+        {"id": "phl255", "title": "Existentialism (WE)", "codes": ["PHL-255"]},
+        {"id": "phl305", "title": "Contemporary Continental Philosophy (WE)", "codes": ["PHL-305"]},
+        {"id": "phl345", "title": "Philosophy of Language (WE)", "codes": ["PHL-345"]},
+        {"id": "pol298", "title": "European Politics (WE)", "codes": ["POL-298"]},
+        {"id": "rel148", "title": "Islam (WE)", "codes": ["REL-148"]},
+        {"id": "rel178", "title": "Christianity", "codes": ["REL-178"]}
+      ]
+    },
+    {
+      "id": "exit_exam",
+      "label": "Exit Exam",
+      "type": "non_course",
+      "description": "FRE-499 Exit Exam and Interview, required during the final term before graduation."
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "id": "international_economics_major_2022-23",
+  "name": "International Economics",
+  "program_type": "major",
+  "catalog_year": "2022-23",
+  "major_code": "ECO",
+  "source": "Academic Catalog 2022-23, p. 137",
+  "note": "Only one of Economics or International Economics may be elected. Students majoring in economics or international economics may not minor in either economics or international economics.",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "eco175", "title": "Principles of Macroeconomics", "codes": ["ECO-175"]},
+        {"id": "eco215", "title": "Principles of Microeconomics", "codes": ["ECO-215"]},
+        {"id": "eco315", "title": "Intermediate Macroeconomics", "codes": ["ECO-315"]},
+        {"id": "eco336", "title": "Divergent Economic Growth", "codes": ["ECO-336"]},
+        {"id": "eco345", "title": "Intermediate Price Theory", "codes": ["ECO-345"]},
+        {"id": "eco375", "title": "Econometrics (WE)", "codes": ["ECO-375"]},
+        {"id": "eco436", "title": "Economic Development", "codes": ["ECO-436"]},
+        {"id": "eco446", "title": "International Economics", "codes": ["ECO-446"]},
+        {"id": "eco495", "title": "International Finance", "codes": ["ECO-495"]}
+      ]
+    },
+    {
+      "id": "foreign_language",
+      "label": "Two Foreign Language Courses",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two courses in foreign language numbered 115 or above.",
+      "constraints": {
+        "min_number": 115
+      }
+    },
+    {
+      "id": "international_experience",
+      "label": "International Experience",
+      "type": "non_course",
+      "description": "One of the following: a semester abroad, a May Term abroad, or a capstone project in international economics supervised by a member of the economics faculty."
+    }
+  ]
+}

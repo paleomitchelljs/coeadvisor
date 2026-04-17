@@ -1,0 +1,31 @@
+{
+  "id": "spanish_minor_2024-25",
+  "name": "Spanish",
+  "program_type": "minor",
+  "catalog_year": "2024-25",
+  "major_code": "SPA",
+  "source": "Academic Catalog 2024-25, p. 212",
+  "note": "Grade of C (2.0) or higher required in all courses. Four courses beyond Intermediate Spanish II (SPA-225). SPA-148 may count as one with consent of department chair. Elementary Spanish (SPA-115/125), Spanish Review and Preparation (SPA-135), and Intermediate Spanish (SPA-215/225) do not count.",
+  "sections": [
+    {
+      "id": "electives",
+      "label": "Four Courses Beyond SPA-225",
+      "type": "open_n",
+      "n": 4,
+      "description": "Four courses in Spanish beyond Intermediate Spanish II (SPA-225).",
+      "constraints": {
+        "prefixes": [
+          "SPA"
+        ],
+        "exclude_codes": [
+          "SPA-115",
+          "SPA-125",
+          "SPA-129",
+          "SPA-135",
+          "SPA-215",
+          "SPA-225"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "id": "secondary_education_minor_2023-24",
+  "name": "Secondary Education",
+  "program_type": "minor",
+  "catalog_year": "2023-24",
+  "major_code": "EDU",
+  "source": "Academic Catalog 2023-24, pp. 108-109",
+  "note": "Grade of C (2.0) or better required in all courses. Completion of a major in one or more teaching fields with GPA of 2.7 or higher is required. Approved teaching fields include American Government, American History, Art, Biology, Business, Chemistry, Coaching, Economics, English/Language Arts, French, German, Health, Journalism, Math, Music, Physical Education, Physics, Psychology, Sociology, Spanish, Speech/Theater, and World History.",
+  "sections": [
+    {
+      "id": "iowa_dist",
+      "label": "Iowa Distribution Requirements",
+      "type": "non_course",
+      "description": "At least one course in each of the four fields of mathematics, natural sciences, social sciences, and humanities (minimum 10.0 course credits total in Liberal Arts Requirements)."
+    },
+    {
+      "id": "professional",
+      "label": "Professional Education Courses",
+      "type": "all",
+      "items": [
+        {"id": "edu105", "title": "Educational Foundations (WE)", "codes": ["EDU-105"]},
+        {"id": "edu117", "title": "Exceptional Learners", "codes": ["EDU-117"]},
+        {"id": "edu187", "title": "Human Relations (WE)", "codes": ["EDU-187"]},
+        {"id": "edu195", "title": "Educational Psychology and Development", "codes": ["EDU-195"]},
+        {"id": "edu215", "title": "Practicum in Education (WE)", "codes": ["EDU-215"]},
+        {"id": "edu219", "title": "Educational Technology Lab (WE) (0.0cc)", "codes": ["EDU-219"]}
+      ]
+    },
+    {
+      "id": "methods",
+      "label": "Methods Course(s)",
+      "type": "choose_one",
+      "description": "One or more methods courses appropriate to the teaching field.",
+      "options": [
+        {"id": "art230", "title": "Art of Children and Adolescents", "codes": ["ART-230"]},
+        {"id": "edu310", "title": "Methods of Secondary Business Education (WE)", "codes": ["EDU-310"]},
+        {"id": "edu311", "title": "Methods of Secondary Language Arts (WE)", "codes": ["EDU-311"]},
+        {"id": "edu312", "title": "Methods of Secondary Social Studies (WE)", "codes": ["EDU-312"]},
+        {"id": "edu313", "title": "Methods of Secondary Mathematics (WE)", "codes": ["EDU-313"]},
+        {"id": "edu320", "title": "Methods of Secondary Science (WE)", "codes": ["EDU-320"]},
+        {"id": "edu321", "title": "Methods of Foreign Language K-12 (WE)", "codes": ["EDU-321"]},
+        {"id": "kin415", "title": "Methods of Teaching Secondary School Physical Education and Health", "codes": ["KIN-415"]},
+        {"id": "mu361", "title": "Choral Music Methods", "codes": ["MU-361"]},
+        {"id": "mu363", "title": "Instrumental Music Methods", "codes": ["MU-363"]}
+      ]
+    }
+  ]
+}

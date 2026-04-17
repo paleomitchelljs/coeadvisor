@@ -1,0 +1,29 @@
+{
+  "id": "spanish_studies_major_2022-23",
+  "name": "Spanish Studies",
+  "program_type": "major",
+  "catalog_year": "2022-23",
+  "major_code": "SPA",
+  "source": "Academic Catalog 2022-23, p. 196",
+  "note": "A grade of C (2.0) or higher must be earned in all courses. The Spanish Studies major requires four courses beyond SPA-225 plus five interdisciplinary courses from an approved list. SPA-336/-338 Hispanic Life and Culture is recommended as one of the four. Application for the interdisciplinary courses must be made no later than Spring Term of the junior year.",
+  "sections": [
+    {
+      "id": "spanish_courses",
+      "label": "Four Courses Beyond Intermediate Spanish II",
+      "type": "open_n",
+      "n": 4,
+      "description": "Four courses beyond Intermediate Spanish II (SPA-225), with Hispanic Life and Culture (SPA-336/-338) recommended as one of the four.",
+      "constraints": {
+        "prefixes": ["SPA"],
+        "min_number": 226
+      }
+    },
+    {
+      "id": "interdisciplinary",
+      "label": "Five Interdisciplinary Courses",
+      "type": "open_n",
+      "n": 5,
+      "description": "Five courses from a departmentally approved list proposed by the student which exhibits internal coherence and relevance to the course work in Spanish."
+    }
+  ]
+}

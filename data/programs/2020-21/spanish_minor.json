@@ -1,0 +1,22 @@
+{
+  "id": "spanish_minor_2020-21",
+  "name": "Spanish",
+  "program_type": "minor",
+  "catalog_year": "2020-21",
+  "major_code": "SPA",
+  "source": "Academic Catalog 2020-21, p. 196",
+  "note": "A grade of C (2.0) or higher must be earned in all courses. SPA-115, SPA-125, and SPA-135 are not counted toward the minor. SPA-148 may count with consent of department chair.",
+  "sections": [
+    {
+      "id": "spanish_courses",
+      "label": "Four Courses Beyond Intermediate Spanish II",
+      "type": "open_n",
+      "n": 4,
+      "description": "Four courses in Spanish beyond Intermediate Spanish II (SPA-225).",
+      "constraints": {
+        "prefixes": ["SPA"],
+        "min_number": 226
+      }
+    }
+  ]
+}

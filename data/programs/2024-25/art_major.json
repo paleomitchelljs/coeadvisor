@@ -1,0 +1,324 @@
+{
+  "id": "art_major_2024-25",
+  "name": "Art",
+  "program_type": "major",
+  "catalog_year": "2024-25",
+  "major_code": "ART",
+  "source": "Academic Catalog 2024-25, pp. 74-76",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "arh128",
+          "title": "Introduction to Art History",
+          "codes": [
+            "ARH-128"
+          ]
+        },
+        {
+          "id": "arh307",
+          "title": "Modern and Contemporary Art (WE)",
+          "codes": [
+            "ARH-307"
+          ]
+        },
+        {
+          "id": "art464",
+          "title": "Seminar in Art and Visual Studies I",
+          "codes": [
+            "ART-464"
+          ]
+        },
+        {
+          "id": "art474",
+          "title": "Seminar in Art and Visual Studies II & Thesis Exhibition",
+          "codes": [
+            "ART-474"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "art_100",
+      "label": "Two 100-level ART Courses",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two 100-level ART courses.",
+      "constraints": {
+        "prefixes": [
+          "ART"
+        ]
+      }
+    },
+    {
+      "id": "focus",
+      "label": "Two Focus Courses",
+      "type": "choose_n",
+      "n": 2,
+      "options": [
+        {
+          "id": "art201",
+          "title": "Focus Course: Creative Process (0.5 cc)",
+          "codes": [
+            "ART-201"
+          ]
+        },
+        {
+          "id": "art209",
+          "title": "Focus Course: Professional Practice (0.5 cc)",
+          "codes": [
+            "ART-209"
+          ]
+        },
+        {
+          "id": "ms205",
+          "title": "Exhibition Planning (0.5 cc)",
+          "codes": [
+            "MS-205"
+          ]
+        },
+        {
+          "id": "ms215",
+          "title": "Exhibition Installation and Lighting (0.5 cc)",
+          "codes": [
+            "MS-215"
+          ]
+        },
+        {
+          "id": "art235",
+          "title": "Arts Advocacy (0.5 cc)",
+          "codes": [
+            "ART-235",
+            "MS-235"
+          ]
+        },
+        {
+          "id": "art291",
+          "title": "Focus Course: Topics in Studio Art (0.5 cc)",
+          "codes": [
+            "ART-291"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "art_300",
+      "label": "Two 300-level ART Courses",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two 300-level ART courses.",
+      "constraints": {
+        "prefixes": [
+          "ART"
+        ],
+        "min_level": 300,
+        "min_level_count": 2
+      }
+    },
+    {
+      "id": "arh_200",
+      "label": "One Additional 200-level Art History Course",
+      "type": "open_n",
+      "n": 1,
+      "description": "One additional Art History course numbered 200 or above (beyond ARH-128).",
+      "constraints": {
+        "prefixes": [
+          "ARH"
+        ],
+        "min_level": 200,
+        "min_level_count": 1,
+        "exclude_codes": [
+          "ARH-128"
+        ]
+      }
+    }
+  ],
+  "concentrations": [
+    {
+      "id": "multimedia_graphic_design",
+      "name": "Multimedia Graphic Design",
+      "sections": [
+        {
+          "id": "mgd_required",
+          "label": "Required Courses",
+          "type": "all",
+          "items": [
+            {
+              "id": "art363",
+              "title": "Graphic Design Studio",
+              "codes": [
+                "ART-363"
+              ]
+            },
+            {
+              "id": "art371",
+              "title": "Typography and Design",
+              "codes": [
+                "ART-371"
+              ]
+            },
+            {
+              "id": "art305",
+              "title": "Advanced Topics in Graphic Design",
+              "codes": [
+                "ART-305"
+              ]
+            },
+            {
+              "id": "arh270",
+              "title": "History of Design",
+              "codes": [
+                "ARH-270"
+              ]
+            },
+            {
+              "id": "bus280_281",
+              "title": "Computer Applications: Business Websites AND Social Media",
+              "codes": [
+                "BUS-280",
+                "BUS-281"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "media_production",
+      "name": "Media Production",
+      "sections": [
+        {
+          "id": "mp_required",
+          "label": "Required Courses",
+          "type": "all",
+          "items": [
+            {
+              "id": "art150",
+              "title": "Time-Based Media",
+              "codes": [
+                "ART-150"
+              ]
+            },
+            {
+              "id": "art350",
+              "title": "Advanced Digital Research I",
+              "codes": [
+                "ART-350"
+              ]
+            },
+            {
+              "id": "com151",
+              "title": "Introduction to New Media Studies",
+              "codes": [
+                "COM-151"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mp_electives",
+          "label": "Two of the Following",
+          "type": "choose_n",
+          "n": 2,
+          "options": [
+            {
+              "id": "com157",
+              "title": "Introduction to Media Analysis (WE)",
+              "codes": [
+                "COM-157"
+              ]
+            },
+            {
+              "id": "com161",
+              "title": "Visual Rhetoric",
+              "codes": [
+                "COM-161"
+              ]
+            },
+            {
+              "id": "com341",
+              "title": "Digital Storytelling (WE)",
+              "codes": [
+                "COM-341"
+              ]
+            },
+            {
+              "id": "crw350",
+              "title": "Screenwriting (WE)",
+              "codes": [
+                "CRW-350"
+              ]
+            },
+            {
+              "id": "art494",
+              "title": "Internship in Art",
+              "codes": [
+                "ART-494"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nonprofit_arts_creative_leadership",
+      "name": "Non-Profit Arts and Creative Leadership",
+      "sections": [
+        {
+          "id": "nacl_required",
+          "label": "Required Courses",
+          "type": "all",
+          "items": [
+            {
+              "id": "ms283",
+              "title": "Arts Administration",
+              "codes": [
+                "MS-283"
+              ]
+            },
+            {
+              "id": "ms220",
+              "title": "Marketing the Museum (0.5 cc)",
+              "codes": [
+                "MS-220"
+              ]
+            },
+            {
+              "id": "art235",
+              "title": "Arts Advocacy (0.5 cc)",
+              "codes": [
+                "ART-235",
+                "MS-235"
+              ]
+            },
+            {
+              "id": "pr205",
+              "title": "Public Relations (WE)",
+              "codes": [
+                "PR-205"
+              ]
+            },
+            {
+              "id": "bus280_281",
+              "title": "Computer Applications: Business Websites AND Social Media",
+              "codes": [
+                "BUS-280",
+                "BUS-281"
+              ]
+            },
+            {
+              "id": "art494",
+              "title": "Internship in Art",
+              "codes": [
+                "ART-494"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

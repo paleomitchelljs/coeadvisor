@@ -1,0 +1,33 @@
+{
+  "id": "french_francophone_minor_2024-25",
+  "name": "French & Francophone Studies",
+  "program_type": "minor",
+  "catalog_year": "2024-25",
+  "major_code": "FRE",
+  "source": "Academic Catalog 2024-25, p. 143",
+  "note": "A grade of C (2.0) or higher must be earned in all courses counted toward the minor.",
+  "sections": [
+    {
+      "id": "oral_written",
+      "label": "Required Course",
+      "type": "all",
+      "items": [
+        {"id": "fre315", "title": "Oral and Written Communication Skills (WE)", "codes": ["FRE-315"]}
+      ]
+    },
+    {
+      "id": "french_courses",
+      "label": "300-400 Level French Courses",
+      "type": "non_course",
+      "description": "Four course credits of 300- to 400-level courses in French, including FRE-315. Up to one credit may be from the approved courses taught in English."
+    },
+    {
+      "id": "exit_exam",
+      "label": "Exit Exam and Interview",
+      "type": "all",
+      "items": [
+        {"id": "fre499", "title": "Exit Exam and Interview", "codes": ["FRE-499"]}
+      ]
+    }
+  ]
+}

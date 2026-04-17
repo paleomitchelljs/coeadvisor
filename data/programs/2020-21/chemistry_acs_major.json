@@ -1,0 +1,46 @@
+{
+  "id": "chemistry_acs_major_2020-21",
+  "name": "American Chemical Society Certified Chemistry",
+  "program_type": "major",
+  "catalog_year": "2020-21",
+  "major_code": "CHM",
+  "source": "Academic Catalog 2020-21, p. 91",
+  "note": "Requires completion of a major in chemistry, including Calculus II and two General Physics courses.",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Courses (beyond Chemistry Major)",
+      "type": "all",
+      "items": [
+        {"id": "chm321", "title": "Organic Chemistry II", "codes": ["CHM-321"]},
+        {"id": "chm322", "title": "Organic Laboratory", "codes": ["CHM-322"]},
+        {"id": "chm422", "title": "Synthesis Laboratory (WE)", "codes": ["CHM-422"]},
+        {"id": "chm431", "title": "Biochemistry (WE) and Laboratory", "codes": ["CHM-431", "CHM-431L"]},
+        {"id": "chm451", "title": "Inorganic Chemistry and Laboratory (WE)", "codes": ["CHM-451", "CHM-451L"]}
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Two Additional Advanced Courses",
+      "type": "choose_n",
+      "n": 2,
+      "options": [
+        {"id": "chm411", "title": "Advanced Analytical Chemistry", "codes": ["CHM-411"]},
+        {"id": "chm421", "title": "Advanced Organic Chemistry", "codes": ["CHM-421"]},
+        {"id": "chm432", "title": "Protein Biochemistry and Laboratory", "codes": ["CHM-432", "CHM-432L"]},
+        {"id": "chm441", "title": "Physical Chemistry II", "codes": ["CHM-441"]},
+        {"id": "chm442", "title": "Materials Physics and Chemistry", "codes": ["CHM-442"]}
+      ]
+    },
+    {
+      "id": "research",
+      "label": "One Research Experience",
+      "type": "choose_one",
+      "options": [
+        {"id": "chm444", "title": "Independent Study", "codes": ["CHM-444"]},
+        {"id": "chm454", "title": "Undergraduate Summer Research", "codes": ["CHM-454"]},
+        {"id": "occ365", "title": "Study and Research at Oak Ridge Laboratory", "codes": ["OCC-365"]}
+      ]
+    }
+  ]
+}

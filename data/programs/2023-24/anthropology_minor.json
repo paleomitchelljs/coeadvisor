@@ -1,0 +1,67 @@
+{
+  "id": "anthropology_minor_2023-24",
+  "name": "Anthropology",
+  "program_type": "minor",
+  "catalog_year": "2023-24",
+  "major_code": "ANT",
+  "source": "Academic Catalog 2023-24, p. 57",
+  "note": "Students must take at least one course focused on archaeology and one focused on anthropology.",
+  "sections": [
+    {
+      "id": "intro",
+      "label": "One Introductory Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "ant109", "title": "Introduction to Archaeology: Method and Theory", "codes": ["ANT-109"]},
+        {"id": "ant116", "title": "Cultural Anthropology", "codes": ["ANT-116"]}
+      ]
+    },
+    {
+      "id": "methods",
+      "label": "Methods",
+      "type": "all",
+      "items": [
+        {"id": "ant215", "title": "Ethnographic Methods (WE)", "codes": ["ANT-215"]}
+      ]
+    },
+    {
+      "id": "intermediate",
+      "label": "One Intermediate Topics Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "ant284", "title": "Topics in Anthropology or Archaeology (WE)", "codes": ["ANT-284"]},
+        {"id": "ant286", "title": "Topics in Anthropology: Non-Western Perspectives (WE)", "codes": ["ANT-286"]},
+        {"id": "ant288", "title": "Topics in Anthropology or Archaeology: Diverse Western Perspectives (WE)", "codes": ["ANT-288"]}
+      ]
+    },
+    {
+      "id": "theory",
+      "label": "Theory",
+      "type": "all",
+      "items": [
+        {"id": "ant450", "title": "Anthropological Theory (WE)", "codes": ["ANT-450"]}
+      ]
+    },
+    {
+      "id": "advanced",
+      "label": "One Advanced Topics Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "ant484", "title": "Advanced Topics in Anthropology or Archaeology (WE)", "codes": ["ANT-484"]},
+        {"id": "ant486", "title": "Advanced Topics in Anthropology: Non-Western Perspectives (WE)", "codes": ["ANT-486"]},
+        {"id": "ant488", "title": "Advanced Topics in Anthropology or Archaeology: Diverse Western Perspectives (WE)", "codes": ["ANT-488"]}
+      ]
+    },
+    {
+      "id": "additional",
+      "label": "One Additional Anthropology Course",
+      "type": "open_n",
+      "n": 1,
+      "description": "One additional anthropology course.",
+      "constraints": {
+        "prefixes": ["ANT"],
+        "exclude_codes": ["ANT-444", "ANT-474", "ANT-494"]
+      }
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "french_minor_2021-22",
+  "name": "French & Francophone Studies",
+  "program_type": "minor",
+  "catalog_year": "2021-22",
+  "major_code": "FRE",
+  "source": "Academic Catalog 2021-22, p. 122",
+  "note": "A grade of C (2.0) or higher must be earned in all courses counted toward the minor. FRE-315 Oral and Written Communication Skills (WE) is required. Up to one credit may be from approved courses taught in English. FRE-499 Exit Exam and Interview is required during the final term.",
+  "sections": [
+    {
+      "id": "french_courses",
+      "label": "Four Credits of 300-400 Level French",
+      "type": "open_n",
+      "n": 4,
+      "description": "Four credits of courses in 300- to 400-level French, including FRE-315. Up to one credit may be from approved courses taught in English.",
+      "constraints": {
+        "prefixes": ["FRE"],
+        "min_number": 300
+      }
+    },
+    {
+      "id": "exit_exam",
+      "label": "Exit Exam",
+      "type": "all",
+      "items": [
+        {"id": "fre499", "title": "Exit Exam and Interview", "codes": ["FRE-499"]}
+      ]
+    }
+  ]
+}

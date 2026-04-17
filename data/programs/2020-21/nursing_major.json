@@ -1,0 +1,78 @@
+{
+  "id": "nursing_major_2020-21",
+  "name": "Nursing",
+  "program_type": "major",
+  "catalog_year": "2020-21",
+  "major_code": "NUR",
+  "source": "Academic Catalog 2020-21, pp. 161-162",
+  "note": "Bachelor of Science in Nursing degree. A minimum grade of C (2.0) in all nursing courses is required; a grade of C- (1.7) or lower requires the student to repeat the course. Students must achieve a cumulative average of 72% on all exams in a given course. All required supporting and nursing courses must be completed with no one specific course repeated more than once and no more than two different courses repeated.",
+  "sections": [
+    {
+      "id": "supporting",
+      "label": "Required Supporting Courses",
+      "type": "all",
+      "items": [
+        {"id": "bio145", "title": "Cellular and Molecular Biology", "codes": ["BIO-145"]},
+        {"id": "bio195", "title": "Introduction to Microbiology", "codes": ["BIO-195"]},
+        {"id": "bio215", "title": "Human Anatomy and Laboratory", "codes": ["BIO-215", "BIO-215L"]},
+        {"id": "bio225", "title": "Human Physiology", "codes": ["BIO-225"]},
+        {"id": "chm111", "title": "Introduction to Organic and Biological Chemistry and Laboratory", "codes": ["CHM-111", "CHM-111L"]},
+        {"id": "psy100", "title": "Introductory Psychology", "codes": ["PSY-100"]},
+        {"id": "soc107", "title": "Introduction to Sociology", "codes": ["SOC-107"]}
+      ]
+    },
+    {
+      "id": "statistics",
+      "label": "Statistics Requirement",
+      "type": "choose_one",
+      "options": [
+        {"id": "psy300", "title": "Statistical Methods and Data Analysis", "codes": ["PSY-300"]},
+        {"id": "sta100_110", "title": "Statistical Foundations and Inferential Statistics", "codes": ["STA-100", "STA-110"]}
+      ]
+    },
+    {
+      "id": "seminars",
+      "label": "Pre-Nursing Seminars",
+      "type": "all",
+      "items": [
+        {"id": "nur100", "title": "Nursing Issues", "codes": ["NUR-100"]},
+        {"id": "nur200", "title": "Nursing Issues II", "codes": ["NUR-200"]}
+      ]
+    },
+    {
+      "id": "theory",
+      "label": "Non-Clinical Theory Courses",
+      "type": "all",
+      "description": "Nine non-clinical theory course credits.",
+      "items": [
+        {"id": "nur300", "title": "Art and Science of Nursing", "codes": ["NUR-300"]},
+        {"id": "nur305", "title": "Information Literacy and Management (WE)", "codes": ["NUR-305"]},
+        {"id": "nur345", "title": "Mental Health Nursing and Laboratory", "codes": ["NUR-345", "NUR-345L"]},
+        {"id": "nur360", "title": "Pharmacological Principles", "codes": ["NUR-360"]},
+        {"id": "nur375", "title": "Legal and Ethical Issues in Nursing (WE)", "codes": ["NUR-375"]},
+        {"id": "nur425", "title": "Nursing Research", "codes": ["NUR-425"]},
+        {"id": "nur430", "title": "Community and Population Oriented Nursing (WE)", "codes": ["NUR-430"]},
+        {"id": "nur431", "title": "Maintaining Wellness in Aging and Chronicity", "codes": ["NUR-431"]},
+        {"id": "nur495", "title": "Maternal Newborn Nursing", "codes": ["NUR-495"]}
+      ]
+    },
+    {
+      "id": "clinical",
+      "label": "Clinical Courses",
+      "type": "all",
+      "description": "Four two-course-credit clinical courses.",
+      "items": [
+        {"id": "nur315", "title": "Pathophysiology and Assessment/Clinical Application", "codes": ["NUR-315", "NUR-315L"]},
+        {"id": "nur355", "title": "Introductory Concepts in Nursing/Clinical Application", "codes": ["NUR-355", "NUR-355L"]},
+        {"id": "nur415", "title": "Advanced Concepts in Nursing/Clinical Application", "codes": ["NUR-415", "NUR-415L"]},
+        {"id": "nur455", "title": "Leadership and Contemporary Issues in Nursing/Clinical Application (WE)", "codes": ["NUR-455", "NUR-455L"]}
+      ]
+    },
+    {
+      "id": "nclex",
+      "label": "NCLEX Review",
+      "type": "non_course",
+      "description": "A formal NCLEX review course (at the student's expense)."
+    }
+  ]
+}

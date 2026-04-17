@@ -1,0 +1,45 @@
+{
+  "id": "philosophy_minor_2024-25",
+  "name": "Philosophy",
+  "program_type": "minor",
+  "catalog_year": "2024-25",
+  "major_code": "PHL",
+  "source": "Academic Catalog 2024-25, p. 184",
+  "sections": [
+    {
+      "id": "history",
+      "label": "Two History of Philosophy Courses",
+      "type": "choose_n",
+      "n": 2,
+      "description": "Two of the following, one of which must be either PHL-240 or PHL-335.",
+      "options": [
+        {"id": "phl220", "title": "Ancient Greek Philosophy (WE)", "codes": ["PHL-220"]},
+        {"id": "phl230", "title": "Medieval Philosophy (WE)", "codes": ["PHL-230"]},
+        {"id": "phl240", "title": "Early Modern Philosophy (WE)", "codes": ["PHL-240"]},
+        {"id": "phl335", "title": "Late Modern Philosophy (WE)", "codes": ["PHL-335"]}
+      ]
+    },
+    {
+      "id": "advanced_300",
+      "label": "One Additional 300-Level Philosophy Course",
+      "type": "open_n",
+      "n": 1,
+      "description": "One additional 300-level philosophy course.",
+      "constraints": {
+        "prefixes": ["PHL"],
+        "min_level": 300,
+        "min_level_count": 1
+      }
+    },
+    {
+      "id": "electives",
+      "label": "Three Additional Philosophy Courses",
+      "type": "open_n",
+      "n": 3,
+      "description": "Three additional philosophy courses.",
+      "constraints": {
+        "prefixes": ["PHL"]
+      }
+    }
+  ]
+}

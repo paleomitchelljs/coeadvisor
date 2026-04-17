@@ -1,0 +1,83 @@
+{
+  "id": "kinesiology_major_2020-21",
+  "name": "Kinesiology",
+  "program_type": "major",
+  "catalog_year": "2020-21",
+  "major_code": "KIN",
+  "source": "Academic Catalog 2020-21, pp. 141-142",
+  "note": "Requires a minimum cumulative 2.0 GPA in all courses counted toward the major. Students select one of two tracks: Secondary Education Emphasis in Physical Education or Fitness Development.",
+  "concentrations": [
+    {
+      "id": "secondary_education",
+      "label": "Secondary Education Emphasis in Physical Education",
+      "sections": [
+        {
+          "id": "required_se",
+          "label": "Required Courses",
+          "type": "all",
+          "items": [
+            {"id": "bio155", "title": "Organismal and Ecological Biology", "codes": ["BIO-155"]},
+            {"id": "kin105", "title": "Foundations of Physical Movement", "codes": ["KIN-105"]},
+            {"id": "kin165", "title": "Master Activity Class for Teachers", "codes": ["KIN-165"]},
+            {"id": "kin175", "title": "Prevention and Care of Athletic Injuries & Laboratory", "codes": ["KIN-175"]},
+            {"id": "kin225", "title": "Motor Learning", "codes": ["KIN-225"]},
+            {"id": "kin347", "title": "Adapted Physical Education", "codes": ["KIN-347"]},
+            {"id": "kin365", "title": "Measurement Evaluation and Prescription in Physical Education", "codes": ["KIN-365"]},
+            {"id": "kin415", "title": "Methods of Teaching Secondary School Physical Education and Health", "codes": ["KIN-415"]},
+            {"id": "kin440", "title": "Organization and Administration of Physical Education, Health, and Athletics", "codes": ["KIN-440"]},
+            {"id": "kin442", "title": "Physiology of Exercise", "codes": ["KIN-442"]},
+            {"id": "kin495", "title": "Kinesiology", "codes": ["KIN-495"]}
+          ]
+        },
+        {
+          "id": "anatomy_se",
+          "label": "One Anatomy Course",
+          "type": "choose_one",
+          "options": [
+            {"id": "bio103", "title": "Anatomy and Physiology", "codes": ["BIO-103"]},
+            {"id": "bio215_225", "title": "Human Anatomy and Human Physiology", "codes": ["BIO-215", "BIO-225"]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fitness_development",
+      "label": "Fitness Development",
+      "sections": [
+        {
+          "id": "required_fd",
+          "label": "Required Courses",
+          "type": "all",
+          "items": [
+            {"id": "bio155", "title": "Organismal and Ecological Biology", "codes": ["BIO-155"]},
+            {"id": "kin105", "title": "Foundations of Physical Movement", "codes": ["KIN-105"]},
+            {"id": "kin115", "title": "Fundamentals of Exercise and Nutrition", "codes": ["KIN-115"]},
+            {"id": "kin175", "title": "Prevention and Care of Athletic Injuries & Laboratory", "codes": ["KIN-175"]},
+            {"id": "kin365", "title": "Measurements/Evaluation and Prescription in Physical Education", "codes": ["KIN-365"]},
+            {"id": "kin440", "title": "Organization and Administration of Physical Education, Health, and Athletics (WE)", "codes": ["KIN-440"]},
+            {"id": "kin442", "title": "Physiology of Exercise", "codes": ["KIN-442"]}
+          ]
+        },
+        {
+          "id": "anatomy_fd",
+          "label": "One Anatomy Course",
+          "type": "choose_one",
+          "options": [
+            {"id": "bio103", "title": "Anatomy and Physiology", "codes": ["BIO-103"]},
+            {"id": "bio215_225", "title": "Human Anatomy and Human Physiology", "codes": ["BIO-215", "BIO-225"]}
+          ]
+        },
+        {
+          "id": "focus_group",
+          "label": "Focus Group",
+          "type": "choose_one",
+          "description": "All courses in one of the following groups.",
+          "options": [
+            {"id": "strength_conditioning", "title": "Strength and Conditioning Group: KIN-103/104 Advanced Weight Training, KIN-103/104 Movement Training, KIN-185 Group Exercise, KIN-385 Methods of Teaching Strength Training and Conditioning, KIN-405 Program Design, KIN-495 Kinesiology", "codes": ["KIN-103", "KIN-185", "KIN-385", "KIN-405", "KIN-495"]},
+            {"id": "health_wellness", "title": "Health and Wellness Group: KIN-125 Public and Consumer Health, KIN-135 Concepts of Individual Wellness, KIN-155 Substance Abuse", "codes": ["KIN-125", "KIN-135", "KIN-155"]}
+          ]
+        }
+      ]
+    }
+  ]
+}

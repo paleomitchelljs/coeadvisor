@@ -1,0 +1,144 @@
+{
+  "id": "secondary_education_minor_2024-25",
+  "name": "Secondary Education",
+  "program_type": "minor",
+  "catalog_year": "2024-25",
+  "major_code": "EDU",
+  "source": "Academic Catalog 2024-25, pp. 127-128",
+  "note": "Grade of C or better required in all courses. Completion of a major in one or more teaching fields with GPA of 2.7 or higher is required. Approved teaching fields include American Government, American History, Art, Basic Science, Biology, Business, Chemistry, Economics, English/Language Arts, Health, Math, Music, Physical Education, Physics, Psychology, Sociology, Spanish, Speech Communication and Theater, and World History.",
+  "sections": [
+    {
+      "id": "iowa_dist",
+      "label": "Iowa Distribution Requirements",
+      "type": "non_course",
+      "description": "Grade of C or better in at least one course in each of the four fields of mathematics, natural sciences, social sciences, and humanities."
+    },
+    {
+      "id": "professional",
+      "label": "Professional Education Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "edu105",
+          "title": "Foundations of Education (WE)",
+          "codes": [
+            "EDU-105"
+          ]
+        },
+        {
+          "id": "edu117",
+          "title": "Exceptional Learners",
+          "codes": [
+            "EDU-117"
+          ]
+        },
+        {
+          "id": "edu187",
+          "title": "Human Relations (WE)",
+          "codes": [
+            "EDU-187"
+          ]
+        },
+        {
+          "id": "edu195",
+          "title": "Educational Psychology and Development",
+          "codes": [
+            "EDU-195"
+          ]
+        },
+        {
+          "id": "edu215",
+          "title": "Practicum in Education (WE)",
+          "codes": [
+            "EDU-215"
+          ]
+        },
+        {
+          "id": "edu219",
+          "title": "Instructional Technology for Teaching and Learning (0.5cc)",
+          "codes": [
+            "EDU-219"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "methods",
+      "label": "Methods Course(s)",
+      "type": "choose_one",
+      "description": "One or more methods courses appropriate to the teaching field.",
+      "options": [
+        {
+          "id": "art330",
+          "title": "Methods of Teaching Art K-12",
+          "codes": [
+            "ART-330"
+          ]
+        },
+        {
+          "id": "edu310",
+          "title": "Methods of Secondary Business Education (WE)",
+          "codes": [
+            "EDU-310"
+          ]
+        },
+        {
+          "id": "edu311",
+          "title": "Methods of Secondary Language Arts (WE)",
+          "codes": [
+            "EDU-311"
+          ]
+        },
+        {
+          "id": "edu312",
+          "title": "Methods of Secondary Social Studies (WE)",
+          "codes": [
+            "EDU-312"
+          ]
+        },
+        {
+          "id": "edu313",
+          "title": "Methods of Secondary Mathematics (WE)",
+          "codes": [
+            "EDU-313"
+          ]
+        },
+        {
+          "id": "edu320",
+          "title": "Methods of Secondary Science (WE)",
+          "codes": [
+            "EDU-320"
+          ]
+        },
+        {
+          "id": "edu321",
+          "title": "Methods of World Language K-12 (WE)",
+          "codes": [
+            "EDU-321"
+          ]
+        },
+        {
+          "id": "kin415",
+          "title": "Methods of Teaching Secondary School Physical Education and Health",
+          "codes": [
+            "KIN-415"
+          ]
+        },
+        {
+          "id": "mu361",
+          "title": "Choral Music Methods",
+          "codes": [
+            "MU-361"
+          ]
+        },
+        {
+          "id": "mu363",
+          "title": "Instrumental Music Methods",
+          "codes": [
+            "MU-363"
+          ]
+        }
+      ]
+    }
+  ]
+}

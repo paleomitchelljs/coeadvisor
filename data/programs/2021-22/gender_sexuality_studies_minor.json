@@ -1,0 +1,53 @@
+{
+  "id": "gender_sexuality_studies_minor_2021-22",
+  "name": "Gender and Sexuality Studies",
+  "program_type": "minor",
+  "catalog_year": "2021-22",
+  "major_code": "GS",
+  "source": "Academic Catalog 2021-22, p. 125",
+  "note": "Requires a minimum cumulative 2.0 GPA in all courses counted toward the minor.",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "gs107", "title": "Introduction to Gender and Sexuality Studies (WE)", "codes": ["GS-107"]},
+        {"id": "gs327", "title": "Theory and Methods in Gender and Sexuality Studies (WE)", "codes": ["GS-327"]}
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Four Electives (at least three Core)",
+      "type": "choose_n",
+      "n": 4,
+      "description": "Four electives from the lists below, with at least three from the list of core courses. Other courses may count as electives when topics are appropriate with the consent of the academic coordinator.",
+      "options": [
+        {"id": "arh107", "title": "Gender and Art", "codes": ["ARH-107"]},
+        {"id": "com357", "title": "Sex, Race, and Gender in the Media (WE)", "codes": ["COM-357"]},
+        {"id": "eng206", "title": "Gender and Literature: Non-western Perspectives (WE)", "codes": ["ENG-206"]},
+        {"id": "eng207", "title": "Gender and Literature: United States Pluralism (WE)", "codes": ["ENG-207"]},
+        {"id": "eng208", "title": "Gender and Literature: Diverse Western Perspectives (WE)", "codes": ["ENG-208"]},
+        {"id": "gs127", "title": "Dress, Gender, and Identity", "codes": ["GS-127"]},
+        {"id": "gs136", "title": "Gender in the Non-Western World", "codes": ["GS-136"]},
+        {"id": "gs247", "title": "Gender and Sexuality Studies Symposium", "codes": ["GS-247"]},
+        {"id": "gs387", "title": "Topics in Gender and Sexuality Studies (WE)", "codes": ["GS-387"]},
+        {"id": "his297", "title": "Women in America (WE)", "codes": ["HIS-297"]},
+        {"id": "nur137", "title": "Human Sexuality", "codes": ["NUR-137", "PSY-137"]},
+        {"id": "phl277", "title": "Philosophy of Gender and Race (WE)", "codes": ["PHL-277"]},
+        {"id": "pol277", "title": "Women and Politics in the United States (WE)", "codes": ["POL-277"]},
+        {"id": "psy208", "title": "Gender Psychology", "codes": ["PSY-208"]},
+        {"id": "soc417", "title": "Sociology of Sex & Sexuality", "codes": ["SOC-417"]},
+        {"id": "ant117", "title": "Cultural Anthropology", "codes": ["ANT-117"]},
+        {"id": "com236", "title": "Intercultural Communication (WE)", "codes": ["COM-236"]},
+        {"id": "com237", "title": "Interpersonal Communication (WE)", "codes": ["COM-237"]},
+        {"id": "com361", "title": "Communication and Social Change", "codes": ["COM-361"]},
+        {"id": "edu187", "title": "Human Relations (WE)", "codes": ["EDU-187"]},
+        {"id": "rhe377", "title": "Cultural Studies (WE)", "codes": ["RHE-377"]},
+        {"id": "scj350", "title": "Human Rights and Comparative Justice Systems", "codes": ["SCJ-350"]},
+        {"id": "soc207", "title": "Sociology of the Family", "codes": ["SOC-207"]},
+        {"id": "the288", "title": "History of Dress (WE)", "codes": ["THE-288"]}
+      ]
+    }
+  ]
+}

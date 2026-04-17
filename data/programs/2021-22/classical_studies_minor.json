@@ -1,0 +1,37 @@
+{
+  "id": "classical_studies_minor_2021-22",
+  "name": "Classical Studies",
+  "program_type": "minor",
+  "catalog_year": "2021-22",
+  "major_code": "CLA",
+  "source": "Academic Catalog 2021-22, p. 95",
+  "sections": [
+    {
+      "id": "courses",
+      "label": "Six Courses",
+      "type": "choose_n",
+      "n": 6,
+      "description": "Six courses chosen in consultation with the Classical Studies administrative coordinator.",
+      "options": [
+        {"id": "ant125", "title": "Art and Archaeology of the Classical World", "codes": ["ANT-125"]},
+        {"id": "cla108", "title": "Images of Foreign Culture", "codes": ["CLA-108"]},
+        {"id": "cla155", "title": "Latin and Greek Origins of Medical Terminology", "codes": ["CLA-155"]},
+        {"id": "cla284", "title": "Topics in Classical Studies", "codes": ["CLA-284"]},
+        {"id": "eng110", "title": "Ancient Mythology", "codes": ["ENG-110"]},
+        {"id": "eng115", "title": "The Classical Tradition", "codes": ["ENG-115"]},
+        {"id": "grk115", "title": "Basic Greek", "codes": ["GRK-115"]},
+        {"id": "grk125", "title": "Selected Readings in Ancient Greek", "codes": ["GRK-125"]},
+        {"id": "grk284", "title": "Topics in Greek", "codes": ["GRK-284"]},
+        {"id": "his275", "title": "Ancient Greek History (WE)", "codes": ["HIS-275"]},
+        {"id": "his285", "title": "History of Ancient Rome (WE)", "codes": ["HIS-285"]},
+        {"id": "his318", "title": "Topics in History: Diverse Western Perspectives (WE)", "codes": ["HIS-318"]},
+        {"id": "cla120", "title": "Greek Civilization", "codes": ["CLA-120"]},
+        {"id": "cla130", "title": "Roman Civilization", "codes": ["CLA-130"]},
+        {"id": "ltn115", "title": "Basic Latin", "codes": ["LTN-115"]},
+        {"id": "ltn125", "title": "Selected Readings in Latin", "codes": ["LTN-125"]},
+        {"id": "ltn284", "title": "Topics in Latin", "codes": ["LTN-284"]},
+        {"id": "phl220", "title": "Ancient Greek Philosophy (WE)", "codes": ["PHL-220"]}
+      ]
+    }
+  ]
+}

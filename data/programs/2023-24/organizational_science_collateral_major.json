@@ -1,0 +1,64 @@
+{
+  "id": "organizational_science_collateral_major_2023-24",
+  "name": "Organizational Science",
+  "program_type": "collateral",
+  "catalog_year": "2023-24",
+  "major_code": "PSY",
+  "source": "Academic Catalog 2023-24, p. 165",
+  "note": "Requires a minimum cumulative 2.0 GPA. Concurrent completion of a primary major in psychology is required.",
+  "sections": [
+    {
+      "id": "quantitative",
+      "label": "Quantitative/Methodological Core",
+      "type": "all",
+      "items": [
+        {"id": "bus340", "title": "Applied Regression Analysis", "codes": ["BUS-340"]},
+        {"id": "psy475", "title": "Testing and Measurement", "codes": ["PSY-475"]}
+      ]
+    },
+    {
+      "id": "organizational_core",
+      "label": "Organizational Core Courses",
+      "type": "all",
+      "items": [
+        {"id": "bus300", "title": "Human Resource Management", "codes": ["BUS-300"]},
+        {"id": "bus315", "title": "Business Law I", "codes": ["BUS-315"]},
+        {"id": "psy245", "title": "Organizational Psychology", "codes": ["PSY-245"]},
+        {"id": "psy465", "title": "Industrial Psychology", "codes": ["PSY-465"]}
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Four Elective Courses",
+      "type": "choose_n",
+      "n": 4,
+      "description": "Four elective courses from the two lists below. At least two from List A (Business). No more than two from List B (Psychology).",
+      "options": [
+        {"id": "bus250", "title": "Principles of Management", "codes": ["BUS-250"]},
+        {"id": "bus375", "title": "Business Ethics (WE)", "codes": ["BUS-375"]},
+        {"id": "bus387", "title": "Advanced Topics in Human Resource Management", "codes": ["BUS-387"]},
+        {"id": "bus395", "title": "Organizational Behavior", "codes": ["BUS-395"]},
+        {"id": "bus410", "title": "Business Law II", "codes": ["BUS-410"]},
+        {"id": "bus437", "title": "Strategic Compensation", "codes": ["BUS-437"]},
+        {"id": "bus457", "title": "Employment and Discrimination Law", "codes": ["BUS-457"]},
+        {"id": "bus464", "title": "Seminar in Management (WE)", "codes": ["BUS-464"]},
+        {"id": "psy255", "title": "Social Psychology", "codes": ["PSY-255"]},
+        {"id": "psy315", "title": "Learning and Behavior", "codes": ["PSY-315"]},
+        {"id": "psy355", "title": "Personality", "codes": ["PSY-355"]},
+        {"id": "psy464", "title": "Seminar in Psychology (WE)", "codes": ["PSY-464"]}
+      ]
+    },
+    {
+      "id": "capstone",
+      "label": "Capstone Experience",
+      "type": "choose_one",
+      "description": "One of the following, subject to prior approval by the Organizational Science administrative coordinator.",
+      "options": [
+        {"id": "bus454", "title": "Research in Business", "codes": ["BUS-454"]},
+        {"id": "bus494", "title": "Internship in Business", "codes": ["BUS-494"]},
+        {"id": "psy455", "title": "Advanced Experimental Psychology", "codes": ["PSY-455"]},
+        {"id": "psy494", "title": "Internship in Psychology", "codes": ["PSY-494"]}
+      ]
+    }
+  ]
+}

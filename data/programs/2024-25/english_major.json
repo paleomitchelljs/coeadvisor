@@ -1,0 +1,99 @@
+{
+  "id": "english_major_2024-25",
+  "name": "English",
+  "program_type": "major",
+  "catalog_year": "2024-25",
+  "major_code": "ENG",
+  "source": "Academic Catalog 2024-25, pp. 135-136",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "eng111",
+          "title": "Introduction to Literary Studies: The Art of Reading and Writing (WE)",
+          "codes": [
+            "ENG-111"
+          ]
+        },
+        {
+          "id": "eng281",
+          "title": "Literatures in English to 1800 (WE)",
+          "codes": [
+            "ENG-281"
+          ]
+        },
+        {
+          "id": "eng291",
+          "title": "Literatures in English after 1800 (WE)",
+          "codes": [
+            "ENG-291"
+          ]
+        },
+        {
+          "id": "eng301",
+          "title": "The Art of Literary Research (WE)",
+          "codes": [
+            "ENG-301"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "upper_eng",
+      "label": "Three English Courses (305+)",
+      "type": "open_n",
+      "n": 3,
+      "description": "Three English courses numbered 305 or above. One must be in British literature before 1800. COM-377 Language, Power, and Social Change (WE) can count for this requirement.",
+      "constraints": {
+        "prefixes": [
+          "ENG"
+        ],
+        "min_level": 305,
+        "min_level_count": 3,
+        "exclude_codes": [
+          "ENG-111",
+          "ENG-281",
+          "ENG-291",
+          "ENG-301"
+        ]
+      }
+    },
+    {
+      "id": "electives",
+      "label": "Two Additional Credits",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two credits from: additional English courses, one Creative Writing course, one 1.0 credit Spanish literature in translation (SPA-148), 1.0 ECC credit, COM-267 Environmental Communication (WE), or COM-377 Language, Power, and Social Change (WE).",
+      "constraints": {
+        "prefixes": [
+          "ENG",
+          "CRW"
+        ]
+      }
+    },
+    {
+      "id": "seminar",
+      "label": "Senior Seminar",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "eng464",
+          "title": "Seminar in Literature (WE)",
+          "codes": [
+            "ENG-464"
+          ]
+        },
+        {
+          "id": "eng467",
+          "title": "Seminar in Literature: United States Pluralism (WE)",
+          "codes": [
+            "ENG-467"
+          ]
+        }
+      ]
+    }
+  ]
+}

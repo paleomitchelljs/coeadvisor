@@ -1,0 +1,195 @@
+{
+  "id": "health_society_studies_minor_2024-25",
+  "name": "Health and Society Studies",
+  "program_type": "minor",
+  "catalog_year": "2024-25",
+  "major_code": "HSS",
+  "source": "Academic Catalog 2024-25, pp. 147-148",
+  "note": "Only one course from a student's major or collateral major can count towards the minor.",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "phl200",
+          "title": "Biomedical Ethics (WE)",
+          "codes": [
+            "PHL-200"
+          ]
+        },
+        {
+          "id": "soc107",
+          "title": "Introductory Sociology",
+          "codes": [
+            "SOC-107"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "biology",
+      "label": "One Biology Course",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "bio103",
+          "title": "Anatomy and Physiology",
+          "codes": [
+            "BIO-103"
+          ]
+        },
+        {
+          "id": "bio120",
+          "title": "Biology, Health & Society",
+          "codes": [
+            "BIO-120"
+          ]
+        },
+        {
+          "id": "bio155",
+          "title": "Organismal and Ecological Biology",
+          "codes": [
+            "BIO-155"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Three Elective Courses",
+      "type": "choose_n",
+      "n": 3,
+      "description": "Three elective courses from the list below. Only one may be a 100-level course.",
+      "options": [
+        {
+          "id": "ant116",
+          "title": "Cultural Anthropology",
+          "codes": [
+            "ANT-116"
+          ]
+        },
+        {
+          "id": "cla155",
+          "title": "Latin/Greek Origins of Medical Terminology",
+          "codes": [
+            "CLA-155"
+          ]
+        },
+        {
+          "id": "com137",
+          "title": "Interpersonal Communication",
+          "codes": [
+            "COM-137"
+          ]
+        },
+        {
+          "id": "com236",
+          "title": "Intercultural Communication",
+          "codes": [
+            "COM-236"
+          ]
+        },
+        {
+          "id": "com332",
+          "title": "Health Communication",
+          "codes": [
+            "COM-332"
+          ]
+        },
+        {
+          "id": "kin115",
+          "title": "Fundamentals in Exercise and Nutrition",
+          "codes": [
+            "KIN-115"
+          ]
+        },
+        {
+          "id": "kin125",
+          "title": "Public & Consumer Health",
+          "codes": [
+            "KIN-125"
+          ]
+        },
+        {
+          "id": "kin155",
+          "title": "Substance Abuse",
+          "codes": [
+            "KIN-155"
+          ]
+        },
+        {
+          "id": "phl128",
+          "title": "Morality and Moral Controversies",
+          "codes": [
+            "PHL-128"
+          ]
+        },
+        {
+          "id": "eco247",
+          "title": "Health Economics",
+          "codes": [
+            "ECO-247"
+          ]
+        },
+        {
+          "id": "phy321",
+          "title": "Health Physics",
+          "codes": [
+            "PHY-321"
+          ]
+        },
+        {
+          "id": "psy205",
+          "title": "Developmental Psychology",
+          "codes": [
+            "PSY-205"
+          ]
+        },
+        {
+          "id": "psy235",
+          "title": "Abnormal Psychology",
+          "codes": [
+            "PSY-235"
+          ]
+        },
+        {
+          "id": "psy325",
+          "title": "Health Psychology",
+          "codes": [
+            "PSY-325"
+          ]
+        },
+        {
+          "id": "psy350",
+          "title": "Drugs and Behavior",
+          "codes": [
+            "PSY-350"
+          ]
+        },
+        {
+          "id": "soc257",
+          "title": "Sociology of Health & Medicine",
+          "codes": [
+            "SOC-257"
+          ]
+        },
+        {
+          "id": "spa339",
+          "title": "Spanish for Healthcare",
+          "codes": [
+            "SPA-339"
+          ]
+        },
+        {
+          "id": "hss494",
+          "title": "Health Professions Externship",
+          "codes": [
+            "HSS-494"
+          ]
+        }
+      ]
+    }
+  ]
+}

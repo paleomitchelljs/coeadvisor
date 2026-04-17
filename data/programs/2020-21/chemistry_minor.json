@@ -1,0 +1,30 @@
+{
+  "id": "chemistry_minor_2020-21",
+  "name": "Chemistry",
+  "program_type": "minor",
+  "catalog_year": "2020-21",
+  "major_code": "CHM",
+  "source": "Academic Catalog 2020-21, p. 91",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "chm121", "title": "General Chemistry I & Laboratory", "codes": ["CHM-121", "CHM-121L"]},
+        {"id": "chm122", "title": "General Chemistry II & Laboratory", "codes": ["CHM-122", "CHM-122L"]}
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Four Chemistry Electives (200+)",
+      "type": "open_n",
+      "n": 4,
+      "description": "Four chemistry electives numbered 200 or above.",
+      "constraints": {
+        "prefixes": ["CHM"],
+        "min_number": 200
+      }
+    }
+  ]
+}

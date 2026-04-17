@@ -1,0 +1,47 @@
+{
+  "id": "interdisciplinary_science_major_2023-24",
+  "name": "Interdisciplinary Science",
+  "program_type": "major",
+  "catalog_year": "2023-24",
+  "major_code": "SCI",
+  "source": "Academic Catalog 2023-24, p. 148",
+  "note": "A minimum cumulative 2.0 GPA is required in all courses counted toward the major. Students earning a major in the Natural Sciences are not eligible for the Interdisciplinary Science major. At least five of the eleven course credits must be above the introductory level.",
+  "sections": [
+    {
+      "id": "primary",
+      "label": "Five Courses in Primary Natural Science Area",
+      "type": "open_n",
+      "n": 5,
+      "description": "Five course credits in one of the four natural science areas (biology, chemistry, mathematics, physics).",
+      "constraints": {
+        "prefixes": ["BIO", "CHM", "MTH", "PHY"]
+      }
+    },
+    {
+      "id": "secondary",
+      "label": "Four Courses in Second Natural Science Field",
+      "type": "open_n",
+      "n": 4,
+      "description": "Four course credits in a second natural science field.",
+      "constraints": {
+        "prefixes": ["BIO", "CHM", "MTH", "PHY"]
+      }
+    },
+    {
+      "id": "tertiary",
+      "label": "Two Courses in Third Natural Science Field",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two course credits in a third natural science field.",
+      "constraints": {
+        "prefixes": ["BIO", "CHM", "MTH", "PHY"]
+      }
+    },
+    {
+      "id": "assessment",
+      "label": "Assessment Requirement",
+      "type": "non_course",
+      "description": "Satisfactory completion of assessment requirement."
+    }
+  ]
+}

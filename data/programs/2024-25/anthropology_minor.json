@@ -1,0 +1,79 @@
+{
+  "id": "anthropology_minor_2024-25",
+  "name": "Anthropology",
+  "program_type": "minor",
+  "catalog_year": "2024-25",
+  "major_code": "ANT",
+  "source": "Academic Catalog 2024-25, pp. 70-71",
+  "note": "Students must take at least one course focused on archaeology and one focused on anthropology. One SOC course may count toward requirements 3, 5, or 6.",
+  "sections": [
+    {
+      "id": "intro",
+      "label": "Introductory Course (choose one)",
+      "type": "choose_one",
+      "options": [
+        {"id": "ant109", "title": "Introduction to Archaeology: Method and Theory", "codes": ["ANT-109"]},
+        {"id": "ant116", "title": "Cultural Anthropology", "codes": ["ANT-116"]}
+      ]
+    },
+    {
+      "id": "methods",
+      "label": "Methods Course (choose one)",
+      "type": "choose_one",
+      "options": [
+        {"id": "ant208", "title": "Archaeological Field School", "codes": ["ANT-208"]},
+        {"id": "ant315", "title": "Qualitative Research Methods (WE)", "codes": ["ANT-315"]}
+      ]
+    },
+    {
+      "id": "mid_level",
+      "label": "One Mid-Level Course (choose one)",
+      "type": "choose_one",
+      "options": [
+        {"id": "ant204", "title": "Food and Culture", "codes": ["ANT-204"]},
+        {"id": "ant214", "title": "Archaeology and Anthropology of Death", "codes": ["ANT-214"]},
+        {"id": "ant216", "title": "Cultural Performance", "codes": ["ANT-216"]},
+        {"id": "ant224", "title": "Place, Meaning, and Identity", "codes": ["ANT-224"]},
+        {"id": "ant234", "title": "Globalization", "codes": ["ANT-234"]},
+        {"id": "ant206", "title": "Russia", "codes": ["ANT-206"]},
+        {"id": "ant284", "title": "Topics in Anthropology", "codes": ["ANT-284"]},
+        {"id": "ant285", "title": "Topics in Archaeology", "codes": ["ANT-285"]},
+        {"id": "ant286", "title": "Topics in Anthropology: Non-Western Perspectives", "codes": ["ANT-286"]},
+        {"id": "ant288", "title": "Topics in Anthropology Archaeology: Diverse Western Perspectives", "codes": ["ANT-288"]},
+        {"id": "ant298", "title": "Topics in Archaeology: Diverse Western Perspectives", "codes": ["ANT-298"]}
+      ]
+    },
+    {
+      "id": "theory",
+      "label": "Anthropological Theory",
+      "type": "all",
+      "items": [
+        {"id": "ant450", "title": "Anthropological Theory (WE)", "codes": ["ANT-450"]}
+      ]
+    },
+    {
+      "id": "advanced",
+      "label": "One Advanced Course (choose one)",
+      "type": "choose_one",
+      "options": [
+        {"id": "ant446", "title": "Memory (WE)", "codes": ["ANT-446"]},
+        {"id": "ant484", "title": "Advanced Topics in Anthropology (WE)", "codes": ["ANT-484"]},
+        {"id": "ant485", "title": "Advanced Topics in Archaeology (WE)", "codes": ["ANT-485"]},
+        {"id": "ant486", "title": "Advanced Topics in Anthropology: Non-Western Perspectives (WE)", "codes": ["ANT-486"]},
+        {"id": "ant488", "title": "Advanced Topics in Anthropology: Diverse Western Perspectives (WE)", "codes": ["ANT-488"]},
+        {"id": "ant498", "title": "Advanced Topics in Archaeology: Diverse Western Perspectives (WE)", "codes": ["ANT-498"]}
+      ]
+    },
+    {
+      "id": "elective",
+      "label": "One Additional Anthropology Course",
+      "type": "open_n",
+      "n": 1,
+      "description": "One additional anthropology course. ANT-474 Research Participation and ANT-494 Internship do not count.",
+      "constraints": {
+        "prefixes": ["ANT"],
+        "exclude_codes": ["ANT-474", "ANT-494"]
+      }
+    }
+  ]
+}

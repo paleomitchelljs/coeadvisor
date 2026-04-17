@@ -1,0 +1,31 @@
+{
+  "id": "communication_studies_minor_2023-24",
+  "name": "Communication Studies",
+  "program_type": "minor",
+  "catalog_year": "2023-24",
+  "major_code": "COM",
+  "source": "Academic Catalog 2023-24, p. 96",
+  "note": "A minimum cumulative 2.0 GPA is required in all courses counted toward the minor.",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "com125", "title": "Fundamentals of Public Speaking", "codes": ["COM-125"]},
+        {"id": "com381", "title": "Research Methods in Communication Studies (WE)", "codes": ["COM-381"]},
+        {"id": "rhe200", "title": "Rhetorical Theory and Practice", "codes": ["RHE-200"]}
+      ]
+    },
+    {
+      "id": "additional",
+      "label": "Two Additional Communication Studies Courses",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two additional Communication Studies courses (any of the courses that count toward the Communication Studies major or any COM prefix courses).",
+      "constraints": {
+        "prefixes": ["COM"]
+      }
+    }
+  ]
+}

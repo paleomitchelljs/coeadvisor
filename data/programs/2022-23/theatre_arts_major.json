@@ -1,0 +1,153 @@
+{
+  "id": "theatre_arts_major_2022-23",
+  "name": "Theatre Arts",
+  "program_type": "major",
+  "catalog_year": "2022-23",
+  "major_code": "THE",
+  "source": "Academic Catalog 2022-23, pp. 200-201",
+  "note": "Requires a minimum cumulative 2.0 GPA. All majors must present an audition piece or portfolio for annual review beginning in their second year. Students select one of five emphases: General, Acting, Directing, Musical Theatre, or Technical Theatre/Design.",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Theatre Arts Core Courses",
+      "type": "all",
+      "items": [
+        {"id": "the102", "title": "Theatre Production Lab", "codes": ["THE-102"]},
+        {"id": "the130", "title": "Technical Production I", "codes": ["THE-130"]},
+        {"id": "the140", "title": "Design for the Stage", "codes": ["THE-140"]},
+        {"id": "the150", "title": "Acting I", "codes": ["THE-150"]},
+        {"id": "the228", "title": "History of Theatre and Drama I (WE)", "codes": ["THE-228"]},
+        {"id": "the238", "title": "History of Theatre and Drama II (WE)", "codes": ["THE-238"]},
+        {"id": "the290", "title": "Directing I (WE)", "codes": ["THE-290"]},
+        {"id": "the464", "title": "Senior Seminar", "codes": ["THE-464"]}
+      ]
+    }
+  ],
+  "concentrations": [
+    {
+      "id": "general",
+      "label": "General",
+      "sections": [
+        {
+          "id": "gen_additional",
+          "label": "Three Additional Theatre Arts Courses",
+          "type": "open_n",
+          "n": 3,
+          "description": "Three additional course credits of theatre arts, chosen with departmental approval.",
+          "constraints": {
+            "prefixes": ["THE"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "acting",
+      "label": "Acting",
+      "sections": [
+        {
+          "id": "act_required",
+          "label": "Required Courses",
+          "type": "all",
+          "items": [
+            {"id": "the170", "title": "Voice and Diction", "codes": ["THE-170"]},
+            {"id": "the250", "title": "Acting II", "codes": ["THE-250"]}
+          ]
+        },
+        {
+          "id": "act_elective",
+          "label": "One Acting/Performance Elective",
+          "type": "choose_one",
+          "options": [
+            {"id": "the160", "title": "Movement for the Stage", "codes": ["THE-160"]},
+            {"id": "the260", "title": "Acting for the Camera", "codes": ["THE-260"]},
+            {"id": "the270", "title": "Musical Theatre Acting", "codes": ["THE-270"]},
+            {"id": "the350", "title": "Advanced Acting: Shakespeare", "codes": ["THE-350"]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "directing",
+      "label": "Directing",
+      "sections": [
+        {
+          "id": "dir_required",
+          "label": "Required Courses",
+          "type": "all",
+          "items": [
+            {"id": "the250", "title": "Acting II", "codes": ["THE-250"]},
+            {"id": "the390", "title": "Directing II (WE)", "codes": ["THE-390"]}
+          ]
+        },
+        {
+          "id": "dir_elective",
+          "label": "One Additional Course in Acting or Design",
+          "type": "open_n",
+          "n": 1,
+          "description": "One additional course in acting or design.",
+          "constraints": {
+            "prefixes": ["THE"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "musical_theatre",
+      "label": "Musical Theatre",
+      "sections": [
+        {
+          "id": "mt_required",
+          "label": "Required Courses",
+          "type": "all",
+          "items": [
+            {"id": "mu109", "title": "Theory of Music I", "codes": ["MU-109"]},
+            {"id": "the170", "title": "Voice and Diction", "codes": ["THE-170"]},
+            {"id": "the270", "title": "Musical Theatre Acting", "codes": ["THE-270"]}
+          ]
+        },
+        {
+          "id": "mt_voice",
+          "label": "Voice Lessons",
+          "type": "non_course",
+          "description": "Four terms of MUA-202V Voice Lessons (0.6 cc each)."
+        },
+        {
+          "id": "mt_practicum",
+          "label": "One Practical Musical Theatre Credit",
+          "type": "choose_one",
+          "description": "One additional course credit in practical musical theatre.",
+          "options": [
+            {"id": "mua130v", "title": "Musical Theatre Practicum", "codes": ["MUA-130V"]},
+            {"id": "mua131v", "title": "Opera Workshop", "codes": ["MUA-131V"]}
+          ]
+        },
+        {
+          "id": "mt_dance",
+          "label": "Dance Courses",
+          "type": "non_course",
+          "description": "Six seven-week dance courses (DAN-101 through DAN-142) (0.2 cc each)."
+        }
+      ]
+    },
+    {
+      "id": "technical_design",
+      "label": "Technical Theatre/Design",
+      "sections": [
+        {
+          "id": "td_electives",
+          "label": "Three Technical/Design Courses",
+          "type": "choose_n",
+          "n": 3,
+          "options": [
+            {"id": "the220", "title": "Lighting Design", "codes": ["THE-220"]},
+            {"id": "the230", "title": "Technical Production II", "codes": ["THE-230"]},
+            {"id": "the232", "title": "Computer-Aided Drafting and Design", "codes": ["THE-232"]},
+            {"id": "the242", "title": "Scene Design", "codes": ["THE-242"]},
+            {"id": "the280", "title": "Costume Design", "codes": ["THE-280"]},
+            {"id": "the288", "title": "History of Dress (WE)", "codes": ["THE-288"]}
+          ]
+        }
+      ]
+    }
+  ]
+}

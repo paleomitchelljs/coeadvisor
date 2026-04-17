@@ -1,0 +1,47 @@
+{
+  "id": "communication_studies_minor_2024-25",
+  "name": "Communication Studies",
+  "program_type": "minor",
+  "catalog_year": "2024-25",
+  "major_code": "COM",
+  "source": "Academic Catalog 2024-25, pp. 113-114",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "com101",
+          "title": "Introduction to Communication Studies",
+          "codes": [
+            "COM-101"
+          ]
+        },
+        {
+          "id": "com125",
+          "title": "Fundamentals of Public Speaking",
+          "codes": [
+            "COM-125"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Three Additional COM Courses",
+      "type": "open_n",
+      "n": 3,
+      "description": "Three additional courses with a COM prefix. Students may count up to 1.0 credits with ECC prefix toward this requirement, including ECC-494.",
+      "constraints": {
+        "prefixes": [
+          "COM"
+        ],
+        "exclude_codes": [
+          "COM-101",
+          "COM-125"
+        ]
+      }
+    }
+  ]
+}

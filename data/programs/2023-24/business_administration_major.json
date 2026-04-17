@@ -1,0 +1,163 @@
+{
+  "id": "business_administration_major_2023-24",
+  "name": "Business Administration",
+  "program_type": "major",
+  "catalog_year": "2023-24",
+  "major_code": "BUS",
+  "source": "Academic Catalog 2023-24, pp. 78-79",
+  "note": "Requires a minimum cumulative 2.0 GPA in all courses counted toward the major. Only one of Business Administration or International Business may be elected.",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "acc171", "title": "Principles of Accounting I", "codes": ["ACC-171"]},
+        {"id": "eco175", "title": "Principles of Macroeconomics", "codes": ["ECO-175"]},
+        {"id": "bus190", "title": "Statistical Analysis (WE)", "codes": ["BUS-190"]},
+        {"id": "acc215", "title": "Principles of Accounting II", "codes": ["ACC-215"]},
+        {"id": "eco215", "title": "Principles of Microeconomics", "codes": ["ECO-215"]},
+        {"id": "bus315", "title": "Business Law I", "codes": ["BUS-315"]}
+      ]
+    },
+    {
+      "id": "management",
+      "label": "One Management Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "bus250", "title": "Principles of Management", "codes": ["BUS-250"]},
+        {"id": "bus300", "title": "Human Resource Management", "codes": ["BUS-300"]},
+        {"id": "bus387", "title": "Advanced Topics in Human Resource Management", "codes": ["BUS-387"]},
+        {"id": "bus470", "title": "Strategic Management (WE)", "codes": ["BUS-470"]}
+      ]
+    },
+    {
+      "id": "marketing",
+      "label": "One Marketing Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "bus330", "title": "Principles of Marketing (WE)", "codes": ["BUS-330"]},
+        {"id": "bus460", "title": "Advertising (WE)", "codes": ["BUS-460"]},
+        {"id": "bus465", "title": "Advanced Topics in Marketing", "codes": ["BUS-465"]},
+        {"id": "bus467", "title": "Consumer Behavior", "codes": ["BUS-467"]}
+      ]
+    },
+    {
+      "id": "finance",
+      "label": "One Finance Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "eco225", "title": "Money and Banking", "codes": ["ECO-225"]},
+        {"id": "bus350", "title": "Principles of Finance", "codes": ["BUS-350"]},
+        {"id": "bus352", "title": "Corporate Finance", "codes": ["BUS-352"]},
+        {"id": "bus495", "title": "Investment Analysis", "codes": ["BUS-495"]},
+        {"id": "eco495", "title": "International Finance", "codes": ["ECO-495"]}
+      ]
+    },
+    {
+      "id": "additional",
+      "label": "Two Additional Business Courses (200+)",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two additional business courses numbered 200 or above.",
+      "constraints": {
+        "prefixes": ["BUS", "ACC", "ECO", "SMT"],
+        "min_number": 200
+      }
+    }
+  ],
+  "concentrations": [
+    {
+      "id": "management_concentration",
+      "name": "Management Concentration",
+      "note": "Requires completion of Business Administration major plus five additional courses with a cumulative 2.0 GPA. At least three of the five must be completed at Coe.",
+      "sections": [
+        {
+          "id": "mgmt_required",
+          "label": "Required Course",
+          "type": "all",
+          "items": [
+            {"id": "bus275", "title": "Principles of Management", "codes": ["BUS-275"]}
+          ]
+        },
+        {
+          "id": "mgmt_electives",
+          "label": "Four Elective Courses",
+          "type": "choose_n",
+          "n": 4,
+          "options": [
+            {"id": "bus300c", "title": "Human Resource Management", "codes": ["BUS-300"]},
+            {"id": "bus375", "title": "Business Ethics (WE)", "codes": ["BUS-375"]},
+            {"id": "bus387c", "title": "Advanced Topics in HR Management", "codes": ["BUS-387"]},
+            {"id": "bus395", "title": "Organizational Behavior", "codes": ["BUS-395"]},
+            {"id": "bus446", "title": "International Business Management", "codes": ["BUS-446"]},
+            {"id": "bus464", "title": "Seminar in Management (WE)", "codes": ["BUS-464"]},
+            {"id": "bus454m", "title": "Research in Business (management topic)", "codes": ["BUS-454"]},
+            {"id": "bus470c", "title": "Strategic Management (WE)", "codes": ["BUS-470"]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "marketing_concentration",
+      "name": "Marketing Concentration",
+      "note": "Requires completion of Business Administration major plus five additional courses with a cumulative 2.0 GPA. At least three of the five must be completed at Coe.",
+      "sections": [
+        {
+          "id": "mktg_required",
+          "label": "Required Course",
+          "type": "all",
+          "items": [
+            {"id": "bus355", "title": "Marketing", "codes": ["BUS-355"]}
+          ]
+        },
+        {
+          "id": "mktg_electives",
+          "label": "Four Elective Courses",
+          "type": "choose_n",
+          "n": 4,
+          "options": [
+            {"id": "bus280_281", "title": "Computer Applications: Business Websites AND Social Media", "codes": ["BUS-280", "BUS-281"]},
+            {"id": "bus420", "title": "Sports Marketing and Communications", "codes": ["BUS-420"]},
+            {"id": "bus460c", "title": "Advertising (WE)", "codes": ["BUS-460"]},
+            {"id": "bus461", "title": "Marketing Decision-Making and Analysis (WE)", "codes": ["BUS-461"]},
+            {"id": "bus465c", "title": "Advanced Topics in Marketing", "codes": ["BUS-465"]},
+            {"id": "bus470mc", "title": "Strategic Management (WE)", "codes": ["BUS-470"]},
+            {"id": "bus454k", "title": "Research in Business (marketing topic)", "codes": ["BUS-454"]},
+            {"id": "pr205", "title": "Public Relations (WE)", "codes": ["PR-205"]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sports_management_concentration",
+      "name": "Sports Management Concentration",
+      "note": "Requires completion of Business Administration major plus five additional courses with a cumulative 2.0 GPA. At least three of the five must be completed at Coe.",
+      "sections": [
+        {
+          "id": "smt_required",
+          "label": "Required Course",
+          "type": "all",
+          "items": [
+            {"id": "smt100", "title": "Introduction to Sports Management", "codes": ["SMT-100"]}
+          ]
+        },
+        {
+          "id": "smt_electives",
+          "label": "Four Elective Courses",
+          "type": "choose_n",
+          "n": 4,
+          "options": [
+            {"id": "bus400", "title": "Legal Issues in Sports", "codes": ["BUS-400"]},
+            {"id": "bus420s", "title": "Sports Marketing and Communication", "codes": ["BUS-420"]},
+            {"id": "bus454s", "title": "Research in Business (sports management topic)", "codes": ["BUS-454"]},
+            {"id": "eco125", "title": "Sports Analytics", "codes": ["ECO-125"]},
+            {"id": "smt300", "title": "Sport/Recreation Event Management", "codes": ["SMT-300"]},
+            {"id": "smt454", "title": "Seminar in Sports Management", "codes": ["SMT-454"]},
+            {"id": "smt494", "title": "Internship in Sports Management", "codes": ["SMT-494"]}
+          ]
+        }
+      ]
+    }
+  ]
+}

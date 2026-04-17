@@ -1,0 +1,139 @@
+{
+  "id": "theatre_arts_minor_2024-25",
+  "name": "Theatre Arts",
+  "program_type": "minor",
+  "catalog_year": "2024-25",
+  "major_code": "THE",
+  "source": "Academic Catalog 2024-25, p. 218",
+  "note": "Six full-credit-equivalent course credits. THE-102 (0.25cc) and THE-112 (0.50cc) may be combined for full credit equivalents. THE-185 may be taken once for minor credit.",
+  "sections": [
+    {
+      "id": "courses",
+      "label": "Six Theatre Arts Courses",
+      "type": "choose_n",
+      "n": 6,
+      "options": [
+        {
+          "id": "the100",
+          "title": "Introduction to Theatre",
+          "codes": [
+            "THE-100"
+          ]
+        },
+        {
+          "id": "the102",
+          "title": "Theatre Production Lab (0.25cc each)",
+          "codes": [
+            "THE-102"
+          ]
+        },
+        {
+          "id": "the112",
+          "title": "Production Experience (0.50cc each)",
+          "codes": [
+            "THE-112"
+          ]
+        },
+        {
+          "id": "the130",
+          "title": "Technical Production I",
+          "codes": [
+            "THE-130"
+          ]
+        },
+        {
+          "id": "the140",
+          "title": "Design for the Stage",
+          "codes": [
+            "THE-140"
+          ]
+        },
+        {
+          "id": "the150",
+          "title": "Acting I",
+          "codes": [
+            "THE-150"
+          ]
+        },
+        {
+          "id": "the162",
+          "title": "Stage Make-Up",
+          "codes": [
+            "THE-162"
+          ]
+        },
+        {
+          "id": "the185",
+          "title": "Production and Performance",
+          "codes": [
+            "THE-185"
+          ]
+        },
+        {
+          "id": "the220",
+          "title": "Lighting Design",
+          "codes": [
+            "THE-220"
+          ]
+        },
+        {
+          "id": "the255",
+          "title": "Playwriting Workshop I",
+          "codes": [
+            "THE-255",
+            "CRW-255"
+          ]
+        },
+        {
+          "id": "the283",
+          "title": "Arts Administration",
+          "codes": [
+            "THE-283"
+          ]
+        },
+        {
+          "id": "the288",
+          "title": "History of Dress",
+          "codes": [
+            "THE-288"
+          ]
+        },
+        {
+          "id": "the355",
+          "title": "Playwriting Workshop 2",
+          "codes": [
+            "THE-355"
+          ]
+        },
+        {
+          "id": "the444",
+          "title": "Independent Study in Theatre",
+          "codes": [
+            "THE-444"
+          ]
+        },
+        {
+          "id": "the455",
+          "title": "Playwriting 3",
+          "codes": [
+            "THE-455"
+          ]
+        },
+        {
+          "id": "the486",
+          "title": "Special Topics in Theatre",
+          "codes": [
+            "THE-486"
+          ]
+        },
+        {
+          "id": "the494",
+          "title": "Internship in Theatre",
+          "codes": [
+            "THE-494"
+          ]
+        }
+      ]
+    }
+  ]
+}

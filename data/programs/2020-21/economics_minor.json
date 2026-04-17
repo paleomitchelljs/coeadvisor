@@ -1,0 +1,70 @@
+{
+  "id": "economics_minor_2020-21",
+  "name": "Economics",
+  "program_type": "minor",
+  "catalog_year": "2020-21",
+  "major_code": "ECO",
+  "source": "Academic Catalog 2020-21, p. 87",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "eco175", "title": "Principles of Macroeconomics", "codes": ["ECO-175"]},
+        {"id": "eco215", "title": "Principles of Microeconomics", "codes": ["ECO-215"]}
+      ]
+    },
+    {
+      "id": "micro",
+      "label": "One Microeconomics Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "eco237", "title": "Labor Economics", "codes": ["ECO-237"]},
+        {"id": "eco247", "title": "Health Economics", "codes": ["ECO-247"]},
+        {"id": "eco345", "title": "Intermediate Microeconomics", "codes": ["ECO-345"]},
+        {"id": "eco446", "title": "International Economics", "codes": ["ECO-446"]},
+        {"id": "eco447", "title": "Urban Economics", "codes": ["ECO-447"]}
+      ]
+    },
+    {
+      "id": "macro",
+      "label": "One Macroeconomics Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "eco225", "title": "Money and Banking", "codes": ["ECO-225"]},
+        {"id": "eco315", "title": "Intermediate Macroeconomic Theory", "codes": ["ECO-315"]},
+        {"id": "eco336", "title": "Divergent Economic Growth", "codes": ["ECO-336"]},
+        {"id": "eco422", "title": "Macroeconomics Policy", "codes": ["ECO-422"]},
+        {"id": "eco495", "title": "International Finance", "codes": ["ECO-495"]}
+      ]
+    },
+    {
+      "id": "elective1",
+      "label": "One Additional Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "eco395", "title": "History of Economic Thought (WE)", "codes": ["ECO-395"]},
+        {"id": "eco424", "title": "Political Economy (WE)", "codes": ["ECO-424"]},
+        {"id": "eco435", "title": "Time Series Analysis", "codes": ["ECO-435"]},
+        {"id": "eco436", "title": "Economic Development", "codes": ["ECO-436"]},
+        {"id": "eco445", "title": "Econometrics II (WE)", "codes": ["ECO-445"]},
+        {"id": "eco457", "title": "U.S. Economic History", "codes": ["ECO-457"]},
+        {"id": "eco485", "title": "Mathematical Economics", "codes": ["ECO-485"]}
+      ]
+    },
+    {
+      "id": "elective2",
+      "label": "One Additional Course",
+      "type": "choose_one",
+      "description": "One of the following: BUS-340 Applied Regression Analysis, or an economics course numbered 200 or above.",
+      "options": [
+        {"id": "bus340", "title": "Applied Regression Analysis", "codes": ["BUS-340"]}
+      ],
+      "constraints": {
+        "also_accept_prefixes": ["ECO"],
+        "min_number": 200
+      }
+    }
+  ]
+}

@@ -1,0 +1,228 @@
+{
+  "id": "engineering_physics_bse_major_2024-25",
+  "name": "Engineering Physics (B.S.E.)",
+  "program_type": "major",
+  "catalog_year": "2024-25",
+  "major_code": "ENR",
+  "source": "Academic Catalog 2024-25, p. 189",
+  "note": "Students completing the B.S.E. in Engineering Physics cannot minor in Physics and cannot earn a B.A. with a major in physics.",
+  "sections": [
+    {
+      "id": "intro",
+      "label": "Introduction to Engineering",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "enr101",
+          "title": "Introduction to Engineering Design",
+          "codes": [
+            "ENR-101"
+          ]
+        },
+        {
+          "id": "ds100",
+          "title": "Data Driven Design",
+          "codes": [
+            "DS-100"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "enr101l",
+          "title": "Engineering Design Lab",
+          "codes": [
+            "ENR-101L"
+          ]
+        },
+        {
+          "id": "enr145",
+          "title": "Computational Methods for Physicists and Engineers",
+          "codes": [
+            "ENR-145"
+          ]
+        },
+        {
+          "id": "phy185",
+          "title": "General Physics I & Laboratory",
+          "codes": [
+            "PHY-185",
+            "PHY-185L"
+          ]
+        },
+        {
+          "id": "phy195",
+          "title": "General Physics II & Laboratory",
+          "codes": [
+            "PHY-195",
+            "PHY-195L"
+          ]
+        },
+        {
+          "id": "chm121",
+          "title": "General Chemistry I and Laboratory",
+          "codes": [
+            "CHM-121",
+            "CHM-121L"
+          ]
+        },
+        {
+          "id": "phy235",
+          "title": "Modern Physics & Advanced Lab 1",
+          "codes": [
+            "PHY-235",
+            "PHY-236"
+          ]
+        },
+        {
+          "id": "phy246",
+          "title": "Advanced Lab 2",
+          "codes": [
+            "PHY-246"
+          ]
+        },
+        {
+          "id": "phy265",
+          "title": "Electromagnetism",
+          "codes": [
+            "PHY-265"
+          ]
+        },
+        {
+          "id": "phy245",
+          "title": "Principles of Analog Electronics and Laboratory",
+          "codes": [
+            "PHY-245",
+            "PHY-245L"
+          ]
+        },
+        {
+          "id": "phy231",
+          "title": "Mathematical Methods for Engineering and Physicists",
+          "codes": [
+            "PHY-231"
+          ]
+        },
+        {
+          "id": "enr325",
+          "title": "Principles of Digital Electronics and Laboratory",
+          "codes": [
+            "ENR-325",
+            "ENR-325L"
+          ]
+        },
+        {
+          "id": "enr405",
+          "title": "Senior Design 1",
+          "codes": [
+            "ENR-405"
+          ]
+        },
+        {
+          "id": "enr415",
+          "title": "Senior Design 2",
+          "codes": [
+            "ENR-415"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "calculus",
+      "label": "Calculus Requirement",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "enr125",
+          "title": "Calculus for Engineers",
+          "codes": [
+            "ENR-125"
+          ]
+        },
+        {
+          "id": "mth135_145",
+          "title": "Calculus 1 & Calculus 2",
+          "codes": [
+            "MTH-135",
+            "MTH-145"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eng_electives",
+      "label": "Four Engineering Electives",
+      "type": "choose_n",
+      "n": 4,
+      "options": [
+        {
+          "id": "enr221",
+          "title": "Materials Science Engineering 1",
+          "codes": [
+            "ENR-221"
+          ]
+        },
+        {
+          "id": "enr321",
+          "title": "Materials Science Engineering 2",
+          "codes": [
+            "ENR-321"
+          ]
+        },
+        {
+          "id": "enr355",
+          "title": "Robotics and Sensors",
+          "codes": [
+            "ENR-355"
+          ]
+        },
+        {
+          "id": "phy275",
+          "title": "Classical Mechanics",
+          "codes": [
+            "PHY-275"
+          ]
+        },
+        {
+          "id": "phy311",
+          "title": "Renewable Energy",
+          "codes": [
+            "PHY-311"
+          ]
+        },
+        {
+          "id": "phy315",
+          "title": "Thermodynamics and Statistical Mechanics",
+          "codes": [
+            "PHY-315"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "final_req",
+      "label": "One Additional Requirement",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "chm122",
+          "title": "General Chemistry II and Laboratory",
+          "codes": [
+            "CHM-122",
+            "CHM-122L"
+          ]
+        },
+        {
+          "id": "phy_enr_150",
+          "title": "One full-credit Physics or Engineering Physics course (150+)",
+          "codes": []
+        }
+      ]
+    }
+  ]
+}

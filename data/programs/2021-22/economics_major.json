@@ -1,0 +1,79 @@
+{
+  "id": "economics_major_2021-22",
+  "name": "Economics",
+  "program_type": "major",
+  "catalog_year": "2021-22",
+  "major_code": "ECO",
+  "source": "Academic Catalog 2021-22, pp. 86-87",
+  "note": "Requires a minimum cumulative 2.0 GPA in all courses counted toward the major. Only one of Economics or International Economics may be elected.",
+  "sections": [
+    {
+      "id": "required",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {"id": "eco175", "title": "Principles of Macroeconomics", "codes": ["ECO-175"]},
+        {"id": "eco215", "title": "Principles of Microeconomics", "codes": ["ECO-215"]},
+        {"id": "eco315", "title": "Intermediate Macroeconomic Theory", "codes": ["ECO-315"]},
+        {"id": "eco345", "title": "Intermediate Microeconomics", "codes": ["ECO-345"]},
+        {"id": "eco375", "title": "Econometrics (WE)", "codes": ["ECO-375"]}
+      ]
+    },
+    {
+      "id": "micro_field",
+      "label": "One Microeconomics Field Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "eco237", "title": "Labor Economics", "codes": ["ECO-237"]},
+        {"id": "eco247", "title": "Health Economics", "codes": ["ECO-247"]},
+        {"id": "eco446", "title": "International Economics", "codes": ["ECO-446"]},
+        {"id": "eco447", "title": "Urban Economics", "codes": ["ECO-447"]}
+      ]
+    },
+    {
+      "id": "macro_field",
+      "label": "One Macroeconomics Field Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "eco225", "title": "Money and Banking", "codes": ["ECO-225"]},
+        {"id": "eco336", "title": "Divergent Economic Growth", "codes": ["ECO-336"]},
+        {"id": "eco422", "title": "Macroeconomics Policy", "codes": ["ECO-422"]},
+        {"id": "eco495", "title": "International Finance", "codes": ["ECO-495"]}
+      ]
+    },
+    {
+      "id": "quant_history",
+      "label": "One Quantitative or History Course",
+      "type": "choose_one",
+      "options": [
+        {"id": "eco435", "title": "Time Series Analysis", "codes": ["ECO-435"]},
+        {"id": "eco445", "title": "Econometrics II (WE)", "codes": ["ECO-445"]},
+        {"id": "eco485", "title": "Mathematical Economics", "codes": ["ECO-485"]},
+        {"id": "eco395", "title": "History of Economic Thought (WE)", "codes": ["ECO-395"]},
+        {"id": "eco424", "title": "Political Economy (WE)", "codes": ["ECO-424"]},
+        {"id": "eco457", "title": "U.S. Economic History", "codes": ["ECO-457"]}
+      ]
+    },
+    {
+      "id": "seminar",
+      "label": "One Seminar",
+      "type": "choose_one",
+      "options": [
+        {"id": "eco436", "title": "Economic Development", "codes": ["ECO-436"]},
+        {"id": "eco401", "title": "Seminar in Macroeconomics", "codes": ["ECO-401"]},
+        {"id": "eco402", "title": "Seminar in Microeconomics", "codes": ["ECO-402"]}
+      ]
+    },
+    {
+      "id": "additional",
+      "label": "Two Additional Economics Courses (200+, one 300+)",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two additional economics courses numbered 200 or higher, with at least one of the two numbered 300 or higher.",
+      "constraints": {
+        "prefixes": ["ECO"],
+        "min_number": 200
+      }
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "id": "german_major_2020-21",
+  "name": "German",
+  "program_type": "major",
+  "catalog_year": "2020-21",
+  "major_code": "GER",
+  "source": "Academic Catalog 2020-21, p. 127",
+  "note": "CLOSED: No students will be admitted to any German Program after May 8, 2019. A grade of C (2.0) or higher must be earned in all courses. Up to three courses may be substituted by study abroad. One German literature course must be taken in the senior year.",
+  "sections": [
+    {
+      "id": "german_courses",
+      "label": "Eight German Courses (315+)",
+      "type": "open_n",
+      "n": 8,
+      "description": "Eight German courses numbered 315 or above.",
+      "constraints": {
+        "prefixes": ["GER"],
+        "min_number": 315
+      }
+    }
+  ]
+}
