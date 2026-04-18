@@ -1,0 +1,220 @@
+{
+  "id": "film_studies_minor_2020-21",
+  "name": "Film Studies",
+  "program_type": "minor",
+  "catalog_year": "2020-21",
+  "major_code": "FLM",
+  "source": "Academic Catalog 2020-21, p. 121",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "art170",
+          "title": "Movement",
+          "codes": [
+            "ART-170"
+          ]
+        },
+        {
+          "id": "flm105",
+          "title": "Introduction to Film",
+          "codes": [
+            "FLM-105"
+          ]
+        },
+        {
+          "id": "flm200",
+          "title": "Film Analysis",
+          "codes": [
+            "FLM-200"
+          ]
+        },
+        {
+          "id": "flm225",
+          "title": "Film History",
+          "codes": [
+            "FLM-225"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_5",
+      "label": "Choose One",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "art145",
+          "title": "Illuminated Pixels",
+          "codes": [
+            "ART-145"
+          ]
+        },
+        {
+          "id": "art155",
+          "title": "Photography: Light Writing",
+          "codes": [
+            "ART-155"
+          ]
+        },
+        {
+          "id": "the255",
+          "title": "CRW/ Playwriting Workshop 1",
+          "codes": [
+            "THE-255"
+          ]
+        },
+        {
+          "id": "flm100",
+          "title": "Five terms of Film Festival",
+          "codes": [
+            "FLM-100"
+          ]
+        },
+        {
+          "id": "flm250",
+          "title": "Film Topics",
+          "codes": [
+            "FLM-250"
+          ]
+        },
+        {
+          "id": "flm256",
+          "title": "Film Topics: Non-Western Perspectives",
+          "codes": [
+            "FLM-256"
+          ]
+        },
+        {
+          "id": "flm257",
+          "title": "Film Topics: United States Pluralism",
+          "codes": [
+            "FLM-257"
+          ]
+        },
+        {
+          "id": "flm258",
+          "title": "Film Topics: Diverse Western Perspectives",
+          "codes": [
+            "FLM-258"
+          ]
+        },
+        {
+          "id": "mu140",
+          "title": "Film Music",
+          "codes": [
+            "MU-140"
+          ]
+        },
+        {
+          "id": "mu195",
+          "title": "Electronic Music",
+          "codes": [
+            "MU-195"
+          ]
+        },
+        {
+          "id": "the130",
+          "title": "Technical Production I",
+          "codes": [
+            "THE-130"
+          ]
+        },
+        {
+          "id": "the140",
+          "title": "Design for the Stage",
+          "codes": [
+            "THE-140"
+          ]
+        },
+        {
+          "id": "the220",
+          "title": "Lighting Design",
+          "codes": [
+            "THE-220"
+          ]
+        },
+        {
+          "id": "the242",
+          "title": "Scene Design",
+          "codes": [
+            "THE-242"
+          ]
+        },
+        {
+          "id": "the280",
+          "title": "Costume Design",
+          "codes": [
+            "THE-280"
+          ]
+        },
+        {
+          "id": "the290",
+          "title": "Directing I",
+          "codes": [
+            "THE-290"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_6",
+      "label": "Choose One",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "art203",
+          "title": "SpaceTime",
+          "codes": [
+            "ART-203"
+          ]
+        },
+        {
+          "id": "crw350",
+          "title": "Screenwriting",
+          "codes": [
+            "CRW-350"
+          ]
+        },
+        {
+          "id": "the355",
+          "title": "CRW/ Playwriting Workshop 2",
+          "codes": [
+            "THE-355"
+          ]
+        },
+        {
+          "id": "flm350",
+          "title": "Advanced Topics in Film",
+          "codes": [
+            "FLM-350"
+          ]
+        },
+        {
+          "id": "flm464",
+          "title": "Seminar in Film",
+          "codes": [
+            "FLM-464"
+          ]
+        },
+        {
+          "id": "flm494",
+          "title": "Internship in Film",
+          "codes": [
+            "FLM-494"
+          ]
+        },
+        {
+          "id": "the490",
+          "title": "Directing II",
+          "codes": [
+            "THE-490"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,216 @@
+{
+  "id": "kinesiology_fitness_development_major_2020-21",
+  "name": "Kinesiology \u2014 Fitness Development",
+  "program_type": "major",
+  "catalog_year": "2020-21",
+  "major_code": "KIN",
+  "source": "Academic Catalog 2020-21, p. 142",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "kin105",
+          "title": "Foundations of Physical Movement",
+          "codes": [
+            "KIN-105"
+          ]
+        },
+        {
+          "id": "kin115",
+          "title": "Fundamentals of Exercise and Nutrition",
+          "codes": [
+            "KIN-115"
+          ]
+        },
+        {
+          "id": "kin175",
+          "title": "Prevention and Care of Athletic Injuries & Laboratory",
+          "codes": [
+            "KIN-175"
+          ]
+        },
+        {
+          "id": "kin440",
+          "title": "Organization and Administration of Physical Education, Health, and Athletics",
+          "codes": [
+            "KIN-440"
+          ]
+        },
+        {
+          "id": "kin442",
+          "title": "Physiology of Exercise",
+          "codes": [
+            "KIN-442"
+          ]
+        },
+        {
+          "id": "kin201",
+          "title": "Fundamentals of Coaching",
+          "codes": [
+            "KIN-201"
+          ]
+        },
+        {
+          "id": "kin135",
+          "title": "Concepts of Individual Wellness",
+          "codes": [
+            "KIN-135"
+          ]
+        },
+        {
+          "id": "kin155",
+          "title": "Substance Abuse",
+          "codes": [
+            "KIN-155"
+          ]
+        },
+        {
+          "id": "kin175",
+          "title": "Prevention and Care of Athletic Injuries & Laboratory",
+          "codes": [
+            "KIN-175"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_2",
+      "label": "Choose One",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "bio103",
+          "title": "Anatomy and Physiology",
+          "codes": [
+            "BIO-103"
+          ]
+        },
+        {
+          "id": "bio215",
+          "title": "Human Anatomy and Human Physiology",
+          "codes": [
+            "BIO-215",
+            "BIO-225"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_9",
+      "label": "All of the following courses in the Strength and Conditioning Group",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "kin103",
+          "title": "or Advanced Weight Training",
+          "codes": [
+            "KIN-103",
+            "KIN-104"
+          ]
+        },
+        {
+          "id": "kin103",
+          "title": "or Movement Training",
+          "codes": [
+            "KIN-103",
+            "KIN-104"
+          ]
+        },
+        {
+          "id": "kin185",
+          "title": "Group Exercise",
+          "codes": [
+            "KIN-185"
+          ]
+        },
+        {
+          "id": "kin385",
+          "title": "Methods of Teaching Strength Training and Conditioning",
+          "codes": [
+            "KIN-385"
+          ]
+        },
+        {
+          "id": "kin405",
+          "title": "Program Design",
+          "codes": [
+            "KIN-405"
+          ]
+        },
+        {
+          "id": "kin495",
+          "title": "Kinesiology",
+          "codes": [
+            "KIN-495"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_100",
+      "label": "All of the following courses in the Health and Wellness Group",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "kin125",
+          "title": "Public and Consumer Health",
+          "codes": [
+            "KIN-125"
+          ]
+        },
+        {
+          "id": "kin135",
+          "title": "Concepts of Individual Wellness",
+          "codes": [
+            "KIN-135"
+          ]
+        },
+        {
+          "id": "kin155",
+          "title": "Substance Abuse State of Iowa Coaching Endorsement (#55, K-12)",
+          "codes": [
+            "KIN-155"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_1",
+      "label": "Teaching certification in an academic area",
+      "type": "non_course",
+      "description": "Teaching certification in an academic area"
+    },
+    {
+      "id": "req_6",
+      "label": "Choose One",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "nur137",
+          "title": "Human Sexuality",
+          "codes": [
+            "NUR-137"
+          ]
+        },
+        {
+          "id": "nur297",
+          "title": "Parent Child Relationships",
+          "codes": [
+            "NUR-297"
+          ]
+        },
+        {
+          "id": "soc207",
+          "title": "Sociology of the Family",
+          "codes": [
+            "SOC-207"
+          ]
+        }
+      ]
+    }
+  ],
+  "_needs_review": true
+}

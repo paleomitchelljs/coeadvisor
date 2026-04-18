@@ -1,0 +1,152 @@
+{
+  "id": "asian_studies_major_2025-26",
+  "name": "Asian Studies",
+  "program_type": "major",
+  "catalog_year": "2025-26",
+  "major_code": "AS",
+  "source": "Academic Catalog 2025-26, p. 66",
+  "sections": [
+    {
+      "id": "req_1",
+      "label": "Choose One",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "asc186",
+          "title": "Modern South Asia",
+          "codes": [
+            "ASC-186"
+          ]
+        },
+        {
+          "id": "his136",
+          "title": "East Asian Civilization",
+          "codes": [
+            "HIS-136"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_2",
+      "label": "Participation in one overseas study program in Asia",
+      "type": "non_course",
+      "description": "Participation in one overseas study program in Asia:\n\u2022 a Coe foreign exchange program (Chiang Mai University or Rangsit University of Thailand, Nagoya-Gakuin\nUniversity of Japan, Kongju National University or Sookmyung University in South Korea, or Jinan University\nin China)\n\u2022 Coe\u2019s Asia Term (see p. 31)"
+    },
+    {
+      "id": "req_3",
+      "label": "Four courses, chosen from the following, in consultation with the Asian Studies administrative coordinator",
+      "type": "choose_n",
+      "n": 4,
+      "options": [
+        {
+          "id": "asc106",
+          "title": "May Experiential Term in Asia",
+          "codes": [
+            "ASC-106"
+          ]
+        },
+        {
+          "id": "asc176",
+          "title": "China and Japan",
+          "codes": [
+            "ASC-176"
+          ]
+        },
+        {
+          "id": "eco436",
+          "title": "Economic Development or International Economics",
+          "codes": [
+            "ECO-436",
+            "ECO-446"
+          ]
+        },
+        {
+          "id": "his217",
+          "title": "The American War in Vietnam",
+          "codes": [
+            "HIS-217"
+          ]
+        },
+        {
+          "id": "his246",
+          "title": "History of Modern China",
+          "codes": [
+            "HIS-246"
+          ]
+        },
+        {
+          "id": "his256",
+          "title": "History of Modern Japan",
+          "codes": [
+            "HIS-256"
+          ]
+        },
+        {
+          "id": "his316",
+          "title": "Topics in History: Non-Western Perspectives (when appropriate)",
+          "codes": [
+            "HIS-316"
+          ]
+        },
+        {
+          "id": "his466",
+          "title": "Seminar in Modern East Asian History",
+          "codes": [
+            "HIS-466"
+          ]
+        },
+        {
+          "id": "jpn115",
+          "title": "Elementary Japanese I",
+          "codes": [
+            "JPN-115"
+          ]
+        },
+        {
+          "id": "jpn125",
+          "title": "Elementary Japanese II",
+          "codes": [
+            "JPN-125"
+          ]
+        },
+        {
+          "id": "jpn215",
+          "title": "Intermediate Japanese I",
+          "codes": [
+            "JPN-215"
+          ]
+        },
+        {
+          "id": "jpn225",
+          "title": "Intermediate Japanese II",
+          "codes": [
+            "JPN-225"
+          ]
+        },
+        {
+          "id": "rel206",
+          "title": "Buddhist Thought",
+          "codes": [
+            "REL-206"
+          ]
+        },
+        {
+          "id": "pol286",
+          "title": "Asian Politics",
+          "codes": [
+            "POL-286"
+          ]
+        },
+        {
+          "id": "rel106",
+          "title": "Eastern Religions A second term of an overseas study program",
+          "codes": [
+            "REL-106"
+          ]
+        }
+      ]
+    }
+  ],
+  "_needs_review": true
+}

@@ -1,0 +1,102 @@
+{
+  "id": "art_history_minor_2023-24",
+  "name": "Art History",
+  "program_type": "minor",
+  "catalog_year": "2023-24",
+  "major_code": "ARH",
+  "source": "Academic Catalog 2023-24, p. 78",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "arh128",
+          "title": "Introduction to Art History",
+          "codes": [
+            "ARH-128"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_2",
+      "label": "Three additional art history courses, one of which must be ARH-200 or above",
+      "type": "choose_n",
+      "n": 3,
+      "options": [
+        {
+          "id": "ant125",
+          "title": "Art and Archaeology of the Classical World",
+          "codes": [
+            "ANT-125"
+          ]
+        },
+        {
+          "id": "his318",
+          "title": "Topics in History: DWP",
+          "codes": [
+            "HIS-318"
+          ]
+        },
+        {
+          "id": "com161",
+          "title": "Visual Rhetoric",
+          "codes": [
+            "COM-161"
+          ]
+        },
+        {
+          "id": "flm225",
+          "title": "Film History",
+          "codes": [
+            "FLM-225"
+          ]
+        },
+        {
+          "id": "com357",
+          "title": "Sex, Race, and Gender in the Media",
+          "codes": [
+            "COM-357"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_3",
+      "label": "Choose One",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "arh307",
+          "title": "Modern and Contemporary Art",
+          "codes": [
+            "ARH-307"
+          ]
+        },
+        {
+          "id": "arh310",
+          "title": "Contemporary Art, Theory and Criticism",
+          "codes": [
+            "ARH-310"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "One 100- or 300-level ART- course",
+      "type": "open_n",
+      "n": 1,
+      "description": "One 100- or 300-level ART- course",
+      "constraints": {
+        "prefixes": [
+          "ART"
+        ],
+        "min_level": 300
+      },
+      "id": "req_4"
+    }
+  ],
+  "_needs_review": true
+}

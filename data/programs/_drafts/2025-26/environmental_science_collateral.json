@@ -1,0 +1,174 @@
+{
+  "id": "environmental_science_collateral_2025-26",
+  "name": "Environmental Science",
+  "program_type": "collateral",
+  "catalog_year": "2025-26",
+  "major_code": "BIO",
+  "source": "Academic Catalog 2025-26, p. 127",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "bio295",
+          "title": "Spatial Ecology and Laboratory",
+          "codes": [
+            "BIO-295",
+            "BIO-295L"
+          ]
+        },
+        {
+          "id": "chm211",
+          "title": "Analytical Chemistry and Laboratory",
+          "codes": [
+            "CHM-211",
+            "CHM-211L"
+          ]
+        },
+        {
+          "id": "chm221",
+          "title": "Organic Chemistry I",
+          "codes": [
+            "CHM-221"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_1",
+      "label": "One of the following combinations",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "mth135",
+          "title": "Calculus I",
+          "codes": [
+            "MTH-135"
+          ]
+        },
+        {
+          "id": "bio445",
+          "title": "Environmental Microbiology and Lab.",
+          "codes": [
+            "BIO-445",
+            "BIO-445L"
+          ]
+        },
+        {
+          "id": "mth145",
+          "title": "Calculus II",
+          "codes": [
+            "MTH-145"
+          ]
+        },
+        {
+          "id": "phy185",
+          "title": "General Physics I & Laboratory",
+          "codes": [
+            "PHY-185",
+            "PHY-185L"
+          ]
+        },
+        {
+          "id": "phy195",
+          "title": "General Physics II & Laboratory",
+          "codes": [
+            "PHY-195",
+            "PHY-195L"
+          ]
+        },
+        {
+          "id": "bio445",
+          "title": "Environmental Microbiology and Lab.",
+          "codes": [
+            "BIO-445",
+            "BIO-445L"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_5",
+      "label": "Two of the following with the associated laboratories",
+      "type": "choose_n",
+      "n": 2,
+      "options": [
+        {
+          "id": "bio115",
+          "title": "Marine Biology",
+          "codes": [
+            "BIO-115"
+          ]
+        },
+        {
+          "id": "bio165",
+          "title": "Introduction to Ornithology",
+          "codes": [
+            "BIO-165"
+          ]
+        },
+        {
+          "id": "bio175",
+          "title": "Field Botany",
+          "codes": [
+            "BIO-175"
+          ]
+        },
+        {
+          "id": "bio185",
+          "title": "Entomology",
+          "codes": [
+            "BIO-185"
+          ]
+        },
+        {
+          "id": "bio275",
+          "title": "Aquatic Ecology",
+          "codes": [
+            "BIO-275"
+          ]
+        },
+        {
+          "id": "bio325",
+          "title": "Microbiology and Laboratory",
+          "codes": [
+            "BIO-325",
+            "BIO-325L"
+          ]
+        },
+        {
+          "id": "bio385",
+          "title": "Behavior and Ecology of Vertebrates",
+          "codes": [
+            "BIO-385",
+            "BIO-385L"
+          ]
+        },
+        {
+          "id": "bio425",
+          "title": "Ecology and Laboratory",
+          "codes": [
+            "BIO-425",
+            "BIO-425L"
+          ]
+        },
+        {
+          "id": "chm411",
+          "title": "Advanced Analytical Chemistry",
+          "codes": [
+            "CHM-411"
+          ]
+        },
+        {
+          "id": "chm444",
+          "title": "Independent Study Any course taught at the Wilderness Field Station with BIO prefix.",
+          "codes": [
+            "CHM-444"
+          ]
+        }
+      ]
+    }
+  ]
+}

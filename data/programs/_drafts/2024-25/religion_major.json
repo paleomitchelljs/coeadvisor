@@ -1,0 +1,115 @@
+{
+  "id": "religion_major_2024-25",
+  "name": "Religion",
+  "program_type": "major",
+  "catalog_year": "2024-25",
+  "major_code": "REL",
+  "source": "Academic Catalog 2024-25, p. 205",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "rel106",
+          "title": "Eastern Religions",
+          "codes": [
+            "REL-106"
+          ]
+        },
+        {
+          "id": "rel108",
+          "title": "Western Religions",
+          "codes": [
+            "REL-108"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_1",
+      "label": "Choose One",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "rel101",
+          "title": "Introduction to Religion",
+          "codes": [
+            "REL-101"
+          ]
+        },
+        {
+          "id": "rel103",
+          "title": "Belief and Unbelief",
+          "codes": [
+            "REL-103"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_4",
+      "label": "Choose One",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "rel105",
+          "title": "Introduction to Hebrew Bible",
+          "codes": [
+            "REL-105"
+          ]
+        },
+        {
+          "id": "rel115",
+          "title": "Introduction to New Testament",
+          "codes": [
+            "REL-115"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_5",
+      "label": "Choose One",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "rel116",
+          "title": "Buddhism",
+          "codes": [
+            "REL-116"
+          ]
+        },
+        {
+          "id": "rel136",
+          "title": "Religions of China",
+          "codes": [
+            "REL-136"
+          ]
+        },
+        {
+          "id": "rel196",
+          "title": "Hinduism",
+          "codes": [
+            "REL-196"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Five additional religion courses, at least three of which are numbered 300 or above",
+      "type": "open_n",
+      "n": 5,
+      "description": "Five additional religion courses, at least three of which are numbered 300 or above",
+      "constraints": {
+        "prefixes": [
+          "REL"
+        ],
+        "min_level": 300
+      },
+      "id": "req_6"
+    }
+  ],
+  "_needs_review": true
+}

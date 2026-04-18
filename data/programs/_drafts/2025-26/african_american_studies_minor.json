@@ -1,0 +1,75 @@
+{
+  "id": "african_american_studies_minor_2025-26",
+  "name": "African American Studies",
+  "program_type": "minor",
+  "catalog_year": "2025-26",
+  "major_code": "AAM",
+  "source": "Academic Catalog 2025-26, p. 58",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "aam107",
+          "title": "Introduction to African American Studies",
+          "codes": [
+            "AAM-107"
+          ]
+        },
+        {
+          "id": "eng137",
+          "title": "AAM/ African American Literature",
+          "codes": [
+            "ENG-137"
+          ]
+        },
+        {
+          "id": "his347",
+          "title": "African American History",
+          "codes": [
+            "HIS-347"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_4",
+      "label": "Choose One",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "his145",
+          "title": "History of the United States to 1865",
+          "codes": [
+            "HIS-145"
+          ]
+        },
+        {
+          "id": "his155",
+          "title": "History of the United States Since 1865",
+          "codes": [
+            "HIS-155"
+          ]
+        },
+        {
+          "id": "his227",
+          "title": "The American Civil War",
+          "codes": [
+            "HIS-227"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Two additional courses from either list 5a or, when appropriate, 5b as listed above for the major",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two additional courses from either list 5a or, when appropriate, 5b as listed above for the major",
+      "constraints": {},
+      "id": "req_5"
+    }
+  ],
+  "_needs_review": true
+}

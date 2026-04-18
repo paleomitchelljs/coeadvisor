@@ -1,0 +1,160 @@
+{
+  "id": "international_studies_contemporary_european_studies_major_2021-22",
+  "name": "International Studies \u2014 Contemporary European Studies",
+  "program_type": "major",
+  "catalog_year": "2021-22",
+  "major_code": "IS",
+  "source": "Academic Catalog 2021-22, p. 138",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "his365",
+          "title": "20th-Century Europe",
+          "codes": [
+            "HIS-365"
+          ]
+        },
+        {
+          "id": "pol298",
+          "title": "European Politics",
+          "codes": [
+            "POL-298"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Seven international studies core courses (see p. 139)",
+      "type": "open_n",
+      "n": 7,
+      "description": "Seven international studies core courses (see p. 139)",
+      "constraints": {},
+      "id": "req_1"
+    },
+    {
+      "id": "req_4",
+      "label": "Three of the following, two of which must be numbered 300 or above. At least two academic disciplines must",
+      "type": "choose_n",
+      "n": 3,
+      "options": [
+        {
+          "id": "arh211",
+          "title": "Modern and Contemporary Architecture",
+          "codes": [
+            "ARH-211"
+          ]
+        },
+        {
+          "id": "arh248",
+          "title": "The Grand Tour",
+          "codes": [
+            "ARH-248"
+          ]
+        },
+        {
+          "id": "arh307",
+          "title": "Modern and Contemporary Art",
+          "codes": [
+            "ARH-307"
+          ]
+        },
+        {
+          "id": "eng393",
+          "title": "Studies in Modern or Contemporary British Literature",
+          "codes": [
+            "ENG-393"
+          ]
+        },
+        {
+          "id": "fre158",
+          "title": "France and the Francophone World",
+          "codes": [
+            "FRE-158"
+          ]
+        },
+        {
+          "id": "fre432",
+          "title": "French Cinema and Contemporary Culture",
+          "codes": [
+            "FRE-432"
+          ]
+        },
+        {
+          "id": "his238",
+          "title": "Modern France",
+          "codes": [
+            "HIS-238"
+          ]
+        },
+        {
+          "id": "his258",
+          "title": "The World at War",
+          "codes": [
+            "HIS-258"
+          ]
+        },
+        {
+          "id": "his278",
+          "title": "History of the Holocaust",
+          "codes": [
+            "HIS-278"
+          ]
+        },
+        {
+          "id": "his292",
+          "title": "History of Modern England",
+          "codes": [
+            "HIS-292"
+          ]
+        },
+        {
+          "id": "is315",
+          "title": "Topics in International Studies (when appropriate)",
+          "codes": [
+            "IS-315"
+          ]
+        },
+        {
+          "id": "mu458",
+          "title": "Music History and Literature III",
+          "codes": [
+            "MU-458"
+          ]
+        },
+        {
+          "id": "rel138",
+          "title": "Modern Judaism",
+          "codes": [
+            "REL-138"
+          ]
+        },
+        {
+          "id": "rel148",
+          "title": "Islam",
+          "codes": [
+            "REL-148"
+          ]
+        },
+        {
+          "id": "rel178",
+          "title": "Christianity",
+          "codes": [
+            "REL-178"
+          ]
+        },
+        {
+          "id": "the238",
+          "title": "History and Theatre and Drama II A course approved by the International Studies administrative coordinator",
+          "codes": [
+            "THE-238"
+          ]
+        }
+      ]
+    }
+  ],
+  "_needs_review": true
+}
