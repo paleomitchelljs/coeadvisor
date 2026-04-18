@@ -1,0 +1,244 @@
+/* =============================================================
+   Mitchell Design System — Chart / Figure primitives
+   Companion to colors_and_type.css.
+   SVG-first; conventions also documented for ggplot/matplotlib
+   in README's "Chart rules" section.
+   ============================================================= */
+
+/* ---- Figure frame ---------------------------------------- */
+.mds-figure {
+  background: var(--mds-surface);
+  color: var(--mds-fg);
+  padding: var(--mds-sp-5);
+  border: none;
+}
+.mds-figure--framed { border: var(--mds-border-frame); }
+.mds-figure__title {
+  font-family: var(--mds-sans);
+  font-size: var(--mds-text-sm);
+  font-weight: 600;
+  letter-spacing: var(--mds-tracking-wide);
+  text-transform: uppercase;
+  margin: 0 0 var(--mds-sp-2);
+  color: var(--mds-fg);
+}
+.mds-figure__caption {
+  font-family: var(--mds-serif);
+  font-size: var(--mds-text-sm);
+  line-height: var(--mds-leading-normal);
+  color: var(--mds-fg);
+  margin: var(--mds-sp-3) 0 0;
+}
+.mds-figure__caption strong {
+  font-weight: 600;
+}
+.mds-figure__caption .panel-label {
+  font-weight: 600;
+  font-style: italic;
+}
+.mds-figure__citation {
+  font-family: var(--mds-sans);
+  font-size: var(--mds-text-xs);
+  color: var(--mds-fg-muted);
+  margin-top: var(--mds-sp-3);
+}
+
+/* ---- SVG axis conventions --------------------------------
+   Apply via class to <g>, <line>, <text> elements. */
+.axis-frame {
+  stroke: var(--chart-axis);
+  stroke-width: 1.25;
+  fill: none;
+}
+.axis-tick {
+  stroke: var(--chart-axis);
+  stroke-width: 1;
+}
+.axis-tick-minor {
+  stroke: var(--chart-axis-minor);
+  stroke-width: 0.75;
+}
+.axis-label {
+  font-family: var(--mds-serif);
+  font-size: 14px;
+  fill: var(--chart-axis);
+}
+.axis-title {
+  font-family: var(--mds-serif);
+  font-size: 16px;
+  font-weight: 500;
+  fill: var(--chart-axis);
+}
+.axis-title--italic { font-style: italic; }
+
+.grid-line {
+  stroke: var(--chart-grid);
+  stroke-width: 0.75;
+  stroke-dasharray: 2 3;
+}
+
+/* ---- Data elements --------------------------------------- */
+.data-line {
+  fill: none;
+  stroke: var(--chart-series-1);
+  stroke-width: 1.75;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.data-line--2 { stroke: var(--chart-series-2); }
+.data-line--3 { stroke: var(--chart-series-3); }
+.data-line--4 { stroke: var(--chart-series-4); }
+.data-line--5 { stroke: var(--chart-series-5); }
+
+.data-point {
+  fill: var(--chart-series-1);
+  stroke: var(--chart-axis);
+  stroke-width: 1;
+}
+.data-point--open {
+  fill: var(--mds-bg);
+  stroke: var(--chart-series-1);
+  stroke-width: 1.5;
+}
+
+/* Uncertainty: fills for CI/HPD, strokes for median */
+.ci-band {
+  fill: var(--chart-ci-fill);
+  stroke: none;
+}
+.ci-stroke {
+  stroke: var(--chart-ci-stroke);
+  fill: none;
+  stroke-width: 1;
+}
+.median-line {
+  stroke: var(--chart-series-1);
+  stroke-width: 2;
+  fill: none;
+}
+
+/* Violin + box combo (the Mitchell signature) */
+.violin-body {
+  fill: var(--chart-ci-fill);
+  stroke: var(--chart-axis);
+  stroke-width: 1;
+}
+.violin-box {
+  fill: var(--chart-axis);
+  stroke: var(--chart-axis);
+}
+.violin-median-dot {
+  fill: var(--mds-bg);
+  stroke: var(--chart-axis);
+  stroke-width: 1.25;
+}
+.violin-whisker {
+  stroke: var(--chart-axis);
+  stroke-width: 1;
+}
+
+/* Histogram bars */
+.hist-bar {
+  fill: var(--chart-ci-fill);
+  stroke: var(--chart-axis);
+  stroke-width: 0.75;
+}
+
+/* Phylogram branches */
+.phylo-branch {
+  fill: none;
+  stroke: var(--chart-axis);
+  stroke-width: 1.25;
+  stroke-linejoin: miter;
+  stroke-linecap: butt;
+}
+.phylo-tip-label {
+  font-family: var(--mds-serif);
+  font-style: italic;
+  font-size: 11px;
+  fill: var(--chart-axis);
+}
+
+/* Silhouettes */
+.silhouette {
+  fill: var(--chart-silhouette);
+  stroke: none;
+}
+.silhouette--outline {
+  fill: none;
+  stroke: var(--chart-silhouette);
+  stroke-width: 1;
+}
+
+/* Annotations */
+.annotation-text {
+  font-family: var(--mds-serif);
+  font-size: 13px;
+  font-style: italic;
+  fill: var(--chart-axis);
+}
+.annotation-arrow {
+  stroke: var(--chart-axis);
+  stroke-width: 1;
+  fill: var(--chart-axis);
+}
+.annotation-highlight {
+  stroke: var(--mds-accent);
+  stroke-width: 2;
+  fill: none;
+}
+
+/* Legend */
+.mds-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--mds-sp-4);
+  font-family: var(--mds-sans);
+  font-size: var(--mds-text-sm);
+  color: var(--mds-fg);
+}
+.mds-legend__item { display: flex; align-items: center; gap: var(--mds-sp-2); }
+.mds-legend__swatch {
+  width: 14px; height: 14px;
+  background: var(--chart-series-1);
+  border: 1px solid var(--chart-axis);
+  flex: none;
+}
+.mds-legend__swatch--open { background: var(--mds-bg); }
+.mds-legend__swatch--line {
+  width: 22px; height: 2px;
+  background: var(--chart-series-1);
+  border: none;
+}
+
+/* Small-multiples grid */
+.mds-smallmult {
+  display: grid;
+  gap: var(--mds-sp-4);
+}
+.mds-smallmult__cell {
+  background: var(--mds-surface);
+}
+.mds-smallmult__colhead,
+.mds-smallmult__rowhead {
+  font-family: var(--mds-sans);
+  font-size: var(--mds-text-xs);
+  font-weight: 600;
+  letter-spacing: var(--mds-tracking-wide);
+  text-transform: uppercase;
+  color: var(--mds-fg-muted);
+  text-align: center;
+}
+
+/* Ramp preview helpers */
+.mds-ramp {
+  display: flex;
+  width: 100%;
+  height: 14px;
+  border: 1px solid var(--mds-rule);
+}
+.mds-ramp > span { flex: 1; display: block; }
+.mds-ramp--continuous {
+  height: 14px;
+  border: 1px solid var(--mds-rule);
+}
