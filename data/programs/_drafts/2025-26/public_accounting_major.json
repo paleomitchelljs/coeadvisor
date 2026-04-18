@@ -1,0 +1,179 @@
+{
+  "id": "public_accounting_major_2025-26",
+  "name": "Public Accounting",
+  "program_type": "major",
+  "catalog_year": "2025-26",
+  "major_code": "ACC",
+  "source": "Academic Catalog 2025-26, p. 81",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "acc171",
+          "title": "Principles of Accounting I",
+          "codes": [
+            "ACC-171"
+          ]
+        },
+        {
+          "id": "eco175",
+          "title": "Principles of Macroeconomics",
+          "codes": [
+            "ECO-175"
+          ]
+        },
+        {
+          "id": "bus190",
+          "title": "Statistical Analysis",
+          "codes": [
+            "BUS-190"
+          ]
+        },
+        {
+          "id": "acc215",
+          "title": "Principles of Accounting II",
+          "codes": [
+            "ACC-215"
+          ]
+        },
+        {
+          "id": "eco215",
+          "title": "Principles of Microeconomics",
+          "codes": [
+            "ECO-215"
+          ]
+        },
+        {
+          "id": "acc301",
+          "title": "Intermediate Accounting I",
+          "codes": [
+            "ACC-301"
+          ]
+        },
+        {
+          "id": "acc315",
+          "title": "Managerial Accounting",
+          "codes": [
+            "ACC-315"
+          ]
+        },
+        {
+          "id": "bus315",
+          "title": "Business Law I",
+          "codes": [
+            "BUS-315"
+          ]
+        },
+        {
+          "id": "acc334",
+          "title": "Computer Applications \u2013 Accounting",
+          "codes": [
+            "ACC-334"
+          ]
+        },
+        {
+          "id": "acc351",
+          "title": "Intermediate Accounting II",
+          "codes": [
+            "ACC-351"
+          ]
+        },
+        {
+          "id": "acc413",
+          "title": "Auditing",
+          "codes": [
+            "ACC-413"
+          ]
+        },
+        {
+          "id": "acc422",
+          "title": "Tax Accounting",
+          "codes": [
+            "ACC-422"
+          ]
+        },
+        {
+          "id": "acc463",
+          "title": "Advanced Auditing",
+          "codes": [
+            "ACC-463"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_14",
+      "label": "Choose One",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "bus410",
+          "title": "Business Law II",
+          "codes": [
+            "BUS-410"
+          ]
+        },
+        {
+          "id": "bus412",
+          "title": "Entrepreneurship and New Business Formation",
+          "codes": [
+            "BUS-412"
+          ]
+        },
+        {
+          "id": "bus464",
+          "title": "Seminar in Management",
+          "codes": [
+            "BUS-464"
+          ]
+        },
+        {
+          "id": "bus470",
+          "title": "Strategic Management",
+          "codes": [
+            "BUS-470"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_15",
+      "label": "Choose Three",
+      "type": "choose_n",
+      "n": 3,
+      "options": [
+        {
+          "id": "acc313",
+          "title": "Fraud Examination",
+          "codes": [
+            "ACC-313"
+          ]
+        },
+        {
+          "id": "acc401",
+          "title": "Governmental and Not-For-Profit Accounting",
+          "codes": [
+            "ACC-401"
+          ]
+        },
+        {
+          "id": "acc451",
+          "title": "Advanced Accounting",
+          "codes": [
+            "ACC-451"
+          ]
+        },
+        {
+          "id": "acc472",
+          "title": "Advanced Tax Accounting",
+          "codes": [
+            "ACC-472"
+          ]
+        }
+      ]
+    }
+  ]
+}

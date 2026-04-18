@@ -1,0 +1,277 @@
+{
+  "id": "public_relations_collateral_2025-26",
+  "name": "Public Relations",
+  "program_type": "collateral",
+  "catalog_year": "2025-26",
+  "major_code": "PR",
+  "source": "Academic Catalog 2025-26, p. 185",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "pr205",
+          "title": "Public Relations",
+          "codes": [
+            "PR-205"
+          ]
+        },
+        {
+          "id": "bus330",
+          "title": "Principles of Marketing",
+          "codes": [
+            "BUS-330"
+          ]
+        },
+        {
+          "id": "bus460",
+          "title": "Advertising",
+          "codes": [
+            "BUS-460"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_1",
+      "label": "Choose One",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "art104",
+          "title": "Digital Photography",
+          "codes": [
+            "ART-104"
+          ]
+        },
+        {
+          "id": "art115",
+          "title": "Drawing: Observation and Interpretation",
+          "codes": [
+            "ART-115"
+          ]
+        },
+        {
+          "id": "art145",
+          "title": "Digital Studio",
+          "codes": [
+            "ART-145"
+          ]
+        },
+        {
+          "id": "art150",
+          "title": "Time-Based Media",
+          "codes": [
+            "ART-150"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_5",
+      "label": "Choose One",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "com141",
+          "title": "Introduction to Journalism",
+          "codes": [
+            "COM-141"
+          ]
+        },
+        {
+          "id": "com241",
+          "title": "Multimedia Journalism",
+          "codes": [
+            "COM-241"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_6",
+      "label": "One of the following (producing a portfolio of writings related to the field of public relations)",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "bus461",
+          "title": "Marketing Decision-Making & Strategy",
+          "codes": [
+            "BUS-461"
+          ]
+        },
+        {
+          "id": "ecc345",
+          "title": "Writing Process",
+          "codes": [
+            "ECC-345"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_7",
+      "label": "Choose One",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "bus494",
+          "title": "Internship in Business (with public relations or advertising as a major component)",
+          "codes": [
+            "BUS-494"
+          ]
+        },
+        {
+          "id": "int499",
+          "title": "Summer Internship (with public relations as a major component)",
+          "codes": [
+            "INT-499"
+          ]
+        },
+        {
+          "id": "pr494",
+          "title": "Internship in Public Relations",
+          "codes": [
+            "PR-494"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_8",
+      "label": "Three of the following. No more than two courses may be selected from within any one department. (Students",
+      "type": "choose_n",
+      "n": 3,
+      "options": [
+        {
+          "id": "acc171",
+          "title": "Principles of Accounting I",
+          "codes": [
+            "ACC-171"
+          ]
+        },
+        {
+          "id": "art104",
+          "title": "Digital Photography (if not used to satisfy #1)",
+          "codes": [
+            "ART-104"
+          ]
+        },
+        {
+          "id": "art115",
+          "title": "Drawing: Observation and Interpretation (if not used to satisfy #1)",
+          "codes": [
+            "ART-115"
+          ]
+        },
+        {
+          "id": "art145",
+          "title": "Digital Studio (if not used to satisfy #1)",
+          "codes": [
+            "ART-145"
+          ]
+        },
+        {
+          "id": "art150",
+          "title": "Time-Based Media (if not used to satisfy #1)",
+          "codes": [
+            "ART-150"
+          ]
+        },
+        {
+          "id": "art363",
+          "title": "Graphic Design Studio (if not used to satisfy #1)",
+          "codes": [
+            "ART-363"
+          ]
+        },
+        {
+          "id": "bus250",
+          "title": "Principles of Management",
+          "codes": [
+            "BUS-250"
+          ]
+        },
+        {
+          "id": "bus375",
+          "title": "Business Ethics",
+          "codes": [
+            "BUS-375"
+          ]
+        },
+        {
+          "id": "bus461",
+          "title": "Marketing Decision-Making & Strategy (if not used to satisfy #6)",
+          "codes": [
+            "BUS-461"
+          ]
+        },
+        {
+          "id": "bus464",
+          "title": "Seminar in Management , subject to topic approval by PR administrative coordinator",
+          "codes": [
+            "BUS-464"
+          ]
+        },
+        {
+          "id": "bus465",
+          "title": "Advanced Topics in Marketing, subject to topic approval by PR administrative coordinator",
+          "codes": [
+            "BUS-465"
+          ]
+        },
+        {
+          "id": "com125",
+          "title": "Fundamentals of Public Speaking",
+          "codes": [
+            "COM-125"
+          ]
+        },
+        {
+          "id": "com157",
+          "title": "Introduction to Media Analysis",
+          "codes": [
+            "COM-157"
+          ]
+        },
+        {
+          "id": "com341",
+          "title": "Digital Storytelling",
+          "codes": [
+            "COM-341"
+          ]
+        },
+        {
+          "id": "com347",
+          "title": "Persuasion",
+          "codes": [
+            "COM-347"
+          ]
+        },
+        {
+          "id": "com141",
+          "title": "Introduction to Journalism (if not used to satisfy #5)",
+          "codes": [
+            "COM-141"
+          ]
+        },
+        {
+          "id": "com322",
+          "title": "Professional Communication and Writing",
+          "codes": [
+            "COM-322"
+          ]
+        },
+        {
+          "id": "ecc345",
+          "title": "Writing Process (if not used to satisfy #6)",
+          "codes": [
+            "ECC-345"
+          ]
+        }
+      ]
+    }
+  ]
+}

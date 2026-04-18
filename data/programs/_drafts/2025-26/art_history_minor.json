@@ -1,0 +1,88 @@
+{
+  "id": "art_history_minor_2025-26",
+  "name": "Art History",
+  "program_type": "minor",
+  "catalog_year": "2025-26",
+  "major_code": "ARH",
+  "source": "Academic Catalog 2025-26, p. 64",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "arh128",
+          "title": "Introduction to Art History",
+          "codes": [
+            "ARH-128"
+          ]
+        },
+        {
+          "id": "arh307",
+          "title": "Modern and Contemporary Art",
+          "codes": [
+            "ARH-307"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_2",
+      "label": "Three additional art history courses. One must be ARH-200 or above. One may be a course from the following",
+      "type": "choose_n",
+      "n": 3,
+      "options": [
+        {
+          "id": "ant125",
+          "title": "Art and Archaeology of the Classical World",
+          "codes": [
+            "ANT-125"
+          ]
+        },
+        {
+          "id": "his318",
+          "title": "Topics in History: DWP",
+          "codes": [
+            "HIS-318"
+          ]
+        },
+        {
+          "id": "com161",
+          "title": "Visual Rhetoric",
+          "codes": [
+            "COM-161"
+          ]
+        },
+        {
+          "id": "com257",
+          "title": "Sex, Race, and Gender in the Media",
+          "codes": [
+            "COM-257"
+          ]
+        },
+        {
+          "id": "ms105",
+          "title": "History of Museums",
+          "codes": [
+            "MS-105"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "One 100- or 300-level ART- course",
+      "type": "open_n",
+      "n": 1,
+      "description": "One 100- or 300-level ART- course",
+      "constraints": {
+        "prefixes": [
+          "ART"
+        ],
+        "min_level": 300
+      },
+      "id": "req_4"
+    }
+  ],
+  "_needs_review": true
+}

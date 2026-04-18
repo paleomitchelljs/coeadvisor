@@ -1,0 +1,196 @@
+{
+  "id": "international_studies_international_relations_track_major_2021-22",
+  "name": "International Studies \u2014 International Relations track",
+  "program_type": "major",
+  "catalog_year": "2021-22",
+  "major_code": "IS",
+  "source": "Academic Catalog 2021-22, p. 138",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "pol108",
+          "title": "Introduction to Politics",
+          "codes": [
+            "POL-108"
+          ]
+        },
+        {
+          "id": "pol310",
+          "title": "International Organizations",
+          "codes": [
+            "POL-310"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Seven international studies core courses (see p. 139)",
+      "type": "open_n",
+      "n": 7,
+      "description": "Seven international studies core courses (see p. 139)",
+      "constraints": {},
+      "id": "req_1"
+    },
+    {
+      "id": "req_4",
+      "label": "Three courses to be chosen as indicated from the two lists below. No more than two of these three courses can",
+      "type": "choose_n",
+      "n": 3,
+      "options": [
+        {
+          "id": "asc186",
+          "title": "Modern South Asia",
+          "codes": [
+            "ASC-186"
+          ]
+        },
+        {
+          "id": "his216",
+          "title": "History of Modern Korea",
+          "codes": [
+            "HIS-216"
+          ]
+        },
+        {
+          "id": "his217",
+          "title": "The American War in Vietnam",
+          "codes": [
+            "HIS-217"
+          ]
+        },
+        {
+          "id": "his246",
+          "title": "History of Modern China",
+          "codes": [
+            "HIS-246"
+          ]
+        },
+        {
+          "id": "his256",
+          "title": "History of Modern Japan",
+          "codes": [
+            "HIS-256"
+          ]
+        },
+        {
+          "id": "his268",
+          "title": "Latin America",
+          "codes": [
+            "HIS-268"
+          ]
+        },
+        {
+          "id": "pol266",
+          "title": "Latin American Politics",
+          "codes": [
+            "POL-266"
+          ]
+        },
+        {
+          "id": "pol276",
+          "title": "African Politics",
+          "codes": [
+            "POL-276"
+          ]
+        },
+        {
+          "id": "pol286",
+          "title": "Asian Politics",
+          "codes": [
+            "POL-286"
+          ]
+        },
+        {
+          "id": "pol298",
+          "title": "European Politics b. Two of the following",
+          "codes": [
+            "POL-298"
+          ]
+        },
+        {
+          "id": "ant286",
+          "title": "/ -486 Topics in Anthropology: NWP (when appropriate)",
+          "codes": [
+            "ANT-286"
+          ]
+        },
+        {
+          "id": "eco446",
+          "title": "International Economics",
+          "codes": [
+            "ECO-446"
+          ]
+        },
+        {
+          "id": "eco495",
+          "title": "International Finance",
+          "codes": [
+            "ECO-495"
+          ]
+        },
+        {
+          "id": "his286",
+          "title": "Modern Middle East",
+          "codes": [
+            "HIS-286"
+          ]
+        },
+        {
+          "id": "his335",
+          "title": "Recent American History II",
+          "codes": [
+            "HIS-335"
+          ]
+        },
+        {
+          "id": "his395",
+          "title": "U.S. Diplomatic History",
+          "codes": [
+            "HIS-395"
+          ]
+        },
+        {
+          "id": "is315",
+          "title": ", Topics in International Studies (when appropriate)",
+          "codes": [
+            "IS-315",
+            "IS-316"
+          ]
+        },
+        {
+          "id": "pol305",
+          "title": "Terrorism",
+          "codes": [
+            "POL-305"
+          ]
+        },
+        {
+          "id": "pol365",
+          "title": "American Foreign Policy",
+          "codes": [
+            "POL-365"
+          ]
+        },
+        {
+          "id": "pol386",
+          "title": "International Development",
+          "codes": [
+            "POL-386"
+          ]
+        },
+        {
+          "id": "pol398",
+          "title": "Religion and World Politics",
+          "codes": [
+            "POL-398"
+          ]
+        }
+      ]
+    }
+  ],
+  "_needs_review": true
+}

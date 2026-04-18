@@ -1,0 +1,154 @@
+{
+  "id": "international_studies_the_global_south_track_major_2020-21",
+  "name": "International Studies \u2014 The Global South track",
+  "program_type": "major",
+  "catalog_year": "2020-21",
+  "major_code": "IS",
+  "source": "Academic Catalog 2020-21, p. 139",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "eco215",
+          "title": "Microeconomics",
+          "codes": [
+            "ECO-215"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Seven international studies core courses (See above.)",
+      "type": "open_n",
+      "n": 7,
+      "description": "Seven international studies core courses (See above.)",
+      "constraints": {},
+      "id": "req_1"
+    },
+    {
+      "id": "req_3",
+      "label": "Two courses to be chosen as indicated from the two lists below",
+      "type": "choose_n",
+      "n": 2,
+      "options": [
+        {
+          "id": "eco436",
+          "title": "Economic Development or Subject to prior approval by the International Studies administrative coordinator",
+          "codes": [
+            "ECO-436"
+          ]
+        },
+        {
+          "id": "eco336",
+          "title": "Divergent Economic Growth",
+          "codes": [
+            "ECO-336"
+          ]
+        },
+        {
+          "id": "eco446",
+          "title": "International Economics b. One of the following",
+          "codes": [
+            "ECO-446"
+          ]
+        },
+        {
+          "id": "pol386",
+          "title": "International Development or Subject to prior approval by the International Studies administrative coordinator",
+          "codes": [
+            "POL-386"
+          ]
+        },
+        {
+          "id": "pol310",
+          "title": "International Organizations",
+          "codes": [
+            "POL-310"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_4",
+      "label": "Two or more additional courses from either the courses under #3 or any of the following, subject to prior",
+      "type": "choose_n",
+      "n": 2,
+      "options": [
+        {
+          "id": "ant286",
+          "title": "/ -486 Topics in Anthropology",
+          "codes": [
+            "ANT-286"
+          ]
+        },
+        {
+          "id": "gs136",
+          "title": "Gender in the Non-Western World",
+          "codes": [
+            "GS-136"
+          ]
+        },
+        {
+          "id": "his246",
+          "title": "History of Modern China",
+          "codes": [
+            "HIS-246"
+          ]
+        },
+        {
+          "id": "his268",
+          "title": "Latin America",
+          "codes": [
+            "HIS-268"
+          ]
+        },
+        {
+          "id": "his286",
+          "title": "Modern Middle East",
+          "codes": [
+            "HIS-286"
+          ]
+        },
+        {
+          "id": "his316",
+          "title": "Topics in History: Non-Western Perspectives",
+          "codes": [
+            "HIS-316"
+          ]
+        },
+        {
+          "id": "is316",
+          "title": "Topics in International Studies: Non-Western Perspectives (when appropriate)",
+          "codes": [
+            "IS-316"
+          ]
+        },
+        {
+          "id": "pol266",
+          "title": "Latin American Politics",
+          "codes": [
+            "POL-266"
+          ]
+        },
+        {
+          "id": "pol276",
+          "title": "African Politics",
+          "codes": [
+            "POL-276"
+          ]
+        },
+        {
+          "id": "pol286",
+          "title": "Asian Politics",
+          "codes": [
+            "POL-286"
+          ]
+        }
+      ]
+    }
+  ],
+  "_needs_review": true
+}

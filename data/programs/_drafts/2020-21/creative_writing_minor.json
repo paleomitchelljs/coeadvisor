@@ -1,0 +1,171 @@
+{
+  "id": "creative_writing_minor_2020-21",
+  "name": "Creative Writing",
+  "program_type": "minor",
+  "catalog_year": "2020-21",
+  "major_code": "CRW",
+  "source": "Academic Catalog 2020-21, p. 103",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "crw115",
+          "title": "Exploring Creative Writing",
+          "codes": [
+            "CRW-115"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_2",
+      "label": "Choose Three",
+      "type": "choose_n",
+      "n": 3,
+      "options": [
+        {
+          "id": "the255",
+          "title": "CRW/ Playwriting Workshop 1",
+          "codes": [
+            "THE-255"
+          ]
+        },
+        {
+          "id": "crw280",
+          "title": "Poetry Workshop 1",
+          "codes": [
+            "CRW-280"
+          ]
+        },
+        {
+          "id": "crw290",
+          "title": "Fiction Workshop 1",
+          "codes": [
+            "CRW-290"
+          ]
+        },
+        {
+          "id": "the355",
+          "title": "CRW/ Playwriting Workshop 2",
+          "codes": [
+            "THE-355"
+          ]
+        },
+        {
+          "id": "crw380",
+          "title": "Poetry Workshop 2",
+          "codes": [
+            "CRW-380"
+          ]
+        },
+        {
+          "id": "crw390",
+          "title": "Fiction Workshop 2",
+          "codes": [
+            "CRW-390"
+          ]
+        },
+        {
+          "id": "the455",
+          "title": "CRW/ Playwriting Workshop 3",
+          "codes": [
+            "THE-455"
+          ]
+        },
+        {
+          "id": "crw484",
+          "title": "Advanced Topics in Creative Writing",
+          "codes": [
+            "CRW-484"
+          ]
+        },
+        {
+          "id": "crw480",
+          "title": "Poetry Workshop 3",
+          "codes": [
+            "CRW-480"
+          ]
+        },
+        {
+          "id": "crw490",
+          "title": "Fiction Workshop 3",
+          "codes": [
+            "CRW-490"
+          ]
+        },
+        {
+          "id": "crw492",
+          "title": "Manuscript Workshop",
+          "codes": [
+            "CRW-492"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "One course in English (ENG-___)",
+      "type": "open_n",
+      "n": 1,
+      "description": "One course in English (ENG-___)",
+      "constraints": {
+        "prefixes": [
+          "ENG"
+        ]
+      },
+      "id": "req_3"
+    },
+    {
+      "id": "req_4",
+      "label": "Choose One",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "crw112",
+          "title": "Two terms of Advanced Literary Magazine Editing",
+          "codes": [
+            "CRW-112"
+          ]
+        },
+        {
+          "id": "rhe135",
+          "title": "Writers Colony",
+          "codes": [
+            "RHE-135"
+          ]
+        },
+        {
+          "id": "rhe255",
+          "title": "The Essay",
+          "codes": [
+            "RHE-255"
+          ]
+        },
+        {
+          "id": "rhe257",
+          "title": "Environmental Rhetoric",
+          "codes": [
+            "RHE-257"
+          ]
+        },
+        {
+          "id": "rhe345",
+          "title": "Nature Writing",
+          "codes": [
+            "RHE-345"
+          ]
+        },
+        {
+          "id": "rhe377",
+          "title": "Cultural Studies",
+          "codes": [
+            "RHE-377"
+          ]
+        }
+      ]
+    }
+  ],
+  "_needs_review": true
+}
