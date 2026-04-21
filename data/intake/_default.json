@@ -29,9 +29,15 @@
       ]
     },
     {
-      "id": "premed",
-      "type": "yes_no",
-      "text": "Interested in medicine (pre-med, PA, PT/DPT)?",
+      "id": "health_pathway",
+      "type": "choice",
+      "text": "Health-professions interest",
+      "options": [
+        {"value": "none",   "label": "None"},
+        {"value": "premed", "label": "Pre-med (MD/DO)"},
+        {"value": "pa",     "label": "Pre-PA"},
+        {"value": "pt_dpt", "label": "Pre-PT/DPT"}
+      ],
       "show_when": {"interest_major_code_in": ["BIO", "CHM", "BCM", "KIN", "NEURO", "PSY"]}
     }
   ],

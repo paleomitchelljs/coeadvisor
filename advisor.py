@@ -538,7 +538,12 @@ class AdvisorApp:
             major_code = prog.get("major_code", "")
             prep  = raw.get("prep_level", "typical")
             certainty = raw.get("certainty", "committed")
-            premed = raw.get("premed") == "yes"
+            hp = raw.get("health_pathway", "none")
+            # Back-compat: older intake files used a yes/no premed question.
+            if raw.get("premed") == "yes" and hp == "none":
+                hp = "premed"
+            # Only MD/DO pre-med triggers BIO+CHM in fall (MCAT biochem timing).
+            premed = hp == "premed"
             rec = recommend_first_semester([major_code] if major_code else [],
                                            prep, premed,
                                            self.first_two_years or [],
@@ -552,7 +557,7 @@ class AdvisorApp:
                 note_parts.append(f"{tag} {f['course']}: {f['message']}")
             route = {
                 "major": pid,
-                "pathway": "premed" if premed else "",
+                "pathway": hp if hp != "none" else "",
                 "semester_1": rec.get("courses", []),
                 "note": "  \n".join(note_parts),
             }
