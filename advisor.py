@@ -431,9 +431,9 @@ class AdvisorApp:
             qid  = q["id"]
             qtype = q.get("type", "yes_no")
 
-            # major_select is skipped in desktop mode — major is already chosen
+            # major selects are skipped in desktop mode — major is already chosen
             # on the interest page preceding this one.
-            if qtype == "major_select":
+            if qtype in ("major_select", "major_multiselect"):
                 continue
 
             qvar = tk.StringVar(value="")
@@ -537,9 +537,12 @@ class AdvisorApp:
             prog = self.programs.get(pid, {})
             major_code = prog.get("major_code", "")
             prep  = raw.get("prep_level", "typical")
+            certainty = raw.get("certainty", "committed")
             premed = raw.get("premed") == "yes"
-            rec = recommend_first_semester(major_code, prep, premed,
-                                           self.first_two_years or [])
+            rec = recommend_first_semester([major_code] if major_code else [],
+                                           prep, premed,
+                                           self.first_two_years or [],
+                                           certainty=certainty)
             note_parts = []
             if rec.get("stacking_note"):
                 note_parts.append("Stacking: " + rec["stacking_note"])

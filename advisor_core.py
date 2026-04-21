@@ -471,16 +471,19 @@ class TrajectoryData:
 
 # ─────────────────────────── First-semester recommender ─────────────────────
 #
-# Produces a recommended first-semester course list from three inputs:
-#   interest_major_code: a major_code (e.g. "BIO") or "" / "EXPLORATORY"
-#   prep_level:          "well" | "typical" | "under"
-#   premed:              bool
+# Produces a recommended first-semester course list from four inputs:
+#   interest_major_codes: list of major_codes (e.g. ["BIO", "PSY"]) or []/"EXPLORATORY"
+#   prep_level:           "well" | "typical" | "under"
+#   premed:               bool
+#   certainty:            "exploring" | "leaning" | "committed"
 #
 # Rules are grounded in new_student_considerations/advisor_brief_fall_registration.md:
 #   - Hard-landing courses carry outsized retention risk when failed in-aligned.
 #   - MTH-135 + another hard-landing course together compound risk.
 #   - Under-prepared students benefit from schedule diversity (≤2 in-dept).
 #   - Declared EDU / PHY / EP / BCM interests need stricter triage on aligned fails.
+
+FIRST_YEAR_SEMINAR = "FS-110"
 
 HARD_LANDING_COURSES = {"BIO-145", "MTH-135", "CS-125", "PHY-185", "CHM-121"}
 
@@ -542,86 +545,145 @@ def _is_aligned(course: str, major_code: str, premed: bool) -> bool:
     return False
 
 
-def recommend_first_semester(major_code: str, prep_level: str, premed: bool,
-                              first_two_years: list) -> dict:
+def _normalize_major_codes(major_codes) -> list:
+    """Accept a string, list, or None; return a de-duped list of uppercase codes
+    with EXPLORATORY dropped if any real major is present."""
+    if major_codes is None:
+        return []
+    if isinstance(major_codes, str):
+        major_codes = [major_codes]
+    seen = []
+    for c in major_codes:
+        if not c:
+            continue
+        cu = c.upper()
+        if cu not in seen:
+            seen.append(cu)
+    real = [c for c in seen if c != "EXPLORATORY"]
+    return real if real else seen
+
+
+def recommend_first_semester(major_codes, prep_level: str, premed: bool,
+                              first_two_years: list,
+                              certainty: str = "committed") -> dict:
     """Return {courses, notes, monitor_flags, stacking_note} for first fall.
 
-    `courses` is an ordered list of course codes (labs included where they
-    should co-enroll). `notes` is advisor-facing context. `monitor_flags`
-    lists hard-landing courses in the aligned interest area.
+    `major_codes` may be a single code, a list, or empty/"EXPLORATORY". When
+    multiple real codes are given, the plan keeps gateway courses for each
+    interest. `certainty` of "exploring" or "leaning" softens lock-in; only
+    "committed" allows the well-prepped "suggested" extras.
     """
-    major_code = (major_code or "").upper()
+    codes = _normalize_major_codes(major_codes)
+    is_exploratory = not codes or codes == ["EXPLORATORY"]
     prep_level = (prep_level or "typical").lower()
+    certainty = (certainty or "committed").lower()
     notes: list = []
     flags: list = []
     stacking_note = ""
 
     # Exploratory path: breadth-forward default.
-    if not major_code or major_code == "EXPLORATORY":
-        courses = ["MTH-100 or STA-100", "Writing-emphasis humanities (WE)",
-                   "Breadth natural science", "Breadth elective"]
-        notes.append("Exploratory plan: build GE breadth and test interests "
-                     "before committing to a major.")
+    if is_exploratory:
+        courses = [FIRST_YEAR_SEMINAR, "MTH-100 or STA-100",
+                   "Writing-emphasis humanities (WE)", "Breadth natural science"]
         if prep_level == "under":
-            notes.append("Under-prepared: lean heavier on foundational / "
-                         "100-level courses; target high disciplinary diversity.")
-        if prep_level == "well":
-            notes.append("Well-prepared: consider one 200-level course in a "
-                         "plausible major area as a probe.")
+            notes.append("Under-prepared: lean on foundational 100-level courses "
+                         "and maximize disciplinary diversity.")
+        elif prep_level == "well":
+            notes.append("Well-prepared: consider a 200-level course in a plausible "
+                         "major area as a probe.")
         return {"courses": courses, "notes": notes,
                 "monitor_flags": flags, "stacking_note": stacking_note}
 
-    # Major-driven path: start from first_two_years plan, then overlay rules.
-    entry = _pick_f2y_entry(major_code, premed, prep_level, first_two_years)
-    y1f = ((entry.get("semesters") or {}).get("y1_fall") or {})
-    courses: list = list(y1f.get("essential") or [])
-    if prep_level == "well":
-        courses += [c for c in (y1f.get("suggested") or []) if c not in courses]
+    # Primary major drives alignment/stacking rules; others contribute gateways.
+    primary = codes[0]
+    multi = len(codes) > 1
 
-    # Prep adjustments:
-    # (a) BIO-155 is the advanced entry; demote to BIO-100 unless prep=well.
+    # Collect essentials; fall back to suggested if a major has no essentials;
+    # include all suggested when single + well + committed.
+    courses: list = []
+    for mc in codes:
+        entry = _pick_f2y_entry(mc, premed, prep_level, first_two_years)
+        y1f = ((entry.get("semesters") or {}).get("y1_fall") or {})
+        ess = list(y1f.get("essential") or [])
+        sug = list(y1f.get("suggested") or [])
+        for c in ess:
+            if c not in courses:
+                courses.append(c)
+        if not ess:
+            for c in sug:
+                if c not in courses:
+                    courses.append(c)
+        elif not multi and prep_level == "well" and certainty == "committed":
+            for c in sug:
+                if c not in courses:
+                    courses.append(c)
+
+    if multi:
+        notes.append("Plan covers gateway courses for "
+                     + ", ".join(codes) + " to keep all interests open.")
+
+    # (a) BIO-155 → BIO-100 unless prep=well.
     if prep_level != "well":
         replaced = []
+        swapped = False
         for c in courses:
             cn = normalize(c)
             if cn == "BIO-155":
                 replaced.append("BIO-100")
-                if "BIO-100" not in replaced:
-                    pass
+                swapped = True
             elif cn == "BIO-155L":
-                pass
+                continue
             else:
                 replaced.append(c)
-        if replaced != courses:
+        if swapped:
             notes.append("Swapped BIO-155 for BIO-100 given prep level.")
         courses = replaced
 
-    # (b) MTH-135 only if quant major AND prep=well; otherwise drop and substitute.
+    # (b) MTH-135 only if quant major AND prep=well AND committed.
     if any(normalize(c) == "MTH-135" for c in courses):
-        if not (prep_level == "well" and major_code in QUANT_MAJORS):
+        quant = any(mc in QUANT_MAJORS for mc in codes)
+        if not (prep_level == "well" and quant and certainty == "committed"):
             courses = [c for c in courses if normalize(c) != "MTH-135"]
-            if major_code in QUANT_MAJORS:
+            if quant:
                 courses.append("MTH-130 or STA-100 (Calc prep)")
-                notes.append("Deferred MTH-135 — prep-level risk × quantitative major is "
-                             "the stacking case. Rebuild calc readiness in fall, start 135 spring.")
+                notes.append("Deferred MTH-135 — rebuild calc readiness in fall, "
+                             "start 135 spring.")
             else:
-                notes.append("MTH-135 removed: not required in fall for this major, "
-                             "and not aligned with stated interest.")
+                notes.append("MTH-135 removed: not required in fall for this interest.")
 
-    # (c) BIO + CHM together in fall is reserved for pre-med timing.
+    # (c) BIO + CHM together in fall reserved for pre-med timing.
     has_bio = any(normalize(c).startswith("BIO-1") for c in courses)
     has_chm = any(normalize(c).startswith("CHM-121") for c in courses)
     if has_bio and has_chm and not premed:
         courses = [c for c in courses if not normalize(c).startswith("CHM-121")]
-        notes.append("Dropped CHM-121 — pair with BIO in fall only for pre-med timing; "
-                     "the CHM sequence can start spring or sophomore year otherwise.")
+        notes.append("Dropped CHM-121 — pair with BIO in fall only for pre-med timing.")
 
-    # Stacking check (brief Q5): ≥2 hard-landing courses, or MTH-135 paired with any other.
+    # (d) Certainty: exploring/leaning trims to a single aligned hard-landing
+    # course and adds a breadth placeholder.
+    if certainty in ("exploring", "leaning"):
+        hard_in_plan = [c for c in courses if normalize(c) in HARD_LANDING_COURSES]
+        if len(hard_in_plan) >= 2:
+            aligned = [c for c in hard_in_plan if _is_aligned(c, primary, premed)]
+            keep = aligned[0] if aligned else hard_in_plan[0]
+            moved = [c for c in hard_in_plan if c != keep]
+            for c in moved:
+                if c in courses:
+                    courses.remove(c)
+                    lab = c + "L"
+                    if lab in courses:
+                        courses.remove(lab)
+            stacking_note = (("Exploring" if certainty == "exploring" else "Leaning")
+                             + ": held back " + ", ".join(moved)
+                             + " to keep pivot options open.")
+        if certainty == "exploring" and len(courses) < 4:
+            if not any("breadth" in str(c).lower() or "WE" in str(c)
+                       for c in courses):
+                courses.append("Breadth / GE course")
+
+    # Always-on stacking safety: ≥2 hard-landing courses still → unstack.
     hard_in_plan = [c for c in courses if normalize(c) in HARD_LANDING_COURSES]
-    if len(hard_in_plan) >= 2:
-        # Prefer to keep the most-aligned hard-landing course; defer the rest.
-        aligned = [c for c in hard_in_plan
-                   if _is_aligned(c, major_code, premed)]
+    if len(hard_in_plan) >= 2 and not stacking_note:
+        aligned = [c for c in hard_in_plan if _is_aligned(c, primary, premed)]
         keep = aligned[0] if aligned else hard_in_plan[0]
         moved = [c for c in hard_in_plan if c != keep]
         for c in moved:
@@ -630,37 +692,42 @@ def recommend_first_semester(major_code: str, prep_level: str, premed: bool,
                 lab = c + "L"
                 if lab in courses:
                     courses.remove(lab)
-        stacking_note = (f"Unstacked: moved {', '.join(moved)} to a later "
-                         "term to avoid compound hard-landing risk in fall.")
+        stacking_note = ("Unstacked: moved " + ", ".join(moved)
+                         + " to a later term to avoid compound hard-landing risk in fall.")
 
-    # Diversity (brief Q4): at least one breadth course; under-prepared should be ≥2.
+    # First-Year Seminar is required for every first-semester student.
+    if not any(normalize(c) == FIRST_YEAR_SEMINAR for c in courses):
+        courses.insert(0, FIRST_YEAR_SEMINAR)
+
+    # Diversity.
     def _dept(c): return prefix_of(normalize(c))
     depts = [_dept(c) for c in courses if _dept(c)]
     unique_depts = set(depts)
-    if major_code and len(unique_depts) <= 1 and courses:
-        notes.append("Add at least one breadth course outside the interest area — "
-                     "all-in-department fall schedules raise spring-pivot risk.")
+    if len(unique_depts) <= 1 and courses:
+        notes.append("Add at least one breadth course outside the interest area.")
     if prep_level == "under":
         from collections import Counter
         mode_count = max(Counter(depts).values()) if depts else 0
         if mode_count >= 3:
             notes.append("Under-prepared: reduce in-department load to ≤2 courses "
-                         "and add breadth — low-GPA × diversity interaction is protective.")
+                         "and add breadth.")
 
-    # Midterm monitoring flags for aligned hard-landing courses (brief Q2 + Q3).
+    # Midterm monitoring flags for aligned hard-landing courses.
     for c in courses:
         if normalize(c) not in HARD_LANDING_COURSES:
             continue
-        if not _is_aligned(c, major_code, premed):
+        aligned_to = next((mc for mc in codes
+                           if _is_aligned(c, mc, premed)), None)
+        if not aligned_to and not (premed and normalize(c) in ("BIO-145", "CHM-121")):
             continue
-        strict = major_code in STRICT_MONITORING_MAJORS
+        strict = aligned_to in STRICT_MONITORING_MAJORS
         flags.append({
             "course": normalize(c),
             "strict": strict,
             "message": (f"Priority midterm-F monitoring in {normalize(c)}. "
                         + ("Declared {} interest: aligned-fail retention penalty "
                            "is materially above the pooled mean — treat an F at "
-                           "midterm as the sharpest single triage signal.".format(major_code)
+                           "midterm as the sharpest single triage signal.".format(aligned_to)
                            if strict else
                            "An F at midterm is the retention triage threshold "
                            "(D recovers at ~45% to C-or-better)."))

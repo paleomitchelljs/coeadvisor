@@ -1221,74 +1221,123 @@ function pickF2YEntry(majorCode, premed, prep) {
   return entries[0];
 }
 
-function recommendFirstSemester(majorCode, prep, premed) {
-  majorCode = (majorCode || "").toUpperCase();
+const FIRST_YEAR_SEMINAR = "FS-110";
+
+function normalizeMajorCodes(codes) {
+  if (codes == null) return [];
+  if (typeof codes === "string") codes = [codes];
+  const seen = [];
+  for (const c of codes) {
+    if (!c) continue;
+    const cu = c.toUpperCase();
+    if (!seen.includes(cu)) seen.push(cu);
+  }
+  const real = seen.filter(c => c !== "EXPLORATORY");
+  return real.length ? real : seen;
+}
+
+function recommendFirstSemester(majorCodes, prep, premed, certainty) {
+  const codes = normalizeMajorCodes(majorCodes);
+  const isExploratory = !codes.length || (codes.length === 1 && codes[0] === "EXPLORATORY");
   prep = (prep || "typical").toLowerCase();
+  certainty = (certainty || "committed").toLowerCase();
   const notes = [];
   const flags = [];
   let stackingNote = "";
 
-  // Exploratory path — GE-forward breadth.
-  if (!majorCode || majorCode === "EXPLORATORY") {
-    const courses = ["MTH-100 or STA-100", "Writing-emphasis humanities (WE)",
-                     "Breadth natural science", "Breadth elective"];
-    notes.push("Exploratory plan: build GE breadth and test interests before committing to a major.");
+  if (isExploratory) {
+    const courses = [FIRST_YEAR_SEMINAR, "MTH-100 or STA-100",
+                     "Writing-emphasis humanities (WE)", "Breadth natural science"];
     if (prep === "under")
-      notes.push("Under-prepared: lean heavier on foundational / 100-level courses; target high disciplinary diversity.");
-    if (prep === "well")
-      notes.push("Well-prepared: consider one 200-level course in a plausible major area as a probe.");
+      notes.push("Under-prepared: lean on foundational 100-level courses and maximize disciplinary diversity.");
+    else if (prep === "well")
+      notes.push("Well-prepared: consider a 200-level course in a plausible major area as a probe.");
     return { courses, notes, monitor_flags: flags, stacking_note: stackingNote };
   }
 
-  // Major path: start from first_two_years plan.
-  const entry = pickF2YEntry(majorCode, premed, prep);
-  const y1f = ((entry || {}).semesters || {}).y1_fall || {};
-  let courses = [...(y1f.essential || [])];
-  if (prep === "well")
-    for (const c of (y1f.suggested || [])) if (!courses.includes(c)) courses.push(c);
+  const primary = codes[0];
+  const multi = codes.length > 1;
 
-  // Prep adjustments
+  let courses = [];
+  for (const mc of codes) {
+    const entry = pickF2YEntry(mc, premed, prep);
+    const y1f = ((entry || {}).semesters || {}).y1_fall || {};
+    const ess = [...(y1f.essential || [])];
+    const sug = [...(y1f.suggested || [])];
+    for (const c of ess) if (!courses.includes(c)) courses.push(c);
+    if (ess.length === 0) {
+      for (const c of sug) if (!courses.includes(c)) courses.push(c);
+    } else if (!multi && prep === "well" && certainty === "committed") {
+      for (const c of sug) if (!courses.includes(c)) courses.push(c);
+    }
+  }
+
+  if (multi)
+    notes.push("Plan covers gateway courses for " + codes.join(", ") + " to keep all interests open.");
+
+  // (a) BIO-155 → BIO-100 unless prep=well
   if (prep !== "well") {
     const replaced = [];
     let swapped = false;
     for (const c of courses) {
       const n = normalize(c);
       if (n === "BIO-155") { replaced.push("BIO-100"); swapped = true; }
-      else if (n === "BIO-155L") { /* drop the lab; BIO-100 has none */ }
+      else if (n === "BIO-155L") { /* drop */ }
       else replaced.push(c);
     }
     if (swapped) notes.push("Swapped BIO-155 for BIO-100 given prep level.");
     courses = replaced;
   }
 
-  // MTH-135 gating
+  // (b) MTH-135 gating
   if (courses.some(c => normalize(c) === "MTH-135")) {
-    if (!(prep === "well" && QUANT_MAJORS.has(majorCode))) {
+    const quant = codes.some(mc => QUANT_MAJORS.has(mc));
+    if (!(prep === "well" && quant && certainty === "committed")) {
       courses = courses.filter(c => normalize(c) !== "MTH-135");
-      if (QUANT_MAJORS.has(majorCode)) {
+      if (quant) {
         courses.push("MTH-130 or STA-100 (Calc prep)");
-        notes.push("Deferred MTH-135 — prep-level risk × quantitative major is the stacking case. " +
-                   "Rebuild calc readiness in fall, start 135 spring.");
+        notes.push("Deferred MTH-135 — rebuild calc readiness in fall, start 135 spring.");
       } else {
-        notes.push("MTH-135 removed: not required in fall for this major, and not aligned with stated interest.");
+        notes.push("MTH-135 removed: not required in fall for this interest.");
       }
     }
   }
 
-  // BIO + CHM only when premed
+  // (c) BIO + CHM only when premed
   const hasBio = courses.some(c => normalize(c).startsWith("BIO-1"));
   const hasChm = courses.some(c => normalize(c).startsWith("CHM-121"));
   if (hasBio && hasChm && !premed) {
     courses = courses.filter(c => !normalize(c).startsWith("CHM-121"));
-    notes.push("Dropped CHM-121 — pair with BIO in fall only for pre-med timing; the CHM sequence can start spring or sophomore year otherwise.");
+    notes.push("Dropped CHM-121 — pair with BIO in fall only for pre-med timing.");
   }
 
-  // Stacking: ≥2 hard-landing courses in fall → unstack.
-  const hardInPlan = courses.filter(c => HARD_LANDING_COURSES.has(normalize(c)));
-  if (hardInPlan.length >= 2) {
-    const aligned = hardInPlan.filter(c => isAligned(c, majorCode, premed));
-    const keep = aligned.length ? aligned[0] : hardInPlan[0];
-    const moved = hardInPlan.filter(c => c !== keep);
+  // (d) Certainty: exploring/leaning trims to one aligned hard-landing course
+  if (certainty === "exploring" || certainty === "leaning") {
+    const hardInPlan = courses.filter(c => HARD_LANDING_COURSES.has(normalize(c)));
+    if (hardInPlan.length >= 2) {
+      const aligned = hardInPlan.filter(c => isAligned(c, primary, premed));
+      const keep = aligned.length ? aligned[0] : hardInPlan[0];
+      const moved = hardInPlan.filter(c => c !== keep);
+      for (const c of moved) {
+        courses = courses.filter(x => x !== c);
+        const lab = c + "L";
+        courses = courses.filter(x => x !== lab);
+      }
+      stackingNote = (certainty === "exploring" ? "Exploring" : "Leaning") +
+                     ": held back " + moved.join(", ") + " to keep pivot options open.";
+    }
+    if (certainty === "exploring" && courses.length < 4) {
+      const hasBreadth = courses.some(c => /breadth|WE/i.test(String(c)));
+      if (!hasBreadth) courses.push("Breadth / GE course");
+    }
+  }
+
+  // Always-on stacking safety
+  const hardInPlan2 = courses.filter(c => HARD_LANDING_COURSES.has(normalize(c)));
+  if (hardInPlan2.length >= 2 && !stackingNote) {
+    const aligned = hardInPlan2.filter(c => isAligned(c, primary, premed));
+    const keep = aligned.length ? aligned[0] : hardInPlan2[0];
+    const moved = hardInPlan2.filter(c => c !== keep);
     for (const c of moved) {
       courses = courses.filter(x => x !== c);
       const lab = c + "L";
@@ -1298,30 +1347,36 @@ function recommendFirstSemester(majorCode, prep, premed) {
                    " to a later term to avoid compound hard-landing risk in fall.";
   }
 
-  // Diversity check
+  // First-Year Seminar: required for every first-semester student
+  if (!courses.some(c => normalize(c) === FIRST_YEAR_SEMINAR))
+    courses.unshift(FIRST_YEAR_SEMINAR);
+
+  // Diversity
   const depts = courses.map(c => prefixOf(normalize(c))).filter(Boolean);
   const uniq = new Set(depts);
-  if (majorCode && uniq.size <= 1 && courses.length)
-    notes.push("Add at least one breadth course outside the interest area — all-in-department fall schedules raise spring-pivot risk.");
+  if (uniq.size <= 1 && courses.length)
+    notes.push("Add at least one breadth course outside the interest area.");
   if (prep === "under") {
     const counts = {};
     for (const d of depts) counts[d] = (counts[d] || 0) + 1;
     const modeCount = Math.max(0, ...Object.values(counts));
     if (modeCount >= 3)
-      notes.push("Under-prepared: reduce in-department load to ≤2 courses and add breadth — low-GPA × diversity interaction is protective.");
+      notes.push("Under-prepared: reduce in-department load to ≤2 courses and add breadth.");
   }
 
   // Midterm-F monitoring flags
   for (const c of courses) {
     const n = normalize(c);
     if (!HARD_LANDING_COURSES.has(n)) continue;
-    if (!isAligned(c, majorCode, premed)) continue;
-    const strict = STRICT_MONITORING_MAJORS.has(majorCode);
+    let alignedTo = null;
+    for (const mc of codes) if (isAligned(c, mc, premed)) { alignedTo = mc; break; }
+    if (!alignedTo && !(premed && (n === "BIO-145" || n === "CHM-121"))) continue;
+    const strict = STRICT_MONITORING_MAJORS.has(alignedTo);
     flags.push({
       course: n,
       strict,
       message: `Priority midterm-F monitoring in ${n}. ` + (strict
-        ? `Declared ${majorCode} interest: aligned-fail retention penalty is materially above the pooled mean — treat an F at midterm as the sharpest single triage signal.`
+        ? `Declared ${alignedTo} interest: aligned-fail retention penalty is materially above the pooled mean — treat an F at midterm as the sharpest single triage signal.`
         : "An F at midterm is the retention triage threshold (D recovers at ~45% to C-or-better).")
     });
   }
@@ -1330,27 +1385,91 @@ function recommendFirstSemester(majorCode, prep, premed) {
 }
 
 function getIntakeSchema() {
-  // Prefer the legacy DATA.intake bundle; otherwise a minimal inline default.
   if (DATA.intake && DATA.intake._default) return DATA.intake._default;
   return {
-    intro: "Three questions generate a recommended first semester.",
     questions: [
-      { id: "interest_major", type: "major_select",
-        text: "What is the student's primary interest area?",
-        include_exploratory: true },
-      { id: "prep_level", type: "choice",
-        text: "How prepared is this student for college-level work?",
-        subtext: "Combine self-report and advisor judgment; default to the more conservative rating.",
-        options: [
+      { id: "interest_majors", type: "major_multiselect", text: "Interest area(s)", include_exploratory: true },
+      { id: "certainty", type: "choice", text: "Commitment to this path", options: [
+          { value: "exploring", label: "Exploring" },
+          { value: "leaning",   label: "Leaning" },
+          { value: "committed", label: "Committed" },
+        ]},
+      { id: "prep_level", type: "choice", text: "Preparedness for college-level work", options: [
           { value: "well",    label: "More prepared than typical" },
           { value: "typical", label: "Typical preparedness" },
           { value: "under",   label: "Under-prepared" },
         ]},
-      { id: "premed", type: "yes_no",
-        text: "Is this student interested in medicine (pre-med, PA, PT/DPT)?",
+      { id: "premed", type: "yes_no", text: "Interested in medicine (pre-med, PA, PT/DPT)?",
         show_when: { interest_major_code_in: ["BIO", "CHM", "BCM", "KIN", "NEURO", "PSY"] } }
     ]
   };
+}
+
+function buildMajorOptions() {
+  const opts = ['<option value="EXPLORATORY">— Exploratory / Unsure —</option>'];
+  const seen = new Set();
+  const byName = [];
+  for (const [pid, prog] of Object.entries(DATA.programs || {})) {
+    if (prog.program_type !== "major") continue;
+    if (!prog.major_code || seen.has(prog.major_code)) continue;
+    seen.add(prog.major_code);
+    byName.push({ code: prog.major_code, name: prog.name || pid, pid });
+  }
+  byName.sort((a, b) => a.name.localeCompare(b.name));
+  for (const m of byName)
+    opts.push(`<option value="${m.code}" data-pid="${m.pid}">${m.name} (${m.code})</option>`);
+  return opts.join("");
+}
+
+function updateWizInterestRmVisibility(container) {
+  const rows = container.querySelectorAll(".wiz-interest-row");
+  const multi = rows.length > 1;
+  rows.forEach(r => {
+    const rm = r.querySelector(".wiz-interest-rm");
+    if (rm) rm.style.visibility = multi ? "visible" : "hidden";
+  });
+}
+
+function addWizInterestRow(container, optsHtml) {
+  const row = document.createElement("div");
+  row.className = "wiz-interest-row";
+  row.style.cssText = "display:flex;gap:6px;align-items:center;margin-bottom:6px";
+  row.innerHTML = `<select class="wiz-interest-sel" style="flex:1;padding:6px 8px;font-size:13px">${optsHtml}</select>` +
+                  `<button type="button" class="wiz-interest-rm" style="padding:4px 10px;font-size:14px;line-height:1" title="Remove">×</button>`;
+  row.querySelector(".wiz-interest-rm").onclick = () => {
+    const rows = container.querySelectorAll(".wiz-interest-row");
+    if (rows.length > 1) {
+      row.remove();
+      updateWizInterestRmVisibility(container);
+      updateWizVisibility();
+    }
+  };
+  row.querySelector(".wiz-interest-sel").addEventListener("change", updateWizVisibility);
+  container.appendChild(row);
+  updateWizInterestRmVisibility(container);
+}
+
+function getWizSelectedCodes() {
+  const sels = document.querySelectorAll("#wiz-interests-container .wiz-interest-sel");
+  const codes = [];
+  for (const s of sels) if (s.value && !codes.includes(s.value)) codes.push(s.value);
+  return codes;
+}
+
+function updateWizVisibility() {
+  const intake = getIntakeSchema();
+  const codes = getWizSelectedCodes();
+  const realCodes = codes.filter(c => c !== "EXPLORATORY");
+  for (const q of (intake.questions || [])) {
+    const sw = q.show_when;
+    if (!sw) continue;
+    const el = document.querySelector(`.wiz-question[data-qid="${q.id}"]`);
+    if (!el) continue;
+    let show = false;
+    if (sw.interest_major_code_in)
+      show = realCodes.some(c => sw.interest_major_code_in.includes(c));
+    el.style.display = show ? "" : "none";
+  }
 }
 
 function showIntakeWizard() {
@@ -1358,31 +1477,18 @@ function showIntakeWizard() {
   const modal = document.getElementById("wizard-modal");
   const body  = document.getElementById("wizard-body");
 
-  // Build major dropdown from program data, grouped by type.
-  const majorOptions = [];
-  majorOptions.push('<option value="EXPLORATORY">— Exploratory / Unsure —</option>');
-  const seen = new Set();
-  const byName = [];
-  for (const [pid, prog] of Object.entries(DATA.programs || {})) {
-    if (prog.program_type !== "major") continue;
-    if (!prog.major_code) continue;
-    if (seen.has(prog.major_code)) continue;
-    seen.add(prog.major_code);
-    byName.push({ code: prog.major_code, name: prog.name || pid, pid });
-  }
-  byName.sort((a, b) => a.name.localeCompare(b.name));
-  for (const m of byName)
-    majorOptions.push(`<option value="${m.code}" data-pid="${m.pid}">${m.name} (${m.code})</option>`);
-
+  const optsHtml = buildMajorOptions();
   const html = [];
-  if (intake.intro) html.push(`<p style="color:#64748b;font-size:12px;margin-bottom:16px">${intake.intro}</p>`);
 
   for (const q of (intake.questions || [])) {
     const sub = q.subtext ? `<div style="color:#64748b;font-size:11px;margin-top:2px">${q.subtext}</div>` : "";
     html.push(`<div class="wiz-question" data-qid="${q.id}" style="margin-bottom:18px">
       <div style="font-weight:500;margin-bottom:8px">${q.text}</div>${sub}`);
-    if (q.type === "major_select") {
-      html.push(`<select id="wiz_${q.id}" style="margin-top:6px;padding:6px 8px;font-size:13px;min-width:280px">${majorOptions.join("")}</select>`);
+    if (q.type === "major_multiselect") {
+      html.push(`<div id="wiz-interests-container"></div>`);
+      html.push(`<button type="button" id="wiz-add-interest" class="small-btn" style="margin-top:4px">+ Add another area</button>`);
+    } else if (q.type === "major_select") {
+      html.push(`<select id="wiz_${q.id}" style="margin-top:6px;padding:6px 8px;font-size:13px;min-width:280px">${optsHtml}</select>`);
     } else if (q.type === "choice") {
       for (const opt of (q.options || []))
         html.push(`<label style="display:block;margin:4px 0;font-size:13px"><input type="radio" name="wiz_${q.id}" value="${opt.value}"> ${opt.label}</label>`);
@@ -1394,52 +1500,50 @@ function showIntakeWizard() {
   }
   body.innerHTML = html.join("");
 
-  // show_when: hide premed question unless interest is life/health science.
-  function updateVisibility() {
-    for (const q of (intake.questions || [])) {
-      const sw = q.show_when;
-      if (!sw) continue;
-      const el = body.querySelector(`.wiz-question[data-qid="${q.id}"]`);
-      if (!el) continue;
-      let show = false;
-      if (sw.interest_major_code_in) {
-        const sel = document.getElementById("wiz_interest_major");
-        show = sel && sw.interest_major_code_in.includes(sel.value);
-      }
-      el.style.display = show ? "" : "none";
-    }
+  const interestsContainer = document.getElementById("wiz-interests-container");
+  if (interestsContainer) {
+    addWizInterestRow(interestsContainer, optsHtml);
+    const addBtn = document.getElementById("wiz-add-interest");
+    if (addBtn) addBtn.onclick = () => addWizInterestRow(interestsContainer, optsHtml);
   }
-  const majorSel = document.getElementById("wiz_interest_major");
-  if (majorSel) majorSel.addEventListener("change", updateVisibility);
-  updateVisibility();
+  updateWizVisibility();
 
   modal.classList.add("visible");
 }
 
 function submitWizard() {
-  const intake = getIntakeSchema();
   const modal = document.getElementById("wizard-modal");
 
-  // Gather answers
-  const majorSel = document.getElementById("wiz_interest_major");
-  const majorCode = majorSel ? majorSel.value : "EXPLORATORY";
-  const majorPid  = majorSel && majorSel.selectedOptions[0]
-                  ? (majorSel.selectedOptions[0].dataset.pid || "") : "";
+  const codes = getWizSelectedCodes();
+  const realCodes = codes.filter(c => c !== "EXPLORATORY");
   const prep = (document.querySelector('input[name="wiz_prep_level"]:checked') || {}).value;
   if (!prep) { alert("Select a preparedness level."); return; }
+  const certainty = (document.querySelector('input[name="wiz_certainty"]:checked') || {}).value || "committed";
   const premedEl = document.querySelector('input[name="wiz_premed"]:checked');
   const premedVisible = document.querySelector('.wiz-question[data-qid="premed"]');
   const premed = premedVisible && premedVisible.style.display !== "none"
                && premedEl && premedEl.value === "yes";
 
-  const rec = recommendFirstSemester(majorCode, prep, premed);
+  const rec = recommendFirstSemester(codes.length ? codes : ["EXPLORATORY"], prep, premed, certainty);
 
   modal.classList.remove("visible");
 
-  // Set the major dropdown (if a real major was picked) and pathway
-  if (majorCode && majorCode !== "EXPLORATORY" && majorPid && DATA.programs[majorPid]) {
-    const majorSelEl = document.querySelector("#major-slots .major-select");
-    if (majorSelEl) majorSelEl.value = majorPid;
+  // Set the major dropdown (if a real major was picked).
+  if (realCodes.length) {
+    const selects = document.querySelectorAll("#major-slots .major-select");
+    for (let i = 0; i < realCodes.length; i++) {
+      if (i >= selects.length) { addMajorSlot(); }
+    }
+    const selects2 = document.querySelectorAll("#major-slots .major-select");
+    for (let i = 0; i < realCodes.length && i < selects2.length; i++) {
+      const code = realCodes[i];
+      const pid = (() => {
+        for (const [pid, prog] of Object.entries(DATA.programs || {}))
+          if (prog.program_type === "major" && prog.major_code === code) return pid;
+        return "";
+      })();
+      if (pid && DATA.programs[pid]) selects2[i].value = pid;
+    }
   }
   updatePathways();
   if (premed) {

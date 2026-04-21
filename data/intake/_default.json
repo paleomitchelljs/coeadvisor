@@ -1,20 +1,27 @@
 {
   "program_id": "_default",
-  "version": 2,
-  "intro": "Three questions generate a recommended first semester. All rule logic is evidence-based; see new_student_considerations/advisor_brief_fall_registration.md for the underlying analysis.",
+  "version": 3,
   "questions": [
     {
-      "id": "interest_major",
-      "type": "major_select",
-      "text": "What is the student's primary interest area?",
-      "subtext": "Pick the closest major fit, or 'Exploratory / Unsure' if uncertain. For exploratory students, the plan emphasizes GE breadth.",
+      "id": "interest_majors",
+      "type": "major_multiselect",
+      "text": "Interest area(s)",
       "include_exploratory": true
+    },
+    {
+      "id": "certainty",
+      "type": "choice",
+      "text": "Commitment to this path",
+      "options": [
+        {"value": "exploring", "label": "Exploring"},
+        {"value": "leaning",   "label": "Leaning"},
+        {"value": "committed", "label": "Committed"}
+      ]
     },
     {
       "id": "prep_level",
       "type": "choice",
-      "text": "How prepared is this student for college-level work?",
-      "subtext": "Combine student self-report and advisor judgment; when they disagree, default to the more conservative rating.",
+      "text": "Preparedness for college-level work",
       "options": [
         {"value": "well",    "label": "More prepared than typical"},
         {"value": "typical", "label": "Typical preparedness"},
@@ -24,9 +31,9 @@
     {
       "id": "premed",
       "type": "yes_no",
-      "text": "Is this student interested in medicine (pre-med, PA, PT/DPT)?",
+      "text": "Interested in medicine (pre-med, PA, PT/DPT)?",
       "show_when": {"interest_major_code_in": ["BIO", "CHM", "BCM", "KIN", "NEURO", "PSY"]}
     }
   ],
-  "recommender": "first_semester_v1"
+  "recommender": "first_semester_v2"
 }
