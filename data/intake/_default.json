@@ -1,34 +1,32 @@
 {
   "program_id": "_default",
-  "intro": "Two quick questions to tailor the first-semester plan.",
+  "version": 2,
+  "intro": "Three questions generate a recommended first semester. All rule logic is evidence-based; see new_student_considerations/advisor_brief_fall_registration.md for the underlying analysis.",
   "questions": [
     {
-      "id": "math_comfort",
-      "text": "Is this student ready to start a college math course this semester (calculus, statistics, etc.)?",
-      "type": "yes_no"
+      "id": "interest_major",
+      "type": "major_select",
+      "text": "What is the student's primary interest area?",
+      "subtext": "Pick the closest major fit, or 'Exploratory / Unsure' if uncertain. For exploratory students, the plan emphasizes GE breadth.",
+      "include_exploratory": true
     },
     {
-      "id": "science_comfort",
-      "text": "Is this student ready to start a college science course this semester (biology, chemistry, physics, etc.)?",
-      "type": "yes_no"
+      "id": "prep_level",
+      "type": "choice",
+      "text": "How prepared is this student for college-level work?",
+      "subtext": "Combine student self-report and advisor judgment; when they disagree, default to the more conservative rating.",
+      "options": [
+        {"value": "well",    "label": "More prepared than typical"},
+        {"value": "typical", "label": "Typical preparedness"},
+        {"value": "under",   "label": "Under-prepared"}
+      ]
+    },
+    {
+      "id": "premed",
+      "type": "yes_no",
+      "text": "Is this student interested in medicine (pre-med, PA, PT/DPT)?",
+      "show_when": {"interest_major_code_in": ["BIO", "CHM", "BCM", "KIN", "NEURO", "PSY"]}
     }
   ],
-  "routes": [
-    {
-      "when": { "math_comfort": true,  "science_comfort": true  },
-      "comfort_math": true,  "comfort_science": true
-    },
-    {
-      "when": { "math_comfort": true,  "science_comfort": false },
-      "comfort_math": true,  "comfort_science": false
-    },
-    {
-      "when": { "math_comfort": false, "science_comfort": true  },
-      "comfort_math": false, "comfort_science": true
-    },
-    {
-      "when": { "math_comfort": false, "science_comfort": false },
-      "comfort_math": false, "comfort_science": false
-    }
-  ]
+  "recommender": "first_semester_v1"
 }

@@ -424,12 +424,21 @@ class AdvisorApp:
         ctk.CTkFrame(card, fg_color=COLORS["border"], height=1,
                      corner_radius=0).pack(fill=tk.X, padx=32, pady=(0, 18))
 
-        q_vars: dict[str, tk.StringVar] = {}  # "yes" | "no" | ""
+        q_vars: dict[str, tk.StringVar] = {}       # yes/no or choice value
+        q_required: dict[str, bool] = {}           # question id → required?
 
         for q in intake.get("questions", []):
             qid  = q["id"]
+            qtype = q.get("type", "yes_no")
+
+            # major_select is skipped in desktop mode — major is already chosen
+            # on the interest page preceding this one.
+            if qtype == "major_select":
+                continue
+
             qvar = tk.StringVar(value="")
             q_vars[qid] = qvar
+            q_required[qid] = True
 
             qf = ctk.CTkFrame(card, fg_color="transparent", corner_radius=0)
             qf.pack(fill=tk.X, padx=32, pady=(0, 16))
@@ -438,50 +447,52 @@ class AdvisorApp:
                          font=("Helvetica", 10),
                          wraplength=420, justify=tk.LEFT,
                          anchor="w").pack(anchor=tk.W, pady=(0, 8))
+            if q.get("subtext"):
+                ctk.CTkLabel(qf, text=q["subtext"],
+                             fg_color="transparent", text_color=COLORS["note"],
+                             font=("Helvetica", 8, "italic"),
+                             wraplength=420, justify=tk.LEFT,
+                             anchor="w").pack(anchor=tk.W, pady=(0, 6))
 
             btn_row = ctk.CTkFrame(qf, fg_color="transparent", corner_radius=0)
             btn_row.pack(anchor=tk.W)
 
-            btn_yes = ctk.CTkButton(btn_row, text="Yes",
-                                    font=("Helvetica", 9),
-                                    fg_color=COLORS["bg"],
-                                    hover_color=COLORS["panel_bg"],
-                                    text_color=COLORS["accent"],
-                                    border_width=1,
-                                    border_color=COLORS["accent"],
-                                    corner_radius=6,
-                                    width=80, height=32)
-            btn_yes.pack(side=tk.LEFT, padx=(0, 8))
+            def _mk_btn(parent, label):
+                return ctk.CTkButton(parent, text=label,
+                                     font=("Helvetica", 9),
+                                     fg_color=COLORS["bg"],
+                                     hover_color=COLORS["panel_bg"],
+                                     text_color=COLORS["accent"],
+                                     border_width=1,
+                                     border_color=COLORS["accent"],
+                                     corner_radius=6,
+                                     width=140 if qtype == "choice" else 80,
+                                     height=32)
 
-            btn_no = ctk.CTkButton(btn_row, text="No",
-                                   font=("Helvetica", 9),
-                                   fg_color=COLORS["bg"],
-                                   hover_color=COLORS["panel_bg"],
-                                   text_color=COLORS["accent"],
-                                   border_width=1,
-                                   border_color=COLORS["accent"],
-                                   corner_radius=6,
-                                   width=80, height=32)
-            btn_no.pack(side=tk.LEFT)
+            options = (q.get("options") if qtype == "choice"
+                       else [{"value": "yes", "label": "Yes"},
+                             {"value": "no",  "label": "No"}])
+            buttons = {}
+            for opt in options:
+                btn = _mk_btn(btn_row, opt["label"])
+                btn.pack(side=tk.LEFT, padx=(0, 8))
+                buttons[opt["value"]] = btn
 
-            def _make_yesno(qv, val, by, bn):
+            def _make_select(qv, val, bmap):
                 def _select():
                     qv.set(val)
-                    if val == "yes":
-                        by.configure(fg_color=COLORS["accent"], text_color="white",
-                                     border_color=COLORS["accent"])
-                        bn.configure(fg_color=COLORS["bg"], text_color=COLORS["accent"],
-                                     border_color=COLORS["accent"])
-                    else:
-                        bn.configure(fg_color=COLORS["accent"], text_color="white",
-                                     border_color=COLORS["accent"])
-                        by.configure(fg_color=COLORS["bg"], text_color=COLORS["accent"],
-                                     border_color=COLORS["accent"])
+                    for v, b in bmap.items():
+                        if v == val:
+                            b.configure(fg_color=COLORS["accent"], text_color="white",
+                                        border_color=COLORS["accent"])
+                        else:
+                            b.configure(fg_color=COLORS["bg"], text_color=COLORS["accent"],
+                                        border_color=COLORS["accent"])
                     _check_ready()
                 return _select
 
-            btn_yes.configure(command=_make_yesno(qvar, "yes", btn_yes, btn_no))
-            btn_no.configure(command=_make_yesno(qvar, "no",  btn_yes, btn_no))
+            for v, btn in buttons.items():
+                btn.configure(command=_make_select(qvar, v, buttons))
 
         ctk.CTkFrame(card, fg_color=COLORS["border"], height=1,
                      corner_radius=0).pack(fill=tk.X, padx=32, pady=(8, 18))
@@ -510,16 +521,40 @@ class AdvisorApp:
                                    text_color=COLORS["note"])
 
         def _on_continue():
-            answers = {qid: (v.get() == "yes") for qid, v in q_vars.items()}
-            route   = self._match_intake_route(intake, answers)
-            if route:
-                # If the matched route doesn't specify a major (e.g. _default
-                # intake), inject the program the student selected on the
-                # interest page so _apply_intake_route can set the dropdown.
-                if not route.get("major") and pid:
-                    route = dict(route, major=pid)
-                self._apply_intake_route(route)
-                self.check(jump_to_suggested=True)
+            raw = {qid: v.get() for qid, v in q_vars.items()}
+            # Legacy routes path (yes/no with `when` conditions)
+            if intake.get("routes"):
+                answers = {qid: (val == "yes") for qid, val in raw.items()}
+                route = self._match_intake_route(intake, answers)
+                if route:
+                    if not route.get("major") and pid:
+                        route = dict(route, major=pid)
+                    self._apply_intake_route(route)
+                    self.check(jump_to_suggested=True)
+                return
+            # New recommender-based flow
+            from advisor_core import recommend_first_semester
+            prog = self.programs.get(pid, {})
+            major_code = prog.get("major_code", "")
+            prep  = raw.get("prep_level", "typical")
+            premed = raw.get("premed") == "yes"
+            rec = recommend_first_semester(major_code, prep, premed,
+                                           self.first_two_years or [])
+            note_parts = []
+            if rec.get("stacking_note"):
+                note_parts.append("Stacking: " + rec["stacking_note"])
+            note_parts.extend(rec.get("notes", []))
+            for f in rec.get("monitor_flags", []):
+                tag = "Strict monitor" if f["strict"] else "Monitor"
+                note_parts.append(f"{tag} {f['course']}: {f['message']}")
+            route = {
+                "major": pid,
+                "pathway": "premed" if premed else "",
+                "semester_1": rec.get("courses", []),
+                "note": "  \n".join(note_parts),
+            }
+            self._apply_intake_route(route)
+            self.check(jump_to_suggested=True)
 
         cont_btn.configure(command=_on_continue)
 

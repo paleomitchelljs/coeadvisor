@@ -46,6 +46,7 @@
       "description": "Two additional ECO courses numbered 200 or higher; at least one must be 300 or higher. Cannot reuse courses already used above.",
       "constraints": {
         "prefixes": ["ECO"],
+        "floor_level": 200,
         "min_level": 300,
         "min_level_count": 1,
         "exclude_codes": ["ECO-175", "ECO-215",
