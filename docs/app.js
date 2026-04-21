@@ -1519,10 +1519,11 @@ function submitWizard() {
   const prep = (document.querySelector('input[name="wiz_prep_level"]:checked') || {}).value;
   if (!prep) { alert("Select a preparedness level."); return; }
   const certainty = (document.querySelector('input[name="wiz_certainty"]:checked') || {}).value || "committed";
-  const premedEl = document.querySelector('input[name="wiz_premed"]:checked');
-  const premedVisible = document.querySelector('.wiz-question[data-qid="premed"]');
-  const premed = premedVisible && premedVisible.style.display !== "none"
-               && premedEl && premedEl.value === "yes";
+  const hpEl = document.querySelector('input[name="wiz_health_pathway"]:checked');
+  const hpQuestion = document.querySelector('.wiz-question[data-qid="health_pathway"]');
+  const hpValue = hpQuestion && hpQuestion.style.display !== "none" && hpEl ? hpEl.value : "none";
+  // Only MD/DO pre-med triggers BIO+CHM-together in fall (MCAT biochem timing).
+  const premed = hpValue === "premed";
 
   const rec = recommendFirstSemester(codes.length ? codes : ["EXPLORATORY"], prep, premed, certainty);
 
@@ -1546,9 +1547,9 @@ function submitWizard() {
     }
   }
   updatePathways();
-  if (premed) {
+  if (hpValue && hpValue !== "none") {
     document.querySelectorAll(".pw-check input").forEach(cb => {
-      if (cb.value === "premed") cb.checked = true;
+      if (cb.value === hpValue) cb.checked = true;
     });
   }
 
