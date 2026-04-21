@@ -1552,11 +1552,28 @@ function submitWizard() {
     });
   }
 
-  // Pre-populate first-semester courses
+  // Split recommender output into specific codes vs placeholders.
+  const termCode = pickUpcomingFallTerm();
+  const termLabel = termCode && DATA.schedules && DATA.schedules[termCode]
+                    ? DATA.schedules[termCode].term : null;
+  const specifics = [];
+  const placeholders = [];
+  for (const c of rec.courses) {
+    const resolved = resolveIntakePlaceholder(c, termCode);
+    if (resolved.isPlaceholder) placeholders.push(resolved);
+    else specifics.push(c);
+  }
+
+  // Pre-populate first-semester courses (specifics only)
   const semContainer = document.getElementById("plan-semesters");
   semContainer.innerHTML = "";
-  addPlanSemester(PLAN_SEM_LABELS[1], rec.courses.join("\n"), false, 1);
+  addPlanSemester(PLAN_SEM_LABELS[1], specifics.join("\n"), false, 1);
   for (let i = 2; i <= 8; i++) addPlanSemester(PLAN_SEM_LABELS[i], "", false, i);
+
+  // Render placeholder suggestions below sem-1 textarea
+  const sem1 = document.querySelector('#plan-semesters .plan-semester[data-sem-num="1"]');
+  const phEl = sem1 && sem1.querySelector(".plan-intake-placeholders");
+  if (phEl) renderIntakePlaceholders(phEl, placeholders, termLabel);
 
   // Render the combined note (stacking + notes + flags)
   const noteEl = document.getElementById("route-note");
@@ -1580,6 +1597,131 @@ function submitWizard() {
 
 function closeWizard() {
   document.getElementById("wizard-modal").classList.remove("visible");
+}
+
+function pickUpcomingFallTerm() {
+  const schedules = DATA.schedules || {};
+  const falls = Object.keys(schedules).filter(k => /^fall_/i.test(k)).sort();
+  if (falls.length) return falls[falls.length - 1];
+  const any = Object.keys(schedules).sort();
+  return any[any.length - 1] || null;
+}
+
+function resolveIntakePlaceholder(text, termCode) {
+  const sd = (DATA.schedules || {})[termCode];
+  const offered = (sd && sd.courses) || {};
+  const trim = String(text).trim();
+
+  // Already a specific course code
+  if (/^[A-Z]{2,4}-\d+L?$/.test(trim)) return { isPlaceholder: false };
+
+  // "100-level ART", "200 level CRW"
+  let m = trim.match(/^(\d+)[- ]level\s+([A-Z]{2,4})/i);
+  if (m) {
+    const level = parseInt(m[1], 10), prefix = m[2].toUpperCase();
+    const candidates = Object.entries(offered)
+      .filter(([c]) => {
+        if (!c.startsWith(prefix + "-")) return false;
+        const num = parseInt(String(c.split("-")[1] || "").replace(/L$/, ""), 10);
+        return num >= level && num < level + 100;
+      })
+      .map(([c, info]) => ({ code: c, title: info.title || "" }));
+    return { isPlaceholder: true, label: trim, candidates };
+  }
+
+  // "MTH-100 or STA-100" / "MTH-130 or STA-100 (Calc prep)"
+  if (/^[A-Z]{2,4}-\d+(\s+or\s+[A-Z]{2,4}-\d+)+/i.test(trim)) {
+    const codes = trim.match(/[A-Z]{2,4}-\d+/g) || [];
+    const candidates = codes
+      .filter(c => offered[c])
+      .map(c => ({ code: c, title: (offered[c] || {}).title || "" }));
+    return { isPlaceholder: true, label: trim, candidates };
+  }
+
+  // Writing-emphasis — filter by divisional area when the label names one
+  if (/writing.emphasis|\bWE\b/i.test(trim)) {
+    const HUMANITIES = new Set(["AAM", "CLA", "COM", "ENG", "HIS", "JPN", "PHL", "REL", "SPA"]);
+    const FINE_ARTS  = new Set(["ARH", "ART", "CRW", "MU", "MUA", "THE"]);
+    const SOC_SCI    = new Set(["ANT", "ECO", "GS", "POL", "PSY", "SOC"]);
+    const wantHum = /humanit/i.test(trim);
+    const wantFA  = /fine.?art/i.test(trim);
+    const wantSS  = /social/i.test(trim);
+    const candidates = [];
+    for (const [c, info] of Object.entries(offered)) {
+      if (!(info.sections || []).some(s => s.we)) continue;
+      const parts = c.split("-");
+      const num = parseInt(String(parts[1] || "").replace(/L$/, ""), 10);
+      if (num >= 300) continue;
+      if (wantHum && !HUMANITIES.has(parts[0])) continue;
+      if (wantFA  && !FINE_ARTS.has(parts[0])) continue;
+      if (wantSS  && !SOC_SCI.has(parts[0])) continue;
+      candidates.push({ code: c, title: info.title || "" });
+    }
+    return { isPlaceholder: true, label: trim, candidates };
+  }
+
+  // Breadth natural science
+  if (/breadth.*(natural|science)/i.test(trim)) {
+    const nat = new Set(["BIO", "CHM", "PHY", "ENR", "DS", "CS", "MTH", "STA"]);
+    const candidates = [];
+    for (const [c, info] of Object.entries(offered)) {
+      const parts = c.split("-");
+      const num = parseInt(String(parts[1] || "").replace(/L$/, ""), 10);
+      if (nat.has(parts[0]) && num < 300) candidates.push({ code: c, title: info.title || "" });
+    }
+    return { isPlaceholder: true, label: trim, candidates };
+  }
+
+  // Generic breadth / GE — too broad to enumerate meaningfully
+  if (/breadth|\bGE\b/i.test(trim)) {
+    return { isPlaceholder: true, label: trim, candidates: [] };
+  }
+
+  // Unknown non-course string — treat as placeholder with no resolutions
+  return { isPlaceholder: true, label: trim, candidates: [] };
+}
+
+function escapeAttr(s) {
+  return String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function renderIntakePlaceholders(container, placeholders, termLabel) {
+  if (!placeholders.length) {
+    container.style.display = "none";
+    container.innerHTML = "";
+    return;
+  }
+  const parts = [];
+  parts.push(`<div class="intake-ph-head">Suggested for ${termLabel ? escapeAttr(termLabel) : "next term"} (click to add):</div>`);
+  for (const ph of placeholders) {
+    parts.push(`<div class="intake-ph-block">`);
+    parts.push(`<div class="intake-ph-label">${escapeAttr(ph.label)}</div>`);
+    if (ph.candidates.length) {
+      parts.push(`<div class="intake-ph-chips">`);
+      for (const c of ph.candidates) {
+        const title = c.title ? ` · ${escapeAttr(c.title)}` : "";
+        parts.push(`<button type="button" class="intake-ph-chip" data-code="${escapeAttr(c.code)}">${escapeAttr(c.code)}${title}</button>`);
+      }
+      parts.push(`</div>`);
+    } else {
+      parts.push(`<div class="intake-ph-empty">No direct matches in the offered courses; browse the Schedule tab.</div>`);
+    }
+    parts.push(`</div>`);
+  }
+  container.innerHTML = parts.join("");
+  container.style.display = "";
+  for (const btn of container.querySelectorAll(".intake-ph-chip")) {
+    btn.addEventListener("click", () => {
+      const code = btn.dataset.code;
+      const ta = container.closest(".plan-semester")?.querySelector(".sem-courses");
+      if (!ta) return;
+      const cur = ta.value.trim();
+      ta.value = cur ? cur + "\n" + code : code;
+      btn.disabled = true;
+      btn.classList.add("added");
+      runCheck();
+    });
+  }
 }
 
 // ─── Other Requirements ─────────────────────────────────────────────────────
@@ -1830,6 +1972,7 @@ function addPlanSemester(label, courses, completed, semNum) {
     <div class="plan-entry-area">
       <textarea class="sem-courses" rows="3" placeholder="One course per line: BIO-145, CHM 121..."${readonlyAttr}>${courses}</textarea>
     </div>
+    <div class="plan-intake-placeholders" style="display:none"></div>
     <div class="plan-hints" style="display:none"></div>
     <div class="plan-suggestions" style="display:none"></div>
   </div>`;
