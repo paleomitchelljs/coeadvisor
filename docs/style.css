@@ -79,7 +79,7 @@ header h1 {
 }
 
 .toolbar { display: flex; gap: 8px; flex-wrap: wrap; }
-.toolbar button, .file-label {
+.toolbar button, .file-label, .toolbar-select {
   background: var(--ink-0);
   color: var(--accent-crimson);
   border: none;
@@ -91,11 +91,19 @@ header h1 {
   cursor: pointer;
   transition: all 120ms ease;
 }
-.toolbar button:hover, .file-label:hover {
+.toolbar button:hover, .file-label:hover, .toolbar-select:hover {
   background: var(--ink-900);
   color: var(--ink-0);
 }
 .toolbar button:disabled { opacity: .5; cursor: default; }
+.toolbar-select { appearance: none; padding-right: 28px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='%23a12d2f' d='M0 0l5 6 5-6z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+.toolbar-select:hover {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='white' d='M0 0l5 6 5-6z'/></svg>");
+}
 
 main {
   display: grid;
@@ -831,4 +839,132 @@ h2:first-child { margin-top: 0; }
 :focus-visible {
   outline: 2px solid var(--fg);
   outline-offset: 2px;
+}
+
+/* ============================================================
+   Print styles — body[data-print-mode="plan|four-year|schedule"]
+   Triggered by startPrint(); cleaned up on `afterprint`.
+   ============================================================ */
+
+#print-header { display: none; }
+
+@media print {
+  /* ── Common reset for any print mode ─────────────────────── */
+  body[data-print-mode] {
+    background: white;
+    color: black;
+    font-size: 10pt;
+    line-height: 1.35;
+  }
+  body[data-print-mode] header,
+  body[data-print-mode] .toolbar,
+  body[data-print-mode] .modal-overlay,
+  body[data-print-mode] .tabs,
+  body[data-print-mode] #input-panel,
+  body[data-print-mode] #results-empty,
+  body[data-print-mode] .summary-bar .pw-label,
+  body[data-print-mode] #summary-warn { display: none !important; }
+  body[data-print-mode] main {
+    display: block;
+    padding: 0;
+    max-width: none;
+  }
+  body[data-print-mode] .panel {
+    box-shadow: none;
+    border: none;
+    padding: 0;
+  }
+  body[data-print-mode] #print-header {
+    display: block;
+    margin-bottom: 12pt;
+    padding-bottom: 8pt;
+    border-bottom: 1pt solid #444;
+  }
+  body[data-print-mode] .print-title {
+    font-family: var(--mds-serif);
+    font-size: 18pt;
+    font-weight: 600;
+  }
+  body[data-print-mode] .print-subtitle {
+    font-size: 10pt;
+    color: #555;
+    margin-top: 2pt;
+  }
+  body[data-print-mode] .print-programs {
+    font-size: 10pt;
+    color: #333;
+    margin-top: 4pt;
+  }
+
+  /* Show every plan-semester body and tame the editable controls. */
+  body[data-print-mode] .plan-semester { break-inside: avoid; border-color: #999; }
+  body[data-print-mode] .plan-semester .plan-sem-body { display: block !important; }
+  body[data-print-mode] .plan-sem-header {
+    background: white;
+    border-bottom: 1px solid #ccc;
+    padding: 4pt 6pt;
+  }
+  body[data-print-mode] .plan-sem-header .arrow,
+  body[data-print-mode] .plan-sem-header .sem-status,
+  body[data-print-mode] .plan-sem-header .remove-sem,
+  body[data-print-mode] .plan-sem-summary { display: none !important; }
+  body[data-print-mode] .plan-sem-label {
+    border: none !important;
+    background: transparent !important;
+    padding: 0;
+    font-weight: 600;
+  }
+  body[data-print-mode] .sem-courses {
+    border: none !important;
+    background: transparent !important;
+    overflow: visible !important;
+    height: auto !important;
+    resize: none !important;
+    padding: 4pt 0;
+    font-family: var(--mds-mono);
+    font-size: 10pt;
+    color: black;
+  }
+  body[data-print-mode] .plan-hints,
+  body[data-print-mode] .plan-suggestions,
+  body[data-print-mode] .plan-intake-placeholders,
+  body[data-print-mode] .plan-toolbar { display: none !important; }
+
+  /* ── Mode: plan ──────────────────────────────────────────── */
+  body[data-print-mode="plan"] .tab-panel { display: none !important; }
+  body[data-print-mode="plan"] #tab-plan,
+  body[data-print-mode="plan"] #tab-ge { display: block !important; }
+  body[data-print-mode="plan"] #tab-ge { margin-bottom: 14pt; }
+  body[data-print-mode="plan"] #tab-ge .req-row { padding: 2pt 0; font-size: 10pt; }
+
+  /* ── Mode: four-year — 2-col grid; Transfer & May span both ── */
+  body[data-print-mode="four-year"] .tab-panel { display: none !important; }
+  body[data-print-mode="four-year"] #tab-plan { display: block !important; }
+  body[data-print-mode="four-year"] .summary-bar,
+  body[data-print-mode="four-year"] #ge-content,
+  body[data-print-mode="four-year"] #programs-content { display: none; }
+  body[data-print-mode="four-year"] #plan-semesters {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6pt;
+  }
+  body[data-print-mode="four-year"] .plan-semester { margin-bottom: 0; }
+  body[data-print-mode="four-year"] .plan-semester:not([data-sem-num]) {
+    grid-column: 1 / -1;
+  }
+
+  /* ── Mode: schedule ──────────────────────────────────────── */
+  body[data-print-mode="schedule"] .tab-panel { display: none !important; }
+  body[data-print-mode="schedule"] #tab-schedule { display: block !important; }
+  body[data-print-mode="schedule"] .sched-toolbar,
+  body[data-print-mode="schedule"] .sched-picker,
+  body[data-print-mode="schedule"] .sched-overlap-alert,
+  body[data-print-mode="schedule"] .summary-bar { display: none !important; }
+  body[data-print-mode="schedule"] .sched-calendar-wrap { overflow: visible !important; }
+  body[data-print-mode="schedule"] .sched-calendar {
+    min-height: 7in;
+    page-break-inside: avoid;
+  }
+
+  @page { margin: 0.5in; }
 }
