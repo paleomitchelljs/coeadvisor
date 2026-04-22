@@ -28,18 +28,64 @@ const SCIENCE_PREFIXES = new Set(["BIO", "CHM", "PHY", "ESC", "ENS", "GEO"]);
 function isMathCourse(code) { return MATH_PREFIXES.has(prefixOf(code)); }
 function isScienceCourse(code) { return SCIENCE_PREFIXES.has(prefixOf(code)); }
 
+// Lazy index of course → credit hours from the bundled catalog. Built once
+// per session; null until DATA is available.
+let _catalogCreditIndex = null;
+function _buildCatalogCreditIndex() {
+  if (_catalogCreditIndex) return _catalogCreditIndex;
+  const idx = {};
+  if (typeof DATA !== "undefined" && DATA.catalog && DATA.catalog.prefixes) {
+    for (const pfx of Object.values(DATA.catalog.prefixes)) {
+      for (const [code, info] of Object.entries(pfx.courses || {})) {
+        if (typeof info.credits === "number") idx[code] = info.credits;
+      }
+    }
+  }
+  _catalogCreditIndex = idx;
+  return idx;
+}
+
+// Resolution order for a course's credit value:
+//   1. Explicit override from data/course_credits.json (manual ground-truth)
+//   2. Catalog credits from courses_catalog_2025.json
+//   3. 0.2 for -L (lab) / -C (clinical) suffixes
+//   4. 1.0 otherwise
 function creditOf(code, overrides) {
   if (overrides && overrides[code] !== undefined) return overrides[code];
+  const cat = _buildCatalogCreditIndex();
+  if (cat[code] !== undefined) return cat[code];
   return isAuxiliary(code) ? 0.2 : 1.0;
 }
 
-function totalCredits(taken, overrides) {
+function totalCredits(taken, overrides, substitutions) {
   let sum = 0;
-  for (const c of taken) sum += creditOf(c, overrides);
+  for (const c of taken) {
+    if (substitutions && substitutions.has(c)) continue;
+    sum += creditOf(c, overrides);
+  }
   return sum;
 }
 
-function parseCourses(text) {
+// Sum of credits for partial-credit courses (< 0.5 credits each).
+// Beyond 2.0 of these, the excess does not count toward graduation.
+function subHalfCreditsTotal(taken, overrides, substitutions) {
+  let sum = 0;
+  for (const c of taken) {
+    if (substitutions && substitutions.has(c)) continue;
+    const cr = creditOf(c, overrides);
+    if (cr > 0 && cr < 0.5) sum += cr;
+  }
+  return sum;
+}
+
+// Lowest-tier acceptable WE grade is C; anything below counts toward
+// graduation but not toward the Writing Emphasis requirement.
+const SUB_C_GRADES = new Set(["C-", "D+", "D", "D-", "F"]);
+function isSubCGrade(g) { return SUB_C_GRADES.has(g); }
+
+// Internal: tokenize a piece of text into normalized course codes (no
+// substitution / grade parsing — just the legacy behavior).
+function _parseRawCodes(text) {
   const seen = new Set(), result = [];
   function add(code) {
     const n = normalize(code);
@@ -70,6 +116,66 @@ function parseCourses(text) {
     }
   }
   return result;
+}
+
+// Parse course-textarea text into [{code, grade, isSubstitution, flags}].
+//   (BIO-155)        substitution: counts toward requirement, no credit
+//   BIO-155=A        with grade
+//   BIO-155=A,WE     graded + WE-designated section
+//   BIO-145L-W       suffix shorthand: stripped to BIO-145L with WE flag
+function parseCoursesDetailed(text) {
+  const seen = new Set();
+  const result = [];
+  // Split on newlines and semicolons first; then within each chunk only
+  // split on commas if there is no `=` annotation (since `=A,WE` uses
+  // commas to separate flags inside one entry).
+  const chunks = [];
+  for (let line of text.split(/[\n;]+/)) {
+    line = line.trim();
+    if (!line) continue;
+    if (line.indexOf("=") >= 0 || line.indexOf("(") >= 0) chunks.push(line);
+    else for (const piece of line.split(",")) chunks.push(piece);
+  }
+  for (let raw of chunks) {
+    raw = raw.trim();
+    if (!raw || raw.startsWith("#")) continue;
+
+    let isSubstitution = false;
+    const subMatch = raw.match(/^\(([^()]+)\)\s*(=.*)?$/);
+    if (subMatch) {
+      raw = subMatch[1].trim() + (subMatch[2] || "");
+      isSubstitution = true;
+    }
+
+    let grade = null;
+    let flags = [];
+    const eqIdx = raw.indexOf("=");
+    if (eqIdx >= 0) {
+      const annot = raw.slice(eqIdx + 1).trim().toUpperCase();
+      raw = raw.slice(0, eqIdx).trim();
+      const parts = annot.split(",").map(s => s.trim());
+      grade = parts[0] || null;
+      flags = parts.slice(1).filter(Boolean);
+    }
+
+    for (const c of _parseRawCodes(raw)) {
+      let finalCode = c;
+      const codeFlags = [...flags];
+      const weMatch = c.match(/^(.+)-(W|WE)$/);
+      if (weMatch && /^[A-Z]+-\d+[A-Z]*$/.test(weMatch[1])) {
+        finalCode = weMatch[1];
+        if (!codeFlags.includes("WE")) codeFlags.push("WE");
+      }
+      if (seen.has(finalCode)) continue;
+      seen.add(finalCode);
+      result.push({ code: finalCode, grade, isSubstitution, flags: codeFlags });
+    }
+  }
+  return result;
+}
+
+function parseCourses(text) {
+  return parseCoursesDetailed(text).map(d => d.code);
 }
 
 // ─── Requirement checker ─────────────────────────────────────────────────────
@@ -162,7 +268,7 @@ function checkProgram(program, taken) {
   return { program, sections, total: countable.length, complete: done };
 }
 
-function checkGE(ge, taken, dac, we, prxCourses) {
+function checkGE(ge, taken, dac, we, prxCourses, weExtra) {
   const div = ge.divisional.sections;
   function divCourses(pfxs, maxPer) {
     maxPer = maxPer || 2;
@@ -193,7 +299,8 @@ function checkGE(ge, taken, dac, we, prxCourses) {
   }
 
   const weFound = [...taken].filter(c =>
-    we.has(c) || c.endsWith("W") || c.endsWith("WE")
+    we.has(c) || (weExtra && weExtra.has(c))
+    || c.endsWith("W") || c.endsWith("WE")
     || prefixOf(c) === "FYS" || prefixOf(c) === "FS").sort();
   const dacFound = [...taken].filter(c => dac.has(c) && !isAuxiliary(c)).sort();
   const fysFound = [...taken].filter(c =>
@@ -583,7 +690,8 @@ function generateAdv() {
   });
 
   document.querySelectorAll("#plan-semesters .plan-semester").forEach(semEl => {
-    const label = semEl.querySelector(".plan-sem-label").textContent.trim();
+    const labelEl = semEl.querySelector(".plan-sem-label");
+    const label = (labelEl && (labelEl.value !== undefined ? labelEl.value : labelEl.textContent) || "").trim();
     const text = semEl.querySelector(".sem-courses").value.trim();
     if (!text) return;
     const done = semEl.querySelector(".sem-status input").checked;
@@ -899,29 +1007,43 @@ function gatherData() {
   document.querySelectorAll(".pw-check input:checked").forEach(cb => activePw.push(cb.value));
 
   const allCourses = new Set();
+  const substitutions = new Set();
+  const grades = new Map();
+  const weAnnotated = new Set();
   const semesters = [];
+
+  function ingestText(text) {
+    const codes = [];
+    for (const d of parseCoursesDetailed(text)) {
+      allCourses.add(d.code);
+      codes.push(d.code);
+      if (d.isSubstitution) substitutions.add(d.code);
+      if (d.grade) grades.set(d.code, d.grade);
+      if (d.flags && d.flags.includes("WE")) weAnnotated.add(d.code);
+    }
+    return codes;
+  }
+
   document.querySelectorAll("#plan-semesters .plan-semester").forEach((semEl, i) => {
     const ta = semEl.querySelector(".sem-courses");
-    const courses = parseCourses(ta ? ta.value : "");
+    const courses = ingestText(ta ? ta.value : "");
     const completed = semEl.querySelector(".sem-status input")?.checked || false;
-    const label = (semEl.querySelector(".plan-sem-label")?.textContent || "").trim();
+    const _lblEl = semEl.querySelector(".plan-sem-label");
+    const label = (_lblEl && (_lblEl.value !== undefined ? _lblEl.value : _lblEl.textContent) || "").trim();
     const semNum = parseInt(semEl.dataset.semNum) || null;
-    for (const c of courses) allCourses.add(c);
     semesters.push({ label, semNum, courses, completed });
   });
 
   // Include school-specific courses from professional requirements
   const schoolTA = document.getElementById("school-courses");
-  if (schoolTA) {
-    for (const c of parseCourses(schoolTA.value)) allCourses.add(c);
-  }
+  if (schoolTA) ingestText(schoolTA.value);
 
-  return { progIds, activePw, taken: allCourses, semesters };
+  return { progIds, activePw, taken: allCourses, semesters, substitutions, grades, weAnnotated };
 }
 
 function runCheck() {
   buildProfReqs();
-  const { progIds, activePw, taken } = gatherData();
+  const { progIds, activePw, taken, substitutions, grades, weAnnotated } = gatherData();
   const overrides = {};
   for (const [k, v] of Object.entries((DATA.course_credits || {}).overrides || {}))
     overrides[normalize(k)] = v;
@@ -944,9 +1066,21 @@ function runCheck() {
   else if (transferWe.includes("8")) weRequired = 3;
 
   const prxSet = new Set((DATA.practicum || {}).all_courses || []);
-  const geResult = checkGE(DATA.ge, taken, dacSet, weSet, prxSet);
+  const geResult = checkGE(DATA.ge, taken, dacSet, weSet, prxSet, weAnnotated);
+
+  // WE c-or-better filter: a WE course with grade D- through C- counts toward
+  // graduation but not toward the WE requirement.
+  const weCounted = [];
+  const weBelowC = [];
+  for (const c of geResult.we.courses) {
+    const g = grades.get(c);
+    if (g && isSubCGrade(g)) weBelowC.push({ code: c, grade: g });
+    else weCounted.push(c);
+  }
+  geResult.we.courses = weCounted;
+  geResult.we.belowC = weBelowC;
   geResult.we.required = weRequired;
-  geResult.we.complete = geResult.we.courses.length >= weRequired;
+  geResult.we.complete = weCounted.length >= weRequired;
   geResult.we.label = `Writing Emphasis (${weRequired} courses)`;
 
   // Practicum checkbox in Other Requirements overrides GE practicum
@@ -976,7 +1110,9 @@ function runCheck() {
   const pwResults = activePw.map(id => DATA.pathways[id]).filter(Boolean)
     .map(pw => checkProgram(pw, taken));
 
-  const credits = totalCredits(taken, overrides);
+  const credits = totalCredits(taken, overrides, substitutions);
+  const subHalfTotal = subHalfCreditsTotal(taken, overrides, substitutions);
+  const partialExcess = Math.max(0, subHalfTotal - 2.0);
 
   // Render — always show results since Plan tab has editable content
   const resultsEl = document.getElementById("results");
@@ -984,8 +1120,30 @@ function runCheck() {
   emptyEl.style.display = "none";
   resultsEl.style.display = "block";
 
-  document.getElementById("summary-bar").textContent =
-    `${taken.size} courses \u00b7 ${credits.toFixed(1)} credits \u00b7 ${progResults.length} program(s)`;
+  const _summaryBar = document.getElementById("summary-bar");
+  const _subSuffix = substitutions.size > 0
+    ? " \u00b7 " + substitutions.size + " substitution(s)" : "";
+  _summaryBar.textContent =
+    `${taken.size} courses \u00b7 ${credits.toFixed(1)} credits \u00b7 ${progResults.length} program(s)${_subSuffix}`;
+
+  // Partial-credit cap: only the first 2.0 of <0.5-credit courses count
+  // toward graduation; excess raises the effective grad target.
+  let _summaryWarn = document.getElementById("summary-warn");
+  if (partialExcess > 0) {
+    const needed = 32.0 + partialExcess;
+    if (!_summaryWarn) {
+      _summaryWarn = document.createElement("div");
+      _summaryWarn.id = "summary-warn";
+      _summaryWarn.className = "summary-warn";
+      _summaryBar.after(_summaryWarn);
+    }
+    _summaryWarn.textContent =
+      "\u26a0 Partial-credit cap exceeded: " + subHalfTotal.toFixed(1)
+      + " credits in courses under 0.5; only the first 2.0 count toward graduation. "
+      + "Student needs at least " + needed.toFixed(1) + " total credits to graduate.";
+  } else if (_summaryWarn) {
+    _summaryWarn.remove();
+  }
 
   renderGE(geResult);
   renderPrograms(progResults, pwResults);
@@ -1014,6 +1172,14 @@ function renderGE(ge) {
       <span class="req-label">${r.label}</span>
       <span class="req-courses">${courses}${countStr ? " (" + countStr + ")" : ""}</span>
     </div>`;
+    if (key === "we" && r.belowC && r.belowC.length > 0) {
+      const list = r.belowC.map(x => `${x.code} (${x.grade})`).join(", ");
+      html += `<div class="req-row warn" style="padding-left:26px">
+        <span class="req-icon">⚠</span>
+        <span class="req-label" style="font-weight:500">Counts toward graduation, not WE</span>
+        <span class="req-courses">${list} — grade below C; WE requires C or better</span>
+      </div>`;
+    }
   }
   el.innerHTML = html;
 }
@@ -1950,6 +2116,34 @@ function updatePathways() {
 
 // ─── Plan semester management ────────────────────────────────────────────────
 
+function _escAttr(s) {
+  return String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+// Parse a free-form semester label into a 1-8 plan slot. Recognized:
+// "Fall \u2014 Year N", "Spring \u2014 Year N" (em-dash, en-dash, or hyphen).
+// Returns null for May/Summer/Winter/Transfer/custom labels.
+function _parseSemLabel(label) {
+  const m = String(label).match(/^\s*(Fall|Spring)\s*[\u2014\u2013-]+\s*Year\s*(\d+)\s*$/i);
+  if (!m) return null;
+  const yr = parseInt(m[2]);
+  if (!yr || yr < 1 || yr > 6) return null;
+  return /^fall$/i.test(m[1]) ? (yr - 1) * 2 + 1 : (yr - 1) * 2 + 2;
+}
+
+function onPlanSemLabelChange(input) {
+  const semEl = input.closest(".plan-semester");
+  if (!semEl) return;
+  const semNum = _parseSemLabel(input.value);
+  if (semNum) semEl.dataset.semNum = String(semNum);
+  else delete semEl.dataset.semNum;
+  runCheck();
+}
+
 function addPlanSemester(label, courses, completed, semNum) {
   label = label || `Semester ${document.querySelectorAll("#plan-semesters .plan-semester").length + 1}`;
   courses = courses || "";
@@ -1962,7 +2156,10 @@ function addPlanSemester(label, courses, completed, semNum) {
   const readonlyAttr = completed ? " readonly" : "";
   div.innerHTML = `<div class="plan-sem-header" onclick="togglePlanSem(event, this)">
     <span class="arrow">\u25B6</span>
-    <span class="plan-sem-label">${label}</span>
+    <input type="text" class="plan-sem-label" value="${_escAttr(label)}"
+      onclick="event.stopPropagation()"
+      onchange="onPlanSemLabelChange(this)"
+      title="Click to rename. Recognized: Fall \u2014 Year 1, Spring \u2014 Year 2, May \u2014 Year 1, Transfer">
     <span class="plan-sem-summary"></span>
     <label class="sem-status" onclick="event.stopPropagation()">
       <input type="checkbox"${checkedAttr} onchange="onPlanSemCompleted(this)"> Completed
@@ -2413,6 +2610,201 @@ function initScheduleTab() {
   });
 }
 
+// ─── Unofficial Transcript Import ────────────────────────────────────────────
+//
+// Reads a Coe College Unofficial Transcript PDF entirely client-side (PDF.js
+// is loaded on demand from a public CDN — only library code, not the file)
+// and populates the Plan tab. Transfer Credit (e.g. AP) goes into the
+// "Transfer" slot with raw codes preserved; Fall/Spring map to the standard
+// 8-semester plan; May terms get their own slots between adjacent terms.
+// Course lines are emitted as `CODE=GRADE` (or `CODE=GRADE,WE` for
+// WE-designated sections like `BIO-145L-WE`); WIP courses emit just `CODE`
+// and their semester is left unchecked (planned, not completed).
+
+const _PDFJS_VERSION = "4.7.76";
+let _pdfjsPromise = null;
+function loadPdfJs() {
+  if (_pdfjsPromise) return _pdfjsPromise;
+  const base = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${_PDFJS_VERSION}/build/`;
+  _pdfjsPromise = import(base + "pdf.min.mjs").then(mod => {
+    mod.GlobalWorkerOptions.workerSrc = base + "pdf.worker.min.mjs";
+    return mod;
+  });
+  return _pdfjsPromise;
+}
+
+async function extractPdfLines(file) {
+  const pdfjsLib = await loadPdfJs();
+  const data = await file.arrayBuffer();
+  const pdf = await pdfjsLib.getDocument({ data }).promise;
+  const allLines = [];
+  for (let p = 1; p <= pdf.numPages; p++) {
+    const page = await pdf.getPage(p);
+    const content = await page.getTextContent();
+    const items = content.items
+      .filter(it => it.str && it.transform)
+      .map(it => ({ x: it.transform[4], y: it.transform[5], str: it.str }));
+    // Sort top-to-bottom (PDF y origin is bottom-left), then left-to-right.
+    items.sort((a, b) => b.y - a.y || a.x - b.x);
+    let cur = null;
+    for (const it of items) {
+      if (cur && Math.abs(it.y - cur.y) < 3) {
+        cur.items.push(it);
+      } else {
+        cur = { y: it.y, items: [it] };
+        allLines.push(cur);
+      }
+    }
+  }
+  return allLines.map(l => {
+    l.items.sort((a, b) => a.x - b.x);
+    return l.items.map(i => i.str).join(" ").replace(/\s+/g, " ").trim();
+  }).filter(Boolean);
+}
+
+const _TERM_RE = /^(\d{4}-\d{4})\s*:\s*(Fall Term|Spring Term|May Term|Summer Term|Winter Term|Transfer Credit)/i;
+// Course code: standard subject+number (BIO-155, BIO-155L, BIO-155L-W,
+// FS -110 -W, MUA-151S) OR AP-style (AP -OLOG, AP -GLIS-RA).
+// Tail: type (CR/PN/SU), grade (A..F with +/-, WIP, P), optional Y/N
+// repeat flag, then four numeric columns.
+const _COURSE_RE = /^((?:[A-Z]{2,4}\s*-?\s*\d{2,3}[A-Z]?(?:\s*-\s*WE?)?)|(?:AP\s*-?\s*[A-Z]+(?:\s*-\s*[A-Z]+)?))\s+(.+?)\s+(CR|PN|SU)\s+(WIP|[A-Z][+-]?|P)\s+(?:[YN]\s+)?(-?\d+\.\d+)\s+(-?\d+\.\d+)\s+(-?\d+\.\d+)\s+(-?\d+\.\d+)\s*$/;
+
+function _normalizeTranscriptCode(rawCode) {
+  const compact = rawCode.toUpperCase().replace(/\s+/g, "");
+  // Strip -W / -WE suffix from real subject-number codes (e.g. BIO-155L-W
+  // → BIO-155L, FS-110-W → FS-110), but never from AP- codes.
+  const m = compact.match(/^(.+)-(W|WE)$/);
+  if (m && /^[A-Z]+-?\d/.test(m[1]) && !m[1].startsWith("AP-")) {
+    return { code: normalize(m[1]), weSection: true };
+  }
+  return { code: normalize(compact), weSection: false };
+}
+
+function parseTranscriptLines(lines) {
+  const terms = [];
+  const byKey = new Map();
+  let cur = null;
+  for (const line of lines) {
+    const t = line.match(_TERM_RE);
+    if (t) {
+      // Page breaks re-print the term header; merge into the same bucket.
+      const key = t[1] + "|" + t[2];
+      cur = byKey.get(key);
+      if (!cur) {
+        cur = { year: t[1], term: t[2], courses: [] };
+        byKey.set(key, cur);
+        terms.push(cur);
+      }
+      continue;
+    }
+    if (!cur) continue;
+    if (/^Term Totals\s*:/i.test(line)) continue;
+    if (/^Career Totals\s*:/i.test(line)) continue;
+    if (/^Division Career Totals\s*:/i.test(line)) continue;
+    if (/^Page\s*:/i.test(line)) continue;
+    if (/^Course Number\s+Title/i.test(line)) continue;
+    if (/^Organization\s*:/i.test(line)) continue;
+    if (/^Degree Information/i.test(line)) { cur = null; continue; }
+    const m = line.match(_COURSE_RE);
+    if (!m) continue;
+    const { code, weSection } = _normalizeTranscriptCode(m[1]);
+    if (!code) continue;
+    cur.courses.push({
+      code, title: m[2].trim(), type: m[3], grade: m[4], weSection,
+    });
+  }
+  return terms;
+}
+
+function _formatTranscriptCourseLine(c) {
+  const grade = (c.grade && c.grade !== "WIP") ? c.grade : "";
+  const flags = c.weSection ? ["WE"] : [];
+  if (!grade && flags.length === 0) return c.code;
+  return c.code + "=" + [grade, ...flags].join(",");
+}
+
+function _termSortKey(t) {
+  if (/Transfer/i.test(t.term)) return [0, ""];
+  const order = { Fall: 1, Spring: 2, May: 3, Summer: 4, Winter: 0 };
+  const head = (t.term.split(" ")[0] || "");
+  return [1, t.year + "-" + String(order[head] || 9)];
+}
+
+function applyImportedTranscript(terms) {
+  // Sort: Transfer first, then by year + term order (Fall, Spring, May).
+  const sorted = [...terms].sort((a, b) => {
+    const [ka1, ka2] = _termSortKey(a);
+    const [kb1, kb2] = _termSortKey(b);
+    if (ka1 !== kb1) return ka1 - kb1;
+    return ka2.localeCompare(kb2);
+  });
+
+  // Year-1 baseline = earliest non-Transfer year.
+  let firstYear = null;
+  for (const t of sorted) {
+    if (/Transfer/i.test(t.term)) continue;
+    const y = parseInt(t.year.split("-")[0]);
+    if (firstYear === null || y < firstYear) firstYear = y;
+  }
+
+  const container = document.getElementById("plan-semesters");
+  container.innerHTML = "";
+
+  // Always create a Transfer slot (combine all transfer-credit blocks).
+  const transferTerms = sorted.filter(t => /Transfer/i.test(t.term));
+  const transferCourses = transferTerms.flatMap(t => t.courses);
+  const transferText = transferCourses.map(_formatTranscriptCourseLine).join("\n");
+  const transferCompleted = transferCourses.length > 0
+    && transferCourses.every(c => c.grade !== "WIP");
+  addPlanSemester("Transfer", transferText, transferCompleted, null);
+
+  for (const t of sorted) {
+    if (/Transfer/i.test(t.term)) continue;
+    const head = t.term.split(" ")[0]; // Fall, Spring, May, ...
+    const yearN = firstYear !== null
+      ? (parseInt(t.year.split("-")[0]) - firstYear) + 1
+      : 1;
+    let label, semNum = null;
+    if (head === "Fall") {
+      semNum = (yearN - 1) * 2 + 1;
+      label = (PLAN_SEM_LABELS[semNum] || `Fall — Year ${yearN}`);
+    } else if (head === "Spring") {
+      semNum = (yearN - 1) * 2 + 2;
+      label = (PLAN_SEM_LABELS[semNum] || `Spring — Year ${yearN}`);
+    } else if (head === "May") {
+      label = `May — Year ${yearN}`;
+    } else {
+      label = `${head} — Year ${yearN}`;
+    }
+    const courseText = t.courses.map(_formatTranscriptCourseLine).join("\n");
+    const completed = t.courses.length > 0 && t.courses.every(c => c.grade !== "WIP");
+    addPlanSemester(label, courseText, completed, semNum);
+  }
+}
+
+async function importUnofficialTranscript(file) {
+  const lines = await extractPdfLines(file);
+  const terms = parseTranscriptLines(lines);
+  if (terms.length === 0) {
+    alert("No course data found in this transcript. Make sure it's an Unofficial Transcript PDF from Coe College.");
+    return;
+  }
+  const totalCourses = terms.reduce((n, t) => n + t.courses.length, 0);
+  if (totalCourses === 0) {
+    alert("Found term headers but no course rows. The PDF format may have changed.");
+    return;
+  }
+  const ok = confirm(
+    `Import ${totalCourses} courses across ${terms.length} terms?\n\n`
+    + "This replaces the current Plan tab. Other student info "
+    + "(name, programs, advisor notes) is left untouched."
+  );
+  if (!ok) return;
+  applyImportedTranscript(terms);
+  runCheck();
+  showTab("plan");
+}
+
 // ─── Initialization ──────────────────────────────────────────────────────────
 
 function init() {
@@ -2546,6 +2938,21 @@ function init() {
     reader.readAsText(file);
     e.target.value = "";
   });
+
+  // Transcript import
+  const transcriptInput = document.getElementById("transcript-input");
+  if (transcriptInput) {
+    transcriptInput.addEventListener("change", async e => {
+      const file = e.target.files[0];
+      e.target.value = "";
+      if (!file) return;
+      try {
+        await importUnofficialTranscript(file);
+      } catch (err) {
+        alert("Transcript import failed: " + (err && err.message ? err.message : err));
+      }
+    });
+  }
 
   // Show results panel and Plan tab immediately
   showTab("plan");
