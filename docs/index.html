@@ -24,6 +24,13 @@
       Import Transcript
       <input type="file" id="transcript-input" accept=".pdf,application/pdf" style="display:none">
     </label>
+    <select id="print-select" class="toolbar-select"
+      onchange="if(this.value){startPrint(this.value); this.value='';}">
+      <option value="">Print…</option>
+      <option value="plan">Plan</option>
+      <option value="four-year">4-Year Plan</option>
+      <option value="schedule">Schedule</option>
+    </select>
     <button onclick="document.getElementById('privacy-modal').classList.add('visible')">Privacy</button>
   </div>
 </header>

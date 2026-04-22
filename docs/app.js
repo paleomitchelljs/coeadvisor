@@ -2805,6 +2805,96 @@ async function importUnofficialTranscript(file) {
   showTab("plan");
 }
 
+// ─── Print ──────────────────────────────────────────────────────────────────
+//
+// startPrint(mode) toggles a body[data-print-mode] attribute that drives a
+// dedicated @media print stylesheet, then opens the browser print dialog.
+// Three modes:
+//   "plan"       — current plan-tab snapshot (semesters as a single column,
+//                  with summary + GE progress at top)
+//   "four-year"  — clean 2-col grid of Fall/Spring; Transfer & May terms
+//                  span both columns
+//   "schedule"   — currently-displayed schedule calendar grid
+//
+// The browser fires `afterprint` whether the user prints or cancels, so
+// cleanup is reliable. We collapse-vs-expand state on plan-semesters is
+// snapshotted and restored.
+
+function _printHeaderHTML(mode) {
+  const name = (document.getElementById("student-name")?.value || "").trim() || "Unnamed Student";
+  const id = (document.getElementById("student-id")?.value || "").trim();
+  const today = new Date();
+  const ds = today.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
+  const titles = { plan: "Plan", "four-year": "4-Year Plan", schedule: "Schedule" };
+  let title = titles[mode] || "Print";
+  // For schedule, append the selected term so the printout is self-explanatory.
+  if (mode === "schedule") {
+    const sel = document.getElementById("sched-term");
+    const term = sel && sel.options[sel.selectedIndex] ? sel.options[sel.selectedIndex].text : "";
+    if (term && term !== "—") title = "Schedule — " + term;
+  }
+  // Programs (majors/minors) for context
+  const progNames = [];
+  document.querySelectorAll("#major-slots .major-select, #minor-slots .minor-select").forEach(sel => {
+    if (sel.value) {
+      const opt = sel.options[sel.selectedIndex];
+      if (opt) progNames.push(opt.text);
+    }
+  });
+  const progLine = progNames.length ? progNames.join(" · ") : "";
+  const idLine = id ? " · ID " + id : "";
+  return `<div class="print-title">${name}${idLine}</div>
+    <div class="print-subtitle">${title} · printed ${ds}</div>
+    ${progLine ? `<div class="print-programs">${progLine}</div>` : ""}`;
+}
+
+function startPrint(mode) {
+  if (!["plan", "four-year", "schedule"].includes(mode)) return;
+  const body = document.body;
+  body.dataset.printMode = mode;
+
+  // Inject print header
+  let header = document.getElementById("print-header");
+  if (!header) {
+    header = document.createElement("div");
+    header.id = "print-header";
+    body.insertBefore(header, body.firstChild);
+  }
+  header.innerHTML = _printHeaderHTML(mode);
+
+  // Open all plan-semesters so courses are visible in print.
+  // Snapshot prior state for restoration.
+  const wasOpen = new Map();
+  document.querySelectorAll("#plan-semesters .plan-semester").forEach(el => {
+    wasOpen.set(el, el.classList.contains("open"));
+    el.classList.add("open");
+  });
+
+  // Auto-size course textareas to their content so all lines are visible.
+  const taSnapshot = [];
+  document.querySelectorAll(".sem-courses").forEach(ta => {
+    taSnapshot.push({ el: ta, rows: ta.rows });
+    const lines = (ta.value.match(/\n/g) || []).length + 1;
+    ta.rows = Math.max(1, lines);
+  });
+
+  const cleanup = () => {
+    delete body.dataset.printMode;
+    const h = document.getElementById("print-header");
+    if (h) h.remove();
+    for (const [el, was] of wasOpen.entries()) {
+      if (was === false) el.classList.remove("open");
+    }
+    for (const s of taSnapshot) s.el.rows = s.rows;
+    window.removeEventListener("afterprint", cleanup);
+  };
+  window.addEventListener("afterprint", cleanup);
+
+  // Defer one tick so the browser applies the print-mode CSS before the
+  // dialog opens (matters in some browsers).
+  setTimeout(() => window.print(), 50);
+}
+
 // ─── Initialization ──────────────────────────────────────────────────────────
 
 function init() {
