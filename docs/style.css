@@ -256,7 +256,19 @@ h2:first-child { margin-top: 0; }
 .todo .req-icon, .todo { color: var(--status-todo); }
 .partial .req-icon, .partial { color: var(--status-partial); }
 .manual .req-icon, .manual { color: var(--status-manual); }
+.warn .req-icon, .warn { color: var(--accent-ochre); }
 .muted .req-icon, .muted { color: var(--ink-300); }
+
+.summary-warn {
+  margin-top: 6px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent-ochre);
+  background: #fdf6e9;
+  border: 1px solid #e8d3a5;
+}
 
 .item-row { padding-left: 20px; font-size: 12px; }
 
@@ -327,6 +339,25 @@ h2:first-child { margin-top: 0; }
   font-weight: 600;
   font-size: 13px;
   flex: 1;
+  font-family: inherit;
+  color: inherit;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 2px 6px;
+  margin: -2px 0;
+  min-width: 0;
+  cursor: text;
+  transition: background 120ms ease, border-color 120ms ease;
+}
+.plan-sem-header:hover .plan-sem-label {
+  border-color: var(--rule-strong);
+  background: var(--surface);
+}
+.plan-sem-label:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: var(--surface);
 }
 .plan-sem-summary {
   font-size: 11px;

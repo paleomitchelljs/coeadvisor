@@ -20,6 +20,10 @@
       Load .adv
       <input type="file" id="file-input" accept=".adv,.txt" style="display:none">
     </label>
+    <label class="file-label">
+      Import Transcript
+      <input type="file" id="transcript-input" accept=".pdf,application/pdf" style="display:none">
+    </label>
     <button onclick="document.getElementById('privacy-modal').classList.add('visible')">Privacy</button>
   </div>
 </header>
@@ -175,7 +179,8 @@
         <li>Everything you type exists only in your browser's memory for the duration of the session.</li>
         <li><strong>Save .adv</strong> creates a file directly on your device. The file contents are never transmitted over the network.</li>
         <li><strong>Load .adv</strong> reads a file from your device into the browser. It is not uploaded anywhere.</li>
-        <li>No data is sent to GitHub, Coe College servers, or any third party at any time.</li>
+        <li><strong>Import Transcript</strong> parses a PDF entirely in your browser. The PDF parsing library (pdf.js) is loaded on-demand from a public CDN (jsdelivr.net) the first time you use the feature; only the library code is fetched, your transcript file is never uploaded.</li>
+        <li>No student data is sent to GitHub, Coe College servers, or any third party at any time.</li>
         <li>Closing or refreshing the tab permanently discards all entered information.</li>
       </ul>
       <p style="margin-bottom:0; color:#64748b">GitHub Pages serves the application files (HTML, CSS, JavaScript, program data) but has no visibility into form inputs or user activity. This tool is designed to comply with FERPA requirements for protecting student education records.</p>
