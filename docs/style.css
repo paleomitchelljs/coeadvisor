@@ -80,7 +80,7 @@ header h1 {
 
 .toolbar { display: flex; gap: 8px; flex-wrap: wrap; }
 .toolbar button, .file-label, .toolbar-select {
-  background: var(--ink-0);
+  background-color: var(--ink-0);
   color: var(--accent-crimson);
   border: none;
   padding: 6px 16px;
@@ -92,7 +92,7 @@ header h1 {
   transition: all 120ms ease;
 }
 .toolbar button:hover, .file-label:hover, .toolbar-select:hover {
-  background: var(--ink-900);
+  background-color: var(--ink-900);
   color: var(--ink-0);
 }
 .toolbar button:disabled { opacity: .5; cursor: default; }
