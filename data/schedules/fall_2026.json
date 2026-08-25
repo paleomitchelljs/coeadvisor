@@ -1,14 +1,14 @@
 {
   "term": "Fall 2026",
   "term_code": "fall_2026",
-  "source": "FA-26.pdf",
+  "source": "FA 26 8.17.26.pdf",
   "courses": {
     "AAM-107": {
       "title": "Intro to African American Studies",
       "sections": [
         {
           "id": "01",
-          "instructor": "Staff",
+          "instructor": "Nicolas Howard",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -16,7 +16,7 @@
               "days": "MWF",
               "start": "14:00",
               "end": "14:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 106"
             }
           ]
         }
@@ -27,7 +27,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "C Melcher",
+          "instructor": "Carrie Melcher",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -35,13 +35,13 @@
               "days": "MWF",
               "start": "09:00",
               "end": "09:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 205"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "C Melcher",
+          "instructor": "Carrie Melcher",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -49,13 +49,13 @@
               "days": "MWF",
               "start": "10:00",
               "end": "10:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 205"
             }
           ]
         },
         {
           "id": "03",
-          "instructor": "J Lutz",
+          "instructor": "Jennifer L. Lutz",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -63,13 +63,13 @@
               "days": "MWF",
               "start": "12:00",
               "end": "12:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 205"
             }
           ]
         },
         {
           "id": "04",
-          "instructor": "J Lutz",
+          "instructor": "Jennifer L. Lutz",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -77,7 +77,7 @@
               "days": "MWF",
               "start": "14:00",
               "end": "14:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 205"
             }
           ]
         }
@@ -88,7 +88,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Lutz",
+          "instructor": "Jennifer L. Lutz",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -96,7 +96,7 @@
               "days": "MWF",
               "start": "10:00",
               "end": "10:50",
-              "location": "Stuart Hall"
+              "location": "Hickok Hall 324"
             }
           ]
         }
@@ -107,7 +107,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "C Melcher",
+          "instructor": "Carrie Melcher",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -115,7 +115,7 @@
               "days": "MWF",
               "start": "11:00",
               "end": "12:15",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 405"
             }
           ]
         }
@@ -126,7 +126,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "C Melcher",
+          "instructor": "Carrie Melcher",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -134,7 +134,7 @@
               "days": "TR",
               "start": "09:30",
               "end": "10:50",
-              "location": "Stuart Hall"
+              "location": "Hickok Hall 207"
             }
           ]
         }
@@ -145,7 +145,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Lutz",
+          "instructor": "Jennifer L. Lutz",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -153,7 +153,7 @@
               "days": "TR",
               "start": "12:30",
               "end": "13:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 205"
             }
           ]
         }
@@ -164,7 +164,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "K Kunau",
+          "instructor": "Katherine Anne Kunau",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -172,7 +172,7 @@
               "days": "MWF",
               "start": "10:00",
               "end": "10:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall KLR"
             }
           ]
         }
@@ -183,7 +183,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "K Kunau",
+          "instructor": "Katherine Anne Kunau",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -191,7 +191,7 @@
               "days": "MWF",
               "start": "13:00",
               "end": "13:50",
-              "location": "Dows Center"
+              "location": "Dows Center 203"
             }
           ]
         }
@@ -202,7 +202,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Rogers",
+          "instructor": "Jennifer Lee Rogers",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -210,7 +210,7 @@
               "days": "TR",
               "start": "09:30",
               "end": "11:20",
-              "location": "Dows Center"
+              "location": "Dows Center 101"
             }
           ]
         }
@@ -221,7 +221,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "R Morrow",
+          "instructor": "Reginald T. Morrow",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -229,7 +229,7 @@
               "days": "TR",
               "start": "09:30",
               "end": "11:20",
-              "location": "Dows Center"
+              "location": "Dows Center 103"
             }
           ]
         }
@@ -240,7 +240,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "A Escobedo Wickham",
+          "instructor": "Aunna Escobedo Wickham",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -248,7 +248,7 @@
               "days": "TR",
               "start": "09:30",
               "end": "11:20",
-              "location": "Dows Center"
+              "location": "Dows Center 308"
             }
           ]
         }
@@ -259,7 +259,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Rogers",
+          "instructor": "Jennifer Lee Rogers",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -267,7 +267,7 @@
               "days": "MW",
               "start": "09:00",
               "end": "10:50",
-              "location": "Dows Center"
+              "location": "Dows Center 122"
             }
           ]
         }
@@ -278,7 +278,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "R Morrow",
+          "instructor": "Reginald T. Morrow",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -286,7 +286,7 @@
               "days": "MW",
               "start": "09:00",
               "end": "10:50",
-              "location": "Dows Center"
+              "location": "Dows Center 103"
             }
           ]
         }
@@ -297,7 +297,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "R Morrow",
+          "instructor": "Reginald T. Morrow",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -305,7 +305,7 @@
               "days": "MW",
               "start": "13:00",
               "end": "14:50",
-              "location": "Dows Center"
+              "location": "Dows Center 103"
             }
           ]
         }
@@ -316,7 +316,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "Staff",
+          "instructor": "Lesley Ann Panos",
           "credits": 1.0,
           "we": false,
           "meetings": []
@@ -328,7 +328,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "A Escobedo Wickham",
+          "instructor": "Aunna Escobedo Wickham",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -336,7 +336,7 @@
               "days": "TR",
               "start": "12:30",
               "end": "14:20",
-              "location": "Dows Center"
+              "location": "Dows Center 310"
             }
           ]
         }
@@ -347,7 +347,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "A Escobedo Wickham",
+          "instructor": "Aunna Escobedo Wickham",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -355,9 +355,21 @@
               "days": "TR",
               "start": "12:30",
               "end": "14:20",
-              "location": "Dows Center"
+              "location": "Dows Center 310"
             }
           ]
+        }
+      ]
+    },
+    "ART-444": {
+      "title": "Independent Study in Art",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "Jennifer Lee Rogers",
+          "credits": 1.0,
+          "we": false,
+          "meetings": []
         }
       ]
     },
@@ -366,7 +378,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Rogers",
+          "instructor": "Jennifer Lee Rogers",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -374,7 +386,7 @@
               "days": "MWF",
               "start": "11:00",
               "end": "11:50",
-              "location": "Dows Center"
+              "location": "Dows Center 203"
             }
           ]
         }
@@ -385,7 +397,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Rogers",
+          "instructor": "Jennifer Lee Rogers",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -393,9 +405,21 @@
               "days": "MWF",
               "start": "11:00",
               "end": "11:50",
-              "location": "Dows Center"
+              "location": "Dows Center 203"
             }
           ]
+        }
+      ]
+    },
+    "ART-494": {
+      "title": "Internship in Art",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "Jennifer Lee Rogers",
+          "credits": 1.0,
+          "we": false,
+          "meetings": []
         }
       ]
     },
@@ -404,7 +428,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "T Busch",
+          "instructor": "Tim Busch",
           "credits": 0.75,
           "we": false,
           "meetings": [
@@ -412,7 +436,7 @@
               "days": "TR",
               "start": "08:00",
               "end": "09:50",
-              "location": "Stuart Hall"
+              "location": "Center for Health and Society 332"
             }
           ]
         }
@@ -423,8 +447,8 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "T Busch",
-          "credits": 0.0,
+          "instructor": "Tim Busch",
+          "credits": 0.5,
           "we": false,
           "meetings": []
         }
@@ -435,7 +459,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "T Busch",
+          "instructor": "Tim Busch",
           "credits": 0.75,
           "we": false,
           "meetings": [
@@ -443,7 +467,7 @@
               "days": "TR",
               "start": "13:00",
               "end": "14:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 405"
             }
           ]
         }
@@ -454,8 +478,8 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "T Busch",
-          "credits": 0.0,
+          "instructor": "Tim Busch",
+          "credits": 0.5,
           "we": false,
           "meetings": []
         }
@@ -466,7 +490,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "T Busch",
+          "instructor": "Tim Busch",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -474,7 +498,7 @@
               "days": "TR",
               "start": "10:00",
               "end": "11:50",
-              "location": "Stuart Hall"
+              "location": "Athletics and Recreation Center 219A"
             }
           ]
         }
@@ -485,8 +509,8 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "T Busch",
-          "credits": 0.0,
+          "instructor": "Tim Busch",
+          "credits": 0.5,
           "we": false,
           "meetings": []
         }
@@ -505,7 +529,7 @@
               "days": "MW",
               "start": "12:00",
               "end": "13:20",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 203"
             }
           ]
         }
@@ -524,7 +548,7 @@
               "days": "MWF",
               "start": "13:00",
               "end": "13:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 208"
             }
           ]
         }
@@ -542,12 +566,62 @@
         }
       ]
     },
+    "AVS-101": {
+      "title": "Introduction to Aviation",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "Martin P. Lenss",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MW",
+              "start": "12:00",
+              "end": "13:20",
+              "location": "Athletics and Recreation Center 218A"
+            }
+          ]
+        }
+      ]
+    },
+    "AVS-201": {
+      "title": "Principles of Meteorology",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "Rebecca Kendall Gerhardt",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "MWF",
+              "start": "13:00",
+              "end": "13:50",
+              "location": "Stuart Hall 109"
+            }
+          ]
+        }
+      ]
+    },
+    "AVS-201L": {
+      "title": "Principles of Meteorology Lab",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "Rebecca Kendall Gerhardt",
+          "credits": 0.0,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
     "BIO-100": {
       "title": "Human Biology",
       "sections": [
         {
           "id": "01",
-          "instructor": "R Christensen",
+          "instructor": "Randolph N. Christensen",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -555,7 +629,7 @@
               "days": "MWF",
               "start": "14:00",
               "end": "14:50",
-              "location": "Center for Health an"
+              "location": "Center for Health and Society 337"
             }
           ]
         }
@@ -566,7 +640,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "R Christensen",
+          "instructor": "Randolph N. Christensen",
           "credits": 0.2,
           "we": false,
           "meetings": [
@@ -574,7 +648,7 @@
               "days": "R",
               "start": "13:00",
               "end": "15:50",
-              "location": "Center for Health an"
+              "location": "Center for Health and Society 332"
             }
           ]
         }
@@ -585,7 +659,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "M Leonardo",
+          "instructor": "Michael R. Leonardo",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -593,7 +667,7 @@
               "days": "MWF",
               "start": "14:00",
               "end": "14:50",
-              "location": "Center for Health an"
+              "location": "Peterson Hall 119"
             }
           ]
         }
@@ -604,7 +678,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "R Christensen",
+          "instructor": "Randolph N. Christensen",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -612,13 +686,13 @@
               "days": "MWF",
               "start": "09:00",
               "end": "09:50",
-              "location": "Cherry Auditorium"
+              "location": "Cherry Auditorium 000"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "Staff",
+          "instructor": "Lucas Heintzman",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -626,7 +700,7 @@
               "days": "MWF",
               "start": "10:00",
               "end": "10:50",
-              "location": "Cherry Auditorium"
+              "location": "Cherry Auditorium 000"
             }
           ]
         }
@@ -637,7 +711,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "P Storer",
+          "instructor": "Paul D. Storer",
           "credits": 0.2,
           "we": true,
           "meetings": [
@@ -645,13 +719,13 @@
               "days": "T",
               "start": "08:00",
               "end": "10:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 213"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "R Christensen",
+          "instructor": "Randolph N. Christensen",
           "credits": 0.2,
           "we": true,
           "meetings": [
@@ -659,13 +733,13 @@
               "days": "T",
               "start": "11:00",
               "end": "13:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 213"
             }
           ]
         },
         {
           "id": "03",
-          "instructor": "J Mitchell",
+          "instructor": "Jonathan Stuart Mitchell",
           "credits": 0.2,
           "we": true,
           "meetings": [
@@ -673,13 +747,13 @@
               "days": "T",
               "start": "14:00",
               "end": "16:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 213"
             }
           ]
         },
         {
           "id": "04",
-          "instructor": "P Storer",
+          "instructor": "Paul D. Storer",
           "credits": 0.2,
           "we": true,
           "meetings": [
@@ -687,13 +761,13 @@
               "days": "R",
               "start": "08:00",
               "end": "10:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 213"
             }
           ]
         },
         {
           "id": "05",
-          "instructor": "Staff",
+          "instructor": "Lucas Heintzman",
           "credits": 0.2,
           "we": true,
           "meetings": [
@@ -701,7 +775,7 @@
               "days": "R",
               "start": "13:00",
               "end": "15:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 213"
             }
           ]
         }
@@ -712,7 +786,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Mitchell",
+          "instructor": "Jonathan Stuart Mitchell",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -720,7 +794,7 @@
               "days": "MWF",
               "start": "13:00",
               "end": "13:50",
-              "location": "Center for Health an"
+              "location": "Center for Health and Society 337"
             }
           ]
         }
@@ -731,7 +805,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "K Keyes",
+          "instructor": "Karla J. Keyes",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -739,7 +813,7 @@
               "days": "MWF",
               "start": "10:00",
               "end": "10:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 105"
             }
           ]
         }
@@ -750,7 +824,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "K Keyes",
+          "instructor": "Karla J. Keyes",
           "credits": 0.2,
           "we": false,
           "meetings": [
@@ -758,13 +832,19 @@
               "days": "T",
               "start": "13:00",
               "end": "15:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 210"
+            },
+            {
+              "days": "T",
+              "start": "13:00",
+              "end": "15:50",
+              "location": "Center for Health and Society 245"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "K Keyes",
+          "instructor": "Karla J. Keyes",
           "credits": 0.2,
           "we": false,
           "meetings": [
@@ -772,13 +852,19 @@
               "days": "R",
               "start": "08:00",
               "end": "10:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 210"
+            },
+            {
+              "days": "R",
+              "start": "08:00",
+              "end": "10:50",
+              "location": "Center for Health and Society 245"
             }
           ]
         },
         {
           "id": "03",
-          "instructor": "K Keyes",
+          "instructor": "Karla J. Keyes",
           "credits": 0.2,
           "we": false,
           "meetings": [
@@ -786,7 +872,7 @@
               "days": "R",
               "start": "13:00",
               "end": "15:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 210"
             }
           ]
         }
@@ -797,7 +883,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "M Leonardo",
+          "instructor": "Michael R. Leonardo",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -805,7 +891,7 @@
               "days": "MWF",
               "start": "09:00",
               "end": "09:50",
-              "location": "Peterson Hall"
+              "location": "Center for Health and Society 337"
             }
           ]
         }
@@ -816,7 +902,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "M Leonardo",
+          "instructor": "Michael R. Leonardo",
           "credits": 0.2,
           "we": false,
           "meetings": [
@@ -824,13 +910,13 @@
               "days": "TR",
               "start": "08:00",
               "end": "09:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 205"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "M Leonardo",
+          "instructor": "Michael R. Leonardo",
           "credits": 0.2,
           "we": false,
           "meetings": [
@@ -838,7 +924,7 @@
               "days": "TR",
               "start": "11:00",
               "end": "12:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 205"
             }
           ]
         }
@@ -849,7 +935,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "P Storer",
+          "instructor": "Paul D. Storer",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -857,7 +943,7 @@
               "days": "TR",
               "start": "13:00",
               "end": "14:20",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 202"
             }
           ]
         }
@@ -868,7 +954,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "P Storer",
+          "instructor": "Paul D. Storer",
           "credits": 0.5,
           "we": false,
           "meetings": [
@@ -876,7 +962,7 @@
               "days": "TR",
               "start": "14:30",
               "end": "16:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 202"
             }
           ]
         }
@@ -887,7 +973,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Mitchell",
+          "instructor": "Jonathan Stuart Mitchell",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -895,7 +981,7 @@
               "days": "MWF",
               "start": "10:00",
               "end": "10:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 207"
             }
           ]
         }
@@ -906,7 +992,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Mitchell",
+          "instructor": "Jonathan Stuart Mitchell",
           "credits": 0.2,
           "we": false,
           "meetings": [
@@ -914,7 +1000,7 @@
               "days": "T",
               "start": "09:00",
               "end": "11:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 210"
             }
           ]
         }
@@ -925,7 +1011,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "Staff",
+          "instructor": "Lucas Heintzman",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -933,7 +1019,7 @@
               "days": "MWF",
               "start": "13:00",
               "end": "13:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 207"
             }
           ]
         }
@@ -944,7 +1030,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "Staff",
+          "instructor": "Lucas Heintzman",
           "credits": 0.2,
           "we": true,
           "meetings": [
@@ -952,7 +1038,7 @@
               "days": "T",
               "start": "13:00",
               "end": "15:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 207"
             }
           ]
         }
@@ -963,7 +1049,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "M Calman",
+          "instructor": "Matthew Alexander Calman",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -971,13 +1057,13 @@
               "days": "MWF",
               "start": "12:00",
               "end": "12:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 209"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "M Calman",
+          "instructor": "Matthew Alexander Calman",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -985,13 +1071,13 @@
               "days": "MWF",
               "start": "13:00",
               "end": "13:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 209"
             }
           ]
         },
         {
           "id": "03",
-          "instructor": "M Calman",
+          "instructor": "Matthew Alexander Calman",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -999,7 +1085,7 @@
               "days": "MWF",
               "start": "14:00",
               "end": "14:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 209"
             }
           ]
         }
@@ -1010,7 +1096,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "R Kuennen",
+          "instructor": "Robert D. Kuennen",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -1018,7 +1104,7 @@
               "days": "TR",
               "start": "09:30",
               "end": "10:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 405"
             }
           ]
         }
@@ -1029,10 +1115,14 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "",
+          "instructor": "Robert D. Kuennen",
           "credits": 1.0,
           "we": false,
-          "meetings": []
+          "meetings": [],
+          "part_of_term": {
+            "start": "2026-08-26",
+            "end": "2026-10-23"
+          }
         }
       ]
     },
@@ -1041,7 +1131,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "V Nguyen",
+          "instructor": "Vinh Q. Nguyen",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -1049,7 +1139,7 @@
               "days": "MWF",
               "start": "13:00",
               "end": "13:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 305"
             }
           ]
         }
@@ -1060,7 +1150,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Christensen",
+          "instructor": "Joshua L. Christensen",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -1068,7 +1158,7 @@
               "days": "TR",
               "start": "11:00",
               "end": "12:20",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 209"
             }
           ]
         }
@@ -1079,7 +1169,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Christensen",
+          "instructor": "Joshua L. Christensen",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -1087,13 +1177,13 @@
               "days": "TR",
               "start": "12:30",
               "end": "13:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 209"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "J Christensen",
+          "instructor": "Joshua L. Christensen",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -1101,7 +1191,7 @@
               "days": "TR",
               "start": "14:00",
               "end": "15:20",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 209"
             }
           ]
         }
@@ -1112,7 +1202,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "P Carstens",
+          "instructor": "Pamela Jean Carstens",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -1120,13 +1210,13 @@
               "days": "TR",
               "start": "08:00",
               "end": "09:20",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 203"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "R Kuennen",
+          "instructor": "Robert D. Kuennen",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -1134,7 +1224,7 @@
               "days": "TR",
               "start": "14:00",
               "end": "15:20",
-              "location": "Cherry Auditorium"
+              "location": "Cherry Auditorium 000"
             }
           ]
         }
@@ -1145,7 +1235,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Chen",
+          "instructor": "Jia-Yuh Chen",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -1153,7 +1243,7 @@
               "days": "MWF",
               "start": "13:00",
               "end": "13:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 405"
             }
           ]
         }
@@ -1164,10 +1254,14 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "V Nguyen",
+          "instructor": "Vinh Q. Nguyen",
           "credits": 1.0,
           "we": false,
-          "meetings": []
+          "meetings": [],
+          "part_of_term": {
+            "start": "2026-10-26",
+            "end": "2026-12-17"
+          }
         }
       ]
     },
@@ -1176,7 +1270,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "V Nguyen",
+          "instructor": "Vinh Q. Nguyen",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -1184,7 +1278,7 @@
               "days": "MWF",
               "start": "09:00",
               "end": "09:50",
-              "location": "Stuart Hall"
+              "location": "Center for Health and Society 332"
             }
           ]
         }
@@ -1195,7 +1289,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "R Kuennen",
+          "instructor": "Robert D. Kuennen",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -1203,7 +1297,7 @@
               "days": "MW",
               "start": "14:00",
               "end": "15:20",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 306"
             }
           ]
         }
@@ -1214,7 +1308,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "P Carstens",
+          "instructor": "Pamela Jean Carstens",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -1222,7 +1316,7 @@
               "days": "T",
               "start": "18:30",
               "end": "21:00",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 203"
             }
           ]
         }
@@ -1233,7 +1327,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "P Carstens",
+          "instructor": "Pamela Jean Carstens",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -1241,7 +1335,7 @@
               "days": "TR",
               "start": "12:30",
               "end": "13:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 309"
             }
           ]
         }
@@ -1252,7 +1346,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "P Carstens",
+          "instructor": "Pamela Jean Carstens",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -1260,7 +1354,7 @@
               "days": "TR",
               "start": "09:30",
               "end": "10:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 104"
             }
           ]
         }
@@ -1271,7 +1365,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Chen",
+          "instructor": "Jia-Yuh Chen",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -1279,9 +1373,21 @@
               "days": "MWF",
               "start": "10:00",
               "end": "10:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 405"
             }
           ]
+        }
+      ]
+    },
+    "BUS-494": {
+      "title": "Internship in Business",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "Pamela Jean Carstens",
+          "credits": 1.0,
+          "we": false,
+          "meetings": []
         }
       ]
     },
@@ -1290,7 +1396,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "C Stead",
+          "instructor": "Christopher M. Stead",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -1298,7 +1404,7 @@
               "days": "MWF",
               "start": "14:00",
               "end": "14:50",
-              "location": "Athletics and Recrea"
+              "location": "Athletics and Recreation Center 218A"
             }
           ]
         }
@@ -1309,7 +1415,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "H Edvenson",
+          "instructor": "Heather Marie Edvenson",
           "credits": 0.0,
           "we": false,
           "meetings": [
@@ -1317,13 +1423,13 @@
               "days": "T",
               "start": "08:00",
               "end": "10:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 309"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "C Stead",
+          "instructor": "Christopher M. Stead",
           "credits": 0.0,
           "we": false,
           "meetings": [
@@ -1331,13 +1437,13 @@
               "days": "T",
               "start": "13:00",
               "end": "15:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 309"
             }
           ]
         },
         {
           "id": "03",
-          "instructor": "H Edvenson",
+          "instructor": "Heather Marie Edvenson",
           "credits": 0.0,
           "we": false,
           "meetings": [
@@ -1345,7 +1451,7 @@
               "days": "R",
               "start": "13:00",
               "end": "15:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 309"
             }
           ]
         }
@@ -1356,7 +1462,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Stoudt",
+          "instructor": "Scott J. Stoudt",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -1364,7 +1470,7 @@
               "days": "MWF",
               "start": "14:00",
               "end": "14:50",
-              "location": "Center for Health an"
+              "location": "Center for Health and Society 332"
             }
           ]
         }
@@ -1375,7 +1481,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Stoudt",
+          "instructor": "Scott J. Stoudt",
           "credits": 0.0,
           "we": false,
           "meetings": [
@@ -1383,13 +1489,13 @@
               "days": "T",
               "start": "08:00",
               "end": "10:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 311"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "S Stoudt",
+          "instructor": "Scott J. Stoudt",
           "credits": 0.0,
           "we": false,
           "meetings": [
@@ -1397,7 +1503,7 @@
               "days": "T",
               "start": "13:00",
               "end": "15:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 311"
             }
           ]
         }
@@ -1408,7 +1514,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "H Edvenson",
+          "instructor": "Heather Marie Edvenson",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -1416,7 +1522,7 @@
               "days": "TR",
               "start": "11:00",
               "end": "12:20",
-              "location": "Center for Health an"
+              "location": "Center for Health and Society 332"
             }
           ]
         }
@@ -1427,7 +1533,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "H Edvenson",
+          "instructor": "Heather Marie Edvenson",
           "credits": 0.5,
           "we": true,
           "meetings": [
@@ -1435,7 +1541,7 @@
               "days": "MW",
               "start": "13:00",
               "end": "15:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 311"
             }
           ]
         }
@@ -1446,7 +1552,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Stoudt",
+          "instructor": "Scott J. Stoudt",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -1454,7 +1560,7 @@
               "days": "MWF",
               "start": "10:00",
               "end": "10:50",
-              "location": "Center for Health an"
+              "location": "Athletics and Recreation Center 219A"
             }
           ]
         }
@@ -1465,15 +1571,15 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Singleton",
+          "instructor": "Steven M. Singleton",
           "credits": 1.0,
           "we": true,
           "meetings": [
             {
               "days": "MWF",
-              "start": "11:00",
-              "end": "11:50",
-              "location": "Peterson Hall"
+              "start": "14:00",
+              "end": "14:50",
+              "location": "Peterson Hall 309"
             }
           ]
         }
@@ -1484,7 +1590,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Singleton",
+          "instructor": "Steven M. Singleton",
           "credits": 0.0,
           "we": false,
           "meetings": [
@@ -1492,7 +1598,7 @@
               "days": "T",
               "start": "13:00",
               "end": "15:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 307"
             }
           ]
         }
@@ -1503,7 +1609,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "C Stead",
+          "instructor": "Christopher M. Stead",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -1511,7 +1617,7 @@
               "days": "MWF",
               "start": "10:00",
               "end": "10:50",
-              "location": "Center for Health an"
+              "location": "Center for Health and Society 332"
             }
           ]
         }
@@ -1522,7 +1628,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "C Stead",
+          "instructor": "Christopher M. Stead",
           "credits": 0.0,
           "we": false,
           "meetings": [
@@ -1530,7 +1636,7 @@
               "days": "T",
               "start": "08:00",
               "end": "10:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 304"
             }
           ]
         }
@@ -1541,15 +1647,15 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Singleton",
+          "instructor": "Steven M. Singleton",
           "credits": 1.0,
           "we": false,
           "meetings": [
             {
               "days": "MWF",
-              "start": "14:00",
-              "end": "14:50",
-              "location": "Peterson Hall"
+              "start": "11:00",
+              "end": "11:50",
+              "location": "Peterson Hall 309"
             }
           ]
         }
@@ -1560,7 +1666,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Singleton",
+          "instructor": "Christopher M. Stead",
           "credits": 0.25,
           "we": false,
           "meetings": [
@@ -1568,7 +1674,7 @@
               "days": "M",
               "start": "15:00",
               "end": "15:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 104"
             }
           ]
         }
@@ -1579,7 +1685,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "O Opayemi",
+          "instructor": "Oluwadamilola Opayemi",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -1587,7 +1693,7 @@
               "days": "TR",
               "start": "08:00",
               "end": "09:20",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 324"
             }
           ]
         }
@@ -1598,7 +1704,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "C Picton",
+          "instructor": "Cara Leigh Picton",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -1606,13 +1712,13 @@
               "days": "TR",
               "start": "12:30",
               "end": "13:50",
-              "location": "Struve Comm Ctr"
+              "location": "Struve Communication Center 4"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "C Picton",
+          "instructor": "Cara Leigh Picton",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -1620,7 +1726,7 @@
               "days": "TR",
               "start": "09:30",
               "end": "10:50",
-              "location": "Struve Comm Ctr"
+              "location": "Struve Communication Center 4"
             }
           ]
         }
@@ -1631,7 +1737,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "O Opayemi",
+          "instructor": "Oluwadamilola Opayemi",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -1639,7 +1745,7 @@
               "days": "TR",
               "start": "12:30",
               "end": "13:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 324"
             }
           ]
         }
@@ -1650,7 +1756,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Harmsen",
+          "instructor": "Shawn P. Harmsen",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -1658,7 +1764,7 @@
               "days": "MWF",
               "start": "10:00",
               "end": "10:50",
-              "location": "Struve Comm Ctr"
+              "location": "Struve Communication Center 6"
             }
           ]
         }
@@ -1669,7 +1775,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Harmsen",
+          "instructor": "Shawn P. Harmsen",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -1677,7 +1783,7 @@
               "days": "MWF",
               "start": "14:00",
               "end": "14:50",
-              "location": "Struve Comm Ctr"
+              "location": "Struve Communication Center 14"
             }
           ]
         }
@@ -1688,7 +1794,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Harmsen",
+          "instructor": "Shawn P. Harmsen",
           "credits": 0.2,
           "we": false,
           "meetings": []
@@ -1700,7 +1806,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "A Carr",
+          "instructor": "Allison Denise Carr",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -1708,7 +1814,7 @@
               "days": "TR",
               "start": "09:30",
               "end": "10:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 301"
             }
           ]
         }
@@ -1719,7 +1825,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Harmsen",
+          "instructor": "Shawn P. Harmsen",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -1727,9 +1833,21 @@
               "days": "MWF",
               "start": "13:00",
               "end": "13:50",
-              "location": "Struve Comm Ctr"
+              "location": "Struve Communication Center 6"
             }
           ]
+        }
+      ]
+    },
+    "CRW-105": {
+      "title": "Exploring Creative Writing (WE)",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "Allison Denise Carr",
+          "credits": 1.0,
+          "we": true,
+          "meetings": []
         }
       ]
     },
@@ -1738,7 +1856,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Colville",
+          "instructor": "Jennifer A. Colville",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -1746,7 +1864,7 @@
               "days": "TR",
               "start": "14:00",
               "end": "15:20",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 324"
             }
           ]
         }
@@ -1757,7 +1875,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Ferguson",
+          "instructor": "Jenny Lee Ferguson",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -1765,13 +1883,13 @@
               "days": "MW",
               "start": "14:00",
               "end": "15:20",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 305"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "J Ferguson",
+          "instructor": "Jenny Lee Ferguson",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -1779,7 +1897,7 @@
               "days": "MW",
               "start": "15:30",
               "end": "16:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 305"
             }
           ]
         }
@@ -1790,7 +1908,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "M LeMay-Lewis",
+          "instructor": "Margaret E LeMay-Lewis",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -1798,7 +1916,7 @@
               "days": "TR",
               "start": "11:00",
               "end": "12:20",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 302"
             }
           ]
         }
@@ -1809,7 +1927,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "M LeMay-Lewis",
+          "instructor": "Margaret E LeMay-Lewis",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -1817,7 +1935,7 @@
               "days": "W",
               "start": "13:00",
               "end": "15:20",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 302"
             }
           ]
         }
@@ -1828,7 +1946,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "M LeMay-Lewis",
+          "instructor": "Margaret E LeMay-Lewis",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -1836,7 +1954,7 @@
               "days": "W",
               "start": "13:00",
               "end": "15:20",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 302"
             }
           ]
         }
@@ -1847,7 +1965,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "M LeMay-Lewis",
+          "instructor": "Margaret E LeMay-Lewis",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -1855,7 +1973,7 @@
               "days": "T",
               "start": "15:30",
               "end": "17:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 202"
             }
           ]
         }
@@ -1866,7 +1984,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "N Saha",
+          "instructor": "Namrata Saha",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -1874,19 +1992,19 @@
               "days": "MWF",
               "start": "09:00",
               "end": "09:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 208"
             },
             {
               "days": "R",
               "start": "12:30",
               "end": "13:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 208"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "N Saha",
+          "instructor": "Namrata Saha",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -1894,13 +2012,13 @@
               "days": "MWF",
               "start": "13:00",
               "end": "13:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 208"
             },
             {
               "days": "R",
               "start": "14:00",
               "end": "15:20",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 208"
             }
           ]
         }
@@ -1911,7 +2029,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Hughes",
+          "instructor": "Stephen B. Hughes",
           "credits": 0.25,
           "we": false,
           "meetings": [
@@ -1919,7 +2037,7 @@
               "days": "T",
               "start": "14:00",
               "end": "16:00",
-              "location": "Stuart Hall"
+              "location": "Arranged"
             }
           ]
         }
@@ -1930,7 +2048,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Hughes",
+          "instructor": "Stephen B. Hughes",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -1938,7 +2056,7 @@
               "days": "MWF",
               "start": "13:00",
               "end": "13:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 308"
             }
           ]
         }
@@ -1949,7 +2067,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Hughes",
+          "instructor": "Stephen B. Hughes",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -1957,7 +2075,7 @@
               "days": "MWF",
               "start": "10:00",
               "end": "10:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 306"
             }
           ]
         }
@@ -1968,7 +2086,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Hughes",
+          "instructor": "Stephen B. Hughes",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -1976,7 +2094,7 @@
               "days": "TR",
               "start": "09:30",
               "end": "10:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 308"
             }
           ]
         }
@@ -1987,7 +2105,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "N Saha",
+          "instructor": "Namrata Saha",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -1995,7 +2113,7 @@
               "days": "MWF",
               "start": "11:00",
               "end": "11:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 308"
             }
           ]
         }
@@ -2006,7 +2124,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "C Rezabek",
+          "instructor": "Carol A. Rezabek",
           "credits": 0.2,
           "we": false,
           "meetings": [
@@ -2014,9 +2132,13 @@
               "days": "TR",
               "start": "12:20",
               "end": "13:50",
-              "location": "Dows Center"
+              "location": "Dows Center MILLS"
             }
-          ]
+          ],
+          "part_of_term": {
+            "start": "2026-08-26",
+            "end": "2026-10-14"
+          }
         }
       ]
     },
@@ -2025,7 +2147,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "C Rezabek",
+          "instructor": "Carol A. Rezabek",
           "credits": 0.2,
           "we": false,
           "meetings": [
@@ -2033,9 +2155,13 @@
               "days": "TR",
               "start": "12:20",
               "end": "13:50",
-              "location": "Dows Center"
+              "location": "Dows Center MILLS"
             }
-          ]
+          ],
+          "part_of_term": {
+            "start": "2026-10-19",
+            "end": "2026-12-17"
+          }
         }
       ]
     },
@@ -2044,7 +2170,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "M Stobb",
+          "instructor": "Michael Stobb",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -2052,7 +2178,7 @@
               "days": "MWF",
               "start": "13:00",
               "end": "13:50",
-              "location": "Stuart Hall"
+              "location": "Center for Health and Society 332"
             }
           ]
         }
@@ -2063,7 +2189,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "M Stobb",
+          "instructor": "Michael Stobb",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -2071,7 +2197,7 @@
               "days": "MWF",
               "start": "12:00",
               "end": "12:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 308"
             }
           ]
         }
@@ -2082,7 +2208,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "M Stobb",
+          "instructor": "Michael Stobb",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -2090,7 +2216,7 @@
               "days": "TR",
               "start": "11:00",
               "end": "12:20",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 208"
             }
           ]
         }
@@ -2101,7 +2227,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Janca",
+          "instructor": "Joyce M. Janca",
           "credits": 0.3,
           "we": true,
           "meetings": []
@@ -2113,7 +2239,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Janca",
+          "instructor": "Joyce M. Janca",
           "credits": 0.3,
           "we": true,
           "meetings": []
@@ -2125,7 +2251,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "R Eichhorn",
+          "instructor": "Richard G. Eichhorn",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -2133,13 +2259,13 @@
               "days": "TR",
               "start": "09:30",
               "end": "10:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 205"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "D Westberg",
+          "instructor": "Drew Evan Westberg",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -2147,13 +2273,13 @@
               "days": "MWF",
               "start": "10:00",
               "end": "10:50",
-              "location": "Center for Health an"
+              "location": "Hickok Hall KLR"
             }
           ]
         },
         {
           "id": "03",
-          "instructor": "D Westberg",
+          "instructor": "Drew Evan Westberg",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -2161,7 +2287,7 @@
               "days": "MWF",
               "start": "12:00",
               "end": "12:50",
-              "location": "Center for Health an"
+              "location": "Center for Health and Society 337"
             }
           ]
         }
@@ -2172,10 +2298,14 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "R Eichhorn",
+          "instructor": "Richard G. Eichhorn",
           "credits": 1.0,
           "we": false,
-          "meetings": []
+          "meetings": [],
+          "part_of_term": {
+            "start": "2026-08-26",
+            "end": "2026-10-23"
+          }
         }
       ]
     },
@@ -2184,7 +2314,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "R Baranowski",
+          "instructor": "Ryan Baranowski",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -2192,13 +2322,13 @@
               "days": "MWF",
               "start": "09:00",
               "end": "09:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 209"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "R Baranowski",
+          "instructor": "Ryan Baranowski",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -2206,7 +2336,7 @@
               "days": "MWF",
               "start": "10:00",
               "end": "10:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 209"
             }
           ]
         }
@@ -2217,10 +2347,14 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "R Baranowski",
+          "instructor": "Ryan Baranowski",
           "credits": 1.0,
           "we": false,
-          "meetings": []
+          "meetings": [],
+          "part_of_term": {
+            "start": "2026-10-26",
+            "end": "2026-12-17"
+          }
         }
       ]
     },
@@ -2229,7 +2363,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "R Baranowski",
+          "instructor": "Ryan Baranowski",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -2237,7 +2371,7 @@
               "days": "TR",
               "start": "09:30",
               "end": "10:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 209"
             }
           ]
         }
@@ -2248,7 +2382,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "D Westberg",
+          "instructor": "Drew Evan Westberg",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -2256,7 +2390,7 @@
               "days": "TR",
               "start": "12:30",
               "end": "13:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 203"
             }
           ]
         }
@@ -2267,7 +2401,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "R Eichhorn",
+          "instructor": "Richard G. Eichhorn",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -2275,7 +2409,7 @@
               "days": "TR",
               "start": "14:00",
               "end": "15:20",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 205"
             }
           ]
         }
@@ -2286,7 +2420,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "D Westberg",
+          "instructor": "Drew Evan Westberg",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -2294,7 +2428,7 @@
               "days": "MWF",
               "start": "13:00",
               "end": "13:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 205"
             }
           ]
         }
@@ -2305,7 +2439,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "R Eichhorn",
+          "instructor": "Richard G. Eichhorn",
           "credits": 1.0,
           "we": false,
           "meetings": []
@@ -2317,7 +2451,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "M Staeheli",
+          "instructor": "Molly M. Staeheli",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -2325,13 +2459,13 @@
               "days": "MWF",
               "start": "10:00",
               "end": "10:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 403"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "S Haynes-Moore",
+          "instructor": "Stacy M. Haynes-Moore",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -2339,7 +2473,7 @@
               "days": "MWF",
               "start": "10:00",
               "end": "10:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 403"
             }
           ]
         }
@@ -2350,7 +2484,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "D Geers",
+          "instructor": "Dianna Lee Geers",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -2358,13 +2492,13 @@
               "days": "MW",
               "start": "14:00",
               "end": "15:20",
-              "location": "Center for Health an"
+              "location": "Hickok Hall 324"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "D Geers",
+          "instructor": "Dianna Lee Geers",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -2372,7 +2506,7 @@
               "days": "TR",
               "start": "09:30",
               "end": "10:50",
-              "location": "Stuart Hall"
+              "location": "Center for Health and Society 337"
             }
           ]
         }
@@ -2383,7 +2517,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "M Staeheli",
+          "instructor": "Molly M. Staeheli",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -2391,13 +2525,13 @@
               "days": "MWF",
               "start": "13:00",
               "end": "13:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 403"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "M Staeheli",
+          "instructor": "Molly M. Staeheli",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -2405,7 +2539,7 @@
               "days": "TR",
               "start": "12:30",
               "end": "13:50",
-              "location": "Center for Health an"
+              "location": "Stuart Hall 403"
             }
           ]
         }
@@ -2416,7 +2550,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "B Christoffersen",
+          "instructor": "Brian K Christoffersen",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -2424,7 +2558,7 @@
               "days": "MWF",
               "start": "10:00",
               "end": "10:50",
-              "location": "Center for Health an"
+              "location": "Center for Health and Society 337"
             }
           ]
         }
@@ -2435,7 +2569,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "D Geers",
+          "instructor": "Dianna Lee Geers",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -2443,7 +2577,7 @@
               "days": "TR",
               "start": "14:00",
               "end": "15:20",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 403"
             }
           ]
         }
@@ -2454,7 +2588,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "L Wiebenga",
+          "instructor": "Lisa M. Wiebenga",
           "credits": 0.5,
           "we": false,
           "meetings": [
@@ -2462,7 +2596,7 @@
               "days": "R",
               "start": "09:30",
               "end": "10:50",
-              "location": "Stewart Mem Lib"
+              "location": "Stewart Memorial Library CL"
             }
           ]
         }
@@ -2473,7 +2607,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Kress",
+          "instructor": "Sarah Mae Kress",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -2481,7 +2615,7 @@
               "days": "TR",
               "start": "11:00",
               "end": "12:20",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 405"
             }
           ]
         }
@@ -2492,7 +2626,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Haynes-Moore",
+          "instructor": "Stacy M. Haynes-Moore",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -2500,7 +2634,7 @@
               "days": "MWF",
               "start": "13:00",
               "end": "13:50",
-              "location": "Stewart Mem Lib"
+              "location": "Stewart Memorial Library CL"
             }
           ]
         }
@@ -2511,7 +2645,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "B Christoffersen",
+          "instructor": "Brian K Christoffersen",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -2519,7 +2653,7 @@
               "days": "TR",
               "start": "09:30",
               "end": "10:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 403"
             }
           ]
         }
@@ -2530,7 +2664,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Kress",
+          "instructor": "Sarah Mae Kress",
           "credits": 0.5,
           "we": false,
           "meetings": [
@@ -2538,9 +2672,13 @@
               "days": "MWF",
               "start": "08:00",
               "end": "08:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 403"
             }
-          ]
+          ],
+          "part_of_term": {
+            "start": "2026-08-26",
+            "end": "2026-10-14"
+          }
         }
       ]
     },
@@ -2549,7 +2687,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Kress",
+          "instructor": "Sarah Mae Kress",
           "credits": 0.5,
           "we": false,
           "meetings": [
@@ -2557,9 +2695,13 @@
               "days": "M",
               "start": "16:00",
               "end": "17:20",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 403"
             }
-          ]
+          ],
+          "part_of_term": {
+            "start": "2026-10-19",
+            "end": "2026-12-17"
+          }
         }
       ]
     },
@@ -2568,7 +2710,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Kress",
+          "instructor": "Sarah Mae Kress",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -2576,13 +2718,13 @@
               "days": "TR",
               "start": "08:00",
               "end": "09:20",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 403"
             },
             {
               "days": "T",
               "start": "16:00",
               "end": "18:00",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 403"
             }
           ]
         }
@@ -2601,7 +2743,7 @@
               "days": "W",
               "start": "18:00",
               "end": "20:40",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 209"
             }
           ]
         }
@@ -2612,7 +2754,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "Staff",
+          "instructor": "Suzanne Ryan Zahn",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -2620,7 +2762,7 @@
               "days": "W",
               "start": "18:00",
               "end": "20:40",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 205"
             }
           ]
         }
@@ -2639,7 +2781,7 @@
               "days": "W",
               "start": "18:00",
               "end": "20:40",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 104"
             }
           ]
         }
@@ -2658,7 +2800,7 @@
               "days": "W",
               "start": "18:00",
               "end": "20:40",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 105"
             }
           ]
         }
@@ -2669,7 +2811,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "B Christoffersen",
+          "instructor": "Brian K Christoffersen",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -2677,7 +2819,7 @@
               "days": "MW",
               "start": "14:00",
               "end": "15:20",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 403"
             }
           ]
         }
@@ -2688,7 +2830,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "M Bartlett",
+          "instructor": "Marlene K Bartlett",
           "credits": 2.0,
           "we": true,
           "meetings": [
@@ -2696,7 +2838,7 @@
               "days": "W",
               "start": "17:00",
               "end": "18:00",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 403"
             }
           ]
         }
@@ -2707,7 +2849,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "M Bartlett",
+          "instructor": "Marlene K Bartlett",
           "credits": 2.0,
           "we": true,
           "meetings": [
@@ -2715,7 +2857,7 @@
               "days": "W",
               "start": "16:00",
               "end": "17:00",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 403"
             }
           ]
         }
@@ -2726,7 +2868,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "M Bartlett",
+          "instructor": "Marlene K Bartlett",
           "credits": 2.0,
           "we": true,
           "meetings": [
@@ -2734,7 +2876,7 @@
               "days": "W",
               "start": "16:00",
               "end": "17:00",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 403"
             }
           ]
         }
@@ -2745,7 +2887,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "M Bartlett",
+          "instructor": "Marlene K Bartlett",
           "credits": 2.0,
           "we": true,
           "meetings": [
@@ -2753,7 +2895,7 @@
               "days": "W",
               "start": "17:00",
               "end": "18:00",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 403"
             }
           ]
         }
@@ -2764,7 +2906,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "M Bartlett",
+          "instructor": "Marlene K Bartlett",
           "credits": 2.0,
           "we": true,
           "meetings": [
@@ -2772,7 +2914,7 @@
               "days": "W",
               "start": "16:00",
               "end": "17:00",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 403"
             }
           ]
         }
@@ -2783,7 +2925,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "M Bartlett",
+          "instructor": "Marlene K Bartlett",
           "credits": 2.0,
           "we": true,
           "meetings": [
@@ -2791,7 +2933,7 @@
               "days": "W",
               "start": "17:00",
               "end": "18:00",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 403"
             }
           ]
         }
@@ -2802,7 +2944,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "M Bartlett",
+          "instructor": "Marlene K Bartlett",
           "credits": 2.0,
           "we": true,
           "meetings": [
@@ -2810,7 +2952,7 @@
               "days": "W",
               "start": "16:00",
               "end": "17:00",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 403"
             }
           ]
         }
@@ -2821,15 +2963,15 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "M Bartlett",
-          "credits": 0.0,
+          "instructor": "Marlene K Bartlett",
+          "credits": 2.0,
           "we": true,
           "meetings": [
             {
               "days": "W",
               "start": "17:00",
               "end": "18:00",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 403"
             }
           ]
         }
@@ -2840,7 +2982,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "Staff",
+          "instructor": "Sydnee Paige Brown",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -2848,13 +2990,13 @@
               "days": "MWF",
               "start": "08:00",
               "end": "08:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 324"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "Staff",
+          "instructor": "Rachel Rucker",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -2862,7 +3004,7 @@
               "days": "MWF",
               "start": "12:00",
               "end": "12:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 324"
             }
           ]
         }
@@ -2873,7 +3015,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "Staff",
+          "instructor": "Rachel Rucker",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -2881,7 +3023,7 @@
               "days": "MWF",
               "start": "13:00",
               "end": "13:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 324"
             }
           ]
         }
@@ -2892,15 +3034,15 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "Staff",
+          "instructor": "Riley Hanick",
           "credits": 1.0,
           "we": true,
           "meetings": [
             {
-              "days": "TRF",
+              "days": "TR",
               "start": "14:00",
               "end": "15:20",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 302"
             }
           ]
         }
@@ -2911,7 +3053,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "G Hausknecht",
+          "instructor": "Gina G. Hausknecht",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -2919,7 +3061,7 @@
               "days": "TR",
               "start": "11:00",
               "end": "12:20",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 202"
             }
           ]
         }
@@ -2930,7 +3072,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "A Torres",
+          "instructor": "Laissa Rodriguez Moreno",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -2938,9 +3080,10 @@
               "days": "MWF",
               "start": "13:00",
               "end": "13:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 201"
             }
-          ]
+          ],
+          "cross_list": "XLC-357"
         }
       ]
     },
@@ -2949,7 +3092,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "Staff",
+          "instructor": "Sydnee Paige Brown",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -2957,7 +3100,7 @@
               "days": "MWF",
               "start": "10:00",
               "end": "10:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 302"
             }
           ]
         }
@@ -2968,7 +3111,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "A Shaw",
+          "instructor": "Amber N. Shaw",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -2976,7 +3119,7 @@
               "days": "TR",
               "start": "12:30",
               "end": "13:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 302"
             }
           ]
         }
@@ -2987,7 +3130,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Wheaton",
+          "instructor": "Jacob F. Wheaton",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -2995,13 +3138,13 @@
               "days": "MWF",
               "start": "09:00",
               "end": "09:50",
-              "location": "Peterson Hall"
+              "location": "Athletics and Recreation Center 218A"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "J Wheaton",
+          "instructor": "Jacob F. Wheaton",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -3009,7 +3152,7 @@
               "days": "MWF",
               "start": "08:00",
               "end": "08:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 119"
             }
           ]
         }
@@ -3020,7 +3163,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Wheaton",
+          "instructor": "Jacob F. Wheaton",
           "credits": 0.5,
           "we": false,
           "meetings": [
@@ -3028,13 +3171,13 @@
               "days": "T",
               "start": "08:00",
               "end": "10:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 103"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "J Wheaton",
+          "instructor": "Jacob F. Wheaton",
           "credits": 0.5,
           "we": false,
           "meetings": [
@@ -3042,13 +3185,13 @@
               "days": "R",
               "start": "13:00",
               "end": "15:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 103"
             }
           ]
         },
         {
           "id": "03",
-          "instructor": "J Wheaton",
+          "instructor": "Jacob F. Wheaton",
           "credits": 0.5,
           "we": false,
           "meetings": [
@@ -3056,7 +3199,7 @@
               "days": "T",
               "start": "13:00",
               "end": "15:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 103"
             }
           ]
         }
@@ -3067,10 +3210,18 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "",
+          "instructor": "Michael Stobb",
           "credits": 1.0,
           "we": false,
-          "meetings": []
+          "meetings": [
+            {
+              "days": "MWRF",
+              "start": "10:00",
+              "end": "10:50",
+              "location": "Stuart Hall"
+            }
+          ],
+          "cross_list": "XLC-155"
         }
       ]
     },
@@ -3079,7 +3230,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "X Li",
+          "instructor": "Xiang Li",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -3087,7 +3238,7 @@
               "days": "MW",
               "start": "15:00",
               "end": "16:20",
-              "location": "Center for Health an"
+              "location": "Center for Health and Society 148"
             }
           ]
         }
@@ -3098,7 +3249,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "A Drexler",
+          "instructor": "Anna Katherine Drexler",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -3106,7 +3257,7 @@
               "days": "TR",
               "start": "14:00",
               "end": "15:50",
-              "location": "Eby Fieldhouse"
+              "location": "Eby Fieldhouse 302"
             }
           ]
         }
@@ -3117,7 +3268,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "A Drexler",
+          "instructor": "Anna Katherine Drexler",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -3125,7 +3276,7 @@
               "days": "TR",
               "start": "09:30",
               "end": "10:50",
-              "location": "Eby Fieldhouse"
+              "location": "Eby Fieldhouse 302"
             }
           ]
         }
@@ -3135,275 +3286,296 @@
       "title": "FYS:VietnamWar History,Fiction,Film",
       "sections": [
         {
-          "id": "0 0",
-          "instructor": "",
+          "id": "0",
+          "instructor": "Staff",
           "credits": 1.0,
-          "we": false,
-          "meetings": []
-        },
-        {
-          "id": "01 WE",
-          "instructor": "D Barnett",
-          "credits": 0.0,
           "we": false,
           "meetings": [
             {
               "days": "MWRF",
               "start": "11:00",
               "end": "11:50",
-              "location": "Arranged"
+              "location": ""
             }
           ]
         },
         {
-          "id": "02 WE",
-          "instructor": "D Buckaloo",
+          "id": "01",
+          "instructor": "Dennis C. Barnett",
           "credits": 1.0,
-          "we": false,
+          "we": true,
           "meetings": [
             {
               "days": "MWRF",
               "start": "11:00",
               "end": "11:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall KLR"
             }
           ]
         },
         {
-          "id": "03 WE",
-          "instructor": "J Chaimov",
+          "id": "02",
+          "instructor": "Derek N. Buckaloo",
           "credits": 1.0,
-          "we": false,
+          "we": true,
           "meetings": [
             {
               "days": "MWRF",
               "start": "11:00",
               "end": "11:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 224"
             }
           ]
         },
         {
-          "id": "04 WE",
-          "instructor": "J Chen",
+          "id": "03",
+          "instructor": "John B. Chaimov",
           "credits": 1.0,
-          "we": false,
+          "we": true,
           "meetings": [
             {
               "days": "MWRF",
               "start": "11:00",
               "end": "11:50",
-              "location": "Stuart Hall"
+              "location": "Hickok Hall 205"
             }
           ]
         },
         {
-          "id": "05 WE",
-          "instructor": "B Chihak",
+          "id": "04",
+          "instructor": "Jia-Yuh Chen",
           "credits": 1.0,
-          "we": false,
+          "we": true,
           "meetings": [
             {
               "days": "MWRF",
               "start": "11:00",
               "end": "11:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 203"
             }
           ]
         },
         {
-          "id": "06 WE",
-          "instructor": "G Cross",
+          "id": "05",
+          "instructor": "Benjamin J. Chihak",
           "credits": 1.0,
-          "we": false,
+          "we": true,
           "meetings": [
             {
               "days": "MWRF",
               "start": "11:00",
               "end": "11:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 309"
             }
           ]
         },
         {
-          "id": "07 WE",
-          "instructor": "J Ferguson",
+          "id": "06",
+          "instructor": "Gavin M. Cross",
           "credits": 1.0,
-          "we": false,
+          "we": true,
           "meetings": [
             {
               "days": "MWRF",
               "start": "11:00",
               "end": "11:50",
-              "location": "Hickok Hall"
+              "location": "Stuart Hall 306"
             }
           ]
         },
         {
-          "id": "08 WE",
-          "instructor": "C Hatchell",
+          "id": "07",
+          "instructor": "Jenny Lee Ferguson",
           "credits": 1.0,
-          "we": false,
+          "we": true,
           "meetings": [
             {
               "days": "MWRF",
               "start": "11:00",
               "end": "11:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 207"
             }
           ]
         },
         {
-          "id": "09 WE",
-          "instructor": "S Haynes-Moore",
+          "id": "08",
+          "instructor": "Christopher P. Hatchell",
           "credits": 1.0,
-          "we": false,
+          "we": true,
           "meetings": [
             {
               "days": "MWRF",
               "start": "11:00",
               "end": "11:50",
-              "location": "Stuart Hall"
+              "location": "Hickok Hall 106"
             }
           ]
         },
         {
-          "id": "10 WE",
-          "instructor": "J Janca",
+          "id": "09",
+          "instructor": "Stacy M. Haynes-Moore",
           "credits": 1.0,
-          "we": false,
+          "we": true,
           "meetings": [
             {
               "days": "MWRF",
               "start": "11:00",
               "end": "11:50",
-              "location": "Hickok Hall"
+              "location": "Stuart Hall 403"
             }
           ]
         },
         {
-          "id": "11 WE",
-          "instructor": "K Lanegran",
+          "id": "10",
+          "instructor": "Joyce M. Janca",
           "credits": 1.0,
-          "we": false,
+          "we": true,
           "meetings": [
             {
               "days": "MWRF",
               "start": "11:00",
               "end": "11:50",
-              "location": "Hickok Hall"
+              "location": "Athletics and Recreation Center 218A"
             }
           ]
         },
         {
-          "id": "12 WE",
-          "instructor": "J Lemos",
+          "id": "11",
+          "instructor": "Kimberly R. Lanegran",
           "credits": 1.0,
-          "we": false,
+          "we": true,
           "meetings": [
             {
               "days": "MWRF",
               "start": "11:00",
               "end": "11:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 102"
             }
           ]
         },
         {
-          "id": "13 WE",
-          "instructor": "",
+          "id": "12",
+          "instructor": "John P. Lemos",
           "credits": 1.0,
-          "we": false,
-          "meetings": []
-        },
-        {
-          "id": "14 WE",
-          "instructor": "N McNabb",
-          "credits": 1.0,
-          "we": false,
+          "we": true,
           "meetings": [
             {
               "days": "MWRF",
               "start": "11:00",
               "end": "11:50",
-              "location": "Stuart Hall"
+              "location": "Hickok Hall 301"
             }
           ]
         },
         {
-          "id": "15 WE",
-          "instructor": "J Mitchell",
+          "id": "13",
+          "instructor": "Lucas Russell-Johnson Lovegood",
           "credits": 1.0,
-          "we": false,
+          "we": true,
           "meetings": [
             {
               "days": "MWRF",
               "start": "11:00",
               "end": "11:50",
-              "location": "Peterson Hall"
+              "location": "Marquis Hall 105"
             }
           ]
         },
         {
-          "id": "16 WE",
-          "instructor": "V Nguyen",
+          "id": "14",
+          "instructor": "Neal S McNabb",
           "credits": 1.0,
-          "we": false,
+          "we": true,
           "meetings": [
             {
               "days": "MWRF",
               "start": "11:00",
               "end": "11:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 205"
             }
           ]
         },
         {
-          "id": "17 WE",
-          "instructor": "D Nordmann",
+          "id": "15",
+          "instructor": "Jonathan Stuart Mitchell",
           "credits": 1.0,
-          "we": false,
+          "we": true,
           "meetings": [
             {
               "days": "MWRF",
               "start": "11:00",
               "end": "11:50",
-              "location": "Hickok Hall"
+              "location": "Center for Health and Society 337"
             }
           ]
         },
         {
-          "id": "18 WE",
-          "instructor": "",
+          "id": "16",
+          "instructor": "Vinh Q. Nguyen",
           "credits": 1.0,
-          "we": false,
-          "meetings": []
-        },
-        {
-          "id": "19 WE",
-          "instructor": "A Toftness",
-          "credits": 1.0,
-          "we": false,
+          "we": true,
           "meetings": [
             {
               "days": "MWRF",
               "start": "11:00",
               "end": "11:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 104"
             }
           ]
         },
         {
-          "id": "20 WE",
-          "instructor": "J Wheaton",
+          "id": "17",
+          "instructor": "David Andrew Nordmann",
           "credits": 1.0,
-          "we": false,
+          "we": true,
           "meetings": [
             {
               "days": "MWRF",
               "start": "11:00",
               "end": "11:50",
-              "location": "Peterson Hall"
+              "location": "Hickok Hall 305"
+            }
+          ]
+        },
+        {
+          "id": "18",
+          "instructor": "April Nicole Slack",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MWRF",
+              "start": "11:00",
+              "end": "11:50",
+              "location": "Hickok Hall 324"
+            }
+          ]
+        },
+        {
+          "id": "19",
+          "instructor": "Kara M. Recker",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MWRF",
+              "start": "11:00",
+              "end": "11:50",
+              "location": "Stuart Hall 105"
+            }
+          ]
+        },
+        {
+          "id": "20",
+          "instructor": "Jacob F. Wheaton",
+          "credits": 1.0,
+          "we": true,
+          "meetings": [
+            {
+              "days": "MWRF",
+              "start": "11:00",
+              "end": "11:50",
+              "location": "Peterson Hall 119"
             }
           ]
         }
@@ -3414,7 +3586,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "B Keenan",
+          "instructor": "Bethany S. Keenan",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -3422,7 +3594,7 @@
               "days": "MWF",
               "start": "13:00",
               "end": "13:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 207"
             }
           ]
         }
@@ -3433,7 +3605,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "B Arnold",
+          "instructor": "Brie Swenson Arnold",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -3441,13 +3613,13 @@
               "days": "MWF",
               "start": "09:00",
               "end": "09:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 207"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "B Arnold",
+          "instructor": "Brie Swenson Arnold",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -3455,7 +3627,7 @@
               "days": "MWF",
               "start": "10:00",
               "end": "10:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 207"
             }
           ]
         }
@@ -3465,16 +3637,16 @@
       "title": "The Historian's Craft",
       "sections": [
         {
-          "id": "01 WE",
-          "instructor": "D Nordmann",
+          "id": "01",
+          "instructor": "David Andrew Nordmann",
           "credits": 1.0,
-          "we": false,
+          "we": true,
           "meetings": [
             {
               "days": "TR",
               "start": "12:30",
               "end": "13:15",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 207"
             }
           ]
         }
@@ -3484,16 +3656,16 @@
       "title": "The First World War (WE)",
       "sections": [
         {
-          "id": "01 WE",
-          "instructor": "B Keenan",
+          "id": "01",
+          "instructor": "Bethany S. Keenan",
           "credits": 1.0,
-          "we": false,
+          "we": true,
           "meetings": [
             {
               "days": "MWF",
               "start": "12:00",
               "end": "12:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 207"
             }
           ]
         }
@@ -3503,16 +3675,16 @@
       "title": "History of Modern Korea (WE)",
       "sections": [
         {
-          "id": "01 WE",
-          "instructor": "D Nordmann",
+          "id": "01",
+          "instructor": "David Andrew Nordmann",
           "credits": 1.0,
-          "we": false,
+          "we": true,
           "meetings": [
             {
               "days": "MWF",
               "start": "13:00",
               "end": "13:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 224"
             }
           ]
         }
@@ -3522,16 +3694,16 @@
       "title": "American War in Vietnam",
       "sections": [
         {
-          "id": "01 WE",
-          "instructor": "D Buckaloo",
+          "id": "01",
+          "instructor": "Derek N. Buckaloo",
           "credits": 1.0,
-          "we": false,
+          "we": true,
           "meetings": [
             {
               "days": "TR",
               "start": "14:00",
               "end": "15:20",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 224"
             }
           ]
         }
@@ -3541,22 +3713,35 @@
       "title": "Seminar American History II",
       "sections": [
         {
-          "id": "01 WE",
-          "instructor": "D Buckaloo",
+          "id": "01",
+          "instructor": "Derek N. Buckaloo",
           "credits": 1.0,
-          "we": false,
+          "we": true,
           "meetings": [
             {
               "days": "W",
               "start": "13:00",
               "end": "14:50",
-              "location": "Hickok Hall"
-            },
+              "location": "Hickok Hall 202"
+            }
+          ]
+        }
+      ]
+    },
+    "IS-116": {
+      "title": "Intro to International Studies",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "Joyce M. Janca",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
             {
               "days": "MW",
               "start": "14:00",
               "end": "15:20",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 102"
             }
           ]
         }
@@ -3567,7 +3752,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "M Potter",
+          "instructor": "Megumi Potter",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -3575,7 +3760,7 @@
               "days": "MWF",
               "start": "13:00",
               "end": "13:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 305"
             }
           ]
         }
@@ -3586,7 +3771,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Rummel",
+          "instructor": "Joelle N. Rummel",
           "credits": 0.2,
           "we": false,
           "meetings": [
@@ -3594,13 +3779,17 @@
               "days": "MWF",
               "start": "12:00",
               "end": "12:50",
-              "location": "Eby Fieldhouse"
+              "location": "Eby Fieldhouse 00"
             }
-          ]
+          ],
+          "part_of_term": {
+            "start": "2026-08-26",
+            "end": "2026-10-14"
+          }
         },
         {
           "id": "02",
-          "instructor": "J Payan",
+          "instructor": "John L. Payan",
           "credits": 0.2,
           "we": false,
           "meetings": [
@@ -3608,9 +3797,13 @@
               "days": "MWF",
               "start": "08:00",
               "end": "08:50",
-              "location": "Eby Fieldhouse"
+              "location": "Eby Fieldhouse 00"
             }
-          ]
+          ],
+          "part_of_term": {
+            "start": "2026-08-26",
+            "end": "2026-10-14"
+          }
         }
       ]
     },
@@ -3619,21 +3812,25 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Rummel",
-          "credits": 0.0,
+          "instructor": "Joelle N. Rummel",
+          "credits": 0.2,
           "we": false,
           "meetings": [
             {
               "days": "MWF",
               "start": "12:00",
               "end": "12:50",
-              "location": "Athletics and RecreaW0"
+              "location": "Athletics and Recreation Center WR"
             }
-          ]
+          ],
+          "part_of_term": {
+            "start": "2026-10-19",
+            "end": "2026-12-17"
+          }
         },
         {
           "id": "02",
-          "instructor": "J Payan",
+          "instructor": "John L. Payan",
           "credits": 0.2,
           "we": false,
           "meetings": [
@@ -3641,13 +3838,17 @@
               "days": "MWF",
               "start": "08:00",
               "end": "08:50",
-              "location": "Clark Rac Center"
+              "location": "Clark Racquet Center 207"
             }
-          ]
+          ],
+          "part_of_term": {
+            "start": "2026-10-19",
+            "end": "2026-12-17"
+          }
         },
         {
           "id": "03",
-          "instructor": "A Parks",
+          "instructor": "Andrea J. Parks",
           "credits": 0.2,
           "we": false,
           "meetings": [
@@ -3655,13 +3856,17 @@
               "days": "TR",
               "start": "11:00",
               "end": "12:20",
-              "location": "Clark Rac Center"
+              "location": "Clark Racquet Center 207"
             }
-          ]
+          ],
+          "part_of_term": {
+            "start": "2026-10-19",
+            "end": "2026-12-17"
+          }
         },
         {
           "id": "04",
-          "instructor": "D LeFevre",
+          "instructor": "Darcy LeFevre",
           "credits": 0.2,
           "we": false,
           "meetings": [
@@ -3669,9 +3874,13 @@
               "days": "TR",
               "start": "12:30",
               "end": "13:50",
-              "location": "Clark Rac Center"
+              "location": "Clark Racquet Center 207"
             }
-          ]
+          ],
+          "part_of_term": {
+            "start": "2026-10-19",
+            "end": "2026-12-17"
+          }
         }
       ]
     },
@@ -3680,7 +3889,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "E Rydze",
+          "instructor": "Elaine Carr Rydze",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -3688,13 +3897,13 @@
               "days": "MWF",
               "start": "10:00",
               "end": "10:50",
-              "location": "Eby Fieldhouse"
+              "location": "Eby Fieldhouse 218"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "E Rydze",
+          "instructor": "Elaine Carr Rydze",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -3702,7 +3911,7 @@
               "days": "MWF",
               "start": "12:00",
               "end": "12:50",
-              "location": "Eby Fieldhouse"
+              "location": "Eby Fieldhouse 218"
             }
           ]
         }
@@ -3713,7 +3922,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "C Libby",
+          "instructor": "Chad M. Libby",
           "credits": 0.5,
           "we": false,
           "meetings": [
@@ -3721,9 +3930,13 @@
               "days": "TR",
               "start": "12:30",
               "end": "13:50",
-              "location": "Eby Fieldhouse"
+              "location": "Eby Fieldhouse 302"
             }
-          ]
+          ],
+          "part_of_term": {
+            "start": "2026-10-19",
+            "end": "2026-12-17"
+          }
         }
       ]
     },
@@ -3732,7 +3945,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "E Rydze",
+          "instructor": "Elaine Carr Rydze",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -3740,13 +3953,13 @@
               "days": "TR",
               "start": "09:30",
               "end": "10:50",
-              "location": "Eby Fieldhouse"
+              "location": "Eby Fieldhouse 218"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "E Rydze",
+          "instructor": "Elaine Carr Rydze",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -3754,7 +3967,7 @@
               "days": "TR",
               "start": "14:00",
               "end": "15:20",
-              "location": "Eby Fieldhouse"
+              "location": "Eby Fieldhouse 218"
             }
           ]
         }
@@ -3765,7 +3978,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "L Kirkpatrick",
+          "instructor": "Levi Thomas Kirkpatrick",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -3773,7 +3986,26 @@
               "days": "MWF",
               "start": "09:00",
               "end": "09:50",
-              "location": "Eby Fieldhouse"
+              "location": "Eby Fieldhouse 218"
+            }
+          ]
+        }
+      ]
+    },
+    "KIN-135": {
+      "title": "Concepts of Individual Wellness",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "Douglas A. Wohlstein",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "12:30",
+              "end": "13:50",
+              "location": "Eby Fieldhouse 206"
             }
           ]
         }
@@ -3784,7 +4016,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "M Littleton",
+          "instructor": "Mat J Littleton",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -3792,7 +4024,7 @@
               "days": "MWF",
               "start": "11:00",
               "end": "11:50",
-              "location": "Eby Fieldhouse"
+              "location": "Eby Fieldhouse 206"
             }
           ]
         }
@@ -3803,7 +4035,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "C Libby",
+          "instructor": "Chad M. Libby",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -3811,7 +4043,7 @@
               "days": "MWF",
               "start": "09:00",
               "end": "09:50",
-              "location": "Eby Fieldhouse"
+              "location": "Eby Fieldhouse 206"
             }
           ]
         }
@@ -3822,7 +4054,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "L Kirkpatrick",
+          "instructor": "Levi Thomas Kirkpatrick",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -3830,7 +4062,7 @@
               "days": "MWF",
               "start": "14:00",
               "end": "14:50",
-              "location": "Eby Fieldhouse"
+              "location": "Eby Fieldhouse 218"
             }
           ]
         }
@@ -3841,7 +4073,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Chandler",
+          "instructor": "John Michael Chandler",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -3849,13 +4081,13 @@
               "days": "MWF",
               "start": "10:00",
               "end": "10:50",
-              "location": "Eby Fieldhouse"
+              "location": "Eby Fieldhouse 206"
             },
             {
               "days": "T",
               "start": "09:30",
               "end": "10:50",
-              "location": "Eby Fieldhouse"
+              "location": "Eby Fieldhouse 206"
             }
           ]
         }
@@ -3866,7 +4098,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "C Libby",
+          "instructor": "Chad M. Libby",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -3874,7 +4106,7 @@
               "days": "MWF",
               "start": "13:00",
               "end": "13:50",
-              "location": "Eby Fieldhouse"
+              "location": "Eby Fieldhouse 206"
             }
           ]
         }
@@ -3885,7 +4117,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "K Hynek",
+          "instructor": "Kimi L Hynek",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -3893,7 +4125,7 @@
               "days": "W",
               "start": "18:00",
               "end": "21:00",
-              "location": "Eby Fieldhouse"
+              "location": "Eby Fieldhouse 218"
             }
           ]
         }
@@ -3904,7 +4136,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Vassalotti",
+          "instructor": "Stephen Vassalotti",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -3912,7 +4144,7 @@
               "days": "MWF",
               "start": "14:00",
               "end": "14:50",
-              "location": "Eby Fieldhouse"
+              "location": "Eby Fieldhouse 206"
             }
           ]
         }
@@ -3923,7 +4155,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Chandler",
+          "instructor": "John Michael Chandler",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -3931,7 +4163,7 @@
               "days": "TR",
               "start": "08:00",
               "end": "09:20",
-              "location": "Athletics and Recrea"
+              "location": "Athletics and Recreation Center 219A"
             }
           ]
         }
@@ -3942,7 +4174,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "L Kirkpatrick",
+          "instructor": "Levi Thomas Kirkpatrick",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -3950,7 +4182,7 @@
               "days": "TR",
               "start": "09:30",
               "end": "10:50",
-              "location": "Eby Fieldhouse"
+              "location": "Athletics and Recreation Center 218A"
             }
           ]
         }
@@ -3961,14 +4193,21 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "E Rydze",
+          "instructor": "Elaine Carr Rydze",
           "credits": 1.0,
           "we": false,
           "meetings": []
         },
         {
           "id": "02",
-          "instructor": "C Libby",
+          "instructor": "Chad M. Libby",
+          "credits": 1.0,
+          "we": false,
+          "meetings": []
+        },
+        {
+          "id": "03",
+          "instructor": "Levi Thomas Kirkpatrick",
           "credits": 1.0,
           "we": false,
           "meetings": []
@@ -3980,7 +4219,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "C Libby",
+          "instructor": "Chad M. Libby",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -3988,13 +4227,13 @@
               "days": "TR",
               "start": "11:00",
               "end": "12:20",
-              "location": "Center for Health an"
+              "location": "Center for Health and Society 245"
             },
             {
               "days": "TR",
               "start": "11:00",
               "end": "12:20",
-              "location": "Eby Fieldhouse"
+              "location": "Eby Fieldhouse 218"
             }
           ]
         }
@@ -4005,7 +4244,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "A ROTC",
+          "instructor": "Army ROTC",
           "credits": 0.25,
           "we": false,
           "meetings": []
@@ -4017,7 +4256,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "A ROTC",
+          "instructor": "Army ROTC",
           "credits": 0.5,
           "we": false,
           "meetings": []
@@ -4029,7 +4268,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "A ROTC",
+          "instructor": "Army ROTC",
           "credits": 0.0,
           "we": false,
           "meetings": []
@@ -4041,7 +4280,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "A ROTC",
+          "instructor": "Army ROTC",
           "credits": 0.5,
           "we": false,
           "meetings": []
@@ -4053,7 +4292,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "A ROTC",
+          "instructor": "Army ROTC",
           "credits": 0.75,
           "we": false,
           "meetings": []
@@ -4065,7 +4304,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "A ROTC",
+          "instructor": "Army ROTC",
           "credits": 0.75,
           "we": false,
           "meetings": []
@@ -4077,7 +4316,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "A ROTC",
+          "instructor": "Army ROTC",
           "credits": 0.25,
           "we": false,
           "meetings": []
@@ -4089,7 +4328,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "K Kunau",
+          "instructor": "Katherine Anne Kunau",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -4097,7 +4336,7 @@
               "days": "MWF",
               "start": "09:00",
               "end": "09:50",
-              "location": "Dows Center"
+              "location": "Dows Center 201"
             }
           ]
         }
@@ -4108,7 +4347,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "A ROTC",
+          "instructor": "Air Force ROTC",
           "credits": 0.25,
           "we": false,
           "meetings": [
@@ -4116,7 +4355,7 @@
               "days": "R",
               "start": "09:30",
               "end": "10:20",
-              "location": "University of Iowa"
+              "location": "University of Iowa IA"
             }
           ]
         }
@@ -4127,7 +4366,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "A ROTC",
+          "instructor": "Air Force ROTC",
           "credits": 0.25,
           "we": false,
           "meetings": [
@@ -4135,7 +4374,7 @@
               "days": "R",
               "start": "07:00",
               "end": "08:50",
-              "location": "University of Iowa"
+              "location": "University of Iowa IA"
             }
           ]
         }
@@ -4146,7 +4385,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "A ROTC",
+          "instructor": "Air Force ROTC",
           "credits": 0.25,
           "we": false,
           "meetings": [
@@ -4154,7 +4393,7 @@
               "days": "R",
               "start": "10:30",
               "end": "11:20",
-              "location": "University of Iowa"
+              "location": "University of Iowa IA"
             }
           ]
         }
@@ -4165,7 +4404,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "A ROTC",
+          "instructor": "Air Force ROTC",
           "credits": 0.25,
           "we": false,
           "meetings": [
@@ -4173,7 +4412,7 @@
               "days": "R",
               "start": "07:00",
               "end": "08:50",
-              "location": "University of Iowa"
+              "location": "University of Iowa IA"
             }
           ]
         }
@@ -4184,7 +4423,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "A ROTC",
+          "instructor": "Air Force ROTC",
           "credits": 0.75,
           "we": false,
           "meetings": [
@@ -4192,7 +4431,7 @@
               "days": "MW",
               "start": "09:30",
               "end": "10:45",
-              "location": "University of Iowa"
+              "location": "University of Iowa IA"
             }
           ]
         }
@@ -4203,7 +4442,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "A ROTC",
+          "instructor": "Air Force ROTC",
           "credits": 0.25,
           "we": false,
           "meetings": [
@@ -4211,7 +4450,7 @@
               "days": "R",
               "start": "07:00",
               "end": "08:50",
-              "location": "University of Iowa"
+              "location": "University of Iowa IA"
             }
           ]
         }
@@ -4222,7 +4461,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "A ROTC",
+          "instructor": "Air Force ROTC",
           "credits": 0.75,
           "we": false,
           "meetings": [
@@ -4230,7 +4469,7 @@
               "days": "TF",
               "start": "08:00",
               "end": "09:15",
-              "location": "University of Iowa"
+              "location": "University of Iowa IA"
             }
           ]
         }
@@ -4241,7 +4480,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "A ROTC",
+          "instructor": "Air Force ROTC",
           "credits": 0.25,
           "we": false,
           "meetings": [
@@ -4249,7 +4488,7 @@
               "days": "R",
               "start": "07:00",
               "end": "08:50",
-              "location": "University of Iowa"
+              "location": "University of Iowa IA"
             }
           ]
         }
@@ -4260,7 +4499,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "B Miller",
+          "instructor": "Brittney Miller",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -4268,13 +4507,13 @@
               "days": "MTWF",
               "start": "08:00",
               "end": "08:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 309"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "J White",
+          "instructor": "Jonathan J. White",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -4282,7 +4521,7 @@
               "days": "MTWF",
               "start": "14:00",
               "end": "14:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 309"
             }
           ]
         }
@@ -4293,7 +4532,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "B Miller",
+          "instructor": "Brittney Miller",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -4301,7 +4540,7 @@
               "days": "MTWF",
               "start": "14:00",
               "end": "14:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 203"
             }
           ]
         }
@@ -4312,7 +4551,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "M Stobb",
+          "instructor": "Michael Stobb",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -4320,9 +4559,10 @@
               "days": "MWRF",
               "start": "10:00",
               "end": "10:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 203"
             }
-          ]
+          ],
+          "cross_list": "XLC-155"
         }
       ]
     },
@@ -4331,7 +4571,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "B Miller",
+          "instructor": "Brittney Miller",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -4339,7 +4579,7 @@
               "days": "MWF",
               "start": "09:00",
               "end": "09:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 309"
             }
           ]
         }
@@ -4350,7 +4590,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J White",
+          "instructor": "Jonathan J. White",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -4358,7 +4598,7 @@
               "days": "MTWF",
               "start": "13:00",
               "end": "13:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 306"
             }
           ]
         }
@@ -4369,7 +4609,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J White",
+          "instructor": "Jonathan J. White",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -4377,7 +4617,7 @@
               "days": "MWF",
               "start": "09:00",
               "end": "09:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 306"
             }
           ]
         }
@@ -4388,7 +4628,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J White",
+          "instructor": "Jonathan J. White",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -4396,19 +4636,19 @@
               "days": "MWF",
               "start": "10:00",
               "end": "10:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 309"
             }
           ]
         }
       ]
     },
     "MTH-484": {
-      "title": "Special Topics",
+      "title": "Special Topics: Actuarial Fin Math",
       "sections": [
         {
           "id": "01",
-          "instructor": "G Cross",
-          "credits": 0.0,
+          "instructor": "Gavin M. Cross",
+          "credits": 1.0,
           "we": false,
           "meetings": []
         }
@@ -4419,7 +4659,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Shanley",
+          "instructor": "Steve Paul Shanley",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -4427,7 +4667,21 @@
               "days": "TR",
               "start": "11:00",
               "end": "12:20",
-              "location": "Marquis Hall"
+              "location": "Marquis Hall 102"
+            }
+          ]
+        },
+        {
+          "id": "02",
+          "instructor": "Steve Paul Shanley",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "09:30",
+              "end": "10:50",
+              "location": "Marquis Hall 102"
             }
           ]
         }
@@ -4438,7 +4692,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "Staff",
+          "instructor": "Toni Lefebvre",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -4446,7 +4700,7 @@
               "days": "MWF",
               "start": "14:00",
               "end": "14:50",
-              "location": "Marquis Hall"
+              "location": "Marquis Hall 201"
             }
           ]
         }
@@ -4457,7 +4711,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Shanley",
+          "instructor": "Steve Paul Shanley",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -4465,7 +4719,7 @@
               "days": "TR",
               "start": "12:30",
               "end": "13:50",
-              "location": "Marquis Hall"
+              "location": "Marquis Hall 105"
             }
           ]
         }
@@ -4476,7 +4730,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "L Lovegood",
+          "instructor": "Lucas Russell-Johnson Lovegood",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -4484,7 +4738,7 @@
               "days": "MWF",
               "start": "09:00",
               "end": "09:50",
-              "location": "Marquis Hall"
+              "location": "Marquis Hall 102"
             }
           ]
         }
@@ -4495,7 +4749,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Shanley",
+          "instructor": "Steve Paul Shanley",
           "credits": 1.0,
           "we": false,
           "meetings": []
@@ -4507,7 +4761,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "Staff",
+          "instructor": "Toni Lefebvre",
           "credits": 0.3,
           "we": false,
           "meetings": [
@@ -4532,7 +4786,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Shanley",
+          "instructor": "Steve Paul Shanley",
           "credits": 0.3,
           "we": false,
           "meetings": [
@@ -4557,7 +4811,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "D Terrell",
+          "instructor": "Toni Lefebvre",
           "credits": 0.3,
           "we": false,
           "meetings": []
@@ -4569,7 +4823,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Reznicow",
+          "instructor": "Joshua Matthew Reznicow",
           "credits": 0.3,
           "we": false,
           "meetings": []
@@ -4581,7 +4835,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Shanley",
+          "instructor": "Melinda Westphalen",
           "credits": 0.3,
           "we": false,
           "meetings": []
@@ -4593,7 +4847,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "T Mackey",
+          "instructor": "Thomas Guy Mackey",
           "credits": 0.3,
           "we": false,
           "meetings": []
@@ -4605,7 +4859,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "R Walter",
+          "instructor": "Rachel Walter",
           "credits": 0.3,
           "we": false,
           "meetings": []
@@ -4617,7 +4871,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "L Lovegood",
+          "instructor": "Lucas Russell-Johnson Lovegood",
           "credits": 0.3,
           "we": false,
           "meetings": []
@@ -4629,7 +4883,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "V Bishop",
+          "instructor": "Victoria Rose Bishop",
           "credits": 0.3,
           "we": false,
           "meetings": []
@@ -4641,7 +4895,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Shanley",
+          "instructor": "Steve Paul Shanley",
           "credits": 0.3,
           "we": false,
           "meetings": []
@@ -4653,7 +4907,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Shanley",
+          "instructor": "Steve Paul Shanley",
           "credits": 0.3,
           "we": false,
           "meetings": []
@@ -4665,7 +4919,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "L Lovegood",
+          "instructor": "Lucas Russell-Johnson Lovegood",
           "credits": 0.3,
           "we": false,
           "meetings": [
@@ -4684,7 +4938,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "L Lovegood",
+          "instructor": "Lucas Russell-Johnson Lovegood",
           "credits": 0.3,
           "we": false,
           "meetings": [
@@ -4709,7 +4963,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "C Harris",
+          "instructor": "Charles A. Harris",
           "credits": 0.3,
           "we": false,
           "meetings": []
@@ -4721,7 +4975,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "C Broszeit",
+          "instructor": "Carter N Broszeit",
           "credits": 0.3,
           "we": false,
           "meetings": []
@@ -4745,7 +4999,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "R Walter",
+          "instructor": "Rachel Walter",
           "credits": 0.3,
           "we": false,
           "meetings": []
@@ -4757,7 +5011,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "L Fleer",
+          "instructor": "Lesley A. Fleer",
           "credits": 0.3,
           "we": false,
           "meetings": []
@@ -4769,7 +5023,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Nagel",
+          "instructor": "Joel C. Nagel",
           "credits": 0.3,
           "we": false,
           "meetings": []
@@ -4793,7 +5047,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "H Rumora",
+          "instructor": "Christopher Mendez",
           "credits": 0.3,
           "we": false,
           "meetings": []
@@ -4805,7 +5059,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "L Wissenberg",
+          "instructor": "Lisa Michelle Wissenberg",
           "credits": 0.3,
           "we": false,
           "meetings": []
@@ -4817,7 +5071,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Nagel",
+          "instructor": "Joel C. Nagel",
           "credits": 0.3,
           "we": false,
           "meetings": []
@@ -4829,7 +5083,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Hall",
+          "instructor": "John P. Hall",
           "credits": 0.3,
           "we": false,
           "meetings": []
@@ -4841,7 +5095,19 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "R Morton",
+          "instructor": "R. Gregory Morton",
+          "credits": 0.3,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-141S": {
+      "title": "Harp",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "Gretchen L. Brumwell",
           "credits": 0.3,
           "we": false,
           "meetings": []
@@ -4853,7 +5119,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "R Morton",
+          "instructor": "R. Gregory Morton",
           "credits": 0.3,
           "we": false,
           "meetings": []
@@ -4865,7 +5131,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Nothnagle",
+          "instructor": "John T. Nothnagle",
           "credits": 0.3,
           "we": false,
           "meetings": []
@@ -4877,7 +5143,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "D Terrell",
+          "instructor": "Toni Lefebvre",
           "credits": 0.6,
           "we": false,
           "meetings": []
@@ -4889,7 +5155,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Reznicow",
+          "instructor": "Joshua Matthew Reznicow",
           "credits": 0.6,
           "we": false,
           "meetings": []
@@ -4901,7 +5167,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Shanley",
+          "instructor": "Melinda Westphalen",
           "credits": 0.6,
           "we": false,
           "meetings": []
@@ -4913,7 +5179,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "T Mackey",
+          "instructor": "Thomas Guy Mackey",
           "credits": 0.6,
           "we": false,
           "meetings": []
@@ -4925,7 +5191,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "R Walter",
+          "instructor": "Rachel Walter",
           "credits": 0.6,
           "we": false,
           "meetings": []
@@ -4937,7 +5203,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "L Lovegood",
+          "instructor": "Lucas Russell-Johnson Lovegood",
           "credits": 0.6,
           "we": false,
           "meetings": []
@@ -4949,7 +5215,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "V Bishop",
+          "instructor": "Victoria Rose Bishop",
           "credits": 0.6,
           "we": false,
           "meetings": []
@@ -4961,7 +5227,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "C Harris",
+          "instructor": "Charles A. Harris",
           "credits": 0.6,
           "we": false,
           "meetings": []
@@ -4985,7 +5251,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "R Walter",
+          "instructor": "Rachel Walter",
           "credits": 0.6,
           "we": false,
           "meetings": []
@@ -4997,7 +5263,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "L Fleer",
+          "instructor": "Lesley A. Fleer",
           "credits": 0.6,
           "we": false,
           "meetings": []
@@ -5009,7 +5275,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Nagel",
+          "instructor": "Joel C. Nagel",
           "credits": 0.6,
           "we": false,
           "meetings": []
@@ -5021,7 +5287,19 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "C Broszeit",
+          "instructor": "Carter N Broszeit",
+          "credits": 0.6,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "MUA-222K": {
+      "title": "Harpsichord Lessons",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "Staff",
           "credits": 0.6,
           "we": false,
           "meetings": []
@@ -5033,7 +5311,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "H Rumora",
+          "instructor": "Christopher Mendez",
           "credits": 0.6,
           "we": false,
           "meetings": []
@@ -5045,7 +5323,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "L Wissenberg",
+          "instructor": "Lisa Michelle Wissenberg",
           "credits": 0.6,
           "we": false,
           "meetings": []
@@ -5057,7 +5335,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Nagel",
+          "instructor": "Joel C. Nagel",
           "credits": 0.6,
           "we": false,
           "meetings": []
@@ -5069,7 +5347,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Hall",
+          "instructor": "John P. Hall",
           "credits": 0.6,
           "we": false,
           "meetings": []
@@ -5081,7 +5359,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "R Morton",
+          "instructor": "R. Gregory Morton",
           "credits": 0.6,
           "we": false,
           "meetings": []
@@ -5093,7 +5371,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "G Brumwell",
+          "instructor": "Gretchen L. Brumwell",
           "credits": 0.6,
           "we": false,
           "meetings": []
@@ -5105,7 +5383,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "R Morton",
+          "instructor": "R. Gregory Morton",
           "credits": 0.6,
           "we": false,
           "meetings": []
@@ -5117,7 +5395,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Nothnagle",
+          "instructor": "John T. Nothnagle",
           "credits": 0.6,
           "we": false,
           "meetings": []
@@ -5129,7 +5407,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Shanley",
+          "instructor": "Steve Paul Shanley",
           "credits": 0.3,
           "we": false,
           "meetings": [
@@ -5137,13 +5415,13 @@
               "days": "M",
               "start": "19:00",
               "end": "21:00",
-              "location": "Marquis Hall"
+              "location": "Marquis Hall 104"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "S Shanley",
+          "instructor": "Steve Paul Shanley",
           "credits": 0.6,
           "we": false,
           "meetings": []
@@ -5155,7 +5433,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "M Marrs",
+          "instructor": "Margie V. Marrs",
           "credits": 0.3,
           "we": false,
           "meetings": []
@@ -5167,8 +5445,20 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Shanley",
+          "instructor": "Steve Paul Shanley",
           "credits": 1.0,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "NEW-000": {
+      "title": "New Student Registration",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "Staff",
+          "credits": 3.0,
           "we": false,
           "meetings": []
         }
@@ -5179,15 +5469,15 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Mulford",
+          "instructor": "Jill Mariruth Mulford",
           "credits": 0.2,
           "we": false,
           "meetings": [
             {
               "days": "W",
-              "start": "15:45",
+              "start": "15:00",
               "end": "16:25",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 405"
             }
           ]
         }
@@ -5198,15 +5488,15 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Mulford",
+          "instructor": "Jill Mariruth Mulford",
           "credits": 0.2,
           "we": false,
           "meetings": [
             {
               "days": "W",
               "start": "15:00",
-              "end": "15:45",
-              "location": "Stuart Hall"
+              "end": "16:25",
+              "location": "Stuart Hall 405"
             }
           ]
         }
@@ -5217,7 +5507,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "C Crockett",
+          "instructor": "Catherine C Crockett",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -5225,7 +5515,7 @@
               "days": "TR",
               "start": "08:00",
               "end": "09:20",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 416"
             }
           ]
         }
@@ -5236,7 +5526,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Crook-Lockwood",
+          "instructor": "Sheila Sue Crook-Lockwood",
           "credits": 0.5,
           "we": true,
           "meetings": [
@@ -5244,7 +5534,7 @@
               "days": "T",
               "start": "09:30",
               "end": "10:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 416"
             }
           ]
         }
@@ -5255,7 +5545,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "K Siems",
+          "instructor": "Kelly Siems",
           "credits": 2.0,
           "we": false,
           "meetings": [
@@ -5263,19 +5553,19 @@
               "days": "R",
               "start": "09:30",
               "end": "10:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 416"
             },
             {
               "days": "W",
               "start": "08:00",
               "end": "10:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 416"
             },
             {
               "days": "R",
               "start": "13:30",
               "end": "14:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 105"
             }
           ]
         }
@@ -5286,7 +5576,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Mulford",
+          "instructor": "Jill Mariruth Mulford",
           "credits": 0.0,
           "we": false,
           "meetings": [
@@ -5300,7 +5590,7 @@
         },
         {
           "id": "02",
-          "instructor": "Staff",
+          "instructor": "Wendy Westemeyer",
           "credits": 0.0,
           "we": false,
           "meetings": [
@@ -5314,7 +5604,7 @@
         },
         {
           "id": "03",
-          "instructor": "J Mulford",
+          "instructor": "Jill Mariruth Mulford",
           "credits": 0.0,
           "we": false,
           "meetings": [
@@ -5328,7 +5618,7 @@
         },
         {
           "id": "04",
-          "instructor": "Staff",
+          "instructor": "Wendy Westemeyer",
           "credits": 0.0,
           "we": false,
           "meetings": [
@@ -5347,7 +5637,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Mulford",
+          "instructor": "Jill Mariruth Mulford",
           "credits": 0.0,
           "we": false,
           "meetings": [
@@ -5355,13 +5645,13 @@
               "days": "T",
               "start": "12:00",
               "end": "15:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 411"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "J Mulford",
+          "instructor": "Jill Mariruth Mulford",
           "credits": 0.0,
           "we": false,
           "meetings": [
@@ -5369,7 +5659,7 @@
               "days": "F",
               "start": "08:00",
               "end": "11:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 411"
             }
           ]
         }
@@ -5380,7 +5670,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "K Siems",
+          "instructor": "Kelly Siems",
           "credits": 0.5,
           "we": false,
           "meetings": [
@@ -5388,7 +5678,7 @@
               "days": "R",
               "start": "12:00",
               "end": "13:20",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 416"
             }
           ]
         }
@@ -5399,7 +5689,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "C Crockett",
+          "instructor": "Catherine C Crockett",
           "credits": 2.0,
           "we": false,
           "meetings": [
@@ -5407,13 +5697,13 @@
               "days": "TR",
               "start": "09:30",
               "end": "10:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 105"
             },
             {
               "days": "TR",
               "start": "12:00",
               "end": "13:20",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 105"
             }
           ]
         }
@@ -5424,57 +5714,57 @@
       "sections": [
         {
           "id": "10",
-          "instructor": "S Guthrie",
+          "instructor": "Catherine C Crockett",
           "credits": 0.0,
           "we": false,
           "meetings": [
             {
               "days": "W",
-              "start": "09:00",
-              "end": "10:20",
-              "location": "Stuart Hall"
+              "start": "09:30",
+              "end": "10:50",
+              "location": "Stuart Hall 411"
             }
           ]
         },
         {
           "id": "20",
-          "instructor": "S Guthrie",
+          "instructor": "Kelly Siems",
           "credits": 0.0,
           "we": false,
           "meetings": [
             {
               "days": "W",
-              "start": "10:30",
-              "end": "11:50",
-              "location": "Stuart Hall"
+              "start": "09:30",
+              "end": "10:50",
+              "location": "Stuart Hall 416"
             }
           ]
         },
         {
           "id": "30",
-          "instructor": "K Siems",
+          "instructor": "Kelly Siems",
           "credits": 0.0,
           "we": false,
           "meetings": [
             {
               "days": "W",
-              "start": "14:00",
-              "end": "15:20",
-              "location": "Stuart Hall"
+              "start": "13:00",
+              "end": "14:20",
+              "location": "Stuart Hall 416"
             }
           ]
         },
         {
           "id": "40",
-          "instructor": "S Guthrie",
+          "instructor": "Sheila Sue Crook-Lockwood",
           "credits": 0.0,
           "we": false,
           "meetings": [
             {
               "days": "W",
-              "start": "14:00",
-              "end": "15:20",
-              "location": "Stuart Hall"
+              "start": "13:00",
+              "end": "14:20",
+              "location": "Struve Communication Center 4"
             }
           ]
         }
@@ -5485,7 +5775,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "Staff",
+          "instructor": "Wendy Westemeyer",
           "credits": 0.0,
           "we": false,
           "meetings": [
@@ -5493,13 +5783,13 @@
               "days": "W",
               "start": "08:00",
               "end": "11:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 411"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "Staff",
+          "instructor": "Wendy Westemeyer",
           "credits": 0.0,
           "we": false,
           "meetings": [
@@ -5507,7 +5797,7 @@
               "days": "W",
               "start": "13:00",
               "end": "17:00",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 411"
             }
           ]
         }
@@ -5518,7 +5808,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Crook-Lockwood",
+          "instructor": "Sheila Sue Crook-Lockwood",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -5526,7 +5816,7 @@
               "days": "TR",
               "start": "08:00",
               "end": "09:20",
-              "location": "Center for Health an"
+              "location": "Center for Health and Society 337"
             }
           ]
         }
@@ -5537,7 +5827,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Crook-Lockwood",
+          "instructor": "Sheila Sue Crook-Lockwood",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -5545,9 +5835,45 @@
               "days": "TR",
               "start": "13:30",
               "end": "14:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 416"
             }
           ]
+        }
+      ]
+    },
+    "OCC-213": {
+      "title": "Rangsit/Coe Exchange Thailand",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "Staff",
+          "credits": 3.0,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "OCC-222": {
+      "title": "Study Abroad - Japan",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "Staff",
+          "credits": 3.0,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "OTH-370": {
+      "title": "MMU Cross Exchange/Physical C",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "Staff",
+          "credits": 1.0,
+          "we": false,
+          "meetings": []
         }
       ]
     },
@@ -5556,7 +5882,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Lemos",
+          "instructor": "John P. Lemos",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -5564,7 +5890,7 @@
               "days": "MWF",
               "start": "09:00",
               "end": "09:50",
-              "location": "Hickok Hall"
+              "location": "Stuart Hall 405"
             }
           ]
         }
@@ -5575,7 +5901,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Lemos",
+          "instructor": "John P. Lemos",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -5583,7 +5909,7 @@
               "days": "MWF",
               "start": "14:00",
               "end": "14:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 207"
             }
           ]
         }
@@ -5594,7 +5920,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Lemos",
+          "instructor": "John P. Lemos",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -5602,7 +5928,7 @@
               "days": "TR",
               "start": "14:00",
               "end": "15:20",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 301"
             }
           ]
         }
@@ -5613,7 +5939,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Wetzel",
+          "instructor": "James W. Wetzel",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -5621,7 +5947,7 @@
               "days": "MW",
               "start": "18:00",
               "end": "19:20",
-              "location": "Center for Health an"
+              "location": "Center for Health and Society 337"
             }
           ]
         }
@@ -5632,7 +5958,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Wetzel",
+          "instructor": "James W. Wetzel",
           "credits": 0.0,
           "we": false,
           "meetings": [
@@ -5640,13 +5966,13 @@
               "days": "M",
               "start": "19:30",
               "end": "21:20",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 115"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "J Wetzel",
+          "instructor": "James W. Wetzel",
           "credits": 0.0,
           "we": false,
           "meetings": [
@@ -5654,7 +5980,7 @@
               "days": "W",
               "start": "19:30",
               "end": "21:20",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 115"
             }
           ]
         }
@@ -5665,7 +5991,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "M Affatigato",
+          "instructor": "Mario Affatigato",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -5673,7 +5999,7 @@
               "days": "MWF",
               "start": "10:00",
               "end": "10:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 119"
             }
           ]
         }
@@ -5684,7 +6010,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "F Duru",
+          "instructor": "Firdevs Duru",
           "credits": 0.0,
           "we": false,
           "meetings": [
@@ -5692,13 +6018,13 @@
               "days": "T",
               "start": "10:00",
               "end": "11:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 115"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "F Duru",
+          "instructor": "Firdevs Duru",
           "credits": 0.0,
           "we": false,
           "meetings": [
@@ -5706,13 +6032,13 @@
               "days": "T",
               "start": "12:00",
               "end": "13:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 115"
             }
           ]
         },
         {
           "id": "03",
-          "instructor": "F Duru",
+          "instructor": "Firdevs Duru",
           "credits": 0.0,
           "we": false,
           "meetings": [
@@ -5720,13 +6046,13 @@
               "days": "T",
               "start": "14:00",
               "end": "15:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 115"
             }
           ]
         },
         {
           "id": "04",
-          "instructor": "X Li",
+          "instructor": "Xiang Li",
           "credits": 0.0,
           "we": false,
           "meetings": [
@@ -5734,13 +6060,13 @@
               "days": "R",
               "start": "08:00",
               "end": "09:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 115"
             }
           ]
         },
         {
           "id": "05",
-          "instructor": "X Li",
+          "instructor": "Xiang Li",
           "credits": 0.0,
           "we": false,
           "meetings": [
@@ -5748,13 +6074,13 @@
               "days": "T",
               "start": "08:00",
               "end": "09:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 115"
             }
           ]
         },
         {
           "id": "06",
-          "instructor": "X Li",
+          "instructor": "Xiang Li",
           "credits": 0.0,
           "we": false,
           "meetings": [
@@ -5762,7 +6088,7 @@
               "days": "R",
               "start": "13:00",
               "end": "14:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 115"
             }
           ]
         }
@@ -5773,7 +6099,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "F Duru",
+          "instructor": "Firdevs Duru",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -5781,13 +6107,13 @@
               "days": "MWF",
               "start": "13:00",
               "end": "13:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 119"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "F Duru",
+          "instructor": "Firdevs Duru",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -5795,7 +6121,7 @@
               "days": "MWF",
               "start": "12:00",
               "end": "12:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 119"
             }
           ]
         }
@@ -5806,7 +6132,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "F Duru",
+          "instructor": "Firdevs Duru",
           "credits": 0.0,
           "we": false,
           "meetings": [
@@ -5814,13 +6140,13 @@
               "days": "T",
               "start": "10:00",
               "end": "11:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 115"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "F Duru",
+          "instructor": "Firdevs Duru",
           "credits": 0.0,
           "we": false,
           "meetings": [
@@ -5828,13 +6154,13 @@
               "days": "T",
               "start": "12:00",
               "end": "13:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 115"
             }
           ]
         },
         {
           "id": "03",
-          "instructor": "F Duru",
+          "instructor": "Firdevs Duru",
           "credits": 0.0,
           "we": false,
           "meetings": [
@@ -5842,13 +6168,13 @@
               "days": "T",
               "start": "14:00",
               "end": "15:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 115"
             }
           ]
         },
         {
           "id": "04",
-          "instructor": "X Li",
+          "instructor": "Xiang Li",
           "credits": 0.0,
           "we": false,
           "meetings": [
@@ -5856,13 +6182,13 @@
               "days": "R",
               "start": "08:00",
               "end": "09:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 115"
             }
           ]
         },
         {
           "id": "05",
-          "instructor": "X Li",
+          "instructor": "Xiang Li",
           "credits": 0.0,
           "we": false,
           "meetings": [
@@ -5870,13 +6196,13 @@
               "days": "T",
               "start": "08:00",
               "end": "09:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 115"
             }
           ]
         },
         {
           "id": "06",
-          "instructor": "X Li",
+          "instructor": "Xiang Li",
           "credits": 0.0,
           "we": false,
           "meetings": [
@@ -5884,7 +6210,7 @@
               "days": "R",
               "start": "13:00",
               "end": "14:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 115"
             }
           ]
         }
@@ -5895,7 +6221,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "M Affatigato",
+          "instructor": "Mario Affatigato",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -5903,7 +6229,7 @@
               "days": "TR",
               "start": "09:30",
               "end": "10:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 119"
             }
           ]
         }
@@ -5914,7 +6240,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "F Duru",
+          "instructor": "Firdevs Duru",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -5922,7 +6248,7 @@
               "days": "MWF",
               "start": "10:00",
               "end": "10:50",
-              "location": "Peterson Hall"
+              "location": "Hickok Hall 224"
             }
           ]
         }
@@ -5933,7 +6259,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "M Affatigato",
+          "instructor": "Mario Affatigato",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -5941,7 +6267,7 @@
               "days": "MWF",
               "start": "09:00",
               "end": "09:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 119"
             }
           ]
         }
@@ -5952,7 +6278,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "X Li",
+          "instructor": "Xiang Li",
           "credits": 0.5,
           "we": true,
           "meetings": [
@@ -5960,13 +6286,13 @@
               "days": "T",
               "start": "13:00",
               "end": "15:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 122"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "X Li",
+          "instructor": "Xiang Li",
           "credits": 0.5,
           "we": true,
           "meetings": [
@@ -5974,13 +6300,13 @@
               "days": "R",
               "start": "10:00",
               "end": "12:50",
-              "location": "Peterson Hall"
+              "location": "Peterson Hall 122"
             }
           ]
         },
         {
           "id": "03",
-          "instructor": "X Li",
+          "instructor": "Xiang Li",
           "credits": 0.5,
           "we": true,
           "meetings": []
@@ -5992,7 +6318,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "X Li",
+          "instructor": "Xiang Li",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -6000,7 +6326,7 @@
               "days": "MWF",
               "start": "14:00",
               "end": "14:50",
-              "location": "Peterson Hall"
+              "location": "Stuart Hall 104"
             }
           ]
         }
@@ -6011,7 +6337,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Feller",
+          "instructor": "Steven A. Feller",
           "credits": 1.0,
           "we": true,
           "meetings": []
@@ -6023,7 +6349,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "K Lanegran",
+          "instructor": "Kimberly R. Lanegran",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -6031,9 +6357,16 @@
               "days": "MWF",
               "start": "09:00",
               "end": "09:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 102"
             }
           ]
+        },
+        {
+          "id": "02",
+          "instructor": "Lynda K. Barrow",
+          "credits": 1.0,
+          "we": false,
+          "meetings": []
         }
       ]
     },
@@ -6042,7 +6375,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "R Snyder",
+          "instructor": "Rochelle M. Snyder",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -6050,7 +6383,7 @@
               "days": "MWF",
               "start": "10:00",
               "end": "10:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 102"
             }
           ]
         }
@@ -6061,7 +6394,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "R Snyder",
+          "instructor": "Rochelle M. Snyder",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -6069,7 +6402,7 @@
               "days": "TR",
               "start": "12:30",
               "end": "13:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 102"
             }
           ]
         }
@@ -6080,7 +6413,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "L Barrow",
+          "instructor": "Lynda K. Barrow",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -6088,7 +6421,7 @@
               "days": "TR",
               "start": "14:00",
               "end": "15:20",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 201"
             }
           ]
         }
@@ -6099,7 +6432,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "K Lanegran",
+          "instructor": "Kimberly R. Lanegran",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -6107,7 +6440,7 @@
               "days": "MWF",
               "start": "13:00",
               "end": "13:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 102"
             }
           ]
         }
@@ -6118,7 +6451,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "R Snyder",
+          "instructor": "Rochelle M. Snyder",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -6126,7 +6459,7 @@
               "days": "MWF",
               "start": "12:00",
               "end": "12:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 106"
             }
           ]
         }
@@ -6137,7 +6470,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "V Castillo",
+          "instructor": "Vanessa Angelica Castillo",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -6145,13 +6478,13 @@
               "days": "MWF",
               "start": "09:00",
               "end": "09:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 105"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "K Recker",
+          "instructor": "Jaylen McBride",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -6159,13 +6492,13 @@
               "days": "MWF",
               "start": "10:00",
               "end": "10:50",
-              "location": "Stuart Hall"
+              "location": "Athletics and Recreation Center 218A"
             }
           ]
         },
         {
           "id": "03",
-          "instructor": "K Recker",
+          "instructor": "Kara M. Recker",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -6173,13 +6506,13 @@
               "days": "MWF",
               "start": "12:00",
               "end": "12:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 105"
             }
           ]
         },
         {
           "id": "04",
-          "instructor": "K Recker",
+          "instructor": "Kara M. Recker",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -6187,7 +6520,7 @@
               "days": "MWF",
               "start": "13:00",
               "end": "13:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 105"
             }
           ]
         }
@@ -6198,7 +6531,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "V Castillo",
+          "instructor": "Vanessa Angelica Castillo",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -6206,13 +6539,13 @@
               "days": "MWF",
               "start": "12:00",
               "end": "12:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 104"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "V Castillo",
+          "instructor": "Vanessa Angelica Castillo",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -6220,7 +6553,7 @@
               "days": "MWF",
               "start": "13:00",
               "end": "13:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 104"
             }
           ]
         }
@@ -6231,7 +6564,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Brown",
+          "instructor": "Samantha D. Brown",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -6239,7 +6572,7 @@
               "days": "TR",
               "start": "12:30",
               "end": "13:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 306"
             }
           ]
         }
@@ -6250,7 +6583,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Farrell",
+          "instructor": "Sara K. Farrell",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -6258,7 +6591,7 @@
               "days": "TR",
               "start": "09:30",
               "end": "10:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 309"
             }
           ]
         }
@@ -6269,7 +6602,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "A Toftness",
+          "instructor": "Ashby Martin",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -6277,7 +6610,7 @@
               "days": "MWF",
               "start": "09:00",
               "end": "09:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 104"
             }
           ]
         }
@@ -6288,7 +6621,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Farrell",
+          "instructor": "Sara K. Farrell",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -6296,7 +6629,7 @@
               "days": "MWF",
               "start": "10:00",
               "end": "10:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 205"
             }
           ]
         }
@@ -6307,7 +6640,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "B Chihak",
+          "instructor": "Benjamin J. Chihak",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -6315,7 +6648,7 @@
               "days": "MWF",
               "start": "10:00",
               "end": "10:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 109"
             }
           ]
         }
@@ -6326,7 +6659,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "A Toftness",
+          "instructor": "Ashby Martin",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -6334,7 +6667,7 @@
               "days": "MWF",
               "start": "12:00",
               "end": "12:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 306"
             }
           ]
         }
@@ -6345,8 +6678,8 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "A Toftness",
-          "credits": 0.0,
+          "instructor": "Alexander Robert Toftness",
+          "credits": 1.0,
           "we": false,
           "meetings": []
         }
@@ -6357,7 +6690,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "E Lee",
+          "instructor": "Ellen M. Lee",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -6365,7 +6698,7 @@
               "days": "MW",
               "start": "14:00",
               "end": "15:20",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 105"
             }
           ]
         }
@@ -6376,7 +6709,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "E Lee",
+          "instructor": "Ellen M. Lee",
           "credits": 0.2,
           "we": true,
           "meetings": [
@@ -6384,7 +6717,7 @@
               "days": "TR",
               "start": "09:30",
               "end": "10:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 109"
             }
           ]
         }
@@ -6395,7 +6728,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "B Chihak",
+          "instructor": "Benjamin J. Chihak",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -6403,18 +6736,18 @@
               "days": "TR",
               "start": "14:00",
               "end": "15:20",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 306"
             }
           ]
         }
       ]
     },
     "PSY-464": {
-      "title": "Seminar in Psychology",
+      "title": "Seminar Psych:Positive Psycholo",
       "sections": [
         {
           "id": "01",
-          "instructor": "S Farrell",
+          "instructor": "Sara K. Farrell",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -6422,7 +6755,7 @@
               "days": "TR",
               "start": "12:30",
               "end": "13:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 205"
             }
           ]
         }
@@ -6433,7 +6766,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "S Brown",
+          "instructor": "Samantha D. Brown",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -6441,7 +6774,7 @@
               "days": "TR",
               "start": "08:00",
               "end": "09:20",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 105"
             }
           ]
         }
@@ -6452,7 +6785,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "C Hatchell",
+          "instructor": "Christopher P. Hatchell",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -6460,7 +6793,7 @@
               "days": "MWF",
               "start": "09:00",
               "end": "09:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 224"
             }
           ]
         }
@@ -6471,7 +6804,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "C Hatchell",
+          "instructor": "Christopher P. Hatchell",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -6479,7 +6812,7 @@
               "days": "MWF",
               "start": "13:00",
               "end": "13:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 205"
             }
           ]
         }
@@ -6490,7 +6823,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "N McNabb",
+          "instructor": "Neal S McNabb",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -6498,13 +6831,13 @@
               "days": "TR",
               "start": "09:30",
               "end": "10:50",
-              "location": "Stuart Hall"
+              "location": "Hickok Hall 205"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "Staff",
+          "instructor": "Nicolas Howard",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -6512,7 +6845,7 @@
               "days": "TR",
               "start": "12:30",
               "end": "13:50",
-              "location": "Stuart Hall"
+              "location": "Center for Health and Society 337"
             }
           ]
         }
@@ -6523,7 +6856,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "N McNabb",
+          "instructor": "Neal S McNabb",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -6531,7 +6864,7 @@
               "days": "TR",
               "start": "12:30",
               "end": "13:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 305"
             }
           ]
         }
@@ -6542,7 +6875,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "G Hausknecht",
+          "instructor": "Gina G. Hausknecht",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -6550,7 +6883,7 @@
               "days": "MW",
               "start": "14:00",
               "end": "15:20",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 224"
             }
           ]
         }
@@ -6561,7 +6894,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "Staff",
+          "instructor": "Nicolas Howard",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -6569,9 +6902,33 @@
               "days": "MWF",
               "start": "12:00",
               "end": "12:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 203"
             }
           ]
+        }
+      ]
+    },
+    "SCJ-494": {
+      "title": "Internship in Social and Criminal Justice",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "Neal S McNabb",
+          "credits": 1.0,
+          "we": false,
+          "meetings": []
+        }
+      ]
+    },
+    "SKD-115": {
+      "title": "Summer Bridge",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "April Nicole Slack",
+          "credits": 0.3,
+          "we": false,
+          "meetings": []
         }
       ]
     },
@@ -6580,7 +6937,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "B Keenan",
+          "instructor": "Bethany S. Keenan",
           "credits": 0.5,
           "we": false,
           "meetings": [
@@ -6588,7 +6945,7 @@
               "days": "T",
               "start": "11:00",
               "end": "12:20",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 106"
             }
           ]
         }
@@ -6599,7 +6956,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "A Slack",
+          "instructor": "April Nicole Slack",
           "credits": 0.5,
           "we": false,
           "meetings": [
@@ -6607,13 +6964,17 @@
               "days": "TR",
               "start": "14:00",
               "end": "15:20",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 106"
             }
-          ]
+          ],
+          "part_of_term": {
+            "start": "2026-08-26",
+            "end": "2026-10-14"
+          }
         },
         {
           "id": "02",
-          "instructor": "A Slack",
+          "instructor": "April Nicole Slack",
           "credits": 0.5,
           "we": false,
           "meetings": [
@@ -6621,9 +6982,13 @@
               "days": "MW",
               "start": "14:00",
               "end": "15:20",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 301"
             }
-          ]
+          ],
+          "part_of_term": {
+            "start": "2026-10-19",
+            "end": "2026-12-17"
+          }
         }
       ]
     },
@@ -6632,17 +6997,31 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "Staff",
+          "instructor": "Rachel Walter",
           "credits": 0.5,
           "we": false,
-          "meetings": []
+          "meetings": [
+            {
+              "days": "M",
+              "start": "11:00",
+              "end": "12:20",
+              "location": "Hickok Hall 201"
+            }
+          ]
         },
         {
           "id": "02",
-          "instructor": "Staff",
+          "instructor": "Anna Katherine Drexler",
           "credits": 0.5,
           "we": false,
-          "meetings": []
+          "meetings": [
+            {
+              "days": "W",
+              "start": "14:00",
+              "end": "15:20",
+              "location": "Eby Fieldhouse 302"
+            }
+          ]
         }
       ]
     },
@@ -6651,10 +7030,21 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "Staff",
+          "instructor": "Margaret E LeMay-Lewis",
           "credits": 0.2,
           "we": false,
-          "meetings": []
+          "meetings": [
+            {
+              "days": "R",
+              "start": "12:30",
+              "end": "13:50",
+              "location": "Hickok Hall 305"
+            }
+          ],
+          "part_of_term": {
+            "start": "2026-08-26",
+            "end": "2026-10-14"
+          }
         }
       ]
     },
@@ -6663,7 +7053,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Chandler",
+          "instructor": "John Michael Chandler",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -6671,7 +7061,7 @@
               "days": "MWF",
               "start": "13:00",
               "end": "13:50",
-              "location": "Eby Fieldhouse"
+              "location": "Athletics and Recreation Center 219A"
             }
           ]
         }
@@ -6682,7 +7072,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Rummel",
+          "instructor": "Joelle N. Rummel",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -6690,7 +7080,7 @@
               "days": "TR",
               "start": "14:00",
               "end": "15:20",
-              "location": "Eby Fieldhouse"
+              "location": "Eby Fieldhouse 206"
             }
           ]
         }
@@ -6701,7 +7091,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "L Barnett",
+          "instructor": "Lisa A. Barnett",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -6709,13 +7099,13 @@
               "days": "MWF",
               "start": "09:00",
               "end": "09:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 305"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "A Boguslaw",
+          "instructor": "Alissa G. Boguslaw",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -6723,13 +7113,13 @@
               "days": "TR",
               "start": "09:30",
               "end": "10:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 305"
             }
           ]
         },
         {
           "id": "03",
-          "instructor": "A Boguslaw",
+          "instructor": "Alissa G. Boguslaw",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -6737,7 +7127,7 @@
               "days": "TR",
               "start": "14:00",
               "end": "15:20",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 305"
             }
           ]
         }
@@ -6748,7 +7138,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "L Barnett",
+          "instructor": "Lisa A. Barnett",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -6756,7 +7146,7 @@
               "days": "TR",
               "start": "09:30",
               "end": "10:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 306"
             }
           ]
         }
@@ -6767,7 +7157,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "L Barnett",
+          "instructor": "Lisa A. Barnett",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -6775,7 +7165,7 @@
               "days": "MWF",
               "start": "10:00",
               "end": "10:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 305"
             }
           ]
         }
@@ -6786,7 +7176,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "A Boguslaw",
+          "instructor": "Alissa G. Boguslaw",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -6794,7 +7184,7 @@
               "days": "MW",
               "start": "14:00",
               "end": "15:20",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 305"
             }
           ]
         }
@@ -6805,7 +7195,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "E Munoz Perez",
+          "instructor": "Esperanza Munoz Perez",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -6813,7 +7203,7 @@
               "days": "MWF",
               "start": "13:00",
               "end": "13:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 106"
             }
           ]
         }
@@ -6824,7 +7214,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "E Munoz Perez",
+          "instructor": "Esperanza Munoz Perez",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -6832,7 +7222,7 @@
               "days": "MWF",
               "start": "14:00",
               "end": "14:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 201"
             }
           ]
         }
@@ -6843,7 +7233,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "L Rodriguez Moreno",
+          "instructor": "Laissa Rodriguez Moreno",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -6851,7 +7241,7 @@
               "days": "TR",
               "start": "09:30",
               "end": "10:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 201"
             }
           ]
         }
@@ -6862,7 +7252,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "L Rodriguez Moreno",
+          "instructor": "Laissa Rodriguez Moreno",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -6870,7 +7260,7 @@
               "days": "TR",
               "start": "11:00",
               "end": "12:20",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 201"
             }
           ]
         }
@@ -6881,7 +7271,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "L Rodriguez Moreno",
+          "instructor": "Laissa Rodriguez Moreno",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -6900,7 +7290,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "A Torres",
+          "instructor": "Laissa Rodriguez Moreno",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -6908,9 +7298,10 @@
               "days": "MWF",
               "start": "13:00",
               "end": "13:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 201"
             }
-          ]
+          ],
+          "cross_list": "XLC-357"
         }
       ]
     },
@@ -6919,7 +7310,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "G Cross",
+          "instructor": "Gavin M. Cross",
           "credits": 0.5,
           "we": false,
           "meetings": [
@@ -6927,13 +7318,17 @@
               "days": "MWF",
               "start": "09:00",
               "end": "09:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 308"
             }
-          ]
+          ],
+          "part_of_term": {
+            "start": "2026-08-26",
+            "end": "2026-10-14"
+          }
         },
         {
           "id": "02",
-          "instructor": "G Cross",
+          "instructor": "Gavin M. Cross",
           "credits": 0.5,
           "we": false,
           "meetings": [
@@ -6941,9 +7336,13 @@
               "days": "MWF",
               "start": "10:00",
               "end": "10:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 308"
             }
-          ]
+          ],
+          "part_of_term": {
+            "start": "2026-08-26",
+            "end": "2026-10-14"
+          }
         }
       ]
     },
@@ -6952,7 +7351,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "G Cross",
+          "instructor": "Gavin M. Cross",
           "credits": 0.5,
           "we": false,
           "meetings": [
@@ -6960,13 +7359,17 @@
               "days": "MWF",
               "start": "09:00",
               "end": "09:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 308"
             }
-          ]
+          ],
+          "part_of_term": {
+            "start": "2026-10-19",
+            "end": "2026-12-17"
+          }
         },
         {
           "id": "02",
-          "instructor": "G Cross",
+          "instructor": "Gavin M. Cross",
           "credits": 0.5,
           "we": false,
           "meetings": [
@@ -6974,9 +7377,13 @@
               "days": "MWF",
               "start": "10:00",
               "end": "10:50",
-              "location": "Stuart Hall"
+              "location": "Stuart Hall 308"
             }
-          ]
+          ],
+          "part_of_term": {
+            "start": "2026-10-19",
+            "end": "2026-12-17"
+          }
         }
       ]
     },
@@ -6985,7 +7392,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "E Ganfield",
+          "instructor": "Emily Rae Ganfield",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -6993,7 +7400,7 @@
               "days": "MWF",
               "start": "09:00",
               "end": "09:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall KLR"
             }
           ]
         }
@@ -7004,7 +7411,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "E Ganfield",
+          "instructor": "Emily Rae Ganfield",
           "credits": 0.25,
           "we": false,
           "meetings": [
@@ -7012,13 +7419,13 @@
               "days": "MW",
               "start": "13:00",
               "end": "14:50",
-              "location": "Dows Center"
+              "location": "Dows Center 111"
             }
           ]
         },
         {
           "id": "02",
-          "instructor": "E Ganfield",
+          "instructor": "Emily Rae Ganfield",
           "credits": 0.25,
           "we": false,
           "meetings": [
@@ -7026,13 +7433,13 @@
               "days": "MW",
               "start": "15:00",
               "end": "16:50",
-              "location": "Dows Center"
+              "location": "Dows Center 111"
             }
           ]
         },
         {
           "id": "03",
-          "instructor": "B Schmidt",
+          "instructor": "Benjamin T. Schmidt",
           "credits": 0.25,
           "we": false,
           "meetings": [
@@ -7046,7 +7453,7 @@
         },
         {
           "id": "04",
-          "instructor": "B Schmidt",
+          "instructor": "Benjamin T. Schmidt",
           "credits": 0.25,
           "we": false,
           "meetings": [
@@ -7065,7 +7472,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "E Ganfield",
+          "instructor": "Emily Rae Ganfield",
           "credits": 0.5,
           "we": false,
           "meetings": []
@@ -7077,7 +7484,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "B Schmidt",
+          "instructor": "Benjamin T. Schmidt",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -7096,7 +7503,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "E Ganfield",
+          "instructor": "Emily Rae Ganfield",
           "credits": 1.0,
           "we": false,
           "meetings": []
@@ -7108,7 +7515,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "E Ganfield",
+          "instructor": "Emily Rae Ganfield",
           "credits": 1.0,
           "we": true,
           "meetings": [
@@ -7116,7 +7523,7 @@
               "days": "MWF",
               "start": "10:00",
               "end": "10:50",
-              "location": "Hickok Hall"
+              "location": "Hickok Hall 106"
             }
           ]
         }
@@ -7127,7 +7534,7 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "J Alberty",
+          "instructor": "Jason Andrew Alberty",
           "credits": 1.0,
           "we": false,
           "meetings": [
@@ -7135,7 +7542,7 @@
               "days": "TR",
               "start": "14:00",
               "end": "15:20",
-              "location": "Dows Center"
+              "location": "Dows Center MILLS"
             }
           ]
         }
@@ -7146,8 +7553,8 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "N McNabb",
-          "credits": 0.0,
+          "instructor": "Neal S McNabb",
+          "credits": 1.0,
           "we": false,
           "meetings": []
         }
@@ -7158,13 +7565,15 @@
       "sections": [
         {
           "id": "01",
-          "instructor": "N McNabb",
-          "credits": 0.0,
+          "instructor": "Neal S McNabb",
+          "credits": 2.0,
           "we": false,
           "meetings": []
         }
       ]
     }
   },
+  "layout": "draft",
+  "revision": "2026-08-17",
   "academic_year": "2026-27"
 }

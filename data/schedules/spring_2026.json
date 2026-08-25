@@ -3121,10 +3121,10 @@
       "title": "Native American History",
       "sections": [
         {
-          "id": "01 WE",
+          "id": "01",
           "instructor": "D Buckaloo",
           "credits": 1.0,
-          "we": false,
+          "we": true,
           "meetings": [
             {
               "days": "TR",
@@ -3140,10 +3140,10 @@
       "title": "Legacies of the Cold War inLatin Am",
       "sections": [
         {
-          "id": "01 WE",
+          "id": "01",
           "instructor": "L Rodriguez Moreno",
           "credits": 1.0,
-          "we": false,
+          "we": true,
           "meetings": [
             {
               "days": "TR",
@@ -3159,10 +3159,10 @@
       "title": "20th Century Europe",
       "sections": [
         {
-          "id": "01 WE",
+          "id": "01",
           "instructor": "B Keenan",
           "credits": 1.0,
-          "we": false,
+          "we": true,
           "meetings": [
             {
               "days": "MWF",
@@ -3630,10 +3630,10 @@
       "title": "Adapted Physical Education",
       "sections": [
         {
-          "id": "01 WE",
+          "id": "01",
           "instructor": "E Rydze",
           "credits": 1.0,
-          "we": false,
+          "we": true,
           "meetings": [
             {
               "days": "TR",
@@ -5911,10 +5911,10 @@
       "title": "Public Relations",
       "sections": [
         {
-          "id": "01 WE",
+          "id": "01",
           "instructor": "T Nagel",
           "credits": 1.0,
-          "we": false,
+          "we": true,
           "meetings": [
             {
               "days": "W",
@@ -7038,5 +7038,7 @@
       ]
     }
   },
+  "layout": "finalized",
+  "revision": "2025-11-12",
   "academic_year": "2025-26"
 }
