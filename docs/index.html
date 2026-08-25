@@ -114,6 +114,7 @@
     </div>
     <div id="results" style="display:none">
       <div class="summary-bar" id="summary-bar"></div>
+      <div class="gpa-bar" id="gpa-bar" style="display:none"></div>
 
       <div class="tabs">
         <button class="tab active" data-tab="ge">GE Requirements</button>
@@ -175,6 +176,17 @@
     <div class="btn-row">
       <button class="btn-secondary" onclick="closeWizard()">Cancel</button>
       <button class="btn-primary" onclick="submitWizard()">Apply Recommendation</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Grading Policy Modal ──────────────────────────────── -->
+<div class="modal-overlay" id="grade-policy-modal">
+  <div class="modal" style="max-width:620px">
+    <h3>Grading &amp; GPA</h3>
+    <div id="grade-policy-body"></div>
+    <div class="btn-row">
+      <button class="btn-primary" onclick="document.getElementById('grade-policy-modal').classList.remove('visible')">Close</button>
     </div>
   </div>
 </div>

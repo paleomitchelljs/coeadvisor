@@ -1,0 +1,79 @@
+{
+  "version": "2026-27",
+  "label": "Grading and GPA (2026-2027 Catalog)",
+  "source": "Academic Catalog 2026-27, pp. 42-45 (Grading; Courses Graded as Pass/Not-Pass), p. 11 (graduation), p. 28 (Latin Honors), p. 47 (Academic Probation)",
+
+  "note": "Grade points are awarded per course credit, so the GPA is weighted by credit, not by course count. One Coe course credit equals 4 semester hours.",
+  "semester_hours_per_credit": 4,
+
+  "grades": [
+    { "grade": "A",  "points": 4.0, "label": "Excellent" },
+    { "grade": "A-", "points": 3.7 },
+    { "grade": "B+", "points": 3.3 },
+    { "grade": "B",  "points": 3.0, "label": "Above average" },
+    { "grade": "B-", "points": 2.7 },
+    { "grade": "C+", "points": 2.3 },
+    { "grade": "C",  "points": 2.0, "label": "Satisfactory, minimum expectation" },
+    { "grade": "C-", "points": 1.7 },
+    { "grade": "D+", "points": 1.3 },
+    { "grade": "D",  "points": 1.0, "label": "Passing, below expectation" },
+    { "grade": "D-", "points": 0.7 },
+    { "grade": "F",  "points": 0.0, "label": "Failure", "earns_credit": false },
+    { "grade": "WF", "points": 0.0, "label": "Withdrawn after deadline, equivalent to failure", "earns_credit": false }
+  ],
+
+  "non_gpa_marks": [
+    { "grade": "P",  "label": "Pass", "earns_credit": true,
+      "note": "Credit awarded, no grade points. Does not affect GPA, and cannot satisfy a major or minor requirement." },
+    { "grade": "NP", "label": "Not Pass", "earns_credit": false,
+      "note": "No credit and no grade points." },
+    { "grade": "W",  "label": "Approved withdrawal", "earns_credit": false,
+      "note": "Does not affect the GPA. Available through the first two-thirds of the term; after that a withdrawal is recorded as WF." },
+    { "grade": "I",  "label": "Incomplete", "earns_credit": false,
+      "note": "Must be resolved by the fourth full week of the next Fall or Spring term, or it becomes a failing grade. Never counts toward the GPA while unresolved." },
+    { "grade": "X",  "label": "Course extends beyond term", "earns_credit": false,
+      "note": "For courses the Catalog designates as extending past the end of the term. Cannot remain unresolved more than one calendar year." },
+    { "grade": "O",  "label": "No mark reported", "earns_credit": false,
+      "note": "The instructor had not reported a grade when academic reports were processed." },
+    { "grade": "EQ", "label": "Equivalent credit recognized", "earns_credit": false,
+      "note": "No credit given and does not increase courses attempted, so it never enters the GPA." }
+  ],
+
+  "policies": {
+    "repeat": "A repeated course carries the status mark R. Only the grade earned when the course is retaken is used in computing the GPA, and credit is earned only once. Courses may normally be repeated only once.",
+    "pass_no_pass": "Students may elect P/NP for up to four A-F graded courses across their career, normally one course credit per term. The Registrar converts a submitted grade of D- or better to P and F to NP. A P/NP course cannot satisfy a major or minor requirement, and P/NP may not be elected while on academic probation.",
+    "writing_emphasis": "A Writing Emphasis course requires a submitted grade of C or higher to count toward the WE requirement.",
+    "withdrawal": "Withdrawing when two-thirds or less of the term is complete records a W, which does not affect the GPA. After that point the withdrawal is recorded as WF, which counts as 0.0 grade points."
+  },
+
+  "thresholds": {
+    "graduation": {
+      "cumulative_gpa": 2.0,
+      "area_of_study_gpa": 2.0,
+      "credits": 32.0,
+      "credits_rc_ba": 24.0,
+      "note": "At least 32 course credits (24 for the RC-B.A.) with a cumulative GPA of 2.0 or higher, plus at least a 2.00 GPA in the courses counted toward each area of study."
+    },
+    "latin_honors": [
+      { "label": "summa cum laude", "gpa": 3.90 },
+      { "label": "magna cum laude", "gpa": 3.75 },
+      { "label": "cum laude", "gpa": 3.50 }
+    ],
+    "latin_honors_min_credits": 16.0,
+    "distinction": { "cumulative_gpa": 3.2, "area_gpa": 3.5, "graded_credits": 14.0 },
+    "deans_list_gpa": 3.75,
+    "probation": [
+      { "max_credits": 4.99, "min_gpa": 1.50 },
+      { "max_credits": 7.9,  "min_gpa": 1.75 },
+      { "max_credits": 11.9, "min_gpa": 1.80 },
+      { "max_credits": 15.9, "min_gpa": 1.90 },
+      { "max_credits": null, "min_gpa": 2.00 }
+    ],
+    "class_designation": [
+      { "max_credits": 7.9,  "label": "First-year" },
+      { "max_credits": 15.9, "label": "Sophomore" },
+      { "max_credits": 23.9, "label": "Junior" },
+      { "max_credits": null, "label": "Senior" }
+    ]
+  }
+}
