@@ -141,9 +141,14 @@
             <select id="sched-term" onchange="onSchedTermChange()"></select>
           </label>
           <label class="sched-label">Plan Semester
-            <select id="sched-plan-sem" onchange="syncSchedFromPlan()"></select>
+            <select id="sched-plan-sem" onchange="onSchedPlanSemChange()"></select>
           </label>
+          <button class="small-btn sched-pull-btn" onclick="pullPlanIntoSchedule()"
+            title="Put this plan semester's courses on the calendar. Courses not offered in the selected term are left out and listed below.">
+            &#8681; Pull Plan
+          </button>
         </div>
+        <div id="sched-pull-summary" class="sched-pull-summary" style="display:none"></div>
         <div class="sched-picker">
           <div class="sched-add-row">
             <input type="text" id="sched-search" placeholder="Search courses (e.g. BIO-145)" list="sched-datalist" autocomplete="off">

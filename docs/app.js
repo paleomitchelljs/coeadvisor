@@ -2748,6 +2748,8 @@ function onSchedTermChange() {
   if (sd) {
     schedEntries = schedEntries.filter(e => sd.courses[e.code]);
   }
+  // A pull summary names a specific term; it is stale the moment that changes.
+  clearPullSummary();
   renderSchedCourses();
   renderSchedCalendar();
 }
@@ -2955,65 +2957,139 @@ function getSchedPlanSemNum() {
   return sel ? parseInt(sel.value) || null : null;
 }
 
+function planSemesterTextarea(semNum) {
+  const semEl = document.querySelector(
+    `#plan-semesters .plan-semester[data-sem-num="${semNum}"]`);
+  return semEl ? semEl.querySelector(".sem-courses") : null;
+}
+
+// The course a plan line names, ignoring any grade or WE annotation on it.
+// "BIO-155=A,WE" and "BIO-155" are the same course; normalize() alone does
+// not know that, so matching on it would treat a graded line as a different
+// course entirely and duplicate it.
+function _planLineCode(line) {
+  const d = parseCoursesDetailed(line)[0];
+  return d ? d.code : normalize(line.trim());
+}
+
 function syncSchedToPlan() {
   const semNum = getSchedPlanSemNum();
   if (!semNum) return;
-  const semEl = document.querySelector(`#plan-semesters .plan-semester[data-sem-num="${semNum}"]`);
-  if (!semEl) return;
-  const ta = semEl.querySelector(".sem-courses");
+  const ta = planSemesterTextarea(semNum);
   if (!ta || ta.readOnly) return;
 
-  // Merge: keep existing non-schedule courses, add schedule courses
-  const existingLines = ta.value.split("\n").map(l => l.trim()).filter(Boolean);
-  const schedCodes = new Set(schedEntries.map(e => normalize(e.code)));
-  // Keep lines that aren't from our schedule set (manually typed courses)
-  const kept = existingLines.filter(l => {
-    const n = normalize(l);
-    return !schedCodes.has(n) && !ta.dataset.schedCodes?.split(",").includes(n);
-  });
-  const newLines = [...kept, ...schedEntries.map(e => e.code)];
-  ta.value = newLines.join("\n");
-  ta.dataset.schedCodes = [...schedCodes].join(",");
+  const schedCodes = schedEntries.map(e => normalize(e.code));
+  const schedSet = new Set(schedCodes);
+  const prevSched = new Set((ta.dataset.schedCodes || "").split(",").filter(Boolean));
+
+  // Index the existing lines by the course they name so a line already
+  // carrying a grade or a WE flag is reused rather than overwritten with a
+  // bare code — scheduling a course must never silently drop its grade.
+  const kept = [], byCode = new Map();
+  for (const raw of ta.value.split("\n")) {
+    const line = raw.trim();
+    if (!line) continue;
+    const code = _planLineCode(line);
+    if (code && !byCode.has(code)) byCode.set(code, line);
+    // Lines the scheduler owns are re-emitted below, in scheduler order.
+    if (schedSet.has(code) || prevSched.has(code)) continue;
+    kept.push(line);
+  }
+
+  ta.value = [...kept, ...schedCodes.map(c => byCode.get(c) || c)].join("\n");
+  ta.dataset.schedCodes = schedCodes.join(",");
   runCheck();
 }
 
-function syncSchedFromPlan() {
+// ─── Plan → Schedule ─────────────────────────────────────────────────────────
+//
+// The Schedule tab already pushes every edit back into the Plan. This is the
+// other direction: take what a student has already planned for a semester and
+// put it straight on the calendar, so that when the class list for the next
+// term goes live they can see at once which of their plan is actually offered
+// and when it meets.
+//
+// It adds rather than replaces. The point is to skip searching for courses you
+// have already planned, not to throw away sections you picked by hand.
+
+function planSemesterCourses(semNum) {
+  const ta = planSemesterTextarea(semNum);
+  if (!ta) return [];
+  // A substitution stands in for a requirement met elsewhere. It is not an
+  // enrollment, so it never belongs on a schedule grid.
+  return parseCoursesDetailed(ta.value)
+    .filter(d => !d.isSubstitution)
+    .map(d => d.code);
+}
+
+function pullPlanIntoSchedule() {
   const semNum = getSchedPlanSemNum();
-  if (!semNum) return;
   const sd = getScheduleData();
-  if (!sd) return;
+  if (!semNum || !sd) return;
 
-  const semEl = document.querySelector(`#plan-semesters .plan-semester[data-sem-num="${semNum}"]`);
-  if (!semEl) return;
-  const ta = semEl.querySelector(".sem-courses");
-  if (!ta) return;
-
-  const codes = parseCourses(ta.value);
-  // Load courses that exist in the current schedule
-  schedEntries = [];
-  schedColorNext = 0;
-  for (const code of codes) {
-    if (sd.courses[code] && !schedEntries.some(e => e.code === code)) {
-      const defaultSec = sd.courses[code].sections.find(s => s.meetings.length > 0)
-                      || sd.courses[code].sections[0];
-      if (defaultSec) {
-        schedEntries.push({ code, sectionId: defaultSec.id, colorIdx: schedColorNext++ % SCHED_COLORS });
-      }
-    }
+  const added = [], already = [], unscheduled = [], missing = [];
+  for (const code of planSemesterCourses(semNum)) {
+    if (schedEntries.some(e => e.code === code)) { already.push(code); continue; }
+    const course = sd.courses[code];
+    if (!course) { missing.push(code); continue; }
+    // Offered, but with no meeting pattern to place — arranged courses,
+    // independent studies, the asynchronous online sections. Adding one would
+    // put a row on screen with an empty section list and nothing on the grid,
+    // so it is reported instead.
+    const sec = course.sections.find(s => s.meetings.length > 0);
+    if (!sec) { unscheduled.push(code); continue; }
+    schedEntries.push({ code, sectionId: sec.id,
+                        colorIdx: schedColorNext++ % SCHED_COLORS });
+    added.push(code);
   }
+
   renderSchedCourses();
   renderSchedCalendar();
+  renderPullSummary(sd, { added, already, unscheduled, missing });
+  // Everything pulled came from the plan, so there is nothing to push back.
+}
 
-  // Detect term from semester label
+// Nothing here blocks or interrupts: a planned course that is not offered is
+// simply left out. But "which of my plan is offered" is half the reason to
+// pull at all, so what was left out is reported afterwards rather than lost.
+function renderPullSummary(sd, r) {
+  const el = document.getElementById("sched-pull-summary");
+  if (!el) return;
+  const term = (sd && sd.term) || "this term";
+  const bits = [];
+  if (r.added.length)
+    bits.push(`<span class="pull-ok">Added ${r.added.length}: ${r.added.join(", ")}</span>`);
+  if (r.already.length)
+    bits.push(`<span class="pull-dim">${r.already.length} already scheduled</span>`);
+  if (r.unscheduled.length)
+    bits.push(`<span class="pull-warn">Offered, no set meeting time: ${r.unscheduled.join(", ")}</span>`);
+  if (r.missing.length)
+    bits.push(`<span class="pull-warn">Not offered in ${_escAttr(term)}: ${r.missing.join(", ")}</span>`);
+  if (!bits.length)
+    bits.push(`<span class="pull-dim">Nothing planned for this semester yet.</span>`);
+  el.innerHTML = bits.join(" · ");
+  el.style.display = "";
+}
+
+function clearPullSummary() {
+  const el = document.getElementById("sched-pull-summary");
+  if (el) { el.style.display = "none"; el.innerHTML = ""; }
+}
+
+// Picking a plan semester only points the term dropdown at the matching
+// season and refreshes the search list. It deliberately does not load the
+// semester's courses: that is what Pull Plan is for, and doing it here used to
+// wipe section choices the moment the dropdown moved.
+function onSchedPlanSemChange() {
+  clearPullSummary();
+  const semNum = getSchedPlanSemNum();
   const termSel = document.getElementById("sched-term");
-  if (termSel && semNum) {
-    const isFall = semNum % 2 === 1;
-    const wanted = isFall ? "fall" : "spring";
-    for (const opt of termSel.options) {
-      if (opt.value.startsWith(wanted)) { termSel.value = opt.value; break; }
-    }
-    buildSchedDatalist();
+  if (!termSel || !semNum) return;
+  const wanted = semNum % 2 === 1 ? "fall" : "spring";
+  for (const opt of termSel.options) {
+    if (opt.value.startsWith(wanted)) { termSel.value = opt.value; break; }
   }
+  onSchedTermChange();
 }
 
 function initScheduleTab() {

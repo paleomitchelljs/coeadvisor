@@ -884,6 +884,22 @@ h2:first-child { margin-top: 0; }
   font-weight: 600;
 }
 
+/* Pull Plan — the action and its result */
+.sched-pull-btn { align-self: flex-end; margin-bottom: 8px; white-space: nowrap; }
+.sched-pull-summary {
+  background: var(--ink-50);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 6px 10px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--fg-muted);
+}
+.sched-pull-summary .pull-ok { color: var(--status-done); font-weight: 600; }
+.sched-pull-summary .pull-warn { color: var(--status-partial); font-weight: 600; }
+.sched-pull-summary .pull-dim { color: var(--fg-soft); }
+
 .sched-calendar-wrap {
   overflow-x: auto;
 }
@@ -1105,6 +1121,7 @@ h2:first-child { margin-top: 0; }
   body[data-print-mode="schedule"] .tab-panel { display: none !important; }
   body[data-print-mode="schedule"] #tab-schedule { display: block !important; }
   body[data-print-mode="schedule"] .sched-toolbar,
+  body[data-print-mode="schedule"] .sched-pull-summary,
   body[data-print-mode="schedule"] .sched-picker,
   body[data-print-mode="schedule"] .sched-overlap-alert,
   body[data-print-mode="schedule"] .summary-bar,
