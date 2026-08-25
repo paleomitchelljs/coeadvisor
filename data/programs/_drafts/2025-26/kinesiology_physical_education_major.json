@@ -1,0 +1,251 @@
+{
+  "id": "kinesiology_physical_education_major_2025-26",
+  "name": "Kinesiology — Physical Education",
+  "program_type": "major",
+  "catalog_year": "2025-26",
+  "major_code": "KIN",
+  "source": "Academic Catalog 2025-26, p. 145",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "kin105",
+          "title": "Foundations of Physical Movement",
+          "codes": [
+            "KIN-105"
+          ]
+        },
+        {
+          "id": "kin165",
+          "title": "Master Activity Class for Teachers",
+          "codes": [
+            "KIN-165"
+          ]
+        },
+        {
+          "id": "kin225",
+          "title": "Motor Learning",
+          "codes": [
+            "KIN-225"
+          ]
+        },
+        {
+          "id": "kin347",
+          "title": "Adapted Physical Education",
+          "codes": [
+            "KIN-347"
+          ]
+        },
+        {
+          "id": "kin365",
+          "title": "Measurement Evaluation and Prescription in Kinesiology",
+          "codes": [
+            "KIN-365"
+          ]
+        },
+        {
+          "id": "kin415",
+          "title": "Methods of Teaching Secondary School Physical Education and Health",
+          "codes": [
+            "KIN-415"
+          ]
+        },
+        {
+          "id": "kin440",
+          "title": "Organization and Administration of Physical Education, Health, and Athletics",
+          "codes": [
+            "KIN-440"
+          ]
+        },
+        {
+          "id": "kin442",
+          "title": "Physiology of Exercise",
+          "codes": [
+            "KIN-442"
+          ]
+        },
+        {
+          "id": "kin495",
+          "title": "Kinesiology",
+          "codes": [
+            "KIN-495"
+          ]
+        },
+        {
+          "id": "kin105",
+          "title": "Foundations of Physical Movement",
+          "codes": [
+            "KIN-105"
+          ]
+        },
+        {
+          "id": "kin165",
+          "title": "Master Activity Class for Teachers",
+          "codes": [
+            "KIN-165"
+          ]
+        },
+        {
+          "id": "kin225",
+          "title": "Motor Learning",
+          "codes": [
+            "KIN-225"
+          ]
+        },
+        {
+          "id": "kin347",
+          "title": "Adapted Physical Education",
+          "codes": [
+            "KIN-347"
+          ]
+        },
+        {
+          "id": "kin315",
+          "title": "Methods of Elementary School Physical Education and Health",
+          "codes": [
+            "KIN-315"
+          ]
+        },
+        {
+          "id": "kin440",
+          "title": "Organization and Administration of Physical Education, Health, and Athletics",
+          "codes": [
+            "KIN-440"
+          ]
+        },
+        {
+          "id": "kin442",
+          "title": "Physiology of Exercise",
+          "codes": [
+            "KIN-442"
+          ]
+        },
+        {
+          "id": "kin201",
+          "title": "Fundamentals of Coaching",
+          "codes": [
+            "KIN-201"
+          ]
+        },
+        {
+          "id": "kin275",
+          "title": "Prevention and Care of Athletic Injuries & Laboratory",
+          "codes": [
+            "KIN-275"
+          ]
+        },
+        {
+          "id": "kin275",
+          "title": "Prevention and Care of Athletic Injuries & Laboratory",
+          "codes": [
+            "KIN-275"
+          ]
+        },
+        {
+          "id": "kin135",
+          "title": "Concepts of Individual Wellness",
+          "codes": [
+            "KIN-135"
+          ]
+        },
+        {
+          "id": "kin155",
+          "title": "Substance Abuse",
+          "codes": [
+            "KIN-155"
+          ]
+        },
+        {
+          "id": "kin275",
+          "title": "Prevention and Care of Athletic Injuries & Laboratory",
+          "codes": [
+            "KIN-275"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_2",
+      "label": "Choose One",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "bio103",
+          "title": "Anatomy and Physiology & Laboratory",
+          "codes": [
+            "BIO-103",
+            "BIO-103L"
+          ]
+        },
+        {
+          "id": "bio215",
+          "title": "Human Anatomy and Human Physiology",
+          "codes": [
+            "BIO-215",
+            "BIO-225"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_2",
+      "label": "Choose One",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "bio103",
+          "title": "Anatomy and Physiology",
+          "codes": [
+            "BIO-103"
+          ]
+        },
+        {
+          "id": "bio215",
+          "title": "Human Anatomy and Human Physiology",
+          "codes": [
+            "BIO-215",
+            "BIO-225"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_1",
+      "label": "Teaching certification in an academic area",
+      "type": "non_course",
+      "description": "Teaching certification in an academic area"
+    },
+    {
+      "id": "req_6",
+      "label": "Choose One",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "gs107",
+          "title": "Introduction to Gender and Sexuality Studies",
+          "codes": [
+            "GS-107"
+          ]
+        },
+        {
+          "id": "kin202",
+          "title": "Family Life Education",
+          "codes": [
+            "KIN-202"
+          ]
+        },
+        {
+          "id": "soc207",
+          "title": "Sociology of the Family",
+          "codes": [
+            "SOC-207"
+          ]
+        }
+      ]
+    }
+  ],
+  "_needs_review": true
+}

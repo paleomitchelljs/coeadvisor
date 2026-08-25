@@ -28,26 +28,74 @@ const SCIENCE_PREFIXES = new Set(["BIO", "CHM", "PHY", "ESC", "ENS", "GEO"]);
 function isMathCourse(code) { return MATH_PREFIXES.has(prefixOf(code)); }
 function isScienceCourse(code) { return SCIENCE_PREFIXES.has(prefixOf(code)); }
 
-// Lazy index of course → credit hours from the bundled catalog. Built once
-// per session; null until DATA is available.
-let _catalogCreditIndex = null;
-function _buildCatalogCreditIndex() {
-  if (_catalogCreditIndex) return _catalogCreditIndex;
+// ── Per-catalog-year GE data ───────────────────────────────────────────────
+//
+// GE requirements, DAC/WE lists, practicum rules, and the course catalog are
+// bundled per catalog year under DATA.ge_years. Years we have not transcribed
+// resolve to the nearest year we do have, preferring an earlier one.
+
+function _yearKey(y) {
+  const m = /^(\d{4})/.exec(String(y || ""));
+  return m ? parseInt(m[1], 10) : -1;
+}
+
+// Years carrying a given file kind ("ge", "dac", "we", "practicum", "catalog"),
+// newest first. A year folder may hold a course catalog but no GE rules, so
+// each kind resolves independently.
+function geYearsWith(kind) {
+  const all = (typeof DATA !== "undefined" && DATA.ge_years_available) || [];
+  if (!kind || !DATA.ge_years) return all;
+  return all.filter(y => DATA.ge_years[y] && DATA.ge_years[y][kind]);
+}
+
+function resolveGeYear(year, kind) {
+  const years = geYearsWith(kind);
+  if (!years.length) return null;
+  if (!year) return years[0];                       // newest
+  if (years.includes(year)) return year;
+  const want = _yearKey(year);
+  const earlier = years.filter(y => _yearKey(y) <= want);   // years is newest-first
+  return earlier.length ? earlier[0] : years[years.length - 1];
+}
+
+// GE data for a catalog year: each file resolved to the nearest year that has
+// it, falling back to the top-level (newest) copy.
+function geData(year) {
+  const out = {};
+  for (const kind of ["ge", "dac", "we", "practicum", "catalog"]) {
+    const resolved = resolveGeYear(year, kind);
+    const entry = resolved && DATA.ge_years ? DATA.ge_years[resolved] : null;
+    out[kind] = (entry && entry[kind]) || DATA[kind];
+  }
+  return out;
+}
+
+function selectedCatalogYear() {
+  return document.getElementById("catalog-year")?.value || "";
+}
+
+// Lazy index of course → credit hours from the bundled catalog, keyed by the
+// resolved catalog year so switching years picks up that year's credits.
+const _catalogCreditIndexByYear = {};
+function _buildCatalogCreditIndex(year) {
+  const key = resolveGeYear(year !== undefined ? year : selectedCatalogYear(), "catalog") || "_default";
+  if (_catalogCreditIndexByYear[key]) return _catalogCreditIndexByYear[key];
   const idx = {};
-  if (typeof DATA !== "undefined" && DATA.catalog && DATA.catalog.prefixes) {
-    for (const pfx of Object.values(DATA.catalog.prefixes)) {
+  const catalog = (typeof DATA !== "undefined") ? geData(selectedCatalogYear()).catalog : null;
+  if (catalog && catalog.prefixes) {
+    for (const pfx of Object.values(catalog.prefixes)) {
       for (const [code, info] of Object.entries(pfx.courses || {})) {
         if (typeof info.credits === "number") idx[code] = info.credits;
       }
     }
   }
-  _catalogCreditIndex = idx;
+  _catalogCreditIndexByYear[key] = idx;
   return idx;
 }
 
 // Resolution order for a course's credit value:
 //   1. Explicit override from data/course_credits.json (manual ground-truth)
-//   2. Catalog credits from courses_catalog_2025.json
+//   2. Catalog credits from the selected year's catalog_years/<year>/courses.json
 //   3. 0.2 for -L (lab) / -C (clinical) suffixes
 //   4. 1.0 otherwise
 function creditOf(code, overrides) {
@@ -1051,11 +1099,13 @@ function runCheck() {
   for (const [k, v] of Object.entries((DATA.course_credits || {}).overrides || {}))
     overrides[normalize(k)] = v;
 
-  const dacSet = new Set(DATA.dac.courses || DATA.dac || []);
-  const weSet = new Set(DATA.we.courses || DATA.we || []);
-  // Also include courses marked WE in the catalog
-  if (DATA.catalog && DATA.catalog.prefixes) {
-    for (const pfx of Object.values(DATA.catalog.prefixes)) {
+  // GE data for the catalog year the advisor selected
+  const gd = geData(selectedCatalogYear());
+  const dacSet = new Set((gd.dac && gd.dac.courses) || gd.dac || []);
+  const weSet = new Set((gd.we && gd.we.courses) || gd.we || []);
+  // Also include courses marked WE in that year's catalog
+  if (gd.catalog && gd.catalog.prefixes) {
+    for (const pfx of Object.values(gd.catalog.prefixes)) {
       for (const [code, info] of Object.entries(pfx.courses || {})) {
         if (info.we) weSet.add(code);
       }
@@ -1068,8 +1118,8 @@ function runCheck() {
   if (transferWe.includes("16+")) weRequired = 2;
   else if (transferWe.includes("8")) weRequired = 3;
 
-  const prxSet = new Set((DATA.practicum || {}).all_courses || []);
-  const geResult = checkGE(DATA.ge, taken, dacSet, weSet, prxSet, weAnnotated);
+  const prxSet = new Set((gd.practicum || {}).all_courses || []);
+  const geResult = checkGE(gd.ge, taken, dacSet, weSet, prxSet, weAnnotated);
 
   // WE c-or-better filter: a WE course with grade D- through C- counts toward
   // graduation but not toward the WE requirement.

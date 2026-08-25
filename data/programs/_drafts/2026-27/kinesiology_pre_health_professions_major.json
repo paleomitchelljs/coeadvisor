@@ -1,0 +1,83 @@
+{
+  "id": "kinesiology_pre_health_professions_major_2026-27",
+  "name": "Kinesiology — Pre-Health Professions",
+  "program_type": "major",
+  "catalog_year": "2026-27",
+  "major_code": "KIN",
+  "source": "Academic Catalog 2026-27, p. 153",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "bio155",
+          "title": "Organismal and Ecological Biology",
+          "codes": [
+            "BIO-155"
+          ]
+        },
+        {
+          "id": "bio215",
+          "title": "Human Anatomy & Laboratory",
+          "codes": [
+            "BIO-215",
+            "BIO-215L"
+          ]
+        },
+        {
+          "id": "bio225",
+          "title": "Human Physiology or / Integrated Human Physiology & Lab",
+          "codes": [
+            "BIO-225",
+            "BIO-375",
+            "BIO-375L"
+          ]
+        },
+        {
+          "id": "kin105",
+          "title": "Foundations of Physical Movement",
+          "codes": [
+            "KIN-105"
+          ]
+        },
+        {
+          "id": "kin115",
+          "title": "Fundamentals of Exercise and Nutrition",
+          "codes": [
+            "KIN-115"
+          ]
+        },
+        {
+          "id": "kin275",
+          "title": "Prevention and Care of Athletic Injuries & Laboratory",
+          "codes": [
+            "KIN-275"
+          ]
+        },
+        {
+          "id": "kin365",
+          "title": "Measurements/Evaluation and Prescription",
+          "codes": [
+            "KIN-365"
+          ]
+        },
+        {
+          "id": "kin442",
+          "title": "Physiology of Exercise",
+          "codes": [
+            "KIN-442"
+          ]
+        },
+        {
+          "id": "kin495",
+          "title": "Kinesiology",
+          "codes": [
+            "KIN-495"
+          ]
+        }
+      ]
+    }
+  ]
+}

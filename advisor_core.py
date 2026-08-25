@@ -114,20 +114,99 @@ def catalog_years(programs_dir: Path = None) -> list:
     return sorted(years, reverse=True)
 
 
-def load_ge(data_dir: Path = None) -> dict:
-    return _load_json((data_dir or DATA_DIR) / "ge_2025.json")
+# ── Per-catalog-year GE data ────────────────────────────────────────────────
+#
+# GE requirements, the DAC and WE course lists, practicum rules, and the course
+# catalog all change between catalog years, so each year gets its own folder:
+#
+#     data/catalog_years/2026-27/{ge,dac,we,practicum,courses}.json
+#
+# Years we have not transcribed yet resolve to the nearest year we do have
+# (preferring an earlier one), so adding a year is purely a data change.
+
+CATALOG_YEARS_DIR = DATA_DIR / "catalog_years"
+
+_YEAR_FILES = {
+    "ge": "ge.json",
+    "dac": "dac.json",
+    "we": "we.json",
+    "practicum": "practicum.json",
+    "catalog": "courses.json",
+}
 
 
-def load_dac(data_dir: Path = None) -> set:
-    data = _load_json((data_dir or DATA_DIR) / "dac_2025.json")
-    return set(data.get("courses", []))
+def _year_key(year: str) -> int:
+    """Sortable key for a '2026-27' style label; -1 if unparseable."""
+    m = re.match(r"^(\d{4})", str(year or ""))
+    return int(m.group(1)) if m else -1
 
 
-def load_we(data_dir: Path = None) -> set:
-    data = _load_json((data_dir or DATA_DIR) / "we_courses.json")
-    we = set(data.get("courses", []))
-    # Also include courses marked WE in the catalog
-    catalog = load_catalog(data_dir)
+def available_ge_years(data_dir: Path = None, kind: str = None) -> list:
+    """Catalog years with per-year data, newest first.
+
+    With `kind` ("ge", "dac", "we", "practicum", "catalog"), only years that
+    actually carry that file are returned — a year folder may hold a course
+    catalog but no GE rules, and each file resolves independently.
+    """
+    d = (data_dir or DATA_DIR) / "catalog_years"
+    if not d.exists():
+        return []
+    years = []
+    for s in d.iterdir():
+        if not s.is_dir() or s.name.startswith((".", "_")):
+            continue
+        if kind:
+            if (s / _YEAR_FILES[kind]).exists():
+                years.append(s.name)
+        elif any(s.glob("*.json")):
+            years.append(s.name)
+    return sorted(years, key=_year_key, reverse=True)
+
+
+def resolve_ge_year(year: str = None, data_dir: Path = None, kind: str = None) -> str:
+    """Pick the best available year for `year` (optionally for one file kind).
+
+    Exact match wins. Otherwise use the newest available year at or before
+    `year`; if `year` predates everything we have, use the oldest available.
+    Returns None when no per-year data exists at all.
+    """
+    years = available_ge_years(data_dir, kind)
+    if not years:
+        return None
+    if not year:
+        return years[0]                       # newest
+    if year in years:
+        return year
+    want = _year_key(year)
+    earlier = [y for y in years if _year_key(y) <= want]
+    return earlier[0] if earlier else years[-1]
+
+
+def _load_year_file(kind: str, year: str = None, data_dir: Path = None) -> dict:
+    """Load one per-year file, resolving that file kind independently."""
+    resolved = resolve_ge_year(year, data_dir, kind)
+    if not resolved:
+        return {}
+    path = (data_dir or DATA_DIR) / "catalog_years" / resolved / _YEAR_FILES[kind]
+    return _load_json(path) if path.exists() else {}
+
+
+def load_ge(data_dir: Path = None, year: str = None) -> dict:
+    return _load_year_file("ge", year, data_dir)
+
+
+def load_dac(data_dir: Path = None, year: str = None) -> set:
+    return set(_load_year_file("dac", year, data_dir).get("courses", []))
+
+
+def load_practicum(data_dir: Path = None, year: str = None) -> dict:
+    return _load_year_file("practicum", year, data_dir)
+
+
+def load_we(data_dir: Path = None, year: str = None) -> set:
+    we = set(_load_year_file("we", year, data_dir).get("courses", []))
+    # Also include courses marked WE in the catalog for the same year
+    catalog = load_catalog(data_dir, year)
     for pfx_data in (catalog.get("prefixes") or {}).values():
         for code, info in (pfx_data.get("courses") or {}).items():
             if info.get("we"):
@@ -169,14 +248,11 @@ def load_first_two_years(data_dir: Path = None) -> list:
         return []
 
 
-def load_catalog(data_dir: Path = None) -> dict:
-    path = (data_dir or DATA_DIR) / "courses_catalog_2025.json"
-    if not path.exists():
-        return {}
+def load_catalog(data_dir: Path = None, year: str = None) -> dict:
     try:
-        return _load_json(path)
+        return _load_year_file("catalog", year, data_dir)
     except Exception as exc:
-        print(f"Warning: could not load courses_catalog_2025.json: {exc}")
+        print(f"Warning: could not load course catalog: {exc}")
         return {}
 
 

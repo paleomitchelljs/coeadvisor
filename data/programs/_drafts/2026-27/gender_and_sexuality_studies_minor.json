@@ -1,0 +1,37 @@
+{
+  "id": "gender_and_sexuality_studies_minor_2026-27",
+  "name": "Gender and Sexuality Studies",
+  "program_type": "minor",
+  "catalog_year": "2026-27",
+  "major_code": "GS",
+  "source": "Academic Catalog 2026-27, p. 138",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "gs107",
+          "title": "Introduction to Gender and Sexuality Studies",
+          "codes": [
+            "GS-107"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_2",
+      "label": "Four courses from the lists below, with at least three core courses. Other courses not listed below may count as",
+      "type": "non_course",
+      "description": "Four courses from the lists below, with at least three core courses. Other courses not listed below may count as\nelectives when topics are appropriate with the consent of the academic coordinator."
+    },
+    {
+      "id": "req_3",
+      "label": "Completion of an exit survey regarding courses, learning, and applicability, which includes a short essay.",
+      "type": "non_course",
+      "description": "Completion of an exit survey regarding courses, learning, and applicability, which includes a short essay.\nCORE COURSES\nARH-107 Gender and Art GS-247 Gender and Sexuality Studies Symposium\nCOM-137 Interpersonal Communication (WE) GS-327 Theory and Methods in Gender and Sexuality\nCOM-257 Sex, Race, and Gender in the Media (WE) Studies (WE)\nCOM-323 Relational Communication: Theory and GS-387 Topics in Gender and Sexuality Studies (WE)\nApplication (WE) HIS-297 Women in America (WE)\nCOM-377 Language, Power, and Social Change (WE) NUR/PSY-137 Human Sexuality\nENG-206 Gender and Literature: Non-western POL-277 Women and Politics in the United States (WE)\nPerspectives (WE) PSY-208 Gender Psychology\nENG-207 Gender and Literature: United States SOC-207 Sociology of the Family\nPluralism (WE) SOC-227 Sociology of Sexuality\nENG-208 Gender and Literature: Diverse Western\nSPA-418 Gender and Sexuality in the Hispanic World\nPerspectives (WE)\n(WE)\nGS-127 Dress, Gender, and Identity OR THE-288\nHistory of Dress\nCOMPONENT COURSES\nANT-116 Cultural Anthropology ENG-127 Social Justice and Literature (WE) (when\nCOM-236 Intercultural Communication (WE) applicable, by consent of coordinator)\nEDU-187 Human Relations (WE) MTH-105 Math for Social Justice\nPSY-215 Multicultural Psychology"
+    }
+  ],
+  "_needs_review": true
+}

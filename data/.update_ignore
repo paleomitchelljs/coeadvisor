@@ -1,0 +1,3 @@
+# PDFs to leave alone until they are ready to ingest.
+# One filename glob per line; see tools/update.py.
+

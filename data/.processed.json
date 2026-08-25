@@ -1,0 +1,75 @@
+{
+  "files": {
+    "catalogs/Academic Catalog 2020-21.pdf": {
+      "kind": "catalog",
+      "outputs": [],
+      "period": "2020-21",
+      "processed_at": "2026-08-25T01:57:39+00:00",
+      "sha256": "ad666e1aaa6900d0c8627230d984ff118dc56d4cdc12cc848627a053185e5268"
+    },
+    "catalogs/Academic Catalog 2021-22.pdf": {
+      "kind": "catalog",
+      "outputs": [],
+      "period": "2021-22",
+      "processed_at": "2026-08-25T01:58:17+00:00",
+      "sha256": "1c93f4ec8c184b4c6f6607ebdaee01d1869a22f6d94bae67b89ecf5e70b4015e"
+    },
+    "catalogs/Academic Catalog 2022-23.pdf": {
+      "kind": "catalog",
+      "outputs": [],
+      "period": "2022-23",
+      "processed_at": "2026-08-25T01:58:58+00:00",
+      "sha256": "d1577ce63957292bb7bbf1af8d0b3943d769f5b48c1456d74ae9191e8b1c988a"
+    },
+    "catalogs/Academic Catalog 2023-24.pdf": {
+      "kind": "catalog",
+      "outputs": [
+        "dac.json (174 courses)"
+      ],
+      "period": "2023-24",
+      "processed_at": "2026-08-25T01:59:49+00:00",
+      "sha256": "138c5db9bd478dde41753e80c695a3e2772064dd470dc67556fd6149a32c9ae8"
+    },
+    "catalogs/Academic Catalog 2024-25.pdf": {
+      "kind": "catalog",
+      "outputs": [
+        "dac.json (196 courses)"
+      ],
+      "period": "2024-25",
+      "processed_at": "2026-08-25T02:00:31+00:00",
+      "sha256": "700cb499ed0b2035f76a52d4b1b545203b4c6c54c0c3ee4c2ddbb86c06046137"
+    },
+    "catalogs/Academic Catalog 2025-26.pdf": {
+      "kind": "catalog",
+      "outputs": [],
+      "period": "2025-26",
+      "processed_at": "2026-08-25T02:01:23+00:00",
+      "sha256": "05ee7318304f4e6eb96b1af79f42523f57799c73fa40709aea860b9d77b0bf41"
+    },
+    "catalogs/Academic Catalog 2026-27.pdf": {
+      "kind": "catalog",
+      "outputs": [],
+      "period": "2026-27",
+      "processed_at": "2026-08-25T02:03:32+00:00",
+      "sha256": "d9bfbf412c0aee4b23a33a5aa51d6fd13d83d156032326b06a68bc82cbea878f"
+    },
+    "class_lists/FA-26.pdf": {
+      "kind": "class list",
+      "outputs": [
+        "data/schedules/fall_2026.json"
+      ],
+      "period": "fall_2026",
+      "processed_at": "2026-08-25T02:03:34+00:00",
+      "sha256": "a45741aee3edc43c4c8b26ec571b8a160f038658a002c08cd41c1e0ec5cc06c4"
+    },
+    "class_lists/SP-26.pdf": {
+      "kind": "class list",
+      "outputs": [
+        "data/schedules/spring_2026.json"
+      ],
+      "period": "spring_2026",
+      "processed_at": "2026-08-25T02:03:35+00:00",
+      "sha256": "2e9547bf893b9eabd205023956d314f43c8ff4b898c66db709e9352e4837aa6e"
+    }
+  }
+}
