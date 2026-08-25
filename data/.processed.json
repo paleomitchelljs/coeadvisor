@@ -53,6 +53,15 @@
       "processed_at": "2026-08-25T02:03:32+00:00",
       "sha256": "d9bfbf412c0aee4b23a33a5aa51d6fd13d83d156032326b06a68bc82cbea878f"
     },
+    "class_lists/FA 26 8.17.26.pdf": {
+      "kind": "class list",
+      "outputs": [
+        "data/schedules/fall_2026.json"
+      ],
+      "period": "fall_2026",
+      "processed_at": "2026-08-25T14:53:07+00:00",
+      "sha256": "3ffc87b36c99cc2e067ecbd725b731998b75849c30f94ba1683ec7881b5e078f"
+    },
     "class_lists/FA-26.pdf": {
       "kind": "class list",
       "outputs": [
@@ -68,7 +77,7 @@
         "data/schedules/spring_2026.json"
       ],
       "period": "spring_2026",
-      "processed_at": "2026-08-25T02:03:35+00:00",
+      "processed_at": "2026-08-25T14:55:02+00:00",
       "sha256": "2e9547bf893b9eabd205023956d314f43c8ff4b898c66db709e9352e4837aa6e"
     }
   }

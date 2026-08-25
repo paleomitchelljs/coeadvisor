@@ -438,10 +438,32 @@ def process_class_list(pdf_path: Path, dry_run: bool) -> dict:
             schedule["academic_year"] = period["academic_year"]
         SCHEDULES_DIR.mkdir(parents=True, exist_ok=True)
         out = SCHEDULES_DIR / f"{period['term_code']}.json"
+
+        # Several PDFs can describe one term — the Registrar reissues the
+        # report as the build firms up, and every issue lands in the same file.
+        # Files are processed in filename order, which has nothing to do with
+        # recency, so without this an April issue quietly overwrites an August
+        # one. The PDF's own creation date is the tiebreak.
+        ok, why = parse_class_list.supersedes(schedule, out)
+        if not ok:
+            print(f"    .. {why} — leaving it alone")
+            return {"period": period["term_code"],
+                    "outputs": [str(out.relative_to(REPO))]}
+
+        # The draft layout clips titles at its column width; recover the tails
+        # from a previous issue of this term, then from the catalog.
+        fixed = parse_class_list.restore_truncated_titles(
+            schedule,
+            parse_class_list.title_sources(REPO, period["term_code"],
+                                           period["academic_year"]))
+
         write_json(out, schedule)
         n_courses = len(schedule["courses"])
         n_sections = sum(len(c["sections"]) for c in schedule["courses"].values())
-        print(f"    -> {out.relative_to(REPO)} ({n_courses} courses, {n_sections} sections)")
+        layout = schedule.get("layout", "finalized")
+        note = f", {fixed} title(s) restored" if fixed else ""
+        print(f"    -> {out.relative_to(REPO)} ({n_courses} courses, "
+              f"{n_sections} sections, {layout} layout{note})")
         return {"period": period["term_code"],
                 "outputs": [str(out.relative_to(REPO))]}
     except Exception as exc:
