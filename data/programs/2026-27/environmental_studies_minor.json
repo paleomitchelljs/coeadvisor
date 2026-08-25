@@ -1,0 +1,348 @@
+{
+  "id": "environmental_studies_minor_2026-27",
+  "name": "Environmental Studies",
+  "program_type": "minor",
+  "catalog_year": "2026-27",
+  "major_code": "EVS",
+  "source": "Academic Catalog 2026-27, p. 135",
+  "note": "New in the 2026-27 catalog.",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Course",
+      "type": "all",
+      "items": [
+        {
+          "id": "bio105",
+          "title": "Introduction to Environmental Studies",
+          "codes": [
+            "BIO-105"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "statistics",
+      "label": "One Statistics Course",
+      "type": "choose_one",
+      "description": "Any Data Science course also satisfies this requirement.",
+      "options": [
+        {
+          "id": "bus190",
+          "title": "Statistical Analysis (WE)",
+          "codes": [
+            "BUS-190"
+          ]
+        },
+        {
+          "id": "bus340",
+          "title": "Applied Regression Analysis",
+          "codes": [
+            "BUS-340"
+          ]
+        },
+        {
+          "id": "psy300",
+          "title": "Statistical Methods and Data Analysis",
+          "codes": [
+            "PSY-300"
+          ]
+        },
+        {
+          "id": "pol244",
+          "title": "Research Methods in Political Science",
+          "codes": [
+            "POL-244"
+          ]
+        },
+        {
+          "id": "soc235",
+          "title": "Methods of Sociological Research (WE)",
+          "codes": [
+            "SOC-235"
+          ]
+        },
+        {
+          "id": "sta100_110",
+          "title": "Statistical Foundations and Inferential Statistics",
+          "codes": [
+            "STA-100",
+            "STA-110"
+          ]
+        },
+        {
+          "id": "sta100_130",
+          "title": "Statistical Foundations and Experimental Design",
+          "codes": [
+            "STA-100",
+            "STA-130"
+          ]
+        },
+        {
+          "id": "sta315",
+          "title": "Mathematical Probability",
+          "codes": [
+            "STA-315"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "env_core",
+      "label": "Two Environmental Perspective Courses",
+      "type": "choose_n",
+      "n": 2,
+      "options": [
+        {
+          "id": "bio111",
+          "title": "Urban Ecology and Laboratory (if not used above)",
+          "codes": [
+            "BIO-111",
+            "BIO-111L"
+          ]
+        },
+        {
+          "id": "com267",
+          "title": "Environmental Communication (WE)",
+          "codes": [
+            "COM-267"
+          ]
+        },
+        {
+          "id": "eco195",
+          "title": "Principles of Environmental Economics",
+          "codes": [
+            "ECO-195"
+          ]
+        },
+        {
+          "id": "pol107",
+          "title": "Environmental Justice (Wilderness Field Station)",
+          "codes": [
+            "POL-107"
+          ]
+        },
+        {
+          "id": "phl205",
+          "title": "Environmental Ethics (WE)",
+          "codes": [
+            "PHL-205"
+          ]
+        },
+        {
+          "id": "phy161",
+          "title": "Energy: Science and Technology",
+          "codes": [
+            "PHY-161"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "natural_science",
+      "label": "One Natural Science Course",
+      "type": "choose_one",
+      "description": "Any one of the following Natural Science courses, if not used to satisfy the statistics or environmental perspective requirements.",
+      "options": [
+        {
+          "id": "bio111",
+          "title": "Urban Ecology and Laboratory",
+          "codes": [
+            "BIO-111",
+            "BIO-111L"
+          ]
+        },
+        {
+          "id": "bio115",
+          "title": "Marine Biology (May Term)",
+          "codes": [
+            "BIO-115"
+          ]
+        },
+        {
+          "id": "bio165",
+          "title": "Introduction to Ornithology",
+          "codes": [
+            "BIO-165",
+            "BIO-165L"
+          ]
+        },
+        {
+          "id": "bio175",
+          "title": "Field Botany (May Term)",
+          "codes": [
+            "BIO-175"
+          ]
+        },
+        {
+          "id": "bio185",
+          "title": "Entomology and Laboratory (Wilderness Field Station)",
+          "codes": [
+            "BIO-185",
+            "BIO-185L"
+          ]
+        },
+        {
+          "id": "bio285",
+          "title": "Animal Behavior and Laboratory (Wilderness Field Station)",
+          "codes": [
+            "BIO-285",
+            "BIO-285L"
+          ]
+        },
+        {
+          "id": "bio203",
+          "title": "Northwoods Ecology and Laboratory (Wilderness Field Station)",
+          "codes": [
+            "BIO-203"
+          ]
+        },
+        {
+          "id": "bio275",
+          "title": "Aquatic Ecology and Laboratory (Wilderness Field Station)",
+          "codes": [
+            "BIO-275",
+            "BIO-275L"
+          ]
+        },
+        {
+          "id": "bio295",
+          "title": "Spatial Ecology and Laboratory (WE)",
+          "codes": [
+            "BIO-295",
+            "BIO-295L"
+          ]
+        },
+        {
+          "id": "chm103",
+          "title": "Selected Concepts in Chemistry and Laboratory",
+          "codes": [
+            "CHM-103",
+            "CHM-103L"
+          ]
+        },
+        {
+          "id": "chm121",
+          "title": "General Chemistry I and Laboratory",
+          "codes": [
+            "CHM-121",
+            "CHM-121L"
+          ]
+        },
+        {
+          "id": "phy161",
+          "title": "Energy: Science and Technology",
+          "codes": [
+            "PHY-161"
+          ]
+        },
+        {
+          "id": "phy311",
+          "title": "Renewable Energy (WE)",
+          "codes": [
+            "PHY-311"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "social_humanities",
+      "label": "One Social Science or Humanities Course",
+      "type": "choose_one",
+      "description": "Any one of the following, if not used to satisfy the environmental perspective requirement.",
+      "options": [
+        {
+          "id": "com267",
+          "title": "Environmental Communication (WE)",
+          "codes": [
+            "COM-267"
+          ]
+        },
+        {
+          "id": "crw345",
+          "title": "Writing Wilderness (WE) (Wilderness Field Station)",
+          "codes": [
+            "CRW-345"
+          ]
+        },
+        {
+          "id": "eco175",
+          "title": "Principles of Macroeconomics",
+          "codes": [
+            "ECO-175"
+          ]
+        },
+        {
+          "id": "eco215",
+          "title": "Principles of Microeconomics",
+          "codes": [
+            "ECO-215"
+          ]
+        },
+        {
+          "id": "his205",
+          "title": "The Historian's Craft (WE)",
+          "codes": [
+            "HIS-205"
+          ]
+        },
+        {
+          "id": "phl128",
+          "title": "Morality and Moral Controversies (WE)",
+          "codes": [
+            "PHL-128"
+          ]
+        },
+        {
+          "id": "phl205",
+          "title": "Environmental Ethics (WE)",
+          "codes": [
+            "PHL-205"
+          ]
+        },
+        {
+          "id": "pol107",
+          "title": "Environmental Justice (Wilderness Field Station)",
+          "codes": [
+            "POL-107"
+          ]
+        },
+        {
+          "id": "pol115",
+          "title": "American National Government and Politics",
+          "codes": [
+            "POL-115"
+          ]
+        },
+        {
+          "id": "pol258",
+          "title": "World Politics (WE)",
+          "codes": [
+            "POL-258"
+          ]
+        },
+        {
+          "id": "pol210",
+          "title": "Environmental Politics (WE)",
+          "codes": [
+            "POL-210"
+          ]
+        },
+        {
+          "id": "psy215",
+          "title": "Multicultural Psychology",
+          "codes": [
+            "PSY-215"
+          ]
+        },
+        {
+          "id": "psy255",
+          "title": "Social Psychology",
+          "codes": [
+            "PSY-255"
+          ]
+        }
+      ]
+    }
+  ]
+}

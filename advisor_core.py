@@ -59,17 +59,59 @@ def _load_json(path: Path) -> dict:
 
 
 def load_programs(programs_dir: Path = None) -> dict:
+    """Load programs from the flat dir and from catalog-year subfolders.
+
+    Flat files:   data/programs/*.json          (legacy)
+    Year folders: data/programs/2026-27/*.json  (current structure)
+
+    Year-folder programs override flat files with the same id. Folders
+    starting with "." or "_" (e.g. _drafts, _archive) are skipped.
+    """
     d = programs_dir or PROGRAMS_DIR
     programs = {}
     if not d.exists():
         return programs
-    for fp in sorted(d.glob("*.json")):
+
+    def _read_into(fp: Path, year_label: str = None):
         try:
             data = _load_json(fp)
+            if year_label:
+                data["catalog_year"] = year_label
             programs[data["id"]] = data
         except Exception as exc:
             print(f"Warning: could not load {fp.name}: {exc}")
+
+    for fp in sorted(d.glob("*.json")):
+        _read_into(fp)
+
+    for subdir in sorted(d.iterdir()):
+        if not subdir.is_dir() or subdir.name.startswith((".", "_")):
+            continue
+        for fp in sorted(subdir.glob("*.json")):
+            _read_into(fp, subdir.name)
+
     return programs
+
+
+def catalog_years(programs_dir: Path = None) -> list:
+    """Catalog years that actually contain program files, newest first."""
+    d = programs_dir or PROGRAMS_DIR
+    years = set()
+    if not d.exists():
+        return []
+    for fp in d.glob("*.json"):
+        try:
+            cy = _load_json(fp).get("catalog_year", "")
+        except Exception:
+            continue
+        if cy:
+            years.add(cy)
+    for subdir in d.iterdir():
+        if not subdir.is_dir() or subdir.name.startswith((".", "_")):
+            continue
+        if any(subdir.glob("*.json")):
+            years.add(subdir.name)
+    return sorted(years, reverse=True)
 
 
 def load_ge(data_dir: Path = None) -> dict:
@@ -293,14 +335,17 @@ def check_section(section: dict, taken: set) -> dict:
 
     if stype == "choose_n":
         n, count, items = section.get("n", 1), 0, []
-        for item in section.get("items", []):
+        # Program files write these as "options"; accept "items" too.
+        for item in section.get("items") or section.get("options") or []:
             sat, found = _codes_satisfied(item.get("codes", []), taken)
             if sat:
                 count += 1
             items.append({**item, "satisfied": sat, "found": found})
         status = COMPLETE if count >= n else (PARTIAL if count > 0 else INCOMPLETE)
-        return {**section, "items": items, "satisfied_count": count,
-                "status": status, "message": f"{count}/{n} selected"}
+        result = {**section, "items": items, "satisfied_count": count,
+                  "status": status, "message": f"{count}/{n} selected"}
+        result.pop("options", None)   # evaluated entries live in "items"
+        return result
 
     if stype == "open_n":
         n = section.get("n", 1)

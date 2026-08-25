@@ -1,0 +1,24 @@
+{
+  "id": "philosophy_minor_2026-27",
+  "name": "Philosophy",
+  "program_type": "minor",
+  "catalog_year": "2026-27",
+  "major_code": "PHL",
+  "source": "Academic Catalog 2026-27, p. 175",
+  "sections": [
+    {
+      "id": "courses",
+      "label": "Five Philosophy Courses",
+      "type": "open_n",
+      "n": 5,
+      "description": "Five courses in Philosophy, two of which must be at the 200-level or higher and one of which must be at the 300-level or higher.",
+      "constraints": {
+        "prefixes": [
+          "PHL"
+        ],
+        "min_level": 200,
+        "min_level_count": 2
+      }
+    }
+  ]
+}

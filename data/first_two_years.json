@@ -93,10 +93,10 @@
       "match_major_codes": ["CS"],
       "match_program_ids": ["computer_science_major_2021"],
       "semesters": {
-        "y1_fall":   {"essential": ["CS-125"], "suggested": ["CS-135", "MTH-135"]},
-        "y1_spring": {"essential": ["CS-135"], "suggested": ["CS-235"]},
+        "y1_fall":   {"essential": ["CS-110"], "suggested": ["CS-115", "MTH-135"]},
+        "y1_spring": {"essential": ["CS-115"], "suggested": ["CS-230"]},
         "y2_fall":   {"essential": ["CS-215", "CS-220"], "suggested": ["DS-230"]},
-        "y2_spring": {"essential": ["CS-245", "MTH-215"], "suggested": ["CS-235"]}
+        "y2_spring": {"essential": ["CS-210", "MTH-215"], "suggested": ["CS-230"]}
       },
       "notes": "Students earning 4-5 on AP Computer Science A earn credit for CS-125. Students with programming experience should consult faculty about placement options."
     },
@@ -184,7 +184,7 @@
       "match_major_codes": ["HSS"],
       "match_program_ids": ["health_society_studies_minor_2020"],
       "semesters": {
-        "y1_fall":   {"essential": [], "suggested": ["BIO-103", "BIO-120", "BIO-155", "SOC-107", "ANT-116", "KIN-115", "KIN-125", "KIN-155", "PHL-128"]},
+        "y1_fall":   {"essential": [], "suggested": ["BIO-103", "BIO-120", "BIO-155", "SOC-107", "ANT-116", "KIN-115", "KIN-125", "KIN-255", "PHL-128"]},
         "y1_spring": {"essential": [], "suggested": ["100-level elective from HSS list", "200+ level elective from HSS list"]},
         "y2_fall":   {"essential": [], "suggested": ["PHL-165 Biomedical Ethics", "200+ level HSS elective"]},
         "y2_spring": {"essential": [], "suggested": ["PHL-165 (if not taken)", "200+ level HSS elective"]}
@@ -223,9 +223,9 @@
       "match_major_codes": ["KIN"],
       "match_program_ids": ["kinesiology_fitness_major_2024"],
       "semesters": {
-        "y1_fall":   {"essential": ["KIN-105"], "suggested": ["KIN-115", "KIN-125", "KIN-135", "KIN-155"]},
-        "y1_spring": {"essential": ["BIO-155"], "suggested": ["KIN-115", "KIN-125", "KIN-135", "KIN-155"]},
-        "y2_fall":   {"essential": ["KIN-175"], "suggested": ["KIN-115", "KIN-125", "KIN-135", "KIN-155"]},
+        "y1_fall":   {"essential": ["KIN-105"], "suggested": ["KIN-115", "KIN-125", "KIN-135", "KIN-255"]},
+        "y1_spring": {"essential": ["BIO-155"], "suggested": ["KIN-115", "KIN-125", "KIN-135", "KIN-255"]},
+        "y2_fall":   {"essential": ["KIN-175"], "suggested": ["KIN-115", "KIN-125", "KIN-135", "KIN-255"]},
         "y2_spring": {"essential": ["BIO-103"], "suggested": []}
       },
       "notes": ""
@@ -249,9 +249,9 @@
       "match_major_codes": ["MTH"],
       "match_program_ids": ["mathematics_major_2018"],
       "semesters": {
-        "y1_fall":   {"essential": ["MTH-135"], "suggested": ["MTH-145 (if AP credit for MTH-135)", "CS-125"]},
+        "y1_fall":   {"essential": ["MTH-135"], "suggested": ["MTH-145 (if AP credit for MTH-135)", "CS-110"]},
         "y1_spring": {"essential": ["MTH-145"], "suggested": ["MTH-215"]},
-        "y2_fall":   {"essential": ["MTH-255"], "suggested": ["CS-125"]},
+        "y2_fall":   {"essential": ["MTH-255"], "suggested": ["CS-110"]},
         "y2_spring": {"essential": ["MTH-215"], "suggested": ["MTH-265"]}
       },
       "notes": "AP Calculus AB score ≥ 4 earns credit for MTH-135. AP Calculus BC score ≥ 4 earns credit for MTH-145 and MTH-135. CS-125 must be completed before graduation. Consult mathematics faculty about appropriate calculus placement level."
@@ -276,7 +276,7 @@
       "match_program_ids": ["music_ba_major_2019"],
       "semesters": {
         "y1_fall":   {"essential": ["MU-101", "MU-107", "Ensemble (MUA-100/101/104/105)", "Music lessons"], "suggested": ["Additional ensembles", "EDU-105 (Music Education majors)"]},
-        "y1_spring": {"essential": ["MU-201", "Ensemble", "Music lessons"], "suggested": ["MU-284 (Topics: Rock & Roll or Taylor Swift)", "EDU-195", "EDU-117"]},
+        "y1_spring": {"essential": ["MU-201", "Ensemble", "Music lessons"], "suggested": ["MU-284 (Topics: Rock & Roll or Taylor Swift)", "EDU-217", "EDU-117"]},
         "y2_fall":   {"essential": ["Ensemble"], "suggested": ["Music Education: MU-361 or EDU-187", "Additional ensembles", "Additional lessons"]},
         "y2_spring": {"essential": ["Ensemble", "Music lessons"], "suggested": ["MU-166", "MU-108", "EDU-219", "May Term: Jazz History"]}
       },

@@ -4,7 +4,8 @@
   "notes": [
     "Students who transfer in an AA or AS degree earned after graduating from high school are exempt from all GE requirements except practicum.",
     "AAS degrees with approved articulation agreements also receive this exemption.",
-    "AP & IB courses may not fulfill any general education requirements."
+    "AP & IB courses may not fulfill any general education requirements.",
+    "Completion of all GE requirements is required for a first B.A., RC-B.A., B.S.N., or B.S.E. degree (RC-B.A. added in the 2026-27 catalog)."
   ],
   "divisional": {
     "rule": "No more than two courses of the same prefix may be used to fulfill divisional requirements. Each course may only be used once in these requirements.",
@@ -13,19 +14,49 @@
         "label": "Fine Arts",
         "credits_required": 2,
         "slots": 2,
-        "prefixes": ["ARH", "ART", "CRW", "MU", "MUA", "THE"]
+        "prefixes": [
+          "ARH",
+          "ART",
+          "CRW",
+          "MU",
+          "MUA",
+          "THE"
+        ],
+        "extra_codes": [
+          "NYT-250"
+        ],
+        "note": "New in 2026-27: NYT-250 Fine Arts in New York City (a component of Coe's New York Term) also satisfies this requirement. NOTE: extra_codes is data-only — the divisional checker currently matches by prefix, so NYT-250 is not yet counted automatically."
       },
       "humanities": {
         "label": "Humanities",
         "credits_required": 2,
         "slots": 2,
-        "prefixes": ["AAM", "CLA", "COM", "ENG", "HIS", "JPN", "PHL", "REL", "SPA"]
+        "prefixes": [
+          "AAM",
+          "CLA",
+          "COM",
+          "ENG",
+          "HIS",
+          "JPN",
+          "PHL",
+          "REL",
+          "SPA"
+        ]
       },
       "nat_sci_math": {
         "label": "Natural Sciences & Mathematics",
         "credits_required": 1,
         "slots": 1,
-        "prefixes": ["BIO", "CHM", "CS", "DS", "ENR", "MTH", "PHY", "STA"]
+        "prefixes": [
+          "BIO",
+          "CHM",
+          "CS",
+          "DS",
+          "ENR",
+          "MTH",
+          "PHY",
+          "STA"
+        ]
       },
       "lab_science": {
         "label": "Lab Science",
@@ -37,7 +68,14 @@
         "label": "Social Sciences",
         "credits_required": 2,
         "slots": 2,
-        "prefixes": ["ANT", "ECO", "GS", "POL", "PSY", "SOC"]
+        "prefixes": [
+          "ANT",
+          "ECO",
+          "GS",
+          "POL",
+          "PSY",
+          "SOC"
+        ]
       }
     }
   },
@@ -46,7 +84,10 @@
     "first_year_seminar": {
       "label": "First Year Seminar",
       "count": 1,
-      "prefixes": ["FYS", "FS"],
+      "prefixes": [
+        "FYS",
+        "FS"
+      ],
       "note": "Enter FS-110 (current) or a FYS-### course code, or mark manually"
     },
     "writing_emphasis": {
@@ -64,7 +105,9 @@
     "practicum": {
       "label": "Practicum",
       "count": 1,
-      "prefixes": ["PRX"],
+      "prefixes": [
+        "PRX"
+      ],
       "note": "One experience integrating academic learning with significant off-campus or co-curricular activity. Mark manually."
     }
   }

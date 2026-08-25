@@ -1,0 +1,208 @@
+{
+  "id": "kinesiology_pre_health_major_2026-27",
+  "name": "Kinesiology — Pre-Health Professions",
+  "program_type": "major",
+  "catalog_year": "2026-27",
+  "major_code": "KIN",
+  "source": "Academic Catalog 2026-27, p. 151",
+  "note": "Replaces the Pre-Athletic Training track from earlier catalogs. Students are strongly encouraged to meet with Kinesiology faculty for informal advising as soon as they choose this major; additional coursework may be needed for graduate work in Physical Therapy, Athletic Training, or Occupational Therapy.",
+  "concentrations": [
+    {
+      "id": "nutrition",
+      "name": "Nutrition",
+      "note": "Offered online through a consortium of accredited colleges and universities via Rize Education; students register through Coe and receive Coe credit. Students are strongly encouraged to meet with Kinesiology faculty for informal advising; additional coursework may be needed for graduate study in Nutrition or Dietetics.",
+      "sections": [
+        {
+          "id": "nutr_core",
+          "label": "Required Courses",
+          "type": "all",
+          "items": [
+            {
+              "id": "bio145",
+              "title": "Cellular and Molecular Biology and Laboratory (WE)",
+              "codes": [
+                "BIO-145",
+                "BIO-145L"
+              ]
+            },
+            {
+              "id": "chm121",
+              "title": "General Chemistry I and Laboratory",
+              "codes": [
+                "CHM-121",
+                "CHM-121L"
+              ]
+            },
+            {
+              "id": "chm122",
+              "title": "General Chemistry II and Laboratory",
+              "codes": [
+                "CHM-122",
+                "CHM-122L"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "nutr_rize",
+          "label": "Three Rize Education Nutrition Courses",
+          "type": "choose_n",
+          "n": 3,
+          "options": [
+            {
+              "id": "kin220",
+              "title": "Food Science",
+              "codes": [
+                "KIN-220"
+              ]
+            },
+            {
+              "id": "kin325",
+              "title": "Food Economics",
+              "codes": [
+                "KIN-325"
+              ]
+            },
+            {
+              "id": "kin330",
+              "title": "Lifecycle Nutrition I",
+              "codes": [
+                "KIN-330"
+              ]
+            },
+            {
+              "id": "kin430",
+              "title": "Lifecycle Nutrition II",
+              "codes": [
+                "KIN-430"
+              ]
+            },
+            {
+              "id": "kin435",
+              "title": "Medical Nutrition Therapy",
+              "codes": [
+                "KIN-435"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "bio155",
+          "title": "Organismal and Ecological Biology",
+          "codes": [
+            "BIO-155"
+          ]
+        },
+        {
+          "id": "bio215",
+          "title": "Human Anatomy & Laboratory",
+          "codes": [
+            "BIO-215",
+            "BIO-215L"
+          ]
+        },
+        {
+          "id": "kin105",
+          "title": "Foundations of Physical Movement",
+          "codes": [
+            "KIN-105"
+          ]
+        },
+        {
+          "id": "kin115",
+          "title": "Fundamentals of Exercise and Nutrition",
+          "codes": [
+            "KIN-115"
+          ]
+        },
+        {
+          "id": "kin275",
+          "title": "Prevention and Care of Athletic Injuries & Laboratory",
+          "codes": [
+            "KIN-275"
+          ]
+        },
+        {
+          "id": "kin365",
+          "title": "Measurements/Evaluation and Prescription",
+          "codes": [
+            "KIN-365"
+          ]
+        },
+        {
+          "id": "kin442",
+          "title": "Physiology of Exercise",
+          "codes": [
+            "KIN-442"
+          ]
+        },
+        {
+          "id": "kin495",
+          "title": "Kinesiology",
+          "codes": [
+            "KIN-495"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "physiology",
+      "label": "One Human Physiology Course",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "bio225",
+          "title": "Human Physiology",
+          "codes": [
+            "BIO-225"
+          ]
+        },
+        {
+          "id": "bio375",
+          "title": "Integrated Human Physiology & Laboratory",
+          "codes": [
+            "BIO-375",
+            "BIO-375L"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pre_health",
+      "label": "Pre-Health Professions Group",
+      "type": "all",
+      "items": [
+        {
+          "id": "kin110",
+          "title": "Emergency Life Skills (0.5 credit)",
+          "codes": [
+            "KIN-110"
+          ]
+        },
+        {
+          "id": "kin310",
+          "title": "Athletic Injury Evaluation",
+          "codes": [
+            "KIN-310"
+          ]
+        },
+        {
+          "id": "kin410",
+          "title": "Athletic Injury Treatment & Rehabilitation",
+          "codes": [
+            "KIN-410"
+          ]
+        }
+      ]
+    }
+  ]
+}
