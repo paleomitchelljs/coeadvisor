@@ -1,0 +1,155 @@
+{
+  "id": "kinesiology_teaching_major_2026-27",
+  "name": "Kinesiology — Physical Education",
+  "program_type": "major",
+  "catalog_year": "2026-27",
+  "major_code": "KIN",
+  "source": "Academic Catalog 2026-27, p. 152",
+  "concentrations": [
+    {
+      "id": "nutrition",
+      "name": "Nutrition",
+      "note": "Offered online through a consortium of accredited colleges and universities via Rize Education; students register through Coe and receive Coe credit. Students are strongly encouraged to meet with Kinesiology faculty for informal advising; additional coursework may be needed for graduate study in Nutrition or Dietetics.",
+      "sections": [
+        {
+          "id": "nutr_core",
+          "label": "Required Courses",
+          "type": "all",
+          "items": [
+            {
+              "id": "bio145",
+              "title": "Cellular and Molecular Biology and Laboratory (WE)",
+              "codes": [
+                "BIO-145",
+                "BIO-145L"
+              ]
+            },
+            {
+              "id": "chm121",
+              "title": "General Chemistry I and Laboratory",
+              "codes": [
+                "CHM-121",
+                "CHM-121L"
+              ]
+            },
+            {
+              "id": "chm122",
+              "title": "General Chemistry II and Laboratory",
+              "codes": [
+                "CHM-122",
+                "CHM-122L"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "nutr_rize",
+          "label": "Three Rize Education Nutrition Courses",
+          "type": "choose_n",
+          "n": 3,
+          "options": [
+            {
+              "id": "kin220",
+              "title": "Food Science",
+              "codes": [
+                "KIN-220"
+              ]
+            },
+            {
+              "id": "kin325",
+              "title": "Food Economics",
+              "codes": [
+                "KIN-325"
+              ]
+            },
+            {
+              "id": "kin330",
+              "title": "Lifecycle Nutrition I",
+              "codes": [
+                "KIN-330"
+              ]
+            },
+            {
+              "id": "kin430",
+              "title": "Lifecycle Nutrition II",
+              "codes": [
+                "KIN-430"
+              ]
+            },
+            {
+              "id": "kin435",
+              "title": "Medical Nutrition Therapy",
+              "codes": [
+                "KIN-435"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "anatomy",
+      "label": "Anatomy Requirement",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "bio103",
+          "title": "Anatomy and Physiology",
+          "codes": [
+            "BIO-103"
+          ]
+        },
+        {
+          "id": "bio215_225",
+          "title": "Human Anatomy + Human Physiology",
+          "codes": [
+            "BIO-215",
+            "BIO-225"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "emphasis",
+      "label": "Education Emphasis",
+      "type": "choose_one",
+      "description": "Choose Secondary Education or Elementary Education emphasis.",
+      "options": [
+        {
+          "id": "secondary_ed",
+          "title": "Secondary Education Emphasis",
+          "codes": [
+            "BIO-155",
+            "KIN-105",
+            "KIN-165",
+            "KIN-225",
+            "KIN-275",
+            "KIN-347",
+            "KIN-365",
+            "KIN-415",
+            "KIN-440",
+            "KIN-442",
+            "KIN-495"
+          ]
+        },
+        {
+          "id": "elementary_ed",
+          "title": "Elementary Education Emphasis",
+          "codes": [
+            "BIO-155",
+            "KIN-105",
+            "KIN-165",
+            "KIN-225",
+            "KIN-275",
+            "KIN-347",
+            "KIN-315",
+            "KIN-440",
+            "KIN-442"
+          ]
+        }
+      ]
+    }
+  ]
+}

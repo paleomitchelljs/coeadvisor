@@ -1,0 +1,22 @@
+{
+  "id": "religion_minor_2026-27",
+  "name": "Religion",
+  "program_type": "minor",
+  "catalog_year": "2026-27",
+  "major_code": "REL",
+  "source": "Academic Catalog 2026-27, p. 192",
+  "sections": [
+    {
+      "id": "courses",
+      "label": "Five Religion Courses",
+      "type": "open_n",
+      "n": 5,
+      "description": "Any five courses in Religion.",
+      "constraints": {
+        "prefixes": [
+          "REL"
+        ]
+      }
+    }
+  ]
+}

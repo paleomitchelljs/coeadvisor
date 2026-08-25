@@ -1,0 +1,60 @@
+{
+  "id": "spanish_major_2026-27",
+  "name": "Spanish",
+  "program_type": "major",
+  "catalog_year": "2026-27",
+  "major_code": "SPA",
+  "source": "Academic Catalog 2026-27, p. 201",
+  "note": "Grade of C (2.0) or higher required in all courses counted toward the major. A minimum of eight courses in Spanish beyond Intermediate Spanish II (SPA-225); one class in translation (e.g. SPA-148, SPA-457, ENG-357, or other) may count as one of the eight. Elementary Spanish (SPA-115/125), Spanish Review and Preparation (SPA-135), and Intermediate Spanish (SPA-215/225) are skill-building courses and do not count toward the major. Students may substitute approved study abroad for up to three courses. Students selecting Spanish as a second teaching field should complete at least four Spanish courses numbered 315 or above.",
+  "sections": [
+    {
+      "id": "lit_culture",
+      "label": "Introduction to Hispanic Literature or Hispanic Life and Culture",
+      "type": "choose_one",
+      "description": "Either SPA-345 or SPA-336/SPA-338 must be taken as part of the eight credits.",
+      "options": [
+        {
+          "id": "spa345",
+          "title": "Introduction to Hispanic Literature (WE)",
+          "codes": [
+            "SPA-345"
+          ]
+        },
+        {
+          "id": "spa336",
+          "title": "Hispanic Life and Culture",
+          "codes": [
+            "SPA-336"
+          ]
+        },
+        {
+          "id": "spa338",
+          "title": "Hispanic Life and Culture",
+          "codes": [
+            "SPA-338"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "electives",
+      "label": "Eight Courses Beyond SPA-225",
+      "type": "open_n",
+      "n": 8,
+      "description": "A minimum of eight courses in Spanish beyond SPA-225. One class in translation (SPA-148, SPA-457, ENG-357, or other) may count as one of the eight.",
+      "constraints": {
+        "prefixes": [
+          "SPA"
+        ],
+        "exclude_codes": [
+          "SPA-115",
+          "SPA-125",
+          "SPA-129",
+          "SPA-135",
+          "SPA-215",
+          "SPA-225"
+        ]
+      }
+    }
+  ]
+}

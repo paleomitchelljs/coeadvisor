@@ -80,8 +80,11 @@ def load_programs(programs_dir):
         if not subdir.is_dir() or subdir.name.startswith((".", "_")):
             continue
         year_label = subdir.name          # e.g. "2025-26"
+        files = sorted(subdir.glob("*.json"))
+        if not files:
+            continue                      # empty folder: not a real catalog year
         catalog_years.add(year_label)
-        for fp in sorted(subdir.glob("*.json")):
+        for fp in files:
             data = load_json(fp)
             # Ensure catalog_year matches the folder
             data["catalog_year"] = year_label

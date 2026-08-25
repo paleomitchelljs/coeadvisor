@@ -1,0 +1,194 @@
+{
+  "id": "computer_science_major_2026-27",
+  "name": "Computer Science",
+  "program_type": "major",
+  "catalog_year": "2026-27",
+  "major_code": "CS",
+  "source": "Academic Catalog 2026-27, p. 108",
+  "note": "CS-105 Computers and Society and CS-205 Competitive Programming do not satisfy any of the requirements for a major in Computer Science.",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "cs110",
+          "title": "Introduction to Programming (or commensurate programming experience)",
+          "codes": [
+            "CS-110"
+          ]
+        },
+        {
+          "id": "cs115",
+          "title": "Data Structures",
+          "codes": [
+            "CS-115"
+          ]
+        },
+        {
+          "id": "cs210",
+          "title": "Object Oriented Software Development",
+          "codes": [
+            "CS-210"
+          ]
+        },
+        {
+          "id": "cs215",
+          "title": "Analysis of Algorithms",
+          "codes": [
+            "CS-215"
+          ]
+        },
+        {
+          "id": "cs220",
+          "title": "Principles of Computer Systems",
+          "codes": [
+            "CS-220"
+          ]
+        },
+        {
+          "id": "mth215",
+          "title": "Foundations of Advanced Mathematics (WE)",
+          "codes": [
+            "MTH-215"
+          ]
+        },
+        {
+          "id": "cs480",
+          "title": "Software Engineering Capstone (WE)",
+          "codes": [
+            "CS-480"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "intro_math",
+      "label": "One Introductory Mathematics Course",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "mth135",
+          "title": "Calculus I",
+          "codes": [
+            "MTH-135"
+          ]
+        },
+        {
+          "id": "mth165",
+          "title": "Computational Linear Algebra",
+          "codes": [
+            "MTH-165"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "programming",
+      "label": "One Programming Paradigm Course",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "cs230",
+          "title": "Web Programming",
+          "codes": [
+            "CS-230"
+          ]
+        },
+        {
+          "id": "ds230",
+          "title": "Data-Centric Programming",
+          "codes": [
+            "DS-230"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "applications",
+      "label": "Three Computer Science Application Courses",
+      "type": "choose_n",
+      "n": 3,
+      "options": [
+        {
+          "id": "cs320",
+          "title": "Operating Systems",
+          "codes": [
+            "CS-320"
+          ]
+        },
+        {
+          "id": "cs330",
+          "title": "Cyber-Physical Systems",
+          "codes": [
+            "CS-330"
+          ]
+        },
+        {
+          "id": "cs340",
+          "title": "Programming Languages",
+          "codes": [
+            "CS-340"
+          ]
+        },
+        {
+          "id": "cs350",
+          "title": "Computer Graphics",
+          "codes": [
+            "CS-350"
+          ]
+        },
+        {
+          "id": "cs384",
+          "title": "Special Topics: Applications",
+          "codes": [
+            "CS-384"
+          ]
+        },
+        {
+          "id": "ds315",
+          "title": "Machine Learning",
+          "codes": [
+            "DS-315"
+          ]
+        },
+        {
+          "id": "ds370",
+          "title": "Database Systems and Data Management",
+          "codes": [
+            "DS-370"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "advanced_software_dev",
+      "label": "One Advanced Software Development Course",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "cs410",
+          "title": "Interactive Systems Design",
+          "codes": [
+            "CS-410"
+          ]
+        },
+        {
+          "id": "cs430",
+          "title": "Software Development for Web Applications",
+          "codes": [
+            "CS-430"
+          ]
+        },
+        {
+          "id": "cs440",
+          "title": "Mobile Computing",
+          "codes": [
+            "CS-440"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -225,13 +225,16 @@ function checkSection(section, taken) {
   if (stype === "choose_n") {
     const n = section.n || 1;
     let count = 0;
-    const items = (section.items || []).map(item => {
+    // Program files write these as "options"; accept "items" too.
+    const items = (section.items || section.options || []).map(item => {
       const { sat, found } = codesSatisfied(item.codes || [], taken);
       if (sat) count++;
       return { ...item, satisfied: sat, found };
     });
     const status = count >= n ? COMPLETE : (count > 0 ? PARTIAL : INCOMPLETE);
-    return { ...section, items, satisfied_count: count, status, message: `${count}/${n} selected` };
+    const result = { ...section, items, satisfied_count: count, status, message: `${count}/${n} selected` };
+    delete result.options;   // evaluated entries live in "items"
+    return result;
   }
 
   if (stype === "open_n") {

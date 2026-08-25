@@ -1,0 +1,81 @@
+{
+  "id": "computer_science_minor_2026-27",
+  "name": "Computer Science",
+  "program_type": "minor",
+  "catalog_year": "2026-27",
+  "major_code": "CS",
+  "source": "Academic Catalog 2026-27, p. 109",
+  "note": "CS-105 Computers and Society and CS-205 Competitive Programming do not satisfy any of the requirements for a minor in Computer Science.",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "cs110",
+          "title": "Introduction to Programming",
+          "codes": [
+            "CS-110"
+          ]
+        },
+        {
+          "id": "cs115",
+          "title": "Data Structures",
+          "codes": [
+            "CS-115"
+          ]
+        },
+        {
+          "id": "cs210",
+          "title": "Object Oriented Software Development",
+          "codes": [
+            "CS-210"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cs_200_electives",
+      "label": "Two Additional CS Courses (200+)",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two additional Computer Science courses numbered 200 or higher.",
+      "constraints": {
+        "prefixes": [
+          "CS"
+        ],
+        "min_level": 200,
+        "min_level_count": 2,
+        "exclude_codes": [
+          "CS-105",
+          "CS-110",
+          "CS-115",
+          "CS-205",
+          "CS-210"
+        ]
+      }
+    },
+    {
+      "id": "cs_300_elective",
+      "label": "One Additional CS Course (300+)",
+      "type": "open_n",
+      "n": 1,
+      "description": "One additional Computer Science course numbered 300 or higher.",
+      "constraints": {
+        "prefixes": [
+          "CS"
+        ],
+        "min_level": 300,
+        "min_level_count": 1,
+        "exclude_codes": [
+          "CS-105",
+          "CS-110",
+          "CS-115",
+          "CS-205",
+          "CS-210"
+        ]
+      }
+    }
+  ]
+}

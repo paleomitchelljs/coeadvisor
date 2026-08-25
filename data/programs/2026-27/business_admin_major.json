@@ -1,0 +1,1058 @@
+{
+  "id": "business_admin_major_2026-27",
+  "name": "Business Administration",
+  "program_type": "major",
+  "catalog_year": "2026-27",
+  "major_code": "BUS",
+  "source": "Academic Catalog 2026-27, p. 81",
+  "concentrations": [
+    {
+      "id": "aviation_studies",
+      "name": "Aviation Studies",
+      "note": "Intended for Coe students who do not plan to complete the flight operations courses.",
+      "sections": [
+        {
+          "id": "avs_courses",
+          "label": "Aviation Studies Courses",
+          "type": "all",
+          "items": [
+            {
+              "id": "avs101",
+              "title": "Introduction to Aviation",
+              "codes": [
+                "AVS-101"
+              ]
+            },
+            {
+              "id": "avs201",
+              "title": "Principles of Meteorology and Laboratory",
+              "codes": [
+                "AVS-201",
+                "AVS-201L"
+              ]
+            },
+            {
+              "id": "avs301",
+              "title": "Applied Aerodynamics",
+              "codes": [
+                "AVS-301"
+              ]
+            },
+            {
+              "id": "avs302",
+              "title": "Human Factors",
+              "codes": [
+                "AVS-302"
+              ]
+            },
+            {
+              "id": "avs401",
+              "title": "Aviation Seminar (WE)",
+              "codes": [
+                "AVS-401"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "flight_operations",
+      "name": "Flight Operations",
+      "note": "Intended only for Coe students admitted into Coe's aviation program who plan to take the flight operations courses.",
+      "sections": [
+        {
+          "id": "avs_flight_courses",
+          "label": "Flight Operations Courses",
+          "type": "all",
+          "items": [
+            {
+              "id": "avs101",
+              "title": "Introduction to Aviation",
+              "codes": [
+                "AVS-101"
+              ]
+            },
+            {
+              "id": "avs201",
+              "title": "Principles of Meteorology and Laboratory",
+              "codes": [
+                "AVS-201",
+                "AVS-201L"
+              ]
+            },
+            {
+              "id": "avs301",
+              "title": "Applied Aerodynamics",
+              "codes": [
+                "AVS-301"
+              ]
+            },
+            {
+              "id": "avs302",
+              "title": "Human Factors",
+              "codes": [
+                "AVS-302"
+              ]
+            },
+            {
+              "id": "avs315",
+              "title": "Aviation Law",
+              "codes": [
+                "AVS-315"
+              ]
+            },
+            {
+              "id": "avs402",
+              "title": "Aircraft Systems",
+              "codes": [
+                "AVS-402"
+              ]
+            },
+            {
+              "id": "avs403",
+              "title": "Aviation Safety (WE)",
+              "codes": [
+                "AVS-403"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "flight_ops",
+          "label": "All Required Flight Operations Courses",
+          "type": "non_course",
+          "description": "Complete all courses listed under Required Flight Operations courses (Academic Catalog 2026-27, p. 68)."
+        }
+      ]
+    },
+    {
+      "id": "finance_conc",
+      "name": "Finance",
+      "sections": [
+        {
+          "id": "fin_required",
+          "label": "Required Finance Courses",
+          "type": "all",
+          "items": [
+            {
+              "id": "bus350",
+              "title": "Principles of Finance",
+              "codes": [
+                "BUS-350"
+              ]
+            },
+            {
+              "id": "bus472",
+              "title": "Advanced Topics in Finance",
+              "codes": [
+                "BUS-472"
+              ]
+            },
+            {
+              "id": "bus495",
+              "title": "Investment Analysis",
+              "codes": [
+                "BUS-495"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fin_electives",
+          "label": "Two Additional Finance Courses",
+          "type": "choose_n",
+          "n": 2,
+          "options": [
+            {
+              "id": "eco225",
+              "title": "Money and Banking",
+              "codes": [
+                "ECO-225"
+              ]
+            },
+            {
+              "id": "acc301",
+              "title": "Intermediate Accounting I",
+              "codes": [
+                "ACC-301"
+              ]
+            },
+            {
+              "id": "eco375",
+              "title": "Econometrics (WE)",
+              "codes": [
+                "ECO-375"
+              ]
+            },
+            {
+              "id": "eco435",
+              "title": "Time Series Analysis",
+              "codes": [
+                "ECO-435"
+              ]
+            },
+            {
+              "id": "bus454",
+              "title": "Research in Business — Birkey Investment Fund",
+              "codes": [
+                "BUS-454"
+              ]
+            },
+            {
+              "id": "eco457",
+              "title": "U.S. Economic History",
+              "codes": [
+                "ECO-457"
+              ]
+            },
+            {
+              "id": "bus472b",
+              "title": "Advanced Topics in Finance (different topic)",
+              "codes": [
+                "BUS-472"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "healthcare_admin",
+      "name": "Healthcare Administration",
+      "note": "Offered online through a consortium of accredited colleges and universities via Rize Education; students register through Coe and receive Coe credit.",
+      "sections": [
+        {
+          "id": "hc_health",
+          "label": "One Health Systems/Economics Course",
+          "type": "choose_one",
+          "options": [
+            {
+              "id": "eco247",
+              "title": "Health Economics",
+              "codes": [
+                "ECO-247"
+              ]
+            },
+            {
+              "id": "hss200",
+              "title": "Comparative Health Systems",
+              "codes": [
+                "HSS-200"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hc_required",
+          "label": "Required Course",
+          "type": "all",
+          "items": [
+            {
+              "id": "bus300",
+              "title": "Human Resource Management",
+              "codes": [
+                "BUS-300"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hc_elective",
+          "label": "One Supporting Course",
+          "type": "choose_one",
+          "options": [
+            {
+              "id": "ds100",
+              "title": "Introduction to Data Science",
+              "codes": [
+                "DS-100"
+              ]
+            },
+            {
+              "id": "phl200",
+              "title": "Biomedical Ethics (WE)",
+              "codes": [
+                "PHL-200"
+              ]
+            },
+            {
+              "id": "com332",
+              "title": "Health Communication (WE)",
+              "codes": [
+                "COM-332"
+              ]
+            },
+            {
+              "id": "pol350",
+              "title": "U.S. Social Policy Process (WE)",
+              "codes": [
+                "POL-350"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hc_rize",
+          "label": "Two Rize Education Healthcare Courses",
+          "type": "choose_n",
+          "n": 2,
+          "options": [
+            {
+              "id": "bus312",
+              "title": "Healthcare Justice, Law, and Ethics",
+              "codes": [
+                "BUS-312"
+              ]
+            },
+            {
+              "id": "bus342",
+              "title": "Data-Driven Healthcare",
+              "codes": [
+                "BUS-342"
+              ]
+            },
+            {
+              "id": "bus353",
+              "title": "Healthcare Finance",
+              "codes": [
+                "BUS-353"
+              ]
+            },
+            {
+              "id": "bus390",
+              "title": "Strategic Healthcare Operations",
+              "codes": [
+                "BUS-390"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "international_business",
+      "name": "International Business",
+      "sections": [
+        {
+          "id": "ib_required",
+          "label": "Required Course",
+          "type": "all",
+          "items": [
+            {
+              "id": "bus446",
+              "title": "International Business Management",
+              "codes": [
+                "BUS-446"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ib_intl_courses",
+          "label": "Two International Courses",
+          "type": "choose_n",
+          "n": 2,
+          "options": [
+            {
+              "id": "bus456",
+              "title": "Advanced Topics in Global Business",
+              "codes": [
+                "BUS-456"
+              ]
+            },
+            {
+              "id": "eco336",
+              "title": "Divergent Economic Growth",
+              "codes": [
+                "ECO-336"
+              ]
+            },
+            {
+              "id": "eco436",
+              "title": "Economic Development",
+              "codes": [
+                "ECO-436"
+              ]
+            },
+            {
+              "id": "eco446",
+              "title": "International Economics",
+              "codes": [
+                "ECO-446"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ib_global",
+          "label": "One Global Perspective Course",
+          "type": "choose_one",
+          "description": "One course in a world language numbered 115 or above, or one course with an international focus outside the department with department chair approval, also satisfies this requirement.",
+          "options": [
+            {
+              "id": "com236",
+              "title": "Intercultural Communication (WE)",
+              "codes": [
+                "COM-236"
+              ]
+            },
+            {
+              "id": "is116",
+              "title": "Introduction to International Studies",
+              "codes": [
+                "IS-116"
+              ]
+            },
+            {
+              "id": "pol258",
+              "title": "World Politics (WE)",
+              "codes": [
+                "POL-258"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ib_experience",
+          "label": "One International Experience",
+          "type": "non_course",
+          "description": "A semester abroad, a May Experiential Term abroad, a capstone project in international business, or an internship in international business supervised by a business faculty member."
+        }
+      ]
+    },
+    {
+      "id": "management_conc",
+      "name": "Management",
+      "sections": [
+        {
+          "id": "mgmt_required",
+          "label": "Required Course",
+          "type": "all",
+          "items": [
+            {
+              "id": "bus250",
+              "title": "Principles of Management",
+              "codes": [
+                "BUS-250"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mgmt_electives",
+          "label": "Four Management Courses",
+          "type": "choose_n",
+          "n": 4,
+          "options": [
+            {
+              "id": "bus300",
+              "title": "Human Resource Management",
+              "codes": [
+                "BUS-300"
+              ]
+            },
+            {
+              "id": "bus375",
+              "title": "Business Ethics (WE)",
+              "codes": [
+                "BUS-375"
+              ]
+            },
+            {
+              "id": "bus387",
+              "title": "Advanced Topics in HR Management (WE)",
+              "codes": [
+                "BUS-387"
+              ]
+            },
+            {
+              "id": "bus395",
+              "title": "Organizational Behavior",
+              "codes": [
+                "BUS-395"
+              ]
+            },
+            {
+              "id": "bus446",
+              "title": "International Business Management",
+              "codes": [
+                "BUS-446"
+              ]
+            },
+            {
+              "id": "bus454",
+              "title": "Research in Business",
+              "codes": [
+                "BUS-454"
+              ]
+            },
+            {
+              "id": "bus464",
+              "title": "Seminar in Management (WE)",
+              "codes": [
+                "BUS-464"
+              ]
+            },
+            {
+              "id": "bus470",
+              "title": "Strategic Management (WE)",
+              "codes": [
+                "BUS-470"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "marketing_conc",
+      "name": "Marketing",
+      "sections": [
+        {
+          "id": "mktg_required",
+          "label": "Required Course",
+          "type": "all",
+          "items": [
+            {
+              "id": "bus330",
+              "title": "Principles of Marketing (WE)",
+              "codes": [
+                "BUS-330"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mktg_electives",
+          "label": "Four Marketing Courses",
+          "type": "choose_n",
+          "n": 4,
+          "options": [
+            {
+              "id": "bus280_281",
+              "title": "Business Websites AND Social Media in Business",
+              "codes": [
+                "BUS-280",
+                "BUS-281"
+              ]
+            },
+            {
+              "id": "bus420",
+              "title": "Sports Marketing and Communications",
+              "codes": [
+                "BUS-420"
+              ]
+            },
+            {
+              "id": "bus460",
+              "title": "Advertising (WE)",
+              "codes": [
+                "BUS-460"
+              ]
+            },
+            {
+              "id": "bus461",
+              "title": "Marketing Decision-Making and Analysis (WE)",
+              "codes": [
+                "BUS-461"
+              ]
+            },
+            {
+              "id": "bus465",
+              "title": "Advanced Topics in Marketing",
+              "codes": [
+                "BUS-465"
+              ]
+            },
+            {
+              "id": "bus470",
+              "title": "Strategic Management (WE)",
+              "codes": [
+                "BUS-470"
+              ]
+            },
+            {
+              "id": "bus454",
+              "title": "Research in Business",
+              "codes": [
+                "BUS-454"
+              ]
+            },
+            {
+              "id": "pr205",
+              "title": "Public Relations (WE)",
+              "codes": [
+                "PR-205"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "risk_management",
+      "name": "Risk Management/Insurance",
+      "sections": [
+        {
+          "id": "risk_required",
+          "label": "Required Courses",
+          "type": "all",
+          "items": [
+            {
+              "id": "bus350",
+              "title": "Principles of Finance",
+              "codes": [
+                "BUS-350"
+              ]
+            },
+            {
+              "id": "ds100",
+              "title": "Introduction to Data Science",
+              "codes": [
+                "DS-100"
+              ]
+            },
+            {
+              "id": "bus310",
+              "title": "Insurance Company Operations",
+              "codes": [
+                "BUS-310"
+              ]
+            },
+            {
+              "id": "bus311",
+              "title": "Personal and Business Risk Management",
+              "codes": [
+                "BUS-311"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "risk_elective",
+          "label": "One Additional Risk/Insurance Course",
+          "type": "choose_one",
+          "options": [
+            {
+              "id": "eco247",
+              "title": "Health Economics",
+              "codes": [
+                "ECO-247"
+              ]
+            },
+            {
+              "id": "bus341",
+              "title": "Introductory Business Analytics",
+              "codes": [
+                "BUS-341"
+              ]
+            },
+            {
+              "id": "bus411",
+              "title": "Advanced Topics in Risk Management/Insurance",
+              "codes": [
+                "BUS-411"
+              ]
+            },
+            {
+              "id": "bus454",
+              "title": "Research in Business",
+              "codes": [
+                "BUS-454"
+              ]
+            },
+            {
+              "id": "bus494",
+              "title": "Internship in Business",
+              "codes": [
+                "BUS-494"
+              ]
+            },
+            {
+              "id": "bus495",
+              "title": "Investment Analysis",
+              "codes": [
+                "BUS-495"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sports_management",
+      "name": "Sports Management",
+      "sections": [
+        {
+          "id": "smt_required",
+          "label": "Required Course",
+          "type": "all",
+          "items": [
+            {
+              "id": "smt100",
+              "title": "Introduction to Sports Management",
+              "codes": [
+                "SMT-100"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "smt_electives",
+          "label": "Four Sports Management Courses",
+          "type": "choose_n",
+          "n": 4,
+          "options": [
+            {
+              "id": "ds120",
+              "title": "Sports Analytics",
+              "codes": [
+                "DS-120"
+              ]
+            },
+            {
+              "id": "bus400",
+              "title": "Legal Issues in Sports",
+              "codes": [
+                "BUS-400"
+              ]
+            },
+            {
+              "id": "bus420",
+              "title": "Sports Marketing and Communication",
+              "codes": [
+                "BUS-420"
+              ]
+            },
+            {
+              "id": "bus454",
+              "title": "Research in Business",
+              "codes": [
+                "BUS-454"
+              ]
+            },
+            {
+              "id": "smt300",
+              "title": "Sport/Recreation Event Management",
+              "codes": [
+                "SMT-300"
+              ]
+            },
+            {
+              "id": "smt450",
+              "title": "Seminar in Sports Management",
+              "codes": [
+                "SMT-450"
+              ]
+            },
+            {
+              "id": "smt494",
+              "title": "Internship in Sports Management",
+              "codes": [
+                "SMT-494"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "supply_chain",
+      "name": "Supply Chain Management",
+      "note": "Offered online through a consortium of accredited colleges and universities via Rize Education; students register through Coe and receive Coe credit.",
+      "sections": [
+        {
+          "id": "sc_data",
+          "label": "One Data Analysis Course",
+          "type": "choose_one",
+          "options": [
+            {
+              "id": "bus340",
+              "title": "Applied Regression Analysis",
+              "codes": [
+                "BUS-340"
+              ]
+            },
+            {
+              "id": "bus341",
+              "title": "Introductory Business Analytics",
+              "codes": [
+                "BUS-341"
+              ]
+            },
+            {
+              "id": "eco375",
+              "title": "Econometrics (WE)",
+              "codes": [
+                "ECO-375"
+              ]
+            },
+            {
+              "id": "ds260",
+              "title": "Data Analysis and Visualization",
+              "codes": [
+                "DS-260"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sc_global",
+          "label": "One Global Strategy Course",
+          "type": "choose_one",
+          "options": [
+            {
+              "id": "bus446",
+              "title": "International Business Management",
+              "codes": [
+                "BUS-446"
+              ]
+            },
+            {
+              "id": "eco446",
+              "title": "International Economics",
+              "codes": [
+                "ECO-446"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sc_rize_core",
+          "label": "Required Rize Education Courses",
+          "type": "all",
+          "items": [
+            {
+              "id": "bus346",
+              "title": "Forecasting & Logistics",
+              "codes": [
+                "BUS-346"
+              ]
+            },
+            {
+              "id": "bus381",
+              "title": "Sourcing & Operations",
+              "codes": [
+                "BUS-381"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sc_rize_elective",
+          "label": "One Additional Rize Education Course",
+          "type": "choose_one",
+          "options": [
+            {
+              "id": "bus442",
+              "title": "Supply Chain Management Technologies",
+              "codes": [
+                "BUS-442"
+              ]
+            },
+            {
+              "id": "bus459",
+              "title": "Supply Chain In Action",
+              "codes": [
+                "BUS-459"
+              ]
+            },
+            {
+              "id": "bus463",
+              "title": "Capstone in Supply Chain Management",
+              "codes": [
+                "BUS-463"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Core Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "acc171",
+          "title": "Principles of Accounting I",
+          "codes": [
+            "ACC-171"
+          ]
+        },
+        {
+          "id": "eco175",
+          "title": "Principles of Macroeconomics",
+          "codes": [
+            "ECO-175"
+          ]
+        },
+        {
+          "id": "bus190",
+          "title": "Statistical Analysis",
+          "codes": [
+            "BUS-190"
+          ]
+        },
+        {
+          "id": "acc215",
+          "title": "Principles of Accounting II",
+          "codes": [
+            "ACC-215"
+          ]
+        },
+        {
+          "id": "eco215",
+          "title": "Principles of Microeconomics",
+          "codes": [
+            "ECO-215"
+          ]
+        },
+        {
+          "id": "bus315",
+          "title": "Business Law I",
+          "codes": [
+            "BUS-315"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "management",
+      "label": "One Management Course",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "bus250",
+          "title": "Principles of Management",
+          "codes": [
+            "BUS-250"
+          ]
+        },
+        {
+          "id": "bus300",
+          "title": "Human Resource Management",
+          "codes": [
+            "BUS-300"
+          ]
+        },
+        {
+          "id": "bus387",
+          "title": "Advanced Topics in Human Resource Management (WE)",
+          "codes": [
+            "BUS-387"
+          ]
+        },
+        {
+          "id": "bus470",
+          "title": "Strategic Management",
+          "codes": [
+            "BUS-470"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "marketing",
+      "label": "One Marketing Course",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "bus330",
+          "title": "Principles of Marketing (WE)",
+          "codes": [
+            "BUS-330"
+          ]
+        },
+        {
+          "id": "bus460",
+          "title": "Advertising (WE)",
+          "codes": [
+            "BUS-460"
+          ]
+        },
+        {
+          "id": "bus465",
+          "title": "Advanced Topics in Marketing",
+          "codes": [
+            "BUS-465"
+          ]
+        },
+        {
+          "id": "bus467",
+          "title": "Consumer Behavior",
+          "codes": [
+            "BUS-467"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "finance",
+      "label": "One Finance Course",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "eco225",
+          "title": "Money and Banking",
+          "codes": [
+            "ECO-225"
+          ]
+        },
+        {
+          "id": "bus350",
+          "title": "Principles of Finance",
+          "codes": [
+            "BUS-350"
+          ]
+        },
+        {
+          "id": "bus352",
+          "title": "Corporate Finance",
+          "codes": [
+            "BUS-352"
+          ]
+        },
+        {
+          "id": "bus495",
+          "title": "Investment Analysis",
+          "codes": [
+            "BUS-495"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "additional",
+      "label": "Two Additional Business Courses (200+)",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two additional BUS courses numbered 200 or above.",
+      "constraints": {
+        "prefixes": [
+          "BUS"
+        ],
+        "min_level": 200,
+        "min_level_count": 2,
+        "exclude_codes": [
+          "BUS-190",
+          "BUS-315",
+          "BUS-250",
+          "BUS-300",
+          "BUS-387",
+          "BUS-470",
+          "BUS-330",
+          "BUS-460",
+          "BUS-465",
+          "BUS-467",
+          "BUS-350",
+          "BUS-352",
+          "BUS-495"
+        ]
+      }
+    }
+  ]
+}
