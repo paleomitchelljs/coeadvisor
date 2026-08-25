@@ -9,6 +9,7 @@
     {
       "id": "multimedia_graphic_design",
       "name": "Multimedia Graphic Design",
+      "note": "Recommended courses in the art major: ART-104 Digital Photography, ART-145 Digital Studio, ART-350 Advanced Digital Research I, ART-355 Advanced Digital Research II, ARH-270 History of Design.",
       "sections": [
         {
           "id": "mgd_required",
@@ -37,152 +38,17 @@
               ]
             },
             {
-              "id": "arh270",
-              "title": "History of Design",
+              "id": "art306",
+              "title": "Branding for Non-Profits",
               "codes": [
-                "ARH-270"
+                "ART-306"
               ]
             },
             {
-              "id": "bus280_281",
-              "title": "Computer Applications: Business Websites AND Social Media",
+              "id": "art307",
+              "title": "Motion Graphics",
               "codes": [
-                "BUS-280",
-                "BUS-281"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "media_production",
-      "name": "Media Production",
-      "sections": [
-        {
-          "id": "mp_required",
-          "label": "Required Courses",
-          "type": "all",
-          "items": [
-            {
-              "id": "art150",
-              "title": "Time-Based Media",
-              "codes": [
-                "ART-150"
-              ]
-            },
-            {
-              "id": "art350",
-              "title": "Advanced Digital Research I",
-              "codes": [
-                "ART-350"
-              ]
-            },
-            {
-              "id": "com151",
-              "title": "Introduction to New Media Studies (WE)",
-              "codes": [
-                "COM-151"
-              ]
-            }
-          ]
-        },
-        {
-          "id": "mp_electives",
-          "label": "Two of the Following",
-          "type": "choose_n",
-          "n": 2,
-          "options": [
-            {
-              "id": "com157",
-              "title": "Introduction to Media Analysis (WE)",
-              "codes": [
-                "COM-157"
-              ]
-            },
-            {
-              "id": "com161",
-              "title": "Visual Rhetoric",
-              "codes": [
-                "COM-161"
-              ]
-            },
-            {
-              "id": "com341",
-              "title": "Digital Storytelling (WE)",
-              "codes": [
-                "COM-341"
-              ]
-            },
-            {
-              "id": "crw350",
-              "title": "Screenwriting (WE)",
-              "codes": [
-                "CRW-350"
-              ]
-            },
-            {
-              "id": "art494",
-              "title": "Internship in Art",
-              "codes": [
-                "ART-494"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "nonprofit_arts_creative_leadership",
-      "name": "Non-Profit Arts and Creative Leadership",
-      "sections": [
-        {
-          "id": "nacl_required",
-          "label": "Required Courses",
-          "type": "all",
-          "items": [
-            {
-              "id": "ms283",
-              "title": "Arts Administration",
-              "codes": [
-                "MS-283"
-              ]
-            },
-            {
-              "id": "ms220",
-              "title": "Marketing the Museum (0.5 cc)",
-              "codes": [
-                "MS-220"
-              ]
-            },
-            {
-              "id": "art235",
-              "title": "Arts Advocacy (0.5 cc)",
-              "codes": [
-                "ART-235",
-                "MS-235"
-              ]
-            },
-            {
-              "id": "pr205",
-              "title": "Public Relations (WE)",
-              "codes": [
-                "PR-205"
-              ]
-            },
-            {
-              "id": "bus280_281",
-              "title": "Computer Applications: Business Websites AND Social Media",
-              "codes": [
-                "BUS-280",
-                "BUS-281"
-              ]
-            },
-            {
-              "id": "art494",
-              "title": "Internship in Art",
-              "codes": [
-                "ART-494"
+                "ART-307"
               ]
             }
           ]
