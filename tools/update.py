@@ -8,6 +8,7 @@ PDF (not the filename), extracts anything new, and rebuilds the web bundle.
     python3 tools/update.py --dry-run    # report what would happen
     python3 tools/update.py --force      # reprocess everything
     python3 tools/update.py --no-bundle  # skip the docs/data.js rebuild
+    python3 tools/update.py --check      # reconcile data against the catalog manifest
 
 Processed files are recorded in data/.processed.json by content hash, so
 re-running is cheap and a re-issued PDF is picked up automatically. To hold a
@@ -448,6 +449,129 @@ def process_class_list(pdf_path: Path, dry_run: bool) -> dict:
         return {"skipped": True}
 
 
+# ── coverage check ───────────────────────────────────────────────────────────
+#
+# Concentrations are the part of the catalog most likely to drift silently: a
+# collateral major becomes a concentration, a track is renamed, a department
+# adds three at once. They are also invisible to extract_programs.py, which
+# treats "Concentrations in X" as an end-of-program marker and has no
+# concentrations output at all — so nothing catches a miss unless we look.
+#
+# The catalog titles every concentration's detail block the same way, which
+# makes them cheap to enumerate directly from the body text:
+#
+#     Concentrations in Biology          <- group header, binds what follows
+#     Molecular Biology Concentration*
+#     Multimedia Graphic Design Concentration in Art   <- or an inline parent
+
+CONCENTRATION_RE = re.compile(
+    r"^(?P<name>[A-Z][A-Za-z&/\-,' ]{2,48}?)\s+Concentration\*?"
+    r"(?:\s+in\s+(?P<parent>[A-Z][A-Za-z ]{2,30}?))?\s*$")
+CONCENTRATION_GROUP_RE = re.compile(
+    r"^Concentrations? in (?P<parent>[A-Z][A-Za-z ]{2,30}?)\s*$")
+
+# The same idea under different names: Music uses "Emphasis", International
+# Studies uses "Track". The data models all three as `concentrations`, so the
+# check has to recognise them or they read as spurious extras.
+ALT_HEADING_RES = (
+    re.compile(r"^(?P<name>[A-Z][A-Za-z&/\-,' ]{2,48}?)\s+Emphasis\s*$"),
+    re.compile(r".*?[\u2014\u2013-]\s*(?P<name>[A-Z][A-Za-z' ]{2,48}?)\s+[Tt]rack\s*$"),
+    re.compile(r"^.+?\s+Major\s*[\u2014\u2013-]\s*(?P<name>[A-Z][A-Za-z' ]{2,48}?)\s*$"),
+)
+# Section titles that match the shape but are not programs.
+ALT_HEADING_SKIP = {"theatre major areas of"}
+
+
+def find_alt_headings(text: str) -> set:
+    """Emphasis/Track names — concentrations by another name."""
+    out = set()
+    for raw in text.split("\n"):
+        line = raw.strip()
+        for rx in ALT_HEADING_RES:
+            m = rx.match(line)
+            if m:
+                key = _norm_name(m.group("name"))
+                if key and key not in ALT_HEADING_SKIP:
+                    out.add(key)
+    return out
+
+
+def find_concentrations(pdf_path: Path) -> list:
+    """Every concentration the catalog documents, with its parent major."""
+    with pdfplumber.open(pdf_path) as pdf:
+        text = "\n".join((p.extract_text() or "") for p in pdf.pages)
+    parent, found, seen = None, [], set()
+    for raw in text.split("\n"):
+        line = raw.strip()
+        g = CONCENTRATION_GROUP_RE.match(line)
+        if g:
+            parent = g.group("parent")
+            continue
+        m = CONCENTRATION_RE.match(line)
+        if not m:
+            continue
+        name = m.group("name").strip()
+        key = _norm_name(name)
+        if key in seen:
+            continue
+        seen.add(key)
+        found.append({"name": name, "parent": m.group("parent") or parent})
+    return found, find_alt_headings(text)
+
+
+def _norm_name(s: str) -> str:
+    """Loose key for comparing program names across the catalog and the data.
+
+    The same option is written three ways — "Jazz Emphasis" in the data,
+    "Jazz" under an Emphasis heading, "The Global South Track" in a major
+    title — so the shared suffixes and a leading article are dropped.
+    """
+    s = re.sub(r"\s*\(.*?\)\s*", " ", s or "")
+    s = re.sub(r"[^a-z0-9]+", " ", s.lower())
+    s = " ".join(s.split())
+    s = re.sub(r"\s+(concentration|emphasis|track)$", "", s)
+    s = re.sub(r"^the\s+", "", s)
+    return s.strip()
+
+
+def check_coverage(year: str) -> int:
+    """Compare the concentrations in data/programs/<year>/ against the catalog."""
+    pdfs = [p for p in scan(CATALOGS_DIR, []) if detect_catalog_year(p) == year]
+    if not pdfs:
+        print(f"No catalog PDF found for {year}")
+        return 1
+    listed, alt = find_concentrations(pdfs[0])
+
+    year_dir = PROGRAMS_DIR / year
+    have = {}
+    for fp in sorted(year_dir.glob("*.json")):
+        d = json.loads(fp.read_text())
+        for c in d.get("concentrations", []) or []:
+            have[_norm_name(c.get("name", ""))] = (fp.name, d.get("name", ""))
+
+    print(f"\nConcentration coverage — {year}  ({pdfs[0].name})")
+    print(f"  catalog documents {len(listed)} concentration(s) "
+          f"plus {len(alt)} emphasis/track heading(s); data has {len(have)}")
+
+    missing = [c for c in listed if _norm_name(c["name"]) not in have]
+    known = {_norm_name(c["name"]) for c in listed} | alt
+    extra = {k: v for k, v in have.items() if k not in known}
+
+    if missing:
+        print(f"\n  MISSING from the data ({len(missing)}):")
+        for c in missing:
+            print(f"      - {c['name']}  (parent: {c['parent'] or '?'})")
+    if extra:
+        print(f"\n  In the data but NOT in this catalog ({len(extra)}):")
+        for k, (fname, prog) in sorted(extra.items()):
+            print(f"      - {k}  ({fname})")
+    if not missing and not extra:
+        print("\n  in sync.")
+    else:
+        print("\n  A rename shows up as one missing plus one extra; check before acting.")
+    return 0
+
+
 # ── main ────────────────────────────────────────────────────────────────────
 
 IGNORE_FILE = REPO / "data" / ".update_ignore"
@@ -488,10 +612,26 @@ def main() -> int:
                     help="reprocess files even if unchanged, overwriting extracted year data")
     ap.add_argument("--no-bundle", action="store_true",
                     help="skip rebuilding docs/data.js")
+    ap.add_argument("--check", metavar="YEAR", nargs="?", const="", default=None,
+                    help="reconcile data/programs/<YEAR>/ against the catalog's own "
+                         "Areas of Study manifest (majors, collaterals, minors, "
+                         "concentrations); defaults to the newest year")
     ap.add_argument("--seed-ge", action="store_true",
                     help="seed a missing ge.json from another year (flagged for review); "
                          "off by default because GE structure changes between regimes")
     args = ap.parse_args()
+
+    if args.check is not None:
+        year = args.check
+        if not year:
+            years = sorted((p.name for p in PROGRAMS_DIR.iterdir()
+                            if p.is_dir() and not p.name.startswith(("_", "."))),
+                           reverse=True)
+            if not years:
+                print("No program years found.")
+                return 1
+            year = years[0]
+        return check_coverage(year)
 
     manifest = load_manifest()
     files = manifest.setdefault("files", {})

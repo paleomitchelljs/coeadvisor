@@ -5,6 +5,406 @@
   "catalog_year": "2026-27",
   "major_code": "BIO",
   "source": "Academic Catalog 2026-27, p. 73",
+  "concentrations": [
+    {
+      "id": "environmental_ecological_science",
+      "name": "Environmental and Ecological Science",
+      "note": "Completion of at most six additional courses with a cumulative 2.0 GPA; at least three must be completed at Coe. Courses used for the biology major may also count toward the concentration. Students may declare only one concentration.",
+      "sections": [
+        {
+          "id": "ees_required",
+          "label": "Required Courses",
+          "type": "all",
+          "items": [
+            {
+              "id": "chm211",
+              "title": "Analytical Chemistry and Laboratory (WE)",
+              "codes": [
+                "CHM-211",
+                "CHM-211L"
+              ]
+            },
+            {
+              "id": "mth135",
+              "title": "Calculus I",
+              "codes": [
+                "MTH-135"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ees_electives",
+          "label": "Three Courses (two at 300+)",
+          "type": "choose_n",
+          "n": 3,
+          "description": "Three of the following, with two being at the 300 level or higher.",
+          "options": [
+            {
+              "id": "bio104",
+              "title": "Biodiversity",
+              "codes": [
+                "BIO-104"
+              ]
+            },
+            {
+              "id": "bio111",
+              "title": "Urban Ecology and Laboratory",
+              "codes": [
+                "BIO-111",
+                "BIO-111L"
+              ]
+            },
+            {
+              "id": "bio115",
+              "title": "Marine Biology",
+              "codes": [
+                "BIO-115"
+              ]
+            },
+            {
+              "id": "bio203",
+              "title": "Northwoods Ecology",
+              "codes": [
+                "BIO-203"
+              ]
+            },
+            {
+              "id": "bio205",
+              "title": "General Botany and Laboratory",
+              "codes": [
+                "BIO-205",
+                "BIO-205L"
+              ]
+            },
+            {
+              "id": "bio275",
+              "title": "Aquatic Ecology and Laboratory",
+              "codes": [
+                "BIO-275",
+                "BIO-275L"
+              ]
+            },
+            {
+              "id": "bio285",
+              "title": "Animal Behavior and Laboratory",
+              "codes": [
+                "BIO-285",
+                "BIO-285L"
+              ]
+            },
+            {
+              "id": "bio295",
+              "title": "Spatial Ecology and Laboratory (WE)",
+              "codes": [
+                "BIO-295",
+                "BIO-295L"
+              ]
+            },
+            {
+              "id": "bio303",
+              "title": "Advanced Topics in Ornithology and Laboratory",
+              "codes": [
+                "BIO-303",
+                "BIO-303L"
+              ]
+            },
+            {
+              "id": "bio335",
+              "title": "Conservation Ecology of Mammals and Laboratory",
+              "codes": [
+                "BIO-335",
+                "BIO-335L"
+              ]
+            },
+            {
+              "id": "bio355",
+              "title": "Animal Physiology and Laboratory",
+              "codes": [
+                "BIO-355",
+                "BIO-355L"
+              ]
+            },
+            {
+              "id": "bio365",
+              "title": "Comparative Chordate Anatomy and Laboratory",
+              "codes": [
+                "BIO-365",
+                "BIO-365L"
+              ]
+            },
+            {
+              "id": "bio385",
+              "title": "Behavior and Ecology of Vertebrates and Laboratory",
+              "codes": [
+                "BIO-385",
+                "BIO-385L"
+              ]
+            },
+            {
+              "id": "bio425",
+              "title": "Ecology and Laboratory (WE)",
+              "codes": [
+                "BIO-425",
+                "BIO-425L"
+              ]
+            },
+            {
+              "id": "bio445",
+              "title": "Environmental Microbiology and Laboratory",
+              "codes": [
+                "BIO-445",
+                "BIO-445L"
+              ]
+            },
+            {
+              "id": "bio454",
+              "title": "Research Participation in Biology (when topic is appropriate)",
+              "codes": [
+                "BIO-454"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "molecular_biology",
+      "name": "Molecular Biology",
+      "note": "Completion of at most six additional courses with a cumulative 2.0 GPA; at least three must be completed at Coe. Courses used for the biology major may also count toward the concentration. Students may declare only one concentration. Students are strongly encouraged to meet with a Biology Department faculty member for informal advising as soon as they choose this concentration; additional coursework may be needed for graduate or professional programs.",
+      "sections": [
+        {
+          "id": "mb_required",
+          "label": "Required Courses",
+          "type": "all",
+          "items": [
+            {
+              "id": "bio345",
+              "title": "Techniques in Molecular Biology and Laboratory",
+              "codes": [
+                "BIO-345",
+                "BIO-345L"
+              ]
+            },
+            {
+              "id": "chm221",
+              "title": "Organic Chemistry I",
+              "codes": [
+                "CHM-221"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mb_electives",
+          "label": "Three of the Following",
+          "type": "choose_n",
+          "n": 3,
+          "options": [
+            {
+              "id": "bio325",
+              "title": "Microbiology (WE) and Laboratory",
+              "codes": [
+                "BIO-325",
+                "BIO-325L"
+              ]
+            },
+            {
+              "id": "bio405",
+              "title": "Current Topics in Molecular Biology",
+              "codes": [
+                "BIO-405"
+              ]
+            },
+            {
+              "id": "bio415",
+              "title": "Developmental Biology and Laboratory (WE)",
+              "codes": [
+                "BIO-415",
+                "BIO-415L"
+              ]
+            },
+            {
+              "id": "bio435",
+              "title": "Cell Physiology and Laboratory",
+              "codes": [
+                "BIO-435",
+                "BIO-435L"
+              ]
+            },
+            {
+              "id": "bio455",
+              "title": "Molecular Neurobiology and Laboratory",
+              "codes": [
+                "BIO-455",
+                "BIO-455L"
+              ]
+            },
+            {
+              "id": "bio465",
+              "title": "Immunology and Laboratory",
+              "codes": [
+                "BIO-465",
+                "BIO-465L"
+              ]
+            },
+            {
+              "id": "bio454",
+              "title": "Research Participation in Biology (when topic is appropriate)",
+              "codes": [
+                "BIO-454"
+              ]
+            },
+            {
+              "id": "chm321",
+              "title": "Organic Chemistry II",
+              "codes": [
+                "CHM-321"
+              ]
+            },
+            {
+              "id": "chm431",
+              "title": "Biochemistry and Laboratory",
+              "codes": [
+                "CHM-431",
+                "CHM-431L"
+              ]
+            },
+            {
+              "id": "chm432",
+              "title": "Protein Biochemistry and Laboratory",
+              "codes": [
+                "CHM-432",
+                "CHM-432L"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pre_health_sciences",
+      "name": "Pre-Health Sciences",
+      "note": "Completion of at most six additional courses with a cumulative 2.0 GPA; at least three must be completed at Coe. Courses used for the biology major may also count toward the concentration. Students may declare only one concentration. Students are strongly encouraged to meet with a Biology Department faculty member for informal advising as soon as they choose this concentration; additional coursework may be needed for graduate or professional programs.",
+      "sections": [
+        {
+          "id": "phs_required",
+          "label": "Required Courses",
+          "type": "all",
+          "items": [
+            {
+              "id": "bio375",
+              "title": "Integrated Human Physiology and Laboratory",
+              "codes": [
+                "BIO-375",
+                "BIO-375L"
+              ]
+            },
+            {
+              "id": "bio315",
+              "title": "Integrated Human Anatomy and Laboratory",
+              "codes": [
+                "BIO-315",
+                "BIO-315L"
+              ]
+            },
+            {
+              "id": "hss300",
+              "title": "Learning Strategies in the Health Professions (0.2 credit)",
+              "codes": [
+                "HSS-300"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "phs_electives",
+          "label": "Three of the Following",
+          "type": "choose_n",
+          "n": 3,
+          "options": [
+            {
+              "id": "bio325",
+              "title": "Microbiology (WE) and Laboratory",
+              "codes": [
+                "BIO-325",
+                "BIO-325L"
+              ]
+            },
+            {
+              "id": "bio415",
+              "title": "Developmental Biology and Laboratory",
+              "codes": [
+                "BIO-415",
+                "BIO-415L"
+              ]
+            },
+            {
+              "id": "bio435",
+              "title": "Cell Physiology and Laboratory",
+              "codes": [
+                "BIO-435",
+                "BIO-435L"
+              ]
+            },
+            {
+              "id": "bio455",
+              "title": "Molecular Neurobiology and Laboratory",
+              "codes": [
+                "BIO-455",
+                "BIO-455L"
+              ]
+            },
+            {
+              "id": "bio465",
+              "title": "Immunology and Laboratory",
+              "codes": [
+                "BIO-465",
+                "BIO-465L"
+              ]
+            },
+            {
+              "id": "chm221",
+              "title": "Organic Chemistry I",
+              "codes": [
+                "CHM-221"
+              ]
+            },
+            {
+              "id": "chm321",
+              "title": "Organic Chemistry II",
+              "codes": [
+                "CHM-321"
+              ]
+            },
+            {
+              "id": "chm431",
+              "title": "Biochemistry and Laboratory",
+              "codes": [
+                "CHM-431",
+                "CHM-431L"
+              ]
+            },
+            {
+              "id": "chm432",
+              "title": "Protein Biochemistry and Laboratory",
+              "codes": [
+                "CHM-432",
+                "CHM-432L"
+              ]
+            },
+            {
+              "id": "hss494",
+              "title": "Health Professions Externship",
+              "codes": [
+                "HSS-494"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "sections": [
     {
       "id": "core",
