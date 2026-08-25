@@ -62,12 +62,18 @@ function resolveGeYear(year, kind) {
 // it, falling back to the top-level (newest) copy.
 function geData(year) {
   const out = {};
-  for (const kind of ["ge", "dac", "we", "practicum", "catalog"]) {
+  for (const kind of ["ge", "dac", "we", "practicum", "catalog", "grades"]) {
     const resolved = resolveGeYear(year, kind);
     const entry = resolved && DATA.ge_years ? DATA.ge_years[resolved] : null;
     out[kind] = (entry && entry[kind]) || DATA[kind];
   }
   return out;
+}
+
+// Grade scale and GPA thresholds for the selected catalog year. Mirrors
+// advisor_core.load_grades — same file, same resolution rule.
+function gradeData(year) {
+  return geData(year !== undefined ? year : selectedCatalogYear()).grades || {};
 }
 
 function selectedCatalogYear() {
@@ -130,6 +136,91 @@ function subHalfCreditsTotal(taken, overrides, substitutions) {
 // graduation but not toward the Writing Emphasis requirement.
 const SUB_C_GRADES = new Set(["C-", "D+", "D", "D-", "F"]);
 function isSubCGrade(g) { return SUB_C_GRADES.has(g); }
+
+// ─── GPA ─────────────────────────────────────────────────────────────────────
+//
+// Port of advisor_core.compute_gpa. Coe awards grade points *per course
+// credit*, so this is credit-weighted, not a mean over courses: a 0.2-credit
+// lab moves the GPA one-fifth as much as a full course. The scale itself
+// comes from the catalog year's grades.json, never from constants here.
+
+function gradePoints(grade, gd) {
+  if (!grade) return null;
+  const g = String(grade).trim().toUpperCase();
+  for (const row of (gd.grades || [])) if (row.grade === g) return row.points;
+  return null;   // P/NP/W/I/X/O/EQ, or something we don't recognize
+}
+
+// Credit is only earned by work that is finished and graded. An ungraded row
+// is a plan, not a completed course, so it earns nothing until a grade is set
+// — that is what keeps "credits earned" a record rather than a projection.
+// F, NP, W and the unresolved status marks earn nothing either.
+function gradeEarnsCredit(grade, gd) {
+  if (!grade) return false;
+  const g = String(grade).trim().toUpperCase();
+  for (const row of [...(gd.grades || []), ...(gd.non_gpa_marks || [])])
+    if (row.grade === g) return row.earns_credit !== false;
+  return true;
+}
+
+function gradeNote(grade, gd) {
+  const g = String(grade || "").trim().toUpperCase();
+  for (const row of (gd.non_gpa_marks || []))
+    if (row.grade === g) return row.note || row.label || "";
+  return "";
+}
+
+// entries: [{code, grade}] — substitutions filtered out by the caller.
+function computeGpa(entries, gd, overrides) {
+  let quality = 0, graded = 0, earned = 0;
+  const ungraded = [], excluded = [];
+  for (const e of entries) {
+    const cr = creditOf(e.code, overrides);
+    const pts = gradePoints(e.grade, gd);
+    if (pts === null) {
+      if (e.grade) excluded.push({ code: e.code, grade: String(e.grade).toUpperCase(),
+                                   reason: gradeNote(e.grade, gd) });
+      else ungraded.push(e.code);
+    } else {
+      quality += pts * cr;
+      graded += cr;
+    }
+    if (gradeEarnsCredit(e.grade, gd)) earned += cr;
+  }
+  return {
+    gpa: graded > 0 ? quality / graded : null,
+    qualityPoints: quality, gradedCredits: graded, earnedCredits: earned,
+    ungraded, excluded,
+  };
+}
+
+function gpaStanding(gpa, credits, gd) {
+  const th = gd.thresholds || {};
+  const out = {};
+  for (const row of (th.class_designation || [])) {
+    if (row.max_credits === null || credits <= row.max_credits) {
+      out.classDesignation = row.label; break;
+    }
+  }
+  if (gpa === null || gpa === undefined) return out;
+  for (const row of (th.probation || [])) {
+    if (row.max_credits === null || credits <= row.max_credits) {
+      out.probationMinGpa = row.min_gpa;
+      out.onProbation = gpa < row.min_gpa;
+      break;
+    }
+  }
+  for (const row of (th.latin_honors || [])) {     // listed highest-first
+    if (gpa >= row.gpa) { out.latinHonors = row.label; break; }
+  }
+  out.meetsGraduationGpa = gpa >= ((th.graduation || {}).cumulative_gpa ?? 2.0);
+  return out;
+}
+
+// Every mark that can appear in a grade dropdown, in catalog order.
+function gradeOptions(gd) {
+  return [...(gd.grades || []), ...(gd.non_gpa_marks || [])].map(r => r.grade);
+}
 
 // Internal: tokenize a piece of text into normalized course codes (no
 // substitution / grade parsing — just the legacy behavior).
@@ -317,6 +408,30 @@ function checkProgram(program, taken) {
   const countable = sections.filter(s => s.status !== MANUAL);
   const done = countable.filter(s => s.status === COMPLETE).length;
   return { program, sections, total: countable.length, complete: done };
+}
+
+// The courses a checked program actually draws on — its GPA denominator.
+// The catalog phrases the requirement as "at least a 2.00 GPA in courses
+// required to complete their areas of study", so this is exactly the set the
+// checker matched, not every course sharing the major's prefix.
+function programCourses(result, taken) {
+  const out = new Set();
+  for (const s of result.sections || []) {
+    const stype = s.type || "all";
+    if (stype === "all" || stype === "choose_n") {
+      for (const it of s.items || [])
+        for (const c of it.found || []) out.add(c);
+    } else if (stype === "choose_one") {
+      for (const opt of s.options || []) {
+        if (!opt.satisfied) continue;
+        for (const c of (opt.codes || []).map(normalize))
+          if (taken.has(c)) out.add(c);
+      }
+    } else if (stype === "open_n") {
+      for (const c of s.matching || []) out.add(c);
+    }
+  }
+  return out;
 }
 
 function checkGE(ge, taken, dac, we, prxCourses, weExtra) {
@@ -839,18 +954,20 @@ function loadAdv(text) {
     }
 
     if (s.startsWith("COURSE:") && currentSem) {
-      const parts = s.slice(7).trim().split(",").map(x => x.trim()).filter(Boolean);
-      const lastPart = (parts[parts.length - 1] || "").toLowerCase();
+      let body = s.slice(7).trim();
       let status = "";
-      if (lastPart === "completed" || lastPart === "planned") {
-        status = lastPart;
-        parts.pop();
-      }
-      for (const code of parts) {
-        if (code) currentSem.courses.push(code);
-      }
+      const st = body.match(/,\s*(completed|planned)\s*$/i);
+      if (st) { status = st[1].toLowerCase(); body = body.slice(0, st.index).trim(); }
+      // A grade annotation puts commas *inside* one entry ("FS-110=C,WE"), so
+      // a line carrying one must not be split on commas — otherwise the WE
+      // flag comes back as a course named "WE". Same rule as
+      // parseCoursesDetailed, so a saved plan reloads as what it was.
+      const entries = body.indexOf("=") >= 0
+        ? (body ? [body] : [])
+        : body.split(",").map(x => x.trim()).filter(Boolean);
+      for (const code of entries) currentSem.courses.push(code);
       if (status === "planned") currentSem.hasPlanned = true;
-      else if (parts.length > 0) currentSem.hasCompleted = true;
+      else if (entries.length > 0) currentSem.hasCompleted = true;
       continue;
     }
 
@@ -1179,6 +1296,8 @@ function runCheck() {
   _summaryBar.textContent =
     `${taken.size} courses \u00b7 ${credits.toFixed(1)} credits \u00b7 ${progResults.length} program(s)${_subSuffix}`;
 
+  renderGpaBar(taken, grades, substitutions, progResults, overrides);
+
   // Partial-credit cap: only the first 2.0 of <0.5-credit courses count
   // toward graduation; excess raises the effective grad target.
   let _summaryWarn = document.getElementById("summary-warn");
@@ -1201,6 +1320,124 @@ function runCheck() {
   renderGE(geResult);
   renderPrograms(progResults, pwResults);
   renderPlan(selectedProgs, taken, geResult, activePw, overrides);
+  syncAllGradeGutters();
+}
+
+// ─── GPA bar ─────────────────────────────────────────────────────────────────
+
+function _gpaEntries(codes, grades, substitutions) {
+  // Substitutions earn no credit and carry no grade — they would only dilute
+  // the denominator, so they never reach the GPA.
+  return [...codes].filter(c => !substitutions.has(c))
+    .map(c => ({ code: c, grade: grades.get(c) || null }));
+}
+
+function renderGpaBar(taken, grades, substitutions, progResults, overrides) {
+  const el = document.getElementById("gpa-bar");
+  if (!el) return;
+  const gd = gradeData();
+  if (!gd.grades) { el.style.display = "none"; return; }
+
+  const overall = computeGpa(_gpaEntries(taken, grades, substitutions), gd, overrides);
+  const standing = gpaStanding(overall.gpa, overall.earnedCredits, gd);
+  const hoursPer = gd.semester_hours_per_credit || 4;
+
+  // Nothing graded yet: this is a planner, so say what the panel is for
+  // rather than showing an empty 0.00.
+  if (overall.gradedCredits <= 0) {
+    el.style.display = "";
+    el.className = "gpa-bar gpa-bar-empty";
+    el.innerHTML = `<span class="gpa-empty-msg">No grades entered — set a grade beside any course to project a GPA.</span>`
+      + `<button type="button" class="gpa-policy-btn" onclick="showGradePolicy()">Grading policy</button>`;
+    return;
+  }
+
+  const tiles = [];
+  const th = gd.thresholds || {};
+  const gradGpa = (th.graduation || {}).cumulative_gpa ?? 2.0;
+  const ok = overall.gpa >= gradGpa;
+
+  tiles.push(`<span class="gpa-stat gpa-primary ${ok ? "" : "gpa-low"}">
+      <span class="gpa-stat-label">Cumulative GPA</span>
+      <b>${overall.gpa.toFixed(2)}</b>
+      <span class="gpa-sub">over ${overall.gradedCredits.toFixed(2)} graded cc</span>
+    </span>`);
+
+  // Ungraded courses now sit outside both figures, so the count of them rides
+  // in this tile's sub-line — without it a low credits number looks like a
+  // bug rather than unentered grades.
+  const pending = overall.ungraded.length
+    ? ` · ${overall.ungraded.length} not yet graded` : "";
+  tiles.push(`<span class="gpa-stat">
+      <span class="gpa-stat-label">Credits earned</span>
+      <b>${overall.earnedCredits.toFixed(2)}</b>
+      <span class="gpa-sub">${(overall.earnedCredits * hoursPer).toFixed(1)} sem. hrs${pending}</span>
+    </span>`);
+
+  if (standing.classDesignation) {
+    tiles.push(`<span class="gpa-stat">
+        <span class="gpa-stat-label">Standing</span>
+        <b>${standing.classDesignation}</b>
+        <span class="gpa-sub">${standing.onProbation
+          ? "below " + standing.probationMinGpa.toFixed(2) + " — probation"
+          : (standing.latinHonors || "good standing")}</span>
+      </span>`);
+  }
+
+  // One tile per program, using only the courses that program counts.
+  for (const r of progResults) {
+    const codes = programCourses(r, taken);
+    if (!codes.size) continue;
+    const pg = computeGpa(_gpaEntries(codes, grades, substitutions), gd, overrides);
+    if (pg.gradedCredits <= 0) continue;
+    const minGpa = (th.graduation || {}).area_of_study_gpa ?? 2.0;
+    const low = pg.gpa < minGpa;
+    tiles.push(`<span class="gpa-stat ${low ? "gpa-low" : ""}">
+        <span class="gpa-stat-label">${_escAttr(r.program.name)}</span>
+        <b>${pg.gpa.toFixed(2)}</b>
+        <span class="gpa-sub">${low ? "below the " + minGpa.toFixed(2) + " minimum"
+                                    : pg.gradedCredits.toFixed(2) + " graded cc"}</span>
+      </span>`);
+  }
+
+  // The marks that carry no grade points are named, but not explained — the
+  // rules behind them live one click away in the grading policy.
+  const byMark = new Map();
+  for (const x of overall.excluded)
+    byMark.set(x.grade, [...(byMark.get(x.grade) || []), x.code]);
+  const excluded = [...byMark].map(([m, codes]) => `${m}: ${codes.join(", ")}`).join(" · ");
+
+  el.style.display = "";
+  el.className = "gpa-bar";
+  el.innerHTML = `<div class="gpa-tiles">${tiles.join("")}</div>`
+    + `<div class="gpa-foot">
+         <span class="gpa-excluded">${excluded ? "Not in the GPA — " + _escAttr(excluded) : ""}</span>
+         <button type="button" class="gpa-policy-btn" onclick="showGradePolicy()">Grading policy</button>
+       </div>`;
+}
+
+function showGradePolicy() {
+  const gd = gradeData();
+  const rows = (gd.grades || []).map(r =>
+    `<tr><td class="gp-mark">${r.grade}</td><td class="gp-pts">${r.points.toFixed(1)}</td>
+       <td>${_escAttr(r.label || "")}</td></tr>`).join("");
+  const marks = (gd.non_gpa_marks || []).map(r =>
+    `<tr><td class="gp-mark">${r.grade}</td><td class="gp-pts">—</td>
+       <td><b>${_escAttr(r.label || "")}.</b> ${_escAttr(r.note || "")}</td></tr>`).join("");
+  const pol = Object.values(gd.policies || {})
+    .map(p => `<li>${_escAttr(p)}</li>`).join("");
+
+  document.getElementById("grade-policy-body").innerHTML = `
+    <p class="gp-note">${_escAttr(gd.note || "")}</p>
+    <table class="gp-table">
+      <thead><tr><th>Grade</th><th>Points</th><th></th></tr></thead>
+      <tbody>${rows}</tbody>
+      <thead><tr><th colspan="3">Marks that do not enter the GPA</th></tr></thead>
+      <tbody>${marks}</tbody>
+    </table>
+    ${pol ? `<ul class="gp-policies">${pol}</ul>` : ""}
+    <p class="gp-source">${_escAttr(gd.source || "")}</p>`;
+  document.getElementById("grade-policy-modal").classList.add("visible");
 }
 
 function renderGE(ge) {
@@ -2221,14 +2458,158 @@ function addPlanSemester(label, courses, completed, semNum) {
   </div>
   <div class="plan-sem-body">
     <div class="plan-entry-area">
-      <textarea class="sem-courses" rows="3" placeholder="One course per line: BIO-145, CHM 121..."${readonlyAttr}>${courses}</textarea>
+      <textarea class="sem-courses" rows="3" spellcheck="false"
+        placeholder="One course per line: BIO-145, CHM 121..."${readonlyAttr}>${courses}</textarea>
+      <div class="grade-gutter" aria-label="Grades"></div>
     </div>
     <div class="plan-intake-placeholders" style="display:none"></div>
     <div class="plan-hints" style="display:none"></div>
     <div class="plan-suggestions" style="display:none"></div>
   </div>`;
   container.appendChild(div);
+  syncGradeGutter(div);
   if (courses && completed) div.classList.remove("open");
+}
+
+// ─── Grade gutter ────────────────────────────────────────────────────────────
+//
+// The grade dropdowns sit in a column to the right of the course box, one row
+// per logical line, on that line's own baseline. Alignment is the whole point,
+// and two things normally break it: a long line wrapping onto a second visual
+// row, and the box scrolling independently of the gutter. Both are removed at
+// the source rather than compensated for — the textarea is pinned to
+// `white-space: pre` so a long line scrolls sideways instead of wrapping, and
+// it auto-grows to its content so it never scrolls vertically. Every logical
+// line is then exactly one gutter row of --plan-line-h.
+
+// One line splits into independently annotatable slots. A line carrying an
+// "=" is a single slot, because the annotation applies to everything on it;
+// otherwise commas separate slots. This is the same rule parseCoursesDetailed
+// uses, so what the gutter shows is what the checker sees.
+function _lineSlots(line) {
+  const raw = line.trim();
+  if (!raw || raw.startsWith("#")) return [];
+  return (raw.indexOf("=") >= 0 ? [raw] : raw.split(","))
+    .map(s => s.trim()).filter(Boolean);
+}
+
+function _slotParts(piece) {
+  let s = piece.trim(), isSub = false;
+  const m = s.match(/^\(([^()]+)\)\s*(=.*)?$/);
+  if (m) { s = m[1].trim() + (m[2] || ""); isSub = true; }
+  let grade = null, flags = [], codeText = s;
+  const eq = s.indexOf("=");
+  if (eq >= 0) {
+    codeText = s.slice(0, eq).trim();
+    const parts = s.slice(eq + 1).trim().toUpperCase().split(",").map(x => x.trim());
+    grade = parts[0] || null;
+    flags = parts.slice(1).filter(Boolean);
+  }
+  return { codeText, grade, flags, isSub };
+}
+
+function _slotText(p) {
+  let out = p.codeText;
+  // `=,WE` is valid — ungraded but WE-designated. A bare `=` is not, so the
+  // annotation is emitted only when something follows it.
+  if (p.grade || p.flags.length) out += "=" + [p.grade || "", ...p.flags].join(",");
+  return p.isSub ? "(" + out + ")" : out;
+}
+
+function autoSizeCourseArea(ta) {
+  const lines = Math.max(3, ta.value.split("\n").length);
+  ta.style.height = (lines * PLAN_LINE_H + PLAN_AREA_CHROME) + "px";
+}
+
+const PLAN_LINE_H = 20;        // must match --plan-line-h in style.css
+const PLAN_AREA_CHROME = 14;   // textarea padding (6+6) + border (1+1)
+
+// What the gutter's contents depend on. Rebuilding is skipped when this is
+// unchanged, which keeps runCheck() from tearing down a <select> the user is
+// still interacting with.
+function _gutterSig(ta) {
+  return [ta.value, ta.readOnly ? 1 : 0, selectedCatalogYear()].join(" ");
+}
+
+function syncGradeGutter(semEl) {
+  const ta = semEl.querySelector(".sem-courses");
+  const gutter = semEl.querySelector(".grade-gutter");
+  if (!ta || !gutter) return;
+  autoSizeCourseArea(ta);
+  const sig = _gutterSig(ta);
+  if (gutter.dataset.sig === sig) return;
+  gutter.dataset.sig = sig;
+
+  const gd = gradeData();
+  const opts = gradeOptions(gd);
+  const lines = ta.value.split("\n");
+  const rows = [];
+
+  for (let i = 0; i < lines.length; i++) {
+    const slots = _lineSlots(lines[i]);
+    if (!slots.length) { rows.push('<div class="grade-row"></div>'); continue; }
+    let cells = "";
+    slots.forEach((piece, j) => {
+      const p = _slotParts(piece);
+      const codes = parseCoursesDetailed(p.codeText).map(d => d.code);
+      const label = codes.join("/") || p.codeText;
+      // The code is already legible on the same line to the left, so it is
+      // repeated here only when one line holds several courses and the
+      // dropdowns would otherwise be ambiguous.
+      const tag = slots.length > 1
+        ? `<span class="grade-tag">${_escAttr(label)}</span>` : "";
+      if (p.isSub) {
+        cells += `${tag}<select class="grade-select" disabled
+          title="${_escAttr(label)} is a substitution — it satisfies a requirement but earns no credit and no grade points."><option>—</option></select>`;
+        return;
+      }
+      const cur = (p.grade || "").toUpperCase();
+      const o = ['<option value="">—</option>'].concat(
+        opts.map(g => `<option value="${g}"${g === cur ? " selected" : ""}>${g}</option>`));
+      // An unrecognized grade (hand-typed, or from an older file) would
+      // otherwise vanish silently when the dropdown snapped to "—".
+      if (cur && !opts.includes(cur))
+        o.push(`<option value="${_escAttr(cur)}" selected>${_escAttr(cur)}?</option>`);
+      cells += `${tag}<select class="grade-select${cur ? " has-grade" : ""}" data-line="${i}" data-slot="${j}"
+        title="Grade for ${_escAttr(label)}" onchange="onGradeSelect(this)">${o.join("")}</select>`;
+    });
+    rows.push(`<div class="grade-row">${cells}</div>`);
+  }
+  gutter.innerHTML = rows.join("");
+  gutter.classList.toggle("is-readonly", ta.readOnly);
+  gutter.querySelectorAll("select").forEach(s => { if (ta.readOnly) s.disabled = true; });
+}
+
+function onGradeSelect(sel) {
+  const semEl = sel.closest(".plan-semester");
+  const ta = semEl?.querySelector(".sem-courses");
+  if (!ta || ta.readOnly) return;
+  const lineIdx = parseInt(sel.dataset.line, 10);
+  const slotIdx = parseInt(sel.dataset.slot, 10);
+  const lines = ta.value.split("\n");
+  if (!(lineIdx >= 0 && lineIdx < lines.length)) return;
+
+  const slots = _lineSlots(lines[lineIdx]);
+  if (!slots[slotIdx]) return;
+  const parts = _slotParts(slots[slotIdx]);
+  parts.grade = sel.value || null;
+  slots[slotIdx] = _slotText(parts);
+  // Preserve the line's leading indentation; only the annotation changes.
+  const indent = (lines[lineIdx].match(/^\s*/) || [""])[0];
+  lines[lineIdx] = indent + slots.join(", ");
+  ta.value = lines.join("\n");
+
+  // Choosing a grade never changes a line's slot structure, so the gutter is
+  // already correct — the browser applied the selection itself. Re-stamping
+  // the signature keeps the runCheck() below from rebuilding these rows and
+  // pulling focus out of the dropdown that was just used.
+  semEl.querySelector(".grade-gutter").dataset.sig = _gutterSig(ta);
+  runCheck();
+}
+
+function syncAllGradeGutters() {
+  document.querySelectorAll("#plan-semesters .plan-semester")
+    .forEach(syncGradeGutter);
 }
 
 function createDefaultPlanSemesters() {
@@ -3050,8 +3431,14 @@ function init() {
   document.getElementById("input-panel").addEventListener("change", () => runCheck());
   document.getElementById("input-panel").addEventListener("input", debounce(runCheck, 500));
 
-  // Auto-check on changes in plan semesters (course textareas)
+  // Auto-check on changes in plan semesters (course textareas). The gutter
+  // redraws on every keystroke so its rows track the line you are typing;
+  // only the (much heavier) requirement re-check is debounced.
   const planSems = document.getElementById("plan-semesters");
+  planSems.addEventListener("input", e => {
+    if (e.target.classList.contains("sem-courses"))
+      syncGradeGutter(e.target.closest(".plan-semester"));
+  });
   planSems.addEventListener("input", debounce(runCheck, 500));
 
   // Click-to-add on suggestions

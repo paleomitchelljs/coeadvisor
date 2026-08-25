@@ -152,6 +152,7 @@ YEAR_FILES = {
     "we": "we.json",
     "practicum": "practicum.json",
     "catalog": "courses.json",
+    "grades": "grades.json",
 }
 
 

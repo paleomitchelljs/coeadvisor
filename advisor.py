@@ -25,15 +25,22 @@ from advisor_core import (
     STUDENT_YEARS,
     _load_json, load_programs, load_ge, load_dac, load_we,
     load_course_credits, load_pathways, load_first_two_years,
-    load_catalog, load_offerings, load_intake,
+    load_catalog, load_offerings, load_intake, load_grades,
     normalize, prefix_of, level_of, is_lab, is_clinical, is_auxiliary,
-    credit_of, total_credits, parse_courses, is_math_course, is_science_course,
+    credit_of, total_credits, parse_courses, parse_courses_detailed,
+    split_annotation, join_annotation,
+    compute_gpa, gpa_standing, program_courses,
+    is_math_course, is_science_course,
     _codes_satisfied, check_section, check_program, check_ge,
     TrajectoryData,
 )
 
 ctk.set_appearance_mode("light")
 ctk.set_default_color_theme("blue")
+
+# Placeholder for "no grade yet" in the per-course dropdowns. This is a
+# planner, so it is the default and it keeps the course out of the GPA.
+GRADE_NONE = "—"
 
 # ─────────────────────────── GUI ─────────────────────────────────────────────
 
@@ -77,6 +84,7 @@ class AdvisorApp:
             self.intake_data     = load_intake()
             self.catalog         = load_catalog()
             self.offerings       = load_offerings()
+            self.grade_data      = load_grades()
         except FileNotFoundError as e:
             messagebox.showerror("Data Error",
                 f"Could not load data files.\n\nMissing: {e}\n\n"
@@ -91,6 +99,11 @@ class AdvisorApp:
         terms = self.offerings.get("terms", {})
         self._fall_offered   = set(terms.get("fall",   {}).get("courses", []))
         self._spring_offered = set(terms.get("spring", {}).get("courses", []))
+
+        # Grade marks offered in the per-course dropdowns, catalog order:
+        # letter grades first, then the marks that carry no grade points.
+        self._grade_choices = [r["grade"] for r in self.grade_data.get("grades", [])] \
+            + [r["grade"] for r in self.grade_data.get("non_gpa_marks", [])]
 
         # ── State ──
         self.manual_ge: dict[str, tk.BooleanVar] = {}
@@ -879,6 +892,27 @@ class AdvisorApp:
                       corner_radius=4, height=26,
                       command=self.export).pack(side=tk.RIGHT, padx=10, pady=6)
 
+        # GPA strip — projects overall and per-program GPA from the grades set
+        # on the course rows. Ungraded courses are simply left out, so this
+        # stays quiet until an advisor actually enters grades.
+        gpa_bar = ctk.CTkFrame(parent, fg_color=COLORS["bg"], corner_radius=0,
+                               height=30, border_width=0)
+        gpa_bar.pack(fill=tk.X)
+        gpa_bar.pack_propagate(False)
+        self.gpa_var = tk.StringVar(value="")
+        ctk.CTkLabel(gpa_bar, textvariable=self.gpa_var,
+                     fg_color="transparent", text_color=COLORS["header"],
+                     font=("Helvetica", 10), anchor="w"
+                     ).pack(side=tk.LEFT, padx=16, fill=tk.X, expand=True)
+        ctk.CTkButton(gpa_bar, text="Grading policy",
+                      font=("Helvetica", 8),
+                      fg_color="transparent",
+                      hover_color=COLORS["border"],
+                      text_color=COLORS["accent"],
+                      corner_radius=4, height=22, width=90,
+                      command=self._show_grade_policy
+                      ).pack(side=tk.RIGHT, padx=10)
+
         self._nb_tab_names: list[str] = []
         self.nb = ctk.CTkTabview(parent,
                                  fg_color=COLORS["bg"],
@@ -929,16 +963,141 @@ class AdvisorApp:
                 result.append(pid)
         return result
 
+    def _on_grade_change(self):
+        """A grade dropdown moved — refresh the GPA strip only.
+
+        Grades never change *which* courses are taken, so the full requirement
+        re-check is unnecessary; and re-checking would rebuild the tabs and
+        throw away the advisor's place in them.
+        """
+        if getattr(self, "gpa_var", None) is None:
+            return
+        self._update_gpa_bar(getattr(self, "_last_prog_results", []))
+
+    def _update_gpa_bar(self, prog_results: list = None):
+        """Recompute the GPA strip from the grades currently on the rows."""
+        if getattr(self, "gpa_var", None) is None:
+            return
+        if prog_results is not None:
+            self._last_prog_results = prog_results
+        prog_results = self._last_prog_results = (
+            prog_results if prog_results is not None
+            else getattr(self, "_last_prog_results", []))
+
+        gd = self.grade_data
+        entries = self._collect_graded()
+        r = compute_gpa(entries, gd, self.course_credits)
+        hours = gd.get("semester_hours_per_credit", 4)
+
+        if not r["graded_credits"]:
+            self.gpa_var.set(
+                "No grades entered — set a grade beside any course to project a GPA.")
+            return
+
+        # Ungraded courses sit outside both figures, so their count rides along
+        # here: without it a low credits number reads as a bug rather than as
+        # grades nobody has entered yet.
+        pending = (f" · {len(r['ungraded'])} not yet graded"
+                   if r["ungraded"] else "")
+        parts = [f"Cumulative GPA {r['gpa']:.2f}"
+                 f"  (over {r['graded_credits']:.2f} graded cc)",
+                 f"Credits {r['earned_credits']:.2f} cc"
+                 f" ({r['earned_credits'] * hours:.1f} sem. hrs){pending}"]
+
+        st = gpa_standing(r["gpa"], r["earned_credits"], gd)
+        if st.get("class_designation"):
+            note = ("on probation" if st.get("on_probation")
+                    else st.get("latin_honors") or "good standing")
+            parts.append(f"{st['class_designation']}, {note}")
+
+        by_code = {e["code"]: e for e in entries}
+        for res in prog_results or []:
+            codes = program_courses(res)
+            sub = [by_code[c] for c in codes if c in by_code]
+            pr = compute_gpa(sub, gd, self.course_credits)
+            if pr["graded_credits"]:
+                parts.append(f"{res['program']['name']} {pr['gpa']:.2f}")
+
+        self.gpa_var.set("     ·     ".join(parts))
+
+    def _show_grade_policy(self):
+        """Read-only window with the catalog's grade scale and GPA rules."""
+        gd = self.grade_data
+        win = ctk.CTkToplevel(self.root)
+        win.title("Grading & GPA")
+        win.geometry("620x560")
+        win.transient(self.root)
+
+        box = ctk.CTkTextbox(win, font=("Helvetica", 11), wrap="word")
+        box.pack(fill=tk.BOTH, expand=True, padx=12, pady=12)
+
+        lines = [gd.get("label", "Grading & GPA"), ""]
+        if gd.get("note"):
+            lines += [gd["note"], ""]
+        lines.append("GRADES")
+        for row in gd.get("grades", []):
+            label = f"  {row.get('label')}" if row.get("label") else ""
+            lines.append(f"  {row['grade']:<4} {row['points']:.1f}{label}")
+        lines += ["", "MARKS THAT DO NOT ENTER THE GPA"]
+        for row in gd.get("non_gpa_marks", []):
+            lines.append(f"  {row['grade']:<4} {row.get('label', '')}")
+            if row.get("note"):
+                lines.append(f"       {row['note']}")
+        if gd.get("policies"):
+            lines += ["", "POLICIES"]
+            for p in gd["policies"].values():
+                lines += [f"  • {p}", ""]
+        if gd.get("source"):
+            lines += ["", gd["source"]]
+
+        box.insert("1.0", "\n".join(lines))
+        box.configure(state="disabled")
+        ctk.CTkButton(win, text="Close", width=90,
+                      command=win.destroy).pack(pady=(0, 12))
+
+    @staticmethod
+    def _row_text(row: dict) -> str:
+        """The row's stored form — code, grade and flags rejoined."""
+        code_text, _, flags, is_sub = split_annotation(row["code_var"].get())
+        if not code_text:
+            return ""
+        grade = row["grade_var"].get()
+        if grade == GRADE_NONE:
+            grade = None
+        # Flags typed into the code box win over the ones the row was built
+        # with, so editing "BIO-155" to "BIO-155=,WE" by hand still works.
+        return join_annotation(code_text, grade, flags or row.get("flags"),
+                               is_sub or row.get("is_sub", False))
+
+    def _all_rows(self):
+        for sem in self._semesters:
+            for row in sem["rows"]:
+                yield sem, row
+
     def _collect_courses(self) -> set:
         """Return normalized codes for all completed-checked courses."""
         taken = set()
-        for sem in self._semesters:
-            for row in sem["rows"]:
-                code = row["code_var"].get().strip()
-                if code and row["completed_var"].get():
-                    for c in parse_courses(code):
-                        taken.add(c)
+        for _sem, row in self._all_rows():
+            text = self._row_text(row)
+            if text and row["completed_var"].get():
+                taken.update(parse_courses(text))
         return taken
+
+    def _collect_graded(self) -> list:
+        """[{code, grade}] for every course entered, planned ones included.
+
+        Ungraded entries are kept: they carry credit toward graduation and
+        the GPA panel reports how many are still unresolved. Substitutions
+        are dropped — they earn neither credit nor grade points.
+        """
+        out, seen = [], set()
+        for _sem, row in self._all_rows():
+            for d in parse_courses_detailed(self._row_text(row)):
+                if d["is_substitution"] or d["code"] in seen:
+                    continue
+                seen.add(d["code"])
+                out.append({"code": d["code"], "grade": d["grade"]})
+        return out
 
     def _add_semester(self, label: str, initial_rows: int = 3,
                       is_transfer: bool = False) -> dict:
@@ -1000,8 +1159,12 @@ class AdvisorApp:
                         border_color=COLORS["border"],
                         corner_radius=3).pack(side=tk.LEFT, padx=(2, 2))
 
-        code_var = tk.StringVar(value=code)
-        ctk.CTkEntry(row_f, textvariable=code_var, width=140,
+        # The stored form keeps code and grade in one string ("BIO-155=A,WE")
+        # so .adv stays one course per line; the row shows them as two
+        # widgets, so it is split on the way in and rejoined on the way out.
+        code_text, grade, flags, is_sub = split_annotation(code)
+        code_var = tk.StringVar(value=join_annotation(code_text, None, [], is_sub))
+        ctk.CTkEntry(row_f, textvariable=code_var, width=104,
                      font=("Courier New", 10),
                      fg_color=COLORS["bg"],
                      text_color=COLORS["header"],
@@ -1009,7 +1172,22 @@ class AdvisorApp:
                      border_width=1, corner_radius=4,
                      height=28).pack(side=tk.LEFT, padx=(2, 2))
 
-        row_dict = {"code_var": code_var,
+        grade_var = tk.StringVar(value=grade or GRADE_NONE)
+        ctk.CTkOptionMenu(row_f, variable=grade_var,
+                          values=[GRADE_NONE] + self._grade_choices,
+                          width=62, height=28,
+                          font=("Helvetica", 10),
+                          dropdown_font=("Helvetica", 10),
+                          fg_color=COLORS["bg"],
+                          button_color=COLORS["border"],
+                          button_hover_color=COLORS["accent"],
+                          text_color=COLORS["header"],
+                          dynamic_resizing=False,
+                          command=lambda _v: self._on_grade_change()
+                          ).pack(side=tk.LEFT, padx=(0, 2))
+
+        row_dict = {"code_var": code_var, "grade_var": grade_var,
+                    "flags": flags, "is_sub": is_sub,
                     "completed_var": completed_var, "frame": row_f}
 
         def _delete(rd=row_dict, sd=sem_dict):
@@ -1143,9 +1321,11 @@ class AdvisorApp:
                               if var.get()]
 
         # Program tabs
+        prog_results = []
         for pid in sel_ids:
             prog  = self.programs[pid]
             result = check_program(prog, taken)
+            prog_results.append(result)
             ptype = prog.get("program_type", "").title()
             tab_name = f"{prog['name']} ({ptype})"
             self.nb.add(tab_name)
@@ -1192,6 +1372,7 @@ class AdvisorApp:
         self.summary_var.set(
             f"{name}{sid_str}{year_str}  |  {cred:.1f} credits ({len(taken)} courses)"
             f"  |  {len(sel_ids)} program(s)  |  {len(active_pathway_ids)} pathway(s)")
+        self._update_gpa_bar(prog_results)
 
         # Jump straight to the Suggested Plan tab (used by the new-student wizard)
         if jump_to_suggested and "Suggested Plan" in self._nb_tab_names:
@@ -1308,10 +1489,9 @@ class AdvisorApp:
         # Semester/course data
         for sem in self._semesters:
             sem_courses = [
-                (row["code_var"].get().strip(),
-                 row["completed_var"].get())
+                (self._row_text(row), row["completed_var"].get())
                 for row in sem["rows"]
-                if row["code_var"].get().strip()
+                if self._row_text(row)
             ]
             if not sem_courses:
                 continue
@@ -1409,14 +1589,20 @@ class AdvisorApp:
                 semesters_data.append(current_sem)
 
             elif stripped.startswith("COURSE:") and current_sem is not None:
-                parts = [p.strip() for p in stripped[7:].strip().split(",") if p.strip()]
-                # Last element may be status (completed/planned)
+                body = stripped[7:].strip()
                 status = "planned"
-                if parts and parts[-1].lower() in ("completed", "planned"):
-                    status = parts.pop().lower()
-                for code in parts:
-                    if code:
-                        current_sem[1].append((code, status, ""))
+                st = re.search(r',\s*(completed|planned)\s*$', body, re.I)
+                if st:
+                    status = st.group(1).lower()
+                    body = body[:st.start()].strip()
+                # A grade annotation puts commas *inside* one entry
+                # ("FS-110=C,WE"), so a line carrying one must not be split on
+                # commas or the WE flag comes back as a course named "WE".
+                # Same rule as parse_courses_detailed.
+                entries = ([body] if body else []) if "=" in body else \
+                    [p.strip() for p in body.split(",") if p.strip()]
+                for code in entries:
+                    current_sem[1].append((code, status, ""))
 
             elif in_old_courses:
                 old_courses.append(stripped)

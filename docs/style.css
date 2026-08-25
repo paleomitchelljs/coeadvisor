@@ -377,23 +377,159 @@ h2:first-child { margin-top: 0; }
 .plan-sem-body { display: none; padding: 8px 10px; }
 .plan-semester.open .plan-sem-body { display: block; }
 
-.plan-entry-area { margin-bottom: 6px; }
+/* Course box on the left, grade dropdowns aligned line-for-line on the right.
+   --plan-line-h is shared by both sides and is mirrored by PLAN_LINE_H in
+   app.js, which sizes the textarea; changing one means changing the other. */
+.plan-entry-area {
+  --plan-line-h: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 6px;
+}
 .plan-entry-area .sem-courses {
-  width: 100%;
+  flex: 0 1 30em;
+  min-width: 0;
+  max-width: 30em;
   font-family: var(--mds-mono);
   font-size: 13px;
+  line-height: var(--plan-line-h);
   padding: 6px 8px;
   border: 1px solid var(--rule);
   border-radius: 4px;
-  resize: vertical;
   color: var(--fg);
   background: var(--surface);
+  /* One logical line must stay one visual row or the gutter drifts: long
+     lines scroll sideways rather than wrapping, and the box is auto-grown to
+     its content by app.js so it never scrolls vertically either. */
+  white-space: pre;
+  overflow-x: auto;
+  overflow-y: hidden;
+  resize: none;
 }
 .plan-entry-area .sem-courses:focus {
   outline: 2px solid var(--accent);
   outline-offset: 1px;
   border-color: transparent;
 }
+
+.grade-gutter {
+  flex: 1 1 auto;
+  min-width: 0;
+  /* Line up with the textarea's first text row: its border + padding-top. */
+  padding-top: 7px;
+}
+.grade-row {
+  height: var(--plan-line-h);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  overflow: hidden;
+}
+.grade-select {
+  font-family: var(--mds-sans);
+  font-size: 11px;
+  line-height: 1;
+  height: 18px;
+  padding: 0 2px 0 4px;
+  border: 1px solid var(--rule-strong);
+  border-radius: 3px;
+  background: var(--surface);
+  color: var(--fg);
+  cursor: pointer;
+}
+.grade-select:disabled { color: var(--fg-soft); background: var(--ink-50); cursor: default; }
+/* A set grade should be findable at a glance down the column. */
+.grade-select.has-grade { font-weight: 600; border-color: var(--ink-400); }
+.grade-gutter.is-readonly .grade-select { opacity: .7; }
+.grade-tag {
+  font-family: var(--mds-mono);
+  font-size: 10px;
+  color: var(--fg-muted);
+  white-space: nowrap;
+}
+
+/* ── GPA bar ─────────────────────────────────────────────── */
+.gpa-bar {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin-bottom: 12px;
+}
+.gpa-bar-empty {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.gpa-empty-msg { font-size: 12px; color: var(--fg-muted); }
+.gpa-tiles { display: flex; flex-wrap: wrap; gap: 10px 26px; }
+.gpa-stat {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+  min-width: 0;
+}
+.gpa-stat > b {
+  font-family: var(--mds-serif);
+  font-size: 22px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--fg);
+}
+.gpa-primary > b { color: var(--accent); }
+.gpa-stat.gpa-low > b { color: var(--status-todo); }
+.gpa-stat-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.gpa-sub { font-size: 11px; color: var(--fg-soft); }
+.gpa-stat.gpa-low .gpa-sub { color: var(--status-todo); }
+.gpa-foot {
+  margin-top: 8px;
+  font-size: 11px;
+  color: var(--fg-soft);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+.gpa-excluded { font-family: var(--mds-mono); min-width: 0; }
+.gpa-policy-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: 11px;
+  color: var(--accent);
+  text-decoration: underline;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* ── Grading policy modal ────────────────────────────────── */
+.gp-note { font-size: 12px; color: var(--fg-muted); margin-bottom: 10px; line-height: 1.6; }
+.gp-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.gp-table th {
+  text-align: left;
+  font-size: 10px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  border-bottom: 1px solid var(--rule);
+  padding: 8px 6px 4px;
+}
+.gp-table td { padding: 3px 6px; vertical-align: top; line-height: 1.5; }
+.gp-mark { font-family: var(--mds-mono); font-weight: 600; white-space: nowrap; }
+.gp-pts { font-variant-numeric: tabular-nums; color: var(--fg-muted); }
+.gp-policies { margin: 12px 0 0 18px; font-size: 12px; line-height: 1.6; color: var(--fg-muted); }
+.gp-policies li { margin-bottom: 6px; }
+.gp-source { margin-top: 12px; font-size: 10px; color: var(--fg-soft); }
 
 .plan-hints {
   background: #fef2f2;
@@ -926,7 +1062,16 @@ h2:first-child { margin-top: 0; }
     font-family: var(--mds-mono);
     font-size: 10pt;
     color: black;
+    /* Wrap on paper: there is no sideways scroll to fall back on, and the
+       gutter it was kept in step with is hidden below. */
+    white-space: pre-wrap !important;
+    max-width: none !important;
+    flex: 1 1 auto !important;
   }
+  /* The dropdowns would print as form controls, and they are redundant on
+     paper anyway — the grade is already in the course text as "BIO-155=A". */
+  body[data-print-mode] .grade-gutter { display: none !important; }
+  body[data-print-mode] .plan-entry-area { display: block !important; }
   body[data-print-mode] .plan-hints,
   body[data-print-mode] .plan-suggestions,
   body[data-print-mode] .plan-intake-placeholders,
@@ -943,6 +1088,7 @@ h2:first-child { margin-top: 0; }
   body[data-print-mode="four-year"] .tab-panel { display: none !important; }
   body[data-print-mode="four-year"] #tab-plan { display: block !important; }
   body[data-print-mode="four-year"] .summary-bar,
+  body[data-print-mode="four-year"] #gpa-bar,
   body[data-print-mode="four-year"] #ge-content,
   body[data-print-mode="four-year"] #programs-content { display: none; }
   body[data-print-mode="four-year"] #plan-semesters {
@@ -961,7 +1107,8 @@ h2:first-child { margin-top: 0; }
   body[data-print-mode="schedule"] .sched-toolbar,
   body[data-print-mode="schedule"] .sched-picker,
   body[data-print-mode="schedule"] .sched-overlap-alert,
-  body[data-print-mode="schedule"] .summary-bar { display: none !important; }
+  body[data-print-mode="schedule"] .summary-bar,
+  body[data-print-mode="schedule"] #gpa-bar { display: none !important; }
   body[data-print-mode="schedule"] .sched-calendar-wrap { overflow: visible !important; }
   body[data-print-mode="schedule"] .sched-calendar {
     min-height: 7in;

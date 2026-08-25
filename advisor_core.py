@@ -132,6 +132,7 @@ _YEAR_FILES = {
     "we": "we.json",
     "practicum": "practicum.json",
     "catalog": "courses.json",
+    "grades": "grades.json",
 }
 
 
@@ -212,6 +213,11 @@ def load_we(data_dir: Path = None, year: str = None) -> set:
             if info.get("we"):
                 we.add(code)
     return we
+
+
+def load_grades(data_dir: Path = None, year: str = None) -> dict:
+    """Grade scale, non-GPA marks, and GPA thresholds for a catalog year."""
+    return _load_year_file("grades", year, data_dir)
 
 
 def load_course_credits(data_dir: Path = None) -> dict:
@@ -301,6 +307,21 @@ def is_science_course(code: str) -> bool:
 
 
 def parse_courses(text: str) -> list:
+    """Course codes only, with any annotations stripped.
+
+    See `parse_courses_detailed` for the annotation syntax; this drops it so
+    every caller that only wants "which courses" keeps working unchanged.
+    """
+    return [d["code"] for d in parse_courses_detailed(text)]
+
+
+def _parse_raw_codes(text: str) -> list:
+    """Tokenize plain text into normalized course codes.
+
+    No annotation handling — this is the bare code-splitting half, kept
+    separate so `parse_courses_detailed` can run it on an already-stripped
+    fragment.
+    """
     seen, result = set(), []
 
     def add(code: str):
@@ -335,6 +356,102 @@ def parse_courses(text: str) -> list:
     return result
 
 
+def parse_courses_detailed(text: str) -> list:
+    """Parse course text into [{code, grade, is_substitution, flags}].
+
+    The annotation syntax, shared with the web app's `parseCoursesDetailed`:
+
+        BIO-155          plain
+        BIO-155=A        with a grade
+        BIO-155=A,WE     graded, and taken as a WE-designated section
+        BIO-155=,WE      ungraded but WE-designated
+        (BIO-155)        substitution: satisfies a requirement, earns no credit
+        BIO-145L-W       suffix shorthand for the WE flag
+
+    A line is split on commas only when it carries no `=`, since the grade
+    annotation uses commas to separate its own flags.
+    """
+    seen, result = set(), []
+    chunks = []
+    for line in re.split(r'[\n;]+', text):
+        line = line.strip()
+        if not line:
+            continue
+        if "=" in line or "(" in line:
+            chunks.append(line)
+        else:
+            chunks.extend(line.split(","))
+
+    for raw in chunks:
+        raw = raw.strip()
+        if not raw or raw.startswith("#"):
+            continue
+
+        is_substitution = False
+        sub = re.match(r'^\(([^()]+)\)\s*(=.*)?$', raw)
+        if sub:
+            raw = sub.group(1).strip() + (sub.group(2) or "")
+            is_substitution = True
+
+        grade, flags = None, []
+        if "=" in raw:
+            head, annot = raw.split("=", 1)
+            raw = head.strip()
+            parts = [p.strip() for p in annot.strip().upper().split(",")]
+            grade = parts[0] or None
+            flags = [p for p in parts[1:] if p]
+
+        for code in _parse_raw_codes(raw):
+            code_flags = list(flags)
+            we = re.match(r'^(.+)-(?:W|WE)$', code)
+            if we and re.match(r'^[A-Z]+-\d+[A-Z]*$', we.group(1)):
+                code = we.group(1)
+                if "WE" not in code_flags:
+                    code_flags.append("WE")
+            if code in seen:
+                continue
+            seen.add(code)
+            result.append({"code": code, "grade": grade,
+                           "is_substitution": is_substitution,
+                           "flags": code_flags})
+    return result
+
+
+def split_annotation(text: str) -> tuple:
+    """Split one course entry into (code_text, grade, flags, is_substitution).
+
+    The inverse of `join_annotation`. Row-based UIs need this because they
+    show the code and the grade in separate widgets, while the stored form
+    keeps them in one string so `.adv` files stay one-course-per-line.
+    """
+    s = (text or "").strip()
+    is_sub = False
+    m = re.match(r'^\(([^()]+)\)\s*(=.*)?$', s)
+    if m:
+        s = m.group(1).strip() + (m.group(2) or "")
+        is_sub = True
+    grade, flags, code_text = None, [], s
+    if "=" in s:
+        code_text, annot = s.split("=", 1)
+        code_text = code_text.strip()
+        parts = [p.strip() for p in annot.strip().upper().split(",")]
+        grade = parts[0] or None
+        flags = [p for p in parts[1:] if p]
+    return code_text, grade, flags, is_sub
+
+
+def join_annotation(code_text: str, grade: str = None, flags: list = None,
+                    is_substitution: bool = False) -> str:
+    """Rebuild the stored form from its parts."""
+    flags = list(flags or [])
+    out = (code_text or "").strip()
+    # "=,WE" is valid — ungraded but WE-designated. A bare "=" is not, so the
+    # annotation is written only when something follows it.
+    if grade or flags:
+        out += "=" + ",".join([grade or ""] + flags)
+    return f"({out})" if is_substitution else out
+
+
 def prefix_of(code: str) -> str:
     m = re.match(r'^([A-Z]+)-', code)
     return m.group(1) if m else ""
@@ -367,6 +484,121 @@ def credit_of(code: str, overrides: dict = None) -> float:
 
 def total_credits(taken: set, overrides: dict = None) -> float:
     return sum(credit_of(c, overrides) for c in taken)
+
+# ─────────────────────────── GPA ─────────────────────────────────────────────
+#
+# Coe awards grade points *per course credit*, so the GPA is credit-weighted
+# rather than a mean over courses: a 0.2-credit lab moves it one-fifth as much
+# as a full course. Everything below reads its scale from the catalog year's
+# grades.json rather than hardcoding it, because that file is the transcribed
+# policy and is what an advisor would be checked against.
+
+
+def grade_points(grade: str, grade_data: dict) -> float:
+    """Grade points for a letter grade, or None if it earns none.
+
+    None covers both "not a grade we know" and the marks the catalog
+    deliberately keeps out of the GPA — P, NP, W, I, X, O, EQ.
+    """
+    if not grade:
+        return None
+    g = grade.strip().upper()
+    for row in grade_data.get("grades", []):
+        if row["grade"] == g:
+            return float(row["points"])
+    return None
+
+
+def grade_earns_credit(grade: str, grade_data: dict) -> bool:
+    """Does this mark earn course credit toward graduation?
+
+    Credit is only earned by work that is finished and graded. An ungraded
+    course is a plan, not a completed one, so it earns nothing until a grade
+    is set — that is what keeps "credits earned" a record rather than a
+    projection. F, NP, W and the unresolved status marks earn nothing either.
+    """
+    if not grade:
+        return False
+    g = grade.strip().upper()
+    for row in grade_data.get("grades", []) + grade_data.get("non_gpa_marks", []):
+        if row["grade"] == g:
+            return bool(row.get("earns_credit", True))
+    return True
+
+
+def compute_gpa(entries, grade_data: dict, overrides: dict = None) -> dict:
+    """Credit-weighted GPA over `entries` of {code, grade}.
+
+    Returns quality points, the credits those points were earned over
+    (`graded_credits` — the GPA denominator), the credits that count toward
+    graduation, and the courses excluded from the GPA with the reason.
+
+    Substitutions are the caller's to filter out; they earn no credit and
+    carry no grade, so they would only ever add noise here.
+    """
+    quality, graded, earned, ungraded = 0.0, 0.0, 0.0, []
+    excluded = []
+    for e in entries:
+        code = e["code"]
+        cr = credit_of(code, overrides)
+        pts = grade_points(e.get("grade"), grade_data)
+        if pts is None:
+            if e.get("grade"):
+                excluded.append({"code": code, "grade": e["grade"].upper(),
+                                 "reason": _exclusion_reason(e["grade"], grade_data)})
+            else:
+                ungraded.append(code)
+        else:
+            quality += pts * cr
+            graded += cr
+        if grade_earns_credit(e.get("grade"), grade_data):
+            earned += cr
+    return {
+        "gpa": (quality / graded) if graded > 0 else None,
+        "quality_points": quality,
+        "graded_credits": graded,
+        "earned_credits": earned,
+        "ungraded": ungraded,
+        "excluded": excluded,
+    }
+
+
+def _exclusion_reason(grade: str, grade_data: dict) -> str:
+    g = (grade or "").strip().upper()
+    for row in grade_data.get("non_gpa_marks", []):
+        if row["grade"] == g:
+            return row.get("note") or row.get("label") or "Not counted in the GPA."
+    return "Not a recognized grade, so it is left out of the GPA."
+
+
+def gpa_standing(gpa: float, credits: float, grade_data: dict) -> dict:
+    """Class designation, probation status, and Latin honors for a GPA.
+
+    Every threshold comes from grades.json; an empty dict comes back when the
+    catalog year has no thresholds transcribed.
+    """
+    th = grade_data.get("thresholds") or {}
+    out = {}
+
+    for row in th.get("class_designation", []):
+        if row.get("max_credits") is None or credits <= row["max_credits"]:
+            out["class_designation"] = row["label"]
+            break
+
+    if gpa is not None:
+        for row in th.get("probation", []):
+            if row.get("max_credits") is None or credits <= row["max_credits"]:
+                out["probation_min_gpa"] = row["min_gpa"]
+                out["on_probation"] = gpa < row["min_gpa"]
+                break
+        # Latin honors are listed highest-first, so the first match wins.
+        for row in th.get("latin_honors", []):
+            if gpa >= row["gpa"]:
+                out["latin_honors"] = row["label"]
+                break
+        out["meets_graduation_gpa"] = gpa >= (th.get("graduation", {})
+                                              .get("cumulative_gpa", 2.0))
+    return out
 
 # ─────────────────────────── Requirement checker ─────────────────────────────
 
@@ -463,6 +695,32 @@ def check_program(program: dict, taken: set) -> dict:
     return {"program": program, "sections": sections,
             "total": len(countable), "complete": done,
             "_taken": taken}
+
+
+def program_courses(result: dict, taken: set = None) -> set:
+    """The courses a checked program actually draws on — its GPA denominator.
+
+    The catalog phrases the requirement as "at least a 2.00 GPA in courses
+    required to complete their areas of study", so this is exactly the set the
+    checker matched, not every course sharing the major's prefix.
+    """
+    if taken is None:
+        taken = result.get("_taken") or set()
+    out = set()
+    for s in result.get("sections", []):
+        stype = s.get("type", "all")
+        if stype in ("all", "choose_n"):
+            for item in s.get("items", []):
+                out.update(item.get("found", []))
+        elif stype == "choose_one":
+            for opt in s.get("options", []):
+                if not opt.get("satisfied"):
+                    continue
+                out.update(c for c in map(normalize, opt.get("codes", []))
+                           if c in taken)
+        elif stype == "open_n":
+            out.update(s.get("matching", []))
+    return out
 
 
 def check_ge(ge: dict, taken: set, dac: set, we: set,
