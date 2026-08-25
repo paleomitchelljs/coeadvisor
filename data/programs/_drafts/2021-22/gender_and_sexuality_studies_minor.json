@@ -1,0 +1,38 @@
+{
+  "id": "gender_and_sexuality_studies_minor_2021-22",
+  "name": "Gender and Sexuality Studies",
+  "program_type": "minor",
+  "catalog_year": "2021-22",
+  "major_code": "GS",
+  "source": "Academic Catalog 2021-22, p. 127",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "gs107",
+          "title": "Introduction to Gender and Sexuality Studies",
+          "codes": [
+            "GS-107"
+          ]
+        },
+        {
+          "id": "gs327",
+          "title": "Theory and Methods in Gender and Sexuality Studies",
+          "codes": [
+            "GS-327"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_3",
+      "label": "Four electives from the lists below, with at least three from the list of core courses. Other courses may count as",
+      "type": "non_course",
+      "description": "Four electives from the lists below, with at least three from the list of core courses. Other courses may count as\nelectives when topics are appropriate with the consent of the academic coordinator.\nCORE COURSES\nARH-107 Gender and Art GS-247 Gender and Sexuality Studies Symposium\nCOM-357 Sex, Race, and Gender in the Media (WE) GS-387 Topics in Gender and Sexuality Studies (WE)\nENG-206 Gender and Literature: Non-western HIS-297 Women in America (WE)\nPerspectives (WE) NUR/PSY-137 Human Sexuality\nENG-207 Gender and Literature: United States Pluralism PHL-277 Philosophy of Gender and Race (WE)\n(WE) POL-277 Women and Politics in the United States (WE)\nENG-208 Gender and Literature: Diverse Western PSY-208 Gender Psychology\nPerspectives (WE) SOC-417 Sociology of Sex & Sexuality\nGS-127 Dress, Gender, and Identity\nGS-136 Gender in the Non-Western World\nCOMPONENT COURSES\nANT-117 Cultural Anthropology RHE-377 Cultural Studies (WE)\nCOM-236 Intercultural Communication (WE) SCJ-350 Human Rights and Comparative Justice Systems\nCOM-237 Interpersonal Communication (WE) SOC-207 Sociology of the Family\nCOM-361 Communication and Social Change THE-288 History of Dress (WE)\nEDU-187 Human Relations (WE)"
+    }
+  ],
+  "_needs_review": true
+}

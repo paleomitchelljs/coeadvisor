@@ -1,0 +1,168 @@
+{
+  "id": "kinesiology_fitness_development_major_2025-26",
+  "name": "Kinesiology — Fitness Development",
+  "program_type": "major",
+  "catalog_year": "2025-26",
+  "major_code": "KIN",
+  "source": "Academic Catalog 2025-26, p. 145",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "bio155",
+          "title": "Organismal and Ecological Biology",
+          "codes": [
+            "BIO-155"
+          ]
+        },
+        {
+          "id": "kin105",
+          "title": "Foundations of Physical Movement",
+          "codes": [
+            "KIN-105"
+          ]
+        },
+        {
+          "id": "kin115",
+          "title": "Fundamentals of Exercise and Nutrition",
+          "codes": [
+            "KIN-115"
+          ]
+        },
+        {
+          "id": "kin275",
+          "title": "Prevention and Care of Athletic Injuries & Laboratory",
+          "codes": [
+            "KIN-275"
+          ]
+        },
+        {
+          "id": "kin365",
+          "title": "Measurements/Evaluation and Prescription in Kinesiology",
+          "codes": [
+            "KIN-365"
+          ]
+        },
+        {
+          "id": "kin440",
+          "title": "Organization and Administration of Physical Education, Health, and Athletics",
+          "codes": [
+            "KIN-440"
+          ]
+        },
+        {
+          "id": "kin442",
+          "title": "Physiology of Exercise",
+          "codes": [
+            "KIN-442"
+          ]
+        },
+        {
+          "id": "kin495",
+          "title": "Kinesiology",
+          "codes": [
+            "KIN-495"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_2",
+      "label": "Choose One",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "bio103",
+          "title": "Anatomy and Physiology and Lab",
+          "codes": [
+            "BIO-103",
+            "BIO-103L"
+          ]
+        },
+        {
+          "id": "bio215",
+          "title": "Human Anatomy and Human Physiology",
+          "codes": [
+            "BIO-215",
+            "BIO-225"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_10",
+      "label": "All of the following courses in the Strength and Conditioning Group",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "kin103",
+          "title": "or Advanced Weight Training",
+          "codes": [
+            "KIN-103",
+            "KIN-104"
+          ]
+        },
+        {
+          "id": "kin103",
+          "title": "or Movement Training",
+          "codes": [
+            "KIN-103",
+            "KIN-104"
+          ]
+        },
+        {
+          "id": "kin185",
+          "title": "Group Exercise",
+          "codes": [
+            "KIN-185"
+          ]
+        },
+        {
+          "id": "kin385",
+          "title": "Methods of Teaching Strength Training and Conditioning",
+          "codes": [
+            "KIN-385"
+          ]
+        },
+        {
+          "id": "kin405",
+          "title": "Program Design",
+          "codes": [
+            "KIN-405"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_100",
+      "label": "All of the following courses in the Health and Wellness Group",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "kin125",
+          "title": "Public and Consumer Health",
+          "codes": [
+            "KIN-125"
+          ]
+        },
+        {
+          "id": "kin135",
+          "title": "Concepts of Individual Wellness",
+          "codes": [
+            "KIN-135"
+          ]
+        },
+        {
+          "id": "kin155",
+          "title": "Substance Abuse",
+          "codes": [
+            "KIN-155"
+          ]
+        }
+      ]
+    }
+  ]
+}

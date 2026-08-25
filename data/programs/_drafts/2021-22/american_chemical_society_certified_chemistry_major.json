@@ -1,0 +1,133 @@
+{
+  "id": "american_chemical_society_certified_chemistry_major_2021-22",
+  "name": "American Chemical Society Certified Chemistry",
+  "program_type": "major",
+  "catalog_year": "2021-22",
+  "major_code": "CHM",
+  "source": "Academic Catalog 2021-22, p. 90",
+  "sections": [
+    {
+      "id": "req_1",
+      "label": "Completion of a major in chemistry, including Calculus II and two General Physics courses",
+      "type": "non_course",
+      "description": "Completion of a major in chemistry, including Calculus II and two General Physics courses"
+    },
+    {
+      "id": "req_2",
+      "label": "All",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "chm321",
+          "title": "Organic Chemistry II",
+          "codes": [
+            "CHM-321"
+          ]
+        },
+        {
+          "id": "chm322",
+          "title": "Organic Laboratory",
+          "codes": [
+            "CHM-322"
+          ]
+        },
+        {
+          "id": "chm422",
+          "title": "Synthesis Laboratory",
+          "codes": [
+            "CHM-422"
+          ]
+        },
+        {
+          "id": "chm431",
+          "title": "Biochemistry and Laboratory",
+          "codes": [
+            "CHM-431",
+            "CHM-431L"
+          ]
+        },
+        {
+          "id": "chm451",
+          "title": "Inorganic Chemistry and Laboratory",
+          "codes": [
+            "CHM-451",
+            "CHM-451L"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_3",
+      "label": "Choose Two",
+      "type": "choose_n",
+      "n": 2,
+      "options": [
+        {
+          "id": "chm411",
+          "title": "Advanced Analytical Chemistry",
+          "codes": [
+            "CHM-411"
+          ]
+        },
+        {
+          "id": "chm421",
+          "title": "Advanced Organic Chemistry",
+          "codes": [
+            "CHM-421"
+          ]
+        },
+        {
+          "id": "chm432",
+          "title": "Protein Biochemistry and Laboratory",
+          "codes": [
+            "CHM-432",
+            "CHM-432L"
+          ]
+        },
+        {
+          "id": "chm441",
+          "title": "Physical Chemistry II",
+          "codes": [
+            "CHM-441"
+          ]
+        },
+        {
+          "id": "chm442",
+          "title": "Materials Physics and Chemistry",
+          "codes": [
+            "CHM-442"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_4",
+      "label": "Choose One",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "chm444",
+          "title": "Independent Study",
+          "codes": [
+            "CHM-444"
+          ]
+        },
+        {
+          "id": "chm454",
+          "title": "Undergraduate Summer Research",
+          "codes": [
+            "CHM-454"
+          ]
+        },
+        {
+          "id": "occ365",
+          "title": "Study and Research at Oak Ridge Laboratory",
+          "codes": [
+            "OCC-365"
+          ]
+        }
+      ]
+    }
+  ],
+  "_needs_review": true
+}

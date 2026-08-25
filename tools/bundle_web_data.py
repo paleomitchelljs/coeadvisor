@@ -146,31 +146,67 @@ def load_advice(advice_dir):
     return result
 
 
+YEAR_FILES = {
+    "ge": "ge.json",
+    "dac": "dac.json",
+    "we": "we.json",
+    "practicum": "practicum.json",
+    "catalog": "courses.json",
+}
+
+
+def load_ge_years(years_dir):
+    """Load per-catalog-year GE data from data/catalog_years/<year>/.
+
+    Returns {year: {ge, dac, we, practicum, catalog}}, newest year first.
+    """
+    by_year = {}
+    if not years_dir.is_dir():
+        return by_year
+    for subdir in sorted(years_dir.iterdir(), reverse=True):
+        if not subdir.is_dir() or subdir.name.startswith((".", "_")):
+            continue
+        entry = {}
+        for key, fname in YEAR_FILES.items():
+            fp = subdir / fname
+            if fp.exists():
+                entry[key] = load_json(fp)
+        if entry:
+            by_year[subdir.name] = entry
+    return by_year
+
+
 def main():
     DOCS.mkdir(exist_ok=True)
 
     programs, catalog_years = load_programs(DATA / "programs")
+    ge_years = load_ge_years(DATA / "catalog_years")
 
     bundle = {
         "programs": programs,
         "catalog_years": catalog_years,
         "pathways": load_dir(DATA / "pathways", key_fn=lambda d: d["id"]),
-        "ge": load_json(DATA / "ge_2025.json"),
         "course_credits": load_json(DATA / "course_credits.json"),
-        "dac": load_json(DATA / "dac_2025.json"),
-        "we": load_json(DATA / "we_courses.json"),
-        "practicum": load_json(DATA / "practicum_2025.json"),
         "first_two_years": load_json(DATA / "first_two_years.json"),
         "intake": load_dir(DATA / "intake", key_fn=lambda d: d["program_id"]),
         "trajectory": load_trajectory(),
+        # Per-catalog-year GE data. app.js resolves the selected catalog year
+        # against this map (nearest earlier year wins when a year is missing).
+        "ge_years": ge_years,
+        "ge_years_available": sorted(ge_years, reverse=True),
     }
+
+    # Newest year also published at the top level, so any code path that has
+    # no catalog year to hand still gets a sane default.
+    if ge_years:
+        newest = sorted(ge_years, reverse=True)[0]
+        for key, value in ge_years[newest].items():
+            bundle[key] = value
 
     advice = load_advice(DATA / "advice")
     if advice:
         bundle["advice"] = advice
 
-    if (DATA / "courses_catalog_2025.json").exists():
-        bundle["catalog"] = load_json(DATA / "courses_catalog_2025.json")
     if (DATA / "offerings_2026.json").exists():
         bundle["offerings"] = load_json(DATA / "offerings_2026.json")
 
@@ -191,6 +227,8 @@ def main():
     print(f"Wrote {out} ({size_kb:.0f} KB, {len(bundle['programs'])} programs, "
           f"{len(catalog_years)} catalog years, "
           f"{len(bundle['trajectory'])} majors in trajectory)")
+    if ge_years:
+        print(f"  GE data years: {', '.join(sorted(ge_years, reverse=True))}")
 
 
 if __name__ == "__main__":

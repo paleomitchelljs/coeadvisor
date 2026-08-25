@@ -1,0 +1,221 @@
+{
+  "id": "health_and_society_studies_minor_2024-25",
+  "name": "Health and Society Studies",
+  "program_type": "minor",
+  "catalog_year": "2024-25",
+  "major_code": "SOC",
+  "source": "Academic Catalog 2024-25, p. 149",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "phl165",
+          "title": "Biomedical Ethics",
+          "codes": [
+            "PHL-165"
+          ]
+        },
+        {
+          "id": "soc107",
+          "title": "Introductory Sociology",
+          "codes": [
+            "SOC-107"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_3",
+      "label": "One of the following Biology courses",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "bio103",
+          "title": "a. Anatomy and Physiology, or",
+          "codes": [
+            "BIO-103"
+          ]
+        },
+        {
+          "id": "bio120",
+          "title": "b. Biology, Health & Society, or",
+          "codes": [
+            "BIO-120"
+          ]
+        },
+        {
+          "id": "bio155",
+          "title": "c. Organismal and Ecological Biology",
+          "codes": [
+            "BIO-155"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_4",
+      "label": "Three elective courses from the list below, only (1) one of which may be a 100-level course",
+      "type": "choose_n",
+      "n": 3,
+      "options": [
+        {
+          "id": "ant116",
+          "title": "Cultural Anthropology",
+          "codes": [
+            "ANT-116"
+          ]
+        },
+        {
+          "id": "cla155",
+          "title": "Latin/Greek Origins of Medical Terminology",
+          "codes": [
+            "CLA-155"
+          ]
+        },
+        {
+          "id": "com137",
+          "title": "Interpersonal Communication",
+          "codes": [
+            "COM-137"
+          ]
+        },
+        {
+          "id": "com236",
+          "title": "Intercultural Communication",
+          "codes": [
+            "COM-236"
+          ]
+        },
+        {
+          "id": "com332",
+          "title": "Health Communication",
+          "codes": [
+            "COM-332"
+          ]
+        },
+        {
+          "id": "fre339",
+          "title": "French for Health Care",
+          "codes": [
+            "FRE-339"
+          ]
+        },
+        {
+          "id": "kin115",
+          "title": "Fundamentals in Exercise and Nutrition",
+          "codes": [
+            "KIN-115"
+          ]
+        },
+        {
+          "id": "kin125",
+          "title": "Public & Consumer Health",
+          "codes": [
+            "KIN-125"
+          ]
+        },
+        {
+          "id": "kin155",
+          "title": "Substance Abuse",
+          "codes": [
+            "KIN-155"
+          ]
+        },
+        {
+          "id": "phl128",
+          "title": "Morality and Moral Controversies",
+          "codes": [
+            "PHL-128"
+          ]
+        },
+        {
+          "id": "eco221",
+          "title": "Health Economics",
+          "codes": [
+            "ECO-221"
+          ]
+        },
+        {
+          "id": "phy321",
+          "title": "Health Physics",
+          "codes": [
+            "PHY-321"
+          ]
+        },
+        {
+          "id": "psy205",
+          "title": "Developmental Psychology",
+          "codes": [
+            "PSY-205"
+          ]
+        },
+        {
+          "id": "psy235",
+          "title": "Abnormal Psychology",
+          "codes": [
+            "PSY-235"
+          ]
+        },
+        {
+          "id": "psy325",
+          "title": "Health Psychology",
+          "codes": [
+            "PSY-325"
+          ]
+        },
+        {
+          "id": "psy350",
+          "title": "Drugs and Behavior",
+          "codes": [
+            "PSY-350"
+          ]
+        },
+        {
+          "id": "soc257",
+          "title": "Sociology of Health & Medicine",
+          "codes": [
+            "SOC-257"
+          ]
+        },
+        {
+          "id": "spa339",
+          "title": "Spanish for Healthcare",
+          "codes": [
+            "SPA-339"
+          ]
+        },
+        {
+          "id": "hss494",
+          "title": "Health Professions Externship *additional health-related courses may be approved as an elective with administrative coordinator approval.",
+          "codes": [
+            "HSS-494"
+          ]
+        },
+        {
+          "id": "hss100",
+          "title": "Exploration in Health & Society Allows students interested in health-related careers to explore various career options (e.g., medicine, dentistry, physical therapy, occupational therapy, nursing, psychological counseling); to assess and reflect on their own values, abilities, and motivations; and to develop some of the applied knowledge and skills necessary for entry into these occupations. Appropriate for first- and second-year students.",
+          "codes": [
+            "HSS-100"
+          ]
+        },
+        {
+          "id": "hss300",
+          "title": "Learning Strategies for the Health Professions Explores and reviews interdisciplinary topics that are essential for progressing to and succeeding in the health professions. Particular emphasis is put on the ability to integrate knowledge and analytical skills from across the natural sciences, social sciences and humanities in order to address questions and topics that are pertinent to preparation for entering various health fields. P/NP basis only. Prerequisites: junior standing or consent of instructor.",
+          "codes": [
+            "HSS-300"
+          ]
+        },
+        {
+          "id": "hss494",
+          "title": "Health Professions Externship Offers an intense exploration in the fields of human or animal healthcare, allied health, or auxiliary fields within the healthcare system. Students are placed at local sites and/or in nearby communities with one or more professionals in fields related to the student’s interests. A minimum of 140 hours on-site experience is required. P/NP basis only. Prerequisites: junior or senior standing, submission of application in Fall term, and consent of instructor. (Offered May Experiential Term only)",
+          "codes": [
+            "HSS-494"
+          ]
+        }
+      ]
+    }
+  ]
+}

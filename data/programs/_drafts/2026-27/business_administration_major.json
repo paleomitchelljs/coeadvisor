@@ -1,0 +1,178 @@
+{
+  "id": "business_administration_major_2026-27",
+  "name": "Business Administration",
+  "program_type": "major",
+  "catalog_year": "2026-27",
+  "major_code": "BUS",
+  "source": "Academic Catalog 2026-27, p. 83",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Required Courses",
+      "type": "all",
+      "items": [
+        {
+          "id": "acc171",
+          "title": "Principles of Accounting I",
+          "codes": [
+            "ACC-171"
+          ]
+        },
+        {
+          "id": "eco175",
+          "title": "Principles of Macroeconomics",
+          "codes": [
+            "ECO-175"
+          ]
+        },
+        {
+          "id": "bus190",
+          "title": "Statistical Analysis",
+          "codes": [
+            "BUS-190"
+          ]
+        },
+        {
+          "id": "acc215",
+          "title": "Principles of Accounting II",
+          "codes": [
+            "ACC-215"
+          ]
+        },
+        {
+          "id": "eco215",
+          "title": "Principles of Microeconomics",
+          "codes": [
+            "ECO-215"
+          ]
+        },
+        {
+          "id": "bus315",
+          "title": "Business Law I",
+          "codes": [
+            "BUS-315"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_7",
+      "label": "One of the following Management courses",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "bus250",
+          "title": "Principles of Management",
+          "codes": [
+            "BUS-250"
+          ]
+        },
+        {
+          "id": "bus300",
+          "title": "Human Resource Management",
+          "codes": [
+            "BUS-300"
+          ]
+        },
+        {
+          "id": "bus387",
+          "title": "Advanced Topics in Human Resource Management",
+          "codes": [
+            "BUS-387"
+          ]
+        },
+        {
+          "id": "bus470",
+          "title": "Strategic Management",
+          "codes": [
+            "BUS-470"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_8",
+      "label": "One of the following Marketing courses",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "bus330",
+          "title": "Principles of Marketing",
+          "codes": [
+            "BUS-330"
+          ]
+        },
+        {
+          "id": "bus460",
+          "title": "Advertising",
+          "codes": [
+            "BUS-460"
+          ]
+        },
+        {
+          "id": "bus465",
+          "title": "Advanced Topics in Marketing",
+          "codes": [
+            "BUS-465"
+          ]
+        },
+        {
+          "id": "bus467",
+          "title": "Consumer Behavior",
+          "codes": [
+            "BUS-467"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "req_9",
+      "label": "One of the following Finance courses",
+      "type": "choose_one",
+      "options": [
+        {
+          "id": "eco225",
+          "title": "Money and Banking",
+          "codes": [
+            "ECO-225"
+          ]
+        },
+        {
+          "id": "bus350",
+          "title": "Principles of Finance",
+          "codes": [
+            "BUS-350"
+          ]
+        },
+        {
+          "id": "bus352",
+          "title": "Corporate Finance",
+          "codes": [
+            "BUS-352"
+          ]
+        },
+        {
+          "id": "bus495",
+          "title": "Investment Analysis",
+          "codes": [
+            "BUS-495"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Two additional business courses numbered 200 or above",
+      "type": "open_n",
+      "n": 2,
+      "description": "Two additional business courses numbered 200 or above",
+      "constraints": {
+        "prefixes": [
+          "BUS"
+        ],
+        "min_level": 200
+      },
+      "id": "req_10"
+    }
+  ],
+  "_needs_review": true
+}
