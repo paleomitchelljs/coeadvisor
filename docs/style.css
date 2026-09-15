@@ -963,11 +963,6 @@ h2:first-child { margin-top: 0; }
   transition: background 100ms ease;
 }
 .sched-hour-cell:hover { background: var(--ink-50); }
-.sched-hint {
-  font-size: 11px;
-  color: var(--fg-soft);
-  margin-bottom: 4px;
-}
 .sched-block {
   position: absolute;
   left: 2px;
@@ -978,7 +973,7 @@ h2:first-child { margin-top: 0; }
   line-height: 1.3;
   overflow: hidden;
   border: 1px solid transparent;
-  cursor: default;
+  cursor: pointer;
 }
 .sched-block-code {
   font-family: var(--mds-mono);
@@ -1219,7 +1214,6 @@ h2:first-child { margin-top: 0; }
   body[data-print-mode="schedule"] .sched-toolbar,
   body[data-print-mode="schedule"] .sched-pull-summary,
   body[data-print-mode="schedule"] .sched-picker,
-  body[data-print-mode="schedule"] .sched-hint,
   body[data-print-mode="schedule"] .sched-overlap-alert,
   body[data-print-mode="schedule"] .summary-bar,
   body[data-print-mode="schedule"] #gpa-bar { display: none !important; }

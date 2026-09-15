@@ -2528,7 +2528,7 @@ const PLAN_AREA_CHROME = 14;   // textarea padding (6+6) + border (1+1)
 // unchanged, which keeps runCheck() from tearing down a <select> the user is
 // still interacting with.
 function _gutterSig(ta) {
-  return [ta.value, ta.readOnly ? 1 : 0, selectedCatalogYear()].join(" ");
+  return [ta.value, ta.readOnly ? 1 : 0, selectedCatalogYear()].join("\u0000");
 }
 
 function syncGradeGutter(semEl) {
@@ -2887,9 +2887,13 @@ function renderSchedCalendar() {
     body.style.height = totalPx + "px";
   }
 
-  // Hour cells. Each is a clickable slot that opens the section finder;
-  // course blocks are appended after these and paint on top of them, so a
-  // click reaches a cell only where the hour is actually open.
+  // Hour cells draw the grid lines and the hover highlight that shows an hour
+  // is clickable. The click itself is delegated to the day column rather than
+  // bound to each cell, because course blocks paint on top of the cells: a
+  // hand-bound cell stops responding the moment anything is scheduled over it,
+  // which is most of the day by the time an advisor is looking for a gap.
+  // Clicking a full hour asks "what else meets here?" just as an empty one
+  // asks "what could go here?", so both are worth answering.
   for (const [day, body] of Object.entries(dayBodies)) {
     for (let h = SCHED_START_HOUR; h < SCHED_END_HOUR; h++) {
       const cell = document.createElement("div");
@@ -2898,7 +2902,6 @@ function renderSchedCalendar() {
       cell.style.height = SCHED_PX_PER_HOUR + "px";
       cell.title = `${SCHED_DAY_NAMES[day]} ${minutesToDisplay(h * 60)}`
                  + ` \u2014 see every section meeting then`;
-      cell.addEventListener("click", () => openSlotFinder(day, h));
       body.appendChild(cell);
     }
     // Closing line under the last hour.
@@ -2906,6 +2909,13 @@ function renderSchedCalendar() {
     line.className = "sched-hour-line";
     line.style.top = totalPx + "px";
     body.appendChild(line);
+    // Assigned, not added: the day column outlives each re-render, so a
+    // listener added here would stack up one copy per render.
+    body.onclick = e => {
+      const y = e.clientY - body.getBoundingClientRect().top;
+      const hour = SCHED_START_HOUR + Math.floor(y / SCHED_PX_PER_HOUR);
+      if (hour >= SCHED_START_HOUR && hour < SCHED_END_HOUR) openSlotFinder(day, hour);
+    };
   }
 
   // Time labels
