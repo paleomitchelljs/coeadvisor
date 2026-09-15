@@ -2989,7 +2989,9 @@ const SCHED_DAY_NAMES = { M: "Monday", T: "Tuesday", W: "Wednesday",
 let slotFinder = null;   // {day, hour} while the modal is open
 
 function openSlotFinder(day, hour) {
-  if (!getScheduleData()) return;
+  // Deliberately not guarded on there being schedule data: a click that does
+  // nothing at all is indistinguishable from a broken calendar, so open the
+  // modal either way and let renderSlotFinder say what is missing.
   slotFinder = { day, hour };
   const filter = document.getElementById("slot-filter");
   filter.value = "";
@@ -3055,8 +3057,19 @@ function slotDateRange(pot) {
 
 function renderSlotFinder() {
   const el = document.getElementById("slot-modal-body");
+  if (!slotFinder) { el.innerHTML = ""; return; }
+
   const sd = getScheduleData();
-  if (!sd || !slotFinder) { el.innerHTML = ""; return; }
+  if (!sd) {
+    const sel = document.getElementById("sched-term");
+    const term = sel && sel.selectedOptions[0]
+               ? sel.selectedOptions[0].textContent : "this term";
+    el.innerHTML = `<div class="slot-empty">No class list is loaded for `
+      + `${term}, so there are no sections to show. If the Term menu above is `
+      + `empty, the page is running against a stale copy of data.js \u2014 `
+      + `reload with Shift held down.</div>`;
+    return;
+  }
 
   const q = (document.getElementById("slot-filter").value || "").trim().toLowerCase();
   const blocks = schedBlocks(sd);
