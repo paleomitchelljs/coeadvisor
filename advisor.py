@@ -1086,18 +1086,29 @@ class AdvisorApp:
     def _collect_graded(self) -> list:
         """[{code, grade}] for every course entered, planned ones included.
 
-        Ungraded entries are kept: they carry credit toward graduation and
-        the GPA panel reports how many are still unresolved. Substitutions
-        are dropped — they earn neither credit nor grade points.
+        Ungraded entries are kept: the GPA panel reports how many are still
+        unresolved. Substitutions are dropped — they earn neither credit nor
+        grade points.
+
+        A repeated course appears more than once, and the catalog is explicit
+        that "only the grade earned when the course is retaken is used in
+        computing the GPA" and that credit is earned only once. So each course
+        keeps a single entry, and a later attempt overwrites an earlier one —
+        the D from first year gives way to the A from the retake, rather than
+        the other way round.
         """
-        out, seen = [], set()
+        by_code = {}
         for _sem, row in self._all_rows():
             for d in parse_courses_detailed(self._row_text(row)):
-                if d["is_substitution"] or d["code"] in seen:
+                if d["is_substitution"]:
                     continue
-                seen.add(d["code"])
-                out.append({"code": d["code"], "grade": d["grade"]})
-        return out
+                # A later attempt takes over only once it carries a grade. A
+                # retake that is merely planned must not wipe the grade
+                # already on the transcript, or the GPA would improve before
+                # the course has been retaken.
+                if d["code"] not in by_code or d["grade"]:
+                    by_code[d["code"]] = {"code": d["code"], "grade": d["grade"]}
+        return list(by_code.values())
 
     def _add_semester(self, label: str, initial_rows: int = 3,
                       is_transfer: bool = False) -> dict:

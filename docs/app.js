@@ -2848,6 +2848,27 @@ function minutesToDisplay(mins) {
   return `${h12}:${String(m).padStart(2, "0")} ${ap}`;
 }
 
+// Every meeting currently on the calendar, one entry per day a section meets.
+function schedBlocks(sd) {
+  const blocks = [];  // {day, startMin, endMin, code, colorIdx, start, end, location}
+  for (const entry of schedEntries) {
+    const course = sd.courses[entry.code];
+    if (!course) continue;
+    const sec = course.sections.find(s => s.id === entry.sectionId);
+    if (!sec) continue;
+    for (const mtg of sec.meetings) {
+      const startMin = timeToMinutes(mtg.start);
+      const endMin = timeToMinutes(mtg.end);
+      for (const dayChar of mtg.days) {
+        blocks.push({ day: dayChar, startMin, endMin, code: entry.code,
+                      colorIdx: entry.colorIdx, start: mtg.start, end: mtg.end,
+                      location: mtg.location });
+      }
+    }
+  }
+  return blocks;
+}
+
 function renderSchedCalendar() {
   const sd = getScheduleData();
   const dayBodies = {};
@@ -2866,14 +2887,25 @@ function renderSchedCalendar() {
     body.style.height = totalPx + "px";
   }
 
-  // Hour lines
-  for (const body of Object.values(dayBodies)) {
-    for (let h = SCHED_START_HOUR; h <= SCHED_END_HOUR; h++) {
-      const line = document.createElement("div");
-      line.className = "sched-hour-line";
-      line.style.top = ((h - SCHED_START_HOUR) * SCHED_PX_PER_HOUR) + "px";
-      body.appendChild(line);
+  // Hour cells. Each is a clickable slot that opens the section finder;
+  // course blocks are appended after these and paint on top of them, so a
+  // click reaches a cell only where the hour is actually open.
+  for (const [day, body] of Object.entries(dayBodies)) {
+    for (let h = SCHED_START_HOUR; h < SCHED_END_HOUR; h++) {
+      const cell = document.createElement("div");
+      cell.className = "sched-hour-cell";
+      cell.style.top = ((h - SCHED_START_HOUR) * SCHED_PX_PER_HOUR) + "px";
+      cell.style.height = SCHED_PX_PER_HOUR + "px";
+      cell.title = `${SCHED_DAY_NAMES[day]} ${minutesToDisplay(h * 60)}`
+                 + ` \u2014 see every section meeting then`;
+      cell.addEventListener("click", () => openSlotFinder(day, h));
+      body.appendChild(cell);
     }
+    // Closing line under the last hour.
+    const line = document.createElement("div");
+    line.className = "sched-hour-line";
+    line.style.top = totalPx + "px";
+    body.appendChild(line);
   }
 
   // Time labels
@@ -2892,22 +2924,7 @@ function renderSchedCalendar() {
 
   if (!sd) return;
 
-  // Collect all blocks for overlap detection
-  const allBlocks = []; // {day, startMin, endMin, code, entry}
-  for (const entry of schedEntries) {
-    const course = sd.courses[entry.code];
-    if (!course) continue;
-    const sec = course.sections.find(s => s.id === entry.sectionId);
-    if (!sec) continue;
-    for (const mtg of sec.meetings) {
-      const startMin = timeToMinutes(mtg.start);
-      const endMin = timeToMinutes(mtg.end);
-      for (const dayChar of mtg.days) {
-        allBlocks.push({ day: dayChar, startMin, endMin, code: entry.code, colorIdx: entry.colorIdx,
-                         start: mtg.start, end: mtg.end, location: mtg.location });
-      }
-    }
-  }
+  const allBlocks = schedBlocks(sd);
 
   // Detect overlaps
   const overlapPairs = new Set();
@@ -2948,6 +2965,170 @@ function renderSchedCalendar() {
       + (height >= 28 ? `<div class="sched-block-time">${minutesToDisplay(b.startMin)}-${minutesToDisplay(b.endMin)}</div>` : "");
     body.appendChild(block);
   }
+}
+
+// ── Time-slot finder ──────────────────────────────────────────────────────
+//
+// Clicking an open hour on the calendar answers "what could go here?": every
+// section in the term that meets during that hour, earliest first, with the
+// ones that would collide with the rest of the schedule marked as such.
+
+const SCHED_DAY_NAMES = { M: "Monday", T: "Tuesday", W: "Wednesday",
+                          R: "Thursday", F: "Friday" };
+
+let slotFinder = null;   // {day, hour} while the modal is open
+
+function openSlotFinder(day, hour) {
+  if (!getScheduleData()) return;
+  slotFinder = { day, hour };
+  const filter = document.getElementById("slot-filter");
+  filter.value = "";
+  document.getElementById("slot-modal-title").textContent =
+    `${SCHED_DAY_NAMES[day]}, ${minutesToDisplay(hour * 60)}\u2013${minutesToDisplay((hour + 1) * 60)}`;
+  renderSlotFinder();
+  document.getElementById("slot-modal").classList.add("visible");
+  filter.focus();
+}
+
+function closeSlotFinder() {
+  slotFinder = null;
+  document.getElementById("slot-modal").classList.remove("visible");
+}
+
+// Every section with a meeting on `day` that runs during the hour, earliest
+// first. A section is listed if it overlaps the hour at all, so the 9 AM slot
+// turns up the TR class that starts at 9:30.
+function sectionsInSlot(sd, day, hour) {
+  const from = hour * 60, to = from + 60;
+  const rows = [];
+  for (const [code, course] of Object.entries(sd.courses)) {
+    for (const sec of course.sections) {
+      const mtg = sec.meetings.find(m => m.days.includes(day)
+                  && timeToMinutes(m.start) < to && from < timeToMinutes(m.end));
+      if (mtg) rows.push({ code, title: course.title, sec, mtg });
+    }
+  }
+  rows.sort((a, b) => timeToMinutes(a.mtg.start) - timeToMinutes(b.mtg.start)
+                   || a.code.localeCompare(b.code)
+                   || a.sec.id.localeCompare(b.sec.id));
+  return rows;
+}
+
+// Codes already on the calendar that this section would run into — every
+// meeting of the section, not just the one in the clicked hour, since adding
+// it commits the student to all of them. Like the calendar's own overlap
+// check this ignores part-of-term dates, so two halves of a semester in the
+// same hour still read as a clash; the date range in the row tells them apart.
+function slotClashes(code, sec, blocks) {
+  const hit = new Set();
+  for (const m of sec.meetings) {
+    const a = timeToMinutes(m.start), b = timeToMinutes(m.end);
+    for (const d of m.days)
+      for (const blk of blocks)
+        if (blk.code !== code && blk.day === d && a < blk.endMin && blk.startMin < b)
+          hit.add(blk.code);
+  }
+  return [...hit].sort();
+}
+
+const SLOT_MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+function slotDateRange(pot) {
+  if (!pot || !pot.start || !pot.end) return "";
+  const fmt = iso => {
+    const [, m, d] = iso.split("-");
+    return `${SLOT_MONTHS[parseInt(m, 10) - 1]} ${parseInt(d, 10)}`;
+  };
+  return `${fmt(pot.start)}\u2013${fmt(pot.end)}`;
+}
+
+function renderSlotFinder() {
+  const el = document.getElementById("slot-modal-body");
+  const sd = getScheduleData();
+  if (!sd || !slotFinder) { el.innerHTML = ""; return; }
+
+  const q = (document.getElementById("slot-filter").value || "").trim().toLowerCase();
+  const blocks = schedBlocks(sd);
+  const rows = sectionsInSlot(sd, slotFinder.day, slotFinder.hour).filter(r =>
+    !q || r.code.toLowerCase().includes(q)
+       || r.title.toLowerCase().includes(q)
+       || (r.sec.instructor || "").toLowerCase().includes(q));
+
+  if (!rows.length) {
+    el.innerHTML = `<div class="slot-empty">${q ? "Nothing matches that filter."
+                    : "No sections meet during this hour."}</div>`;
+    return;
+  }
+
+  // The hour was clicked because it is open, so what fits there comes first;
+  // a section can still collide on one of its other meeting days. Each group
+  // stays in time order.
+  for (const r of rows) {
+    r.entry = schedEntries.find(e => e.code === r.code);
+    r.onCal = !!(r.entry && r.entry.sectionId === r.sec.id);
+    r.clashes = r.onCal ? [] : slotClashes(r.code, r.sec, blocks);
+  }
+  const open = rows.filter(r => !r.clashes.length);
+  const busy = rows.filter(r => r.clashes.length);
+
+  let html = `<div class="slot-count">${rows.length} section${rows.length === 1 ? "" : "s"}</div>`;
+  html += open.map(slotRowHtml).join("");
+  if (busy.length) {
+    html += `<div class="slot-divider">Conflicts with the current schedule</div>`;
+    html += busy.map(slotRowHtml).join("");
+  }
+  el.innerHTML = html;
+}
+
+function slotRowHtml(r) {
+  const { entry, onCal, clashes } = r;
+  const meets = r.sec.meetings.map(m =>
+    `${m.days} ${minutesToDisplay(timeToMinutes(m.start))}\u2013${minutesToDisplay(timeToMinutes(m.end))}`
+  ).join(", ");
+  const meta = [r.sec.id, meets, r.sec.instructor || "Staff"];
+  if (r.mtg.location) meta.push(r.mtg.location);
+
+  const notes = [];
+  // Only unusual credit values are worth the line; a full course is the norm.
+  if (r.sec.credits && r.sec.credits !== 1) notes.push(`${r.sec.credits} credits`);
+  const dates = slotDateRange(r.sec.part_of_term);
+  if (dates) notes.push(dates);
+  if (r.sec.cross_list) notes.push(`cross-listed with ${r.sec.cross_list}`);
+
+  const action = onCal
+    ? `<span class="slot-on-cal">On calendar</span>`
+    : `<button class="small-btn" onclick="slotFinderPick('${r.code}', '${r.sec.id}')">`
+      + `${entry ? "Use this section" : "Add"}</button>`;
+
+  return `<div class="slot-row${clashes.length ? " clash" : ""}">`
+    + `<div class="slot-row-main">`
+    +   `<div class="slot-row-head">`
+    +     `<span class="slot-code">${r.code}</span>`
+    +     `<span class="slot-title">${r.title}</span>`
+    +     `${r.sec.we ? `<span class="slot-tag">WE</span>` : ""}`
+    +   `</div>`
+    +   `<div class="slot-meta">${meta.join(" \u00b7 ")}</div>`
+    +   `${notes.length ? `<div class="slot-meta slot-dim">${notes.join(" \u00b7 ")}</div>` : ""}`
+    +   `${clashes.length ? `<div class="slot-clash">Conflicts with ${clashes.join(", ")}</div>` : ""}`
+    + `</div>`
+    + `<div class="slot-row-action">${action}</div>`
+    + `</div>`;
+}
+
+// Put the picked section on the calendar. A course already scheduled switches
+// to this section rather than appearing twice.
+function slotFinderPick(code, sectionId) {
+  const sd = getScheduleData();
+  if (!sd || !sd.courses[code]) return;
+  const entry = schedEntries.find(e => e.code === code);
+  if (entry) entry.sectionId = sectionId;
+  else schedEntries.push({ code, sectionId,
+                           colorIdx: schedColorNext++ % SCHED_COLORS });
+  closeSlotFinder();
+  renderSchedCourses();
+  renderSchedCalendar();
+  syncSchedToPlan();
 }
 
 // ── Plan tab integration ──────────────────────────────────────────────────
@@ -3117,6 +3298,17 @@ function initScheduleTab() {
   // Allow Enter key in search
   document.getElementById("sched-search").addEventListener("keydown", e => {
     if (e.key === "Enter") { e.preventDefault(); schedAddCourse(); }
+  });
+
+  // Slot finder: filter as you type, and leave on Escape or a click outside.
+  // It opens from a stray click on the grid, so getting back out is easy.
+  document.getElementById("slot-filter").addEventListener("input", renderSlotFinder);
+  const slotModal = document.getElementById("slot-modal");
+  slotModal.addEventListener("click", e => {
+    if (e.target === slotModal) closeSlotFinder();
+  });
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && slotModal.classList.contains("visible")) closeSlotFinder();
   });
 }
 

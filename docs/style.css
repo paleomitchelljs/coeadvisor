@@ -954,6 +954,20 @@ h2:first-child { margin-top: 0; }
   right: 0;
   border-top: 1px solid var(--ink-100);
 }
+.sched-hour-cell {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-top: 1px solid var(--ink-100);
+  cursor: pointer;
+  transition: background 100ms ease;
+}
+.sched-hour-cell:hover { background: var(--ink-50); }
+.sched-hint {
+  font-size: 11px;
+  color: var(--fg-soft);
+  margin-bottom: 4px;
+}
 .sched-block {
   position: absolute;
   left: 2px;
@@ -988,6 +1002,88 @@ h2:first-child { margin-top: 0; }
 .sched-color-5 { background: #f3e8ff; border-color: #c4b5fd; color: var(--sched-c5); }
 .sched-color-6 { background: #ccfbf1; border-color: #5eead4; color: var(--sched-c6); }
 .sched-color-7 { background: #fef2f2; border-color: #fca5a5; color: var(--sched-c7); }
+
+/* ── Time-slot finder modal ────────────────────── */
+
+.slot-filter {
+  width: 100%;
+  padding: 5px 8px;
+  margin-bottom: 8px;
+  font-family: var(--mds-sans);
+  font-size: 13px;
+  color: var(--fg);
+  background: var(--surface);
+  border: 1px solid var(--rule-strong);
+  border-radius: 4px;
+}
+.slot-list {
+  max-height: 52vh;
+  overflow-y: auto;
+}
+.slot-count {
+  font-size: 11px;
+  color: var(--fg-soft);
+  margin-bottom: 2px;
+}
+.slot-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 7px 2px;
+}
+.slot-row + .slot-row { border-top: 1px solid var(--rule); }
+.slot-divider {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-soft);
+  border-top: 1px solid var(--rule-strong);
+  margin-top: 8px;
+  padding-top: 8px;
+}
+.slot-row-main { flex: 1; min-width: 0; }
+.slot-row-action { flex-shrink: 0; padding-top: 2px; }
+.slot-row-head {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.slot-code {
+  font-family: var(--mds-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--fg);
+}
+.slot-title { font-size: 13px; color: var(--fg); }
+.slot-tag {
+  font-family: var(--mds-sans);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 1px 4px;
+  border-radius: 3px;
+  background: var(--ink-100);
+  color: var(--ink-600);
+}
+.slot-meta { font-size: 11px; color: var(--fg-muted); margin-top: 2px; }
+.slot-dim { color: var(--fg-soft); }
+.slot-clash {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--status-todo);
+  margin-top: 2px;
+}
+.slot-row.clash .slot-code,
+.slot-row.clash .slot-title { opacity: 0.7; }
+.slot-on-cal {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--status-done);
+  white-space: nowrap;
+}
+.slot-empty { font-size: 13px; color: var(--fg-soft); padding: 10px 2px; }
 
 /* ── Focus states (accessible) ───────────────────────────── */
 :focus-visible {
@@ -1123,6 +1219,7 @@ h2:first-child { margin-top: 0; }
   body[data-print-mode="schedule"] .sched-toolbar,
   body[data-print-mode="schedule"] .sched-pull-summary,
   body[data-print-mode="schedule"] .sched-picker,
+  body[data-print-mode="schedule"] .sched-hint,
   body[data-print-mode="schedule"] .sched-overlap-alert,
   body[data-print-mode="schedule"] .summary-bar,
   body[data-print-mode="schedule"] #gpa-bar { display: none !important; }

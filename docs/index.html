@@ -158,6 +158,7 @@
           <div id="sched-courses"></div>
         </div>
         <div id="sched-overlap-alert" class="sched-overlap-alert" style="display:none"></div>
+        <div class="sched-hint">Click any open hour to see every section that meets then.</div>
         <div class="sched-calendar-wrap">
           <div class="sched-calendar" id="sched-calendar">
             <div class="sched-time-col" id="sched-time-col"></div>
@@ -181,6 +182,19 @@
     <div class="btn-row">
       <button class="btn-secondary" onclick="closeWizard()">Cancel</button>
       <button class="btn-primary" onclick="submitWizard()">Apply Recommendation</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Time-slot Finder Modal ───────────────────── -->
+<div class="modal-overlay" id="slot-modal">
+  <div class="modal" style="max-width:640px">
+    <h3 id="slot-modal-title">Sections in this hour</h3>
+    <input type="text" id="slot-filter" class="slot-filter" autocomplete="off"
+           placeholder="Filter by course, title, or instructor">
+    <div id="slot-modal-body" class="slot-list"></div>
+    <div class="btn-row">
+      <button class="btn-secondary" onclick="closeSlotFinder()">Close</button>
     </div>
   </div>
 </div>
