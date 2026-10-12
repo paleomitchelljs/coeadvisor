@@ -489,8 +489,12 @@ def process_class_list(pdf_path: Path, dry_run: bool) -> dict:
 CONCENTRATION_RE = re.compile(
     r"^(?P<name>[A-Z][A-Za-z&/\-,' ]{2,48}?)\s+Concentration\*?"
     r"(?:\s+in\s+(?P<parent>[A-Z][A-Za-z ]{2,30}?))?\s*$")
+# The online degree prints the name after the word instead of before it:
+#     Concentration in Strategic Leadership
+CONCENTRATION_PREFIX_RE = re.compile(
+    r"^Concentration in (?P<name>[A-Z][A-Za-z&/\-,' ]{2,48}?)\s*$")
 CONCENTRATION_GROUP_RE = re.compile(
-    r"^Concentrations? in (?P<parent>[A-Z][A-Za-z ]{2,30}?)\s*$")
+    r"^Concentrations in (?P<parent>[A-Z][A-Za-z ]{2,30}?)\s*$")
 
 # The same idea under different names: Music uses "Emphasis", International
 # Studies uses "Track". The data models all three as `concentrations`, so the
@@ -530,14 +534,16 @@ def find_concentrations(pdf_path: Path) -> list:
             parent = g.group("parent")
             continue
         m = CONCENTRATION_RE.match(line)
-        if not m:
+        pm = None if m else CONCENTRATION_PREFIX_RE.match(line)
+        if not (m or pm):
             continue
-        name = m.group("name").strip()
+        name = (m or pm).group("name").strip()
         key = _norm_name(name)
         if key in seen:
             continue
         seen.add(key)
-        found.append({"name": name, "parent": m.group("parent") or parent})
+        found.append({"name": name,
+                      "parent": (m.group("parent") if m else None) or parent})
     return found, find_alt_headings(text)
 
 

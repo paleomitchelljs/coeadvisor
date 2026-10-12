@@ -1,6 +1,6 @@
 # CoeAdvisor
 
-A standalone desktop app for academic advising at Coe College. Advisors enter a student's completed courses and selected programs; the tool checks progress against major/minor/GE requirements and surfaces trajectory hints from historical student data.
+A standalone desktop app for academic advising at Coe College. Advisors enter a student's completed courses and selected programs; the tool checks progress against major/minor/GE requirements.
 
 ---
 
@@ -59,7 +59,7 @@ data/programs/theatre_minor_2026.json
 | `name` | Display name shown in the program dropdowns. |
 | `program_type` | `major`, `minor`, `collateral`, or `certificate`. |
 | `catalog_year` | Four-digit year string. Used as a label; does not affect logic. |
-| `major_code` | Three-letter prefix (e.g., `BIO`, `CS`). Must match the `major` column in `data/student_obs/` CSVs for trajectory hints to appear. |
+| `major_code` | Three-letter prefix (e.g., `BIO`, `CS`). |
 | `sections` | Array of requirement sections — see below. |
 
 ### Section types
@@ -230,7 +230,7 @@ If no program-specific file exists, it falls back to `data/intake/_default.json`
 
 ### Updating the web bundle
 
-After adding or changing any data files (programs, intake, pathways, GE, course credits, trajectory CSVs, etc.), run:
+After adding or changing any data files (programs, intake, pathways, GE, course credits, etc.), run:
 ```
 python tools/bundle_web_data.py
 ```
@@ -300,7 +300,7 @@ All data is bundled into a single `data.js` file. To rebuild after changing data
 python tools/bundle_web_data.py
 ```
 
-Features: GE checking, program checking, Suggested Plan, First Two Years, trajectory hints, intake wizard, .adv save/load.
+Features: GE checking, program checking, Suggested Plan, First Two Years, .adv save/load.
 
 ### Flask app (local server)
 
@@ -346,5 +346,4 @@ advising/
     ├── programs/                One JSON per major/minor/collateral (~64 files)
     ├── pathways/                Pre-professional pathways (premed, pa, pt_dpt)
     ├── intake/                  New-student wizard questions per program
-    └── student_obs/             Historical cohort CSVs (trajectory hints)
 ```

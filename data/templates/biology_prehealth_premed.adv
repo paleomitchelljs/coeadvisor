@@ -1,0 +1,86 @@
+# Coe College Academic Advising Student File
+# TEMPLATE: Biology: Pre-Health Sciences, Medical School (MD/DO)
+# DESCRIPTION: Four-year plan for a Biology major with the Pre-Health Sciences concentration and the Pre-Medicine pathway. Chemistry starts in Semester 1 so organic chemistry and biochemistry finish before MCAT preparation in the junior year.
+# CATALOG: 2026-27
+
+NAME:
+ID:
+YEAR: First Year
+CATALOG_YEAR: 2026-27
+MAJOR1: biology_major_2026-27
+MAJOR1_CONC: pre_health_sciences
+MAJOR2:
+MAJOR2_CONC:
+MAJOR3:
+MAJOR3_CONC:
+MINOR1:
+MINOR1_CONC:
+MINOR2:
+MINOR2_CONC:
+PATHWAYS: premed
+TRANSFER_WE: 0 credits (5 WE)
+
+NOTE_START: Template
+Template plan: Semesters 1-4 follow the Registrar's advanced Biology sequence for pre-med students; Semesters 5-8 are derived from the catalog, the Pre-Medicine pathway and the 2025-26 / 2026 class lists, not from a Registrar-issued sequence.
+Confirm in the term's class list: HSS-300 (no section appeared in the loaded class lists), BIO-365 (Fall only, alternate years are possible), and HSS-494 (arranged). BIO-415, BIO-435 and BIO-465 are also premed-relevant electives when scheduled.
+MCAT is typically taken in spring or the summer after junior year; register with the Health Professions Advisory Committee (HPAC) in the first year and plan shadowing/clinical hours before applying. Requirements vary by medical school.
+NOTE_END
+
+SEMESTER: Semester 1
+COURSE: FS-110, planned
+COURSE: BIO-155, planned
+COURSE: BIO-155L, planned
+COURSE: CHM-121, planned
+COURSE: CHM-121L, planned
+COURSE: MTH-135, planned
+
+SEMESTER: Semester 2
+COURSE: BIO-145, planned
+COURSE: BIO-145L, planned
+COURSE: CHM-122, planned
+COURSE: CHM-122L, planned
+COURSE: PSY-100, planned
+COURSE: STA-100, planned
+
+SEMESTER: Semester 3
+COURSE: BIO-202, planned
+COURSE: CHM-221, planned
+COURSE: PHY-165, planned
+COURSE: PHY-165L, planned
+COURSE: SOC-107, planned
+
+SEMESTER: Semester 4
+COURSE: BIO-235, planned
+COURSE: BIO-235L, planned
+COURSE: CHM-321, planned
+COURSE: CHM-322, planned
+COURSE: PHY-175, planned
+COURSE: PHY-175L, planned
+
+SEMESTER: Semester 5
+COURSE: BIO-325, planned
+COURSE: BIO-325L, planned
+COURSE: CHM-431, planned
+COURSE: CHM-431L, planned
+COURSE: HSS-300, planned
+COURSE: ARH-128, planned
+
+SEMESTER: Semester 6
+COURSE: BIO-375, planned
+COURSE: BIO-375L, planned
+COURSE: BIO-315, planned
+COURSE: BIO-315L, planned
+COURSE: THE-100, planned
+COURSE: ENG-111, planned
+
+SEMESTER: Semester 7
+COURSE: BIO-365, planned
+COURSE: BIO-365L, planned
+COURSE: PHL-200, planned
+COURSE: COM-332, planned
+COURSE: STA-110, planned
+
+SEMESTER: Semester 8
+COURSE: HSS-494, planned
+COURSE: PSY-235, planned
+COURSE: PSY-250, planned

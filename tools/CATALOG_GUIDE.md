@@ -128,7 +128,7 @@ Examples: `biology_major_2025-26`, `computer_science_minor_2024-25`
 }
 ```
 
-- `major_code`: the primary course prefix (used for trajectory matching and advice lookups)
+- `major_code`: the primary course prefix (used for advice lookups)
 - `source`: always cite the catalog and page numbers
 - `program_type`: one of `"major"`, `"minor"`, `"collateral"`
 

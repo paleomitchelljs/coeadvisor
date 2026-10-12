@@ -62,6 +62,15 @@
       "processed_at": "2026-08-25T14:53:07+00:00",
       "sha256": "3ffc87b36c99cc2e067ecbd725b731998b75849c30f94ba1683ec7881b5e078f"
     },
+    "class_lists/FA-25.pdf": {
+      "kind": "class list",
+      "outputs": [
+        "data/schedules/fall_2025.json"
+      ],
+      "period": "fall_2025",
+      "processed_at": "2026-10-08T21:41:30+00:00",
+      "sha256": "05fa369c9213827ecb7c37afe887aaafb525f79f6f51becc79076797cfe7a08b"
+    },
     "class_lists/FA-26.pdf": {
       "kind": "class list",
       "outputs": [
@@ -70,6 +79,15 @@
       "period": "fall_2026",
       "processed_at": "2026-08-25T02:03:34+00:00",
       "sha256": "a45741aee3edc43c4c8b26ec571b8a160f038658a002c08cd41c1e0ec5cc06c4"
+    },
+    "class_lists/SP 27 10.8.2026.pdf": {
+      "kind": "class list",
+      "outputs": [
+        "data/schedules/spring_2027.json"
+      ],
+      "period": "spring_2027",
+      "processed_at": "2026-10-12T20:53:34+00:00",
+      "sha256": "19647b866081b053bfd7278eeff0840585c61c8959d955b27a5e2967e1418436"
     },
     "class_lists/SP-26.pdf": {
       "kind": "class list",

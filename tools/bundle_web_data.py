@@ -5,8 +5,8 @@ Bundle all advising data files into a single docs/data.js for the static web app
 Usage:  python tools/bundle_web_data.py
 """
 
-import csv
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -29,31 +29,38 @@ def load_dir(d, key_fn=None):
     return result
 
 
-def load_trajectory():
-    path = DATA / "student_obs" / "major_course_summary.csv"
-    if not path.exists():
-        return {}
-    by_major = {}
-    with open(path, encoding="utf-8", newline="") as f:
-        for row in csv.DictReader(f):
-            major = row.get("major", "").strip()
-            raw = row.get("course", "").strip().upper().replace(" ", "")
-            import re
-            m = re.match(r'^([A-Z]+)-?(\d+[A-Z]*)$', raw)
-            code = f"{m.group(1)}-{m.group(2)}" if m else raw
-            if not major or not code:
-                continue
-            try:
-                pct = float(row.get("pct_took", 0) or 0)
-                sem = round(float(row.get("typical_semester", 0) or 0))
-            except ValueError:
-                pct, sem = 0.0, 0
-            by_major.setdefault(major, {})[code] = {
-                "tier": row.get("course_tier", "elective"),
-                "sem": sem if sem > 0 else None,
-                "pct": round(pct, 4),
-            }
-    return by_major
+def load_templates(template_dir):
+    """Bundle data/templates/*.adv as [{id, title, description, catalog_year, text}].
+
+    A template is a normal .adv file, so the web app loads it with the same
+    code as Load .adv. The picker's title and blurb come from comment lines
+    (which every .adv reader ignores):
+
+        # TEMPLATE: Biology: Pre-Health Sciences, Medical School
+        # DESCRIPTION: One sentence shown under the title.
+        # CATALOG: 2026-27
+    """
+    out = []
+    if not template_dir.is_dir():
+        return out
+    for fp in sorted(template_dir.glob("*.adv")):
+        text = fp.read_text(encoding="utf-8")
+        meta = {}
+        for line in text.splitlines():
+            m = re.match(r"#\s*(TEMPLATE|DESCRIPTION|CATALOG):\s*(.+)$", line.strip())
+            if m:
+                meta[m.group(1)] = m.group(2).strip()
+        if "TEMPLATE" not in meta:
+            print(f"  ! {fp.name}: no '# TEMPLATE:' title line, skipped")
+            continue
+        out.append({
+            "id": fp.stem,
+            "title": meta["TEMPLATE"],
+            "description": meta.get("DESCRIPTION", ""),
+            "catalog_year": meta.get("CATALOG", ""),
+            "text": text,
+        })
+    return out
 
 
 def load_programs(programs_dir):
@@ -99,7 +106,6 @@ def load_advice(advice_dir):
     Each subdirectory contains:
       _advice.json  — master file with metadata and pointers
       plan_*.json   — plan files referenced by the master
-      intake.json   — optional intake wizard data
       notes.json    — optional advisor notes
 
     Sub-files are inlined into the master, so the bundled output is
@@ -189,8 +195,7 @@ def main():
         "pathways": load_dir(DATA / "pathways", key_fn=lambda d: d["id"]),
         "course_credits": load_json(DATA / "course_credits.json"),
         "first_two_years": load_json(DATA / "first_two_years.json"),
-        "intake": load_dir(DATA / "intake", key_fn=lambda d: d["program_id"]),
-        "trajectory": load_trajectory(),
+        "templates": load_templates(DATA / "templates"),
         # Per-catalog-year GE data. app.js resolves the selected catalog year
         # against this map (nearest earlier year wins when a year is missing).
         "ge_years": ge_years,
@@ -227,7 +232,7 @@ def main():
     size_kb = len(js) / 1024
     print(f"Wrote {out} ({size_kb:.0f} KB, {len(bundle['programs'])} programs, "
           f"{len(catalog_years)} catalog years, "
-          f"{len(bundle['trajectory'])} majors in trajectory)")
+          f"{len(bundle['templates'])} templates)")
     if ge_years:
         print(f"  GE data years: {', '.join(sorted(ge_years, reverse=True))}")
 
