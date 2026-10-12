@@ -868,6 +868,69 @@
           ]
         }
       ]
+    },
+    {
+      "id": "strategic_leadership",
+      "name": "Strategic Leadership",
+      "note": "Part of the Online RC B.A. degree; open only to Coe students admitted to that program. Seven courses beyond the major, at least five completed at Coe; 2.0 GPA in the concentration.",
+      "sections": [
+        {
+          "id": "sl_courses",
+          "label": "Strategic Leadership Courses",
+          "type": "all",
+          "items": [
+            {
+              "id": "bus300",
+              "title": "Human Resource Management",
+              "codes": [
+                "BUS-300"
+              ]
+            },
+            {
+              "id": "bus355",
+              "title": "Leadership Principles",
+              "codes": [
+                "BUS-355"
+              ]
+            },
+            {
+              "id": "bus360",
+              "title": "Project Management (0.5 credit)",
+              "codes": [
+                "BUS-360"
+              ]
+            },
+            {
+              "id": "bus361",
+              "title": "Leadership Ethics (0.5 credit)",
+              "codes": [
+                "BUS-361"
+              ]
+            },
+            {
+              "id": "bus362",
+              "title": "Teams (0.5 credit)",
+              "codes": [
+                "BUS-362"
+              ]
+            },
+            {
+              "id": "bus405",
+              "title": "Leadership Seminar (0.5 credit)",
+              "codes": [
+                "BUS-405"
+              ]
+            },
+            {
+              "id": "bus471",
+              "title": "Capstone in Strategic Leadership",
+              "codes": [
+                "BUS-471"
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "sections": [

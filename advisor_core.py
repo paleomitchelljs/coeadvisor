@@ -5,7 +5,6 @@ Pure logic shared by the desktop app (advisor.py) and the web interface.
 No GUI dependencies — only stdlib + csv/json/re/pathlib.
 """
 
-import csv
 import json
 import re
 import sys
@@ -225,7 +224,16 @@ def load_course_credits(data_dir: Path = None) -> dict:
     if not path.exists():
         return {}
     data = _load_json(path)
-    return {normalize(k): v for k, v in data.get("overrides", {}).items()}
+    overrides = {normalize(k): v for k, v in data.get("overrides", {}).items()}
+    # Same resolution order as creditOf() in docs/app.js: explicit override,
+    # then the catalog's stated credit, then the lab/clinical default. Only
+    # non-1.0 catalog values are merged, since 1.0 is the fallback anyway.
+    for pfx in (load_catalog(data_dir).get("prefixes") or {}).values():
+        for code, info in (pfx.get("courses") or {}).items():
+            cr = info.get("credits")
+            if isinstance(cr, (int, float)) and cr != 1.0:
+                overrides.setdefault(normalize(code), cr)
+    return overrides
 
 
 def load_pathways(data_dir: Path = None) -> dict:
@@ -794,59 +802,6 @@ def check_ge(ge: dict, taken: set, dac: set, we: set,
                            "manual_key": "practicum",
                            "note": "Mark manually or enter PRX course code"},
     }
-
-# ─────────────────────────── Trajectory data ─────────────────────────────────
-
-class TrajectoryData:
-    SUGGESTION_THRESHOLD = 0.15
-
-    def __init__(self, path: Path):
-        self._by_major: dict = {}
-        self._load(path)
-
-    def _load(self, path: Path):
-        if not path.exists():
-            return
-        with open(path, encoding="utf-8", newline="") as f:
-            reader = csv.DictReader(f)
-            for row in reader:
-                major = row.get("major", "").strip()
-                raw   = row.get("course", "").strip()
-                code  = normalize(raw)
-                if not major or not code:
-                    continue
-                try:
-                    pct  = float(row.get("pct_took", 0) or 0)
-                    sem  = round(float(row.get("typical_semester", 0) or 0))
-                    raw_g = row.get("mean_grade", "").strip()
-                    grade = float(raw_g) if raw_g and raw_g != "NA" else None
-                except ValueError:
-                    pct, sem, grade = 0.0, 0, None
-                self._by_major.setdefault(major, {})[code] = {
-                    "tier":  row.get("course_tier", "elective"),
-                    "sem":   sem if sem > 0 else None,
-                    "grade": grade,
-                    "pct":   pct,
-                }
-
-    def course_info(self, major_code: str, course_code: str):
-        return self._by_major.get(major_code, {}).get(normalize(course_code))
-
-    def elective_suggestions(self, major_code: str,
-                             exclude: set, n: int = 12) -> list:
-        rows = []
-        for code, info in self._by_major.get(major_code, {}).items():
-            if code in exclude:
-                continue
-            if info["tier"] in ("elective", "common") and info["pct"] >= self.SUGGESTION_THRESHOLD:
-                rows.append((code, info))
-        rows.sort(key=lambda x: x[1]["pct"], reverse=True)
-        return rows[:n]
-
-    def as_dict(self) -> dict:
-        """Return raw data for serialization (used by bundle_web_data)."""
-        return self._by_major
-
 
 # ─────────────────────────── First-semester recommender ─────────────────────
 #

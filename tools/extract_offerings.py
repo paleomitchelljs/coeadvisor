@@ -59,9 +59,9 @@ def parse_courses(text: str) -> set[str]:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--fall",
-                    default=str(REPO / "catalogs" / "FA 26 3.31.26.pdf"))
+                    default=str(REPO / "class_lists" / "FA 26 8.17.26.pdf"))
     ap.add_argument("--spring",
-                    default=str(REPO / "catalogs" / "SP 2026 11.12.2025.pdf"))
+                    default=str(REPO / "class_lists" / "SP 27 10.8.2026.pdf"))
     ap.add_argument("--out",
                     default=str(REPO / "data" / "offerings_2026.json"))
     args = ap.parse_args()

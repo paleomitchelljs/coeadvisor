@@ -8,7 +8,7 @@ An academic advising tool for Coe College available as three interfaces sharing 
 2. **Flask web app** (`web_advisor.py`) — server-side web interface for local use
 3. **Static web app** (`docs/`) — pure HTML/CSS/JS for GitHub Pages deployment, no server needed
 
-All three check student progress against major/minor requirements and GE requirements, surface trajectory hints from historical student data, and produce compatible `.adv` files.
+All three check student progress against major/minor requirements and GE requirements, and produce compatible `.adv` files.
 
 ---
 
@@ -61,7 +61,7 @@ git push origin main --tags
                      │  - normalize()   │  - Course utilities
                      │  - check_*()     │  - Requirement checker
                      │  - load_*()      │  - Data loading
-                     │  - TrajectoryData│  - Trajectory hints
+                     │                  │                  
                      └────────┬─────────┘
                               │
               ┌───────────────┼───────────────┐
@@ -76,11 +76,11 @@ git push origin main --tags
                               │
                      ┌────────▼─────────┐
                      │    data/*.json   │  Programs, GE, pathways,
-                     │    data/*.csv    │  intake, trajectory
+                     │    data/*.csv    │  intake          
                      └──────────────────┘
 ```
 
-- **`advisor_core.py`** — all pure logic: course normalization, requirement checking, GE checking, data loading, and the `TrajectoryData` class. No GUI or web dependencies. Imported by both `advisor.py` and `web_advisor.py`.
+- **`advisor_core.py`** — all pure logic: course normalization, requirement checking, GE checking, and data loading. No GUI or web dependencies. Imported by both `advisor.py` and `web_advisor.py`.
 - **`docs/app.js`** — JavaScript port of the same algorithms for the static web app. Data is bundled into `docs/data.js` by `tools/bundle_web_data.py`.
 - All program/GE data is JSON; loaded at startup, never written back.
 - `.adv` file format is compatible across all three interfaces.
@@ -131,11 +131,8 @@ advising/
     ├── first_two_years.json     Recommended first-two-year sequences by major
     ├── programs/                One JSON per major/minor/collateral (~64 files)
     ├── pathways/                Pre-professional pathways (premed, pa, pt_dpt)
-    ├── intake/                  New-student wizard questions per program
-    └── student_obs/             Historical cohort data (CSV)
-        ├── major_course_summary.csv
-        ├── major_profiles.csv
-        └── major_summary.csv
+    ├── templates/               Four-year plan templates (.adv)
+    ├── intake/                  Preparedness question for the wizard's last step
 ```
 
 ---
@@ -250,40 +247,23 @@ Default credit values: `-L`/`-C` suffix -> 0.2, everything else -> 1.0. Override
 
 Matching: entries are matched to selected programs by `match_major_codes` (program's `major_code`) or `match_program_ids` (program's `id`).
 
-### Intake Wizard (`data/intake/*.json`)
+### Templates (`data/templates/*.adv`)
 
-```json
-{
-  "program_id": "biology_major_2025",
-  "intro": "Two quick questions to build a first-semester plan.",
-  "questions": [
-    { "id": "hs_bio_chem", "text": "Did this student take Biology and Chemistry in high school?", "type": "yes_no" }
-  ],
-  "routes": [
-    {
-      "when": { "hs_bio_chem": true },
-      "major": "biology_major_2025",
-      "pathway": "premed",
-      "semester_1": ["BIO-145", "BIO-145L"],
-      "note": "Start with BIO 155 for well-prepared students."
-    }
-  ]
-}
+A template is an ordinary `.adv` file holding a four-year plan for a program.
+The web app's **Load Template** button lists them and loads the chosen one
+through `loadAdv`, so it fills the same fields a saved student file does. Three
+comment lines (ignored by every `.adv` reader) supply the picker's text:
+
+```
+# TEMPLATE: Biology: Pre-Health Sciences, Medical School (MD/DO)
+# DESCRIPTION: One sentence shown under the title.
+# CATALOG: 2026-27
 ```
 
-`_default.json` is the fallback for programs without their own intake file.
-
-### Student Observation CSV (`data/student_obs/major_course_summary.csv`)
-
-Columns: `major`, `course`, `dept`, `division`, `course_tier`, `n_took`, `n_total_grads`, `pct_took`, `typical_semester`, `earliest_semester`, `latest_semester`, `mean_grade`
-
-- `major` — matches `major_code` in program JSON (e.g., `BIO`, `CS`)
-- `course_tier` — `common` or `elective` (only these two tiers appear in suggestions)
-- `pct_took` — fraction of graduates in that major who took this course (0-1)
-- `typical_semester` — median semester students took this course (1 = first semester)
-- `mean_grade` — present in data but **intentionally not displayed** to advisors
-
----
+Use program and concentration ids that exist in the stated catalog year, mark
+every course `planned`, and keep each semester between 3 and 5 credits. Check a
+new template against the program, pathway and GE checkers before bundling.
+`bundle_web_data.py` skips any `.adv` with no `# TEMPLATE:` line.
 
 ## Student File Format (`.adv`)
 
@@ -319,9 +299,6 @@ COURSE: BIO-155, completed
 COURSE: BIO-155L, completed
 COURSE: CHM-122, planned
 
-# -- SUGGESTED NEXT COURSES (reference only -- not imported) --
-# BIO-325        67% of grads   Sem 3
-# CHM-231        45% of grads   Sem 4
 ```
 
 **Import rules:**
@@ -329,7 +306,6 @@ COURSE: CHM-122, planned
 - Blank lines are ignored
 - `SEMESTER:` starts a new semester block; `COURSE:` adds a course to the current block
 - Course status is `completed` or `planned`
-- The `SUGGESTED NEXT COURSES` block is comment-prefixed and ignored on import
 - Legacy format (`COURSES:` flat list, `PROGRAMS:` comma-separated) is supported on import
 
 ---
@@ -393,13 +369,6 @@ All accept an optional `data_dir` parameter; defaults to `BASE_DIR / "data"`.
 | `check_program(program, taken)` | Evaluates all sections -> dict with `sections`, `total`, `complete` |
 | `check_ge(ge, taken, dac, we, manual)` | Evaluates all GE requirements -> dict keyed by category |
 
-**`TrajectoryData` class:**
-
-Loads `major_course_summary.csv` and provides:
-- `course_info(major_code, course_code)` -> `{tier, sem, grade, pct}` or `None`
-- `elective_suggestions(major_code, exclude, n=12)` -> list of `(code, info)` sorted by `pct` descending, filtered to `tier in ("elective", "common")` and `pct >= 0.15`
-- `as_dict()` -> raw `{major: {code: info}}` for serialization
-
 ### `advisor.py` — Desktop GUI
 
 Imports all logic from `advisor_core`. Contains the `AdvisorApp` class (~2800 lines) which builds the CustomTkinter interface.
@@ -424,7 +393,7 @@ Imports all logic from `advisor_core`. Routes:
 
 JavaScript port of all `advisor_core` algorithms. Uses `DATA` from `docs/data.js` (generated by `tools/bundle_web_data.py`).
 
-Features: GE checking, program checking, Suggested Plan (collapsible semesters, GE fill-in hints), First Two Years, trajectory hints, intake wizard, .adv save/load.
+Features: GE checking, program checking, Suggested Plan (collapsible semesters, GE fill-in hints), First Two Years, Load Template, .adv save/load.
 
 ---
 
@@ -434,7 +403,7 @@ The static site in `docs/` bundles all data into `docs/data.js`. This file is ge
 
 **When to regenerate:**
 - After adding, editing, or removing any file in `data/`
-- After changing programs, pathways, intake, GE, course credits, trajectory CSVs, etc.
+- After changing programs, pathways, intake, GE, course credits, templates, etc.
 
 **How to regenerate:**
 ```
@@ -444,7 +413,7 @@ python tools/bundle_web_data.py
 **What gets bundled:**
 - All `data/programs/*.json`
 - All `data/pathways/*.json`
-- All `data/intake/*.json`
+- All `data/templates/*.adv`
 - `data/ge_2025.json`
 - `data/course_credits.json`
 - `data/dac_2025.json`
@@ -452,7 +421,6 @@ python tools/bundle_web_data.py
 - `data/first_two_years.json`
 - `data/courses_catalog_2025.json` (if present)
 - `data/offerings_2026.json` (if present)
-- `data/student_obs/major_course_summary.csv` (parsed to JSON)
 
 The generated `data.js` is committed to the repo so GitHub Pages can serve it. Remember to commit the regenerated file after running the bundler.
 
@@ -462,13 +430,9 @@ The generated `data.js` is committed to the repo so GitHub Pages can serve it. R
 
 1. Create `data/programs/<id>.json` following the program schema above.
 2. Set `"id"` to match the filename (without `.json`).
-3. Set `"major_code"` to the prefix used in `student_obs` CSVs (e.g., `"CS"`, `"BIO"`).
+3. Set `"major_code"` to the course prefix (e.g., `"CS"`, `"BIO"`); advice plans match on it.
 4. **Rebuild the web bundle:** `python tools/bundle_web_data.py`
 5. Restart the desktop/Flask app — programs are loaded at startup with no code changes needed.
-
-To add trajectory data, add rows to `data/student_obs/major_course_summary.csv` with `major` matching the new `major_code`, then rebuild the web bundle.
-
-To add intake wizard questions, create `data/intake/<program_id>.json` following the intake schema, then rebuild the web bundle.
 
 ## Adding a New GE Catalog Year
 
@@ -492,8 +456,6 @@ To add intake wizard questions, create `data/intake/<program_id>.json` following
 
 ## Known Limitations
 
-- **No semester tracking for courses taken.** The `Sem N` trajectory hints show the *typical* semester based on historical cohorts, not when this student took the course.
 - **Session only — no auto-save.** Use Save .adv before closing to persist a session.
 - **Transfer credit granularity.** Only three WE-count tiers are supported (0, 1-7, 8-15, 16+ credits). Individual transfer course articulations are not modeled.
-- **No GPA display.** The `mean_grade` field exists in the trajectory CSV but is intentionally hidden. Only "% of grads" and "Sem N" hints are shown.
 - **Static site data is a snapshot.** The `docs/data.js` bundle must be regenerated manually after data changes.

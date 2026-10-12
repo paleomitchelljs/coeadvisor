@@ -1,0 +1,965 @@
+{
+  "label": "Career interest chain",
+  "version": 1,
+  "note": "Drives the New Student wizard. Each node is either a question (has `options`, each with a `goto`) or a result (has `result: true` plus `major_codes`). Results resolve against the selected catalog year: programs whose `major_code` appears in `major_codes` are offered, ordered by `program_keys` (a program id with its catalog-year suffix stripped) where one code maps to several programs. Keys that do not exist in a given year are skipped, so the chain degrades rather than breaking when a program is renamed between catalogs.",
+  "root": "start",
+  "nodes": {
+    "start": {
+      "question": "What kind of work are you drawn to?",
+      "subtext": "A rough direction is enough. This only sets a starting plan — every part of it stays editable.",
+      "options": [
+        {
+          "label": "Still figuring it out",
+          "goto": "explore"
+        },
+        {
+          "label": "Health and medicine",
+          "goto": "health"
+        },
+        {
+          "label": "Science and research",
+          "goto": "science"
+        },
+        {
+          "label": "Engineering, computing and data",
+          "goto": "tech"
+        },
+        {
+          "label": "Business, accounting and finance",
+          "goto": "business"
+        },
+        {
+          "label": "Law, government and public service",
+          "goto": "public"
+        },
+        {
+          "label": "Teaching and education",
+          "goto": "education"
+        },
+        {
+          "label": "Helping people directly",
+          "goto": "helping"
+        },
+        {
+          "label": "Writing, media and communication",
+          "goto": "media"
+        },
+        {
+          "label": "Art, music and theatre",
+          "goto": "arts"
+        }
+      ]
+    },
+    "explore": {
+      "result": true,
+      "label": "Still exploring",
+      "major_codes": [],
+      "note": "No major set. The first year is built around the General Education requirements, which every degree needs and which keep the most doors open. Revisit the wizard once a direction emerges."
+    },
+    "health": {
+      "question": "Which part of health care?",
+      "options": [
+        {
+          "label": "Physician (MD or DO)",
+          "goto": "health_md"
+        },
+        {
+          "label": "Nurse (BSN)",
+          "goto": "health_nurse"
+        },
+        {
+          "label": "Physician assistant (PA)",
+          "goto": "health_pa"
+        },
+        {
+          "label": "Physical or occupational therapist",
+          "goto": "health_pt"
+        },
+        {
+          "label": "Dentist",
+          "goto": "health_dent"
+        },
+        {
+          "label": "Veterinarian",
+          "goto": "health_vet"
+        },
+        {
+          "label": "Pharmacist",
+          "goto": "health_pharm"
+        },
+        {
+          "label": "Public health or health policy",
+          "goto": "health_pubh"
+        },
+        {
+          "label": "Not sure yet",
+          "goto": "health_unsure"
+        }
+      ]
+    },
+    "health_md": {
+      "result": true,
+      "label": "Physician (MD/DO)",
+      "major_codes": [
+        "BIO",
+        "CHM",
+        "PSY",
+        "KIN"
+      ],
+      "program_keys": [
+        "biology_major",
+        "chemistry_major",
+        "neuroscience_collateral_major",
+        "kinesiology_pre_health_major",
+        "psychology_major"
+      ],
+      "pathways": [
+        "premed"
+      ]
+    },
+    "health_nurse": {
+      "result": true,
+      "label": "Nurse (BSN)",
+      "major_codes": [
+        "NUR"
+      ],
+      "program_keys": [
+        "nursing_bsn_major",
+        "nursing_major"
+      ],
+      "note": "The BSN is a fixed sequence with little room to move courses between semesters."
+    },
+    "health_pa": {
+      "result": true,
+      "label": "Physician assistant",
+      "major_codes": [
+        "BIO",
+        "KIN",
+        "PSY"
+      ],
+      "program_keys": [
+        "biology_major",
+        "kinesiology_pre_health_major",
+        "psychology_major"
+      ],
+      "pathways": [
+        "pa"
+      ]
+    },
+    "health_pt": {
+      "result": true,
+      "label": "Physical or occupational therapist",
+      "major_codes": [
+        "KIN",
+        "BIO",
+        "PSY"
+      ],
+      "program_keys": [
+        "kinesiology_pre_health_major",
+        "kinesiology_fitness_major",
+        "biology_major",
+        "psychology_major"
+      ],
+      "pathways": [
+        "pt_dpt"
+      ]
+    },
+    "health_dent": {
+      "result": true,
+      "label": "Dentist",
+      "major_codes": [
+        "BIO",
+        "CHM"
+      ],
+      "program_keys": [
+        "biology_major",
+        "chemistry_major"
+      ],
+      "pathways": [
+        "premed"
+      ],
+      "note": "Coe has no separate pre-dental course list. The pre-med pathway is applied because dental schools ask for essentially the same prerequisites — confirm against the specific schools the student is targeting."
+    },
+    "health_vet": {
+      "result": true,
+      "label": "Veterinarian",
+      "major_codes": [
+        "BIO",
+        "CHM"
+      ],
+      "program_keys": [
+        "biology_major",
+        "chemistry_major"
+      ],
+      "pathways": [
+        "premed"
+      ],
+      "note": "Coe has no separate pre-vet course list. The pre-med pathway is applied as the closest match, with one change: BIO-365 Comparative Chordate Anatomy and BIO-355 Animal Physiology replace the human anatomy and physiology sequence. Veterinary schools usually add further animal-science coursework — check the target schools.",
+      "substitutions": {
+        "BIO-315": "BIO-365",
+        "BIO-315L": "BIO-365L",
+        "BIO-375": "BIO-355",
+        "BIO-375L": "BIO-355L"
+      }
+    },
+    "health_pharm": {
+      "result": true,
+      "label": "Pharmacist",
+      "major_codes": [
+        "CHM",
+        "BIO"
+      ],
+      "program_keys": [
+        "chemistry_major",
+        "biology_major"
+      ],
+      "pathways": [
+        "premed"
+      ],
+      "note": "Pre-pharmacy is not a separate pathway here; the pre-med chemistry and biology sequence covers most PharmD prerequisites."
+    },
+    "health_pubh": {
+      "result": true,
+      "label": "Public health or health policy",
+      "major_codes": [
+        "SOC",
+        "PSY",
+        "BIO",
+        "SCJ"
+      ],
+      "program_keys": [
+        "sociology_major",
+        "psychology_major",
+        "biology_major",
+        "social_criminal_justice_major"
+      ],
+      "note": "The Health & Society Studies minor pairs well with any of these."
+    },
+    "health_unsure": {
+      "result": true,
+      "label": "Health — direction undecided",
+      "major_codes": [
+        "BIO",
+        "KIN",
+        "PSY"
+      ],
+      "program_keys": [
+        "biology_major",
+        "kinesiology_pre_health_major",
+        "psychology_major"
+      ],
+      "note": "Biology and Kinesiology — Pre-Health both keep the common health-professions prerequisites on track while the specific career settles."
+    },
+    "science": {
+      "question": "Which science?",
+      "options": [
+        {
+          "label": "Biology and life sciences",
+          "goto": "sci_bio"
+        },
+        {
+          "label": "Chemistry",
+          "goto": "sci_chm"
+        },
+        {
+          "label": "Physics and astronomy",
+          "goto": "sci_phy"
+        },
+        {
+          "label": "Neuroscience and the brain",
+          "goto": "sci_neuro"
+        },
+        {
+          "label": "Environment and ecology",
+          "goto": "sci_env"
+        },
+        {
+          "label": "Mathematics and statistics",
+          "goto": "sci_math"
+        },
+        {
+          "label": "Not sure yet",
+          "goto": "sci_unsure"
+        }
+      ]
+    },
+    "sci_bio": {
+      "result": true,
+      "label": "Life sciences research",
+      "major_codes": [
+        "BIO"
+      ],
+      "program_keys": [
+        "biology_major"
+      ]
+    },
+    "sci_chm": {
+      "result": true,
+      "label": "Chemistry research",
+      "major_codes": [
+        "CHM"
+      ],
+      "program_keys": [
+        "chemistry_acs_major",
+        "chemistry_major"
+      ],
+      "note": "The ACS-certified track is the one graduate programs and industry labs look for."
+    },
+    "sci_phy": {
+      "result": true,
+      "label": "Physics and astronomy",
+      "major_codes": [
+        "PHY"
+      ],
+      "program_keys": [
+        "physics_major"
+      ]
+    },
+    "sci_neuro": {
+      "result": true,
+      "label": "Neuroscience",
+      "major_codes": [
+        "PSY"
+      ],
+      "program_keys": [
+        "neuroscience_collateral_major",
+        "psychology_major"
+      ]
+    },
+    "sci_env": {
+      "result": true,
+      "label": "Environmental science",
+      "major_codes": [
+        "EVS",
+        "BIO"
+      ],
+      "program_keys": [
+        "environmental_studies_collateral_major",
+        "biology_major"
+      ]
+    },
+    "sci_math": {
+      "result": true,
+      "label": "Mathematics and statistics",
+      "major_codes": [
+        "MTH",
+        "DS"
+      ],
+      "program_keys": [
+        "mathematics_major",
+        "data_science_major"
+      ]
+    },
+    "sci_unsure": {
+      "result": true,
+      "label": "Science — field undecided",
+      "major_codes": [
+        "BIO",
+        "CHM",
+        "SCI"
+      ],
+      "program_keys": [
+        "biology_major",
+        "chemistry_major",
+        "interdisciplinary_science_major"
+      ],
+      "note": "The introductory sequences in biology, chemistry and physics overlap enough in the first year that the choice can wait until sophomore year."
+    },
+    "tech": {
+      "question": "Which direction?",
+      "options": [
+        {
+          "label": "Engineering",
+          "goto": "tech_eng"
+        },
+        {
+          "label": "Software and computing",
+          "goto": "tech_cs"
+        },
+        {
+          "label": "Data science and analytics",
+          "goto": "tech_data"
+        },
+        {
+          "label": "Not sure yet",
+          "goto": "tech_unsure"
+        }
+      ]
+    },
+    "tech_eng": {
+      "result": true,
+      "label": "Engineering",
+      "major_codes": [
+        "ENR",
+        "PHY"
+      ],
+      "program_keys": [
+        "engineering_physics_bse_major",
+        "physics_major"
+      ],
+      "note": "Engineering Physics is the B.S.E. and is often paired with a transfer or dual-degree arrangement — confirm the receiving school's sequence early."
+    },
+    "tech_cs": {
+      "result": true,
+      "label": "Software and computing",
+      "major_codes": [
+        "CS"
+      ],
+      "program_keys": [
+        "computer_science_major"
+      ]
+    },
+    "tech_data": {
+      "result": true,
+      "label": "Data science",
+      "major_codes": [
+        "DS",
+        "MTH"
+      ],
+      "program_keys": [
+        "data_science_major",
+        "mathematics_major"
+      ]
+    },
+    "tech_unsure": {
+      "result": true,
+      "label": "Technical — field undecided",
+      "major_codes": [
+        "CS",
+        "DS",
+        "MTH"
+      ],
+      "program_keys": [
+        "computer_science_major",
+        "data_science_major",
+        "mathematics_major"
+      ]
+    },
+    "business": {
+      "question": "Which part of business?",
+      "options": [
+        {
+          "label": "Accounting or CPA",
+          "goto": "bus_acc"
+        },
+        {
+          "label": "Management and general business",
+          "goto": "bus_gen"
+        },
+        {
+          "label": "Economics and finance",
+          "goto": "bus_eco"
+        },
+        {
+          "label": "Marketing and public relations",
+          "goto": "bus_mkt"
+        },
+        {
+          "label": "Not sure yet",
+          "goto": "bus_unsure"
+        }
+      ]
+    },
+    "bus_acc": {
+      "result": true,
+      "label": "Accounting",
+      "major_codes": [
+        "ACC"
+      ],
+      "program_keys": [
+        "accounting_public_major",
+        "accounting_managerial_major"
+      ],
+      "note": "The Public track is the one built around CPA exam eligibility."
+    },
+    "bus_gen": {
+      "result": true,
+      "label": "Business administration",
+      "major_codes": [
+        "BUS"
+      ],
+      "program_keys": [
+        "business_admin_major",
+        "business_administration_major"
+      ]
+    },
+    "bus_eco": {
+      "result": true,
+      "label": "Economics and finance",
+      "major_codes": [
+        "ECO"
+      ],
+      "program_keys": [
+        "economics_major",
+        "international_economics_major"
+      ]
+    },
+    "bus_mkt": {
+      "result": true,
+      "label": "Marketing and public relations",
+      "major_codes": [
+        "PR",
+        "COM",
+        "BUS"
+      ],
+      "program_keys": [
+        "public_relations_collateral_major",
+        "communication_studies_major",
+        "business_admin_major",
+        "business_administration_major"
+      ]
+    },
+    "bus_unsure": {
+      "result": true,
+      "label": "Business — direction undecided",
+      "major_codes": [
+        "BUS",
+        "ECO"
+      ],
+      "program_keys": [
+        "business_admin_major",
+        "business_administration_major",
+        "economics_major"
+      ]
+    },
+    "public": {
+      "question": "Which direction?",
+      "options": [
+        {
+          "label": "Law school",
+          "goto": "pub_law"
+        },
+        {
+          "label": "Government and public policy",
+          "goto": "pub_gov"
+        },
+        {
+          "label": "International affairs",
+          "goto": "pub_intl"
+        },
+        {
+          "label": "Criminal justice and policing",
+          "goto": "pub_cj"
+        },
+        {
+          "label": "Not sure yet",
+          "goto": "pub_unsure"
+        }
+      ]
+    },
+    "pub_law": {
+      "result": true,
+      "label": "Law school",
+      "major_codes": [
+        "POL",
+        "PHL",
+        "HIS",
+        "ENG"
+      ],
+      "program_keys": [
+        "political_science_major",
+        "philosophy_major",
+        "history_major",
+        "english_major"
+      ],
+      "note": "Law schools set no required major. These are the ones that build the reading, writing and argument load the LSAT and first year of law school assume."
+    },
+    "pub_gov": {
+      "result": true,
+      "label": "Government and policy",
+      "major_codes": [
+        "POL",
+        "IS"
+      ],
+      "program_keys": [
+        "political_science_major",
+        "international_studies_major"
+      ]
+    },
+    "pub_intl": {
+      "result": true,
+      "label": "International affairs",
+      "major_codes": [
+        "IS",
+        "POL",
+        "SPA",
+        "ECO"
+      ],
+      "program_keys": [
+        "international_studies_major",
+        "political_science_major",
+        "spanish_major",
+        "international_economics_major"
+      ]
+    },
+    "pub_cj": {
+      "result": true,
+      "label": "Criminal justice",
+      "major_codes": [
+        "SCJ",
+        "SOC"
+      ],
+      "program_keys": [
+        "social_criminal_justice_major",
+        "sociology_major"
+      ]
+    },
+    "pub_unsure": {
+      "result": true,
+      "label": "Public service — direction undecided",
+      "major_codes": [
+        "POL",
+        "SCJ",
+        "SOC"
+      ],
+      "program_keys": [
+        "political_science_major",
+        "social_criminal_justice_major",
+        "sociology_major"
+      ]
+    },
+    "education": {
+      "question": "Which age group or subject?",
+      "options": [
+        {
+          "label": "Elementary school",
+          "goto": "edu_elem"
+        },
+        {
+          "label": "Secondary school",
+          "goto": "edu_sec"
+        },
+        {
+          "label": "Physical education and coaching",
+          "goto": "edu_pe"
+        },
+        {
+          "label": "Not sure yet",
+          "goto": "edu_unsure"
+        }
+      ]
+    },
+    "edu_elem": {
+      "result": true,
+      "label": "Elementary teacher",
+      "major_codes": [
+        "EDU"
+      ],
+      "program_keys": [
+        "elementary_education_major"
+      ]
+    },
+    "edu_sec": {
+      "result": true,
+      "label": "Secondary teacher",
+      "major_codes": [
+        "ENG",
+        "HIS",
+        "MTH",
+        "BIO",
+        "CHM",
+        "PHY",
+        "SPA",
+        "THE"
+      ],
+      "program_keys": [
+        "english_major",
+        "history_major",
+        "mathematics_major",
+        "biology_major",
+        "chemistry_major",
+        "physics_major",
+        "spanish_major",
+        "theatre_arts_secondary_ed_major"
+      ],
+      "note": "Secondary licensure is an endorsement layered on the subject major — the Education coursework runs alongside it, so plan on a fuller load in years 3 and 4. The next step picks the subject."
+    },
+    "edu_pe": {
+      "result": true,
+      "label": "Physical education and coaching",
+      "major_codes": [
+        "KIN"
+      ],
+      "program_keys": [
+        "kinesiology_teaching_major",
+        "kinesiology_fitness_major"
+      ]
+    },
+    "edu_unsure": {
+      "result": true,
+      "label": "Teaching — level undecided",
+      "major_codes": [
+        "EDU",
+        "PSY"
+      ],
+      "program_keys": [
+        "elementary_education_major",
+        "psychology_major"
+      ]
+    },
+    "helping": {
+      "question": "Which kind of work?",
+      "options": [
+        {
+          "label": "Counseling and therapy",
+          "goto": "help_couns"
+        },
+        {
+          "label": "Social work",
+          "goto": "help_sw"
+        },
+        {
+          "label": "Nonprofit and community work",
+          "goto": "help_np"
+        },
+        {
+          "label": "Not sure yet",
+          "goto": "help_unsure"
+        }
+      ]
+    },
+    "help_couns": {
+      "result": true,
+      "label": "Counseling and therapy",
+      "major_codes": [
+        "PSY",
+        "SOC"
+      ],
+      "program_keys": [
+        "psychology_major",
+        "sociology_major"
+      ],
+      "note": "Practising as a counsellor or therapist takes a graduate degree; the undergraduate job is the psychology core plus research experience."
+    },
+    "help_sw": {
+      "result": true,
+      "label": "Social work",
+      "major_codes": [
+        "SOC",
+        "SCJ",
+        "PSY"
+      ],
+      "program_keys": [
+        "sociology_major",
+        "social_criminal_justice_major",
+        "psychology_major"
+      ],
+      "note": "Coe has no BSW. Sociology is the usual route into an MSW."
+    },
+    "help_np": {
+      "result": true,
+      "label": "Nonprofit and community work",
+      "major_codes": [
+        "SOC",
+        "POL",
+        "AAM"
+      ],
+      "program_keys": [
+        "sociology_major",
+        "political_science_major",
+        "african_american_studies_major"
+      ]
+    },
+    "help_unsure": {
+      "result": true,
+      "label": "Helping professions — direction undecided",
+      "major_codes": [
+        "PSY",
+        "SOC"
+      ],
+      "program_keys": [
+        "psychology_major",
+        "sociology_major"
+      ]
+    },
+    "media": {
+      "question": "Which kind of writing or media?",
+      "options": [
+        {
+          "label": "Writing fiction, poetry or scripts",
+          "goto": "med_crw"
+        },
+        {
+          "label": "Journalism and media",
+          "goto": "med_jour"
+        },
+        {
+          "label": "Public relations and marketing",
+          "goto": "med_pr"
+        },
+        {
+          "label": "Publishing and editing",
+          "goto": "med_pub"
+        },
+        {
+          "label": "Not sure yet",
+          "goto": "med_unsure"
+        }
+      ]
+    },
+    "med_crw": {
+      "result": true,
+      "label": "Writer",
+      "major_codes": [
+        "CRW",
+        "ENG"
+      ],
+      "program_keys": [
+        "creative_writing_major",
+        "english_major"
+      ]
+    },
+    "med_jour": {
+      "result": true,
+      "label": "Journalism and media",
+      "major_codes": [
+        "COM",
+        "ENG"
+      ],
+      "program_keys": [
+        "communication_studies_major",
+        "english_major"
+      ]
+    },
+    "med_pr": {
+      "result": true,
+      "label": "Public relations",
+      "major_codes": [
+        "PR",
+        "COM"
+      ],
+      "program_keys": [
+        "public_relations_collateral_major",
+        "communication_studies_major"
+      ]
+    },
+    "med_pub": {
+      "result": true,
+      "label": "Publishing and editing",
+      "major_codes": [
+        "ENG",
+        "CRW"
+      ],
+      "program_keys": [
+        "english_major",
+        "creative_writing_major"
+      ]
+    },
+    "med_unsure": {
+      "result": true,
+      "label": "Writing — direction undecided",
+      "major_codes": [
+        "ENG",
+        "COM",
+        "CRW"
+      ],
+      "program_keys": [
+        "english_major",
+        "communication_studies_major",
+        "creative_writing_major"
+      ]
+    },
+    "arts": {
+      "question": "Which art form?",
+      "options": [
+        {
+          "label": "Acting and performance",
+          "goto": "art_act"
+        },
+        {
+          "label": "Theatre design and management",
+          "goto": "art_tech"
+        },
+        {
+          "label": "Music",
+          "goto": "art_mus"
+        },
+        {
+          "label": "Studio art and design",
+          "goto": "art_studio"
+        },
+        {
+          "label": "Art history and museums",
+          "goto": "art_hist"
+        },
+        {
+          "label": "Not sure yet",
+          "goto": "art_unsure"
+        }
+      ]
+    },
+    "art_act": {
+      "result": true,
+      "label": "Actor",
+      "major_codes": [
+        "THE"
+      ],
+      "program_keys": [
+        "theatre_arts_performing_arts_major",
+        "theatre_arts_major"
+      ]
+    },
+    "art_tech": {
+      "result": true,
+      "label": "Theatre design and management",
+      "major_codes": [
+        "THE"
+      ],
+      "program_keys": [
+        "theatre_arts_management_major",
+        "theatre_arts_major"
+      ]
+    },
+    "art_mus": {
+      "result": true,
+      "label": "Musician",
+      "major_codes": [
+        "MU"
+      ],
+      "program_keys": [
+        "music_major",
+        "music_ba_major",
+        "music_bm_major"
+      ],
+      "note": "Placement auditions and ensemble assignment happen before the first term — the sequence assumes lessons and ensemble every semester."
+    },
+    "art_studio": {
+      "result": true,
+      "label": "Studio artist",
+      "major_codes": [
+        "ART"
+      ],
+      "program_keys": [
+        "art_major"
+      ]
+    },
+    "art_hist": {
+      "result": true,
+      "label": "Art history and museums",
+      "major_codes": [
+        "ART",
+        "HIS"
+      ],
+      "program_keys": [
+        "art_major",
+        "art_history_major",
+        "history_major"
+      ],
+      "note": "Pair with the Museum Studies minor, which carries its own recommended sequence."
+    },
+    "art_unsure": {
+      "result": true,
+      "label": "Arts — form undecided",
+      "major_codes": [
+        "ART",
+        "THE",
+        "MU"
+      ],
+      "program_keys": [
+        "art_major",
+        "theatre_arts_major",
+        "music_major"
+      ]
+    }
+  }
+}

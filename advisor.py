@@ -32,7 +32,6 @@ from advisor_core import (
     compute_gpa, gpa_standing, program_courses,
     is_math_course, is_science_course,
     _codes_satisfied, check_section, check_program, check_ge,
-    TrajectoryData,
 )
 
 ctk.set_appearance_mode("light")
@@ -92,8 +91,6 @@ class AdvisorApp:
             root.destroy()
             return
 
-        self.trajectory = TrajectoryData(
-            DATA_DIR / "student_obs" / "major_course_summary.csv")
 
         # Precompute fast lookup sets for offering badges in plan dropdowns.
         terms = self.offerings.get("terms", {})
@@ -1520,24 +1517,6 @@ class AdvisorApp:
             lines.append("NOTE_END")
             lines.append("")
 
-        # Suggested courses as comments (not imported)
-        taken = self._collect_courses()
-        major_code = ""
-        for pid in sel_ids:
-            prog = self.programs.get(pid, {})
-            if prog.get("program_type") == "major":
-                major_code = prog.get("major_code", "")
-                break
-        if major_code:
-            suggestions = self.trajectory.elective_suggestions(major_code, exclude=taken)
-            if suggestions:
-                lines.append(
-                    "# \u2500\u2500 SUGGESTED NEXT COURSES (reference only \u2014 not imported) \u2500\u2500")
-                for code, info in suggestions:
-                    sem_str = f"Sem {info['sem']}" if info["sem"] else "?"
-                    pct_str = f"{info['pct']:.0%}"
-                    lines.append(f"# {code:<12}  {pct_str} of grads   {sem_str}")
-
         try:
             Path(path).write_text("\n".join(lines), encoding="utf-8")
             messagebox.showinfo("Saved", f"Student file saved to:\n{path}")
@@ -2019,7 +1998,7 @@ class AdvisorApp:
         ).pack(fill=tk.X)
         tk.Label(hdr,
             text=("Dropdown badges: [F] Fall 2026   "
-                  "[S] Spring 2026   [FS] both"),
+                  "[S] Spring 2027   [FS] both"),
             font=("Helvetica", 9), fg=COLORS["note"],
             bg=COLORS["bg"], anchor="w"
         ).pack(fill=tk.X, pady=(0, 6))
@@ -2107,7 +2086,7 @@ class AdvisorApp:
                      ).pack(fill=tk.X, padx=24, pady=(4, 1))
 
         # ── Collect data into semester buckets ──────────────────────────
-        sem_buckets: dict = {i: [] for i in range(1, 9)}
+        sem_buckets: dict = {i: [] for i in range(1, 10)}
         overdue_items: list = []
         flex_items: list = []
         non_courses: list = []
@@ -2176,7 +2155,8 @@ class AdvisorApp:
                             "primary": pcode, "is_code": is_code,
                         })
 
-        # B) Required program items — placed by trajectory semester
+        # B) Required program items. Nothing places these in a semester, so
+        #    they collect under one "remaining required" heading (bucket 9).
         for pid in sel_ids:
             prog = self.programs.get(pid, {})
             result = check_program(prog, taken)
@@ -2206,43 +2186,22 @@ class AdvisorApp:
                             continue
                         if primary:
                             shown_codes.add(primary)
-                        info = (self.trajectory.course_info(
-                                    major_code, primary)
-                                if primary else None)
-                        sem = info["sem"] if info else None
-                        pct = info["pct"] if info else None
                         entry = {
                             "display": " / ".join(codes),
                             "title": item.get("title", ""),
                             "program": prog_name,
                             "category": "required", "done": False,
                             "primary": primary, "is_code": True,
-                            "sem": sem, "pct": pct,
                         }
-                        if sem and 1 <= sem <= 8:
-                            sem_buckets[sem].append(entry)
-                        else:
-                            sem_buckets[8].append(entry)
+                        sem_buckets[9].append(entry)
 
                 elif stype == "choose_one":
                     opts = sec.get("options", [])
-                    best_sem, best_code = None, None
-                    for o in opts:
-                        c0 = _primary_code(o.get("codes", []))
-                        if c0:
-                            inf = self.trajectory.course_info(
-                                major_code, c0)
-                            if inf and inf["sem"]:
-                                if (best_sem is None
-                                        or inf["sem"] < best_sem):
-                                    best_sem = inf["sem"]
-                                    best_code = c0
                     preview = "  |  ".join(
                         _primary_code(o.get("codes", []))
                         or o.get("title", "?")
                         for o in opts)
-                    hint = (f"   [earliest: {best_code}]"
-                            if best_code else "")
+                    hint = ""
                     pool = []
                     for o in opts:
                         c0 = _primary_code(o.get("codes", []))
@@ -2336,7 +2295,7 @@ class AdvisorApp:
             export.append("")
 
         # ── Render: Semester sections ───────────────────────────────────
-        for sem_num in range(current_sem, 9):
+        for sem_num in range(current_sem, 10):
             items = sem_buckets.get(sem_num, [])
             if not items:
                 continue
@@ -2354,8 +2313,8 @@ class AdvisorApp:
             else:
                 badge = f"{remaining} courses"
 
-            label = PLAN_SEM_LABELS.get(sem_num,
-                                        f"Semester {sem_num}")
+            label = ("Remaining required" if sem_num == 9
+                     else PLAN_SEM_LABELS.get(sem_num, f"Semester {sem_num}"))
             body = _section(f"sem_{sem_num}", label, badge,
                             default_expanded=(sem_num == current_sem))
 
@@ -2400,14 +2359,10 @@ class AdvisorApp:
 
             if required:
                 _sub_heading(body, "Required:")
-                required.sort(
-                    key=lambda x: (x.get("pct") or 0), reverse=True)
                 for it in required:
                     parts = []
                     if it.get("title"):
                         parts.append(it["title"])
-                    if it.get("pct"):
-                        parts.append(f"{it['pct']:.0%} of grads")
                     parts.append(f"({it['program']})")
                     extra = "  " + "  ".join(parts) if parts else ""
                     line = _item_row(body, "\u25a1", it["display"],
@@ -2708,41 +2663,6 @@ class AdvisorApp:
                         export.append(f"      {nc['desc']}")
                 export.append("")
 
-        # ── Render: Historical electives ────────────────────────────────
-        for pid in sel_ids:
-            prog = self.programs.get(pid, {})
-            major_code = prog.get("major_code", "")
-            if not major_code:
-                continue
-            exclude_set = taken_norm | shown_codes
-            suggestions = self.trajectory.elective_suggestions(
-                major_code, exclude=exclude_set, n=10)
-            if not suggestions:
-                continue
-            body = _section(
-                f"electives_{pid}",
-                f"Common Electives \u2014 {prog['name']}",
-                f"{len(suggestions)} courses",
-                default_expanded=False)
-            export.append(
-                f"\u2500\u2500 COMMONLY TAKEN ELECTIVES "
-                f"({prog['name']}) \u2500\u2500")
-            _sub_heading(
-                body,
-                "Taken by \u226515% of graduates \u2014 "
-                "not required.")
-            for code, info in suggestions:
-                sem_s = (f"Sem {info['sem']}"
-                         if info["sem"] else "?")
-                pct_s = f"{info['pct']:.0%}"
-                _item_row(body, "\u2022",
-                          f"{code:<12}  {pct_s} of grads   {sem_s}",
-                          COLORS["note"])
-                export.append(
-                    f"   \u2022  {code}  {pct_s} of grads  {sem_s}")
-                shown_codes.add(code)
-            export.append("")
-
         # ── Mousewheel scrolling ────────────────────────────────────────
         def _bind_wheel(widget):
             def _scroll(event):
@@ -2914,18 +2834,6 @@ class AdvisorApp:
 
     # ── Program tab ───────────────────────────────────────────────────────────
 
-    def _traj_hint(self, major_code: str, code: str) -> str:
-        """Return a short trajectory annotation string, or empty string."""
-        if not major_code:
-            return ""
-        info = self.trajectory.course_info(major_code, code)
-        if not info:
-            return ""
-        parts = []
-        if info["sem"]:
-            parts.append(f"Sem {info['sem']}")
-        return f"  ← {', '.join(parts)}" if parts else ""
-
     def _render_program(self, parent: tk.Frame, result: dict,
                         active_pathways: list = None, tab_name: str = ""):
         t = self._make_text(parent, tab_name=tab_name)
@@ -2988,7 +2896,7 @@ class AdvisorApp:
                         required_codes.add(primary)
                     codes_str = "  /  ".join(codes)
                     title_str = item.get("title", "")
-                    hint = self._traj_hint(major_code, primary) if primary else ""
+                    hint = ""
                     if item.get("satisfied"):
                         self._ins(t, f"     ✓  {codes_str}    {title_str}{hint}\n", "item_done")
                     else:
@@ -3004,7 +2912,7 @@ class AdvisorApp:
                         required_codes.add(primary)
                     codes_str = "  +  ".join(codes)
                     title_str = opt.get("title", "")
-                    hint = self._traj_hint(major_code, primary) if primary else ""
+                    hint = ""
                     if opt.get("satisfied"):
                         self._ins(t, f"     ✓  {codes_str}    {title_str}{hint}\n", "item_done")
                     elif sec_done:
@@ -3022,7 +2930,7 @@ class AdvisorApp:
                         required_codes.add(primary)
                     codes_str = "  /  ".join(codes)
                     title_str = item.get("title", "")
-                    hint = self._traj_hint(major_code, primary) if primary else ""
+                    hint = ""
                     if item.get("satisfied"):
                         self._ins(t, f"     ✓  {codes_str}    {title_str}{hint}\n", "item_done")
                     elif sec_done:
@@ -3037,7 +2945,7 @@ class AdvisorApp:
                     self._ins(t, f"     {desc}\n", "hint")
                 for c in sec.get("matching", []):
                     required_codes.add(c)
-                    hint = self._traj_hint(major_code, c)
+                    hint = ""
                     self._ins(t, f"     ✓  {c}{hint}\n", "item_done")
                 remaining = n - len(sec.get("matching", []))
                 if remaining > 0:
@@ -3071,24 +2979,6 @@ class AdvisorApp:
             self._ins(t, "\n── NOTES ──────────────────────────────────────────────────────\n",
                       "divider")
             self._ins(t, f"   {prog['notes']}\n", "note")
-
-        # Trajectory-based elective suggestions
-        if major_code:
-            suggestions = self.trajectory.elective_suggestions(
-                major_code, exclude=required_codes)
-            if suggestions:
-                self._ins(t,
-                    "\n── COMMONLY TAKEN ELECTIVES  (from historical student data) ───\n",
-                    "divider")
-                self._ins(t,
-                    "   Courses taken by ≥15% of graduates — not automatically required.\n",
-                    "hint")
-                for code, info in suggestions:
-                    sem_str = f"Sem {info['sem']}" if info["sem"] else "?"
-                    pct_str = f"{info['pct']:.0%}"
-                    self._ins(t,
-                        f"   • {code:<12}  {pct_str} of grads   {sem_str}\n",
-                        "note")
 
         t.configure(state="disabled")
 

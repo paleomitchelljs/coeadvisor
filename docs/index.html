@@ -17,7 +17,7 @@
     <h1>CoeAdvisor</h1>
   </div>
   <div class="toolbar">
-    <button onclick="showIntakeWizard()">New Student</button>
+    <button onclick="showTemplatePicker()">Load Template</button>
     <button onclick="downloadAdv()">Save .adv</button>
     <label class="file-label">
       Load .adv
@@ -173,14 +173,14 @@
   </div>
 </main>
 
-<!-- ── Intake Wizard Modal ──────────────────────────────── -->
-<div class="modal-overlay" id="wizard-modal">
+<!-- ── Template Picker Modal ────────────────────────────── -->
+<div class="modal-overlay" id="template-modal">
   <div class="modal" style="max-width:620px">
-    <h3>New Student — First-Semester Recommender</h3>
-    <div id="wizard-body"></div>
+    <h3>Load Template</h3>
+    <p>A template is a four-year plan for a program, loaded as a starting point. Edit it freely, then Save .adv.</p>
+    <div id="template-body"></div>
     <div class="btn-row">
-      <button class="btn-secondary" onclick="closeWizard()">Cancel</button>
-      <button class="btn-primary" onclick="submitWizard()">Apply Recommendation</button>
+      <button class="btn-secondary" onclick="closeTemplatePicker()">Cancel</button>
     </div>
   </div>
 </div>
