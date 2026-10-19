@@ -559,12 +559,7 @@ class AdvisorApp:
                                            self.first_two_years or [],
                                            certainty=certainty)
             note_parts = []
-            if rec.get("stacking_note"):
-                note_parts.append("Stacking: " + rec["stacking_note"])
             note_parts.extend(rec.get("notes", []))
-            for f in rec.get("monitor_flags", []):
-                tag = "Strict monitor" if f["strict"] else "Monitor"
-                note_parts.append(f"{tag} {f['course']}: {f['message']}")
             route = {
                 "major": pid,
                 "pathway": hp if hp != "none" else "",
