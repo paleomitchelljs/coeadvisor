@@ -586,13 +586,15 @@ function buildSemesterSuggestions(semNum, allTaken, shownCodes, selectedProgs, g
   return items;
 }
 
+// What a semester still needs, as {label, cat} where cat is the key the
+// scheduler's search-by-GE menu uses.
 function buildPlanHints(semNum, allTaken, geResult, completed) {
   if (completed) return [];
   const hints = [];
 
   // FYS
   if (semNum <= 2 && geResult.fys && !geResult.fys.complete)
-    hints.push("need First Year Seminar");
+    hints.push({ label: "First Year Seminar", cat: "fys" });
 
   // Divisional GE
   const divNames = {
@@ -600,28 +602,29 @@ function buildPlanHints(semNum, allTaken, geResult, completed) {
     nat_sci_math: "Nat Sci/Math", social_sciences: "Social Sciences",
   };
   for (const [key, label] of Object.entries(divNames)) {
-    if (geResult[key] && !geResult[key].complete) hints.push(`need ${label} GE`);
+    if (geResult[key] && !geResult[key].complete)
+      hints.push({ label: `${label} GE`, cat: key });
   }
 
   // Lab science
   if (geResult.lab_science && !geResult.lab_science.complete)
-    hints.push("need Lab Science");
+    hints.push({ label: "Lab Science", cat: "lab_science" });
 
   // WE (relevant in later semesters)
   if (semNum >= 2 && geResult.we && !geResult.we.complete) {
     const remaining = geResult.we.required - geResult.we.courses.length;
-    if (remaining > 0) hints.push(`need WE course (${remaining} remaining)`);
+    if (remaining > 0) hints.push({ label: `WE course (${remaining} left)`, cat: "we" });
   }
 
   // DAC
   if (semNum >= 2 && geResult.dac && !geResult.dac.complete) {
     const remaining = geResult.dac.required - geResult.dac.courses.length;
-    if (remaining > 0) hints.push(`need DAC course (${remaining} remaining)`);
+    if (remaining > 0) hints.push({ label: `DAC course (${remaining} left)`, cat: "dac" });
   }
 
   // Practicum
   if (semNum >= 5 && geResult.practicum && !geResult.practicum.complete)
-    hints.push("need Practicum");
+    hints.push({ label: "Practicum", cat: "practicum" });
 
   return hints;
 }
@@ -1063,6 +1066,7 @@ function loadAdv(text) {
     addAdvisorNote(note.date, note.lines.join("\n").trim());
   }
 
+  syncSchedPlanSemDefault(true);
   runCheck();
 }
 
@@ -1123,15 +1127,10 @@ function gatherData() {
   return { progIds, activePw, taken: allCourses, semesters, substitutions, grades, weAnnotated };
 }
 
-function runCheck() {
-  buildProfReqs();
-  const { progIds, activePw, taken, substitutions, grades, weAnnotated } = gatherData();
-  const overrides = {};
-  for (const [k, v] of Object.entries((DATA.course_credits || {}).overrides || {}))
-    overrides[normalize(k)] = v;
-
-  // GE data for the catalog year the advisor selected
-  const gd = geData(selectedCatalogYear());
+// The course sets behind the DAC, WE and Practicum requirements for one
+// catalog year's GE data (from geData). Shared by the checker and the
+// scheduler's search-by-GE so both agree on what counts.
+function geCourseSets(gd) {
   const dacSet = new Set((gd.dac && gd.dac.courses) || gd.dac || []);
   const weSet = new Set((gd.we && gd.we.courses) || gd.we || []);
   // Also include courses marked WE in that year's catalog
@@ -1142,6 +1141,22 @@ function runCheck() {
       }
     }
   }
+  const prxSet = new Set((gd.practicum || {}).all_courses || []);
+  return { dacSet, weSet, prxSet };
+}
+
+let lastGeResult = null;   // most recent checkGE result, for the scheduler's GE menu
+
+function runCheck() {
+  buildProfReqs();
+  const { progIds, activePw, taken, substitutions, grades, weAnnotated } = gatherData();
+  const overrides = {};
+  for (const [k, v] of Object.entries((DATA.course_credits || {}).overrides || {}))
+    overrides[normalize(k)] = v;
+
+  // GE data for the catalog year the advisor selected
+  const gd = geData(selectedCatalogYear());
+  const { dacSet, weSet, prxSet } = geCourseSets(gd);
 
   // WE adjustment
   const transferWe = document.getElementById("transfer-we").value;
@@ -1149,7 +1164,6 @@ function runCheck() {
   if (transferWe.includes("16+")) weRequired = 2;
   else if (transferWe.includes("8")) weRequired = 3;
 
-  const prxSet = new Set((gd.practicum || {}).all_courses || []);
   const geResult = checkGE(gd.ge, taken, dacSet, weSet, prxSet, weAnnotated);
 
   // WE c-or-better filter: a WE course with grade D- through C- counts toward
@@ -1231,6 +1245,7 @@ function runCheck() {
     _summaryWarn.remove();
   }
 
+  lastGeResult = geResult;
   renderGE(geResult);
   renderPrograms(progResults, pwResults);
   renderPlan(selectedProgs, taken, geResult, activePw, overrides);
@@ -1497,7 +1512,9 @@ function renderPlan(selectedProgs, taken, geResult, activePathways, overrides) {
       // GE hints
       const hints = buildPlanHints(semNum, taken, geResult, completed);
       if (hints.length > 0) {
-        hintsHTML += hints.map(h => `<span class="plan-hint-item">${h}</span>`).join("");
+        hintsHTML += `<span class="plan-hint-label">Needs:</span>`
+          + hints.map(h => `<button class="plan-ge-btn" onclick="findGeInScheduler('${h.cat}', ${semNum})" `
+            + `title="Search this term's class list for ${_escAttr(h.label)}">${h.label} \u203A</button>`).join("");
       }
     }
     hintsEl.innerHTML = hintsHTML;
@@ -1539,6 +1556,44 @@ function renderPlan(selectedProgs, taken, geResult, activePathways, overrides) {
       }
     }
   });
+}
+
+// Plan semesters in order, with whether each is ticked Completed.
+function planSemStatus() {
+  return [...document.querySelectorAll("#plan-semesters .plan-semester")]
+    .map(el => ({ num: parseInt(el.dataset.semNum) || null,
+                  done: !!el.querySelector(".sem-status input")?.checked }))
+    .filter(x => x.num)
+    .sort((a, b) => a.num - b.num);
+}
+
+function nextUncompletedPlanSem() {
+  const next = planSemStatus().find(x => !x.done);
+  return next ? next.num : null;
+}
+
+// The schedule term to look at for a plan semester: the nearest term of the
+// right season that has not ended yet. Later semesters of the same season step
+// on to later terms when the class lists go that far, else the last one we
+// have. Pull Plan used to take the first matching season in the list, which
+// was a past term (Spring 2026) and reported the whole plan as not offered.
+function termForPlanSem(semNum) {
+  const season = semNum % 2 === 1 ? "fall" : "spring";
+  const now = new Date();
+  const all = Object.keys(DATA.schedules || {})
+    .map(code => { const m = /^(fall|spring)_(\d{4})/i.exec(code);
+                   return m ? { code, season: m[1].toLowerCase(), year: +m[2] } : null; })
+    .filter(t => t && t.season === season)
+    .sort((a, b) => a.year - b.year);
+  if (!all.length) return null;
+  // Fall runs to the end of December, spring to the end of May.
+  const endsAfterNow = t => new Date(t.year, t.season === "fall" ? 11 : 4, 31) >= now;
+  const upcoming = all.filter(endsAfterNow);
+  if (!upcoming.length) return all[all.length - 1].code;
+  const anchor = nextUncompletedPlanSem() || semNum;
+  const firstOfSeason = anchor % 2 === semNum % 2 ? anchor : anchor + 1;
+  const step = Math.max(0, Math.floor((semNum - firstOfSeason) / 2));
+  return upcoming[Math.min(step, upcoming.length - 1)].code;
 }
 
 function pickUpcomingFallTerm() {
@@ -2042,6 +2097,7 @@ function onPlanSemCompleted(checkbox) {
     ta.readOnly = false;
     semEl.classList.add("open");
   }
+  syncSchedPlanSemDefault();
   runCheck();
 }
 
@@ -2160,6 +2216,7 @@ function onSchedTermChange() {
   clearPullSummary();
   renderSchedCourses();
   renderSchedCalendar();
+  if (document.getElementById("sched-ge-search").style.display !== "none") renderSchedGe();
 }
 
 function buildSchedDatalist() {
@@ -2529,7 +2586,7 @@ function slotRowHtml(r) {
 
   const action = onCal
     ? `<span class="slot-on-cal">On calendar</span>`
-    : `<button class="small-btn" onclick="slotFinderPick('${r.code}', '${r.sec.id}')">`
+    : `<button class="small-btn" onclick="${r.pick || "slotFinderPick"}('${r.code}', '${r.sec.id}')">`
       + `${entry ? "Use this section" : "Add"}</button>`;
 
   return `<div class="slot-row${clashes.length ? " clash" : ""}">`
@@ -2692,16 +2749,164 @@ function clearPullSummary() {
 // season and refreshes the search list. It deliberately does not load the
 // semester's courses: that is what Pull Plan is for, and doing it here used to
 // wipe section choices the moment the dropdown moved.
+let schedPlanSemTouched = false;   // advisor picked a semester by hand
+
 function onSchedPlanSemChange() {
+  schedPlanSemTouched = true;
+  applySchedPlanSem();
+}
+
+function applySchedPlanSem() {
   clearPullSummary();
   const semNum = getSchedPlanSemNum();
   const termSel = document.getElementById("sched-term");
   if (!termSel || !semNum) return;
-  const wanted = semNum % 2 === 1 ? "fall" : "spring";
-  for (const opt of termSel.options) {
-    if (opt.value.startsWith(wanted)) { termSel.value = opt.value; break; }
-  }
+  const term = termForPlanSem(semNum);
+  if (term && [...termSel.options].some(o => o.value === term)) termSel.value = term;
   onSchedTermChange();
+}
+
+// Default the scheduler to the first plan semester not yet marked Completed.
+// An explicit pick by the advisor wins until a file is loaded.
+function syncSchedPlanSemDefault(force) {
+  if (force) schedPlanSemTouched = false;
+  if (schedPlanSemTouched) return;
+  const sel = document.getElementById("sched-plan-sem");
+  if (!sel) return;
+  const next = nextUncompletedPlanSem() || 8;
+  if (sel.value === String(next) && !force) return;
+  sel.value = String(next);
+  applySchedPlanSem();
+}
+
+// ── Search by GE requirement ──────────────────────────────────────────────
+//
+// Lists every section in the selected term that would count toward a GE
+// requirement, using the same prefix lists and DAC/WE/Practicum sets as the
+// checker (see checkGE), so what turns up here is what the Plan tab will credit.
+
+const SCHED_GE_CATS = [
+  ["fine_arts", "Fine Arts"], ["humanities", "Humanities"],
+  ["nat_sci_math", "Nat Sci & Math"], ["lab_science", "Lab Science"],
+  ["social_sciences", "Social Sciences"], ["fys", "First Year Seminar"],
+  ["we", "Writing Emphasis (WE)"], ["dac", "Diversity Across Curriculum (DAC)"],
+  ["practicum", "Practicum"],
+];
+
+function setSchedSearchMode(mode) {
+  document.querySelectorAll(".sched-mode-btn").forEach(b =>
+    b.classList.toggle("active", b.dataset.mode === mode));
+  document.getElementById("sched-course-search").style.display = mode === "course" ? "" : "none";
+  document.getElementById("sched-ge-search").style.display = mode === "ge" ? "" : "none";
+  if (mode === "ge") renderSchedGe();
+}
+
+// Sections of `code` that count toward `cat`, or [] if the course does not.
+function geSectionsFor(cat, code, course, ctx) {
+  const sd = ctx.sd, ge = ctx.gd.ge;
+  const meets = s => s.meetings.length > 0;
+  const secs = course.sections.filter(meets);
+  const div = ge.divisional.sections;
+  switch (cat) {
+    case "fine_arts": case "humanities": case "nat_sci_math": case "social_sciences":
+      return !isAuxiliary(code) && div[cat].prefixes.includes(prefixOf(code)) ? secs : [];
+    case "lab_science":
+      // A lab and its lecture are taken together, so either one is worth finding.
+      return isLab(code) || sd.courses[code + "L"] ? secs : [];
+    case "fys":
+      return prefixOf(code) === "FYS" || ["FS-110", "FS-111", "FS-112"].includes(code) ? secs : [];
+    case "we": {
+      // WE is per section in the class list; the catalog's list is per course.
+      const flagged = secs.filter(s => s.we);
+      if (flagged.length) return flagged;
+      return ctx.weSet.has(code) || /(W|WE)$/.test(code) ? secs : [];
+    }
+    case "dac":
+      return ctx.dacSet.has(code) && !isAuxiliary(code) ? secs : [];
+    case "practicum":
+      return prefixOf(code) === "PRX" || ctx.prxSet.has(code) ? secs : [];
+  }
+  return [];
+}
+
+function renderSchedGe() {
+  const sel = document.getElementById("sched-ge-cat");
+  const el = document.getElementById("sched-ge-results");
+  if (!sel || !el) return;
+
+  // Mark what the student still needs, from the latest check.
+  const keep = sel.value || "fine_arts";
+  sel.innerHTML = SCHED_GE_CATS.map(([key, label]) => {
+    const r = lastGeResult && lastGeResult[key];
+    const mark = r ? (r.complete ? " \u2713" : " \u2014 needed") : "";
+    return `<option value="${key}">${label}${mark}</option>`;
+  }).join("");
+  sel.value = keep;
+
+  const sd = getScheduleData();
+  if (!sd) {
+    el.innerHTML = `<div class="slot-empty">No class list is loaded for this term.</div>`;
+    return;
+  }
+  const gd = geData(selectedCatalogYear());
+  const ctx = { sd, gd, ...geCourseSets(gd) };
+  const cat = sel.value;
+  const q = (document.getElementById("sched-ge-filter").value || "").trim().toLowerCase();
+  const blocks = schedBlocks(sd);
+
+  const rows = [];
+  for (const code of Object.keys(sd.courses).sort()) {
+    const course = sd.courses[code];
+    if (q && !code.toLowerCase().includes(q) && !course.title.toLowerCase().includes(q)) continue;
+    for (const sec of geSectionsFor(cat, code, course, ctx)) {
+      const r = { code, title: course.title, sec, mtg: sec.meetings[0], pick: "schedGePick" };
+      r.entry = schedEntries.find(e => e.code === code);
+      r.onCal = !!(r.entry && r.entry.sectionId === sec.id);
+      r.clashes = r.onCal ? [] : slotClashes(code, sec, blocks);
+      rows.push(r);
+    }
+  }
+  if (!rows.length) {
+    el.innerHTML = `<div class="slot-empty">${q ? "Nothing matches that filter."
+      : "No sections this term count toward this requirement."}</div>`;
+    return;
+  }
+  const open = rows.filter(r => !r.clashes.length), busy = rows.filter(r => r.clashes.length);
+  const courses = new Set(rows.map(r => r.code)).size;
+  let html = `<div class="slot-count">${courses} course${courses === 1 ? "" : "s"}, `
+    + `${rows.length} section${rows.length === 1 ? "" : "s"}</div>`;
+  html += open.map(slotRowHtml).join("");
+  if (busy.length) {
+    html += `<div class="slot-divider">Conflicts with the current schedule</div>`;
+    html += busy.map(slotRowHtml).join("");
+  }
+  el.innerHTML = html;
+}
+
+function schedGePick(code, sectionId) {
+  const sd = getScheduleData();
+  if (!sd || !sd.courses[code]) return;
+  const entry = schedEntries.find(e => e.code === code);
+  if (entry) entry.sectionId = sectionId;
+  else schedEntries.push({ code, sectionId, colorIdx: schedColorNext++ % SCHED_COLORS });
+  renderSchedCourses();
+  renderSchedCalendar();
+  syncSchedToPlan();
+  renderSchedGe();
+}
+
+// Plan tab button: open the scheduler on that semester's term, searching for
+// the requirement the semester still needs.
+function findGeInScheduler(cat, semNum) {
+  schedPlanSemTouched = true;
+  const sel = document.getElementById("sched-plan-sem");
+  if (sel && semNum) sel.value = String(semNum);
+  applySchedPlanSem();
+  showTab("schedule");
+  setSchedSearchMode("ge");
+  document.getElementById("sched-ge-cat").value = cat;
+  document.getElementById("sched-ge-filter").value = "";
+  renderSchedGe();
 }
 
 function initScheduleTab() {
@@ -2733,6 +2938,10 @@ function initScheduleTab() {
 
   buildSchedDatalist();
   renderSchedCalendar();
+  syncSchedPlanSemDefault(true);
+
+  document.getElementById("sched-ge-cat").addEventListener("change", renderSchedGe);
+  document.getElementById("sched-ge-filter").addEventListener("input", renderSchedGe);
 
   // Allow Enter key in search
   document.getElementById("sched-search").addEventListener("keydown", e => {

@@ -540,8 +540,19 @@ h2:first-child { margin-top: 0; }
   color: var(--status-todo);
   line-height: 1.6;
 }
-.plan-hint-item { display: inline; }
-.plan-hint-item + .plan-hint-item::before { content: " \00b7 "; color: #e5a0a0; }
+.plan-hint-label { margin-right: 6px; font-weight: 600; }
+.plan-ge-btn {
+  font: inherit;
+  font-size: 12px;
+  color: var(--status-todo);
+  background: var(--surface);
+  border: 1px solid #e5a0a0;
+  border-radius: 12px;
+  padding: 1px 10px;
+  margin: 0 4px 2px 0;
+  cursor: pointer;
+}
+.plan-ge-btn:hover { background: #fee2e2; border-color: var(--status-todo); }
 
 .plan-suggestions {
   border-left: 3px solid var(--rule);
@@ -1191,3 +1202,24 @@ h2:first-child { margin-top: 0; }
 
   @page { margin: 0.5in; }
 }
+
+/* Scheduler: search mode toggle and GE results */
+.sched-mode { display: flex; gap: 4px; margin-bottom: 8px; }
+.sched-mode-btn {
+  font: inherit;
+  font-size: 12px;
+  padding: 3px 10px;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--surface);
+  color: var(--fg-muted);
+  cursor: pointer;
+}
+.sched-mode-btn.active { background: var(--ink-100); color: var(--fg); font-weight: 600; }
+#sched-ge-cat {
+  padding: 5px 8px;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  font-size: 13px;
+}
+.sched-ge-results { max-height: 320px; overflow-y: auto; margin-bottom: 8px; }
