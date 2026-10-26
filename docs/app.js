@@ -592,10 +592,6 @@ function buildPlanHints(semNum, allTaken, geResult, completed) {
   if (completed) return [];
   const hints = [];
 
-  // FYS
-  if (semNum <= 2 && geResult.fys && !geResult.fys.complete)
-    hints.push({ label: "First Year Seminar", cat: "fys" });
-
   // Divisional GE
   const divNames = {
     fine_arts: "Fine Arts", humanities: "Humanities",
@@ -2788,7 +2784,7 @@ function syncSchedPlanSemDefault(force) {
 const SCHED_GE_CATS = [
   ["fine_arts", "Fine Arts"], ["humanities", "Humanities"],
   ["nat_sci_math", "Nat Sci & Math"], ["lab_science", "Lab Science"],
-  ["social_sciences", "Social Sciences"], ["fys", "First Year Seminar"],
+  ["social_sciences", "Social Sciences"],
   ["we", "Writing Emphasis (WE)"], ["dac", "Diversity Across Curriculum (DAC)"],
   ["practicum", "Practicum"],
 ];
@@ -2813,8 +2809,6 @@ function geSectionsFor(cat, code, course, ctx) {
     case "lab_science":
       // A lab and its lecture are taken together, so either one is worth finding.
       return isLab(code) || sd.courses[code + "L"] ? secs : [];
-    case "fys":
-      return prefixOf(code) === "FYS" || ["FS-110", "FS-111", "FS-112"].includes(code) ? secs : [];
     case "we": {
       // WE is per section in the class list; the catalog's list is per course.
       const flagged = secs.filter(s => s.we);
@@ -2912,12 +2906,12 @@ function findGeInScheduler(cat, semNum) {
 function initScheduleTab() {
   const termSel = document.getElementById("sched-term");
   if (!DATA.schedules) return;
-  // Chronological, not filename order: fall_2025, spring_2026, fall_2026.
+  // Newest first: spring_2027, fall_2026, spring_2026, fall_2025.
   const termKey = c => {
     const m = /^(fall|spring|summer)_(\d{4})/i.exec(c);
     return m ? +m[2] + { spring: 0, summer: 0.5, fall: 0.9 }[m[1].toLowerCase()] : 0;
   };
-  const terms = Object.entries(DATA.schedules).sort((a, b) => termKey(a[0]) - termKey(b[0]));
+  const terms = Object.entries(DATA.schedules).sort((a, b) => termKey(b[0]) - termKey(a[0]));
   for (const [code, sched] of terms) {
     const opt = document.createElement("option");
     opt.value = code;
