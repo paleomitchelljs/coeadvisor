@@ -459,6 +459,25 @@
         }
       ]
     },
+    "AVS-250": {
+      "title": "Topics in Aviation",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "Staff",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "12:30",
+              "end": "13:50",
+              "location": ""
+            }
+          ]
+        }
+      ]
+    },
     "AVS-301": {
       "title": "Applied Aerodynamics",
       "sections": [
@@ -473,6 +492,25 @@
               "start": "11:00",
               "end": "12:30",
               "location": "Stuart Hall"
+            }
+          ]
+        }
+      ]
+    },
+    "AVS-302": {
+      "title": "Human Factors",
+      "sections": [
+        {
+          "id": "01",
+          "instructor": "Staff",
+          "credits": 1.0,
+          "we": false,
+          "meetings": [
+            {
+              "days": "TR",
+              "start": "11:00",
+              "end": "12:20",
+              "location": ""
             }
           ]
         }
