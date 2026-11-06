@@ -2223,13 +2223,12 @@ function buildSchedDatalist() {
   const sorted = Object.keys(sd.courses).sort();
   for (const code of sorted) {
     const c = sd.courses[code];
-    // Only include courses with scheduled meetings
-    if (c.sections.some(s => s.meetings.length > 0)) {
-      const opt = document.createElement("option");
-      opt.value = code;
-      opt.label = `${code} — ${c.title}`;
-      dl.appendChild(opt);
-    }
+    // Courses with no set meeting time are listed too: they are offered, and
+    // leaving them out would suggest they are not. They just never draw a block.
+    const opt = document.createElement("option");
+    opt.value = code;
+    opt.label = `${code} — ${c.title}`;
+    dl.appendChild(opt);
   }
 }
 
@@ -2279,10 +2278,11 @@ function renderSchedCourses() {
   for (const entry of schedEntries) {
     const course = sd.courses[entry.code];
     if (!course) continue;
-    const sections = course.sections.filter(s => s.meetings.length > 0);
     let secOptions = "";
-    for (const s of sections) {
-      const mtg = s.meetings.map(m => `${m.days} ${m.start}-${m.end}`).join(", ");
+    for (const s of course.sections) {
+      const mtg = s.meetings.length
+        ? s.meetings.map(m => `${m.days} ${m.start}-${m.end}`).join(", ")
+        : "no set meeting time";
       const sel = s.id === entry.sectionId ? " selected" : "";
       secOptions += `<option value="${s.id}"${sel}>${s.id} — ${s.instructor} — ${mtg}</option>`;
     }
@@ -2567,11 +2567,11 @@ function renderSlotFinder() {
 
 function slotRowHtml(r) {
   const { entry, onCal, clashes } = r;
-  const meets = r.sec.meetings.map(m =>
+  const meets = r.sec.meetings.length ? r.sec.meetings.map(m =>
     `${m.days} ${minutesToDisplay(timeToMinutes(m.start))}\u2013${minutesToDisplay(timeToMinutes(m.end))}`
-  ).join(", ");
+  ).join(", ") : "no set meeting time";
   const meta = [r.sec.id, meets, r.sec.instructor || "Staff"];
-  if (r.mtg.location) meta.push(r.mtg.location);
+  if (r.mtg && r.mtg.location) meta.push(r.mtg.location);
 
   const notes = [];
   // Only unusual credit values are worth the line; a full course is the norm.
@@ -2692,7 +2692,7 @@ function pullPlanIntoSchedule() {
   const sd = getScheduleData();
   if (!semNum || !sd) return;
 
-  const added = [], already = [], unscheduled = [], missing = [];
+  const added = [], already = [], unscheduled = [], missing = [], untimed = [];
   for (const code of planSemesterCourses(semNum)) {
     if (schedEntries.some(e => e.code === code)) { already.push(code); continue; }
     const course = sd.courses[code];
@@ -2701,8 +2701,10 @@ function pullPlanIntoSchedule() {
     // independent studies, the asynchronous online sections. Adding one would
     // put a row on screen with an empty section list and nothing on the grid,
     // so it is reported instead.
-    const sec = course.sections.find(s => s.meetings.length > 0);
+    const sec = course.sections.find(s => s.meetings.length > 0)
+             || course.sections[0];
     if (!sec) { unscheduled.push(code); continue; }
+    if (!sec.meetings.length) untimed.push(code);
     schedEntries.push({ code, sectionId: sec.id,
                         colorIdx: schedColorNext++ % SCHED_COLORS });
     added.push(code);
@@ -2710,7 +2712,7 @@ function pullPlanIntoSchedule() {
 
   renderSchedCourses();
   renderSchedCalendar();
-  renderPullSummary(sd, { added, already, unscheduled, missing });
+  renderPullSummary(sd, { added, already, unscheduled, missing, untimed });
   // Everything pulled came from the plan, so there is nothing to push back.
 }
 
@@ -2726,6 +2728,8 @@ function renderPullSummary(sd, r) {
     bits.push(`<span class="pull-ok">Added ${r.added.length}: ${r.added.join(", ")}</span>`);
   if (r.already.length)
     bits.push(`<span class="pull-dim">${r.already.length} already scheduled</span>`);
+  if (r.untimed && r.untimed.length)
+    bits.push(`<span class="pull-dim">No set meeting time (not on the grid): ${r.untimed.join(", ")}</span>`);
   if (r.unscheduled.length)
     bits.push(`<span class="pull-warn">Offered, no set meeting time: ${r.unscheduled.join(", ")}</span>`);
   if (r.missing.length)
@@ -2800,8 +2804,8 @@ function setSchedSearchMode(mode) {
 // Sections of `code` that count toward `cat`, or [] if the course does not.
 function geSectionsFor(cat, code, course, ctx) {
   const sd = ctx.sd, ge = ctx.gd.ge;
-  const meets = s => s.meetings.length > 0;
-  const secs = course.sections.filter(meets);
+  // Sections with no meeting time still count; they are offered, just not placed.
+  const secs = course.sections;
   const div = ge.divisional.sections;
   switch (cat) {
     case "fine_arts": case "humanities": case "nat_sci_math": case "social_sciences":
